@@ -1,0 +1,39 @@
+{
+  "hero": {
+    "title": "Votre chemin vers le Canada commence ici",
+    "subtitle": "Calculateur CRS gratuit, évaluation d'immigration et coaching expert pour vous aider à immigrer au Canada.",
+    "cta": "Vérifiez votre admissibilité — Gratuit",
+    "secondaryCta": "Calculez votre score CRS"
+  },
+  "features": {
+    "title": "Tout ce dont vous avez besoin pour immigrer au Canada",
+    "calculator": {
+      "title": "Calculateur CRS",
+      "description": "Calculez votre score du Système de classement global instantanément et comparez-le aux derniers tirages d'Entrée express."
+    },
+    "evaluation": {
+      "title": "Évaluation gratuite",
+      "description": "Découvrez à quels programmes d'immigration vous êtes admissible en fonction de votre éducation, expérience et compétences linguistiques."
+    },
+    "mockTests": {
+      "title": "Tests de pratique",
+      "description": "Préparez-vous pour l'IELTS, le CELPIP, le TEF et le TCF avec des simulations d'examen réalistes et une notation instantanée."
+    },
+    "coaching": {
+      "title": "Coaching expert",
+      "description": "Obtenez des conseils personnalisés d'experts en immigration pour maximiser vos chances de succès."
+    }
+  },
+  "stats": {
+    "evaluations": "Évaluations complétées",
+    "score": "Amélioration moyenne du CRS",
+    "countries": "Pays desservis"
+  },
+  "drawTracker": {
+    "title": "Dernier tirage d'Entrée express",
+    "crsScore": "Score CRS minimum",
+    "invitations": "Invitations émises",
+    "date": "Date du tirage",
+    "viewAll": "Voir tous les tirages"
+  }
+}

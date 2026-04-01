@@ -1,0 +1,64 @@
+{
+  "metadata": {
+    "title": "IDLOGICE — Canada Immigration Platform",
+    "description": "Free CRS calculator, immigration evaluation, IELTS mock tests, and coaching. Your path to Canada starts here."
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "calculator": "CRS Calculator",
+    "evaluation": "Free Evaluation",
+    "draws": "Draw Tracker",
+    "blog": "Blog",
+    "pricing": "Pricing",
+    "help": "Help",
+    "login": "Log In",
+    "register": "Sign Up",
+    "dashboard": "Dashboard"
+  },
+  "footer": {
+    "company": "Company",
+    "about": "About Us",
+    "contact": "Contact",
+    "careers": "Careers",
+    "tools": "Tools",
+    "calculator": "CRS Calculator",
+    "evaluation": "Free Evaluation",
+    "mockTests": "Mock Tests",
+    "drawTracker": "Draw Tracker",
+    "resources": "Resources",
+    "blog": "Blog",
+    "help": "Help Center",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookies": "Cookie Policy",
+    "legal": "Legal",
+    "disclaimer": "IDLOGICE provides immigration information and tools for educational purposes only. We are not licensed immigration consultants or lawyers. Our tools provide estimates based on publicly available criteria and may not reflect your exact situation. For official immigration advice, consult a Regulated Canadian Immigration Consultant (RCIC) or a licensed immigration lawyer. Immigration rules change frequently — always verify current requirements with IRCC.",
+    "copyright": "© {year} IDLOGICE. All rights reserved."
+  },
+  "cta": {
+    "freeEvaluation": "Free Evaluation",
+    "calculateCrs": "Calculate Your CRS Score",
+    "getStarted": "Get Started",
+    "learnMore": "Learn More",
+    "signUp": "Sign Up Free",
+    "viewResults": "View Results"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "tryAgain": "Try Again",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close",
+    "search": "Search",
+    "noResults": "No results found",
+    "readMore": "Read More",
+    "viewAll": "View All",
+    "share": "Share",
+    "language": "Language"
+  }
+}

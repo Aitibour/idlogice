@@ -1,0 +1,64 @@
+{
+  "metadata": {
+    "title": "IDLOGICE — Plateforme d'immigration au Canada",
+    "description": "Calculateur CRS gratuit, évaluation d'immigration, tests de pratique IELTS et coaching. Votre chemin vers le Canada commence ici."
+  },
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "calculator": "Calculateur CRS",
+    "evaluation": "Évaluation gratuite",
+    "draws": "Suivi des tirages",
+    "blog": "Blog",
+    "pricing": "Tarifs",
+    "help": "Aide",
+    "login": "Connexion",
+    "register": "S'inscrire",
+    "dashboard": "Tableau de bord"
+  },
+  "footer": {
+    "company": "Entreprise",
+    "about": "À propos",
+    "contact": "Contact",
+    "careers": "Carrières",
+    "tools": "Outils",
+    "calculator": "Calculateur CRS",
+    "evaluation": "Évaluation gratuite",
+    "mockTests": "Tests de pratique",
+    "drawTracker": "Suivi des tirages",
+    "resources": "Ressources",
+    "blog": "Blog",
+    "help": "Centre d'aide",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "cookies": "Politique de cookies",
+    "legal": "Légal",
+    "disclaimer": "IDLOGICE fournit des informations et des outils d'immigration à des fins éducatives uniquement. Nous ne sommes pas des consultants en immigration agréés ni des avocats. Nos outils fournissent des estimations basées sur des critères accessibles au public et peuvent ne pas refléter votre situation exacte. Pour des conseils officiels en immigration, consultez un consultant réglementé en immigration canadienne (CRIC) ou un avocat spécialisé en immigration. Les règles d'immigration changent fréquemment — vérifiez toujours les exigences actuelles auprès d'IRCC.",
+    "copyright": "© {year} IDLOGICE. Tous droits réservés."
+  },
+  "cta": {
+    "freeEvaluation": "Évaluation gratuite",
+    "calculateCrs": "Calculez votre score CRS",
+    "getStarted": "Commencer",
+    "learnMore": "En savoir plus",
+    "signUp": "Inscription gratuite",
+    "viewResults": "Voir les résultats"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "tryAgain": "Réessayer",
+    "back": "Retour",
+    "next": "Suivant",
+    "submit": "Soumettre",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "search": "Rechercher",
+    "noResults": "Aucun résultat trouvé",
+    "readMore": "Lire la suite",
+    "viewAll": "Voir tout",
+    "share": "Partager",
+    "language": "Langue"
+  }
+}

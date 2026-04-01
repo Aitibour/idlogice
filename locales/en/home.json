@@ -1,0 +1,39 @@
+{
+  "hero": {
+    "title": "Your Path to Canada Starts Here",
+    "subtitle": "Free CRS calculator, immigration evaluation, and expert coaching to help you immigrate to Canada.",
+    "cta": "Check Your Eligibility — Free",
+    "secondaryCta": "Calculate Your CRS Score"
+  },
+  "features": {
+    "title": "Everything You Need to Immigrate to Canada",
+    "calculator": {
+      "title": "CRS Calculator",
+      "description": "Calculate your Comprehensive Ranking System score instantly and compare it to the latest Express Entry draws."
+    },
+    "evaluation": {
+      "title": "Free Evaluation",
+      "description": "Find out which immigration programs you qualify for based on your education, work experience, and language skills."
+    },
+    "mockTests": {
+      "title": "Mock Tests",
+      "description": "Practice for IELTS, CELPIP, TEF, and TCF with realistic exam simulations and instant scoring."
+    },
+    "coaching": {
+      "title": "Expert Coaching",
+      "description": "Get personalized guidance from immigration experts to maximize your chances of success."
+    }
+  },
+  "stats": {
+    "evaluations": "Evaluations Completed",
+    "score": "Average CRS Improvement",
+    "countries": "Countries Served"
+  },
+  "drawTracker": {
+    "title": "Latest Express Entry Draw",
+    "crsScore": "CRS Cutoff",
+    "invitations": "Invitations Issued",
+    "date": "Draw Date",
+    "viewAll": "View All Draws"
+  }
+}
