@@ -1,0 +1,37 @@
+{
+  "about": {
+    "hero": {
+      "title": "About IDLOGICE",
+      "subtitle": "We built IDLOGICE to make Canadian immigration understandable, transparent, and accessible to everyone.",
+      "cta": "Free Evaluation",
+      "secondaryCta": "CRS Calculator"
+    },
+    "mission": {
+      "heading": "Our Mission",
+      "body": "Navigating Canadian immigration can be overwhelming. Between changing rules, complex point systems, and expensive consultants, many qualified candidates give up before they start. IDLOGICE changes that. We provide free, accurate tools — powered by the same public data IRCC uses — so you can understand exactly where you stand and what steps to take next. We are not immigration lawyers or consultants. We are technologists who believe access to clear immigration information should not depend on your budget."
+    },
+    "values": {
+      "title": "What We Stand For",
+      "items": [
+        {
+          "title": "Accuracy First",
+          "description": "Our CRS calculator uses the official IRCC scoring matrix, updated whenever rules change. Every calculation is versioned and traceable."
+        },
+        {
+          "title": "Your Data Is Private",
+          "description": "We collect only what we need to run your evaluation. We never sell data to third parties or share it with immigration consultants without your explicit consent."
+        },
+        {
+          "title": "Education Over Sales",
+          "description": "Our goal is to help you make informed decisions — not to push you into purchasing a service you may not need. Free tools stay free."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to Start?",
+      "subtitle": "Check your CRS score and eligibility in under 5 minutes — completely free.",
+      "primary": "Free Evaluation",
+      "secondary": "CRS Calculator"
+    }
+  }
+}

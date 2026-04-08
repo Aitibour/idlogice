@@ -1,0 +1,339 @@
+{
+  "services": {
+    "overview": {
+      "hero": {
+        "title": "Canadian Immigration Pathways",
+        "subtitle": "Explore the main routes to Canadian permanent residence. Use our free tools to find out which programs you qualify for."
+      },
+      "grid": {
+        "title": "Choose Your Pathway",
+        "items": [
+          {
+            "title": "Express Entry",
+            "description": "The federal system for skilled workers. The fastest path to permanent residence for most applicants."
+          },
+          {
+            "title": "Study Permit",
+            "description": "Study at a Canadian institution and build a path to permanent residence through the PGWP and Canadian Experience Class."
+          },
+          {
+            "title": "Work Permit",
+            "description": "Work in Canada temporarily with an LMIA-based or LMIA-exempt permit, and build Canadian experience toward PR."
+          },
+          {
+            "title": "Provincial Nominee Program",
+            "description": "Get nominated by a Canadian province and receive 600 additional CRS points — a near-guaranteed invitation to apply."
+          }
+        ]
+      },
+      "cta": {
+        "title": "Not Sure Which Path Is Right for You?",
+        "subtitle": "Our free evaluation checks your profile against all major immigration programs in under 5 minutes.",
+        "primary": "Free Evaluation",
+        "secondary": "CRS Calculator"
+      }
+    },
+    "expressEntry": {
+      "hero": {
+        "badge": "Express Entry",
+        "title": "Express Entry — Federal Skilled Worker Program",
+        "subtitle": "Canada's flagship immigration system for skilled workers. Create a profile, enter the pool, and receive an Invitation to Apply based on your CRS score.",
+        "cta": "Calculate Your CRS Score",
+        "secondaryCta": "Free Evaluation"
+      },
+      "requirements": {
+        "title": "Do You Qualify?",
+        "qualifications": [
+          "At least 1 year of continuous skilled work experience (NOC TEER 0, 1, 2, or 3)",
+          "Language skills meeting CLB 7 or higher in all four abilities",
+          "A post-secondary credential or Canadian equivalent via ECA",
+          "Sufficient settlement funds (varies by family size)",
+          "No criminal record and passing a medical examination"
+        ],
+        "facts": [
+          { "label": "Max CRS Score", "value": "1,200 points" },
+          { "label": "Streams", "value": "FSW, CEC, FST" },
+          { "label": "Typical Processing", "value": "6 months" },
+          { "label": "Min. Language", "value": "CLB 7 (FSW / CEC)" },
+          { "label": "Work Experience", "value": "1+ year NOC TEER 0–3" }
+        ]
+      },
+      "steps": {
+        "title": "The Express Entry Process",
+        "subtitle": "From creating your profile to receiving your permanent residence.",
+        "items": [
+          {
+            "number": 1,
+            "title": "Create Your Profile",
+            "description": "Submit your Express Entry profile via the IRCC portal with your work experience, education, and language test results."
+          },
+          {
+            "number": 2,
+            "title": "Enter the Pool",
+            "description": "Your profile is ranked in the Express Entry pool against other candidates using the Comprehensive Ranking System (CRS)."
+          },
+          {
+            "number": 3,
+            "title": "Receive an ITA",
+            "description": "IRCC holds regular draws and issues Invitations to Apply (ITAs) to the highest-ranked candidates."
+          },
+          {
+            "number": 4,
+            "title": "Submit Your PR Application",
+            "description": "You have 60 days to submit a complete permanent residence application with all supporting documents."
+          },
+          {
+            "number": 5,
+            "title": "Receive Permanent Residence",
+            "description": "Most Express Entry applications are processed within 6 months of submission."
+          }
+        ]
+      },
+      "streams": {
+        "title": "Express Entry Streams",
+        "items": [
+          {
+            "title": "Federal Skilled Worker (FSW)",
+            "description": "For workers with foreign skilled work experience and a strong CRS score. Requires an ECA for foreign credentials."
+          },
+          {
+            "title": "Canadian Experience Class (CEC)",
+            "description": "For workers who already have at least 1 year of Canadian skilled work experience in the last 3 years."
+          },
+          {
+            "title": "Federal Skilled Trades (FST)",
+            "description": "For workers in skilled trade occupations with a job offer or certificate of qualification in Canada."
+          }
+        ]
+      },
+      "cta": {
+        "title": "What Is Your CRS Score?",
+        "subtitle": "Calculate your score in 2 minutes and see how you compare to recent Express Entry draws.",
+        "primary": "Calculate My CRS Score",
+        "secondary": "Free Eligibility Check"
+      }
+    },
+    "studyPermit": {
+      "hero": {
+        "badge": "Study Permit",
+        "title": "Study in Canada",
+        "subtitle": "Gain a Canadian education, work during your studies, and build a clear path to permanent residence through the Post-Graduation Work Permit.",
+        "cta": "Check Your Eligibility",
+        "secondaryCta": "CRS Calculator"
+      },
+      "requirements": {
+        "title": "Key Requirements",
+        "qualifications": [
+          "An acceptance letter from a Designated Learning Institution (DLI) in Canada",
+          "Proof of sufficient funds (minimum CAD $20,635/year for living costs plus tuition)",
+          "Language scores meeting your program's requirements (typically IELTS 6.0+ or equivalent)",
+          "No criminal record and passing a medical examination if required",
+          "Proof that you will comply with the conditions of your permit"
+        ],
+        "facts": [
+          { "label": "Min. Living Funds", "value": "CAD $20,635/year" },
+          { "label": "Work Rights", "value": "20 hrs/week during studies" },
+          { "label": "Post-Grad Work", "value": "PGWP up to 3 years" },
+          { "label": "Path to PR", "value": "CEC after 1 year of work" },
+          { "label": "Processing Time", "value": "4–16 weeks (online)" }
+        ]
+      },
+      "steps": {
+        "title": "How to Get Your Study Permit",
+        "items": [
+          {
+            "number": 1,
+            "title": "Choose a Designated Learning Institution",
+            "description": "Select a DLI-approved school in Canada and receive your letter of acceptance before applying."
+          },
+          {
+            "number": 2,
+            "title": "Apply for a Study Permit",
+            "description": "Submit your study permit application online via IRCC with your acceptance letter, financial proof, and language scores."
+          },
+          {
+            "number": 3,
+            "title": "Receive Your Permit",
+            "description": "Once approved, you will receive a Port of Entry letter of introduction to present at the Canadian border."
+          },
+          {
+            "number": 4,
+            "title": "Arrive and Start Your Studies",
+            "description": "Present your documents at the border. You can work 20 hours per week during the academic semester and full-time during breaks."
+          }
+        ]
+      },
+      "facts": {
+        "title": "Why Study in Canada?",
+        "items": [
+          {
+            "title": "Work While You Study",
+            "description": "Study permit holders can work up to 20 hours per week during the academic semester and full-time during scheduled breaks."
+          },
+          {
+            "title": "Post-Graduation Work Permit",
+            "description": "After graduating, you may be eligible for a PGWP of up to 3 years — giving you time to gain the Canadian experience needed for CEC."
+          },
+          {
+            "title": "Clear Path to Permanent Residence",
+            "description": "Just 1 year of Canadian skilled work after graduation makes you eligible for the Canadian Experience Class — one of the fastest PR routes."
+          }
+        ]
+      },
+      "cta": {
+        "title": "Ready to Study in Canada?",
+        "subtitle": "Check your immigration eligibility and calculate your CRS score — free.",
+        "primary": "Free Eligibility Check",
+        "secondary": "Calculate CRS Score"
+      }
+    },
+    "workPermit": {
+      "hero": {
+        "badge": "Work Permit",
+        "title": "Work in Canada",
+        "subtitle": "A Canadian work permit lets you gain valuable experience, build your CRS score, and create a pathway to permanent residence.",
+        "cta": "Check Your Eligibility",
+        "secondaryCta": "Free Evaluation"
+      },
+      "requirements": {
+        "title": "Do You Qualify?",
+        "qualifications": [
+          "A valid job offer from a Canadian employer (for LMIA-based permits)",
+          "Your employer has received a positive Labour Market Impact Assessment (LMIA), or your role is LMIA-exempt",
+          "You meet the language and educational requirements for your occupation",
+          "No criminal record and passing a medical examination if required",
+          "You qualify under CUSMA, the International Experience Canada (IEC) program, or an intra-company transfer (for LMIA-exempt)"
+        ],
+        "facts": [
+          { "label": "LMIA-Based", "value": "Requires employer LMIA" },
+          { "label": "LMIA-Exempt", "value": "CUSMA, IEC, ICT" },
+          { "label": "Processing Time", "value": "2–27 weeks (varies)" },
+          { "label": "Path to PR", "value": "Express Entry (CEC)" },
+          { "label": "Validity", "value": "Up to 3 years (varies)" }
+        ]
+      },
+      "steps": {
+        "title": "How to Get a Work Permit",
+        "items": [
+          {
+            "number": 1,
+            "title": "Secure a Job Offer",
+            "description": "Find a Canadian employer willing to hire you. For LMIA-based permits, they must first obtain a positive LMIA from ESDC."
+          },
+          {
+            "number": 2,
+            "title": "Determine Your Permit Type",
+            "description": "Confirm whether your role requires an LMIA or qualifies for an exemption (CUSMA, intra-company transfer, IEC)."
+          },
+          {
+            "number": 3,
+            "title": "Apply for Your Work Permit",
+            "description": "Submit your work permit application online via IRCC with your job offer letter, LMIA number (if applicable), and supporting documents."
+          },
+          {
+            "number": 4,
+            "title": "Build Canadian Experience",
+            "description": "Work in Canada, gain 1+ year of skilled work experience, and become eligible for the Canadian Experience Class in Express Entry."
+          }
+        ]
+      },
+      "permitTypes": {
+        "title": "Types of Work Permits",
+        "items": [
+          {
+            "title": "LMIA-Based Permit",
+            "description": "Your employer applies for a Labour Market Impact Assessment proving no qualified Canadian was available for the role."
+          },
+          {
+            "title": "CUSMA / NAFTA Permit",
+            "description": "For citizens of USA and Mexico in specific professional occupations. No LMIA required — faster processing at the border."
+          },
+          {
+            "title": "Intra-Company Transfer",
+            "description": "For employees of multinational companies transferring to a Canadian office in a managerial, executive, or specialized knowledge role."
+          }
+        ]
+      },
+      "cta": {
+        "title": "Is a Canadian Work Permit Right for You?",
+        "subtitle": "Check your eligibility and see how Canadian work experience can boost your immigration prospects.",
+        "primary": "Free Evaluation",
+        "secondary": "Calculate CRS Score"
+      }
+    },
+    "pnp": {
+      "hero": {
+        "badge": "Provincial Nominee Program",
+        "title": "Provincial Nominee Program (PNP)",
+        "subtitle": "A provincial nomination adds 600 points to your CRS score — virtually guaranteeing an Invitation to Apply at the next Express Entry draw.",
+        "cta": "Check Your Eligibility",
+        "secondaryCta": "Calculate CRS Score"
+      },
+      "requirements": {
+        "title": "Do You Qualify?",
+        "qualifications": [
+          "Skills, education, or work experience that meets a specific province's labour market needs",
+          "An intention to live and work in the nominating province",
+          "You meet federal admissibility requirements (health, security, language)",
+          "You are already in the Express Entry pool (for Enhanced PNP streams)",
+          "Some streams require a job offer or a prior connection to the province"
+        ],
+        "facts": [
+          { "label": "CRS Bonus", "value": "+600 points" },
+          { "label": "Provinces", "value": "All except Quebec & Nunavut" },
+          { "label": "Processing Time", "value": "6–19 months (varies)" },
+          { "label": "Application Fee", "value": "$0–500 CAD (varies)" },
+          { "label": "Available Streams", "value": "100+ across Canada" }
+        ]
+      },
+      "steps": {
+        "title": "The PNP Process",
+        "items": [
+          {
+            "number": 1,
+            "title": "Choose Your Target Province",
+            "description": "Research which provinces have streams matching your occupation, education, and experience. Each province has different requirements."
+          },
+          {
+            "number": 2,
+            "title": "Apply to the Provincial Program",
+            "description": "Submit a provincial application directly or via an Express Entry enhanced stream. Many provinces have their own Expression of Interest systems."
+          },
+          {
+            "number": 3,
+            "title": "Receive Your Nomination",
+            "description": "If selected, the province nominates you. For Express Entry PNP streams, IRCC immediately adds 600 CRS points to your profile."
+          },
+          {
+            "number": 4,
+            "title": "Apply for Permanent Residence",
+            "description": "With 600 extra CRS points you are virtually guaranteed an ITA at the next draw. Submit your PR application within 60 days."
+          }
+        ]
+      },
+      "provinces": {
+        "title": "Popular Provincial Streams",
+        "items": [
+          {
+            "title": "Ontario (OINP)",
+            "description": "Canada's largest province offers streams for tech workers, in-demand trades, and international students from Ontario universities."
+          },
+          {
+            "title": "British Columbia (BC PNP)",
+            "description": "Strong tech sector with dedicated streams for software engineers, data scientists, and health professionals."
+          },
+          {
+            "title": "Alberta (AINP)",
+            "description": "Growing economy with streams for the Alberta Advantage, rural renewal, and self-employed farmers."
+          }
+        ]
+      },
+      "cta": {
+        "title": "Could You Get a Provincial Nomination?",
+        "subtitle": "Our free evaluation checks your profile against all PNP streams and identifies your best matching provinces.",
+        "primary": "Free Evaluation",
+        "secondary": "Calculate CRS Score"
+      }
+    }
+  }
+}

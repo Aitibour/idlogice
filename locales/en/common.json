@@ -6,6 +6,12 @@
   "nav": {
     "home": "Home",
     "services": "Services",
+    "servicesItems": {
+      "expressEntry": "Express Entry",
+      "studyPermit": "Study Permit",
+      "workPermit": "Work Permit",
+      "pnp": "Provincial Nominee"
+    },
     "calculator": "CRS Calculator",
     "evaluation": "Free Evaluation",
     "draws": "Draw Tracker",

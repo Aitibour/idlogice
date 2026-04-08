@@ -1,0 +1,37 @@
+{
+  "contact": {
+    "hero": {
+      "title": "Contact Us",
+      "subtitle": "Have a question about immigration or our tools? We will get back to you within 24 hours."
+    },
+    "form": {
+      "name": "Your Name",
+      "email": "Email Address",
+      "subject": "Subject",
+      "message": "Message",
+      "submit": "Send Message",
+      "successTitle": "Message sent!",
+      "successMessage": "Thanks for reaching out. We will get back to you within 24 hours.",
+      "errors": {
+        "nameRequired": "Name is required",
+        "emailInvalid": "Please enter a valid email address",
+        "subjectRequired": "Subject is required",
+        "messageRequired": "Message is required"
+      }
+    },
+    "info": {
+      "heading": "Get in Touch",
+      "emailLabel": "Email",
+      "emailValue": "support@idlogice.com",
+      "responseLabel": "Response Time",
+      "responseValue": "Within 24 business hours",
+      "disclaimer": "For immigration advice, consult a Regulated Canadian Immigration Consultant (RCIC) or a licensed immigration lawyer. We cannot provide immigration legal advice."
+    },
+    "cta": {
+      "title": "Looking for Quick Answers?",
+      "subtitle": "Check our Help Center for answers to the most common immigration questions.",
+      "primary": "Visit Help Center",
+      "secondary": "Free Evaluation"
+    }
+  }
+}

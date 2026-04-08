@@ -25,9 +25,47 @@
     }
   },
   "stats": {
-    "evaluations": "Evaluations Completed",
-    "score": "Average CRS Improvement",
-    "countries": "Countries Served"
+    "evaluations": { "value": "10,000+", "label": "Evaluations Completed" },
+    "improvement": { "value": "47 pts", "label": "Average CRS Improvement" },
+    "countries": { "value": "80+", "label": "Countries Served" }
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "Get your CRS score and immigration roadmap in 3 simple steps.",
+    "steps": [
+      {
+        "number": 1,
+        "title": "Evaluate Your Profile",
+        "description": "Enter your education, work experience, and language scores. Our engine calculates your CRS score instantly."
+      },
+      {
+        "number": 2,
+        "title": "Get Your Roadmap",
+        "description": "See which immigration programs you qualify for and receive a personalized action plan to improve your score."
+      },
+      {
+        "number": 3,
+        "title": "Take Action",
+        "description": "Follow your roadmap, track your progress, and practice for IELTS with our mock tests — all in one platform."
+      }
+    ]
+  },
+  "trust": {
+    "title": "Why Thousands Trust IDLOGICE",
+    "items": [
+      {
+        "title": "Free Tools, Always",
+        "description": "Our CRS calculator, evaluation tool, and draw tracker are free — no account required, no credit card, no catch."
+      },
+      {
+        "title": "Your Privacy Is Protected",
+        "description": "We never sell your data or share it with consultants. Your evaluation results are yours alone."
+      },
+      {
+        "title": "Expert Guidance When You Need It",
+        "description": "When you are ready for human support, our coaching programs connect you with experienced immigration professionals."
+      }
+    ]
   },
   "drawTracker": {
     "title": "Latest Express Entry Draw",
