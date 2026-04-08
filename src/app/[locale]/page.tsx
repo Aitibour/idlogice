@@ -3,6 +3,9 @@ import { Link } from "@/i18n/navigation";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Calculator, FileCheck, BookOpen, GraduationCap } from "lucide-react";
+import { StepsSection } from "@/components/sections/steps-section";
+import { FeatureGrid } from "@/components/sections/feature-grid";
+import { CtaBanner } from "@/components/sections/cta-banner";
 
 export default function HomePage() {
   const t = useTranslations();
@@ -12,25 +15,52 @@ export default function HomePage() {
       icon: Calculator,
       title: t("features.calculator.title"),
       description: t("features.calculator.description"),
-      href: "/calculator" as const,
+      href: "/calculator",
     },
     {
       icon: FileCheck,
       title: t("features.evaluation.title"),
       description: t("features.evaluation.description"),
-      href: "/evaluation" as const,
+      href: "/evaluation",
     },
     {
       icon: BookOpen,
       title: t("features.mockTests.title"),
       description: t("features.mockTests.description"),
-      href: "/blog" as const,
+      href: "/blog",
     },
     {
       icon: GraduationCap,
       title: t("features.coaching.title"),
       description: t("features.coaching.description"),
-      href: "/pricing" as const,
+      href: "/pricing",
+    },
+  ];
+
+  const howItWorksSteps = (
+    t.raw("howItWorks.steps") as Array<{
+      number: number;
+      title: string;
+      description: string;
+    }>
+  ).map((s) => ({ number: s.number, title: s.title, description: s.description }));
+
+  const trustItems = (
+    t.raw("trust.items") as Array<{ title: string; description: string }>
+  ).map((item) => ({ title: item.title, description: item.description }));
+
+  const statsData = [
+    {
+      value: t("stats.evaluations.value"),
+      label: t("stats.evaluations.label"),
+    },
+    {
+      value: t("stats.improvement.value"),
+      label: t("stats.improvement.label"),
+    },
+    {
+      value: t("stats.countries.value"),
+      label: t("stats.countries.label"),
     },
   ];
 
@@ -48,10 +78,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/evaluation"
-              className={cn(
-                buttonVariants({ size: "lg" }),
-                "text-lg px-8 py-6",
-              )}
+              className={cn(buttonVariants({ size: "lg" }), "text-lg px-8 py-6")}
             >
               {t("hero.cta")}
             </Link>
@@ -68,50 +95,55 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-            {t("features.title")}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature) => (
-              <Link
-                key={feature.href}
-                href={feature.href}
-                className="group rounded-xl border bg-card p-6 hover:shadow-lg transition-shadow"
-              >
-                <feature.icon className="h-10 w-10 text-primary mb-4" />
-                <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground">{feature.description}</p>
-              </Link>
+      {/* Stats Bar */}
+      <section className="border-y bg-muted/30">
+        <div className="container mx-auto px-4 py-8">
+          <div className="grid grid-cols-3 gap-4 text-center">
+            {statsData.map((stat) => (
+              <div key={stat.label}>
+                <p className="text-2xl md:text-3xl font-bold text-primary">
+                  {stat.value}
+                </p>
+                <p className="text-xs md:text-sm text-muted-foreground mt-1">
+                  {stat.label}
+                </p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            {t("hero.title")}
-          </h2>
-          <p className="text-lg opacity-90 max-w-xl mx-auto mb-8">
-            {t("hero.subtitle")}
-          </p>
-          <Link
-            href="/evaluation"
-            className={cn(
-              buttonVariants({ variant: "secondary", size: "lg" }),
-              "text-lg px-8 py-6",
-            )}
-          >
-            {t("cta.freeEvaluation")}
-          </Link>
-        </div>
-      </section>
+      {/* Features Section */}
+      <FeatureGrid
+        title={t("features.title")}
+        columns={4}
+        items={features}
+      />
+
+      {/* How It Works */}
+      <StepsSection
+        title={t("howItWorks.title")}
+        subtitle={t("howItWorks.subtitle")}
+        steps={howItWorksSteps}
+      />
+
+      {/* Trust Section */}
+      <FeatureGrid
+        title={t("trust.title")}
+        columns={3}
+        items={trustItems}
+      />
+
+      {/* CTA */}
+      <CtaBanner
+        title={t("hero.title")}
+        subtitle={t("hero.subtitle")}
+        primaryCta={{ label: t("cta.freeEvaluation"), href: "/evaluation" }}
+        secondaryCta={{
+          label: t("cta.calculateCrs"),
+          href: "/calculator",
+        }}
+      />
     </>
   );
 }
