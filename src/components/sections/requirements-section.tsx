@@ -3,13 +3,17 @@ import { CheckCircle2 } from "lucide-react";
 interface RequirementsSectionProps {
   title: string;
   qualifications: string[];
+  qualificationsLabel?: string;
   facts: Array<{ label: string; value: string }>;
+  factsLabel?: string;
 }
 
 export function RequirementsSection({
   title,
   qualifications,
+  qualificationsLabel = "You may qualify if:",
   facts,
+  factsLabel = "Key Facts",
 }: RequirementsSectionProps) {
   return (
     <section className="py-16">
@@ -19,7 +23,7 @@ export function RequirementsSection({
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <div className="rounded-xl border bg-card p-6">
-            <h3 className="font-semibold mb-4 text-lg">You may qualify if:</h3>
+            <h3 className="font-semibold mb-4 text-lg">{qualificationsLabel}</h3>
             <ul className="space-y-3">
               {qualifications.map((q, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm">
@@ -30,7 +34,7 @@ export function RequirementsSection({
             </ul>
           </div>
           <div className="rounded-xl border bg-card p-6">
-            <h3 className="font-semibold mb-4 text-lg">Key Facts</h3>
+            <h3 className="font-semibold mb-4 text-lg">{factsLabel}</h3>
             <dl className="space-y-3">
               {facts.map((f, i) => (
                 <div
