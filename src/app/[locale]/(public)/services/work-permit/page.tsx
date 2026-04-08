@@ -41,7 +41,7 @@ export default function WorkPermitPage() {
         cta={{ label: t("workPermit.hero.cta"), href: "/evaluation" }}
         secondaryCta={{
           label: t("workPermit.hero.secondaryCta"),
-          href: "/evaluation",
+          href: "/calculator",
         }}
       />
 
