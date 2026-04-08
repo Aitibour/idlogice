@@ -31,6 +31,7 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  generateBuildId: () => null,
   async headers() {
     return [
       {
