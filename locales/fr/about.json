@@ -1,0 +1,37 @@
+{
+  "about": {
+    "hero": {
+      "title": "À propos d'IDLOGICE",
+      "subtitle": "Nous avons créé IDLOGICE pour rendre l'immigration canadienne compréhensible, transparente et accessible à tous.",
+      "cta": "Évaluation gratuite",
+      "secondaryCta": "Calculateur CRS"
+    },
+    "mission": {
+      "heading": "Notre mission",
+      "body": "Naviguer dans l'immigration canadienne peut être accablant. Entre des règles qui changent, des systèmes de points complexes et des consultants coûteux, de nombreux candidats qualifiés abandonnent avant même de commencer. IDLOGICE change ça. Nous fournissons des outils gratuits et précis — alimentés par les mêmes données publiques qu'utilise IRCC — pour que vous sachiez exactement où vous en êtes et quelles étapes suivre. Nous ne sommes pas des avocats ni des consultants en immigration. Nous sommes des technologues qui croient que l'accès à une information claire sur l'immigration ne devrait pas dépendre de votre budget."
+    },
+    "values": {
+      "title": "Ce pour quoi nous nous battons",
+      "items": [
+        {
+          "title": "L'exactitude avant tout",
+          "description": "Notre calculateur CRS utilise la matrice de notation officielle d'IRCC, mise à jour à chaque changement de règles. Chaque calcul est versionné et traçable."
+        },
+        {
+          "title": "Vos données sont privées",
+          "description": "Nous collectons uniquement ce dont nous avons besoin pour votre évaluation. Nous ne vendons jamais vos données ni ne les partageons sans votre consentement explicite."
+        },
+        {
+          "title": "Éducation plutôt que vente",
+          "description": "Notre objectif est de vous aider à prendre des décisions éclairées — pas de vous pousser vers un service dont vous n'avez peut-être pas besoin. Les outils gratuits restent gratuits."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Prêt à commencer?",
+      "subtitle": "Vérifiez votre score CRS et votre admissibilité en moins de 5 minutes — totalement gratuit.",
+      "primary": "Évaluation gratuite",
+      "secondary": "Calculateur CRS"
+    }
+  }
+}

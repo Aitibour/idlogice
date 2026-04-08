@@ -1,0 +1,37 @@
+{
+  "contact": {
+    "hero": {
+      "title": "Contactez-nous",
+      "subtitle": "Vous avez une question sur l'immigration ou nos outils? Nous vous répondrons dans les 24 heures."
+    },
+    "form": {
+      "name": "Votre nom",
+      "email": "Adresse courriel",
+      "subject": "Sujet",
+      "message": "Message",
+      "submit": "Envoyer le message",
+      "successTitle": "Message envoyé!",
+      "successMessage": "Merci de nous avoir contactés. Nous vous répondrons dans les 24 heures.",
+      "errors": {
+        "nameRequired": "Le nom est obligatoire",
+        "emailInvalid": "Veuillez entrer une adresse courriel valide",
+        "subjectRequired": "Le sujet est obligatoire",
+        "messageRequired": "Le message est obligatoire"
+      }
+    },
+    "info": {
+      "heading": "Prenez contact",
+      "emailLabel": "Courriel",
+      "emailValue": "support@idlogice.com",
+      "responseLabel": "Délai de réponse",
+      "responseValue": "Dans les 24 heures ouvrables",
+      "disclaimer": "Pour des conseils en immigration, consultez un consultant réglementé en immigration canadienne (CRIC) ou un avocat spécialisé. Nous ne pouvons pas fournir de conseils juridiques en matière d'immigration."
+    },
+    "cta": {
+      "title": "Vous cherchez des réponses rapides?",
+      "subtitle": "Consultez notre centre d'aide pour des réponses aux questions les plus courantes.",
+      "primary": "Visiter le centre d'aide",
+      "secondary": "Évaluation gratuite"
+    }
+  }
+}

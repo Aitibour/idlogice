@@ -1,0 +1,339 @@
+{
+  "services": {
+    "overview": {
+      "hero": {
+        "title": "Voies d'immigration canadienne",
+        "subtitle": "Explorez les principales routes vers la résidence permanente au Canada. Utilisez nos outils gratuits pour savoir à quels programmes vous êtes admissible."
+      },
+      "grid": {
+        "title": "Choisissez votre voie",
+        "items": [
+          {
+            "title": "Entrée express",
+            "description": "Le système fédéral pour les travailleurs qualifiés. La voie la plus rapide vers la résidence permanente pour la plupart des candidats."
+          },
+          {
+            "title": "Permis d'études",
+            "description": "Étudiez dans un établissement canadien et construisez une voie vers la résidence permanente via le PGWP et la Catégorie de l'expérience canadienne."
+          },
+          {
+            "title": "Permis de travail",
+            "description": "Travaillez temporairement au Canada avec un permis basé sur l'EIMT ou exempté d'EIMT, et accumulez de l'expérience canadienne."
+          },
+          {
+            "title": "Programme des candidats des provinces",
+            "description": "Obtenez une nomination provinciale et recevez 600 points CRS supplémentaires — une invitation à présenter une demande pratiquement garantie."
+          }
+        ]
+      },
+      "cta": {
+        "title": "Vous ne savez pas quelle voie choisir?",
+        "subtitle": "Notre évaluation gratuite vérifie votre profil par rapport à tous les principaux programmes d'immigration en moins de 5 minutes.",
+        "primary": "Évaluation gratuite",
+        "secondary": "Calculateur CRS"
+      }
+    },
+    "expressEntry": {
+      "hero": {
+        "badge": "Entrée express",
+        "title": "Entrée express — Programme des travailleurs qualifiés",
+        "subtitle": "Le principal système d'immigration du Canada pour les travailleurs qualifiés. Créez un profil, entrez dans le bassin et recevez une invitation à présenter une demande basée sur votre score CRS.",
+        "cta": "Calculez votre score CRS",
+        "secondaryCta": "Évaluation gratuite"
+      },
+      "requirements": {
+        "title": "Êtes-vous admissible?",
+        "qualifications": [
+          "Au moins 1 an d'expérience de travail qualifié continu (CNP NEER 0, 1, 2 ou 3)",
+          "Compétences linguistiques de niveau CLN 7 ou plus dans les quatre habiletés",
+          "Un diplôme postsecondaire ou l'équivalent canadien via une EDE",
+          "Fonds de subsistance suffisants (varie selon la taille de la famille)",
+          "Aucun casier judiciaire et réussite d'un examen médical"
+        ],
+        "facts": [
+          { "label": "Score CRS max.", "value": "1 200 points" },
+          { "label": "Volets", "value": "TQF, CEC, TQM" },
+          { "label": "Traitement typique", "value": "6 mois" },
+          { "label": "Langue minimale", "value": "CLN 7 (TQF / CEC)" },
+          { "label": "Expérience de travail", "value": "1+ an CNP NEER 0–3" }
+        ]
+      },
+      "steps": {
+        "title": "Le processus d'Entrée express",
+        "subtitle": "De la création de votre profil à l'obtention de votre résidence permanente.",
+        "items": [
+          {
+            "number": 1,
+            "title": "Créez votre profil",
+            "description": "Soumettez votre profil d'Entrée express via le portail IRCC avec votre expérience de travail, votre éducation et vos résultats de tests linguistiques."
+          },
+          {
+            "number": 2,
+            "title": "Entrez dans le bassin",
+            "description": "Votre profil est classé dans le bassin d'Entrée express par rapport aux autres candidats selon le Système de classement global (SCG)."
+          },
+          {
+            "number": 3,
+            "title": "Recevez une invitation",
+            "description": "IRCC organise des tirages réguliers et émet des Invitations à présenter une demande (IPD) aux candidats les mieux classés."
+          },
+          {
+            "number": 4,
+            "title": "Soumettez votre demande de RP",
+            "description": "Vous avez 60 jours pour soumettre une demande de résidence permanente complète avec tous les documents justificatifs."
+          },
+          {
+            "number": 5,
+            "title": "Obtenez la résidence permanente",
+            "description": "La plupart des demandes d'Entrée express sont traitées dans les 6 mois suivant la soumission."
+          }
+        ]
+      },
+      "streams": {
+        "title": "Volets d'Entrée express",
+        "items": [
+          {
+            "title": "Travailleurs qualifiés (fédéral)",
+            "description": "Pour les travailleurs avec une expérience de travail qualifié à l'étranger et un bon score CRS. Nécessite une EDE pour les diplômes étrangers."
+          },
+          {
+            "title": "Catégorie de l'expérience canadienne (CEC)",
+            "description": "Pour les travailleurs ayant déjà au moins 1 an d'expérience de travail qualifié au Canada au cours des 3 dernières années."
+          },
+          {
+            "title": "Travailleurs de métiers spécialisés",
+            "description": "Pour les travailleurs dans des métiers spécialisés avec une offre d'emploi ou un certificat de qualification au Canada."
+          }
+        ]
+      },
+      "cta": {
+        "title": "Quel est votre score CRS?",
+        "subtitle": "Calculez votre score en 2 minutes et voyez comment vous vous comparez aux tirages récents.",
+        "primary": "Calculer mon score CRS",
+        "secondary": "Vérification d'admissibilité gratuite"
+      }
+    },
+    "studyPermit": {
+      "hero": {
+        "badge": "Permis d'études",
+        "title": "Étudier au Canada",
+        "subtitle": "Obtenez une éducation canadienne, travaillez pendant vos études et construisez une voie vers la résidence permanente via le Permis de travail post-diplôme.",
+        "cta": "Vérifiez votre admissibilité",
+        "secondaryCta": "Calculateur CRS"
+      },
+      "requirements": {
+        "title": "Conditions requises",
+        "qualifications": [
+          "Une lettre d'acceptation d'un établissement d'enseignement désigné (EED) au Canada",
+          "Preuve de fonds suffisants (minimum 20 635 $ CAD/an pour les frais de subsistance + frais de scolarité)",
+          "Des résultats linguistiques répondant aux exigences de votre programme (généralement IELTS 6.0+ ou équivalent)",
+          "Aucun casier judiciaire et examen médical si requis",
+          "Preuve que vous respecterez les conditions de votre permis"
+        ],
+        "facts": [
+          { "label": "Fonds min.", "value": "20 635 $ CAD/an" },
+          { "label": "Droit de travail", "value": "20 h/semaine pendant les études" },
+          { "label": "PTPD", "value": "Jusqu'à 3 ans" },
+          { "label": "Voie vers la RP", "value": "CEC après 1 an de travail" },
+          { "label": "Délai de traitement", "value": "4–16 semaines (en ligne)" }
+        ]
+      },
+      "steps": {
+        "title": "Comment obtenir votre permis d'études",
+        "items": [
+          {
+            "number": 1,
+            "title": "Choisissez un établissement désigné",
+            "description": "Sélectionnez une école approuvée par l'EED au Canada et recevez votre lettre d'acceptation avant de faire une demande."
+          },
+          {
+            "number": 2,
+            "title": "Demandez un permis d'études",
+            "description": "Soumettez votre demande en ligne via IRCC avec votre lettre d'acceptation, preuve de fonds et résultats linguistiques."
+          },
+          {
+            "number": 3,
+            "title": "Recevez votre permis",
+            "description": "Une fois approuvé, vous recevrez une lettre d'introduction pour le point d'entrée à présenter à la frontière canadienne."
+          },
+          {
+            "number": 4,
+            "title": "Arrivez et commencez vos études",
+            "description": "Présentez vos documents à la frontière. Vous pouvez travailler 20 heures par semaine pendant le semestre et à temps plein pendant les congés."
+          }
+        ]
+      },
+      "facts": {
+        "title": "Pourquoi étudier au Canada?",
+        "items": [
+          {
+            "title": "Travaillez pendant vos études",
+            "description": "Les titulaires d'un permis d'études peuvent travailler jusqu'à 20 heures par semaine pendant le semestre et à temps plein pendant les congés."
+          },
+          {
+            "title": "Permis de travail post-diplôme",
+            "description": "Après l'obtention de votre diplôme, vous pourriez être admissible à un PTPD allant jusqu'à 3 ans pour acquérir l'expérience canadienne nécessaire."
+          },
+          {
+            "title": "Voie claire vers la résidence permanente",
+            "description": "Seulement 1 an de travail qualifié au Canada après l'obtention de votre diplôme vous rend admissible à la CEC — l'une des voies les plus rapides."
+          }
+        ]
+      },
+      "cta": {
+        "title": "Prêt à étudier au Canada?",
+        "subtitle": "Vérifiez votre admissibilité à l'immigration et calculez votre score CRS — gratuitement.",
+        "primary": "Vérification d'admissibilité gratuite",
+        "secondary": "Calculer le score CRS"
+      }
+    },
+    "workPermit": {
+      "hero": {
+        "badge": "Permis de travail",
+        "title": "Travailler au Canada",
+        "subtitle": "Un permis de travail canadien vous permet d'acquérir de l'expérience précieuse, d'améliorer votre score CRS et de créer une voie vers la résidence permanente.",
+        "cta": "Vérifiez votre admissibilité",
+        "secondaryCta": "Évaluation gratuite"
+      },
+      "requirements": {
+        "title": "Êtes-vous admissible?",
+        "qualifications": [
+          "Une offre d'emploi valide d'un employeur canadien (pour les permis basés sur l'EIMT)",
+          "Votre employeur a reçu une Étude d'impact sur le marché du travail (EIMT) positive, ou votre poste est exempté",
+          "Vous répondez aux exigences linguistiques et éducatives de votre profession",
+          "Aucun casier judiciaire et examen médical si requis",
+          "Vous êtes admissible en vertu de l'ACEUM, du Programme vacances-travail ou d'un transfert intra-société"
+        ],
+        "facts": [
+          { "label": "Basé sur l'EIMT", "value": "EIMT de l'employeur requis" },
+          { "label": "Exempté d'EIMT", "value": "ACEUM, EIC, TIS" },
+          { "label": "Délai de traitement", "value": "2–27 semaines (varie)" },
+          { "label": "Voie vers la RP", "value": "Entrée express (CEC)" },
+          { "label": "Validité", "value": "Jusqu'à 3 ans (varie)" }
+        ]
+      },
+      "steps": {
+        "title": "Comment obtenir un permis de travail",
+        "items": [
+          {
+            "number": 1,
+            "title": "Obtenez une offre d'emploi",
+            "description": "Trouvez un employeur canadien disposé à vous embaucher. Pour les permis basés sur l'EIMT, il doit d'abord obtenir une EIMT positive d'EDSC."
+          },
+          {
+            "number": 2,
+            "title": "Déterminez votre type de permis",
+            "description": "Confirmez si votre poste nécessite une EIMT ou est admissible à une exemption (ACEUM, transfert intra-société, EIC)."
+          },
+          {
+            "number": 3,
+            "title": "Demandez votre permis de travail",
+            "description": "Soumettez votre demande en ligne via IRCC avec votre lettre d'offre d'emploi, le numéro d'EIMT (si applicable) et les documents requis."
+          },
+          {
+            "number": 4,
+            "title": "Accumulez de l'expérience canadienne",
+            "description": "Travaillez au Canada, accumulez 1+ an d'expérience de travail qualifié et devenez admissible à la Catégorie de l'expérience canadienne."
+          }
+        ]
+      },
+      "permitTypes": {
+        "title": "Types de permis de travail",
+        "items": [
+          {
+            "title": "Permis basé sur l'EIMT",
+            "description": "Votre employeur demande une Étude d'impact sur le marché du travail prouvant qu'aucun Canadien qualifié n'était disponible pour ce poste."
+          },
+          {
+            "title": "Permis ACEUM / ALENA",
+            "description": "Pour les citoyens des États-Unis et du Mexique dans des professions spécifiques. Aucune EIMT requise — traitement plus rapide à la frontière."
+          },
+          {
+            "title": "Transfert intra-société",
+            "description": "Pour les employés de sociétés multinationales transférés dans un bureau canadien dans un rôle de direction, de direction générale ou de connaissances spécialisées."
+          }
+        ]
+      },
+      "cta": {
+        "title": "Un permis de travail canadien est-il fait pour vous?",
+        "subtitle": "Vérifiez votre admissibilité et voyez comment l'expérience de travail canadienne peut améliorer vos perspectives d'immigration.",
+        "primary": "Évaluation gratuite",
+        "secondary": "Calculer le score CRS"
+      }
+    },
+    "pnp": {
+      "hero": {
+        "badge": "Programme des candidats des provinces",
+        "title": "Programme des candidats des provinces (PCP)",
+        "subtitle": "Une nomination provinciale ajoute 600 points à votre score CRS — ce qui garantit pratiquement une invitation à présenter une demande.",
+        "cta": "Vérifiez votre admissibilité",
+        "secondaryCta": "Calculer le score CRS"
+      },
+      "requirements": {
+        "title": "Êtes-vous admissible?",
+        "qualifications": [
+          "Des compétences, une éducation ou une expérience de travail répondant aux besoins du marché du travail d'une province",
+          "L'intention de vivre et de travailler dans la province qui vous nomme",
+          "Vous répondez aux exigences fédérales d'admissibilité (santé, sécurité, langue)",
+          "Vous êtes déjà dans le bassin d'Entrée express (pour les volets PCP améliorés)",
+          "Certains volets exigent une offre d'emploi ou un lien antérieur avec la province"
+        ],
+        "facts": [
+          { "label": "Bonus CRS", "value": "+600 points" },
+          { "label": "Provinces", "value": "Toutes sauf Québec et Nunavut" },
+          { "label": "Délai de traitement", "value": "6–19 mois (varie)" },
+          { "label": "Frais de demande", "value": "0–500 $ CAD (varie)" },
+          { "label": "Volets disponibles", "value": "100+ à travers le Canada" }
+        ]
+      },
+      "steps": {
+        "title": "Le processus du PCP",
+        "items": [
+          {
+            "number": 1,
+            "title": "Choisissez votre province cible",
+            "description": "Recherchez quelles provinces ont des volets correspondant à votre profession, éducation et expérience. Chaque province a des exigences différentes."
+          },
+          {
+            "number": 2,
+            "title": "Postulez au programme provincial",
+            "description": "Soumettez une demande provinciale directement ou via un volet amélioré d'Entrée express. Plusieurs provinces ont leurs propres systèmes de déclaration d'intérêt."
+          },
+          {
+            "number": 3,
+            "title": "Recevez votre nomination",
+            "description": "Si sélectionné, la province vous nomme. Pour les volets PCP d'Entrée express, IRCC ajoute immédiatement 600 points CRS à votre profil."
+          },
+          {
+            "number": 4,
+            "title": "Demandez la résidence permanente",
+            "description": "Avec 600 points CRS supplémentaires, vous êtes pratiquement assuré d'une IPD au prochain tirage. Soumettez votre demande de RP dans les 60 jours."
+          }
+        ]
+      },
+      "provinces": {
+        "title": "Volets provinciaux populaires",
+        "items": [
+          {
+            "title": "Ontario (OINP)",
+            "description": "La plus grande province du Canada offre des volets pour les travailleurs technologiques, les métiers en demande et les étudiants internationaux des universités ontariennes."
+          },
+          {
+            "title": "Colombie-Britannique (PCP C.-B.)",
+            "description": "Fort secteur technologique avec des volets dédiés aux ingénieurs logiciels, scientifiques des données et professionnels de la santé."
+          },
+          {
+            "title": "Alberta (AINP)",
+            "description": "Économie en croissance avec des volets pour l'avantage albertain, le renouveau rural et les agriculteurs indépendants."
+          }
+        ]
+      },
+      "cta": {
+        "title": "Pourriez-vous obtenir une nomination provinciale?",
+        "subtitle": "Notre évaluation gratuite vérifie votre profil par rapport à tous les volets du PCP et identifie vos meilleures provinces.",
+        "primary": "Évaluation gratuite",
+        "secondary": "Calculer le score CRS"
+      }
+    }
+  }
+}

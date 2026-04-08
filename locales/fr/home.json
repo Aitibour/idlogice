@@ -25,9 +25,47 @@
     }
   },
   "stats": {
-    "evaluations": "Évaluations complétées",
-    "score": "Amélioration moyenne du CRS",
-    "countries": "Pays desservis"
+    "evaluations": { "value": "10 000+", "label": "Évaluations complétées" },
+    "improvement": { "value": "47 pts", "label": "Amélioration moyenne du CRS" },
+    "countries": { "value": "80+", "label": "Pays desservis" }
+  },
+  "howItWorks": {
+    "title": "Comment ça fonctionne",
+    "subtitle": "Obtenez votre score CRS et votre feuille de route en 3 étapes simples.",
+    "steps": [
+      {
+        "number": 1,
+        "title": "Évaluez votre profil",
+        "description": "Entrez votre éducation, expérience de travail et scores linguistiques. Notre système calcule votre score CRS instantanément."
+      },
+      {
+        "number": 2,
+        "title": "Obtenez votre feuille de route",
+        "description": "Découvrez les programmes d'immigration auxquels vous êtes admissible et recevez un plan d'action personnalisé."
+      },
+      {
+        "number": 3,
+        "title": "Passez à l'action",
+        "description": "Suivez votre feuille de route, suivez vos progrès et préparez-vous à l'IELTS avec nos tests de pratique."
+      }
+    ]
+  },
+  "trust": {
+    "title": "Pourquoi des milliers de personnes font confiance à IDLOGICE",
+    "items": [
+      {
+        "title": "Outils gratuits, toujours",
+        "description": "Notre calculateur CRS, outil d'évaluation et suivi des tirages sont gratuits — sans compte, sans carte de crédit."
+      },
+      {
+        "title": "Vos données sont protégées",
+        "description": "Nous ne vendons jamais vos données ni ne les partageons avec des consultants. Vos résultats d'évaluation vous appartiennent."
+      },
+      {
+        "title": "Conseils d'experts quand vous en avez besoin",
+        "description": "Quand vous êtes prêt pour un soutien humain, nos programmes de coaching vous connectent avec des professionnels de l'immigration."
+      }
+    ]
   },
   "drawTracker": {
     "title": "Dernier tirage d'Entrée express",

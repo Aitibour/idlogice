@@ -14,7 +14,13 @@
     "help": "Aide",
     "login": "Connexion",
     "register": "S'inscrire",
-    "dashboard": "Tableau de bord"
+    "dashboard": "Tableau de bord",
+    "servicesItems": {
+      "expressEntry": "Entrée express",
+      "studyPermit": "Permis d'études",
+      "workPermit": "Permis de travail",
+      "pnp": "Programme des candidats des provinces"
+    }
   },
   "footer": {
     "company": "Entreprise",
