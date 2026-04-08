@@ -6,17 +6,37 @@ import { Link } from "@/i18n/navigation";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { LanguageSwitcher } from "@/components/shared/language-switcher";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 export function Header() {
   const t = useTranslations("nav");
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
 
   const navLinks = [
     { href: "/calculator" as const, label: t("calculator") },
     { href: "/evaluation" as const, label: t("evaluation") },
     { href: "/draws" as const, label: t("draws") },
     { href: "/blog" as const, label: t("blog") },
+  ];
+
+  const serviceLinks = [
+    {
+      href: "/services/express-entry" as const,
+      label: t("servicesItems.expressEntry"),
+    },
+    {
+      href: "/services/study-permit" as const,
+      label: t("servicesItems.studyPermit"),
+    },
+    {
+      href: "/services/work-permit" as const,
+      label: t("servicesItems.workPermit"),
+    },
+    {
+      href: "/services/pnp" as const,
+      label: t("servicesItems.pnp"),
+    },
   ];
 
   return (
@@ -30,6 +50,31 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6">
+          {/* Services dropdown */}
+          <div className="relative group">
+            <button
+              className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              aria-haspopup="true"
+            >
+              {t("services")}
+              <ChevronDown className="h-4 w-4" />
+            </button>
+            {/* Dropdown panel — visible on hover OR focus-within */}
+            <div className="absolute left-0 top-full pt-2 hidden group-hover:block group-focus-within:block">
+              <div className="min-w-48 rounded-xl border bg-background shadow-lg p-2">
+                {serviceLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -75,7 +120,36 @@ export function Header() {
       {/* Mobile Navigation */}
       {mobileOpen && (
         <div className="md:hidden border-t bg-background">
-          <nav className="flex flex-col p-4 gap-3">
+          <nav className="flex flex-col p-4 gap-1">
+            {/* Services accordion */}
+            <button
+              className="flex items-center justify-between w-full text-sm font-medium py-2 text-muted-foreground hover:text-foreground"
+              onClick={() => setServicesOpen(!servicesOpen)}
+              aria-expanded={servicesOpen}
+            >
+              {t("services")}
+              <ChevronDown
+                className={cn(
+                  "h-4 w-4 transition-transform",
+                  servicesOpen && "rotate-180",
+                )}
+              />
+            </button>
+            {servicesOpen && (
+              <div className="pl-4 flex flex-col gap-1 mb-1">
+                {serviceLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-sm py-1.5 text-muted-foreground hover:text-foreground"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -86,6 +160,7 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
+
             <hr className="my-2" />
             <div className="flex items-center justify-between">
               <LanguageSwitcher />
