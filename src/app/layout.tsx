@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { geistSans } from "@/lib/fonts";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const BASE = "https://idlogice.com";
@@ -157,6 +158,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script type={scriptProps.type} {...{ dangerouslySetInnerHTML: { __html: scriptProps.__html } }} />
       </head>
       {children}
+      <Analytics />
     </html>
   );
 }
