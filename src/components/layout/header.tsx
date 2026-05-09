@@ -10,6 +10,9 @@ import { LanguageSwitcher } from "@/components/shared/language-switcher";
 import { SOCIAL_LINKS } from "@/components/shared/social-links";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
 
+const NAV_TEXT_STYLE = { color: "#111827" } as const;        // gray-900, immune to CSS cascade
+const NAV_SUB_TEXT_STYLE = { color: "#1f2937" } as const;    // gray-800
+
 export function Header() {
   const t = useTranslations("nav");
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -64,7 +67,8 @@ export function Header() {
         <nav className="hidden lg:flex items-center gap-0" aria-label="Main navigation">
           {navLinksBefore.map((link) => (
             <Link key={link.href} href={link.href}
-              className="px-3 py-2 text-sm font-medium text-gray-900 hover:text-black transition-colors">
+              className="px-3 py-2 text-sm font-medium transition-colors hover:opacity-80"
+              style={NAV_TEXT_STYLE}>
               {link.label}
             </Link>
           ))}
@@ -76,7 +80,8 @@ export function Header() {
             onMouseLeave={() => setDesktopServicesOpen(false)}
           >
             <button
-              className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-900 hover:text-black transition-colors"
+              className="flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors hover:opacity-80"
+              style={NAV_TEXT_STYLE}
               aria-haspopup="menu"
               aria-expanded={desktopServicesOpen}
             >
@@ -87,7 +92,8 @@ export function Header() {
               <div className="w-52 rounded-xl border border-border/60 bg-white shadow-xl shadow-black/8 p-1.5">
                 {serviceLinks.map((link) => (
                   <Link key={link.href} href={link.href} role="menuitem"
-                    className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-900 hover:text-black hover:bg-muted/60 transition-colors">
+                    className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium hover:bg-muted/60 transition-colors"
+                    style={NAV_SUB_TEXT_STYLE}>
                     <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" aria-hidden="true" />
                     {link.label}
                   </Link>
@@ -98,7 +104,8 @@ export function Header() {
 
           {navLinksAfter.map((link) => (
             <Link key={link.href} href={link.href}
-              className="px-3 py-2 text-sm font-medium text-gray-900 hover:text-black transition-colors">
+              className="px-3 py-2 text-sm font-medium transition-colors hover:opacity-80"
+              style={NAV_TEXT_STYLE}>
               {link.label}
             </Link>
           ))}
@@ -141,14 +148,16 @@ export function Header() {
           <nav className="flex flex-col p-3 gap-0.5" aria-label="Mobile navigation">
             {navLinksBefore.map((link) => (
               <Link key={link.href} href={link.href}
-                className="px-4 py-3 text-sm font-medium text-gray-900 hover:text-black hover:bg-muted/60 rounded-xl transition-colors"
+                className="px-4 py-3 text-sm font-medium hover:bg-muted/60 rounded-xl transition-colors"
+                style={NAV_TEXT_STYLE}
                 onClick={closeMobile}>
                 {link.label}
               </Link>
             ))}
 
             <button
-              className="flex items-center justify-between w-full px-4 py-3 text-sm font-medium text-gray-900 hover:text-black hover:bg-muted/60 rounded-xl transition-colors"
+              className="flex items-center justify-between w-full px-4 py-3 text-sm font-medium hover:bg-muted/60 rounded-xl transition-colors"
+              style={NAV_TEXT_STYLE}
               onClick={() => setServicesOpen(!servicesOpen)}
               aria-expanded={servicesOpen}
             >
@@ -159,7 +168,8 @@ export function Header() {
               <div className="ml-4 flex flex-col gap-0.5">
                 {serviceLinks.map((link) => (
                   <Link key={link.href} href={link.href}
-                    className="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-900 hover:text-black hover:bg-muted/60 rounded-xl transition-colors"
+                    className="flex items-center gap-2 px-4 py-2.5 text-sm hover:bg-muted/60 rounded-xl transition-colors"
+                    style={NAV_SUB_TEXT_STYLE}
                     onClick={closeMobile}>
                     <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" aria-hidden="true" />
                     {link.label}
@@ -170,7 +180,8 @@ export function Header() {
 
             {navLinksAfter.map((link) => (
               <Link key={link.href} href={link.href}
-                className="px-4 py-3 text-sm font-medium text-gray-900 hover:text-black hover:bg-muted/60 rounded-xl transition-colors"
+                className="px-4 py-3 text-sm font-medium hover:bg-muted/60 rounded-xl transition-colors"
+                style={NAV_TEXT_STYLE}
                 onClick={closeMobile}>
                 {link.label}
               </Link>
