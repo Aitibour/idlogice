@@ -1,8 +1,8 @@
 {
   "contact": {
     "hero": {
-      "title": "Contact Us",
-      "subtitle": "Have a question about immigration or our tools? We will get back to you within 24 hours."
+      "title": "Contact IDLOGICE",
+      "subtitle": "Have a question about your immigration case? Our certified consultants are ready to help. Contact us today for a free initial consultation."
     },
     "form": {
       "name": "Your Name",
@@ -11,7 +11,7 @@
       "message": "Message",
       "submit": "Send Message",
       "successTitle": "Message sent!",
-      "successMessage": "Thanks for reaching out. We will get back to you within 24 hours.",
+      "successMessage": "Thanks for reaching out. We will get back to you within 24 business hours.",
       "errors": {
         "nameRequired": "Name is required",
         "emailInvalid": "Please enter a valid email address",
@@ -22,16 +22,20 @@
     "info": {
       "heading": "Get in Touch",
       "emailLabel": "Email",
-      "emailValue": "support@idlogice.com",
+      "phoneLabel": "Phone",
+      "addressLabel": "Office",
       "responseLabel": "Response Time",
       "responseValue": "Within 24 business hours",
-      "disclaimer": "For immigration advice, consult a Regulated Canadian Immigration Consultant (RCIC) or a licensed immigration lawyer. We cannot provide immigration legal advice."
+      "bookHeading": "Book a Free Consultation",
+      "bookSubtitle": "Speak directly with a certified immigration consultant. No obligation, no cost.",
+      "bookButton": "Book My Free Consultation",
+      "disclaimer": "For official immigration advice, consult a Regulated Canadian Immigration Consultant (RCIC) or a licensed immigration lawyer. IDLOGICE consultants are registered with the College of Immigration and Citizenship Consultants (CICC)."
     },
     "cta": {
-      "title": "Looking for Quick Answers?",
-      "subtitle": "Check our Help Center for answers to the most common immigration questions.",
-      "primary": "Visit Help Center",
-      "secondary": "Free Evaluation"
+      "title": "Not Sure Where to Start?",
+      "subtitle": "Our free consultation helps you understand your options. No commitment required.",
+      "primary": "Book Free Consultation",
+      "secondary": "Explore Services"
     }
   }
 }

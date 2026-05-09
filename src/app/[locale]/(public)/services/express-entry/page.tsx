@@ -1,12 +1,23 @@
-import { useTranslations } from "next-intl";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Express Entry Canada — Federal Skilled Worker Program",
+  description: "Apply to Canada through Express Entry. Our CICC-registered consultants help you optimise your CRS score and submit a winning application for Canadian permanent residence.",
+  alternates: { canonical: "https://idlogice.com/services/express-entry" },
+  openGraph: { title: "Express Entry Canada | IDLOGICE Immigration", description: "Fastest route to Canadian permanent residence. Expert CRS optimization by certified RCICs.", url: "https://idlogice.com/services/express-entry" },
+};
+
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { PageHero } from "@/components/sections/page-hero";
 import { RequirementsSection } from "@/components/sections/requirements-section";
 import { StepsSection } from "@/components/sections/steps-section";
 import { FeatureGrid } from "@/components/sections/feature-grid";
 import { CtaBanner } from "@/components/sections/cta-banner";
 
-export default function ExpressEntryPage() {
-  const t = useTranslations("services");
+export default async function ExpressEntryPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "services" });
 
   const qualifications = t.raw(
     "expressEntry.requirements.qualifications",
@@ -43,6 +54,7 @@ export default function ExpressEntryPage() {
           label: t("expressEntry.hero.secondaryCta"),
           href: "/evaluation",
         }}
+        bgImage="/images/feature-immigration.jpg"
       />
 
       <RequirementsSection

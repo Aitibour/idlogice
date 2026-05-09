@@ -1,136 +1,131 @@
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
+import { MapPin, Phone, Mail } from "lucide-react";
+import { SOCIAL_LINKS } from "@/components/shared/social-links";
+import { CopyrightYear } from "@/components/ui/copyright-year";
 
 export function Footer() {
   const t = useTranslations("footer");
-  const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t bg-muted/30">
-      <div className="container mx-auto px-4 py-12">
-        {/* Footer Links Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-          {/* Company */}
+    <footer className="bg-zinc-950 text-white">
+      <div className="container mx-auto px-4 lg:px-6 pt-16 pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+          {/* Col 1 — Brand */}
+          <div className="lg:col-span-1">
+            <Link href="/" className="inline-block mb-5" aria-label="IDLOGICE home">
+              <Image src="/logo.png" alt="IDLOGICE" width={200} height={60}
+                className="h-[54px] w-auto object-contain brightness-0 invert" />
+            </Link>
+            <p className="text-zinc-400 text-sm leading-relaxed mb-6 max-w-xs">{t("tagline")}</p>
+            <div className="flex gap-2 text-base" aria-label="Social media links">
+              {SOCIAL_LINKS.map(({ svg, href, label }) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
+                  className="w-8 h-8 rounded-lg bg-white/8 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-primary hover:border-primary transition-all">
+                  {svg}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Col 2 — Useful Links */}
           <div>
-            <h3 className="font-semibold text-sm mb-4">{t("company")}</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/about"
-                  className="text-sm text-muted-foreground hover:text-foreground"
-                >
-                  {t("about")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-sm text-muted-foreground hover:text-foreground"
-                >
-                  {t("contact")}
-                </Link>
-              </li>
+            <p className="text-white font-semibold text-sm mb-5 uppercase tracking-wider">Useful Links</p>
+            <ul className="space-y-2.5">
+              {[
+                { href: "/",        label: "Home"           },
+                { href: "/about",   label: t("about")       },
+                { href: "/services",label: "Services"       },
+                { href: "/contact", label: t("contact")     },
+                { href: "/privacy", label: t("privacy")     },
+                { href: "/terms",   label: t("terms")       },
+              ].map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href}
+                    className="text-sm text-zinc-400 hover:text-white transition-colors flex items-center gap-1.5 group">
+                    <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Tools */}
+          {/* Col 3 — Services */}
           <div>
-            <h3 className="font-semibold text-sm mb-4">{t("tools")}</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/calculator"
-                  className="text-sm text-muted-foreground hover:text-foreground"
-                >
-                  {t("calculator")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/evaluation"
-                  className="text-sm text-muted-foreground hover:text-foreground"
-                >
-                  {t("evaluation")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/draws"
-                  className="text-sm text-muted-foreground hover:text-foreground"
-                >
-                  {t("drawTracker")}
-                </Link>
-              </li>
+            <p className="text-white font-semibold text-sm mb-5 uppercase tracking-wider">Services</p>
+            <ul className="space-y-2.5">
+              {[
+                { href: "/services/express-entry", label: "Express Entry"      },
+                { href: "/services/study-permit",  label: "Study Permit"       },
+                { href: "/services/work-permit",   label: "Work Permit"        },
+                { href: "/services/pnp",           label: "Provincial Nominee" },
+                { href: "/services/tourist-visa",  label: "Tourist Visa"       },
+                { href: "/services",               label: "All Services"       },
+              ].map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href}
+                    className="text-sm text-zinc-400 hover:text-white transition-colors flex items-center gap-1.5 group">
+                    <span className="w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Col 4 — Contact + CICC badge */}
           <div>
-            <h3 className="font-semibold text-sm mb-4">{t("resources")}</h3>
-            <ul className="space-y-2">
+            <p className="text-white font-semibold text-sm mb-5 uppercase tracking-wider">{t("contactUs")}</p>
+            <ul className="space-y-3 mb-8">
               <li>
-                <Link
-                  href="/blog"
-                  className="text-sm text-muted-foreground hover:text-foreground"
-                >
-                  {t("blog")}
-                </Link>
+                <a href="tel:+15816340224"
+                  className="flex items-start gap-2.5 text-sm text-zinc-400 hover:text-white transition-colors">
+                  <Phone className="size-4 mt-0.5 shrink-0 text-primary" aria-hidden="true" />
+                  +1 581-634-0224
+                </a>
               </li>
               <li>
-                <Link
-                  href="/help"
-                  className="text-sm text-muted-foreground hover:text-foreground"
-                >
-                  {t("help")}
-                </Link>
+                <a href="mailto:contact@idlogice.com"
+                  className="flex items-start gap-2.5 text-sm text-zinc-400 hover:text-white transition-colors">
+                  <Mail className="size-4 mt-0.5 shrink-0 text-primary" aria-hidden="true" />
+                  contact@idlogice.com
+                </a>
+              </li>
+              <li className="flex items-start gap-2.5 text-sm text-zinc-400">
+                <MapPin className="size-4 mt-0.5 shrink-0 text-primary" aria-hidden="true" />
+                <span>410 Saint-Catherine St<br />Montreal, Canada</span>
               </li>
             </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h3 className="font-semibold text-sm mb-4">{t("legal")}</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/privacy"
-                  className="text-sm text-muted-foreground hover:text-foreground"
-                >
-                  {t("privacy")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/terms"
-                  className="text-sm text-muted-foreground hover:text-foreground"
-                >
-                  {t("terms")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/cookies"
-                  className="text-sm text-muted-foreground hover:text-foreground"
-                >
-                  {t("cookies")}
-                </Link>
-              </li>
-            </ul>
+            <div className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-8 text-primary shrink-0" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+              </svg>
+              <div>
+                <p className="text-xs font-bold text-white leading-tight">RCIC Regulated</p>
+                <p className="text-xs text-zinc-400 leading-tight">CICC Member</p>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Immigration Disclaimer */}
-        <div className="border-t pt-8 mb-8">
-          <p className="text-xs text-muted-foreground leading-relaxed max-w-4xl">
-            {t("disclaimer")}
-          </p>
+        {/* Disclaimer */}
+        <div className="border-t border-white/8 pt-8 mb-6">
+          <p className="text-xs text-zinc-600 leading-relaxed max-w-4xl">{t("disclaimer")}</p>
         </div>
 
-        {/* Copyright */}
-        <div className="border-t pt-6 text-center">
-          <p className="text-xs text-muted-foreground">
-            {t("copyright", { year })}
+        {/* Bottom bar */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-white/8 pt-6">
+          <p className="text-xs text-zinc-600">
+            © <CopyrightYear /> IDLOGICE. All rights reserved.
           </p>
+          <div className="flex items-center gap-4">
+            <Link href="/privacy" className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">{t("privacy")}</Link>
+            <Link href="/terms"   className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">{t("terms")}</Link>
+            <Link href="/cookies" className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">{t("cookies")}</Link>
+          </div>
         </div>
       </div>
     </footer>

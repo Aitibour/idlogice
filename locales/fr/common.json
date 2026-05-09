@@ -12,6 +12,11 @@
     "blog": "Blog",
     "pricing": "Tarifs",
     "help": "Aide",
+    "about": "À propos",
+    "contact": "Contact",
+    "bookConsultation": "Évaluation de profil gratuite",
+    "jobs": "Emplois",
+    "bookConsultationNav": "Réserver une consultation",
     "login": "Connexion",
     "register": "S'inscrire",
     "dashboard": "Tableau de bord",
@@ -19,13 +24,17 @@
       "expressEntry": "Entrée express",
       "studyPermit": "Permis d'études",
       "workPermit": "Permis de travail",
-      "pnp": "Programme des candidats des provinces"
+      "pnp": "Programme des candidats des provinces",
+      "touristVisa": "Visa de touriste"
     }
   },
   "footer": {
+    "tagline": "Services d'immigration canadienne experts. Consultants certifiés. Taux de succès de 95 %. Plus de 10 ans d'expérience.",
+    "contactUs": "Nous contacter",
     "company": "Entreprise",
     "about": "À propos",
     "contact": "Contact",
+    "services": "Services",
     "careers": "Carrières",
     "tools": "Outils",
     "calculator": "Calculateur CRS",
@@ -39,7 +48,7 @@
     "terms": "Conditions d'utilisation",
     "cookies": "Politique de cookies",
     "legal": "Légal",
-    "disclaimer": "IDLOGICE fournit des informations et des outils d'immigration à des fins éducatives uniquement. Nous ne sommes pas des consultants en immigration agréés ni des avocats. Nos outils fournissent des estimations basées sur des critères accessibles au public et peuvent ne pas refléter votre situation exacte. Pour des conseils officiels en immigration, consultez un consultant réglementé en immigration canadienne (CRIC) ou un avocat spécialisé en immigration. Les règles d'immigration changent fréquemment — vérifiez toujours les exigences actuelles auprès d'IRCC.",
+    "disclaimer": "IDLOGICE fournit des services de conseil en immigration par l'intermédiaire de Consultants réglementés en immigration canadienne (CRIC) inscrits auprès du Collège des consultants en immigration et en citoyenneté (CCIC). Les règles d'immigration changent fréquemment — vérifiez toujours les exigences actuelles auprès d'Immigration, Réfugiés et Citoyenneté Canada (IRCC). Les résultats peuvent varier selon les situations individuelles.",
     "copyright": "© {year} IDLOGICE. Tous droits réservés."
   },
   "cta": {
@@ -48,7 +57,9 @@
     "getStarted": "Commencer",
     "learnMore": "En savoir plus",
     "signUp": "Inscription gratuite",
-    "viewResults": "Voir les résultats"
+    "viewResults": "Voir les résultats",
+    "bannerTitle": "Prêt à commencer votre parcours canadien ?",
+    "bannerSubtitle": "Réservez une consultation gratuite avec un consultant en immigration certifié dès aujourd'hui."
   },
   "common": {
     "loading": "Chargement...",

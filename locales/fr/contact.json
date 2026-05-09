@@ -1,8 +1,8 @@
 {
   "contact": {
     "hero": {
-      "title": "Contactez-nous",
-      "subtitle": "Vous avez une question sur l'immigration ou nos outils? Nous vous répondrons dans les 24 heures."
+      "title": "Contactez IDLOGICE",
+      "subtitle": "Vous avez une question sur votre dossier d'immigration ? Nos consultants certifiés sont prêts à vous aider. Contactez-nous dès aujourd'hui pour une consultation initiale gratuite."
     },
     "form": {
       "name": "Votre nom",
@@ -10,8 +10,8 @@
       "subject": "Sujet",
       "message": "Message",
       "submit": "Envoyer le message",
-      "successTitle": "Message envoyé!",
-      "successMessage": "Merci de nous avoir contactés. Nous vous répondrons dans les 24 heures.",
+      "successTitle": "Message envoyé !",
+      "successMessage": "Merci de nous avoir contactés. Nous vous répondrons dans les 24 heures ouvrables.",
       "errors": {
         "nameRequired": "Le nom est obligatoire",
         "emailInvalid": "Veuillez entrer une adresse courriel valide",
@@ -22,16 +22,20 @@
     "info": {
       "heading": "Prenez contact",
       "emailLabel": "Courriel",
-      "emailValue": "support@idlogice.com",
+      "phoneLabel": "Téléphone",
+      "addressLabel": "Bureau",
       "responseLabel": "Délai de réponse",
       "responseValue": "Dans les 24 heures ouvrables",
-      "disclaimer": "Pour des conseils en immigration, consultez un consultant réglementé en immigration canadienne (CRIC) ou un avocat spécialisé. Nous ne pouvons pas fournir de conseils juridiques en matière d'immigration."
+      "bookHeading": "Réserver une consultation gratuite",
+      "bookSubtitle": "Parlez directement avec un consultant en immigration certifié. Sans engagement, sans frais.",
+      "bookButton": "Réserver ma consultation gratuite",
+      "disclaimer": "Pour des conseils officiels en immigration, consultez un consultant réglementé en immigration canadienne (CRIC) ou un avocat spécialisé. Les consultants IDLOGICE sont inscrits auprès du Collège des consultants en immigration et en citoyenneté (CCIC)."
     },
     "cta": {
-      "title": "Vous cherchez des réponses rapides?",
-      "subtitle": "Consultez notre centre d'aide pour des réponses aux questions les plus courantes.",
-      "primary": "Visiter le centre d'aide",
-      "secondary": "Évaluation gratuite"
+      "title": "Vous ne savez pas par où commencer ?",
+      "subtitle": "Notre consultation gratuite vous aide à comprendre vos options. Sans engagement.",
+      "primary": "Réserver une consultation gratuite",
+      "secondary": "Découvrir nos services"
     }
   }
 }

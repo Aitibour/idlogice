@@ -20,10 +20,10 @@ export default function NotFound() {
               Go Home
             </Link>
             <Link
-              href="/calculator"
+              href="/services"
               className="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-3 text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
             >
-              CRS Calculator
+              Our Services
             </Link>
           </div>
         </div>

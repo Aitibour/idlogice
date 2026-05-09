@@ -23,6 +23,14 @@
           {
             "title": "Provincial Nominee Program",
             "description": "Get nominated by a Canadian province and receive 600 additional CRS points — a near-guaranteed invitation to apply."
+          },
+          {
+            "title": "Family Sponsorship",
+            "description": "Reunite with your loved ones in Canada. Canadian citizens and permanent residents can sponsor eligible family members for permanent residence."
+          },
+          {
+            "title": "Tourist Visa (TRV)",
+            "description": "Visit Canada for tourism, family visits, or business meetings. We prepare a complete application to maximise your approval chances."
           }
         ]
       },
@@ -261,6 +269,85 @@
         "secondary": "Calculate CRS Score"
       }
     },
+    "familySponsorship": {
+      "hero": {
+        "badge": "Family Sponsorship",
+        "title": "Reunite With Your Family in Canada",
+        "subtitle": "If you are a Canadian citizen or permanent resident, you can sponsor eligible family members to become permanent residents of Canada.",
+        "cta": "Free Eligibility Check",
+        "secondaryCta": "Contact Us"
+      },
+      "requirements": {
+        "title": "Who Can You Sponsor?",
+        "qualifications": [
+          "Your spouse, common-law partner, or conjugal partner",
+          "Your dependent children (under 22 years old, not married or in a common-law relationship)",
+          "Your parents and grandparents (through the Parents and Grandparents Program)",
+          "Other relatives in specific circumstances (e.g., orphaned siblings, nephews, nieces)",
+          "You must be 18 or older, a Canadian citizen or PR, and meet the minimum income requirement"
+        ],
+        "facts": [
+          { "label": "Spouse / Partner", "value": "~12 months processing" },
+          { "label": "Dependent Children", "value": "~12 months processing" },
+          { "label": "Parents / Grandparents", "value": "PGP lottery draw" },
+          { "label": "Min. Income", "value": "LICO + 30% (parents)" },
+          { "label": "Undertaking Period", "value": "3–20 years (varies)" }
+        ]
+      },
+      "steps": {
+        "title": "How Family Sponsorship Works",
+        "items": [
+          {
+            "number": 1,
+            "title": "Confirm Eligibility",
+            "description": "Verify that you meet the sponsor requirements (age, status, income) and that your family member is eligible to be sponsored."
+          },
+          {
+            "number": 2,
+            "title": "Submit Sponsorship Application",
+            "description": "Submit both your sponsorship application and your family member's permanent residence application at the same time to IRCC."
+          },
+          {
+            "number": 3,
+            "title": "Biometrics & Medical Exam",
+            "description": "Your family member will be required to provide biometrics and complete an immigration medical examination."
+          },
+          {
+            "number": 4,
+            "title": "Background Checks",
+            "description": "IRCC conducts security and criminal background checks on your family member as part of the admissibility assessment."
+          },
+          {
+            "number": 5,
+            "title": "Receive Permanent Residence",
+            "description": "Once approved, your family member will receive their Confirmation of Permanent Residence (COPR) and can land in Canada."
+          }
+        ]
+      },
+      "categories": {
+        "title": "Sponsorship Categories",
+        "items": [
+          {
+            "title": "Spouse & Partner Sponsorship",
+            "description": "Sponsor your spouse, common-law partner (12 months cohabitation), or conjugal partner. Processing takes approximately 12 months."
+          },
+          {
+            "title": "Dependent Child Sponsorship",
+            "description": "Sponsor your dependent children under 22 who are not married or in a common-law relationship. Biological, adopted, and step-children may qualify."
+          },
+          {
+            "title": "Parents & Grandparents Program",
+            "description": "Apply through the annual PGP lottery to sponsor parents and grandparents. Super Visas are also available as a temporary alternative."
+          }
+        ]
+      },
+      "cta": {
+        "title": "Ready to Bring Your Family to Canada?",
+        "subtitle": "Our consultants guide you through every step of the family sponsorship process — from eligibility to landing.",
+        "primary": "Free Consultation",
+        "secondary": "Contact Us"
+      }
+    },
     "pnp": {
       "hero": {
         "badge": "Provincial Nominee Program",
@@ -333,6 +420,81 @@
         "subtitle": "Our free evaluation checks your profile against all PNP streams and identifies your best matching provinces.",
         "primary": "Free Evaluation",
         "secondary": "Calculate CRS Score"
+      }
+    },
+    "touristVisa": {
+      "hero": {
+        "badge": "Temporary Resident Visa",
+        "title": "Tourist Visa (TRV) for Canada",
+        "subtitle": "Planning to visit Canada? Our certified consultants prepare a complete, compelling application to give you the best chance of approval.",
+        "cta": "Book a Consultation",
+        "secondaryCta": "Contact Us"
+      },
+      "requirements": {
+        "title": "Do You Need a Tourist Visa?",
+        "qualifications": [
+          "You are a citizen of a country that requires a Temporary Resident Visa (TRV) to enter Canada",
+          "You plan to visit Canada for tourism, family visits, or short business trips (up to 6 months)",
+          "You have a valid passport and sufficient funds to cover your stay",
+          "You can demonstrate strong ties to your home country (employment, property, family)",
+          "You have no criminal record and meet all Canadian admissibility requirements",
+          "You have a clear purpose of visit and intent to return home after your stay"
+        ],
+        "facts": [
+          { "label": "Validity", "value": "Up to 10 years" },
+          { "label": "Max Stay", "value": "Up to 6 months" },
+          { "label": "Processing", "value": "2–8 weeks" },
+          { "label": "Gov. Fee", "value": "$100 CAD" },
+          { "label": "Entry Type", "value": "Single or multiple" }
+        ]
+      },
+      "steps": {
+        "title": "How We Help You Apply",
+        "items": [
+          {
+            "number": 1,
+            "title": "Eligibility Assessment",
+            "description": "We review your travel history, ties to your home country, financial situation, and purpose of visit to assess your approval chances."
+          },
+          {
+            "number": 2,
+            "title": "Document Preparation",
+            "description": "We provide a personalised checklist and review every document — bank statements, employment letters, itinerary, invitation letters — for completeness."
+          },
+          {
+            "number": 3,
+            "title": "Application Submission",
+            "description": "We prepare and review your IMM 5257 form, cover letter, and supporting documents, then guide you through the online submission process."
+          },
+          {
+            "number": 4,
+            "title": "Biometrics & Interview Support",
+            "description": "We guide you through biometrics enrolment and prepare you for any potential visa officer interview or additional document requests."
+          }
+        ]
+      },
+      "facts": {
+        "title": "Why Work With Us",
+        "items": [
+          {
+            "title": "Tailored Cover Letter",
+            "description": "A professional cover letter addressing your specific situation, ties to home, and purpose of visit significantly increases approval rates."
+          },
+          {
+            "title": "Document Review",
+            "description": "Our consultants review all supporting documents for gaps, inconsistencies, or missing information before submission."
+          },
+          {
+            "title": "Refusal Assistance",
+            "description": "Previously refused? We analyse the refusal reasons, strengthen your application, and guide you through a new submission."
+          }
+        ]
+      },
+      "cta": {
+        "title": "Ready to Plan Your Trip to Canada?",
+        "subtitle": "Book a consultation with a certified RCIC to maximise your tourist visa approval chances.",
+        "primary": "Book a Consultation",
+        "secondary": "Contact Us"
       }
     }
   }

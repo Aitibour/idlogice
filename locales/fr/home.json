@@ -1,12 +1,13 @@
 {
   "hero": {
+    "badge": "Consultants Certifiés en Immigration Canadienne",
     "title": "Votre chemin vers le Canada commence ici",
-    "subtitle": "Calculateur CRS gratuit, évaluation d'immigration et coaching expert pour vous aider à immigrer au Canada.",
-    "cta": "Vérifiez votre admissibilité — Gratuit",
-    "secondaryCta": "Calculez votre score CRS"
+    "subtitle": "Services d'immigration canadienne experts avec un taux de succès de 95 %. Plus de 10 ans d'expérience pour aider les familles, les travailleurs et les étudiants à réaliser leur rêve canadien.",
+    "cta": "Réserver une consultation gratuite",
+    "secondaryCta": "Découvrir nos services"
   },
   "features": {
-    "title": "Tout ce dont vous avez besoin pour immigrer au Canada",
+    "title": "Services d'immigration complets",
     "calculator": {
       "title": "Calculateur CRS",
       "description": "Calculez votre score du Système de classement global instantanément et comparez-le aux derniers tirages d'Entrée express."
@@ -16,56 +17,194 @@
       "description": "Découvrez à quels programmes d'immigration vous êtes admissible en fonction de votre éducation, expérience et compétences linguistiques."
     },
     "mockTests": {
-      "title": "Tests de pratique",
-      "description": "Préparez-vous pour l'IELTS, le CELPIP, le TEF et le TCF avec des simulations d'examen réalistes et une notation instantanée."
+      "title": "Coaching en tests linguistiques",
+      "description": "Coaching expert pour l'IELTS, le CELPIP, le TEF, le TCF et le PTE. Maximisez votre score avec nos programmes de préparation éprouvés."
     },
     "coaching": {
-      "title": "Coaching expert",
-      "description": "Obtenez des conseils personnalisés d'experts en immigration pour maximiser vos chances de succès."
+      "title": "Conseil expert",
+      "description": "Des consultants en immigration certifiés vous guident à chaque étape — de la demande à l'approbation."
     }
   },
   "stats": {
-    "evaluations": { "value": "10 000+", "label": "Évaluations complétées" },
-    "improvement": { "value": "47 pts", "label": "Amélioration moyenne du CRS" },
-    "countries": { "value": "80+", "label": "Pays desservis" }
+    "successRate": { "value": "95 %", "label": "Taux de succès" },
+    "experience": { "value": "10+", "label": "Années d'expérience" },
+    "countries": { "value": "50+", "label": "Pays desservis" }
+  },
+  "showcase": {
+    "title": "La vie au Canada",
+    "subtitle": "Découvrez la beauté et les opportunités qui vous attendent au Canada."
+  },
+  "consultant": {
+    "title": "Besoin d'un consultant certifié ? Réservez maintenant.",
+    "subtitle": "Nos consultants réglementés en immigration canadienne (CRIC) ont aidé des centaines de familles, de professionnels et d'étudiants à immigrer au Canada avec succès. Obtenez des conseils personnalisés — réservez votre consultation gratuite aujourd'hui.",
+    "book": "Réserver une consultation gratuite",
+    "call": "+1 581-634-0224",
+    "benefits": [
+      "Consultation initiale gratuite",
+      "Consultants CRIC certifiés",
+      "Taux d'approbation de 95 %",
+      "Plus de 10 ans d'expérience",
+      "Toutes catégories de visa",
+      "Service en français et en anglais"
+    ]
   },
   "howItWorks": {
-    "title": "Comment ça fonctionne",
-    "subtitle": "Obtenez votre score CRS et votre feuille de route en 3 étapes simples.",
+    "title": "Comment nous travaillons avec vous",
+    "subtitle": "Un processus simple et transparent de la première consultation à l'approbation finale.",
     "steps": [
       {
         "number": 1,
-        "title": "Évaluez votre profil",
-        "description": "Entrez votre éducation, expérience de travail et scores linguistiques. Notre système calcule votre score CRS instantanément."
+        "title": "Consultation gratuite",
+        "description": "Parlez avec l'un de nos consultants certifiés. Nous évaluons votre profil et identifions la meilleure voie d'immigration pour vous — sans frais."
       },
       {
         "number": 2,
-        "title": "Obtenez votre feuille de route",
-        "description": "Découvrez les programmes d'immigration auxquels vous êtes admissible et recevez un plan d'action personnalisé."
+        "title": "Préparation des documents",
+        "description": "Nous vous guidons à travers chaque document, formulaire et exigence. Notre équipe examine tout avant la soumission pour éviter les retards ou les refus."
       },
       {
         "number": 3,
-        "title": "Passez à l'action",
-        "description": "Suivez votre feuille de route, suivez vos progrès et préparez-vous à l'IELTS avec nos tests de pratique."
+        "title": "Demande et approbation",
+        "description": "Nous soumettons votre demande et la suivons à chaque étape. Notre taux de succès de 95 % parle de lui-même."
       }
     ]
   },
   "trust": {
-    "title": "Pourquoi des milliers de personnes font confiance à IDLOGICE",
+    "title": "Pourquoi nos clients choisissent IDLOGICE",
     "items": [
       {
-        "title": "Outils gratuits, toujours",
-        "description": "Notre calculateur CRS, outil d'évaluation et suivi des tirages sont gratuits — sans compte, sans carte de crédit."
+        "title": "Professionnels certifiés",
+        "description": "Tous nos consultants sont des Consultants réglementés en immigration canadienne (CRIC), inscrits auprès du Collège des consultants en immigration et en citoyenneté."
       },
       {
-        "title": "Vos données sont protégées",
-        "description": "Nous ne vendons jamais vos données ni ne les partageons avec des consultants. Vos résultats d'évaluation vous appartiennent."
+        "title": "Taux de succès de 95 %",
+        "description": "Avec plus de 10 ans d'expérience, nous avons bâti un palmarès exceptionnel en aidant des clients dans toutes les catégories de visa et tous les programmes d'immigration."
       },
       {
-        "title": "Conseils d'experts quand vous en avez besoin",
-        "description": "Quand vous êtes prêt pour un soutien humain, nos programmes de coaching vous connectent avec des professionnels de l'immigration."
+        "title": "Soutien complet",
+        "description": "Des visas de touriste à la résidence permanente, des permis de travail à la citoyenneté — nous gérons chaque étape pour que vous puissiez vous concentrer sur votre avenir."
       }
     ]
+  },
+  "testimonials": {
+    "title": "Ce que disent nos clients",
+    "subtitle": "Des témoignages réels de personnes qui ont réalisé leur rêve canadien avec IDLOGICE.",
+    "items": [
+      {
+        "name": "Amara Diallo",
+        "origin": "Sénégal → Montréal",
+        "text": "IDLOGICE a rendu l'impossible possible. Après deux refus avec un autre consultant, ils m'ont guidé dans le processus d'Entrée express et j'ai obtenu ma RP en moins de 8 mois. Leur connaissance du système est incomparable.",
+        "result": "Résident permanent — Entrée express",
+        "rating": 5
+      },
+      {
+        "name": "Yuki Tanaka",
+        "origin": "Japon → Toronto",
+        "text": "L'équipe était avec moi à chaque étape. Ils ont préparé tous mes documents, tout traduit et m'ont même aidé à préparer mon IELTS. Je suis passé d'un score de 6,5 à 7,5 grâce à leur coaching. Un service vraiment transformateur.",
+        "result": "Permis de travail → voie vers la RP",
+        "rating": 5
+      },
+      {
+        "name": "Carlos Mendoza",
+        "origin": "Mexique → Vancouver",
+        "text": "Professionnels, réactifs et vraiment soucieux de votre succès. Ils ont tout expliqué clairement et répondu à toutes mes questions. Mon permis d'études a été approuvé en 3 semaines !",
+        "result": "Permis d'études approuvé",
+        "rating": 5
+      },
+      {
+        "name": "Fatima Al-Hassan",
+        "origin": "Maroc → Ottawa",
+        "text": "De la première consultation gratuite à la réception de ma carte de RP, IDLOGICE a été exceptionnel. Ils savent exactement ce qu'IRCC recherche et comment présenter votre demande pour un succès maximal.",
+        "result": "Parrainage familial — RP",
+        "rating": 5
+      },
+      {
+        "name": "Ravi Sharma",
+        "origin": "Inde → Calgary",
+        "text": "J'avais un dossier compliqué avec une lacune dans mon historique d'emploi. L'équipe IDLOGICE l'a géré brillamment, a traité chaque préoccupation de manière proactive et ma demande a été acceptée. Vraiment efficace.",
+        "result": "Programme des candidats des provinces — RP",
+        "rating": 5
+      },
+      {
+        "name": "Sophie Laurent",
+        "origin": "France → Montréal",
+        "text": "En tant que francophone, j'ai apprécié que l'équipe me serve entièrement en français. Ils ont parfaitement ciblé les programmes québécois et ma demande était impeccable. Me voilà chez moi à Montréal !",
+        "result": "Travailleur qualifié du Québec — RP",
+        "rating": 5
+      }
+    ]
+  },
+  "heroSlides": [
+    {
+      "title": "Votre chemin vers le Canada commence ici",
+      "subtitle": "Le Canada accueille des centaines de milliers de nouveaux résidents permanents chaque année. Votre voyage commence par un premier pas."
+    },
+    {
+      "title": "Des conseils d'experts en qui vous pouvez avoir confiance",
+      "subtitle": "Nos consultants certifiés ont aidé des familles, des professionnels et des étudiants de plus de 50 pays à réaliser leur rêve canadien."
+    },
+    {
+      "title": "Toutes les voies d'immigration, couvertes",
+      "subtitle": "De l'Entrée express aux Programmes des candidats des provinces — nous naviguons dans le système pour que vous puissiez vous concentrer sur ce qui compte."
+    },
+    {
+      "title": "Votre nouvelle vie vous attend au Canada",
+      "subtitle": "Travaillez, étudiez, retrouvez votre famille ou devenez citoyen. Commencez votre évaluation de profil gratuite dès aujourd'hui."
+    }
+  ],
+  "homeAbout": {
+    "eyebrow": "Bienvenue chez IDLOGICE",
+    "title": "À propos d'IDLOGICE",
+    "para1": "IDLOGICE est une entreprise de conseil en immigration canadienne entièrement réglementée, dirigée par des Consultants réglementés en immigration canadienne (CRIC) inscrits auprès du Collège des consultants en immigration et en citoyenneté (CICC). Nous offrons des services d'immigration personnalisés à des clients du monde entier désireux de concrétiser leur rêve d'immigrer au Canada.",
+    "para2": "Notre priorité est de comprendre les besoins du client et d'identifier la meilleure option pour son profil grâce à une communication transparente et des conseils d'experts. Avec un taux de succès de 95 % et une expérience couvrant plus de 50 pays, IDLOGICE est votre partenaire de confiance sur la voie du Canada.",
+    "ctaLabel": "En savoir plus sur nous",
+    "stats": [
+      { "value": "95 %", "label": "Taux de succès" },
+      { "value": "10+", "label": "Années d'expérience" },
+      { "value": "50+", "label": "Pays desservis" },
+      { "value": "500+", "label": "Dossiers traités" }
+    ]
+  },
+  "servicesSection": {
+    "eyebrow": "Ce que nous offrons",
+    "title": "Nos services",
+    "ctaLabel": "En savoir plus",
+    "items": [
+      {
+        "title": "Entrée express",
+        "description": "La voie la plus rapide vers la résidence permanente au Canada. Nous évaluons votre profil, optimisons votre score du Système de classement global (SCG) et vous guidons à chaque étape de votre demande d'Entrée express.",
+        "href": "/services/express-entry"
+      },
+      {
+        "title": "Permis d'études",
+        "description": "Étudiez dans des universités et collèges canadiens de renommée mondiale. Nos consultants traitent votre demande de permis d'études, vous aident à choisir le bon établissement et vous conseillent sur les permis de travail postdiplôme.",
+        "href": "/services/study-permit"
+      },
+      {
+        "title": "Permis de travail",
+        "description": "Accédez au marché du travail dynamique du Canada. Que vous ayez besoin d'un permis de travail spécifique à un employeur ou d'un permis ouvert, nous vous guidons à travers les exigences de l'EIMT, les transferts intraentreprises et d'autres voies d'accès.",
+        "href": "/services/work-permit"
+      },
+      {
+        "title": "Programme des candidats des provinces",
+        "description": "Chaque province canadienne dispose de programmes de nomination uniques ciblant les travailleurs qualifiés, les diplômés étrangers et les entrepreneurs. Nous identifions le programme qui correspond le mieux à votre profil.",
+        "href": "/services/pnp"
+      },
+      {
+        "title": "Parrainage familial",
+        "description": "Retrouvez vos proches au Canada. Nous aidons les citoyens canadiens et les résidents permanents à parrainer leurs conjoints, enfants, parents et grands-parents pour la résidence permanente.",
+        "href": "/services/family-sponsorship"
+      },
+      {
+        "title": "Visa de touriste (AVE/RTR)",
+        "description": "Vous planifiez une visite au Canada ? Nous préparons une demande de résidence temporaire complète et convaincante — lettre de motivation, liste de documents et stratégie de refus — pour maximiser vos chances d'approbation.",
+        "href": "/services/tourist-visa"
+      }
+    ]
+  },
+  "contactSection": {
+    "eyebrow": "Contactez-nous",
+    "title": "Prenez contact"
   },
   "drawTracker": {
     "title": "Dernier tirage d'Entrée express",

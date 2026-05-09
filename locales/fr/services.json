@@ -23,6 +23,14 @@
           {
             "title": "Programme des candidats des provinces",
             "description": "Obtenez une nomination provinciale et recevez 600 points CRS supplémentaires — une invitation à présenter une demande pratiquement garantie."
+          },
+          {
+            "title": "Parrainage familial",
+            "description": "Réunissez-vous avec vos proches au Canada. Les citoyens canadiens et résidents permanents peuvent parrainer des membres admissibles de leur famille."
+          },
+          {
+            "title": "Visa de touriste (VRT)",
+            "description": "Visitez le Canada pour le tourisme, les visites familiales ou les voyages d'affaires. Nous préparons un dossier complet pour maximiser vos chances d'approbation."
           }
         ]
       },
@@ -261,6 +269,85 @@
         "secondary": "Calculer le score CRS"
       }
     },
+    "familySponsorship": {
+      "hero": {
+        "badge": "Parrainage familial",
+        "title": "Réunissez-vous avec votre famille au Canada",
+        "subtitle": "Si vous êtes citoyen canadien ou résident permanent, vous pouvez parrainer des membres de votre famille admissibles pour qu'ils deviennent résidents permanents du Canada.",
+        "cta": "Vérification d'admissibilité gratuite",
+        "secondaryCta": "Nous contacter"
+      },
+      "requirements": {
+        "title": "Qui pouvez-vous parrainer?",
+        "qualifications": [
+          "Votre époux(se), conjoint(e) de fait ou partenaire conjugal(e)",
+          "Vos enfants à charge (moins de 22 ans, non mariés ni en union de fait)",
+          "Vos parents et grands-parents (via le Programme des parents et grands-parents)",
+          "D'autres proches dans des circonstances particulières (frères/sœurs orphelins, neveux, nièces)",
+          "Vous devez avoir 18 ans ou plus, être citoyen canadien ou RP, et satisfaire au revenu minimum requis"
+        ],
+        "facts": [
+          { "label": "Époux / Partenaire", "value": "~12 mois de traitement" },
+          { "label": "Enfants à charge", "value": "~12 mois de traitement" },
+          { "label": "Parents / Grands-parents", "value": "Tirage au sort PGP" },
+          { "label": "Revenu min.", "value": "SEUIL + 30 % (parents)" },
+          { "label": "Période d'engagement", "value": "3–20 ans (varie)" }
+        ]
+      },
+      "steps": {
+        "title": "Comment fonctionne le parrainage familial",
+        "items": [
+          {
+            "number": 1,
+            "title": "Confirmer l'admissibilité",
+            "description": "Vérifiez que vous remplissez les conditions de parrainage (âge, statut, revenu) et que votre membre de la famille est admissible."
+          },
+          {
+            "number": 2,
+            "title": "Soumettre la demande de parrainage",
+            "description": "Soumettez simultanément votre demande de parrainage et la demande de résidence permanente de votre membre de la famille à IRCC."
+          },
+          {
+            "number": 3,
+            "title": "Données biométriques et examen médical",
+            "description": "Votre membre de la famille devra fournir ses données biométriques et subir un examen médical aux fins d'immigration."
+          },
+          {
+            "number": 4,
+            "title": "Vérifications des antécédents",
+            "description": "IRCC effectue des vérifications des antécédents judiciaires et sécuritaires dans le cadre de l'évaluation de l'admissibilité."
+          },
+          {
+            "number": 5,
+            "title": "Obtenir la résidence permanente",
+            "description": "Une fois approuvé, votre membre de la famille recevra sa Confirmation de résidence permanente (CRP) et pourra s'établir au Canada."
+          }
+        ]
+      },
+      "categories": {
+        "title": "Catégories de parrainage",
+        "items": [
+          {
+            "title": "Parrainage d'époux et de partenaires",
+            "description": "Parrainez votre époux(se), conjoint(e) de fait (12 mois de cohabitation) ou partenaire conjugal(e). Le traitement prend environ 12 mois."
+          },
+          {
+            "title": "Parrainage d'enfants à charge",
+            "description": "Parrainez vos enfants à charge de moins de 22 ans qui ne sont pas mariés ni en union de fait. Les enfants biologiques, adoptés et beaux-enfants peuvent être admissibles."
+          },
+          {
+            "title": "Programme des parents et grands-parents",
+            "description": "Participez au tirage annuel du PGP pour parrainer vos parents et grands-parents. Le super visa est également disponible comme solution temporaire."
+          }
+        ]
+      },
+      "cta": {
+        "title": "Prêt à réunir votre famille au Canada?",
+        "subtitle": "Nos consultants vous guident à chaque étape du processus de parrainage familial — de l'admissibilité à l'établissement.",
+        "primary": "Consultation gratuite",
+        "secondary": "Nous contacter"
+      }
+    },
     "pnp": {
       "hero": {
         "badge": "Programme des candidats des provinces",
@@ -333,6 +420,81 @@
         "subtitle": "Notre évaluation gratuite vérifie votre profil par rapport à tous les volets du PCP et identifie vos meilleures provinces.",
         "primary": "Évaluation gratuite",
         "secondary": "Calculer le score CRS"
+      }
+    },
+    "touristVisa": {
+      "hero": {
+        "badge": "Visa de résident temporaire",
+        "title": "Visa de touriste pour le Canada",
+        "subtitle": "Vous planifiez visiter le Canada? Nos consultants certifiés préparent un dossier complet et convaincant pour maximiser vos chances d'approbation.",
+        "cta": "Réserver une consultation",
+        "secondaryCta": "Nous contacter"
+      },
+      "requirements": {
+        "title": "Avez-vous besoin d'un visa de touriste?",
+        "qualifications": [
+          "Vous êtes citoyen d'un pays qui exige un visa de résident temporaire (VRT) pour entrer au Canada",
+          "Vous prévoyez visiter le Canada pour le tourisme, des visites familiales ou de courtes missions d'affaires (jusqu'à 6 mois)",
+          "Vous disposez d'un passeport valide et de fonds suffisants pour couvrir votre séjour",
+          "Vous pouvez démontrer des liens solides avec votre pays d'origine (emploi, propriété, famille)",
+          "Vous n'avez pas de casier judiciaire et satisfaites à toutes les exigences d'admissibilité canadiennes",
+          "Vous avez un objectif de visite clair et l'intention de rentrer chez vous après votre séjour"
+        ],
+        "facts": [
+          { "label": "Validité", "value": "Jusqu'à 10 ans" },
+          { "label": "Séjour max.", "value": "Jusqu'à 6 mois" },
+          { "label": "Traitement", "value": "2 à 8 semaines" },
+          { "label": "Frais gouv.", "value": "100 $ CAD" },
+          { "label": "Type d'entrée", "value": "Simple ou multiple" }
+        ]
+      },
+      "steps": {
+        "title": "Comment nous vous aidons",
+        "items": [
+          {
+            "number": 1,
+            "title": "Évaluation de l'admissibilité",
+            "description": "Nous examinons votre historique de voyage, vos liens avec votre pays d'origine, votre situation financière et votre objectif de visite."
+          },
+          {
+            "number": 2,
+            "title": "Préparation des documents",
+            "description": "Nous fournissons une liste de documents personnalisée et révisons chaque pièce — relevés bancaires, lettres d'emploi, itinéraire, lettres d'invitation."
+          },
+          {
+            "number": 3,
+            "title": "Soumission de la demande",
+            "description": "Nous préparons votre formulaire IMM 5257, votre lettre d'accompagnement et vos documents justificatifs, puis vous guidons dans la soumission en ligne."
+          },
+          {
+            "number": 4,
+            "title": "Biométrie et entretien",
+            "description": "Nous vous guidons lors de l'inscription biométrique et vous préparons à tout entretien potentiel avec un agent des visas."
+          }
+        ]
+      },
+      "facts": {
+        "title": "Pourquoi travailler avec nous",
+        "items": [
+          {
+            "title": "Lettre de motivation personnalisée",
+            "description": "Une lettre professionnelle abordant votre situation spécifique, vos liens avec votre pays d'origine et votre objectif de visite augmente considérablement les taux d'approbation."
+          },
+          {
+            "title": "Révision des documents",
+            "description": "Nos consultants vérifient tous les documents justificatifs pour détecter les lacunes, incohérences ou informations manquantes avant la soumission."
+          },
+          {
+            "title": "Assistance en cas de refus",
+            "description": "Refus précédent? Nous analysons les motifs, renforçons votre dossier et vous guidons dans une nouvelle demande."
+          }
+        ]
+      },
+      "cta": {
+        "title": "Prêt à planifier votre voyage au Canada?",
+        "subtitle": "Réservez une consultation avec un RCIC certifié pour maximiser vos chances d'approbation du visa de touriste.",
+        "primary": "Réserver une consultation",
+        "secondary": "Nous contacter"
       }
     }
   }

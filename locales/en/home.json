@@ -1,12 +1,13 @@
 {
   "hero": {
+    "badge": "Certified Canadian Immigration Consultants",
     "title": "Your Path to Canada Starts Here",
-    "subtitle": "Free CRS calculator, immigration evaluation, and expert coaching to help you immigrate to Canada.",
-    "cta": "Check Your Eligibility — Free",
-    "secondaryCta": "Calculate Your CRS Score"
+    "subtitle": "Expert Canadian immigration services with a 95% success rate. Over 10 years helping families, workers, and students achieve their Canadian dream.",
+    "cta": "Free Profile Evaluation",
+    "secondaryCta": "Explore Our Services"
   },
   "features": {
-    "title": "Everything You Need to Immigrate to Canada",
+    "title": "Complete Immigration Services",
     "calculator": {
       "title": "CRS Calculator",
       "description": "Calculate your Comprehensive Ranking System score instantly and compare it to the latest Express Entry draws."
@@ -16,54 +17,120 @@
       "description": "Find out which immigration programs you qualify for based on your education, work experience, and language skills."
     },
     "mockTests": {
-      "title": "Mock Tests",
-      "description": "Practice for IELTS, CELPIP, TEF, and TCF with realistic exam simulations and instant scoring."
+      "title": "Language Test Coaching",
+      "description": "Expert coaching for IELTS, CELPIP, TEF, TCF, and PTE. Maximize your score with our proven preparation programs."
     },
     "coaching": {
-      "title": "Expert Coaching",
-      "description": "Get personalized guidance from immigration experts to maximize your chances of success."
+      "title": "Expert Consulting",
+      "description": "Certified immigration consultants guide you through every step — from application to approval."
     }
   },
   "stats": {
-    "evaluations": { "value": "10,000+", "label": "Evaluations Completed" },
-    "improvement": { "value": "47 pts", "label": "Average CRS Improvement" },
-    "countries": { "value": "80+", "label": "Countries Served" }
+    "successRate": { "value": "95%", "label": "Success Rate" },
+    "experience": { "value": "10+", "label": "Years of Experience" },
+    "countries": { "value": "50+", "label": "Countries Served" }
+  },
+  "showcase": {
+    "title": "Life in Canada",
+    "subtitle": "Experience the beauty and opportunity that awaits you in Canada."
+  },
+  "consultant": {
+    "title": "Need a Certified Consultant? Book One Now.",
+    "subtitle": "Our Regulated Canadian Immigration Consultants (RCICs) have helped hundreds of families, professionals, and students successfully immigrate to Canada. Get personalized guidance — book your free consultation today.",
+    "book": "Book a Free Consultation",
+    "call": "+1 581-634-0224",
+    "benefits": [
+      "Free initial consultation",
+      "Certified RCICs",
+      "95% approval rate",
+      "10+ years experience",
+      "All visa categories",
+      "French & English service"
+    ]
   },
   "howItWorks": {
-    "title": "How It Works",
-    "subtitle": "Get your CRS score and immigration roadmap in 3 simple steps.",
+    "title": "How We Work With You",
+    "subtitle": "A simple, transparent process from first consultation to final approval.",
     "steps": [
       {
         "number": 1,
-        "title": "Evaluate Your Profile",
-        "description": "Enter your education, work experience, and language scores. Our engine calculates your CRS score instantly."
+        "title": "Free Consultation",
+        "description": "Speak with one of our certified consultants. We evaluate your profile and identify the best immigration pathway for you — at no cost."
       },
       {
         "number": 2,
-        "title": "Get Your Roadmap",
-        "description": "See which immigration programs you qualify for and receive a personalized action plan to improve your score."
+        "title": "Document Preparation",
+        "description": "We guide you through every document, form, and requirement. Our team reviews everything before submission to avoid delays or rejections."
       },
       {
         "number": 3,
-        "title": "Take Action",
-        "description": "Follow your roadmap, track your progress, and practice for IELTS with our mock tests — all in one platform."
+        "title": "Application & Approval",
+        "description": "We submit your application and track it every step of the way. Our 95% success rate speaks for itself."
       }
     ]
   },
   "trust": {
-    "title": "Why Thousands Trust IDLOGICE",
+    "title": "Why Clients Choose IDLOGICE",
     "items": [
       {
-        "title": "Free Tools, Always",
-        "description": "Our CRS calculator, evaluation tool, and draw tracker are free — no account required, no credit card, no catch."
+        "title": "Certified Professionals",
+        "description": "All our consultants are Regulated Canadian Immigration Consultants (RCICs), registered with the College of Immigration and Citizenship Consultants."
       },
       {
-        "title": "Your Privacy Is Protected",
-        "description": "We never sell your data or share it with consultants. Your evaluation results are yours alone."
+        "title": "95% Success Rate",
+        "description": "With over 10 years of experience, we have built an exceptional track record helping clients across all visa categories and immigration streams."
       },
       {
-        "title": "Expert Guidance When You Need It",
-        "description": "When you are ready for human support, our coaching programs connect you with experienced immigration professionals."
+        "title": "Full-Service Support",
+        "description": "From tourist visas to permanent residency, work permits to citizenship — we handle every step so you can focus on your future."
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "What Our Clients Say",
+    "subtitle": "Real stories from people who achieved their Canadian dream with IDLOGICE.",
+    "items": [
+      {
+        "name": "Amara Diallo",
+        "origin": "Senegal → Montreal",
+        "text": "IDLOGICE made the impossible possible. After two previous rejections with another consultant, they guided me through the Express Entry process and I received my PR in under 8 months. Their knowledge of the system is unmatched.",
+        "result": "Permanent Resident — Express Entry",
+        "rating": 5
+      },
+      {
+        "name": "Yuki Tanaka",
+        "origin": "Japan → Toronto",
+        "text": "The team was with me every step of the way. They prepared all my documents, translated everything, and even helped me prep for my IELTS. I went from a score of 6.5 to 7.5 with their coaching. Truly life-changing service.",
+        "result": "Work Permit → PR pathway",
+        "rating": 5
+      },
+      {
+        "name": "Carlos Mendoza",
+        "origin": "Mexico → Vancouver",
+        "text": "Professional, responsive, and genuinely caring about your success. They explained every part of the process clearly and answered all my questions. My study permit was approved in 3 weeks!",
+        "result": "Study Permit Approved",
+        "rating": 5
+      },
+      {
+        "name": "Fatima Al-Hassan",
+        "origin": "Morocco → Ottawa",
+        "text": "From the first free consultation to receiving my PR card, IDLOGICE was exceptional. They know exactly what IRCC is looking for and how to present your application for maximum success.",
+        "result": "Family Sponsorship — PR",
+        "rating": 5
+      },
+      {
+        "name": "Ravi Sharma",
+        "origin": "India → Calgary",
+        "text": "I had a complicated case with a gap in employment history. The IDLOGICE team handled it brilliantly, addressed every concern proactively, and my application sailed through. Worth every penny.",
+        "result": "Provincial Nominee Program — PR",
+        "rating": 5
+      },
+      {
+        "name": "Sophie Laurent",
+        "origin": "France → Montreal",
+        "text": "Being francophone, I appreciated that the team served me entirely in French. They understood exactly which Quebec streams to target and my application was perfect. Now I am home in Montreal!",
+        "result": "Quebec Skilled Worker — PR",
+        "rating": 5
       }
     ]
   },
@@ -73,5 +140,77 @@
     "invitations": "Invitations Issued",
     "date": "Draw Date",
     "viewAll": "View All Draws"
+  },
+  "heroSlides": [
+    {
+      "title": "Your Path to Canada Starts Here",
+      "subtitle": "Canada welcomes hundreds of thousands of new permanent residents every year. Your journey begins with a single step."
+    },
+    {
+      "title": "Expert Guidance You Can Trust",
+      "subtitle": "Our certified consultants have helped families, professionals, and students from over 50 countries achieve their Canadian dream."
+    },
+    {
+      "title": "Every Immigration Pathway, Covered",
+      "subtitle": "From Express Entry to Provincial Nominee Programs — we navigate the system so you can focus on what matters."
+    },
+    {
+      "title": "Your New Life Awaits in Canada",
+      "subtitle": "Work, study, reunite with family, or become a citizen. Start your free profile evaluation today."
+    }
+  ],
+  "homeAbout": {
+    "eyebrow": "Welcome to IDLOGICE",
+    "title": "About IDLOGICE",
+    "para1": "IDLOGICE is a fully regulated Canadian immigration consulting firm led by Regulated Canadian Immigration Consultants (RCICs) registered with the College of Immigration and Citizenship Consultants (CICC). We provide personalised immigration services to clients globally who are motivated to make their Canadian immigration dreams a reality.",
+    "para2": "Our priority is understanding the client's needs and mapping the best option to their profile through transparent communication and expert guidance. With a 95% success rate and experience spanning over 50 countries, IDLOGICE is your trusted partner on the path to Canada.",
+    "ctaLabel": "Learn More About Us",
+    "stats": [
+      { "value": "95%", "label": "Success Rate" },
+      { "value": "10+", "label": "Years Experience" },
+      { "value": "50+", "label": "Countries Served" },
+      { "value": "500+", "label": "Cases Handled" }
+    ]
+  },
+  "servicesSection": {
+    "eyebrow": "What We Offer",
+    "title": "Our Services",
+    "ctaLabel": "Read More",
+    "items": [
+      {
+        "title": "Express Entry",
+        "description": "The fastest route to Canadian permanent residence. We assess your profile, optimize your Comprehensive Ranking System (CRS) score, and guide you through every stage of your Express Entry application.",
+        "href": "/services/express-entry"
+      },
+      {
+        "title": "Study Permit",
+        "description": "Study at world-class Canadian universities and colleges. Our consultants handle your study permit application, help you choose the right institution, and advise on Post-Graduate Work Permits.",
+        "href": "/services/study-permit"
+      },
+      {
+        "title": "Work Permit",
+        "description": "Access Canada's thriving job market. Whether you need an employer-specific or open work permit, we guide you through LMIA requirements, intra-company transfers, and other pathways.",
+        "href": "/services/work-permit"
+      },
+      {
+        "title": "Provincial Nominee Program",
+        "description": "Each Canadian province has unique nomination programs targeting skilled workers, international graduates, and entrepreneurs. We identify the PNP stream that best fits your profile.",
+        "href": "/services/pnp"
+      },
+      {
+        "title": "Family Sponsorship",
+        "description": "Reunite with your loved ones in Canada. We assist Canadian citizens and permanent residents in sponsoring their spouses, children, parents, and grandparents for permanent residence.",
+        "href": "/services/family-sponsorship"
+      },
+      {
+        "title": "Tourist Visa (TRV)",
+        "description": "Planning to visit Canada? We prepare a complete, compelling Temporary Resident Visa application — cover letter, document checklist, and refusal strategy — to maximise your approval chances.",
+        "href": "/services/tourist-visa"
+      }
+    ]
+  },
+  "contactSection": {
+    "eyebrow": "Reach Us",
+    "title": "Get in Touch"
   }
 }

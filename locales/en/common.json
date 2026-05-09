@@ -10,7 +10,8 @@
       "expressEntry": "Express Entry",
       "studyPermit": "Study Permit",
       "workPermit": "Work Permit",
-      "pnp": "Provincial Nominee"
+      "pnp": "Provincial Nominee",
+      "touristVisa": "Tourist Visa"
     },
     "calculator": "CRS Calculator",
     "evaluation": "Free Evaluation",
@@ -18,14 +19,22 @@
     "blog": "Blog",
     "pricing": "Pricing",
     "help": "Help",
+    "about": "About",
+    "contact": "Contact",
+    "bookConsultation": "Free Profile Evaluation",
+    "jobs": "Jobs",
+    "bookConsultationNav": "Book Consultation",
     "login": "Log In",
     "register": "Sign Up",
     "dashboard": "Dashboard"
   },
   "footer": {
+    "tagline": "Expert Canadian immigration services. Certified consultants. 95% success rate. 10+ years of experience.",
+    "contactUs": "Contact Us",
     "company": "Company",
     "about": "About Us",
     "contact": "Contact",
+    "services": "Services",
     "careers": "Careers",
     "tools": "Tools",
     "calculator": "CRS Calculator",
@@ -39,7 +48,7 @@
     "terms": "Terms of Service",
     "cookies": "Cookie Policy",
     "legal": "Legal",
-    "disclaimer": "IDLOGICE provides immigration information and tools for educational purposes only. We are not licensed immigration consultants or lawyers. Our tools provide estimates based on publicly available criteria and may not reflect your exact situation. For official immigration advice, consult a Regulated Canadian Immigration Consultant (RCIC) or a licensed immigration lawyer. Immigration rules change frequently — always verify current requirements with IRCC.",
+    "disclaimer": "IDLOGICE provides immigration consulting services through Regulated Canadian Immigration Consultants (RCICs) registered with the College of Immigration and Citizenship Consultants (CICC). Immigration rules change frequently — always verify current requirements with Immigration, Refugees and Citizenship Canada (IRCC). Results may vary based on individual circumstances.",
     "copyright": "© {year} IDLOGICE. All rights reserved."
   },
   "cta": {
@@ -48,7 +57,9 @@
     "getStarted": "Get Started",
     "learnMore": "Learn More",
     "signUp": "Sign Up Free",
-    "viewResults": "View Results"
+    "viewResults": "View Results",
+    "bannerTitle": "Ready to Start Your Canadian Journey?",
+    "bannerSubtitle": "Book a free consultation with a certified immigration consultant today."
   },
   "common": {
     "loading": "Loading...",

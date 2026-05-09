@@ -1,20 +1,30 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata } from "next";
+
+export function generateStaticParams() {
+  return [{ locale: "en" }, { locale: "fr" }];
+}
+import { geistSans } from "@/lib/fonts";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { NewsletterPopup } from "@/components/shared/newsletter-popup";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return {
+    alternates: {
+      canonical: `/${locale}`,
+      languages: { en: "/en", fr: "/fr" },
+    },
+  };
+}
 
 export default async function LocaleLayout({
   children,
@@ -29,19 +39,22 @@ export default async function LocaleLayout({
     notFound();
   }
 
+  setRequestLocale(locale);
   const messages = await getMessages();
+  const dir = ["ar", "fa", "he"].includes(locale) ? "rtl" : "ltr";
 
   return (
     <html
       lang={locale}
-      dir="ltr"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      dir={dir}
+      className={`${geistSans.variable} h-full antialiased`}
     >
       <body className="min-h-screen flex flex-col">
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
+          <NewsletterPopup />
         </NextIntlClientProvider>
       </body>
     </html>

@@ -1,5 +1,6 @@
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 interface FeatureGridItem {
   icon?: React.ComponentType<{ className?: string }>;
@@ -32,14 +33,14 @@ export function FeatureGrid({
     <section className="py-16">
       <div className="container mx-auto px-4">
         {(title || subtitle) && (
-          <div className="text-center mb-12">
+          <ScrollReveal className="text-center mb-12">
             {title && (
               <h2 className="text-2xl md:text-3xl font-bold mb-3">{title}</h2>
             )}
             {subtitle && (
               <p className="text-muted-foreground max-w-xl mx-auto">{subtitle}</p>
             )}
-          </div>
+          </ScrollReveal>
         )}
         <div className={cn("grid grid-cols-1 gap-6", colClass)}>
           {items.map((item, i) => {
@@ -57,20 +58,23 @@ export function FeatureGrid({
 
             if (item.href) {
               return (
-                <Link
-                  key={i}
-                  href={item.href}
-                  className="rounded-xl border bg-card p-6 hover:shadow-md transition-shadow block"
-                >
-                  {content}
-                </Link>
+                <ScrollReveal key={i} delay={i * 80}>
+                  <Link
+                    href={item.href}
+                    className="rounded-xl border bg-card p-6 hover:shadow-md transition-shadow block h-full"
+                  >
+                    {content}
+                  </Link>
+                </ScrollReveal>
               );
             }
 
             return (
-              <div key={i} className="rounded-xl border bg-card p-6">
-                {content}
-              </div>
+              <ScrollReveal key={i} delay={i * 80}>
+                <div className="rounded-xl border bg-card p-6 h-full">
+                  {content}
+                </div>
+              </ScrollReveal>
             );
           })}
         </div>

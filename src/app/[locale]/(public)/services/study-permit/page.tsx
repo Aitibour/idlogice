@@ -1,12 +1,23 @@
-import { useTranslations } from "next-intl";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Canada Study Permit — Student Visa Application",
+  description: "Get your Canadian study permit with expert help from CICC-registered consultants. We guide you through DLI selection, application, and the path to permanent residence via PGWP.",
+  alternates: { canonical: "https://idlogice.com/services/study-permit" },
+  openGraph: { title: "Canada Study Permit | IDLOGICE Immigration", description: "Study in Canada and build a path to PR. Expert guidance for study permits and Post-Graduate Work Permits.", url: "https://idlogice.com/services/study-permit" },
+};
+
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { PageHero } from "@/components/sections/page-hero";
 import { RequirementsSection } from "@/components/sections/requirements-section";
 import { StepsSection } from "@/components/sections/steps-section";
 import { FeatureGrid } from "@/components/sections/feature-grid";
 import { CtaBanner } from "@/components/sections/cta-banner";
 
-export default function StudyPermitPage() {
-  const t = useTranslations("services");
+export default async function StudyPermitPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "services" });
 
   const qualifications = t.raw(
     "studyPermit.requirements.qualifications",
@@ -43,6 +54,7 @@ export default function StudyPermitPage() {
           label: t("studyPermit.hero.secondaryCta"),
           href: "/calculator",
         }}
+        bgImage="/images/feature-language.jpg"
       />
 
       <RequirementsSection

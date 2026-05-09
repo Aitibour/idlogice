@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
-
 export default function Error({
   error,
   reset,
@@ -9,11 +7,6 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  useEffect(() => {
-    // Log to Sentry in production
-    console.error(error);
-  }, [error]);
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
       <div className="text-center px-4">

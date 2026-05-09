@@ -2,13 +2,13 @@
   "about": {
     "hero": {
       "title": "À propos d'IDLOGICE",
-      "subtitle": "Nous avons créé IDLOGICE pour rendre l'immigration canadienne compréhensible, transparente et accessible à tous.",
-      "cta": "Évaluation gratuite",
-      "secondaryCta": "Calculateur CRS"
+      "subtitle": "Consultants experts en immigration canadienne basés à Montréal. Plus de 10 ans d'expérience. Taux de succès de 95 %. Clients de plus de 50 pays.",
+      "cta": "Réserver une consultation gratuite",
+      "secondaryCta": "Nos services"
     },
     "mission": {
       "heading": "Notre mission",
-      "body": "Naviguer dans l'immigration canadienne peut être accablant. Entre des règles qui changent, des systèmes de points complexes et des consultants coûteux, de nombreux candidats qualifiés abandonnent avant même de commencer. IDLOGICE change ça. Nous fournissons des outils gratuits et précis — alimentés par les mêmes données publiques qu'utilise IRCC — pour que vous sachiez exactement où vous en êtes et quelles étapes suivre. Nous ne sommes pas des avocats ni des consultants en immigration. Nous sommes des technologues qui croient que l'accès à une information claire sur l'immigration ne devrait pas dépendre de votre budget."
+      "body": "Depuis 2014, IDLOGICE aide des particuliers, des familles et des entreprises à naviguer dans le système d'immigration canadien. Basée à Montréal au 410, rue Saint-Catherine, notre équipe de Consultants réglementés en immigration canadienne (CRIC) offre des conseils experts et personnalisés pour tous les parcours d'immigration — d'Entrée express et des Programmes des candidats des provinces aux permis de travail, permis d'études, parrainages familiaux et demandes de citoyenneté. Nous croyons que chaque personne mérite d'avoir accès à des conseils clairs et honnêtes en matière d'immigration. Notre taux de succès de 95 % reflète notre engagement à bien faire les choses dès la première fois."
     },
     "values": {
       "title": "Ce pour quoi nous nous battons",
@@ -28,10 +28,10 @@
       ]
     },
     "cta": {
-      "title": "Prêt à commencer?",
-      "subtitle": "Vérifiez votre score CRS et votre admissibilité en moins de 5 minutes — totalement gratuit.",
-      "primary": "Évaluation gratuite",
-      "secondary": "Calculateur CRS"
+      "title": "Prêt à commencer votre parcours?",
+      "subtitle": "Réservez une consultation gratuite avec un consultant certifié et découvrez vos options.",
+      "primary": "Réserver une consultation gratuite",
+      "secondary": "Nos services"
     }
   }
 }

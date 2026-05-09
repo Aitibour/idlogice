@@ -1,12 +1,23 @@
-import { useTranslations } from "next-intl";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Canada Work Permit — LMIA  Open Work Permits",
+  description: "Apply for a Canadian work permit with certified RCIC guidance. LMIA-based, open work permits, intra-company transfers, and CUSMA pathways covered.",
+  alternates: { canonical: "https://idlogice.com/services/work-permit" },
+  openGraph: { title: "Canada Work Permit | IDLOGICE Immigration", description: "Work legally in Canada. Expert RCIC guidance for LMIA, open work permits and employer-specific permits.", url: "https://idlogice.com/services/work-permit" },
+};
+
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { PageHero } from "@/components/sections/page-hero";
 import { RequirementsSection } from "@/components/sections/requirements-section";
 import { StepsSection } from "@/components/sections/steps-section";
 import { FeatureGrid } from "@/components/sections/feature-grid";
 import { CtaBanner } from "@/components/sections/cta-banner";
 
-export default function WorkPermitPage() {
-  const t = useTranslations("services");
+export default async function WorkPermitPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "services" });
 
   const qualifications = t.raw(
     "workPermit.requirements.qualifications",
@@ -43,6 +54,7 @@ export default function WorkPermitPage() {
           label: t("workPermit.hero.secondaryCta"),
           href: "/calculator",
         }}
+        bgImage="/images/feature-consulting.jpg"
       />
 
       <RequirementsSection
