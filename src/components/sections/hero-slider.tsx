@@ -5,6 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export interface HeroSlide {
   videoSrc: string;
@@ -21,6 +22,7 @@ interface HeroSliderProps {
 }
 
 export function HeroSlider({ slides, cta, secondaryCta }: HeroSliderProps) {
+  const t = useTranslations("slider");
   const [current, setCurrent] = useState(0);
   const [nextIdx, setNextIdx] = useState<number | null>(null);
   const [videoTransitioning, setVideoTransitioning] = useState(false);
@@ -142,7 +144,7 @@ export function HeroSlider({ slides, cta, secondaryCta }: HeroSliderProps) {
           <button
             key={i}
             onClick={() => goTo(i)}
-            aria-label={`Go to slide ${i + 1}`}
+            aria-label={t("goToSlide", { n: i + 1 })}
             className={cn(
               "rounded-full transition-all duration-300",
               i === current ? "bg-white w-7 h-1.5" : "bg-white/40 hover:bg-white/60 w-1.5 h-1.5",
@@ -154,7 +156,7 @@ export function HeroSlider({ slides, cta, secondaryCta }: HeroSliderProps) {
       {/* ── Arrows ── */}
       <button
         onClick={() => goTo((current - 1 + slides.length) % slides.length)}
-        aria-label="Previous slide"
+        aria-label={t("previousSlide")}
         className="absolute left-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/30 hover:bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white transition-all"
         style={{ zIndex: 5 }}
       >
@@ -162,7 +164,7 @@ export function HeroSlider({ slides, cta, secondaryCta }: HeroSliderProps) {
       </button>
       <button
         onClick={() => goTo((current + 1) % slides.length)}
-        aria-label="Next slide"
+        aria-label={t("nextSlide")}
         className="absolute right-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/30 hover:bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white transition-all"
         style={{ zIndex: 5 }}
       >

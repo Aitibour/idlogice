@@ -136,6 +136,10 @@
   }
 
   /* Heading scale & rhythm */
+  /* Explicit color prevents inheritance failures when CSS variable cascade breaks */
+  h1, h2, h3, h4, h5, h6 {
+    color: oklch(0.13 0 0);   /* ≈ #111 — overridden by text-white / text-* utilities */
+  }
   h1 {
     font-size: clamp(2rem, 5vw, 3.75rem);
     font-weight: 700;
@@ -157,6 +161,24 @@
   p {
     line-height: 1.7;
   }
+}
+
+/* ── Header nav: always dark, immune to CSS-variable cascade ─────────────── */
+/* Tailwind color utilities resolve through CSS vars which can be overridden. */
+/* These rules lock nav link/button text to near-black with !important so     */
+/* no parent color or theme variable can make the nav text invisible.         */
+header nav a,
+header nav button {
+  color: oklch(0.13 0 0) !important;   /* ≈ #111 — same as --foreground */
+}
+header nav a:hover,
+header nav button:hover {
+  color: oklch(0 0 0) !important;       /* pure black on hover */
+}
+/* Exception: primary CTA button inside mobile nav keeps its white text */
+header nav a[class*="bg-primary"],
+header nav a[class*="bg-primary"]:hover {
+  color: oklch(0.98 0 0) !important;
 }
 
 /* ── Logo: removes white fill background via multiplicative blending ──────── */

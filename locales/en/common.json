@@ -49,7 +49,17 @@
     "cookies": "Cookie Policy",
     "legal": "Legal",
     "disclaimer": "IDLOGICE provides immigration consulting services through Regulated Canadian Immigration Consultants (RCICs) registered with the College of Immigration and Citizenship Consultants (CICC). Immigration rules change frequently — always verify current requirements with Immigration, Refugees and Citizenship Canada (IRCC). Results may vary based on individual circumstances.",
-    "copyright": "© {year} IDLOGICE. All rights reserved."
+    "copyright": "© {year} IDLOGICE. All rights reserved.",
+    "usefulLinks": "Useful Links",
+    "home": "Home",
+    "allServices": "All Services",
+    "expressEntry": "Express Entry",
+    "studyPermit": "Study Permit",
+    "workPermit": "Work Permit",
+    "pnp": "Provincial Nominee",
+    "touristVisa": "Tourist Visa",
+    "rcicRegulated": "RCIC Regulated",
+    "ciccMember": "CICC Member"
   },
   "cta": {
     "freeEvaluation": "Free Evaluation",
@@ -77,5 +87,25 @@
     "viewAll": "View All",
     "share": "Share",
     "language": "Language"
+  },
+  "contactForm": {
+    "ourOffice": "Our Office",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email",
+    "businessHours": "Business Hours",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "mobileNo": "Mobile No.",
+    "message": "Message",
+    "sending": "Sending…",
+    "submit": "Submit",
+    "messageSent": "Message Sent!",
+    "messageSentSubtitle": "We'll be in touch within 24 hours."
+  },
+  "slider": {
+    "previousSlide": "Previous slide",
+    "nextSlide": "Next slide",
+    "goToSlide": "Go to slide {n}"
   }
 }

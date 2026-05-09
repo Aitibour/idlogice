@@ -59,11 +59,26 @@
           "Aucun casier judiciaire et réussite d'un examen médical"
         ],
         "facts": [
-          { "label": "Score CRS max.", "value": "1 200 points" },
-          { "label": "Volets", "value": "TQF, CEC, TQM" },
-          { "label": "Traitement typique", "value": "6 mois" },
-          { "label": "Langue minimale", "value": "CLN 7 (TQF / CEC)" },
-          { "label": "Expérience de travail", "value": "1+ an CNP NEER 0–3" }
+          {
+            "label": "Score CRS max.",
+            "value": "1 200 points"
+          },
+          {
+            "label": "Volets",
+            "value": "TQF, CEC, TQM"
+          },
+          {
+            "label": "Traitement typique",
+            "value": "6 mois"
+          },
+          {
+            "label": "Langue minimale",
+            "value": "CLN 7 (TQF / CEC)"
+          },
+          {
+            "label": "Expérience de travail",
+            "value": "1+ an CNP NEER 0–3"
+          }
         ]
       },
       "steps": {
@@ -139,11 +154,26 @@
           "Preuve que vous respecterez les conditions de votre permis"
         ],
         "facts": [
-          { "label": "Fonds min.", "value": "20 635 $ CAD/an" },
-          { "label": "Droit de travail", "value": "20 h/semaine pendant les études" },
-          { "label": "PTPD", "value": "Jusqu'à 3 ans" },
-          { "label": "Voie vers la RP", "value": "CEC après 1 an de travail" },
-          { "label": "Délai de traitement", "value": "4–16 semaines (en ligne)" }
+          {
+            "label": "Fonds min.",
+            "value": "20 635 $ CAD/an"
+          },
+          {
+            "label": "Droit de travail",
+            "value": "20 h/semaine pendant les études"
+          },
+          {
+            "label": "PTPD",
+            "value": "Jusqu'à 3 ans"
+          },
+          {
+            "label": "Voie vers la RP",
+            "value": "CEC après 1 an de travail"
+          },
+          {
+            "label": "Délai de traitement",
+            "value": "4–16 semaines (en ligne)"
+          }
         ]
       },
       "steps": {
@@ -213,11 +243,26 @@
           "Vous êtes admissible en vertu de l'ACEUM, du Programme vacances-travail ou d'un transfert intra-société"
         ],
         "facts": [
-          { "label": "Basé sur l'EIMT", "value": "EIMT de l'employeur requis" },
-          { "label": "Exempté d'EIMT", "value": "ACEUM, EIC, TIS" },
-          { "label": "Délai de traitement", "value": "2–27 semaines (varie)" },
-          { "label": "Voie vers la RP", "value": "Entrée express (CEC)" },
-          { "label": "Validité", "value": "Jusqu'à 3 ans (varie)" }
+          {
+            "label": "Basé sur l'EIMT",
+            "value": "EIMT de l'employeur requis"
+          },
+          {
+            "label": "Exempté d'EIMT",
+            "value": "ACEUM, EIC, TIS"
+          },
+          {
+            "label": "Délai de traitement",
+            "value": "2–27 semaines (varie)"
+          },
+          {
+            "label": "Voie vers la RP",
+            "value": "Entrée express (CEC)"
+          },
+          {
+            "label": "Validité",
+            "value": "Jusqu'à 3 ans (varie)"
+          }
         ]
       },
       "steps": {
@@ -287,11 +332,26 @@
           "Vous devez avoir 18 ans ou plus, être citoyen canadien ou RP, et satisfaire au revenu minimum requis"
         ],
         "facts": [
-          { "label": "Époux / Partenaire", "value": "~12 mois de traitement" },
-          { "label": "Enfants à charge", "value": "~12 mois de traitement" },
-          { "label": "Parents / Grands-parents", "value": "Tirage au sort PGP" },
-          { "label": "Revenu min.", "value": "SEUIL + 30 % (parents)" },
-          { "label": "Période d'engagement", "value": "3–20 ans (varie)" }
+          {
+            "label": "Époux / Partenaire",
+            "value": "~12 mois de traitement"
+          },
+          {
+            "label": "Enfants à charge",
+            "value": "~12 mois de traitement"
+          },
+          {
+            "label": "Parents / Grands-parents",
+            "value": "Tirage au sort PGP"
+          },
+          {
+            "label": "Revenu min.",
+            "value": "SEUIL + 30 % (parents)"
+          },
+          {
+            "label": "Période d'engagement",
+            "value": "3–20 ans (varie)"
+          }
         ]
       },
       "steps": {
@@ -366,11 +426,26 @@
           "Certains volets exigent une offre d'emploi ou un lien antérieur avec la province"
         ],
         "facts": [
-          { "label": "Bonus CRS", "value": "+600 points" },
-          { "label": "Provinces", "value": "Toutes sauf Québec et Nunavut" },
-          { "label": "Délai de traitement", "value": "6–19 mois (varie)" },
-          { "label": "Frais de demande", "value": "0–500 $ CAD (varie)" },
-          { "label": "Volets disponibles", "value": "100+ à travers le Canada" }
+          {
+            "label": "Bonus CRS",
+            "value": "+600 points"
+          },
+          {
+            "label": "Provinces",
+            "value": "Toutes sauf Québec et Nunavut"
+          },
+          {
+            "label": "Délai de traitement",
+            "value": "6–19 mois (varie)"
+          },
+          {
+            "label": "Frais de demande",
+            "value": "0–500 $ CAD (varie)"
+          },
+          {
+            "label": "Volets disponibles",
+            "value": "100+ à travers le Canada"
+          }
         ]
       },
       "steps": {
@@ -441,11 +516,26 @@
           "Vous avez un objectif de visite clair et l'intention de rentrer chez vous après votre séjour"
         ],
         "facts": [
-          { "label": "Validité", "value": "Jusqu'à 10 ans" },
-          { "label": "Séjour max.", "value": "Jusqu'à 6 mois" },
-          { "label": "Traitement", "value": "2 à 8 semaines" },
-          { "label": "Frais gouv.", "value": "100 $ CAD" },
-          { "label": "Type d'entrée", "value": "Simple ou multiple" }
+          {
+            "label": "Validité",
+            "value": "Jusqu'à 10 ans"
+          },
+          {
+            "label": "Séjour max.",
+            "value": "Jusqu'à 6 mois"
+          },
+          {
+            "label": "Traitement",
+            "value": "2 à 8 semaines"
+          },
+          {
+            "label": "Frais gouv.",
+            "value": "100 $ CAD"
+          },
+          {
+            "label": "Type d'entrée",
+            "value": "Simple ou multiple"
+          }
         ]
       },
       "steps": {
@@ -496,6 +586,10 @@
         "primary": "Réserver une consultation",
         "secondary": "Nous contacter"
       }
+    },
+    "shared": {
+      "qualificationsLabel": "Vous pourriez être éligible si :",
+      "factsLabel": "Faits clés"
     }
   }
 }

@@ -49,7 +49,17 @@
     "cookies": "Politique de cookies",
     "legal": "Légal",
     "disclaimer": "IDLOGICE fournit des services de conseil en immigration par l'intermédiaire de Consultants réglementés en immigration canadienne (CRIC) inscrits auprès du Collège des consultants en immigration et en citoyenneté (CCIC). Les règles d'immigration changent fréquemment — vérifiez toujours les exigences actuelles auprès d'Immigration, Réfugiés et Citoyenneté Canada (IRCC). Les résultats peuvent varier selon les situations individuelles.",
-    "copyright": "© {year} IDLOGICE. Tous droits réservés."
+    "copyright": "© {year} IDLOGICE. Tous droits réservés.",
+    "usefulLinks": "Liens utiles",
+    "home": "Accueil",
+    "allServices": "Tous les services",
+    "expressEntry": "Entrée express",
+    "studyPermit": "Permis d’études",
+    "workPermit": "Permis de travail",
+    "pnp": "Candidats des provinces",
+    "touristVisa": "Visa de touriste",
+    "rcicRegulated": "CRIC réglementé",
+    "ciccMember": "Membre CCIC"
   },
   "cta": {
     "freeEvaluation": "Évaluation gratuite",
@@ -77,5 +87,25 @@
     "viewAll": "Voir tout",
     "share": "Partager",
     "language": "Langue"
+  },
+  "contactForm": {
+    "ourOffice": "Notre bureau",
+    "address": "Adresse",
+    "phone": "Téléphone",
+    "email": "Courriel",
+    "businessHours": "Heures d’ouverture",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "mobileNo": "Numéro de mobile",
+    "message": "Message",
+    "sending": "Envoi en cours…",
+    "submit": "Envoyer",
+    "messageSent": "Message envoyé !",
+    "messageSentSubtitle": "Nous vous répondrons dans les 24 heures."
+  },
+  "slider": {
+    "previousSlide": "Diapositive précédente",
+    "nextSlide": "Diapositive suivante",
+    "goToSlide": "Aller à la diapositive {n}"
   }
 }

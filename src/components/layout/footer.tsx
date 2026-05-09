@@ -3,7 +3,6 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { SOCIAL_LINKS } from "@/components/shared/social-links";
-import { CopyrightYear } from "@/components/ui/copyright-year";
 
 export function Footer() {
   const t = useTranslations("footer");
@@ -32,12 +31,12 @@ export function Footer() {
 
           {/* Col 2 — Useful Links */}
           <div>
-            <p className="text-white font-semibold text-sm mb-5 uppercase tracking-wider">Useful Links</p>
+            <p className="text-white font-semibold text-sm mb-5 uppercase tracking-wider">{t("usefulLinks")}</p>
             <ul className="space-y-2.5">
               {[
-                { href: "/",        label: "Home"           },
+                { href: "/",        label: t("home")        },
                 { href: "/about",   label: t("about")       },
-                { href: "/services",label: "Services"       },
+                { href: "/services",label: t("services")    },
                 { href: "/contact", label: t("contact")     },
                 { href: "/privacy", label: t("privacy")     },
                 { href: "/terms",   label: t("terms")       },
@@ -55,15 +54,15 @@ export function Footer() {
 
           {/* Col 3 — Services */}
           <div>
-            <p className="text-white font-semibold text-sm mb-5 uppercase tracking-wider">Services</p>
+            <p className="text-white font-semibold text-sm mb-5 uppercase tracking-wider">{t("services")}</p>
             <ul className="space-y-2.5">
               {[
-                { href: "/services/express-entry", label: "Express Entry"      },
-                { href: "/services/study-permit",  label: "Study Permit"       },
-                { href: "/services/work-permit",   label: "Work Permit"        },
-                { href: "/services/pnp",           label: "Provincial Nominee" },
-                { href: "/services/tourist-visa",  label: "Tourist Visa"       },
-                { href: "/services",               label: "All Services"       },
+                { href: "/services/express-entry", label: t("expressEntry") },
+                { href: "/services/study-permit",  label: t("studyPermit")  },
+                { href: "/services/work-permit",   label: t("workPermit")   },
+                { href: "/services/pnp",           label: t("pnp")          },
+                { href: "/services/tourist-visa",  label: t("touristVisa")  },
+                { href: "/services",               label: t("allServices")  },
               ].map((l) => (
                 <li key={l.href}>
                   <Link href={l.href}
@@ -104,8 +103,8 @@ export function Footer() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
               </svg>
               <div>
-                <p className="text-xs font-bold text-white leading-tight">RCIC Regulated</p>
-                <p className="text-xs text-zinc-400 leading-tight">CICC Member</p>
+                <p className="text-xs font-bold text-white leading-tight">{t("rcicRegulated")}</p>
+                <p className="text-xs text-zinc-400 leading-tight">{t("ciccMember")}</p>
               </div>
             </div>
           </div>
@@ -119,7 +118,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-white/8 pt-6">
           <p className="text-xs text-zinc-600">
-            © <CopyrightYear /> IDLOGICE. All rights reserved.
+            {t("copyright", { year: new Date().getFullYear() })}
           </p>
           <div className="flex items-center gap-4">
             <Link href="/privacy" className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">{t("privacy")}</Link>

@@ -5,6 +5,7 @@ import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { useTranslations } from "next-intl";
 
 interface ContactInlineProps {
   eyebrow: string;
@@ -18,6 +19,7 @@ interface ContactInlineProps {
 export function ContactInline({
   eyebrow, title, address, phone, email, hours,
 }: ContactInlineProps) {
+  const t = useTranslations("contactForm");
   const [form, setForm] = useState({ firstName: "", lastName: "", phone: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -59,13 +61,13 @@ export function ContactInline({
           {/* Office info */}
           <ScrollReveal>
             <div className="bg-secondary/40 rounded-2xl p-8 h-full">
-              <p className="font-bold text-lg mb-6">Our Office</p>
+              <p className="font-bold text-lg mb-6">{t("ourOffice")}</p>
               <ul className="space-y-5">
                 {[
-                  { icon: MapPin, label: "Address",        content: address,  href: undefined },
-                  { icon: Phone,  label: "Phone",          content: phone,    href: `tel:${phone.replace(/\s/g, "")}` },
-                  { icon: Mail,   label: "Email",          content: email,    href: `mailto:${email}` },
-                  { icon: Clock,  label: "Business Hours", content: hours,    href: undefined },
+                  { icon: MapPin, label: t("address"),       content: address, href: undefined },
+                  { icon: Phone,  label: t("phone"),         content: phone,   href: `tel:${phone.replace(/\s/g, "")}` },
+                  { icon: Mail,   label: t("email"),         content: email,   href: `mailto:${email}` },
+                  { icon: Clock,  label: t("businessHours"), content: hours,   href: undefined },
                 ].map(({ icon: Icon, label, content, href }) => (
                   <li key={label} className="flex items-start gap-3">
                     <Icon className="size-5 text-primary shrink-0 mt-0.5" aria-hidden="true" />
@@ -91,40 +93,39 @@ export function ContactInline({
                   <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                     <Send className="size-6 text-primary" aria-hidden="true" />
                   </div>
-                  <p className="text-xl font-bold mb-2">Message Sent!</p>
-                  <p className="text-muted-foreground text-sm">We&apos;ll be in touch within 24 hours.</p>
+                  <p className="text-xl font-bold mb-2">{t("messageSent")}</p>
+                  <p className="text-muted-foreground text-sm">{t("messageSentSubtitle")}</p>
                 </div>
               </div>
             ) : (
-              /* Hidden input so Netlify can identify the form */
               <form name="contact" onSubmit={handleSubmit} className="space-y-4" noValidate>
                 <input type="hidden" name="form-name" value="contact" />
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="ci-firstName" className="text-sm font-medium mb-1.5 block">First Name</label>
+                    <label htmlFor="ci-firstName" className="text-sm font-medium mb-1.5 block">{t("firstName")}</label>
                     <input id="ci-firstName" name="firstName" required className={inputClass}
                       value={form.firstName} onChange={e => setForm(p => ({ ...p, firstName: e.target.value }))} />
                   </div>
                   <div>
-                    <label htmlFor="ci-lastName" className="text-sm font-medium mb-1.5 block">Last Name</label>
+                    <label htmlFor="ci-lastName" className="text-sm font-medium mb-1.5 block">{t("lastName")}</label>
                     <input id="ci-lastName" name="lastName" required className={inputClass}
                       value={form.lastName} onChange={e => setForm(p => ({ ...p, lastName: e.target.value }))} />
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="ci-phone" className="text-sm font-medium mb-1.5 block">Mobile No.</label>
+                    <label htmlFor="ci-phone" className="text-sm font-medium mb-1.5 block">{t("mobileNo")}</label>
                     <input id="ci-phone" name="phone" type="tel" className={inputClass}
                       value={form.phone} onChange={e => setForm(p => ({ ...p, phone: e.target.value }))} />
                   </div>
                   <div>
-                    <label htmlFor="ci-email" className="text-sm font-medium mb-1.5 block">Email</label>
+                    <label htmlFor="ci-email" className="text-sm font-medium mb-1.5 block">{t("email")}</label>
                     <input id="ci-email" name="email" type="email" required className={inputClass}
                       value={form.email} onChange={e => setForm(p => ({ ...p, email: e.target.value }))} />
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="ci-message" className="text-sm font-medium mb-1.5 block">Message</label>
+                  <label htmlFor="ci-message" className="text-sm font-medium mb-1.5 block">{t("message")}</label>
                   <textarea id="ci-message" name="message" required rows={5}
                     className={cn(inputClass, "resize-none")}
                     value={form.message} onChange={e => setForm(p => ({ ...p, message: e.target.value }))} />
@@ -132,7 +133,7 @@ export function ContactInline({
                 <button type="submit" disabled={submitting}
                   className={cn(buttonVariants({ size: "lg" }), "w-full gap-2 disabled:opacity-60")}>
                   <Send className="size-4" aria-hidden="true" />
-                  {submitting ? "Sending…" : "Submit"}
+                  {submitting ? t("sending") : t("submit")}
                 </button>
               </form>
             )}

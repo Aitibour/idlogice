@@ -1,20 +1,20 @@
 import { CheckCircle2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface RequirementsSectionProps {
   title: string;
   qualifications: string[];
-  qualificationsLabel?: string;
   facts: Array<{ label: string; value: string }>;
-  factsLabel?: string;
 }
 
 export function RequirementsSection({
   title,
   qualifications,
-  qualificationsLabel = "You may qualify if:",
   facts,
-  factsLabel = "Key Facts",
 }: RequirementsSectionProps) {
+  const t = useTranslations("services");
+  const qualificationsLabel = t("shared.qualificationsLabel");
+  const factsLabel = t("shared.factsLabel");
   return (
     <section className="py-16">
       <div className="container mx-auto px-4">

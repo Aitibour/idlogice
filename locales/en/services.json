@@ -59,11 +59,26 @@
           "No criminal record and passing a medical examination"
         ],
         "facts": [
-          { "label": "Max CRS Score", "value": "1,200 points" },
-          { "label": "Streams", "value": "FSW, CEC, FST" },
-          { "label": "Typical Processing", "value": "6 months" },
-          { "label": "Min. Language", "value": "CLB 7 (FSW / CEC)" },
-          { "label": "Work Experience", "value": "1+ year NOC TEER 0–3" }
+          {
+            "label": "Max CRS Score",
+            "value": "1,200 points"
+          },
+          {
+            "label": "Streams",
+            "value": "FSW, CEC, FST"
+          },
+          {
+            "label": "Typical Processing",
+            "value": "6 months"
+          },
+          {
+            "label": "Min. Language",
+            "value": "CLB 7 (FSW / CEC)"
+          },
+          {
+            "label": "Work Experience",
+            "value": "1+ year NOC TEER 0–3"
+          }
         ]
       },
       "steps": {
@@ -139,11 +154,26 @@
           "Proof that you will comply with the conditions of your permit"
         ],
         "facts": [
-          { "label": "Min. Living Funds", "value": "CAD $20,635/year" },
-          { "label": "Work Rights", "value": "20 hrs/week during studies" },
-          { "label": "Post-Grad Work", "value": "PGWP up to 3 years" },
-          { "label": "Path to PR", "value": "CEC after 1 year of work" },
-          { "label": "Processing Time", "value": "4–16 weeks (online)" }
+          {
+            "label": "Min. Living Funds",
+            "value": "CAD $20,635/year"
+          },
+          {
+            "label": "Work Rights",
+            "value": "20 hrs/week during studies"
+          },
+          {
+            "label": "Post-Grad Work",
+            "value": "PGWP up to 3 years"
+          },
+          {
+            "label": "Path to PR",
+            "value": "CEC after 1 year of work"
+          },
+          {
+            "label": "Processing Time",
+            "value": "4–16 weeks (online)"
+          }
         ]
       },
       "steps": {
@@ -213,11 +243,26 @@
           "You qualify under CUSMA, the International Experience Canada (IEC) program, or an intra-company transfer (for LMIA-exempt)"
         ],
         "facts": [
-          { "label": "LMIA-Based", "value": "Requires employer LMIA" },
-          { "label": "LMIA-Exempt", "value": "CUSMA, IEC, ICT" },
-          { "label": "Processing Time", "value": "2–27 weeks (varies)" },
-          { "label": "Path to PR", "value": "Express Entry (CEC)" },
-          { "label": "Validity", "value": "Up to 3 years (varies)" }
+          {
+            "label": "LMIA-Based",
+            "value": "Requires employer LMIA"
+          },
+          {
+            "label": "LMIA-Exempt",
+            "value": "CUSMA, IEC, ICT"
+          },
+          {
+            "label": "Processing Time",
+            "value": "2–27 weeks (varies)"
+          },
+          {
+            "label": "Path to PR",
+            "value": "Express Entry (CEC)"
+          },
+          {
+            "label": "Validity",
+            "value": "Up to 3 years (varies)"
+          }
         ]
       },
       "steps": {
@@ -287,11 +332,26 @@
           "You must be 18 or older, a Canadian citizen or PR, and meet the minimum income requirement"
         ],
         "facts": [
-          { "label": "Spouse / Partner", "value": "~12 months processing" },
-          { "label": "Dependent Children", "value": "~12 months processing" },
-          { "label": "Parents / Grandparents", "value": "PGP lottery draw" },
-          { "label": "Min. Income", "value": "LICO + 30% (parents)" },
-          { "label": "Undertaking Period", "value": "3–20 years (varies)" }
+          {
+            "label": "Spouse / Partner",
+            "value": "~12 months processing"
+          },
+          {
+            "label": "Dependent Children",
+            "value": "~12 months processing"
+          },
+          {
+            "label": "Parents / Grandparents",
+            "value": "PGP lottery draw"
+          },
+          {
+            "label": "Min. Income",
+            "value": "LICO + 30% (parents)"
+          },
+          {
+            "label": "Undertaking Period",
+            "value": "3–20 years (varies)"
+          }
         ]
       },
       "steps": {
@@ -366,11 +426,26 @@
           "Some streams require a job offer or a prior connection to the province"
         ],
         "facts": [
-          { "label": "CRS Bonus", "value": "+600 points" },
-          { "label": "Provinces", "value": "All except Quebec & Nunavut" },
-          { "label": "Processing Time", "value": "6–19 months (varies)" },
-          { "label": "Application Fee", "value": "$0–500 CAD (varies)" },
-          { "label": "Available Streams", "value": "100+ across Canada" }
+          {
+            "label": "CRS Bonus",
+            "value": "+600 points"
+          },
+          {
+            "label": "Provinces",
+            "value": "All except Quebec & Nunavut"
+          },
+          {
+            "label": "Processing Time",
+            "value": "6–19 months (varies)"
+          },
+          {
+            "label": "Application Fee",
+            "value": "$0–500 CAD (varies)"
+          },
+          {
+            "label": "Available Streams",
+            "value": "100+ across Canada"
+          }
         ]
       },
       "steps": {
@@ -441,11 +516,26 @@
           "You have a clear purpose of visit and intent to return home after your stay"
         ],
         "facts": [
-          { "label": "Validity", "value": "Up to 10 years" },
-          { "label": "Max Stay", "value": "Up to 6 months" },
-          { "label": "Processing", "value": "2–8 weeks" },
-          { "label": "Gov. Fee", "value": "$100 CAD" },
-          { "label": "Entry Type", "value": "Single or multiple" }
+          {
+            "label": "Validity",
+            "value": "Up to 10 years"
+          },
+          {
+            "label": "Max Stay",
+            "value": "Up to 6 months"
+          },
+          {
+            "label": "Processing",
+            "value": "2–8 weeks"
+          },
+          {
+            "label": "Gov. Fee",
+            "value": "$100 CAD"
+          },
+          {
+            "label": "Entry Type",
+            "value": "Single or multiple"
+          }
         ]
       },
       "steps": {
@@ -496,6 +586,10 @@
         "primary": "Book a Consultation",
         "secondary": "Contact Us"
       }
+    },
+    "shared": {
+      "qualificationsLabel": "You may qualify if:",
+      "factsLabel": "Key Facts"
     }
   }
 }
