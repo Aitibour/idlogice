@@ -86,7 +86,7 @@ export function HeroSlider({ slides, cta, secondaryCta }: HeroSliderProps) {
 
       {/* Overlay */}
       <div
-        className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/30"
+        className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/45 to-black/65"
         style={{ zIndex: 3 }}
       />
 
