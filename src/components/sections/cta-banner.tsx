@@ -51,12 +51,12 @@ export function CtaBanner({
           )}
         </ScrollReveal>
         <ScrollReveal delay={150}>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col items-center gap-4">
             <Link
               href={primaryCta.href}
               className={cn(
                 buttonVariants({ size: "lg" }),
-                "btn-shimmer font-bold shadow-xl text-base px-10 py-4 h-auto rounded-full",
+                "btn-shimmer font-bold shadow-xl text-base px-12 py-4 h-auto rounded-full",
               )}
             >
               {primaryCta.label}
@@ -64,10 +64,8 @@ export function CtaBanner({
             {secondaryCta && (
               <Link
                 href={secondaryCta.href}
-                className={cn(
-                  buttonVariants({ variant: "outline", size: "lg" }),
-                  "font-medium rounded-full",
-                )}
+                className="text-sm font-semibold underline underline-offset-4 hover:text-primary transition-colors"
+                style={{ color: "#374151" }}
               >
                 {secondaryCta.label}
               </Link>

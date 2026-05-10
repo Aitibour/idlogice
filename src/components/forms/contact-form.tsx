@@ -69,8 +69,9 @@ function FloatField({ id, name, label, type = "text", value, error, rows, delay 
           "absolute left-0 pointer-events-none font-medium transition-all duration-200",
           lifted
             ? "top-0 text-[10px] tracking-widest uppercase text-primary"
-            : "top-6 text-sm text-muted-foreground"
+            : "top-6 text-sm"
         )}
+        style={{ color: lifted ? undefined : "#374151" }}
       >
         {label}
       </label>

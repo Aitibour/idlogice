@@ -119,8 +119,9 @@ export function Header() {
         {/* Right: book consultation + divider + social + lang */}
         <div className="hidden lg:flex items-center gap-3">
           <Link href="/book-consultation"
-            className="px-4 py-2 text-sm font-semibold rounded-full bg-primary text-white hover:bg-primary/90 transition-colors whitespace-nowrap">
-            {t("bookConsultationNav")}
+            className="relative px-5 py-2.5 text-sm font-bold rounded-full bg-primary text-white hover:bg-primary/90 transition-all whitespace-nowrap shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-105 active:scale-95 overflow-hidden btn-shimmer">
+            <span className="absolute inset-0 rounded-full animate-ping bg-primary/40 pointer-events-none" style={{ animationDuration: "2s" }} />
+            <span className="relative z-10">{t("bookConsultationNav")}</span>
           </Link>
           <div className="w-px h-5 bg-border" aria-hidden="true" />
           <div className="flex items-center gap-1 text-base" aria-label="Social media links">
