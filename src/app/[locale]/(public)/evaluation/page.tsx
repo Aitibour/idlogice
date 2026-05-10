@@ -43,14 +43,20 @@ const STEPS = [
 
 // ── Small UI helpers ─────────────────────────────────────────────────────────
 function SectionLabel({ children }: { children: React.ReactNode }) {
-  return <p className="text-[10px] font-bold uppercase tracking-widest text-primary mb-3">{children}</p>;
+  return (
+    <div className="flex items-center gap-2 mb-5">
+      <span className="h-px flex-1 bg-gradient-to-r from-primary/40 to-transparent" />
+      <p className="text-[10px] font-black uppercase tracking-widest text-primary px-2">{children}</p>
+      <span className="h-px flex-1 bg-gradient-to-l from-primary/40 to-transparent" />
+    </div>
+  );
 }
 function Question({ label, sub, children }: { label: string; sub?: string; children: React.ReactNode }) {
   return (
-    <div className="mb-6">
-      <p className="font-semibold text-sm mb-0.5" style={{ color: "#111827" }}>{label}</p>
-      {sub && <p className="text-xs mb-3" style={{ color: "#374151" }}>{sub}</p>}
-      {!sub && <div className="mb-3" />}
+    <div className="mb-7">
+      <p className="font-bold text-base mb-1" style={{ color: "#111827" }}>{label}</p>
+      {sub && <p className="text-xs mb-4 leading-relaxed" style={{ color: "#6b7280" }}>{sub}</p>}
+      {!sub && <div className="mb-4" />}
       {children}
     </div>
   );
@@ -60,10 +66,10 @@ function OptionCard({ selected, onClick, children }: { selected: boolean; onClic
     <button
       type="button" onClick={onClick}
       className={cn(
-        "w-full text-left px-4 py-3 rounded-xl border text-sm font-medium transition-all duration-150",
+        "w-full text-left px-4 py-3.5 rounded-xl border-2 text-sm font-semibold transition-all duration-150",
         selected
-          ? "border-primary bg-primary/8 text-primary"
-          : "border-border bg-white hover:border-primary/40 hover:bg-primary/5"
+          ? "border-primary bg-primary/8 text-primary shadow-sm shadow-primary/15"
+          : "border-gray-200 bg-white hover:border-primary/40 hover:bg-primary/5"
       )}
       style={selected ? undefined : { color: "#111827" }}
     >
@@ -74,15 +80,15 @@ function OptionCard({ selected, onClick, children }: { selected: boolean; onClic
 function CLBSelect({ label, value, onChange }: { label: string; value: number; onChange: (v: number) => void }) {
   return (
     <div>
-      <p className="text-xs font-semibold mb-1.5" style={{ color: "#374151" }}>{label}</p>
-      <div className="grid grid-cols-7 gap-1">
+      <p className="text-xs font-bold mb-2 uppercase tracking-wider" style={{ color: "#374151" }}>{label}</p>
+      <div className="grid grid-cols-7 gap-1.5">
         {[4, 5, 6, 7, 8, 9, 10].map(n => (
           <button key={n} type="button" onClick={() => onChange(n)}
             className={cn(
-              "py-2 rounded-lg text-xs font-bold border transition-all",
-              value === n ? "bg-primary text-white border-primary" : "border-border bg-white hover:border-primary/40"
+              "py-2.5 rounded-lg text-sm font-bold border-2 transition-all",
+              value === n ? "bg-primary text-white border-primary shadow-md shadow-primary/25" : "border-gray-200 bg-white hover:border-primary/40 hover:bg-primary/5"
             )}
-            style={value === n ? undefined : { color: "#374151" }}
+            style={value === n ? undefined : { color: "#111827" }}
           >
             {n}{n === 10 ? "+" : ""}
           </button>
@@ -167,10 +173,10 @@ export default function EvaluationPage() {
   // Show a subtle loading state while checking auth
   if (!authChecked || !user) {
     return (
-      <main className="min-h-screen bg-[oklch(0.97_0_0)] flex items-center justify-center">
-        <div className="flex flex-col items-center gap-3 text-muted-foreground">
-          <span className="w-8 h-8 border-2 border-primary/20 border-t-primary rounded-full animate-spin" />
-          <p className="text-sm">Verifying your account…</p>
+      <main className="min-h-screen flex items-center justify-center" style={{ background: "#f9fafb" }}>
+        <div className="flex flex-col items-center gap-3">
+          <span className="w-10 h-10 border-3 border-primary/20 border-t-primary rounded-full animate-spin" />
+          <p className="text-sm font-medium" style={{ color: "#374151" }}>Verifying your account…</p>
         </div>
       </main>
     );
@@ -362,13 +368,13 @@ export default function EvaluationPage() {
   if (step === 6 && result) {
     const { breakdown, total, eligible, missingPoints, currentCutoff, strengths, improvements } = result;
     return (
-      <main className="min-h-screen bg-[oklch(0.97_0_0)]">
+      <main className="min-h-screen" style={{ background: "#f9fafb" }}>
         {/* Hero banner */}
         <div className="relative h-44 overflow-hidden">
           <Image src="/images/feature-evaluation.jpg" alt="" fill className="object-cover" priority />
-          <div className="absolute inset-0 bg-[oklch(0.08_0_0)]/75" />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(17,24,39,0.85), rgba(194,39,45,0.7))" }} />
           <div className="relative h-full flex items-center justify-center px-4">
-            <p className="text-xs font-bold uppercase tracking-widest text-white/50">Express Entry — CRS Results</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-white">Express Entry — Your CRS Results</p>
           </div>
         </div>
 
@@ -536,11 +542,13 @@ export default function EvaluationPage() {
   const currentStep = STEPS[step - 1];
   const Icon = currentStep.icon;
 
-  return (
-    <main className="min-h-screen bg-[oklch(0.97_0_0)]">
+  const progressPct = Math.round((step / STEPS.length) * 100);
 
-      {/* ── Image hero ── */}
-      <div className="relative h-56 sm:h-64 overflow-hidden">
+  return (
+    <main className="min-h-screen" style={{ background: "#f9fafb" }}>
+
+      {/* ── Modern hero with image + overlay ── */}
+      <div className="relative h-64 sm:h-72 overflow-hidden">
         <Image
           src="/images/feature-evaluation.jpg"
           alt=""
@@ -548,84 +556,126 @@ export default function EvaluationPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.08_0_0)]/75 via-[oklch(0.08_0_0)]/55 to-[oklch(0.08_0_0)]/80" />
+        {/* Strong dark gradient for contrast */}
+        <div className="absolute inset-0" style={{
+          background: "linear-gradient(135deg, rgba(17,24,39,0.85) 0%, rgba(194,39,45,0.75) 100%)"
+        }} />
         <div className="relative h-full flex flex-col items-center justify-center px-4 text-center">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/25 border border-primary/35 text-primary text-xs font-bold uppercase tracking-widest mb-3">
-            Express Entry — Free CRS Evaluation
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 text-white text-xs font-bold uppercase tracking-widest mb-4">
+            <Star className="size-3 fill-white" /> Express Entry · Free CRS Evaluation
           </div>
-          <h1 className="text-2xl font-bold text-white mb-1">Hello, {user.name.split(/[\s.]+/)[0]} 👋</h1>
-          <p className="text-sm text-white/60">5 quick steps to check your Express Entry eligibility and CRS score.</p>
+          <h1 className="text-3xl sm:text-4xl font-black text-white mb-2 tracking-tight">
+            Hello, {user.name.split(/[\s.]+/)[0]} 👋
+          </h1>
+          <p className="text-sm sm:text-base text-white/90 max-w-md">
+            5 quick steps to check your eligibility and get your personalised CRS score.
+          </p>
         </div>
       </div>
 
-      <div className="py-10 px-4">
-      <div className="max-w-xl mx-auto">
+      <div className="py-10 px-4 -mt-8 relative z-10">
+      <div className="max-w-2xl mx-auto">
 
-        {/* Progress steps */}
-        <div className="flex items-center gap-0 mb-8">
-          {STEPS.map((s, i) => {
-            const done = step > s.id;
-            const active = step === s.id;
-            const SIcon = s.icon;
-            return (
-              <div key={s.id} className="flex items-center flex-1">
-                <div className="flex flex-col items-center">
+        {/* ── Modern progress bar with step indicators ── */}
+        <div className="bg-white rounded-2xl border border-border shadow-sm p-5 mb-6">
+          <div className="flex items-center justify-between mb-3">
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-widest" style={{ color: "#6b7280" }}>Progress</p>
+              <p className="text-sm font-bold" style={{ color: "#111827" }}>Step {step} of {STEPS.length} · {progressPct}% complete</p>
+            </div>
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "linear-gradient(135deg, #c2272d, #8b1a1f)" }}>
+              <span className="text-white font-black text-base">{step}</span>
+            </div>
+          </div>
+          {/* Progress track */}
+          <div className="h-2 rounded-full overflow-hidden mb-4" style={{ background: "#f3f4f6" }}>
+            <div
+              className="h-full rounded-full transition-all duration-500"
+              style={{
+                width: `${progressPct}%`,
+                background: "linear-gradient(90deg, #c2272d, #f59e0b)"
+              }}
+            />
+          </div>
+          {/* Step pills */}
+          <div className="flex items-center justify-between gap-1">
+            {STEPS.map((s) => {
+              const done = step > s.id;
+              const active = step === s.id;
+              const SIcon = s.icon;
+              return (
+                <div key={s.id} className="flex flex-col items-center flex-1 min-w-0">
                   <div className={cn(
-                    "w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300",
-                    done ? "bg-primary" : active ? "bg-primary ring-4 ring-primary/20" : "bg-secondary border border-border"
-                  )}>
+                    "w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 mb-1.5",
+                    done ? "bg-emerald-500 shadow-md shadow-emerald-200" :
+                    active ? "bg-primary ring-4 ring-primary/15 shadow-md shadow-primary/25" :
+                    "border-2"
+                  )} style={!done && !active ? { background: "#f3f4f6", borderColor: "#e5e7eb" } : undefined}>
                     {done
                       ? <CheckCircle2 className="size-4 text-white" />
-                      : <SIcon className={cn("size-4", active ? "text-white" : "text-gray-500")} />
+                      : <SIcon className={cn("size-4", active ? "text-white" : "")} style={!active ? { color: "#9ca3af" } : undefined} />
                     }
                   </div>
                   <span className={cn(
-                    "text-[10px] font-semibold mt-1.5 hidden sm:block",
-                    active ? "text-primary" : done ? "text-primary/70" : "text-gray-500"
-                  )}>{s.label}</span>
+                    "text-[10px] font-semibold truncate w-full text-center hidden sm:block",
+                  )} style={{
+                    color: active ? "#c2272d" : done ? "#059669" : "#9ca3af"
+                  }}>{s.label}</span>
                 </div>
-                {i < STEPS.length - 1 && (
-                  <div className={cn("flex-1 h-0.5 mx-1 transition-colors duration-300", done ? "bg-primary" : "bg-border")} />
-                )}
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
 
-        {/* Step card */}
-        <div className="bg-white rounded-3xl border border-border shadow-sm p-7 mb-5">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
-              <Icon className="size-4 text-primary" />
-            </div>
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-widest" style={{ color: "#6b7280" }}>Step {step} of {STEPS.length}</p>
-              <h2 className="text-base font-bold leading-tight" style={{ color: "#111827" }}>{currentStep.label}</h2>
+        {/* ── Step content card ── */}
+        <div className="bg-white rounded-2xl border border-border shadow-sm overflow-hidden mb-5">
+          {/* Card header with gradient accent */}
+          <div className="relative p-6 pb-5 border-b" style={{ borderColor: "#f3f4f6", background: "linear-gradient(135deg, #fef2f2 0%, #ffffff 60%)" }}>
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-md shadow-primary/25" style={{ background: "linear-gradient(135deg, #c2272d, #8b1a1f)" }}>
+                <Icon className="size-5 text-white" />
+              </div>
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-widest" style={{ color: "#9ca3af" }}>Section {step} / {STEPS.length}</p>
+                <h2 className="text-xl font-black tracking-tight" style={{ color: "#111827" }}>{currentStep.label}</h2>
+              </div>
             </div>
           </div>
-          {renderStep()}
+          {/* Card body */}
+          <div className="p-6 sm:p-8">
+            {renderStep()}
+          </div>
         </div>
 
-        {/* Navigation */}
-        <div className="flex gap-3">
+        {/* ── Modern navigation ── */}
+        <div className="flex gap-3 items-center">
           {step > 1 && (
             <button
               onClick={() => setStep(s => s - 1)}
-              className="flex items-center gap-2 px-5 py-3 rounded-xl border border-border bg-white text-sm font-medium hover:bg-secondary/50 transition-colors"
+              className="flex items-center gap-2 px-5 py-3.5 rounded-2xl bg-white border-2 border-gray-200 text-sm font-bold hover:border-primary/40 hover:bg-primary/5 transition-all"
+              style={{ color: "#111827" }}
             >
               <ChevronLeft className="size-4" /> Back
             </button>
           )}
           <button
             onClick={step === STEPS.length ? handleCalculate : () => setStep(s => s + 1)}
-            className="btn-shimmer flex-1 flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 active:scale-[0.98] transition-all"
+            className="btn-shimmer flex-1 flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl text-white text-sm font-bold transition-all shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-[1.01] active:scale-[0.99]"
+            style={{ background: "linear-gradient(135deg, #c2272d, #8b1a1f)" }}
           >
             {step === STEPS.length ? (
-              <><Star className="size-4" /> Calculate My Score</>
+              <><Star className="size-4 fill-white" /> Calculate My CRS Score</>
             ) : (
-              <>Next <ChevronRight className="size-4" /></>
+              <>Continue to Next Step <ChevronRight className="size-4" /></>
             )}
           </button>
+        </div>
+
+        {/* Reassurance footer */}
+        <div className="flex items-center justify-center gap-4 mt-6 text-xs flex-wrap" style={{ color: "#6b7280" }}>
+          <span className="flex items-center gap-1.5"><CheckCircle2 className="size-3.5 text-emerald-500" /> 100% Free</span>
+          <span className="flex items-center gap-1.5"><CheckCircle2 className="size-3.5 text-emerald-500" /> No card required</span>
+          <span className="flex items-center gap-1.5"><CheckCircle2 className="size-3.5 text-emerald-500" /> Takes ~2 minutes</span>
         </div>
 
       </div>
