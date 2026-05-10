@@ -27,7 +27,7 @@ export function PageHero({
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${bgImage})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/60 to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/40 to-black/25" />
 
         <div className="relative z-10 container mx-auto px-4 text-center max-w-3xl py-6">
           {badge && (

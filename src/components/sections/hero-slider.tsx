@@ -102,7 +102,7 @@ export function HeroSlider({ slides, cta, secondaryCta }: HeroSliderProps) {
           transition: "opacity 0.45s ease, transform 0.45s ease",
         }}
       >
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-5 leading-[1.08] drop-shadow-lg max-w-4xl mx-auto">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-5 leading-[1.08] drop-shadow-lg max-w-4xl mx-auto text-white">
           {slides[current]?.title}
         </h1>
         <p className="text-base md:text-lg text-white/80 max-w-xl mx-auto mb-8 leading-relaxed">

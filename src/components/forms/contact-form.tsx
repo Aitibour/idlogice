@@ -23,8 +23,9 @@ function FloatField({ id, name, label, type = "text", value, error, rows, delay 
   const lifted = focused || value.length > 0;
 
   const base =
-    "peer w-full bg-transparent border-0 border-b-2 border-border px-0 pt-6 pb-2 text-sm text-foreground " +
+    "peer w-full bg-transparent border-0 border-b-2 border-border px-0 pt-6 pb-2 text-sm " +
     "placeholder-transparent focus:outline-none focus:border-primary transition-colors duration-200 resize-none";
+  const baseStyle = { color: "#111827" } as const;   // dark gray-900, immune to cascade
 
   return (
     <div
@@ -39,6 +40,7 @@ function FloatField({ id, name, label, type = "text", value, error, rows, delay 
           value={value}
           placeholder=" "
           className={base}
+          style={baseStyle}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           onChange={e => onChange(e.target.value)}
@@ -52,6 +54,7 @@ function FloatField({ id, name, label, type = "text", value, error, rows, delay 
           value={value}
           placeholder=" "
           className={base}
+          style={baseStyle}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           onChange={e => onChange(e.target.value)}

@@ -40,7 +40,7 @@ export function LifeInCanada({ sources, title, subtitle }: LifeInCanadaProps) {
     <section className="py-20 bg-zinc-950 overflow-hidden">
       <div className="container mx-auto px-4">
         <ScrollReveal className="text-center mb-10 text-white">
-          <h2 className="mb-3">{title}</h2>
+          <h2 className="mb-3 text-white">{title}</h2>
           <p className="text-white/55 max-w-xl mx-auto text-base">{subtitle}</p>
         </ScrollReveal>
 

@@ -36,7 +36,7 @@ export function ConsultantCta({
               <Calendar className="size-4" />
               Free Consultation Available
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 leading-tight text-white">
               {title}
             </h2>
             <p className="text-white/75 text-lg max-w-2xl mx-auto mb-10">
