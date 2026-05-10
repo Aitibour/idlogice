@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "fr" }];
+  return [{ locale: "en" }, { locale: "fr" }, { locale: "es" }, { locale: "ar" }];
 }
 import { geistSans } from "@/lib/fonts";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
@@ -23,7 +23,7 @@ export async function generateMetadata({
   return {
     alternates: {
       canonical: `/${locale}`,
-      languages: { en: "/en", fr: "/fr" },
+      languages: { en: "/en", fr: "/fr", es: "/es", ar: "/ar" },
     },
   };
 }

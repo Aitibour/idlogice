@@ -1,0 +1,225 @@
+{
+  "hero": {
+    "badge": "Consultores Certificados de Inmigración Canadiense",
+    "title": "Tu Camino a Canadá Comienza Aquí",
+    "subtitle": "Servicios expertos de inmigración canadiense con una tasa de éxito del 95%. Más de 10 años ayudando a familias, trabajadores y estudiantes a alcanzar su sueño canadiense.",
+    "cta": "Evaluación de Perfil Gratuita",
+    "secondaryCta": "Explorar Nuestros Servicios"
+  },
+  "features": {
+    "title": "Servicios de Inmigración Completos",
+    "calculator": {
+      "title": "Calculadora CRS",
+      "description": "Calcule su puntaje del Sistema de Clasificación Integral al instante y compárelo con los últimos sorteos de Express Entry."
+    },
+    "evaluation": {
+      "title": "Evaluación Gratuita",
+      "description": "Descubra para qué programas de inmigración califica según su educación, experiencia laboral y habilidades lingüísticas."
+    },
+    "mockTests": {
+      "title": "Preparación para Exámenes de Idioma",
+      "description": "Preparación experta para IELTS, CELPIP, TEF, TCF y PTE. Maximice su puntaje con nuestros programas de preparación comprobados."
+    },
+    "coaching": {
+      "title": "Consultoría Experta",
+      "description": "Consultores certificados de inmigración le guían en cada paso — desde la solicitud hasta la aprobación."
+    }
+  },
+  "stats": {
+    "successRate": {
+      "value": "95%",
+      "label": "Tasa de Éxito"
+    },
+    "experience": {
+      "value": "10+",
+      "label": "Años de Experiencia"
+    },
+    "countries": {
+      "value": "50+",
+      "label": "Países Atendidos"
+    }
+  },
+  "testimonials": {
+    "title": "Lo Que Dicen Nuestros Clientes",
+    "subtitle": "Historias reales de personas que lograron su sueño canadiense con IDLOGICE.",
+    "items": [
+      {
+        "name": "Amara Diallo",
+        "origin": "Senegal → Montreal",
+        "text": "IDLOGICE hizo posible lo imposible. Después de dos rechazos anteriores con otro consultor, me guiaron en el proceso de Express Entry y recibí mi residencia permanente en menos de 8 meses.",
+        "result": "Residente Permanente — Express Entry",
+        "rating": 5
+      },
+      {
+        "name": "Yuki Tanaka",
+        "origin": "Japón → Toronto",
+        "text": "El equipo estuvo conmigo en cada paso. Prepararon todos mis documentos, lo tradujeron todo y hasta me ayudaron a prepararme para el IELTS. Un servicio verdaderamente transformador.",
+        "result": "Permiso de Trabajo → Camino a la RP",
+        "rating": 5
+      },
+      {
+        "name": "Carlos Mendoza",
+        "origin": "México → Vancouver",
+        "text": "Profesional, atento y genuinamente comprometido con tu éxito. Mi permiso de estudio fue aprobado en 3 semanas.",
+        "result": "Permiso de Estudio Aprobado",
+        "rating": 5
+      },
+      {
+        "name": "Fatima Al-Hassan",
+        "origin": "Marruecos → Ottawa",
+        "text": "Desde la primera consulta gratuita hasta recibir mi tarjeta de RP, IDLOGICE fue excepcional.",
+        "result": "Patrocinio Familiar — RP",
+        "rating": 5
+      },
+      {
+        "name": "Ravi Sharma",
+        "origin": "India → Calgary",
+        "text": "Tenía un caso complicado y el equipo lo manejó brillantemente. Valió cada centavo.",
+        "result": "Programa de Nominación Provincial — RP",
+        "rating": 5
+      },
+      {
+        "name": "Sophie Laurent",
+        "origin": "Francia → Montreal",
+        "text": "El equipo me atendió completamente en francés. Ahora estoy en casa en Montreal.",
+        "result": "Trabajador Calificado de Quebec — RP",
+        "rating": 5
+      }
+    ]
+  },
+  "heroSlides": [
+    {
+      "title": "Tu Camino a Canadá Comienza Aquí",
+      "subtitle": "Canadá da la bienvenida a cientos de miles de nuevos residentes permanentes cada año. Tu viaje comienza con un solo paso."
+    },
+    {
+      "title": "Orientación Experta en la Que Puedes Confiar",
+      "subtitle": "Nuestros consultores certificados han ayudado a familias, profesionales y estudiantes de más de 50 países."
+    },
+    {
+      "title": "Cada Vía de Inmigración, Cubierta",
+      "subtitle": "Desde Express Entry hasta los Programas de Nominación Provincial — navegamos el sistema por ti."
+    },
+    {
+      "title": "Tu Nueva Vida te Espera en Canadá",
+      "subtitle": "Trabaja, estudia, reúnete con tu familia o conviértete en ciudadano. Comienza tu evaluación gratuita hoy."
+    }
+  ],
+  "homeAbout": {
+    "eyebrow": "Bienvenido a IDLOGICE",
+    "title": "Sobre IDLOGICE",
+    "para1": "IDLOGICE es una firma de consultoría de inmigración canadiense completamente regulada, dirigida por Consultores Regulados de Inmigración Canadiense (RCICs) registrados en el Colegio de Consultores de Inmigración y Ciudadanía (CICC). Brindamos servicios de inmigración personalizados a clientes en todo el mundo.",
+    "para2": "Nuestra prioridad es entender las necesidades del cliente y trazar la mejor opción para su perfil a través de una comunicación transparente y orientación experta. Con una tasa de éxito del 95% y experiencia en más de 50 países, IDLOGICE es su socio de confianza en el camino hacia Canadá.",
+    "ctaLabel": "Conozca Más Sobre Nosotros",
+    "stats": [
+      { "value": "95%", "label": "Tasa de Éxito" },
+      { "value": "10+", "label": "Años de Experiencia" },
+      { "value": "50+", "label": "Países Atendidos" },
+      { "value": "500+", "label": "Casos Gestionados" }
+    ]
+  },
+  "servicesSection": {
+    "eyebrow": "Lo Que Ofrecemos",
+    "title": "Nuestros Servicios",
+    "ctaLabel": "Leer Más",
+    "items": [
+      {
+        "title": "Express Entry",
+        "description": "La vía más rápida hacia la residencia permanente canadiense. Evaluamos su perfil, optimizamos su puntaje CRS y le guiamos en cada etapa.",
+        "href": "/services/express-entry"
+      },
+      {
+        "title": "Permiso de Estudio",
+        "description": "Estudia en universidades y colegios canadienses de clase mundial. Nuestros consultores gestionan tu solicitud de permiso de estudio.",
+        "href": "/services/study-permit"
+      },
+      {
+        "title": "Permiso de Trabajo",
+        "description": "Accede al próspero mercado laboral canadiense. Ya sea permiso de trabajo específico para empleador o abierto, te guiamos en el proceso.",
+        "href": "/services/work-permit"
+      },
+      {
+        "title": "Programa de Nominación Provincial",
+        "description": "Cada provincia canadiense tiene programas únicos de nominación. Identificamos el flujo PNP que mejor se adapta a tu perfil.",
+        "href": "/services/pnp"
+      },
+      {
+        "title": "Patrocinio Familiar",
+        "description": "Reúnete con tus seres queridos en Canadá. Ayudamos a ciudadanos y residentes permanentes a patrocinar a sus familiares.",
+        "href": "/services/family-sponsorship"
+      },
+      {
+        "title": "Visa de Turista (TRV)",
+        "description": "¿Planeas visitar Canadá? Preparamos una solicitud de Visa de Residente Temporal completa y convincente.",
+        "href": "/services/tourist-visa"
+      }
+    ]
+  },
+  "contactSection": {
+    "eyebrow": "Contáctenos",
+    "title": "Póngase en Contacto"
+  },
+  "drawTracker": {
+    "title": "Último Sorteo Express Entry",
+    "crsScore": "Puntaje CRS Mínimo",
+    "invitations": "Invitaciones Emitidas",
+    "date": "Fecha del Sorteo",
+    "viewAll": "Ver Todos los Sorteos"
+  },
+  "showcase": {
+    "title": "Vida en Canadá",
+    "subtitle": "Descubra la belleza y las oportunidades que le esperan en Canadá."
+  },
+  "consultant": {
+    "title": "¿Necesita un Consultor Certificado?",
+    "subtitle": "Nuestros RCICs han ayudado a cientos de familias, profesionales y estudiantes a inmigrar exitosamente a Canadá.",
+    "book": "Reservar Consulta Gratuita",
+    "call": "+1 581-634-0224",
+    "benefits": [
+      "Consulta inicial gratuita",
+      "RCICs certificados",
+      "95% tasa de aprobación",
+      "10+ años de experiencia",
+      "Todas las categorías de visa",
+      "Servicio en francés e inglés"
+    ]
+  },
+  "howItWorks": {
+    "title": "Cómo Trabajamos Contigo",
+    "subtitle": "Un proceso simple y transparente desde la primera consulta hasta la aprobación final.",
+    "steps": [
+      {
+        "number": 1,
+        "title": "Consulta Gratuita",
+        "description": "Hable con uno de nuestros consultores certificados. Evaluamos su perfil e identificamos la mejor vía de inmigración."
+      },
+      {
+        "number": 2,
+        "title": "Preparación de Documentos",
+        "description": "Le guiamos en cada documento, formulario y requisito. Nuestro equipo revisa todo antes de enviarlo."
+      },
+      {
+        "number": 3,
+        "title": "Solicitud y Aprobación",
+        "description": "Presentamos su solicitud y la seguimos en cada paso. Nuestra tasa de éxito del 95% habla por sí misma."
+      }
+    ]
+  },
+  "trust": {
+    "title": "Por Qué los Clientes Eligen IDLOGICE",
+    "items": [
+      {
+        "title": "Profesionales Certificados",
+        "description": "Todos nuestros consultores son RCICs registrados con el Colegio de Consultores de Inmigración y Ciudadanía."
+      },
+      {
+        "title": "95% Tasa de Éxito",
+        "description": "Con más de 10 años de experiencia, hemos construido un historial excepcional en todas las categorías de visa."
+      },
+      {
+        "title": "Apoyo Completo",
+        "description": "Desde visas de turista hasta residencia permanente — manejamos cada paso para que usted se concentre en su futuro."
+      }
+    ]
+  }
+}

@@ -2,7 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { locales, type Locale } from "@/i18n/config";
+import { locales, localeNames, type Locale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
 
 function FlagCA({ className }: { className?: string }) {
@@ -30,9 +30,37 @@ function FlagFR({ className }: { className?: string }) {
   );
 }
 
+function FlagES({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 20 14" className={className} aria-hidden="true">
+      <rect width="20" height="14" fill="#AA151B" />
+      <rect y="3.5" width="20" height="7" fill="#F1BF00" />
+    </svg>
+  );
+}
+
+function FlagAR({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 20 14" className={className} aria-hidden="true">
+      <rect width="20" height="4.67" fill="#007A3D" />
+      <rect y="4.67" width="20" height="4.67" fill="#fff" />
+      <rect y="9.33" width="20" height="4.67" fill="#CE1126" />
+    </svg>
+  );
+}
+
 const FLAGS: Record<Locale, React.ComponentType<{ className?: string }>> = {
   en: FlagCA,
   fr: FlagFR,
+  es: FlagES,
+  ar: FlagAR,
+};
+
+const LABELS: Record<Locale, string> = {
+  en: "EN",
+  fr: "FR",
+  es: "ES",
+  ar: "AR",
 };
 
 export function LanguageSwitcher() {
@@ -52,16 +80,17 @@ export function LanguageSwitcher() {
           <button
             key={loc}
             onClick={() => switchTo(loc)}
-            aria-label={loc === "en" ? "English" : "Français"}
+            aria-label={localeNames[loc]}
             className={cn(
               "flex items-center gap-1.5 px-2 py-1 rounded-lg text-xs font-semibold transition-colors",
               locale === loc
                 ? "bg-primary/10 text-primary"
-                : "text-muted-foreground hover:text-foreground hover:bg-secondary",
+                : "hover:bg-secondary",
             )}
+            style={{ color: locale === loc ? undefined : "#374151" }}
           >
             <Flag className="w-5 h-3.5 rounded-[2px] shrink-0" />
-            <span className="uppercase tracking-wide">{loc}</span>
+            <span className="uppercase tracking-wide">{LABELS[loc]}</span>
           </button>
         );
       })}

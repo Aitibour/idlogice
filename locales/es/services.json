@@ -1,0 +1,535 @@
+{
+  "services": {
+    "overview": {
+      "hero": {
+        "title": "Vías de Inmigración Canadiense",
+        "subtitle": "Explore las principales rutas hacia la residencia permanente. Use nuestras herramientas gratuitas para descubrir los programas para los que califica."
+      },
+      "grid": {
+        "title": "Elija Su Vía",
+        "items": [
+          {
+            "title": "Express Entry",
+            "description": "La vía más rápida hacia la residencia permanente para trabajadores calificados."
+          },
+          {
+            "title": "Permiso de Estudio",
+            "description": "Estudie en Canadá y construya una vía hacia la residencia permanente."
+          },
+          {
+            "title": "Permiso de Trabajo",
+            "description": "Trabaje en Canadá y acumule experiencia canadiense hacia la RP."
+          },
+          {
+            "title": "Nominación Provincial",
+            "description": "Reciba la nominación de una provincia y obtenga 600 puntos CRS adicionales."
+          },
+          {
+            "title": "Patrocinio Familiar",
+            "description": "Reúnase con sus seres queridos en Canadá."
+          },
+          {
+            "title": "Visa de Turista",
+            "description": "Visite Canadá por turismo, visitas familiares o negocios."
+          }
+        ]
+      },
+      "cta": {
+        "title": "¿No Sabe Qué Vía Es la Correcta?",
+        "subtitle": "Nuestra evaluación gratuita identifica los programas para los que califica.",
+        "primary": "Evaluación Gratuita",
+        "secondary": "Calculadora CRS"
+      }
+    },
+    "expressEntry": {
+      "hero": {
+        "badge": "Residencia Permanente",
+        "title": "Express Entry",
+        "subtitle": "La vía más rápida hacia la residencia permanente canadiense. Evaluamos su perfil CRS, optimizamos su puntaje y le guiamos en cada etapa del proceso.",
+        "cta": "Evaluación Gratuita",
+        "secondaryCta": "Calcular Puntaje CRS"
+      },
+      "requirements": {
+        "title": "Requisitos",
+        "qualifications": [
+          "Tiene al menos 1 año de experiencia laboral calificada (NOC TEER 0, 1, 2 o 3)",
+          "Cumple con los requisitos mínimos de idioma (CLB 7 o superior)",
+          "Tiene fondos de asentamiento suficientes",
+          "Es admisible en Canadá"
+        ],
+        "facts": [
+          "Tiempo de procesamiento: ~6 meses",
+          "Sin límite de edad (aunque se otorgan más puntos a candidatos más jóvenes)",
+          "Incluye cónyuge e hijos dependientes",
+          "Permite trabajar en Canadá durante el procesamiento"
+        ]
+      },
+      "steps": {
+        "title": "Proceso de Solicitud",
+        "items": [
+          {
+            "number": 1,
+            "title": "Evaluación del Perfil",
+            "description": "Evaluamos su elegibilidad para los programas de Express Entry: Federal Skilled Worker, Canadian Experience Class o Federal Skilled Trades."
+          },
+          {
+            "number": 2,
+            "title": "Creación del Perfil",
+            "description": "Creamos su perfil en el sistema Express Entry con toda la documentación necesaria para maximizar su puntaje CRS."
+          },
+          {
+            "number": 3,
+            "title": "Optimización del Puntaje",
+            "description": "Identificamos estrategias para aumentar su puntaje CRS: certificaciones de idioma, validación de estudios extranjeros, ofertas de empleo y nominaciones provinciales."
+          },
+          {
+            "number": 4,
+            "title": "Invitación a Solicitar (ITA)",
+            "description": "Una vez que recibe su ITA en un sorteo, preparamos su solicitud completa de residencia permanente con todos los documentos requeridos."
+          },
+          {
+            "number": 5,
+            "title": "Residencia Permanente",
+            "description": "Después de la aprobación, le guiamos en los trámites de confirmación de residencia permanente (COPR) y el aterrizaje en Canadá."
+          }
+        ]
+      },
+      "facts": {
+        "title": "¿Por Qué Elegir Express Entry?",
+        "items": [
+          {
+            "title": "Más Rápido Camino a la RP",
+            "description": "Express Entry es la vía más rápida para obtener la residencia permanente canadiense, con tiempos de procesamiento de aproximadamente 6 meses."
+          },
+          {
+            "title": "Tres Programas en Uno",
+            "description": "El sistema gestiona tres programas: Federal Skilled Worker (FSW), Canadian Experience Class (CEC) y Federal Skilled Trades (FST)."
+          },
+          {
+            "title": "Proceso Basado en Puntos",
+            "description": "El Sistema de Clasificación Integral (CRS) otorga puntos según edad, educación, experiencia laboral, idioma y otros factores."
+          },
+          {
+            "title": "Reunificación Familiar",
+            "description": "Puede incluir a su cónyuge o pareja de hecho e hijos dependientes en su solicitud de residencia permanente."
+          }
+        ]
+      },
+      "cta": {
+        "title": "¿Listo para Iniciar su Solicitud de Express Entry?",
+        "subtitle": "Nuestros RCICs certificados le guiarán en cada paso del proceso Express Entry.",
+        "primary": "Evaluación Gratuita",
+        "secondary": "Calcular Puntaje CRS"
+      }
+    },
+    "studyPermit": {
+      "hero": {
+        "badge": "Permiso de Estudio",
+        "title": "Estudia en Canadá",
+        "subtitle": "Accede a una educación de clase mundial en universidades y colegios canadienses. Nuestros consultores certificados gestionan tu solicitud de permiso de estudio de principio a fin.",
+        "cta": "Evaluación Gratuita",
+        "secondaryCta": "Ver Servicios"
+      },
+      "requirements": {
+        "title": "Requisitos",
+        "qualifications": [
+          "Tiene una carta de aceptación de una institución designada de aprendizaje (DLI) en Canadá",
+          "Puede demostrar fondos suficientes para cubrir matrícula, gastos de vida y regreso",
+          "No tiene antecedentes penales y es admisible en Canadá",
+          "Tiene la intención de salir de Canadá al finalizar sus estudios (si no solicita RP)"
+        ],
+        "facts": [
+          "Tiempo de procesamiento: 4–12 semanas (varía según el país)",
+          "El procesamiento acelerado está disponible para ciertos países bajo el Student Direct Stream (SDS)",
+          "Se puede trabajar hasta 24 horas por semana fuera del campus durante el período de estudios",
+          "El permiso de trabajo posgrado (PGWP) permite trabajar hasta 3 años después de graduarse"
+        ]
+      },
+      "steps": {
+        "title": "Proceso de Solicitud",
+        "items": [
+          {
+            "number": 1,
+            "title": "Elección de Institución",
+            "description": "Le ayudamos a identificar las instituciones designadas de aprendizaje (DLI) que mejor se adapten a sus objetivos académicos y profesionales."
+          },
+          {
+            "number": 2,
+            "title": "Carta de Aceptación",
+            "description": "Una vez obtenida su carta de aceptación, preparamos su solicitud completa de permiso de estudio."
+          },
+          {
+            "number": 3,
+            "title": "Preparación de Documentos",
+            "description": "Reunimos todos los documentos requeridos: extractos bancarios, cartas de motivación, historial académico y pruebas de idioma."
+          },
+          {
+            "number": 4,
+            "title": "Presentación de la Solicitud",
+            "description": "Presentamos su solicitud ante IRCC y hacemos seguimiento hasta obtener una decisión."
+          },
+          {
+            "number": 5,
+            "title": "Planificación Post-Llegada",
+            "description": "Le asesoramos sobre sus opciones de trabajo durante los estudios y las vías de residencia permanente disponibles después de graduarse."
+          }
+        ]
+      },
+      "facts": {
+        "title": "Ventajas de Estudiar en Canadá",
+        "items": [
+          {
+            "title": "Educación de Clase Mundial",
+            "description": "Las universidades canadienses figuran constantemente entre las mejores del mundo, con diplomas reconocidos internacionalmente."
+          },
+          {
+            "title": "Camino a la Residencia Permanente",
+            "description": "Los estudiantes internacionales que se gradúan en Canadá tienen acceso prioritario a programas de residencia permanente como el Canadian Experience Class."
+          },
+          {
+            "title": "Permiso de Trabajo Posgrado",
+            "description": "Después de completar sus estudios, puede obtener un permiso de trabajo abierto de hasta 3 años para ganar experiencia laboral canadiense."
+          },
+          {
+            "title": "Ambiente Multicultural",
+            "description": "Canadá es uno de los países más diversos del mundo, ofreciendo un entorno acogedor para estudiantes de todas las culturas."
+          }
+        ]
+      },
+      "cta": {
+        "title": "¿Listo para Estudiar en Canadá?",
+        "subtitle": "Nuestros consultores certificados le guiarán en cada paso de su solicitud de permiso de estudio.",
+        "primary": "Evaluación Gratuita",
+        "secondary": "Contáctenos"
+      }
+    },
+    "workPermit": {
+      "hero": {
+        "badge": "Permiso de Trabajo",
+        "title": "Trabaja en Canadá",
+        "subtitle": "Accede al próspero mercado laboral canadiense. Ya sea un permiso de trabajo específico para empleador o un permiso abierto, te guiamos en todo el proceso.",
+        "cta": "Evaluación Gratuita",
+        "secondaryCta": "Ver Servicios"
+      },
+      "requirements": {
+        "title": "Requisitos",
+        "qualifications": [
+          "Tiene una oferta de empleo válida de un empleador canadiense (para permisos específicos)",
+          "Cumple con los requisitos de habilidades y calificaciones para el puesto",
+          "Es admisible en Canadá (sin antecedentes penales que lo inhabiliten)",
+          "Puede demostrar que regresará a su país de origen al vencer el permiso (si aplica)"
+        ],
+        "facts": [
+          "Tiempo de procesamiento: 4–27 semanas (según el tipo de permiso y su país de residencia)",
+          "El permiso de trabajo abierto le permite trabajar para cualquier empleador en Canadá",
+          "Algunos permisos de trabajo no requieren LMIA (Evaluación de Impacto en el Mercado Laboral)",
+          "Los titulares de permiso de trabajo pueden solicitar residencia permanente por varias vías"
+        ]
+      },
+      "steps": {
+        "title": "Proceso de Solicitud",
+        "items": [
+          {
+            "number": 1,
+            "title": "Determinación del Tipo de Permiso",
+            "description": "Evaluamos si necesita un permiso específico para empleador o un permiso abierto, y si aplica una exención de LMIA."
+          },
+          {
+            "number": 2,
+            "title": "Oferta de Empleo y LMIA",
+            "description": "Si se requiere LMIA, le asesoramos a usted y a su empleador canadiense sobre el proceso de obtención."
+          },
+          {
+            "number": 3,
+            "title": "Preparación de Documentos",
+            "description": "Reunimos todos los documentos requeridos: oferta de empleo, credenciales académicas, historial laboral y pruebas de idioma."
+          },
+          {
+            "number": 4,
+            "title": "Presentación de la Solicitud",
+            "description": "Presentamos su solicitud ante IRCC con todos los soportes necesarios y hacemos seguimiento activo."
+          },
+          {
+            "number": 5,
+            "title": "Planificación de la Residencia Permanente",
+            "description": "Con experiencia laboral canadiense, le orientamos hacia las mejores vías para obtener la residencia permanente."
+          }
+        ]
+      },
+      "facts": {
+        "title": "Tipos de Permisos de Trabajo",
+        "items": [
+          {
+            "title": "Permiso Específico para Empleador",
+            "description": "Le permite trabajar únicamente para un empleador específico en Canadá. Generalmente requiere una oferta de empleo y, en muchos casos, una LMIA."
+          },
+          {
+            "title": "Permiso de Trabajo Abierto",
+            "description": "Le permite trabajar para cualquier empleador en Canadá. Está disponible para cónyuges de ciertos titulares de visas y solicitantes de residencia permanente."
+          },
+          {
+            "title": "Exenciones de LMIA",
+            "description": "Varios acuerdos internacionales (CUSMA/USMCA, CETA, IEC) permiten obtener permisos de trabajo sin necesidad de LMIA."
+          },
+          {
+            "title": "International Experience Canada (IEC)",
+            "description": "Jóvenes de países elegibles pueden obtener permisos de trabajo abiertos a través del programa IEC (Working Holiday)."
+          }
+        ]
+      },
+      "cta": {
+        "title": "¿Listo para Trabajar en Canadá?",
+        "subtitle": "Nuestros RCICs certificados le ayudarán a obtener el permiso de trabajo adecuado para su situación.",
+        "primary": "Evaluación Gratuita",
+        "secondary": "Contáctenos"
+      }
+    },
+    "pnp": {
+      "hero": {
+        "badge": "Nominación Provincial",
+        "title": "Programa de Nominación Provincial (PNP)",
+        "subtitle": "Cada provincia y territorio de Canadá tiene sus propios programas de nominación. Identificamos el flujo PNP que mejor se adapta a su perfil y le guiamos en cada etapa.",
+        "cta": "Evaluación Gratuita",
+        "secondaryCta": "Ver Servicios"
+      },
+      "requirements": {
+        "title": "Requisitos",
+        "qualifications": [
+          "Tiene habilidades, experiencia laboral o educación que satisfacen las necesidades de una provincia o territorio específico",
+          "Tiene la intención de establecerse en la provincia o territorio que lo nomina",
+          "Cumple con los requisitos de idioma del programa provincial seleccionado",
+          "Satisface los criterios mínimos de admisibilidad de Inmigración, Refugiados y Ciudadanía Canadá (IRCC)"
+        ],
+        "facts": [
+          "Más de 80 flujos PNP disponibles en todo Canadá",
+          "Algunos flujos PNP están vinculados a Express Entry y otorgan 600 puntos CRS adicionales",
+          "Los flujos base (fuera de Express Entry) procesan solicitudes por vía papel",
+          "Tiempo de procesamiento: 6–19 meses según la provincia y el flujo"
+        ]
+      },
+      "steps": {
+        "title": "Proceso de Solicitud",
+        "items": [
+          {
+            "number": 1,
+            "title": "Identificación de la Provincia",
+            "description": "Analizamos su perfil (educación, experiencia, idioma, vínculos familiares) para identificar las provincias con los flujos PNP más adecuados."
+          },
+          {
+            "number": 2,
+            "title": "Solicitud Provincial",
+            "description": "Preparamos y presentamos su solicitud ante el programa provincial seleccionado, garantizando que cumpla todos los requisitos específicos."
+          },
+          {
+            "number": 3,
+            "title": "Nominación Provincial",
+            "description": "Al recibir el certificado de nominación provincial, puede proceder con su solicitud de residencia permanente ante IRCC."
+          },
+          {
+            "number": 4,
+            "title": "Solicitud de Residencia Permanente",
+            "description": "Preparamos su solicitud completa de RP, ya sea a través del sistema Express Entry (flujos vinculados) o por vía papel (flujos base)."
+          },
+          {
+            "number": 5,
+            "title": "Residencia Permanente",
+            "description": "Una vez aprobada su solicitud, le guiamos en el proceso de confirmación de residencia permanente y el aterrizaje en Canadá."
+          }
+        ]
+      },
+      "facts": {
+        "title": "Provincias y Sus Programas",
+        "items": [
+          {
+            "title": "Ontario (OINP)",
+            "description": "El Programa de Nominación de Ontario ofrece flujos para trabajadores calificados, trabajadores especializados, graduados internacionales y emprendedores."
+          },
+          {
+            "title": "Columbia Británica (BC PNP)",
+            "description": "El BC PNP incluye el BC Tech Pilot para trabajadores del sector tecnológico, así como flujos para trabajadores calificados y graduados internacionales."
+          },
+          {
+            "title": "Alberta (AINP)",
+            "description": "El Programa de Nominación de Alberta ofrece opciones para trabajadores calificados con empleo en Alberta y candidatos de Express Entry."
+          },
+          {
+            "title": "Quebec (QSWP)",
+            "description": "Quebec gestiona su propio sistema de selección de inmigrantes. El Programa de Trabajadores Calificados de Quebec (QSWP) tiene sus propios criterios y proceso."
+          }
+        ]
+      },
+      "cta": {
+        "title": "¿Listo para Explorar las Nominaciones Provinciales?",
+        "subtitle": "Nuestros consultores certificados identificarán el flujo PNP más adecuado para su perfil.",
+        "primary": "Evaluación Gratuita",
+        "secondary": "Contáctenos"
+      }
+    },
+    "touristVisa": {
+      "hero": {
+        "badge": "Visa de Turista",
+        "title": "Visa de Turista (TRV) para Canadá",
+        "subtitle": "¿Planea visitar Canadá? Preparamos una solicitud de Visa de Residente Temporal (TRV) completa y convincente para maximizar sus posibilidades de aprobación.",
+        "cta": "Evaluación Gratuita",
+        "secondaryCta": "Ver Servicios"
+      },
+      "requirements": {
+        "title": "Requisitos",
+        "qualifications": [
+          "Tiene un pasaporte válido de un país que requiere visa para ingresar a Canadá",
+          "Puede demostrar el propósito de su visita (turismo, visita familiar, negocios)",
+          "Tiene vínculos suficientes con su país de origen (empleo, propiedad, familia)",
+          "Puede demostrar fondos suficientes para su estadía en Canadá"
+        ],
+        "facts": [
+          "Tiempo de procesamiento: 2–8 semanas",
+          "La visa generalmente se otorga por hasta 10 años o la validez del pasaporte",
+          "Permite estancias de hasta 6 meses por visita",
+          "Los ciudadanos de ciertos países pueden ingresar con solo una Autorización de Viaje Electrónica (eTA)"
+        ]
+      },
+      "steps": {
+        "title": "Proceso de Solicitud",
+        "items": [
+          {
+            "number": 1,
+            "title": "Evaluación de Elegibilidad",
+            "description": "Verificamos si necesita una TRV o simplemente una eTA, y evaluamos su perfil para anticipar posibles obstáculos."
+          },
+          {
+            "number": 2,
+            "title": "Preparación de Documentos",
+            "description": "Reunimos todos los documentos necesarios: carta de invitación (si aplica), extractos bancarios, carta de empleo, itinerario y más."
+          },
+          {
+            "number": 3,
+            "title": "Carta de Presentación",
+            "description": "Redactamos una carta de presentación persuasiva que explique claramente el propósito de su visita y sus vínculos con su país de origen."
+          },
+          {
+            "number": 4,
+            "title": "Presentación de la Solicitud",
+            "description": "Presentamos su solicitud ante IRCC o el Centro de Recepción de Solicitudes de Visa (CRSV) correspondiente."
+          },
+          {
+            "number": 5,
+            "title": "Seguimiento y Aprobación",
+            "description": "Hacemos seguimiento activo de su solicitud y le notificamos tan pronto como se tome una decisión."
+          }
+        ]
+      },
+      "facts": {
+        "title": "Lo Que Debe Saber",
+        "items": [
+          {
+            "title": "TRV vs. eTA",
+            "description": "Los ciudadanos de ciertos países solo necesitan una Autorización de Viaje Electrónica (eTA) para volar a Canadá. Los demás requieren una Visa de Residente Temporal (TRV)."
+          },
+          {
+            "title": "Múltiples Entradas",
+            "description": "En la mayoría de los casos, se otorga una visa de entrada múltiple, lo que le permite visitar Canadá varias veces durante el período de validez."
+          },
+          {
+            "title": "Reunificación Familiar",
+            "description": "Si tiene familiares en Canadá, una carta de invitación de un ciudadano o residente permanente canadiense puede fortalecer su solicitud."
+          },
+          {
+            "title": "Rechazo Previo",
+            "description": "Si su solicitud fue rechazada anteriormente, le ayudamos a identificar las razones y preparar una solicitud más sólida."
+          }
+        ]
+      },
+      "cta": {
+        "title": "¿Listo para Visitar Canadá?",
+        "subtitle": "Nuestros consultores certificados prepararán una solicitud sólida para maximizar sus posibilidades de aprobación.",
+        "primary": "Evaluación Gratuita",
+        "secondary": "Contáctenos"
+      }
+    },
+    "familySponsorship": {
+      "hero": {
+        "badge": "Patrocinio Familiar",
+        "title": "Patrocinio Familiar",
+        "subtitle": "Reúnase con sus seres queridos en Canadá. Ayudamos a ciudadanos canadienses y residentes permanentes a patrocinar a sus familiares para la residencia permanente.",
+        "cta": "Evaluación Gratuita",
+        "secondaryCta": "Ver Servicios"
+      },
+      "requirements": {
+        "title": "Requisitos",
+        "qualifications": [
+          "Es ciudadano canadiense o residente permanente de 18 años o más",
+          "Vive en Canadá o tiene la intención de establecerse en Canadá al momento de la aprobación (para ciudadanos)",
+          "Puede demostrar que cumple con el umbral de ingresos mínimos necesarios (SEUIL + 30% para padres/abuelos)",
+          "No tiene antecedentes de incumplimiento de compromisos de patrocinio anteriores"
+        ],
+        "facts": [
+          "Tiempo de procesamiento: ~12 meses para cónyuge/pareja, 20–24 meses para padres/abuelos",
+          "El período de compromiso es de 3 años para cónyuge/pareja, 10 años para hijos dependientes y hasta 20 años para padres/abuelos",
+          "Los patrocinados no pueden recibir asistencia social durante el período de compromiso",
+          "El Programa de Padres y Abuelos (PGP) requiere participar en el sorteo anual"
+        ]
+      },
+      "steps": {
+        "title": "Proceso de Solicitud",
+        "items": [
+          {
+            "number": 1,
+            "title": "Confirmación de Elegibilidad",
+            "description": "Verificamos que tanto el patrocinador como el patrocinado cumplan con todos los requisitos de elegibilidad del programa."
+          },
+          {
+            "number": 2,
+            "title": "Preparación de Documentos",
+            "description": "Reunimos todos los documentos requeridos: prueba de relación, estados financieros, documentos de identidad y formularios IRCC."
+          },
+          {
+            "number": 3,
+            "title": "Solicitud de Patrocinio",
+            "description": "Presentamos la solicitud del patrocinador ante IRCC junto con todos los soportes documentales necesarios."
+          },
+          {
+            "number": 4,
+            "title": "Solicitud de Residencia Permanente",
+            "description": "Una vez aprobada la solicitud del patrocinador, presentamos la solicitud de residencia permanente del patrocinado."
+          },
+          {
+            "number": 5,
+            "title": "Confirmación de Residencia Permanente",
+            "description": "Le guiamos en el proceso de obtención del COPR (Confirmation of Permanent Residence) y el aterrizaje en Canadá."
+          }
+        ]
+      },
+      "facts": {
+        "title": "Categorías de Patrocinio Familiar",
+        "items": [
+          {
+            "title": "Cónyuge y Pareja de Hecho",
+            "description": "Los ciudadanos y residentes permanentes pueden patrocinar a su esposo/a o pareja de hecho para la residencia permanente. El tiempo de procesamiento es de aproximadamente 12 meses."
+          },
+          {
+            "title": "Hijos Dependientes",
+            "description": "Puede patrocinar a hijos dependientes menores de 22 años (o mayores si dependen financieramente de usted debido a una condición física o mental)."
+          },
+          {
+            "title": "Padres y Abuelos (PGP)",
+            "description": "El Programa de Padres y Abuelos permite a los ciudadanos y RP patrocinar a sus padres y abuelos. Se accede mediante un sorteo anual y los tiempos de procesamiento son de 20–24 meses."
+          },
+          {
+            "title": "Super Visa",
+            "description": "Como alternativa al PGP, la Super Visa permite a los padres y abuelos visitar Canadá por hasta 5 años consecutivos con una visa de entrada múltiple de 10 años."
+          }
+        ]
+      },
+      "cta": {
+        "title": "¿Listo para Reunir a su Familia en Canadá?",
+        "subtitle": "Nuestros RCICs certificados le ayudarán a navegar el proceso de patrocinio familiar con confianza.",
+        "primary": "Evaluación Gratuita",
+        "secondary": "Contáctenos"
+      }
+    },
+    "shared": {
+      "qualificationsLabel": "Podría calificar si:",
+      "factsLabel": "Datos Clave"
+    }
+  }
+}

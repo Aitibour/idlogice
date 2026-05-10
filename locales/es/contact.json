@@ -1,0 +1,41 @@
+{
+  "contact": {
+    "hero": {
+      "subtitle": "¿Tiene preguntas sobre inmigración canadiense? Envíenos un mensaje y un consultor certificado le responderá dentro de las 24 horas.",
+      "title": "Contacte a IDLOGICE"
+    },
+    "form": {
+      "name": "Nombre Completo",
+      "email": "Correo Electrónico",
+      "subject": "Asunto",
+      "message": "Mensaje",
+      "submit": "Enviar Mensaje",
+      "successTitle": "¡Mensaje Enviado!",
+      "successMessage": "Gracias por contactarnos. Nuestro equipo le responderá dentro de las 24 horas.",
+      "errors": {
+        "nameRequired": "El nombre es obligatorio",
+        "emailInvalid": "Ingrese un correo electrónico válido",
+        "subjectRequired": "El asunto es obligatorio",
+        "messageRequired": "El mensaje es obligatorio"
+      }
+    },
+    "info": {
+      "heading": "Póngase en Contacto",
+      "emailLabel": "Correo Electrónico",
+      "phoneLabel": "Teléfono",
+      "addressLabel": "Oficina",
+      "responseLabel": "Tiempo de Respuesta",
+      "responseValue": "Dentro de las 24 horas hábiles",
+      "bookHeading": "Reserve una Consulta Gratuita",
+      "bookSubtitle": "Hable directamente con un consultor certificado. Sin compromiso y sin costo.",
+      "bookButton": "Reserve Mi Consulta Gratuita",
+      "disclaimer": "Para asesoramiento oficial de inmigración, consulte a un Consultor Regulado de Inmigración Canadiense (RCIC) o un abogado de inmigración autorizado. Los consultores de IDLOGICE están registrados en el CICC."
+    },
+    "cta": {
+      "title": "¿No Sabe Por Dónde Empezar?",
+      "subtitle": "Nuestra consulta gratuita le ayuda a entender sus opciones. Sin compromiso.",
+      "primary": "Reservar Consulta Gratuita",
+      "secondary": "Explorar Servicios"
+    }
+  }
+}
