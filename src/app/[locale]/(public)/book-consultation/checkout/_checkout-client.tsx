@@ -47,7 +47,7 @@ type FormData = {
 };
 
 const INPUT =
-  "w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring/30 transition-colors placeholder:text-muted-foreground/50";
+  "w-full rounded-xl border border-border bg-white px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors";
 
 function Field({
   icon: Icon,
@@ -64,7 +64,7 @@ function Field({
 }) {
   return (
     <div>
-      <label className="flex items-center gap-1.5 text-xs font-semibold text-foreground/80 mb-1.5">
+      <label className="flex items-center gap-1.5 text-xs font-semibold mb-1.5" style={{ color: "#374151" }}>
         <Icon className="size-3.5 text-primary" />
         {label}
         {required && <span className="text-destructive ml-0.5">*</span>}
@@ -173,7 +173,7 @@ export function CheckoutClient({ planId }: { planId?: string }) {
   /* ── Done screen ─────────────────────────────────────────────────────────── */
   if (paid) {
     return (
-      <div className="min-h-[70vh] flex items-center justify-center p-8 bg-secondary/20">
+      <div className="min-h-[70vh] flex items-center justify-center p-8 bg-gray-50">
         <div className="max-w-md w-full bg-white rounded-3xl border border-border shadow-lg p-10 text-center">
           <div className="w-16 h-16 rounded-full bg-green-50 border border-green-200 flex items-center justify-center mx-auto mb-5">
             <CheckCircle className="size-8 text-green-500" />
@@ -202,7 +202,7 @@ export function CheckoutClient({ planId }: { planId?: string }) {
       <div className="p-6">
         <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-4">Order summary</p>
 
-        <div className="rounded-2xl border border-border bg-secondary/20 p-4 mb-5">
+        <div className="rounded-2xl border border-border bg-gray-50 p-4 mb-5">
           <div className="flex items-center gap-2 mb-2">
             <Clock3 className="size-4 text-primary" />
             <span className="text-sm font-bold">{plan.duration} Consultation</span>
@@ -258,11 +258,12 @@ export function CheckoutClient({ planId }: { planId?: string }) {
   );
 
   return (
-    <div className="min-h-screen bg-secondary/20">
+    <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-10 max-w-4xl">
         <Link
           href="/book-consultation"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors mb-8"
+          style={{ color: "#374151" }}
         >
           <ArrowLeft className="size-4" />
           Back to plans
@@ -354,7 +355,7 @@ export function CheckoutClient({ planId }: { planId?: string }) {
                     Pay securely to unlock your appointment booking.
                   </p>
 
-                  <div className="rounded-2xl border border-border bg-secondary/20 p-4 mb-7 space-y-1.5 text-sm">
+                  <div className="rounded-2xl border border-border bg-gray-50 p-4 mb-7 space-y-1.5 text-sm">
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Name</span>
                       <span className="font-medium">{form.fullName}</span>

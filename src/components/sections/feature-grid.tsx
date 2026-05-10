@@ -30,15 +30,15 @@ export function FeatureGrid({
         : "md:grid-cols-3";
 
   return (
-    <section className="py-16">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         {(title || subtitle) && (
           <ScrollReveal className="text-center mb-12">
             {title && (
-              <h2 className="text-2xl md:text-3xl font-bold mb-3">{title}</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-3" style={{ color: "#111827" }}>{title}</h2>
             )}
             {subtitle && (
-              <p className="text-muted-foreground max-w-xl mx-auto">{subtitle}</p>
+              <p className="max-w-xl mx-auto" style={{ color: "#374151" }}>{subtitle}</p>
             )}
           </ScrollReveal>
         )}
@@ -49,8 +49,8 @@ export function FeatureGrid({
                 {item.icon && (
                   <item.icon className="h-8 w-8 text-primary mb-3" />
                 )}
-                <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
+                <h3 className="font-semibold text-lg mb-2" style={{ color: "#111827" }}>{item.title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: "#374151" }}>
                   {item.description}
                 </p>
               </>
@@ -61,7 +61,7 @@ export function FeatureGrid({
                 <ScrollReveal key={i} delay={i * 80}>
                   <Link
                     href={item.href}
-                    className="rounded-xl border bg-card p-6 hover:shadow-md transition-shadow block h-full"
+                    className="rounded-xl border border-border bg-white p-6 hover:shadow-md hover:border-primary/30 transition-all block h-full"
                   >
                     {content}
                   </Link>
@@ -71,7 +71,7 @@ export function FeatureGrid({
 
             return (
               <ScrollReveal key={i} delay={i * 80}>
-                <div className="rounded-xl border bg-card p-6 h-full">
+                <div className="rounded-xl border border-border bg-white p-6 h-full shadow-sm hover:shadow-md transition-shadow">
                   {content}
                 </div>
               </ScrollReveal>

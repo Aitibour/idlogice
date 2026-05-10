@@ -287,16 +287,16 @@ export default function BookConsultationPage() {
               <div className="animate-fade-up delay-100 bg-white rounded-3xl border border-border shadow-[0_4px_24px_-4px_oklch(0_0_0/0.08)] overflow-hidden">
                 <div className="h-1 w-full bg-gradient-to-r from-transparent via-primary/40 to-primary" />
                 <div className="p-5">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-4">Why choose IDLOGICE</p>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] mb-4" style={{ color: "#9ca3af" }}>Why choose IDLOGICE</p>
                   <div className="space-y-3">
                     {TRUST.map(({ icon: Icon, value, sub }) => (
-                      <div key={value} className="flex items-center gap-3 p-3 rounded-2xl bg-secondary/30 hover:bg-secondary/60 transition-colors">
-                        <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                      <div key={value} className="flex items-center gap-3 p-3 rounded-2xl border border-border bg-white hover:border-primary/30 hover:bg-gray-50 transition-colors">
+                        <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
                           <Icon className="size-4 text-primary" />
                         </div>
                         <div>
-                          <p className="text-xs font-bold">{value}</p>
-                          <p className="text-[10px] text-muted-foreground leading-snug">{sub}</p>
+                          <p className="text-xs font-bold" style={{ color: "#111827" }}>{value}</p>
+                          <p className="text-[10px] leading-snug" style={{ color: "#6b7280" }}>{sub}</p>
                         </div>
                       </div>
                     ))}
@@ -307,22 +307,22 @@ export default function BookConsultationPage() {
               {/* Quick contact */}
               <div className="animate-fade-up delay-200 bg-white rounded-3xl border border-border shadow-[0_4px_24px_-4px_oklch(0_0_0/0.08)] overflow-hidden">
                 <div className="p-5">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-4">Reach us directly</p>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] mb-4" style={{ color: "#9ca3af" }}>Reach us directly</p>
                   <div className="grid grid-cols-2 gap-3">
                     {[
                       { icon: Phone, label: "Call",  sub: "+1 581-634-0224",      href: "tel:+15816340224" },
                       { icon: Mail,  label: "Email", sub: "contact@idlogice.com", href: "mailto:contact@idlogice.com" },
                     ].map(({ icon: Icon, label, sub, href }) => (
                       <a key={href} href={href}
-                        className="group relative flex flex-col gap-3 p-4 rounded-2xl border border-border bg-secondary/30 hover:bg-primary hover:border-primary transition-all duration-200 overflow-hidden"
+                        className="group relative flex flex-col gap-3 p-4 rounded-2xl border border-border bg-white hover:bg-primary hover:border-primary transition-all duration-200 overflow-hidden"
                       >
-                        <ArrowUpRight className="absolute top-3 right-3 size-3.5 text-muted-foreground/40 group-hover:text-white/70 transition-colors" />
+                        <ArrowUpRight className="absolute top-3 right-3 size-3.5 text-primary/40 group-hover:text-white/70 transition-colors" />
                         <div className="w-9 h-9 rounded-xl bg-primary/10 group-hover:bg-white/20 flex items-center justify-center transition-colors">
                           <Icon className="size-4 text-primary group-hover:text-white transition-colors" />
                         </div>
                         <div>
-                          <p className="text-xs font-bold group-hover:text-white transition-colors">{label}</p>
-                          <p className="text-[10px] text-muted-foreground group-hover:text-white/70 transition-colors truncate mt-0.5">{sub}</p>
+                          <p className="text-xs font-bold group-hover:text-white transition-colors" style={{ color: "#111827" }}>{label}</p>
+                          <p className="text-[10px] group-hover:text-white/70 transition-colors truncate mt-0.5" style={{ color: "#6b7280" }}>{sub}</p>
                         </div>
                       </a>
                     ))}
@@ -342,8 +342,8 @@ export default function BookConsultationPage() {
                         <Icon className="size-4 text-primary" />
                       </div>
                       <div>
-                        <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">{label}</p>
-                        <p className="text-sm font-medium leading-snug whitespace-pre-line">{value}</p>
+                        <p className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: "#9ca3af" }}>{label}</p>
+                        <p className="text-sm font-medium leading-snug whitespace-pre-line" style={{ color: "#111827" }}>{value}</p>
                       </div>
                     </div>
                   ))}

@@ -49,7 +49,7 @@ export default async function TouristVisaPage({ params }: { params: Promise<{ lo
         subtitle={t("touristVisa.hero.subtitle")}
         cta={{ label: t("touristVisa.hero.cta"), href: "/book-consultation" }}
         secondaryCta={{ label: t("touristVisa.hero.secondaryCta"), href: "/contact" }}
-        bgImage="/images/feature-consulting.jpg"
+        bgImage="/images/feature-immigration.jpg"
       />
 
       <RequirementsSection
