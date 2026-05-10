@@ -11,6 +11,8 @@ import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { NewsletterPopup } from "@/components/shared/newsletter-popup";
+import { WhatsAppButton } from "@/components/shared/whatsapp-button";
+import { CookieConsent } from "@/components/shared/cookie-consent";
 
 export async function generateMetadata({
   params,
@@ -55,6 +57,8 @@ export default async function LocaleLayout({
           <main className="flex-1">{children}</main>
           <Footer />
           <NewsletterPopup />
+          <WhatsAppButton />
+          <CookieConsent />
         </NextIntlClientProvider>
       </body>
     </html>

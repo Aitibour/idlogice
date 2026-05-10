@@ -3,27 +3,29 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <html lang="en">
-      <body className="min-h-screen flex items-center justify-center bg-background">
+      <body className="min-h-screen flex items-center justify-center bg-white">
         <div className="text-center px-4">
-          <h1 className="text-6xl font-bold text-primary mb-4">404</h1>
-          <h2 className="text-2xl font-semibold text-foreground mb-4">
+          <p className="text-8xl font-black" style={{ color: "oklch(0.52 0.22 27)" }}>404</p>
+          <h2 className="text-2xl font-bold mt-2 mb-3" style={{ color: "#111827" }}>
             Page Not Found
           </h2>
-          <p className="text-muted-foreground mb-8 max-w-md mx-auto">
-            The page you are looking for does not exist or has been moved.
+          <p className="text-base mb-8 max-w-md mx-auto" style={{ color: "#374151" }}>
+            The page you&apos;re looking for doesn&apos;t exist or has been moved.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href="/"
-              className="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-6 py-3 text-sm font-medium hover:bg-primary/90 transition-colors"
+              className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-bold text-white transition-colors"
+              style={{ background: "oklch(0.52 0.22 27)" }}
             >
               Go Home
             </Link>
             <Link
-              href="/services"
-              className="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-3 text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-full border border-gray-200 bg-white px-8 py-3 text-sm font-medium transition-colors"
+              style={{ color: "#374151" }}
             >
-              Our Services
+              Contact Us
             </Link>
           </div>
         </div>
