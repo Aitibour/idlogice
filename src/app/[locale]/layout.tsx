@@ -13,6 +13,7 @@ import { Footer } from "@/components/layout/footer";
 import { NewsletterPopup } from "@/components/shared/newsletter-popup";
 import { WhatsAppButton } from "@/components/shared/whatsapp-button";
 import { CookieConsent } from "@/components/shared/cookie-consent";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 export async function generateMetadata({
   params,
@@ -61,6 +62,7 @@ export default async function LocaleLayout({
           <CookieConsent />
         </NextIntlClientProvider>
       </body>
+      <GoogleAnalytics gaId="G-PRM3TSY3FL" />
     </html>
   );
 }
