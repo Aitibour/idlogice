@@ -13,15 +13,34 @@ export interface AuthUser {
   emailVerified: boolean;
 }
 
+/** Derive a clean display name from email when no full_name is set. */
+function deriveNameFromEmail(email: string): string {
+  const prefix = email.split("@")[0] || "";
+  return prefix
+    .replace(/[._\-+]+/g, " ")
+    .split(" ")
+    .filter(Boolean)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+    .join(" ");
+}
+
 /** Returns the current Supabase session user, or null. */
 export async function getUser(): Promise<AuthUser | null> {
   const supabase = createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return null;
+  const meta = user.user_metadata || {};
+  // Prefer the explicit full_name from signup; fall back to Google's name/given_name;
+  // last resort: derive a readable name from the email prefix (never display the email).
+  const name =
+    meta.full_name ||
+    meta.name ||
+    [meta.given_name, meta.family_name].filter(Boolean).join(" ") ||
+    deriveNameFromEmail(user.email ?? "");
   return {
     id: user.id,
     email: user.email ?? "",
-    name: user.user_metadata?.full_name ?? user.email ?? "",
+    name,
     emailVerified: !!user.email_confirmed_at,
   };
 }
@@ -33,14 +52,14 @@ export async function isLoggedIn(): Promise<boolean> {
 }
 
 /** Sign up with email + password. Supabase will send a verification email. */
-export async function signUp(name: string, email: string, password: string) {
+export async function signUp(name: string, email: string, password: string, next = "/evaluation") {
   const supabase = createClient();
   const { error } = await supabase.auth.signUp({
     email,
     password,
     options: {
       data: { full_name: name },
-      emailRedirectTo: `${location.origin}/auth/callback?next=/evaluation`,
+      emailRedirectTo: `${location.origin}/auth/callback?next=${encodeURIComponent(next)}`,
     },
   });
   if (error) throw error;

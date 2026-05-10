@@ -8,6 +8,11 @@ const ALLOWED_NEXT_PATHS = [
   "/about",
   "/services",
   "/contact",
+  "/jobs",
+  "/calculator",
+  "/dashboard",
+  "/testimonials",
+  "/faq",
 ];
 
 /**

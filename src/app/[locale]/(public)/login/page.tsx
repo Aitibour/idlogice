@@ -50,7 +50,7 @@ export default function LoginPage() {
     setLoading(true);
     try {
       if (tab === "signup") {
-        await signUp(form.name.trim(), form.email, form.password);
+        await signUp(form.name.trim(), form.email, form.password, next);
         setState("verify_email");
       } else {
         await signIn(form.email, form.password);
