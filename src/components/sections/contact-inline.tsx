@@ -50,96 +50,106 @@ export function ContactInline({
   const subTextStyle = { color: "#374151" } as const;
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white border-y border-border/40">
       <div className="container mx-auto px-4">
         <ScrollReveal>
-          <div className="flex items-center justify-center gap-4 mb-3">
-            <div className="h-px w-16 bg-primary" />
-            <span className="text-primary text-xs font-semibold uppercase tracking-widest whitespace-nowrap">{eyebrow}</span>
-            <div className="h-px w-16 bg-primary" />
+          <div className="flex items-center justify-center gap-3 mb-3">
+            <span className="h-px w-8 bg-primary" />
+            <span className="text-xs font-bold uppercase tracking-widest text-primary">{eyebrow}</span>
+            <span className="h-px w-8 bg-primary" />
           </div>
-          <h2 className="text-center mb-12">{title}</h2>
+          <h2 className="text-center mb-12" style={{ color: "#111827" }}>{title}</h2>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-          {/* Office info */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {/* Office info — red accent card */}
           <ScrollReveal>
-            <div className="bg-secondary/40 rounded-2xl p-8 h-full">
-              <p className="font-bold text-lg mb-6" style={headingStyle}>{t("ourOffice")}</p>
-              <ul className="space-y-5">
-                {[
-                  { icon: MapPin, label: t("address"),       content: address, href: undefined },
-                  { icon: Phone,  label: t("phone"),         content: phone,   href: `tel:${phone.replace(/\s/g, "")}` },
-                  { icon: Mail,   label: t("email"),         content: email,   href: `mailto:${email}` },
-                  { icon: Clock,  label: t("businessHours"), content: hours,   href: undefined },
-                ].map(({ icon: Icon, label, content, href }) => (
-                  <li key={label} className="flex items-start gap-3">
-                    <Icon className="size-5 text-primary shrink-0 mt-0.5" aria-hidden="true" />
-                    <div>
-                      <p className="font-medium text-sm" style={labelStyle}>{label}</p>
-                      {href ? (
-                        <a href={href} className="text-sm hover:text-primary transition-colors" style={subTextStyle}>{content}</a>
-                      ) : (
-                        <p className="text-sm" style={subTextStyle}>{content}</p>
-                      )}
-                    </div>
-                  </li>
-                ))}
-              </ul>
+            <div className="rounded-2xl overflow-hidden border border-border shadow-sm h-full flex flex-col">
+              {/* Red header bar */}
+              <div className="bg-primary px-7 py-5">
+                <p className="font-bold text-base text-white">{t("ourOffice")}</p>
+              </div>
+              <div className="bg-white px-7 py-6 flex-1">
+                <ul className="space-y-5">
+                  {[
+                    { icon: MapPin, label: t("address"),       content: address, href: undefined },
+                    { icon: Phone,  label: t("phone"),         content: phone,   href: `tel:${phone.replace(/\s/g, "")}` },
+                    { icon: Mail,   label: t("email"),         content: email,   href: `mailto:${email}` },
+                    { icon: Clock,  label: t("businessHours"), content: hours,   href: undefined },
+                  ].map(({ icon: Icon, label, content, href }) => (
+                    <li key={label} className="flex items-start gap-4">
+                      <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 mt-0.5">
+                        <Icon className="size-4 text-primary" aria-hidden="true" />
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-bold uppercase tracking-widest mb-0.5" style={{ color: "#9ca3af" }}>{label}</p>
+                        {href ? (
+                          <a href={href} className="text-sm font-medium hover:text-primary transition-colors" style={{ color: "#111827" }}>{content}</a>
+                        ) : (
+                          <p className="text-sm font-medium whitespace-pre-line" style={{ color: "#111827" }}>{content}</p>
+                        )}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </ScrollReveal>
 
           {/* Form */}
           <ScrollReveal delay={150}>
             {submitted ? (
-              <div className="rounded-2xl border p-10 text-center flex items-center justify-center h-full min-h-[320px]">
+              <div className="rounded-2xl border border-border bg-white p-10 text-center flex items-center justify-center h-full min-h-[320px] shadow-sm">
                 <div>
-                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                    <Send className="size-6 text-primary" aria-hidden="true" />
+                  <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center mx-auto mb-4">
+                    <Send className="size-6 text-white" aria-hidden="true" />
                   </div>
-                  <p className="text-xl font-bold mb-2">{t("messageSent")}</p>
+                  <p className="text-xl font-bold mb-2" style={{ color: "#111827" }}>{t("messageSent")}</p>
                   <p className="text-sm" style={subTextStyle}>{t("messageSentSubtitle")}</p>
                 </div>
               </div>
             ) : (
-              <form name="contact" onSubmit={handleSubmit} className="space-y-4" noValidate>
-                <input type="hidden" name="form-name" value="contact" />
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="ci-firstName" className="text-sm font-medium mb-1.5 block" style={labelStyle}>{t("firstName")}</label>
-                    <input id="ci-firstName" name="firstName" required className={inputClass} style={inputStyle}
-                      value={form.firstName} onChange={e => setForm(p => ({ ...p, firstName: e.target.value }))} />
+              <div className="rounded-2xl border border-border bg-white shadow-sm overflow-hidden">
+                <div className="h-1 w-full bg-gradient-to-r from-primary via-primary/70 to-transparent" />
+                <form name="contact" onSubmit={handleSubmit} className="space-y-4 p-7" noValidate>
+                  <input type="hidden" name="form-name" value="contact" />
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="ci-firstName" className="text-sm font-medium mb-1.5 block" style={labelStyle}>{t("firstName")}</label>
+                      <input id="ci-firstName" name="firstName" required className={inputClass} style={inputStyle}
+                        value={form.firstName} onChange={e => setForm(p => ({ ...p, firstName: e.target.value }))} />
+                    </div>
+                    <div>
+                      <label htmlFor="ci-lastName" className="text-sm font-medium mb-1.5 block" style={labelStyle}>{t("lastName")}</label>
+                      <input id="ci-lastName" name="lastName" required className={inputClass} style={inputStyle}
+                        value={form.lastName} onChange={e => setForm(p => ({ ...p, lastName: e.target.value }))} />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="ci-phone" className="text-sm font-medium mb-1.5 block" style={labelStyle}>{t("mobileNo")}</label>
+                      <input id="ci-phone" name="phone" type="tel" className={inputClass} style={inputStyle}
+                        value={form.phone} onChange={e => setForm(p => ({ ...p, phone: e.target.value }))} />
+                    </div>
+                    <div>
+                      <label htmlFor="ci-email" className="text-sm font-medium mb-1.5 block" style={labelStyle}>{t("email")}</label>
+                      <input id="ci-email" name="email" type="email" required className={inputClass} style={inputStyle}
+                        value={form.email} onChange={e => setForm(p => ({ ...p, email: e.target.value }))} />
+                    </div>
                   </div>
                   <div>
-                    <label htmlFor="ci-lastName" className="text-sm font-medium mb-1.5 block" style={labelStyle}>{t("lastName")}</label>
-                    <input id="ci-lastName" name="lastName" required className={inputClass} style={inputStyle}
-                      value={form.lastName} onChange={e => setForm(p => ({ ...p, lastName: e.target.value }))} />
+                    <label htmlFor="ci-message" className="text-sm font-medium mb-1.5 block" style={labelStyle}>{t("message")}</label>
+                    <textarea id="ci-message" name="message" required rows={5}
+                      className={cn(inputClass, "resize-none")} style={inputStyle}
+                      value={form.message} onChange={e => setForm(p => ({ ...p, message: e.target.value }))} />
                   </div>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="ci-phone" className="text-sm font-medium mb-1.5 block" style={labelStyle}>{t("mobileNo")}</label>
-                    <input id="ci-phone" name="phone" type="tel" className={inputClass} style={inputStyle}
-                      value={form.phone} onChange={e => setForm(p => ({ ...p, phone: e.target.value }))} />
-                  </div>
-                  <div>
-                    <label htmlFor="ci-email" className="text-sm font-medium mb-1.5 block" style={labelStyle}>{t("email")}</label>
-                    <input id="ci-email" name="email" type="email" required className={inputClass} style={inputStyle}
-                      value={form.email} onChange={e => setForm(p => ({ ...p, email: e.target.value }))} />
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor="ci-message" className="text-sm font-medium mb-1.5 block" style={labelStyle}>{t("message")}</label>
-                  <textarea id="ci-message" name="message" required rows={5}
-                    className={cn(inputClass, "resize-none")} style={inputStyle}
-                    value={form.message} onChange={e => setForm(p => ({ ...p, message: e.target.value }))} />
-                </div>
-                <button type="submit" disabled={submitting}
-                  className={cn(buttonVariants({ size: "lg" }), "w-full gap-2 disabled:opacity-60")}>
-                  <Send className="size-4" aria-hidden="true" />
-                  {submitting ? t("sending") : t("submit")}
-                </button>
-              </form>
+                  <button type="submit" disabled={submitting}
+                    className={cn(buttonVariants({ size: "lg" }), "w-full gap-2 disabled:opacity-60")}>
+                    <Send className="size-4" aria-hidden="true" />
+                    {submitting ? t("sending") : t("submit")}
+                  </button>
+                </form>
+              </div>
             )}
           </ScrollReveal>
         </div>

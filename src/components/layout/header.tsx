@@ -124,7 +124,7 @@ export function Header() {
               <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
                 className="w-7 h-7 rounded-md flex items-center justify-center transition-colors"
                 style={{ color: "#374151" }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "#000"; }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--color-primary, #c2272d)"; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "#374151"; }}>
                 {svg}
               </a>
