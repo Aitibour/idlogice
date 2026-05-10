@@ -11,6 +11,12 @@ interface PageHeroProps {
   bgImage?: string;
 }
 
+/**
+ * Light-themed hero. If `bgImage` is provided it appears as a soft
+ * decorative panel on the right (desktop) / behind a white veil
+ * (mobile) — never as a dark full-bleed overlay. All text stays dark
+ * on light for readability.
+ */
 export function PageHero({
   badge,
   title,
@@ -19,33 +25,60 @@ export function PageHero({
   secondaryCta,
   bgImage,
 }: PageHeroProps) {
-  if (bgImage) {
-    return (
-      <section className="relative py-16 overflow-hidden flex items-center min-h-[320px]">
-        {/* Background image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${bgImage})` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/40 to-black/25" />
+  return (
+    <section className="relative overflow-hidden bg-white border-b border-border/40">
+      {bgImage && (
+        <>
+          {/* Image panel on the right (desktop) */}
+          <div
+            aria-hidden="true"
+            className="hidden md:block absolute inset-y-0 right-0 w-1/2 bg-cover bg-center"
+            style={{ backgroundImage: `url(${bgImage})` }}
+          />
+          {/* Soft white-to-transparent veil so right-side image fades into background */}
+          <div
+            aria-hidden="true"
+            className="hidden md:block absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/40"
+          />
+          {/* Mobile: full-width faded image, light wash on top */}
+          <div
+            aria-hidden="true"
+            className="md:hidden absolute inset-0 bg-cover bg-center opacity-25"
+            style={{ backgroundImage: `url(${bgImage})` }}
+          />
+          <div
+            aria-hidden="true"
+            className="md:hidden absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/95"
+          />
+        </>
+      )}
 
-        <div className="relative z-10 container mx-auto px-4 text-center max-w-3xl py-6">
+      <div className="relative z-10 container mx-auto px-4 py-16 md:py-20">
+        <div className="max-w-2xl">
           {badge && (
-            <span className="inline-block mb-3 px-3 py-1 text-xs font-semibold bg-white/15 text-white border border-white/25 rounded-full backdrop-blur-sm uppercase tracking-wide">
+            <span className="inline-flex items-center mb-4 px-3 py-1 text-xs font-semibold bg-primary/10 text-primary rounded-full uppercase tracking-wide">
               {badge}
             </span>
           )}
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-3 text-white drop-shadow-lg">
+          <h1
+            className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4"
+            style={{ color: "#111827" }}
+          >
             {title}
           </h1>
-          <p className="text-base text-white/80 mb-6 leading-relaxed">{subtitle}</p>
+          <p
+            className="text-base md:text-lg mb-7 leading-relaxed max-w-xl"
+            style={{ color: "#374151" }}
+          >
+            {subtitle}
+          </p>
           {(cta || secondaryCta) && (
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3">
               {cta && (
                 <Link
                   href={cta.href}
                   className={cn(
-                    buttonVariants({ size: "sm" }),
+                    buttonVariants({ size: "lg" }),
                     "btn-shimmer font-semibold px-6 gap-2",
                   )}
                 >
@@ -55,7 +88,10 @@ export function PageHero({
               {secondaryCta && (
                 <Link
                   href={secondaryCta.href}
-                  className="inline-flex items-center justify-center h-9 px-6 rounded-lg border border-white/50 text-white text-sm font-medium hover:bg-white/10 transition-all backdrop-blur-sm"
+                  className={cn(
+                    buttonVariants({ variant: "outline", size: "lg" }),
+                    "font-medium px-6",
+                  )}
                 >
                   {secondaryCta.label}
                 </Link>
@@ -63,38 +99,6 @@ export function PageHero({
             </div>
           )}
         </div>
-      </section>
-    );
-  }
-
-  /* Fallback: plain bg */
-  return (
-    <section className="py-12 bg-muted/30 border-b">
-      <div className="container mx-auto px-4 text-center max-w-3xl">
-        {badge && (
-          <span className="inline-block mb-3 px-3 py-1 text-sm font-medium bg-primary/10 text-primary rounded-full">
-            {badge}
-          </span>
-        )}
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">{title}</h1>
-        <p className="text-base text-muted-foreground mb-6">{subtitle}</p>
-        {(cta || secondaryCta) && (
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            {cta && (
-              <Link href={cta.href} className={cn(buttonVariants({ size: "sm" }))}>
-                {cta.label}
-              </Link>
-            )}
-            {secondaryCta && (
-              <Link
-                href={secondaryCta.href}
-                className={cn(buttonVariants({ variant: "outline", size: "sm" }))}
-              >
-                {secondaryCta.label}
-              </Link>
-            )}
-          </div>
-        )}
       </div>
     </section>
   );

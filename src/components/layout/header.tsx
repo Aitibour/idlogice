@@ -122,8 +122,10 @@ export function Header() {
           <div className="flex items-center gap-1 text-base" aria-label="Social media links">
             {SOCIAL_LINKS.map(({ label, href, svg }) => (
               <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-                className="w-7 h-7 rounded-md flex items-center justify-center hover:text-primary transition-colors"
-                style={{ color: "#374151" }}>
+                className="w-7 h-7 rounded-md flex items-center justify-center transition-colors"
+                style={{ color: "#374151" }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "#000"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "#374151"; }}>
                 {svg}
               </a>
             ))}
