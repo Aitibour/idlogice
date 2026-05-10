@@ -76,13 +76,24 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "REPLACE_WITH_GOOGLE_SEARCH_CONSOLE_TOKEN",
+    // To activate: paste each verification token via env vars.
+    // Google:  https://search.google.com/search-console
+    // Bing:    https://www.bing.com/webmasters
+    // Yandex:  https://webmaster.yandex.com
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+    other: {
+      "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || "",
+      "yandex-verification": process.env.NEXT_PUBLIC_YANDEX_SITE_VERIFICATION || "",
+    },
   },
   alternates: {
     canonical: BASE,
     languages: {
-      "en-CA": BASE,
+      "en-CA": `${BASE}/en`,
       "fr-CA": `${BASE}/fr`,
+      "es": `${BASE}/es`,
+      "ar": `${BASE}/ar`,
+      "x-default": `${BASE}/en`,
     },
   },
 };
