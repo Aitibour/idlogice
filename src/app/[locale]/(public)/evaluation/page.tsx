@@ -48,8 +48,8 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 function Question({ label, sub, children }: { label: string; sub?: string; children: React.ReactNode }) {
   return (
     <div className="mb-6">
-      <p className="font-semibold text-sm mb-0.5">{label}</p>
-      {sub && <p className="text-xs text-muted-foreground mb-3">{sub}</p>}
+      <p className="font-semibold text-sm mb-0.5" style={{ color: "#111827" }}>{label}</p>
+      {sub && <p className="text-xs mb-3" style={{ color: "#374151" }}>{sub}</p>}
       {!sub && <div className="mb-3" />}
       {children}
     </div>
@@ -63,8 +63,9 @@ function OptionCard({ selected, onClick, children }: { selected: boolean; onClic
         "w-full text-left px-4 py-3 rounded-xl border text-sm font-medium transition-all duration-150",
         selected
           ? "border-primary bg-primary/8 text-primary"
-          : "border-border bg-secondary/30 hover:border-border/80 hover:bg-secondary/60 text-foreground/80"
+          : "border-border bg-white hover:border-primary/40 hover:bg-primary/5"
       )}
+      style={selected ? undefined : { color: "#111827" }}
     >
       {children}
     </button>
@@ -73,14 +74,15 @@ function OptionCard({ selected, onClick, children }: { selected: boolean; onClic
 function CLBSelect({ label, value, onChange }: { label: string; value: number; onChange: (v: number) => void }) {
   return (
     <div>
-      <p className="text-xs font-semibold text-muted-foreground mb-1.5">{label}</p>
+      <p className="text-xs font-semibold mb-1.5" style={{ color: "#374151" }}>{label}</p>
       <div className="grid grid-cols-7 gap-1">
         {[4, 5, 6, 7, 8, 9, 10].map(n => (
           <button key={n} type="button" onClick={() => onChange(n)}
             className={cn(
               "py-2 rounded-lg text-xs font-bold border transition-all",
-              value === n ? "bg-primary text-white border-primary" : "border-border bg-secondary/30 hover:border-primary/40 text-foreground/70"
+              value === n ? "bg-primary text-white border-primary" : "border-border bg-white hover:border-primary/40"
             )}
+            style={value === n ? undefined : { color: "#374151" }}
           >
             {n}{n === 10 ? "+" : ""}
           </button>
@@ -402,7 +404,7 @@ export default function EvaluationPage() {
 
           {/* Score breakdown */}
           <div className="bg-white rounded-3xl border border-border p-6 mb-5">
-            <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">Score Breakdown</p>
+            <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#374151" }}>Score Breakdown</p>
             <div className="space-y-3">
               {[
                 { label: "Age",                pts: breakdown.age,               max: 110 },
@@ -413,7 +415,7 @@ export default function EvaluationPage() {
                 { label: "Additional Factors",  pts: breakdown.additionalFactors, max: 600 },
               ].map(({ label, pts, max }) => (
                 <div key={label} className="flex items-center gap-3">
-                  <span className="text-sm text-muted-foreground w-36 shrink-0">{label}</span>
+                  <span className="text-sm w-36 shrink-0" style={{ color: "#374151" }}>{label}</span>
                   <div className="flex-1 h-2 bg-secondary rounded-full overflow-hidden">
                     <div
                       className="h-full bg-primary rounded-full transition-all duration-500"
@@ -421,7 +423,7 @@ export default function EvaluationPage() {
                     />
                   </div>
                   <span className="text-sm font-bold tabular-nums w-16 text-right">
-                    {pts} <span className="text-muted-foreground font-normal text-xs">/ {max}</span>
+                    {pts} <span className="font-normal text-xs" style={{ color: "#6b7280" }}>/ {max}</span>
                   </span>
                 </div>
               ))}
@@ -455,8 +457,8 @@ export default function EvaluationPage() {
               <ul className="space-y-3">
                 {improvements.map((imp, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm">
-                    <span className="text-[10px] font-black text-primary/30 tabular-nums shrink-0 mt-0.5 w-4">{i + 1}</span>
-                    <span className="text-foreground/80">{imp}</span>
+                    <span className="text-[10px] font-black text-primary tabular-nums shrink-0 mt-0.5 w-4">{i + 1}</span>
+                    <span style={{ color: "#111827" }}>{imp}</span>
                   </li>
                 ))}
               </ul>
@@ -476,7 +478,7 @@ export default function EvaluationPage() {
                       ? "You are competitive — but immigration is complex."
                       : `You need ${missingPoints} more points — IDLOGICE can help.`}
                   </p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-sm leading-relaxed" style={{ color: "#374151" }}>
                     {eligible
                       ? "Our certified consultants will ensure your application is complete, accurate, and submitted at the right moment to maximise your chances."
                       : "Our certified consultants specialise in identifying the fastest path to improving your CRS score — whether through language coaching, PNP targeting, or job offer assistance."}
@@ -506,7 +508,7 @@ export default function EvaluationPage() {
                 Recalculate
               </button>
             </div>
-            <div className="px-6 pb-4 text-[11px] text-muted-foreground">
+            <div className="px-6 pb-4 text-[11px]" style={{ color: "#6b7280" }}>
               * This score is an approximation based on simplified CRS rules. Consult a certified RCIC for a precise assessment. CRS cutoffs change with each draw.
             </div>
           </div>
@@ -561,12 +563,12 @@ export default function EvaluationPage() {
                   )}>
                     {done
                       ? <CheckCircle2 className="size-4 text-white" />
-                      : <SIcon className={cn("size-4", active ? "text-white" : "text-muted-foreground")} />
+                      : <SIcon className={cn("size-4", active ? "text-white" : "text-gray-500")} />
                     }
                   </div>
                   <span className={cn(
                     "text-[10px] font-semibold mt-1.5 hidden sm:block",
-                    active ? "text-primary" : done ? "text-primary/60" : "text-muted-foreground/50"
+                    active ? "text-primary" : done ? "text-primary/70" : "text-gray-500"
                   )}>{s.label}</span>
                 </div>
                 {i < STEPS.length - 1 && (
@@ -584,8 +586,8 @@ export default function EvaluationPage() {
               <Icon className="size-4 text-primary" />
             </div>
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Step {step} of {STEPS.length}</p>
-              <h2 className="text-base font-bold leading-tight">{currentStep.label}</h2>
+              <p className="text-[10px] font-bold uppercase tracking-widest" style={{ color: "#6b7280" }}>Step {step} of {STEPS.length}</p>
+              <h2 className="text-base font-bold leading-tight" style={{ color: "#111827" }}>{currentStep.label}</h2>
             </div>
           </div>
           {renderStep()}
