@@ -154,6 +154,9 @@ export default function EvaluationPage() {
     setResult(crsResult);
     setStep(6);
 
+    // GA4 conversion event
+    import("@/lib/analytics").then(({ ga }) => ga.evaluationComplete(crsResult.total, crsResult.eligible));
+
     // Fire marketing confirmation email (non-blocking)
     if (user) {
       const firstName = user.name.split(/[\s.]+/)[0];

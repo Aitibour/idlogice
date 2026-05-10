@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import { signIn, signUp, signInWithGoogle, getUser } from "@/lib/auth";
+import { ga } from "@/lib/analytics";
 import { Eye, EyeOff, User, Mail, Lock, ArrowRight, CheckCircle, MailCheck, AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -51,6 +52,7 @@ export default function LoginPage() {
     try {
       if (tab === "signup") {
         await signUp(form.name.trim(), form.email, form.password, next);
+        ga.signUp("email");
         setState("verify_email");
       } else {
         await signIn(form.email, form.password);
@@ -59,6 +61,7 @@ export default function LoginPage() {
         if (u && !u.emailVerified) {
           setError("Please verify your email address first. Check your inbox for the verification link.");
         } else {
+          ga.login("email");
           router.push(next);
         }
       }
@@ -73,6 +76,7 @@ export default function LoginPage() {
   async function handleGoogleSignIn() {
     setGoogleLoading(true);
     try {
+      ga.login("google");
       await signInWithGoogle(next);
       // Redirect happens in signInWithGoogle — no further action needed
     } catch (err: unknown) {

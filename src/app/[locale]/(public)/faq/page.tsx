@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ChevronDown, HelpCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/navigation";
+import { FaqJsonLd } from "@/components/seo/structured-data";
 
 const FAQS = [
   {
@@ -112,9 +113,14 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   );
 }
 
+const FAQ_JSON_LD_ITEMS = FAQS.flatMap((cat) =>
+  cat.items.map((it) => ({ question: it.q, answer: it.a })),
+);
+
 export default function FaqPage() {
   return (
     <>
+      <FaqJsonLd items={FAQ_JSON_LD_ITEMS} />
       {/* Hero */}
       <section className="bg-white pt-16 pb-12 border-b border-border/40">
         <div className="container mx-auto px-4">

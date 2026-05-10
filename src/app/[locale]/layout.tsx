@@ -14,6 +14,8 @@ import { NewsletterPopup } from "@/components/shared/newsletter-popup";
 import { WhatsAppButton } from "@/components/shared/whatsapp-button";
 import { CookieConsent } from "@/components/shared/cookie-consent";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { OrganizationJsonLd, WebsiteJsonLd } from "@/components/seo/structured-data";
+import { StickyConsultCta } from "@/components/shared/sticky-consult-cta";
 
 export async function generateMetadata({
   params,
@@ -24,7 +26,13 @@ export async function generateMetadata({
   return {
     alternates: {
       canonical: `/${locale}`,
-      languages: { en: "/en", fr: "/fr", es: "/es", ar: "/ar" },
+      languages: {
+        "en-CA": "/en",
+        "fr-CA": "/fr",
+        "es": "/es",
+        "ar": "/ar",
+        "x-default": "/en",
+      },
     },
   };
 }
@@ -52,6 +60,10 @@ export default async function LocaleLayout({
       dir={dir}
       className={`${geistSans.variable} h-full antialiased`}
     >
+      <head>
+        <OrganizationJsonLd />
+        <WebsiteJsonLd />
+      </head>
       <body className="min-h-screen flex flex-col">
         <NextIntlClientProvider messages={messages}>
           <Header />
@@ -59,6 +71,7 @@ export default async function LocaleLayout({
           <Footer />
           <NewsletterPopup />
           <WhatsAppButton />
+          <StickyConsultCta />
           <CookieConsent />
         </NextIntlClientProvider>
       </body>

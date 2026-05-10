@@ -55,6 +55,37 @@ export function Header() {
         scrolled ? "shadow-md" : "border-b border-border/40",
       )}
     >
+      {/* Trust strip */}
+      <div className="hidden md:block border-b" style={{ background: "linear-gradient(90deg, #fef2f2, #ffffff, #fef3c7)", borderColor: "#fde2e2" }}>
+        <div className="container mx-auto px-4 lg:px-6">
+          <div className="flex items-center justify-between gap-4 h-8 text-[11px] font-semibold">
+            <div className="flex items-center gap-4">
+              <span className="flex items-center gap-1.5">
+                <span className="text-amber-500">★★★★★</span>
+                <span style={{ color: "#111827" }}>4.9</span>
+                <span style={{ color: "#6b7280" }} className="hidden lg:inline">on Google · 127 reviews</span>
+              </span>
+              <span className="hidden lg:flex items-center gap-1.5" style={{ color: "#6b7280" }}>
+                <span className="w-1 h-1 rounded-full bg-emerald-500" />
+                <span><strong style={{ color: "#111827" }}>500+</strong> approved applications</span>
+              </span>
+              <span className="hidden lg:flex items-center gap-1.5" style={{ color: "#6b7280" }}>
+                <span className="w-1 h-1 rounded-full bg-emerald-500" />
+                <span><strong style={{ color: "#111827" }}>CICC</strong>-registered RCIC</span>
+              </span>
+            </div>
+            <div className="flex items-center gap-3">
+              <a href="tel:+15816340224" className="flex items-center gap-1 hover:opacity-80 transition-opacity" style={{ color: "#c2272d" }}>
+                📞 +1 581-634-0224
+              </a>
+              <a href="mailto:contact@idlogice.com" className="hidden lg:flex items-center gap-1 hover:opacity-80 transition-opacity" style={{ color: "#6b7280" }}>
+                ✉ contact@idlogice.com
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="container mx-auto flex h-[70px] items-center justify-between px-4 lg:px-6 gap-4">
 
         {/* Logo */}

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { MapPin, Calendar, Briefcase, ChevronRight, ChevronDown, Lock, CheckCircle, X, User, Globe, Clock, Mail, UserPlus } from "lucide-react";
 import { getUser, type AuthUser } from "@/lib/auth";
+import { ga } from "@/lib/analytics";
 
 type Job = {
   id: number;
@@ -90,6 +91,7 @@ function ApplyForm({ job, user, onClose }: { job: Job; user: AuthUser; onClose: 
     const data = new FormData(form);
     try {
       await fetch("/", { method: "POST", body: data });
+      ga.jobApplication(job.title, job.noc, false);
     } finally {
       setLoading(false);
       setSubmitted(true);
@@ -217,6 +219,7 @@ function EligibilityForm({ job, user, onClose }: { job: Job; user: AuthUser; onC
     const data = new FormData(form);
     try {
       await fetch("/", { method: "POST", body: data });
+      ga.jobApplication(job.title, job.noc, true);
     } finally {
       setLoading(false);
       setSubmitted(true);
