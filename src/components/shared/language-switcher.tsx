@@ -1,9 +1,11 @@
 "use client";
 
+import { useState, useRef, useEffect } from "react";
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { locales, localeNames, type Locale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
+import { ChevronDown } from "lucide-react";
 
 function FlagCA({ className }: { className?: string }) {
   return (
@@ -64,36 +66,70 @@ const LABELS: Record<Locale, string> = {
 };
 
 export function LanguageSwitcher() {
-  const locale = useLocale();
+  const locale = useLocale() as Locale;
   const pathname = usePathname();
   const router = useRouter();
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  // Close on outside click
+  useEffect(() => {
+    function handle(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handle);
+    return () => document.removeEventListener("mousedown", handle);
+  }, []);
 
   function switchTo(newLocale: Locale) {
     router.replace(pathname, { locale: newLocale });
+    setOpen(false);
   }
 
+  const ActiveFlag = FLAGS[locale] ?? FLAGS.en;
+
   return (
-    <div className="flex items-center gap-1" aria-label="Language switcher">
-      {locales.map((loc) => {
-        const Flag = FLAGS[loc];
-        return (
-          <button
-            key={loc}
-            onClick={() => switchTo(loc)}
-            aria-label={localeNames[loc]}
-            className={cn(
-              "flex items-center gap-1.5 px-2 py-1 rounded-lg text-xs font-semibold transition-colors",
-              locale === loc
-                ? "bg-primary/10 text-primary"
-                : "hover:bg-secondary",
-            )}
-            style={{ color: locale === loc ? undefined : "#374151" }}
-          >
-            <Flag className="w-5 h-3.5 rounded-[2px] shrink-0" />
-            <span className="uppercase tracking-wide">{LABELS[loc]}</span>
-          </button>
-        );
-      })}
+    <div ref={ref} className="relative" aria-label="Language switcher">
+      {/* Trigger: current flag + label + chevron */}
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-border hover:bg-muted/60 transition-colors"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+      >
+        <ActiveFlag className="w-5 h-3.5 rounded-[2px] shrink-0" />
+        <span className="text-xs font-semibold uppercase" style={{ color: "#374151" }}>{LABELS[locale] ?? "EN"}</span>
+        <ChevronDown className={cn("size-3 transition-transform", open && "rotate-180")} style={{ color: "#374151" }} />
+      </button>
+
+      {/* Dropdown */}
+      {open && (
+        <div
+          className="absolute right-0 top-full mt-1.5 w-36 rounded-xl border border-border bg-white shadow-lg shadow-black/8 py-1 z-50"
+          role="listbox"
+        >
+          {locales.map((loc) => {
+            const Flag = FLAGS[loc];
+            const isActive = locale === loc;
+            return (
+              <button
+                key={loc}
+                role="option"
+                aria-selected={isActive}
+                onClick={() => switchTo(loc)}
+                className={cn(
+                  "w-full flex items-center gap-2.5 px-3 py-2 text-sm transition-colors",
+                  isActive ? "bg-primary/8 text-primary font-semibold" : "hover:bg-muted/60"
+                )}
+                style={isActive ? undefined : { color: "#111827" }}
+              >
+                <Flag className="w-5 h-3.5 rounded-[2px] shrink-0" />
+                <span>{localeNames[loc]}</span>
+              </button>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
