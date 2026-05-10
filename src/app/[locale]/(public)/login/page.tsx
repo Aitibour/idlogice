@@ -82,7 +82,7 @@ export default function LoginPage() {
     }
   }
 
-  const inputClass = "w-full bg-secondary/50 border border-border rounded-xl px-4 py-3 pl-11 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all placeholder:text-muted-foreground/50";
+  const inputClass = "w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 pl-11 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all placeholder:text-gray-400";
 
   const benefits = [
     "Get your Express Entry CRS score instantly",
@@ -94,37 +94,38 @@ export default function LoginPage() {
   /* ── Email verification screen ─────────────────────────────────────────── */
   if (state === "verify_email") {
     return (
-      <main className="min-h-screen bg-[oklch(0.97_0_0)] flex items-center justify-center py-16 px-4">
-        <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl p-10 text-center">
+      <main className="min-h-screen flex items-center justify-center py-16 px-4" style={{ background: "#f9fafb" }}>
+        <div className="w-full max-w-md bg-white rounded-3xl shadow-xl border border-gray-100 p-10 text-center">
           <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mb-6">
             <MailCheck className="size-10 text-primary" />
           </div>
-          <h1 className="text-2xl font-bold mb-3">Check your email</h1>
-          <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+          <h1 className="text-2xl font-black mb-3" style={{ color: "#111827" }}>Check your email</h1>
+          <p className="text-sm leading-relaxed mb-2" style={{ color: "#6b7280" }}>
             We sent a verification link to
           </p>
-          <p className="font-semibold text-foreground mb-6">{form.email}</p>
-          <p className="text-sm text-muted-foreground leading-relaxed mb-8">
+          <p className="font-bold mb-6" style={{ color: "#111827" }}>{form.email}</p>
+          <p className="text-sm leading-relaxed mb-8" style={{ color: "#374151" }}>
             Click the link in your email to verify your account, then come back here to sign in. The link expires in 24 hours.
           </p>
           <div className="space-y-3">
             <button
               onClick={() => { setState("form"); setTab("signin"); }}
-              className="w-full flex items-center justify-center gap-2 h-12 rounded-xl bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-all"
+              className="w-full flex items-center justify-center gap-2 h-12 rounded-xl bg-primary text-white text-sm font-bold hover:bg-primary/90 shadow-md shadow-primary/25 transition-all"
             >
               I've verified — Sign In
               <ArrowRight className="size-4" />
             </button>
             <button
               onClick={() => setState("form")}
-              className="w-full h-10 rounded-xl text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="w-full h-10 rounded-xl text-sm font-medium transition-colors hover:bg-gray-50"
+              style={{ color: "#374151" }}
             >
               ← Back
             </button>
           </div>
-          <p className="mt-6 text-xs text-muted-foreground/60">
+          <p className="mt-6 text-xs" style={{ color: "#9ca3af" }}>
             Didn't get the email? Check your spam folder or{" "}
-            <button onClick={() => setState("form")} className="text-primary hover:underline">try again</button>.
+            <button onClick={() => setState("form")} className="text-primary font-semibold hover:underline">try again</button>.
           </p>
         </div>
       </main>
@@ -133,59 +134,73 @@ export default function LoginPage() {
 
   /* ── Main login/signup form ─────────────────────────────────────────────── */
   return (
-    <main className="min-h-screen bg-[oklch(0.97_0_0)] flex items-center justify-center py-16 px-4">
-      <div className="w-full max-w-4xl grid lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden shadow-2xl">
+    <main className="min-h-screen flex items-center justify-center py-12 px-4" style={{ background: "linear-gradient(135deg, #fef2f2 0%, #f9fafb 50%, #fef3c7 100%)" }}>
+      <div className="w-full max-w-5xl grid lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden shadow-xl bg-white border border-gray-100">
 
-        {/* ── Left: brand panel ───────────────────────────────────────────── */}
-        <div className="hidden lg:flex flex-col bg-[oklch(0.12_0_0)] text-white p-10">
-          <div className="h-1 w-12 bg-primary rounded-full mb-8" />
-          <div className="flex-1">
-            <p className="text-xs font-bold uppercase tracking-widest text-white/30 mb-3">
-              IDLOGICE Immigration
-            </p>
-            <h2 className="text-3xl font-bold leading-tight mb-4">
+        {/* ── Left: light brand panel ─────────────────────────────────────── */}
+        <div className="hidden lg:flex flex-col p-10 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #ffffff 0%, #fef2f2 100%)" }}>
+          {/* Decorative gradient orb */}
+          <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full opacity-20 blur-3xl" style={{ background: "radial-gradient(circle, #c2272d, transparent)" }} />
+
+          <div className="relative flex-1 z-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              <p className="text-[10px] font-black uppercase tracking-widest text-primary">
+                IDLOGICE Immigration
+              </p>
+            </div>
+
+            <h2 className="text-4xl font-black leading-tight tracking-tight mb-5" style={{ color: "#111827" }}>
               Your path to<br />
-              <span className="text-primary">Canada starts here.</span>
+              <span style={{ background: "linear-gradient(135deg, #c2272d, #8b1a1f)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Canada starts here.</span>
             </h2>
-            <p className="text-sm text-white/50 leading-relaxed mb-10">
+            <p className="text-base leading-relaxed mb-10" style={{ color: "#374151" }}>
               Create a free account to access your Express Entry CRS evaluation and connect with our certified RCIC consultants.
             </p>
 
-            <ul className="space-y-4">
+            <ul className="space-y-3.5">
               {benefits.map((b) => (
-                <li key={b} className="flex items-start gap-3">
-                  <CheckCircle className="size-4 text-primary shrink-0 mt-0.5" />
-                  <span className="text-sm text-white/70">{b}</span>
+                <li key={b} className="flex items-start gap-3 p-3 rounded-xl bg-white border border-gray-100 shadow-sm">
+                  <div className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
+                    <CheckCircle className="size-4 text-emerald-600" />
+                  </div>
+                  <span className="text-sm font-semibold" style={{ color: "#111827" }}>{b}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="mt-10 pt-6 border-t border-white/10">
-            <p className="text-xs text-white/30 leading-relaxed">
-              IDLOGICE consultants are Regulated Canadian Immigration Consultants (RCICs) registered with the College of Immigration and Citizenship Consultants (CICC).
-            </p>
+          <div className="relative mt-8 pt-6 border-t border-gray-200 z-10">
+            <div className="flex items-start gap-2.5">
+              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                <CheckCircle className="size-4 text-primary" />
+              </div>
+              <p className="text-xs leading-relaxed" style={{ color: "#6b7280" }}>
+                <strong style={{ color: "#111827" }}>RCIC Regulated.</strong> IDLOGICE consultants are registered with the College of Immigration and Citizenship Consultants (CICC).
+              </p>
+            </div>
           </div>
         </div>
 
         {/* ── Right: form panel ───────────────────────────────────────────── */}
-        <div className="bg-white flex flex-col p-8 lg:p-10">
-          <div className="mb-8">
-            <Link href="/" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+        <div className="flex flex-col p-8 lg:p-10 bg-white">
+          <div className="mb-6">
+            <Link href="/" className="inline-flex items-center gap-1 text-xs font-semibold transition-colors hover:text-primary" style={{ color: "#6b7280" }}>
               ← Back to homepage
             </Link>
           </div>
 
           {/* Tabs */}
-          <div className="flex gap-1 p-1 bg-secondary rounded-xl mb-7">
+          <div className="flex gap-1 p-1 rounded-xl mb-7" style={{ background: "#f3f4f6" }}>
             {(["signup", "signin"] as const).map((t) => (
               <button
                 key={t}
                 onClick={() => { setTab(t); setError(""); }}
                 className={cn(
-                  "flex-1 py-2 rounded-lg text-sm font-semibold transition-all duration-200",
-                  tab === t ? "bg-white shadow-sm text-foreground" : "text-muted-foreground hover:text-foreground"
+                  "flex-1 py-2.5 rounded-lg text-sm font-bold transition-all duration-200",
+                  tab === t ? "bg-white shadow-sm" : "hover:bg-white/50"
                 )}
+                style={{ color: tab === t ? "#111827" : "#6b7280" }}
               >
                 {t === "signup" ? "Create Account" : "Sign In"}
               </button>
@@ -193,10 +208,10 @@ export default function LoginPage() {
           </div>
 
           <div className="mb-6">
-            <h1 className="text-2xl font-bold mb-1">
+            <h1 className="text-3xl font-black mb-2 tracking-tight" style={{ color: "#111827" }}>
               {tab === "signup" ? "Create your free account" : "Welcome back"}
             </h1>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm" style={{ color: "#6b7280" }}>
               {tab === "signup"
                 ? "Sign up to access your Express Entry evaluation."
                 : "Sign in to access your evaluation and profile."}
@@ -208,10 +223,11 @@ export default function LoginPage() {
             type="button"
             onClick={handleGoogleSignIn}
             disabled={googleLoading}
-            className="w-full flex items-center justify-center gap-3 h-12 rounded-xl border border-border bg-white hover:bg-secondary/40 text-sm font-semibold transition-all mb-4 disabled:opacity-60"
+            className="w-full flex items-center justify-center gap-3 h-12 rounded-xl border-2 border-gray-200 bg-white hover:border-primary/40 hover:bg-primary/5 text-sm font-bold transition-all mb-5 disabled:opacity-60"
+            style={{ color: "#111827" }}
           >
             {googleLoading ? (
-              <span className="w-4 h-4 border-2 border-foreground/20 border-t-foreground/60 rounded-full animate-spin" />
+              <span className="w-4 h-4 border-2 border-primary/20 border-t-primary rounded-full animate-spin" />
             ) : (
               <GoogleIcon />
             )}
@@ -219,69 +235,83 @@ export default function LoginPage() {
           </button>
 
           {/* Divider */}
-          <div className="flex items-center gap-3 mb-4">
-            <div className="flex-1 h-px bg-border" />
-            <span className="text-xs text-muted-foreground font-medium">or with email</span>
-            <div className="flex-1 h-px bg-border" />
+          <div className="flex items-center gap-3 mb-5">
+            <div className="flex-1 h-px" style={{ background: "#e5e7eb" }} />
+            <span className="text-xs font-semibold" style={{ color: "#6b7280" }}>or with email</span>
+            <div className="flex-1 h-px" style={{ background: "#e5e7eb" }} />
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-3 flex-1">
             {tab === "signup" && (
-              <div className="relative">
-                <User className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/50" />
-                <input
-                  type="text" placeholder="Full name"
-                  value={form.name} onChange={set("name")}
-                  className={inputClass} required autoComplete="name"
-                />
+              <div>
+                <label className="block text-xs font-bold mb-1.5" style={{ color: "#111827" }}>Full Name</label>
+                <div className="relative">
+                  <User className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4" style={{ color: "#9ca3af" }} />
+                  <input
+                    type="text" placeholder="John Smith"
+                    value={form.name} onChange={set("name")}
+                    className={inputClass} required autoComplete="name"
+                    style={{ color: "#111827" }}
+                  />
+                </div>
               </div>
             )}
 
-            <div className="relative">
-              <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/50" />
-              <input
-                type="email" placeholder="Email address"
-                value={form.email} onChange={set("email")}
-                className={inputClass} required autoComplete="email"
-              />
+            <div>
+              <label className="block text-xs font-bold mb-1.5" style={{ color: "#111827" }}>Email Address</label>
+              <div className="relative">
+                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4" style={{ color: "#9ca3af" }} />
+                <input
+                  type="email" placeholder="you@example.com"
+                  value={form.email} onChange={set("email")}
+                  className={inputClass} required autoComplete="email"
+                  style={{ color: "#111827" }}
+                />
+              </div>
             </div>
 
-            <div className="relative">
-              <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/50" />
-              <input
-                type={showPw ? "text" : "password"}
-                placeholder="Password (min. 6 characters)"
-                value={form.password} onChange={set("password")}
-                className={cn(inputClass, "pr-11")} required
-                autoComplete={tab === "signup" ? "new-password" : "current-password"}
-              />
-              <button
-                type="button"
-                onClick={() => setShowPw(p => !p)}
-                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-muted-foreground/50 hover:text-muted-foreground transition-colors"
-                aria-label={showPw ? "Hide password" : "Show password"}
-              >
-                {showPw ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
-              </button>
+            <div>
+              <label className="block text-xs font-bold mb-1.5" style={{ color: "#111827" }}>Password</label>
+              <div className="relative">
+                <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4" style={{ color: "#9ca3af" }} />
+                <input
+                  type={showPw ? "text" : "password"}
+                  placeholder="At least 12 characters"
+                  value={form.password} onChange={set("password")}
+                  className={cn(inputClass, "pr-11")} required
+                  autoComplete={tab === "signup" ? "new-password" : "current-password"}
+                  style={{ color: "#111827" }}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPw(p => !p)}
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 transition-colors hover:text-primary"
+                  style={{ color: "#9ca3af" }}
+                  aria-label={showPw ? "Hide password" : "Show password"}
+                >
+                  {showPw ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+                </button>
+              </div>
             </div>
 
             {error && (
-              <div className="flex items-start gap-2.5 text-xs text-destructive bg-destructive/8 border border-destructive/15 rounded-xl px-4 py-3">
-                <AlertCircle className="size-3.5 shrink-0 mt-0.5" />
-                {error}
+              <div className="flex items-start gap-2.5 text-xs bg-red-50 border-2 border-red-200 rounded-xl px-4 py-3" style={{ color: "#b91c1c" }}>
+                <AlertCircle className="size-4 shrink-0 mt-0.5" />
+                <span className="font-medium">{error}</span>
               </div>
             )}
 
             {tab === "signup" && (
-              <p className="text-xs text-muted-foreground/70 leading-relaxed px-1">
-                A verification email will be sent to confirm your address before you can access the evaluation.
+              <p className="text-xs leading-relaxed px-1" style={{ color: "#6b7280" }}>
+                <strong style={{ color: "#374151" }}>📧 Email verification required.</strong> We'll send you a link to confirm your address before you can access the evaluation.
               </p>
             )}
 
             <button
               type="submit"
               disabled={loading}
-              className="btn-shimmer w-full flex items-center justify-center gap-2 h-12 rounded-xl bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 active:scale-[0.98] transition-all disabled:opacity-60 !mt-4"
+              className="btn-shimmer w-full flex items-center justify-center gap-2 h-12 rounded-xl text-white text-sm font-bold transition-all disabled:opacity-60 !mt-5 shadow-md shadow-primary/30 hover:shadow-primary/50 hover:scale-[1.01] active:scale-[0.99]"
+              style={{ background: "linear-gradient(135deg, #c2272d, #8b1a1f)" }}
             >
               {loading ? (
                 <span className="flex items-center gap-2">
@@ -290,20 +320,20 @@ export default function LoginPage() {
                 </span>
               ) : (
                 <>
-                  {tab === "signup" ? "Create Account" : "Sign In & Continue"}
+                  {tab === "signup" ? "Create My Free Account" : "Sign In & Continue"}
                   <ArrowRight className="size-4" />
                 </>
               )}
             </button>
           </form>
 
-          <p className="mt-5 text-xs text-center text-muted-foreground">
+          <p className="mt-6 text-xs text-center" style={{ color: "#6b7280" }}>
             {tab === "signup" ? "Already have an account? " : "Don't have an account? "}
             <button
               onClick={() => { setTab(tab === "signup" ? "signin" : "signup"); setError(""); }}
-              className="text-primary font-semibold hover:underline"
+              className="text-primary font-bold hover:underline"
             >
-              {tab === "signup" ? "Sign in" : "Create one for free"}
+              {tab === "signup" ? "Sign in instead" : "Create one for free"}
             </button>
           </p>
         </div>
