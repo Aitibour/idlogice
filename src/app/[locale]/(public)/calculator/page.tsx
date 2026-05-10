@@ -229,21 +229,21 @@ export default function CalculatorPage() {
     ];
 
     return (
-      <div className="min-h-screen bg-secondary/20 py-12 px-4">
+      <div className="min-h-screen py-12 px-4" style={{ background: "#f9fafb" }}>
         <div className="max-w-2xl mx-auto">
           {/* Score card */}
           <div className="bg-white rounded-3xl border border-border shadow-lg overflow-hidden mb-5">
             <div className="h-1 w-full bg-gradient-to-r from-primary via-primary/70 to-transparent" />
             <div className="p-8 text-center">
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-3">Your Estimated CRS Score</p>
-              <div className="text-7xl font-black tracking-tight mb-2" style={{ color: "oklch(0.13 0 0)" }}>
+              <div className="text-7xl font-black tracking-tight mb-2" style={{ color: "#111827" }}>
                 {score}
               </div>
               <div className={cn("inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-sm font-bold mb-4", band.bg, band.color)}>
                 <TrendingUp className="size-3.5" />
                 {band.label} Profile
               </div>
-              <p className={cn("text-sm leading-relaxed max-w-md mx-auto p-4 rounded-2xl border", band.bg, "text-foreground/70")}>
+              <p className={cn("text-sm leading-relaxed max-w-md mx-auto p-4 rounded-2xl border", band.bg)} style={{ color: "#374151" }}>
                 {band.tip}
               </p>
             </div>
@@ -252,18 +252,18 @@ export default function CalculatorPage() {
           {/* Breakdown */}
           <div className="bg-white rounded-3xl border border-border shadow-sm overflow-hidden mb-5">
             <div className="p-6">
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-5">Score Breakdown</p>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] mb-5" style={{ color: "#374151" }}>Score Breakdown</p>
               <div className="space-y-3">
                 {rows.map(({ label, pts, max }) => (
                   <div key={label}>
                     <div className="flex justify-between items-center mb-1">
-                      <span className="text-xs font-medium text-foreground/80">{label}</span>
-                      <span className="text-xs font-bold tabular-nums">{pts} <span className="text-muted-foreground font-normal">/ {max}</span></span>
+                      <span className="text-xs font-semibold" style={{ color: "#374151" }}>{label}</span>
+                      <span className="text-xs font-bold tabular-nums" style={{ color: "#111827" }}>{pts} <span className="font-normal" style={{ color: "#9ca3af" }}>/ {max}</span></span>
                     </div>
-                    <div className="h-1.5 bg-secondary rounded-full overflow-hidden">
+                    <div className="h-1.5 rounded-full overflow-hidden" style={{ background: "#f3f4f6" }}>
                       <div
                         className="h-full rounded-full transition-all"
-                        style={{ width: `${Math.min(100, (pts / max) * 100)}%`, background: pts > 0 ? "oklch(0.52 0.22 27)" : "transparent" }}
+                        style={{ width: `${Math.min(100, (pts / max) * 100)}%`, background: pts > 0 ? "var(--color-primary, #c2272d)" : "transparent" }}
                       />
                     </div>
                   </div>
@@ -299,7 +299,7 @@ export default function CalculatorPage() {
 
   // ── Wizard ──────────────────────────────────────────────────────────────────
   return (
-    <div className="min-h-screen bg-secondary/20">
+    <div className="min-h-screen" style={{ background: "#f9fafb" }}>
       {/* Hero */}
       <div className="bg-white border-b border-border">
         <div className="container mx-auto px-4 py-10 max-w-2xl text-center">

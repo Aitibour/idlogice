@@ -98,20 +98,22 @@ function ScoreGauge({ score, max = 1200 }: { score: number; max?: number }) {
   const cutoff = 491;
   const cutoffPct = (cutoff / max) * 100;
   return (
-    <div className="relative h-5 bg-secondary rounded-full overflow-hidden">
+    <div className="relative h-3 rounded-full overflow-hidden" style={{ background: "#f3f4f6" }}>
       <div
         className="absolute left-0 top-0 h-full rounded-full transition-all duration-700"
         style={{
           width: `${pct}%`,
           background: score >= cutoff
-            ? "linear-gradient(90deg, oklch(0.52 0.22 27), oklch(0.62 0.2 27))"
-            : "linear-gradient(90deg, oklch(0.65 0.15 50), oklch(0.7 0.18 40))",
+            ? "linear-gradient(90deg, #10b981, #059669)"
+            : score >= 400
+              ? "linear-gradient(90deg, #f59e0b, #d97706)"
+              : "linear-gradient(90deg, #ef4444, #dc2626)",
         }}
       />
       {/* Cutoff marker */}
       <div
-        className="absolute top-0 bottom-0 w-0.5 bg-foreground/30"
-        style={{ left: `${cutoffPct}%` }}
+        className="absolute top-0 bottom-0 w-0.5"
+        style={{ left: `${cutoffPct}%`, background: "#9ca3af" }}
         title={`Recent cutoff: ${cutoff}`}
       />
     </div>
@@ -373,30 +375,41 @@ export default function EvaluationPage() {
         <div className="py-12 px-4">
         <div className="max-w-3xl mx-auto">
 
-          {/* Score header */}
-          <div className={cn(
-            "rounded-3xl p-8 mb-6 text-white",
-            eligible ? "bg-primary" : "bg-[oklch(0.25_0_0)]"
-          )}>
+          {/* Score header — light, encouraging */}
+          <div className="rounded-3xl bg-white border border-border shadow-sm p-8 mb-6 overflow-hidden relative">
+            {/* Top accent strip */}
+            <div className={cn(
+              "absolute top-0 left-0 right-0 h-1",
+              eligible ? "bg-emerald-500" : total >= 400 ? "bg-amber-500" : "bg-primary"
+            )} />
+
             <div className="flex items-start justify-between flex-wrap gap-4">
               <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-white/50 mb-2">Your CRS Score</p>
-                <div className="text-7xl font-black tabular-nums leading-none mb-3">{total}</div>
-                <div className="flex items-center gap-2">
+                <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "#6b7280" }}>Your CRS Score</p>
+                <div className="text-7xl font-black tabular-nums leading-none mb-3" style={{ color: eligible ? "#059669" : "#111827" }}>{total}</div>
+                <div className={cn(
+                  "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-bold",
+                  eligible
+                    ? "bg-emerald-50 border border-emerald-200 text-emerald-700"
+                    : total >= 400
+                      ? "bg-amber-50 border border-amber-200 text-amber-800"
+                      : "bg-red-50 border border-red-200 text-red-700"
+                )}>
                   {eligible
-                    ? <><CheckCircle2 className="size-5" /><span className="font-semibold">Competitive — above recent draw cutoff</span></>
-                    : <><AlertTriangle className="size-5 text-amber-400" /><span className="font-semibold">{missingPoints} points below recent cutoff ({currentCutoff})</span></>
+                    ? <><CheckCircle2 className="size-4" /><span>Competitive — above recent cutoff</span></>
+                    : <><AlertTriangle className="size-4" /><span>{missingPoints} points below cutoff ({currentCutoff})</span></>
                   }
                 </div>
               </div>
               <div className="text-right">
-                <p className="text-xs text-white/50 mb-1">Target cutoff</p>
-                <p className="text-3xl font-bold">{currentCutoff}</p>
+                <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: "#6b7280" }}>Target cutoff</p>
+                <p className="text-3xl font-bold tabular-nums" style={{ color: "#111827" }}>{currentCutoff}</p>
               </div>
             </div>
+
             <div className="mt-6">
               <ScoreGauge score={total} />
-              <div className="flex justify-between mt-1 text-[10px] text-white/40">
+              <div className="flex justify-between mt-1.5 text-[10px] font-medium" style={{ color: "#9ca3af" }}>
                 <span>0</span><span>300</span><span>↑ {currentCutoff} cutoff</span><span>900</span><span>1200</span>
               </div>
             </div>
@@ -415,15 +428,15 @@ export default function EvaluationPage() {
                 { label: "Additional Factors",  pts: breakdown.additionalFactors, max: 600 },
               ].map(({ label, pts, max }) => (
                 <div key={label} className="flex items-center gap-3">
-                  <span className="text-sm w-36 shrink-0" style={{ color: "#374151" }}>{label}</span>
-                  <div className="flex-1 h-2 bg-secondary rounded-full overflow-hidden">
+                  <span className="text-sm w-36 shrink-0 font-medium" style={{ color: "#374151" }}>{label}</span>
+                  <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: "#f3f4f6" }}>
                     <div
                       className="h-full bg-primary rounded-full transition-all duration-500"
                       style={{ width: `${(pts / max) * 100}%` }}
                     />
                   </div>
-                  <span className="text-sm font-bold tabular-nums w-16 text-right">
-                    {pts} <span className="font-normal text-xs" style={{ color: "#6b7280" }}>/ {max}</span>
+                  <span className="text-sm font-bold tabular-nums w-16 text-right" style={{ color: "#111827" }}>
+                    {pts} <span className="font-normal text-xs" style={{ color: "#9ca3af" }}>/ {max}</span>
                   </span>
                 </div>
               ))}
