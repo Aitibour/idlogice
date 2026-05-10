@@ -75,7 +75,7 @@ export function Header() {
 
           {/* Services dropdown */}
           <div
-            className="relative group"
+            className="relative"
             onMouseEnter={() => setDesktopServicesOpen(true)}
             onMouseLeave={() => setDesktopServicesOpen(false)}
           >
@@ -84,22 +84,26 @@ export function Header() {
               style={NAV_TEXT_STYLE}
               aria-haspopup="menu"
               aria-expanded={desktopServicesOpen}
+              onClick={() => setDesktopServicesOpen(!desktopServicesOpen)}
             >
               {t("services")}
-              <ChevronDown className="size-3.5 transition-transform duration-200 group-hover:rotate-180" aria-hidden="true" />
+              <ChevronDown className={cn("size-3.5 transition-transform duration-200", desktopServicesOpen && "rotate-180")} aria-hidden="true" />
             </button>
-            <div className="absolute left-0 top-full pt-3 hidden group-hover:block group-focus-within:block" role="menu">
-              <div className="w-52 rounded-xl border border-border/60 bg-white shadow-xl shadow-black/8 p-1.5">
-                {serviceLinks.map((link) => (
-                  <Link key={link.href} href={link.href} role="menuitem"
-                    className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium hover:bg-muted/60 transition-colors"
-                    style={NAV_SUB_TEXT_STYLE}>
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" aria-hidden="true" />
-                    {link.label}
-                  </Link>
-                ))}
+            {desktopServicesOpen && (
+              <div className="absolute left-0 top-full pt-3" role="menu">
+                <div className="w-52 rounded-xl border border-border/60 bg-white shadow-xl shadow-black/8 p-1.5">
+                  {serviceLinks.map((link) => (
+                    <Link key={link.href} href={link.href} role="menuitem"
+                      className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium hover:bg-muted/60 transition-colors"
+                      style={NAV_SUB_TEXT_STYLE}
+                      onClick={() => setDesktopServicesOpen(false)}>
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" aria-hidden="true" />
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           {navLinksAfter.map((link) => (

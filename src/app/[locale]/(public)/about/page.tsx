@@ -33,11 +33,11 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       />
 
       {/* Mission */}
-      <section className="py-10">
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-4 max-w-3xl">
           <ScrollReveal>
-            <h2 className="text-xl font-bold mb-3">{t("mission.heading")}</h2>
-            <p className="text-muted-foreground leading-relaxed">
+            <h2 className="text-xl font-bold mb-4" style={{ color: "#111827" }}>{t("mission.heading")}</h2>
+            <p className="leading-relaxed text-base" style={{ color: "#374151" }}>
               {t("mission.body")}
             </p>
           </ScrollReveal>
