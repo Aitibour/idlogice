@@ -58,10 +58,26 @@
           "Es admisible en Canadá"
         ],
         "facts": [
-          "Tiempo de procesamiento: ~6 meses",
-          "Sin límite de edad (aunque se otorgan más puntos a candidatos más jóvenes)",
-          "Incluye cónyuge e hijos dependientes",
-          "Permite trabajar en Canadá durante el procesamiento"
+          {
+            "label": "Puntaje CRS máx.",
+            "value": "1.200 puntos"
+          },
+          {
+            "label": "Programas",
+            "value": "TQF, CEC, TQM"
+          },
+          {
+            "label": "Procesamiento típico",
+            "value": "6 meses"
+          },
+          {
+            "label": "Idioma mínimo",
+            "value": "CLB 7 (IELTS/CELPIP/TEF)"
+          },
+          {
+            "label": "Experiencia mínima",
+            "value": "1 año NOC TEER 0/1/2/3"
+          }
         ]
       },
       "steps": {
@@ -92,7 +108,8 @@
             "title": "Residencia Permanente",
             "description": "Después de la aprobación, le guiamos en los trámites de confirmación de residencia permanente (COPR) y el aterrizaje en Canadá."
           }
-        ]
+        ],
+        "subtitle": "Desde la creación de su perfil hasta la obtención de su residencia permanente."
       },
       "cta": {
         "title": "¿Listo para Iniciar su Solicitud de Express Entry?",
@@ -139,10 +156,22 @@
           "Tiene la intención de salir de Canadá al finalizar sus estudios (si no solicita RP)"
         ],
         "facts": [
-          "Tiempo de procesamiento: 4–12 semanas (varía según el país)",
-          "El procesamiento acelerado está disponible para ciertos países bajo el Student Direct Stream (SDS)",
-          "Se puede trabajar hasta 24 horas por semana fuera del campus durante el período de estudios",
-          "El permiso de trabajo posgrado (PGWP) permite trabajar hasta 3 años después de graduarse"
+          {
+            "label": "Procesamiento típico",
+            "value": "4–12 semanas"
+          },
+          {
+            "label": "Trabajo permitido",
+            "value": "Hasta 24 h/sem fuera del campus"
+          },
+          {
+            "label": "PGWP",
+            "value": "Hasta 3 años tras graduarse"
+          },
+          {
+            "label": "Student Direct Stream",
+            "value": "Disponible para países elegibles"
+          }
         ]
       },
       "steps": {
@@ -220,10 +249,22 @@
           "Puede demostrar que regresará a su país de origen al vencer el permiso (si aplica)"
         ],
         "facts": [
-          "Tiempo de procesamiento: 4–27 semanas (según el tipo de permiso y su país de residencia)",
-          "El permiso de trabajo abierto le permite trabajar para cualquier empleador en Canadá",
-          "Algunos permisos de trabajo no requieren LMIA (Evaluación de Impacto en el Mercado Laboral)",
-          "Los titulares de permiso de trabajo pueden solicitar residencia permanente por varias vías"
+          {
+            "label": "Procesamiento típico",
+            "value": "4–27 semanas"
+          },
+          {
+            "label": "LMIA",
+            "value": "Puede no ser requerida (exenciones)"
+          },
+          {
+            "label": "Permiso abierto",
+            "value": "Disponible para ciertos solicitantes"
+          },
+          {
+            "label": "Camino a la RP",
+            "value": "Experiencia canadiense cuenta"
+          }
         ]
       },
       "steps": {
@@ -301,10 +342,22 @@
           "Satisface los criterios mínimos de admisibilidad de Inmigración, Refugiados y Ciudadanía Canadá (IRCC)"
         ],
         "facts": [
-          "Más de 80 flujos PNP disponibles en todo Canadá",
-          "Algunos flujos PNP están vinculados a Express Entry y otorgan 600 puntos CRS adicionales",
-          "Los flujos base (fuera de Express Entry) procesan solicitudes por vía papel",
-          "Tiempo de procesamiento: 6–19 meses según la provincia y el flujo"
+          {
+            "label": "Flujos disponibles",
+            "value": "Más de 80 en todo Canadá"
+          },
+          {
+            "label": "Puntos CRS (vinculados)",
+            "value": "+600 puntos garantizados"
+          },
+          {
+            "label": "Procesamiento típico",
+            "value": "6–19 meses según provincia"
+          },
+          {
+            "label": "Intención requerida",
+            "value": "Establecerse en la provincia"
+          }
         ]
       },
       "steps": {
@@ -382,10 +435,22 @@
           "Puede demostrar fondos suficientes para su estadía en Canadá"
         ],
         "facts": [
-          "Tiempo de procesamiento: 2–8 semanas",
-          "La visa generalmente se otorga por hasta 10 años o la validez del pasaporte",
-          "Permite estancias de hasta 6 meses por visita",
-          "Los ciudadanos de ciertos países pueden ingresar con solo una Autorización de Viaje Electrónica (eTA)"
+          {
+            "label": "Procesamiento típico",
+            "value": "2–8 semanas"
+          },
+          {
+            "label": "Validez de la visa",
+            "value": "Hasta 10 años"
+          },
+          {
+            "label": "Estadía por visita",
+            "value": "Hasta 6 meses"
+          },
+          {
+            "label": "Tipo de entrada",
+            "value": "Múltiple en la mayoría de casos"
+          }
         ]
       },
       "steps": {
@@ -463,10 +528,22 @@
           "No tiene antecedentes de incumplimiento de compromisos de patrocinio anteriores"
         ],
         "facts": [
-          "Tiempo de procesamiento: ~12 meses para cónyuge/pareja, 20–24 meses para padres/abuelos",
-          "El período de compromiso es de 3 años para cónyuge/pareja, 10 años para hijos dependientes y hasta 20 años para padres/abuelos",
-          "Los patrocinados no pueden recibir asistencia social durante el período de compromiso",
-          "El Programa de Padres y Abuelos (PGP) requiere participar en el sorteo anual"
+          {
+            "label": "Cónyuge/pareja",
+            "value": "~12 meses procesamiento"
+          },
+          {
+            "label": "Padres/abuelos",
+            "value": "20–24 meses (sorteo PGP)"
+          },
+          {
+            "label": "Compromiso de patrocinio",
+            "value": "3–20 años según relación"
+          },
+          {
+            "label": "Hijos dependientes",
+            "value": "Menores de 22 años"
+          }
         ]
       },
       "steps": {
