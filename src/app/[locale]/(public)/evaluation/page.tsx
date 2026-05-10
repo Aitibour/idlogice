@@ -139,9 +139,25 @@ export default function EvaluationPage() {
   const set = <K extends keyof CRSInput>(k: K, v: CRSInput[K]) =>
     setData(p => ({ ...p, [k]: v }));
 
-  function handleCalculate() {
-    setResult(calculateCRS(data));
+  async function handleCalculate() {
+    const crsResult = calculateCRS(data);
+    setResult(crsResult);
     setStep(6);
+
+    // Fire marketing confirmation email (non-blocking)
+    if (user) {
+      const firstName = user.name.split(/[\s.]+/)[0];
+      fetch("/api/v1/email/evaluation-result", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName,
+          crsScore: crsResult.total,
+          eligible: crsResult.eligible,
+          improvements: crsResult.improvements ?? [],
+        }),
+      }).catch(() => {}); // silent — don't block the UI
+    }
   }
 
   // Show a subtle loading state while checking auth
@@ -522,7 +538,7 @@ export default function EvaluationPage() {
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/25 border border-primary/35 text-primary text-xs font-bold uppercase tracking-widest mb-3">
             Express Entry — Free CRS Evaluation
           </div>
-          <h1 className="text-2xl font-bold text-white mb-1">Hello, {user.name.split(" ")[0]} 👋</h1>
+          <h1 className="text-2xl font-bold text-white mb-1">Hello, {user.name.split(/[\s.]+/)[0]} 👋</h1>
           <p className="text-sm text-white/60">5 quick steps to check your Express Entry eligibility and CRS score.</p>
         </div>
       </div>
