@@ -94,7 +94,13 @@
           }
         ]
       },
-      "facts": {
+      "cta": {
+        "title": "¿Listo para Iniciar su Solicitud de Express Entry?",
+        "subtitle": "Nuestros RCICs certificados le guiarán en cada paso del proceso Express Entry.",
+        "primary": "Evaluación Gratuita",
+        "secondary": "Calcular Puntaje CRS"
+      },
+      "streams": {
         "title": "¿Por Qué Elegir Express Entry?",
         "items": [
           {
@@ -114,12 +120,6 @@
             "description": "Puede incluir a su cónyuge o pareja de hecho e hijos dependientes en su solicitud de residencia permanente."
           }
         ]
-      },
-      "cta": {
-        "title": "¿Listo para Iniciar su Solicitud de Express Entry?",
-        "subtitle": "Nuestros RCICs certificados le guiarán en cada paso del proceso Express Entry.",
-        "primary": "Evaluación Gratuita",
-        "secondary": "Calcular Puntaje CRS"
       }
     },
     "studyPermit": {
@@ -256,7 +256,13 @@
           }
         ]
       },
-      "facts": {
+      "cta": {
+        "title": "¿Listo para Trabajar en Canadá?",
+        "subtitle": "Nuestros RCICs certificados le ayudarán a obtener el permiso de trabajo adecuado para su situación.",
+        "primary": "Evaluación Gratuita",
+        "secondary": "Contáctenos"
+      },
+      "permitTypes": {
         "title": "Tipos de Permisos de Trabajo",
         "items": [
           {
@@ -276,12 +282,6 @@
             "description": "Jóvenes de países elegibles pueden obtener permisos de trabajo abiertos a través del programa IEC (Working Holiday)."
           }
         ]
-      },
-      "cta": {
-        "title": "¿Listo para Trabajar en Canadá?",
-        "subtitle": "Nuestros RCICs certificados le ayudarán a obtener el permiso de trabajo adecuado para su situación.",
-        "primary": "Evaluación Gratuita",
-        "secondary": "Contáctenos"
       }
     },
     "pnp": {
@@ -337,7 +337,13 @@
           }
         ]
       },
-      "facts": {
+      "cta": {
+        "title": "¿Listo para Explorar las Nominaciones Provinciales?",
+        "subtitle": "Nuestros consultores certificados identificarán el flujo PNP más adecuado para su perfil.",
+        "primary": "Evaluación Gratuita",
+        "secondary": "Contáctenos"
+      },
+      "provinces": {
         "title": "Provincias y Sus Programas",
         "items": [
           {
@@ -357,12 +363,6 @@
             "description": "Quebec gestiona su propio sistema de selección de inmigrantes. El Programa de Trabajadores Calificados de Quebec (QSWP) tiene sus propios criterios y proceso."
           }
         ]
-      },
-      "cta": {
-        "title": "¿Listo para Explorar las Nominaciones Provinciales?",
-        "subtitle": "Nuestros consultores certificados identificarán el flujo PNP más adecuado para su perfil.",
-        "primary": "Evaluación Gratuita",
-        "secondary": "Contáctenos"
       }
     },
     "touristVisa": {
@@ -499,7 +499,13 @@
           }
         ]
       },
-      "facts": {
+      "cta": {
+        "title": "¿Listo para Reunir a su Familia en Canadá?",
+        "subtitle": "Nuestros RCICs certificados le ayudarán a navegar el proceso de patrocinio familiar con confianza.",
+        "primary": "Evaluación Gratuita",
+        "secondary": "Contáctenos"
+      },
+      "categories": {
         "title": "Categorías de Patrocinio Familiar",
         "items": [
           {
@@ -519,12 +525,6 @@
             "description": "Como alternativa al PGP, la Super Visa permite a los padres y abuelos visitar Canadá por hasta 5 años consecutivos con una visa de entrada múltiple de 10 años."
           }
         ]
-      },
-      "cta": {
-        "title": "¿Listo para Reunir a su Familia en Canadá?",
-        "subtitle": "Nuestros RCICs certificados le ayudarán a navegar el proceso de patrocinio familiar con confianza.",
-        "primary": "Evaluación Gratuita",
-        "secondary": "Contáctenos"
       }
     },
     "shared": {
