@@ -76,25 +76,22 @@ const TRUST = [
 export default function BookConsultationPage() {
   return (
     <>
-      {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section
-        className="relative min-h-[520px] flex items-end pb-32 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/feature-consulting.jpg')" }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/40" />
-        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-white to-transparent" />
-
+      {/* ── HERO (light theme) ──────────────────────────────────────────── */}
+      <section className="relative bg-white pt-16 pb-40 overflow-hidden border-b border-border/40">
         <div className="relative z-10 container mx-auto px-4 w-full">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-3 mb-5">
               <span className="h-px w-8 bg-primary" />
               <span className="text-xs font-semibold uppercase tracking-widest text-primary">Book a Consultation</span>
             </div>
-            <h1 className="text-5xl lg:text-7xl font-bold text-white tracking-tight leading-[1.05] mb-5">
+            <h1
+              className="text-5xl lg:text-7xl font-bold tracking-tight leading-[1.05] mb-5"
+              style={{ color: "#111827" }}
+            >
               Turn your dream<br />
               <span className="text-primary">into a plan.</span>
             </h1>
-            <p className="text-white/70 text-lg max-w-xl leading-relaxed">
+            <p className="text-lg max-w-xl leading-relaxed" style={{ color: "#374151" }}>
               Meet face-to-face with a Regulated Canadian Immigration Consultant (RCIC). One session can change everything.
             </p>
             <div className="flex flex-wrap items-center gap-5 mt-8">
@@ -103,10 +100,11 @@ export default function BookConsultationPage() {
                 { icon: Mail,  label: "contact@idlogice.com", href: "mailto:contact@idlogice.com" },
               ].map(({ icon: Icon, label, href }) => (
                 <a key={href} href={href}
-                  className="flex items-center gap-2 text-sm font-medium text-white/75 hover:text-white transition-colors group"
+                  className="flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors group"
+                  style={{ color: "#374151" }}
                 >
-                  <span className="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
-                    <Icon className="size-3.5" />
+                  <span className="w-8 h-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary transition-colors">
+                    <Icon className="size-3.5 text-primary group-hover:text-white" />
                   </span>
                   {label}
                 </a>
@@ -117,7 +115,7 @@ export default function BookConsultationPage() {
       </section>
 
       {/* ── MAIN SECTION ─────────────────────────────────────────────────── */}
-      <section className="bg-white pb-24 -mt-20 relative z-10">
+      <section className="bg-white pb-24 -mt-32 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto grid lg:grid-cols-[1fr_340px] gap-5 items-start">
 

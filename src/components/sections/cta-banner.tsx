@@ -11,28 +11,41 @@ interface CtaBannerProps {
   bgImage?: string;
 }
 
+/**
+ * Light-themed CTA banner. The optional bgImage is shown faintly
+ * behind a strong white veil so all copy stays dark and readable.
+ */
 export function CtaBanner({
   title,
   subtitle,
   primaryCta,
   secondaryCta,
-  bgImage = "/images/cta-bg.jpg",
+  bgImage,
 }: CtaBannerProps) {
   return (
-    <section className="relative py-24 overflow-hidden">
-      {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${bgImage})` }}
-      />
-      {/* Dark overlay so text stays readable */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/65 to-black/50" />
+    <section className="relative py-20 overflow-hidden bg-white border-y border-border/50">
+      {bgImage && (
+        <>
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-cover bg-center opacity-15"
+            style={{ backgroundImage: `url(${bgImage})` }}
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/90 to-white"
+          />
+        </>
+      )}
 
-      <div className="relative z-10 container mx-auto px-4 text-center text-white">
+      <div className="relative z-10 container mx-auto px-4 text-center">
         <ScrollReveal>
-          <h2 className="mb-4 text-white drop-shadow-lg">{title}</h2>
+          <h2 className="mb-4" style={{ color: "#111827" }}>{title}</h2>
           {subtitle && (
-            <p className="text-white/80 text-lg max-w-xl mx-auto mb-8 leading-relaxed">
+            <p
+              className="text-lg max-w-xl mx-auto mb-8 leading-relaxed"
+              style={{ color: "#374151" }}
+            >
               {subtitle}
             </p>
           )}
@@ -43,7 +56,7 @@ export function CtaBanner({
               href={primaryCta.href}
               className={cn(
                 buttonVariants({ size: "lg" }),
-                "bg-white text-black hover:bg-white/90 font-semibold shadow-xl",
+                "btn-shimmer font-semibold shadow-lg",
               )}
             >
               {primaryCta.label}
@@ -52,7 +65,8 @@ export function CtaBanner({
               <Link
                 href={secondaryCta.href}
                 className={cn(
-                  "inline-flex items-center justify-center h-10 px-6 rounded-lg border border-white/50 text-white hover:bg-white/10 hover:border-white transition-all font-medium text-sm",
+                  buttonVariants({ variant: "outline", size: "lg" }),
+                  "font-medium",
                 )}
               >
                 {secondaryCta.label}

@@ -16,35 +16,33 @@ export default function ContactPage() {
 
   return (
     <>
-      {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section
-        className="relative min-h-[520px] flex items-end pb-32 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/cta-bg.jpg')" }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/40" />
-        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-white to-transparent" />
-
+      {/* ── HERO (light theme) ──────────────────────────────────────────── */}
+      <section className="relative bg-white pt-16 pb-40 overflow-hidden border-b border-border/40">
         <div className="relative z-10 container mx-auto px-4 w-full">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-3 mb-5">
               <span className="h-px w-8 bg-primary" />
               <span className="text-xs font-semibold uppercase tracking-widest text-primary">Contact Us</span>
             </div>
-            <h1 className="text-5xl lg:text-7xl font-bold text-white tracking-tight leading-[1.05] mb-5">
+            <h1
+              className="text-5xl lg:text-7xl font-bold tracking-tight leading-[1.05] mb-5"
+              style={{ color: "#111827" }}
+            >
               Let&apos;s start your<br />
               <span className="text-primary">journey.</span>
             </h1>
-            <p className="text-white/70 text-lg max-w-xl leading-relaxed">{t("hero.subtitle")}</p>
+            <p className="text-lg max-w-xl leading-relaxed" style={{ color: "#374151" }}>{t("hero.subtitle")}</p>
             <div className="flex flex-wrap items-center gap-5 mt-8">
               {[
                 { icon: Phone, label: "+1 581-634-0224",      href: "tel:+15816340224" },
                 { icon: Mail,  label: "contact@idlogice.com", href: "mailto:contact@idlogice.com" },
               ].map(({ icon: Icon, label, href }) => (
                 <a key={href} href={href}
-                  className="flex items-center gap-2 text-sm font-medium text-white/75 hover:text-white transition-colors group"
+                  className="flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors group"
+                  style={{ color: "#374151" }}
                 >
-                  <span className="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
-                    <Icon className="size-3.5" />
+                  <span className="w-8 h-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+                    <Icon className="size-3.5 text-primary group-hover:text-white" />
                   </span>
                   {label}
                 </a>
@@ -55,7 +53,7 @@ export default function ContactPage() {
       </section>
 
       {/* ── MAIN SECTION ─────────────────────────────────────────────────── */}
-      <section className="bg-white pb-24 -mt-20 relative z-10">
+      <section className="bg-white pb-24 -mt-32 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto grid lg:grid-cols-[1fr_360px] gap-5 items-start">
 
@@ -66,8 +64,8 @@ export default function ContactPage() {
 
               <div className="p-8 lg:p-10">
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-1">Send a message</p>
-                <h2 className="text-2xl font-bold mb-1">We&apos;re here to help</h2>
-                <p className="text-sm text-muted-foreground mb-8">
+                <h2 className="text-2xl font-bold mb-1" style={{ color: "#111827" }}>We&apos;re here to help</h2>
+                <p className="text-sm mb-8" style={{ color: "#374151" }}>
                   A certified consultant will personally reply within 24 hours.
                 </p>
 
@@ -75,7 +73,7 @@ export default function ContactPage() {
 
                 {/* Process steps */}
                 <div className="mt-10 pt-8 border-t border-border">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground mb-5">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] mb-5" style={{ color: "#374151" }}>
                     What happens next
                   </p>
                   <div className="grid grid-cols-2 gap-4">
@@ -85,10 +83,10 @@ export default function ContactPage() {
                         className="animate-float-up flex gap-3 p-3 rounded-xl hover:bg-secondary/50 transition-colors group cursor-default"
                         style={{ animationDelay: `${300 + i * 70}ms` }}
                       >
-                        <span className="text-[11px] font-black tabular-nums text-primary/30 shrink-0 pt-px">{n}</span>
+                        <span className="text-[11px] font-black tabular-nums text-primary shrink-0 pt-px">{n}</span>
                         <div>
-                          <p className="text-xs font-semibold mb-0.5 group-hover:text-primary transition-colors">{title}</p>
-                          <p className="text-[11px] text-muted-foreground leading-relaxed">{body}</p>
+                          <p className="text-xs font-semibold mb-0.5 group-hover:text-primary transition-colors" style={{ color: "#111827" }}>{title}</p>
+                          <p className="text-[11px] leading-relaxed" style={{ color: "#374151" }}>{body}</p>
                         </div>
                       </div>
                     ))}
@@ -104,7 +102,7 @@ export default function ContactPage() {
               <div className="animate-fade-up delay-100 bg-white rounded-3xl border border-border shadow-[0_4px_24px_-4px_oklch(0_0_0/0.08)] overflow-hidden">
                 <div className="h-1 w-full bg-gradient-to-r from-transparent via-primary/40 to-primary" />
                 <div className="p-5">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-4">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] mb-4" style={{ color: "#374151" }}>
                     Reach us directly
                   </p>
                   <div className="grid grid-cols-2 gap-3">
@@ -114,16 +112,15 @@ export default function ContactPage() {
                     ].map(({ icon: Icon, label, sub, href }) => (
                       <a
                         key={href} href={href}
-                        className="group relative flex flex-col gap-3 p-4 rounded-2xl border border-border bg-secondary/30 hover:bg-primary hover:border-primary transition-all duration-200 overflow-hidden"
+                        className="group relative flex flex-col gap-3 p-4 rounded-2xl border border-primary bg-primary hover:bg-primary/90 transition-all duration-200 overflow-hidden"
                       >
-                        {/* Arrow top-right */}
-                        <ArrowUpRight className="absolute top-3 right-3 size-3.5 text-muted-foreground/40 group-hover:text-white/70 transition-colors" />
-                        <div className="w-9 h-9 rounded-xl bg-primary/10 group-hover:bg-white/20 flex items-center justify-center transition-colors">
-                          <Icon className="size-4 text-primary group-hover:text-white transition-colors" />
+                        <ArrowUpRight className="absolute top-3 right-3 size-3.5 text-white/70" />
+                        <div className="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center">
+                          <Icon className="size-4 text-white" />
                         </div>
                         <div>
-                          <p className="text-xs font-bold group-hover:text-white transition-colors">{label}</p>
-                          <p className="text-[10px] text-muted-foreground group-hover:text-white/70 transition-colors truncate mt-0.5">{sub}</p>
+                          <p className="text-xs font-bold text-white">{label}</p>
+                          <p className="text-[10px] text-white/85 truncate mt-0.5">{sub}</p>
                         </div>
                       </a>
                     ))}
@@ -139,12 +136,12 @@ export default function ContactPage() {
                     { icon: Clock,  label: "Hours",   value: "Mon – Fri\n9:00 AM – 6:00 PM EST" },
                   ].map(({ icon: Icon, label, value }) => (
                     <div key={label} className="flex items-start gap-4 p-5">
-                      <div className="w-9 h-9 rounded-xl bg-primary/8 border border-primary/12 flex items-center justify-center shrink-0">
-                        <Icon className="size-4 text-primary" />
+                      <div className="w-9 h-9 rounded-xl bg-primary border border-primary flex items-center justify-center shrink-0">
+                        <Icon className="size-4 text-white" />
                       </div>
                       <div>
-                        <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">{label}</p>
-                        <p className="text-sm font-medium leading-snug whitespace-pre-line">{value}</p>
+                        <p className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: "#374151" }}>{label}</p>
+                        <p className="text-sm font-medium leading-snug whitespace-pre-line" style={{ color: "#111827" }}>{value}</p>
                       </div>
                     </div>
                   ))}
@@ -181,7 +178,7 @@ export default function ContactPage() {
                 <div className="flex items-center justify-between px-5 py-3 border-t border-border bg-secondary/30">
                   <div className="flex items-center gap-2">
                     <MapPin className="size-3.5 text-primary shrink-0" />
-                    <span className="text-xs font-medium text-muted-foreground">410 Saint-Catherine St</span>
+                    <span className="text-xs font-medium" style={{ color: "#374151" }}>410 Saint-Catherine St</span>
                   </div>
                   <a
                     href="https://maps.google.com/?q=410+Saint-Catherine+St+Montreal"
