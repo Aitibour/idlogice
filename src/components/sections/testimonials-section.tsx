@@ -31,12 +31,12 @@ export function TestimonialsSection({
   testimonials,
 }: TestimonialsSectionProps) {
   return (
-    <section className="py-20 bg-muted/20">
+    <section className="py-20 bg-white border-y border-border/40">
       <div className="container mx-auto px-4">
         <ScrollReveal className="text-center mb-14">
-          <h2 className="text-2xl md:text-4xl font-bold mb-4">{title}</h2>
+          <h2 className="text-2xl md:text-4xl font-bold mb-4" style={{ color: "#111827" }}>{title}</h2>
           {subtitle && (
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: "#374151" }}>
               {subtitle}
             </p>
           )}
@@ -45,17 +45,15 @@ export function TestimonialsSection({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (
             <ScrollReveal key={i} delay={i * 100}>
-              <div className="bg-card border rounded-2xl p-6 flex flex-col gap-4 h-full hover:shadow-md transition-shadow">
+              <div className="bg-white border border-border rounded-2xl p-6 flex flex-col gap-4 h-full hover:shadow-md hover:border-primary/20 transition-all">
                 <StarRating count={t.rating} />
-                <p className="text-muted-foreground leading-relaxed flex-1">
+                <p className="leading-relaxed flex-1" style={{ color: "#374151" }}>
                   &ldquo;{t.text}&rdquo;
                 </p>
-                <div className="pt-2 border-t">
-                  <p className="font-semibold text-sm">{t.name}</p>
-                  <p className="text-xs text-muted-foreground">{t.origin}</p>
-                  <p className="text-xs font-medium text-primary mt-1">
-                    {t.result}
-                  </p>
+                <div className="pt-2 border-t border-border">
+                  <p className="font-semibold text-sm" style={{ color: "#111827" }}>{t.name}</p>
+                  <p className="text-xs" style={{ color: "#9ca3af" }}>{t.origin}</p>
+                  <p className="text-xs font-medium text-primary mt-1">{t.result}</p>
                 </div>
               </div>
             </ScrollReveal>

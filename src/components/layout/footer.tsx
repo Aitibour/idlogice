@@ -37,8 +37,9 @@ export function Footer() {
                 { href: "/",        label: t("home")        },
                 { href: "/about",   label: t("about")       },
                 { href: "/services",label: t("services")    },
-                { href: "/faq",     label: "FAQ"             },
-                { href: "/contact", label: t("contact")     },
+                { href: "/faq",          label: "FAQ"              },
+                { href: "/testimonials", label: "Success Stories"  },
+                { href: "/contact",      label: t("contact")      },
                 { href: "/privacy", label: t("privacy")     },
                 { href: "/terms",   label: t("terms")       },
               ].map((l) => (
