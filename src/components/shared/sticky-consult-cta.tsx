@@ -61,15 +61,15 @@ export function StickyConsultCta() {
           <Calendar className="size-4 text-white" />
         </div>
         <div className="text-white">
-          <p className="text-sm font-bold leading-tight">Free 15-min consultation</p>
-          <p className="text-xs opacity-90 hidden sm:block">Talk to a CICC-registered consultant — no cost, no commitment.</p>
+          <p className="text-sm font-bold leading-tight">Free Profile Evaluation</p>
+          <p className="text-xs opacity-90 hidden sm:block">Find out if you qualify — no cost, no commitment.</p>
         </div>
         <Link
-          href="/book-consultation"
+          href="/evaluation"
           onClick={() => {
             if (typeof window !== "undefined" && (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag) {
               (window as unknown as { gtag: (...args: unknown[]) => void }).gtag("event", "cta_click", {
-                cta_type: "sticky_consult",
+                cta_type: "sticky_evaluation",
                 page_path: pathname,
               });
             }
