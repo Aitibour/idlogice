@@ -16,6 +16,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
       ...(await import(`../../locales/${locale}/about.json`)).default,
       ...(await import(`../../locales/${locale}/contact.json`)).default,
       ...(await import(`../../locales/${locale}/services.json`)).default,
+      ...(await import(`../../locales/${locale}/blog.json`)).default,
     },
   };
 });
