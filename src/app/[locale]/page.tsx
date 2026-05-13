@@ -41,6 +41,16 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   return (
     <>
+      {/* Preload first hero poster — fixes LCP fetchpriority hint */}
+      {heroSlides[0]?.poster && (
+        <link
+          rel="preload"
+          as="image"
+          href={heroSlides[0].poster}
+          // @ts-expect-error — fetchpriority is valid but not yet in React types
+          fetchpriority="high"
+        />
+      )}
       <HeroSlider
         slides={heroSlides}
         cta={{ label: t("hero.cta"), href: "/evaluation" }}

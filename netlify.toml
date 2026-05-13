@@ -9,7 +9,7 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
-# Security headers for static assets in /public (not covered by next.config.ts)
+# Security headers
 [[headers]]
   for = "/*"
   [headers.values]
@@ -17,3 +17,27 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Strict-Transport-Security = "max-age=63072000; includeSubDomains"
+
+# Long-term cache for immutable Next.js static chunks
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache videos aggressively (they never change)
+[[headers]]
+  for = "/videos/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache poster images aggressively
+[[headers]]
+  for = "/posters/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache other public images
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"

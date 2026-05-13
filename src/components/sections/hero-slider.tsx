@@ -61,11 +61,12 @@ export function HeroSlider({ slides, cta, secondaryCta }: HeroSliderProps) {
 
   return (
     <section className="relative h-[88vh] min-h-[560px] max-h-[900px] flex items-center justify-center overflow-hidden">
-      {/* ── Video layers ── */}
+      {/* ── Video layers — only mount active + next to avoid loading all videos ── */}
       {slides.map((slide, i) => {
         const isActive = i === current;
         const isNext = i === nextIdx;
-        const opacity = isActive ? (videoTransitioning ? 0 : 1) : isNext ? 1 : 0;
+        if (!isActive && !isNext) return null;
+        const opacity = isActive ? (videoTransitioning ? 0 : 1) : 1;
         return (
           <video
             key={slide.videoSrc}
@@ -76,11 +77,11 @@ export function HeroSlider({ slides, cta, secondaryCta }: HeroSliderProps) {
             style={{
               opacity,
               transition: videoTransitioning ? `opacity ${fadeDuration}ms ease-in-out` : "none",
-              zIndex: isNext ? 2 : isActive ? 1 : 0,
+              zIndex: isNext ? 2 : 1,
             }}
             muted
             playsInline
-            preload={i === 0 ? "auto" : "none"}
+            preload="auto"
             onEnded={handleEnded}
           />
         );
