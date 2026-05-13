@@ -5,6 +5,10 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
 # Security headers for static assets in /public (not covered by next.config.ts)
 [[headers]]
   for = "/*"
