@@ -8,9 +8,9 @@ export type RssItem = {
 };
 
 const FEEDS = [
-  "https://www.canada.ca/en/immigration-refugees-citizenship/news.atom",
+  "https://www.immigration.ca/feed",
+  "https://moving2canada.com/feed/",
   "https://www.cicnews.com/feed/",
-  "https://www.canadavisa.com/canada-immigration-news.rss",
 ];
 
 const parser = new Parser({ timeout: 10000 });
