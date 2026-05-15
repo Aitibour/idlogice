@@ -26,14 +26,40 @@ export function StickyConsultCta() {
   const pathname = usePathname() || "";
   const [show, setShow] = useState(false);
   const [dismissed, setDismissed] = useState(false);
+  const [newsletterCleared, setNewsletterCleared] = useState(false);
 
   // Strip locale segment for matching
   const pathWithoutLocale = pathname.replace(/^\/(en|fr|es|ar)/, "");
 
   const hidden = HIDDEN_ROUTES.some((r) => pathWithoutLocale.startsWith(r));
 
+  // Gate the sticky CTA on the newsletter popup being dismissed.
+  // The newsletter sets `idlogice_newsletter_dismissed` in localStorage when
+  // closed, and the popup itself appears after 3500ms.
   useEffect(() => {
     if (hidden) return;
+    function check() {
+      const raw = localStorage.getItem("idlogice_newsletter_dismissed");
+      if (raw) {
+        const until = parseInt(raw, 10);
+        // If the dismissal is in the future, the user has dismissed it.
+        if (!Number.isNaN(until) && until > Date.now()) {
+          setNewsletterCleared(true);
+          return true;
+        }
+      }
+      return false;
+    }
+    if (check()) return;
+    // Poll briefly until the newsletter is dismissed (cheap and reliable).
+    const id = setInterval(() => {
+      if (check()) clearInterval(id);
+    }, 500);
+    return () => clearInterval(id);
+  }, [hidden]);
+
+  useEffect(() => {
+    if (hidden || !newsletterCleared) return;
     if (sessionStorage.getItem("idlogice_sticky_cta_dismissed") === "1") {
       setDismissed(true);
       return;
@@ -44,7 +70,7 @@ export function StickyConsultCta() {
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
-  }, [hidden]);
+  }, [hidden, newsletterCleared]);
 
   function dismiss() {
     sessionStorage.setItem("idlogice_sticky_cta_dismissed", "1");
