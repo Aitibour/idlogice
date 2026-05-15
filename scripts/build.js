@@ -5,11 +5,13 @@
 delete process.env.__NEXT_PRIVATE_STANDALONE_CONFIG;
 const { spawnSync } = require("child_process");
 const isWindows = process.platform === "win32";
+// On Linux/macOS, node_modules/.bin/next is a shell script — invoke it directly,
+// not via `node`. On Windows, use the .cmd wrapper through cmd /c.
 const result = spawnSync(
-  isWindows ? "cmd" : "node",
+  isWindows ? "cmd" : "node_modules/.bin/next",
   isWindows
     ? ["/c", "node_modules\\.bin\\next", "build", "--webpack"]
-    : ["node_modules/.bin/next", "build", "--webpack"],
+    : ["build", "--webpack"],
   { stdio: "inherit", shell: false }
 );
 process.exit(result.status ?? 1);
