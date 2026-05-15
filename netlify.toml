@@ -1,5 +1,5 @@
 [build]
-  command = "./node_modules/.bin/next build --webpack"
+  command = "npm run build"
   publish = ".next"
   [build.environment]
     NODE_VERSION = "20"

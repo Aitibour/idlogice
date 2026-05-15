@@ -8,14 +8,23 @@ export const revalidate = 3600;
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
 export async function generateStaticParams() {
-  const db = createServiceClient();
-  const { data } = await db
-    .from("blog_posts")
-    .select("slug")
-    .eq("status", "published")
-    .order("published_at", { ascending: false })
-    .limit(10);
-  return (data ?? []).map((p) => ({ slug: p.slug }));
+  // Skip static generation if Supabase env vars missing at build time —
+  // pages will be rendered on-demand via ISR.
+  if (!process.env.SUPABASE_SERVICE_ROLE_KEY || !process.env.NEXT_PUBLIC_SUPABASE_URL) {
+    return [];
+  }
+  try {
+    const db = createServiceClient();
+    const { data } = await db
+      .from("blog_posts")
+      .select("slug")
+      .eq("status", "published")
+      .order("published_at", { ascending: false })
+      .limit(10);
+    return (data ?? []).map((p) => ({ slug: p.slug }));
+  } catch {
+    return [];
+  }
 }
 
 export async function generateMetadata({ params }: Props) {
