@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build"
+  command = "unset __NEXT_PRIVATE_STANDALONE_CONFIG; npx next build --webpack"
   publish = ".next"
   [build.environment]
     NODE_VERSION = "20"

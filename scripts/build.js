@@ -4,14 +4,11 @@
 // Always uses --webpack because @netlify/plugin-nextjs 5.x cannot bundle turbopack chunks.
 delete process.env.__NEXT_PRIVATE_STANDALONE_CONFIG;
 const { spawnSync } = require("child_process");
-const isWindows = process.platform === "win32";
-// On Linux/macOS, node_modules/.bin/next is a shell script — invoke it directly,
-// not via `node`. On Windows, use the .cmd wrapper through cmd /c.
+// Use npm exec for reliable cross-platform invocation of the next binary.
+// shell: true is required on Windows to resolve npm.cmd via PATH.
 const result = spawnSync(
-  isWindows ? "cmd" : "node_modules/.bin/next",
-  isWindows
-    ? ["/c", "node_modules\\.bin\\next", "build", "--webpack"]
-    : ["build", "--webpack"],
-  { stdio: "inherit", shell: false }
+  "npm",
+  ["exec", "--", "next", "build", "--webpack"],
+  { stdio: "inherit", shell: true }
 );
 process.exit(result.status ?? 1);
