@@ -59,12 +59,14 @@ export default async function LocaleLayout({
       lang={locale}
       dir={dir}
       className={`${geistSans.variable} h-full antialiased`}
+      style={{ colorScheme: "light" }}
     >
       <head>
+        <meta name="color-scheme" content="light" />
         <OrganizationJsonLd />
         <WebsiteJsonLd />
       </head>
-      <body className="min-h-screen flex flex-col">
+      <body className="min-h-screen flex flex-col bg-background text-foreground">
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main className="flex-1">{children}</main>
