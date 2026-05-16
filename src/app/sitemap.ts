@@ -1,5 +1,8 @@
-export const dynamic = "force-static";
+// Sitemap is revalidated hourly so newly published blog posts appear
+// without a full redeploy.
+export const revalidate = 3600;
 import type { MetadataRoute } from "next";
+import { tryCreateServiceClient } from "@/lib/supabase/service";
 
 const BASE = "https://idlogice.com";
 const LOCALES = ["en", "fr", "es", "ar"] as const;
@@ -41,19 +44,49 @@ const ROUTES: Route[] = [
   { path: "/cookies",                     priority: LEGAL,    changeFreq: "yearly" },
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
-  return ROUTES.flatMap(({ path, priority, changeFreq }) =>
+
+  const staticEntries: MetadataRoute.Sitemap = ROUTES.flatMap(
+    ({ path, priority, changeFreq }) =>
+      LOCALES.map((locale) => ({
+        url: `${BASE}/${locale}${path}`,
+        lastModified: now,
+        changeFrequency: changeFreq,
+        priority,
+        alternates: {
+          languages: Object.fromEntries(
+            LOCALES.map((l) => [l, `${BASE}/${l}${path}`]),
+          ),
+        },
+      })),
+  );
+
+  // Pull every published blog post and emit per-locale URLs with hreflang
+  // alternates. Falls back to no blog entries if Supabase is unreachable
+  // (e.g. during a build where the service role key isn't scoped).
+  const db = tryCreateServiceClient();
+  if (!db) return staticEntries;
+
+  const { data: posts } = await db
+    .from("blog_posts")
+    .select("slug, published_at, updated_at")
+    .eq("status", "published")
+    .order("published_at", { ascending: false });
+
+  const blogEntries: MetadataRoute.Sitemap = (posts ?? []).flatMap((post) =>
     LOCALES.map((locale) => ({
-      url: `${BASE}/${locale}${path}`,
-      lastModified: now,
-      changeFrequency: changeFreq,
-      priority,
+      url: `${BASE}/${locale}/blog/${post.slug}`,
+      lastModified: new Date(post.updated_at ?? post.published_at ?? now),
+      changeFrequency: "weekly" as const,
+      priority: CONTENT,
       alternates: {
         languages: Object.fromEntries(
-          LOCALES.map((l) => [l, `${BASE}/${l}${path}`]),
+          LOCALES.map((l) => [l, `${BASE}/${l}/blog/${post.slug}`]),
         ),
       },
     })),
   );
+
+  return [...staticEntries, ...blogEntries];
 }
