@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { InlineWidget } from "react-calendly";
 import {
@@ -119,6 +119,17 @@ export function CheckoutClient({ planId }: { planId?: string }) {
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [paypalOrderId, setPaypalOrderId] = useState("");
   const [paid, setPaid] = useState(false);
+  const mainPanelRef = useRef<HTMLDivElement>(null);
+
+  // Scroll the main panel into view whenever the step changes so PayPal's
+  // inline card form is never hidden behind the sticky site header.
+  useEffect(() => {
+    if (mainPanelRef.current) {
+      const HEADER_H = 80;
+      const top = mainPanelRef.current.getBoundingClientRect().top + window.scrollY - HEADER_H;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  }, [step]);
 
   useEffect(() => {
     function onMessage(e: MessageEvent) {
@@ -272,7 +283,7 @@ export function CheckoutClient({ planId }: { planId?: string }) {
         <div className="grid lg:grid-cols-[1fr_320px] gap-6 items-start">
 
           {/* ── Main panel ───────────────────────────────────────────────── */}
-          <div className="bg-white rounded-3xl border border-border shadow-sm overflow-hidden">
+          <div ref={mainPanelRef} className="bg-white rounded-3xl border border-border shadow-sm overflow-hidden scroll-mt-24">
             <div className="h-1 w-full bg-gradient-to-r from-primary via-primary/70 to-transparent" />
             <div className="p-7 lg:p-9">
               <StepBar current={step} />
@@ -381,6 +392,7 @@ export function CheckoutClient({ planId }: { planId?: string }) {
                       currency: "CAD",
                     }}
                   >
+                    <div className="scroll-mt-24">
                     <PayPalButtons
                       style={{ layout: "vertical", color: "gold", shape: "rect", label: "pay", height: 48 }}
                       createOrder={(_data, actions) =>
@@ -399,7 +411,17 @@ export function CheckoutClient({ planId }: { planId?: string }) {
                         setPaypalOrderId(data.orderID);
                         setStep("schedule");
                       }}
+                      onClick={() => {
+                        // Scroll panel clear of sticky header before PayPal
+                        // expands its inline card form.
+                        if (mainPanelRef.current) {
+                          const HEADER_H = 80;
+                          const top = mainPanelRef.current.getBoundingClientRect().top + window.scrollY - HEADER_H;
+                          window.scrollTo({ top, behavior: "smooth" });
+                        }
+                      }}
                     />
+                    </div>
                   </PayPalScriptProvider>
                 </>
               )}
