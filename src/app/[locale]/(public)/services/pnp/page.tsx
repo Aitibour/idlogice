@@ -13,6 +13,7 @@ import { RequirementsSection } from "@/components/sections/requirements-section"
 import { StepsSection } from "@/components/sections/steps-section";
 import { FeatureGrid } from "@/components/sections/feature-grid";
 import { CtaBanner } from "@/components/sections/cta-banner";
+import { ServiceJsonLd } from "@/components/seo/structured-data";
 
 export default async function PnpPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -43,6 +44,11 @@ export default async function PnpPage({ params }: { params: Promise<{ locale: st
 
   return (
     <>
+      <ServiceJsonLd
+        name="Provincial Nominee Program (PNP) Canada"
+        description="Get nominated by a Canadian province and receive 600 additional CRS points. Our RCICs identify the best PNP stream for your profile across all provinces."
+        url={`https://idlogice.com/${locale}/services/pnp`}
+      />
       <PageHero
         badge={t("pnp.hero.badge")}
         title={t("pnp.hero.title")}

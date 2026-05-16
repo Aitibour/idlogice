@@ -4,6 +4,7 @@ export const revalidate = 3600;
 import type { MetadataRoute } from "next";
 import { tryCreateServiceClient } from "@/lib/supabase/service";
 import { COUNTRIES } from "@/data/immigration-countries";
+import { PROGRAMS } from "@/data/immigration-programs";
 
 const BASE = "https://idlogice.com";
 const LOCALES = ["en", "fr", "es", "ar"] as const;
@@ -114,5 +115,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   );
 
-  return [...staticEntries, ...fromIndexEntries, ...blogEntries, ...countryEntries];
+  // /programs index — 4 locales
+  const programsIndexEntries: MetadataRoute.Sitemap = LOCALES.map((locale) => ({
+    url: `${BASE}/${locale}/programs`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: TOP,
+    alternates: { languages: Object.fromEntries(LOCALES.map((l) => [l, `${BASE}/${l}/programs`])) },
+  }));
+
+  // /programs/[program] — 6 programs × 4 locales = 24 pages
+  const programEntries: MetadataRoute.Sitemap = PROGRAMS.flatMap((program) =>
+    LOCALES.map((locale) => ({
+      url: `${BASE}/${locale}/programs/${program.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: SERVICE,
+      alternates: {
+        languages: Object.fromEntries(
+          LOCALES.map((l) => [l, `${BASE}/${l}/programs/${program.slug}`]),
+        ),
+      },
+    })),
+  );
+
+  return [...staticEntries, ...fromIndexEntries, ...blogEntries, ...countryEntries, ...programsIndexEntries, ...programEntries];
 }

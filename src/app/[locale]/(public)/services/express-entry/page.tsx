@@ -13,6 +13,7 @@ import { RequirementsSection } from "@/components/sections/requirements-section"
 import { StepsSection } from "@/components/sections/steps-section";
 import { FeatureGrid } from "@/components/sections/feature-grid";
 import { CtaBanner } from "@/components/sections/cta-banner";
+import { ServiceJsonLd } from "@/components/seo/structured-data";
 
 export default async function ExpressEntryPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -45,6 +46,11 @@ export default async function ExpressEntryPage({ params }: { params: Promise<{ l
 
   return (
     <>
+      <ServiceJsonLd
+        name="Express Entry Canada"
+        description="Apply to Canada through Express Entry. Our CICC-registered consultants help you optimise your CRS score and submit a winning application for Canadian permanent residence."
+        url={`https://idlogice.com/${locale}/services/express-entry`}
+      />
       <PageHero
         badge={t("expressEntry.hero.badge")}
         title={t("expressEntry.hero.title")}

@@ -13,6 +13,7 @@ import { RequirementsSection } from "@/components/sections/requirements-section"
 import { StepsSection } from "@/components/sections/steps-section";
 import { FeatureGrid } from "@/components/sections/feature-grid";
 import { CtaBanner } from "@/components/sections/cta-banner";
+import { ServiceJsonLd } from "@/components/seo/structured-data";
 
 export default async function TouristVisaPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -43,6 +44,11 @@ export default async function TouristVisaPage({ params }: { params: Promise<{ lo
 
   return (
     <>
+      <ServiceJsonLd
+        name="Canada Tourist Visa (TRV)"
+        description="Maximise your Canada tourist visa approval chances. Our CICC-registered consultants prepare a complete Temporary Resident Visa application with a compelling cover letter."
+        url={`https://idlogice.com/${locale}/services/tourist-visa`}
+      />
       <PageHero
         badge={t("touristVisa.hero.badge")}
         title={t("touristVisa.hero.title")}

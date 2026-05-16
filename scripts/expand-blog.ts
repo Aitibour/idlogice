@@ -15,12 +15,12 @@ const GROQ_KEY =
   process.env.GROQ_API_KEY ||
   "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";
 
-// Each model has its own independent TPD pool. Ordered by quality.
-// (mixtral, gemma2, llama-3.1-70b are all decommissioned as of May 2026)
+// qwen3-32b and llama-4-scout share the same org TPD pool as llama-3.3-70b.
+// Only llama-3.3-70b produces 1800+ word quality content.
+// Strategy: use ONLY the quality model and wait out the rolling window (one
+// post per ~7 min). Takes ~2.5h for 21 posts but produces proper SEO content.
 const MODELS = [
-  { id: "llama-3.3-70b-versatile",                   maxTokens: 6000 },
-  { id: "qwen/qwen3-32b",                             maxTokens: 7000 },
-  { id: "meta-llama/llama-4-scout-17b-16e-instruct",  maxTokens: 7000 },
+  { id: "llama-3.3-70b-versatile", maxTokens: 6000 },
 ];
 
 let modelIdx = 0;
@@ -70,13 +70,10 @@ type ExpandedPost = {
 };
 
 async function callGroq(prompt: string): Promise<string> {
-  // Each model has its own independent TPD pool — rotate model on rate limit.
-  // All GROQ_KEY variants share the same org limits, so key rotation doesn't help.
-  const startModel = modelIdx;
-  let rotations = 0;
-
-  while (rotations < MODELS.length) {
-    const { id, maxTokens } = MODELS[modelIdx % MODELS.length];
+  const { id, maxTokens } = MODELS[0];
+  // Retry indefinitely: wait the exact time Groq prescribes, then retry same model.
+  // One post per ~7 min on the rolling 24h window — slow but produces 1800+ word content.
+  while (true) {
     try {
       const groq = new Groq({ apiKey: GROQ_KEY });
       const res = await groq.chat.completions.create({
@@ -100,23 +97,15 @@ async function callGroq(prompt: string): Promise<string> {
         msg.toLowerCase().includes("rate limit");
 
       if (isRateLimit) {
-        // Parse exact wait from error before rotating to next model
         const waitSec = parseWaitSeconds(msg);
-        modelIdx = (modelIdx + 1) % MODELS.length;
-        rotations++;
-        const nextModel = MODELS[modelIdx % MODELS.length].id;
-        console.log(`  ⏳ ${id} rate limited — trying ${nextModel} (wait ${Math.ceil(waitSec)}s if needed)`);
-        // Only sleep if we've exhausted all models and looped back
-        if (modelIdx % MODELS.length === startModel % MODELS.length) {
-          console.log(`  All models exhausted — waiting ${Math.ceil(waitSec)}s for window to clear`);
-          await sleep(waitSec * 1000);
-        }
+        const eta = new Date(Date.now() + waitSec * 1000).toLocaleTimeString();
+        console.log(`  ⏳ rate limited — waiting ${Math.ceil(waitSec)}s (retry at ${eta})`);
+        await sleep(waitSec * 1000);
         continue;
       }
       throw e;
     }
   }
-  throw new Error("All model pools exhausted");
 }
 
 async function generate(args: {
@@ -165,7 +154,7 @@ async function run() {
   if (error) throw error;
   if (!posts?.length) { console.log("No posts found."); return; }
 
-  console.log(`Found ${posts.length} posts. Models: ${MODELS.map(m => m.id.split("/").pop()).join(", ")}`);
+  console.log(`Found ${posts.length} posts. Model: ${MODELS[0].id} (wait-and-retry on rate limit).`);
 
   let ok = 0, skip = 0, fail = 0;
 

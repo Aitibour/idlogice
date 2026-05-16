@@ -13,6 +13,7 @@ import { RequirementsSection } from "@/components/sections/requirements-section"
 import { StepsSection } from "@/components/sections/steps-section";
 import { FeatureGrid } from "@/components/sections/feature-grid";
 import { CtaBanner } from "@/components/sections/cta-banner";
+import { ServiceJsonLd } from "@/components/seo/structured-data";
 
 export default async function FamilySponsorshipPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -45,6 +46,11 @@ export default async function FamilySponsorshipPage({ params }: { params: Promis
 
   return (
     <>
+      <ServiceJsonLd
+        name="Family Sponsorship Canada"
+        description="Sponsor your spouse, children, parents or grandparents for Canadian permanent residence. Our certified RCICs handle the complete sponsorship application process."
+        url={`https://idlogice.com/${locale}/services/family-sponsorship`}
+      />
       <PageHero
         badge={t("familySponsorship.hero.badge")}
         title={t("familySponsorship.hero.title")}

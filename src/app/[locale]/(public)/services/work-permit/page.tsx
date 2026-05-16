@@ -13,6 +13,7 @@ import { RequirementsSection } from "@/components/sections/requirements-section"
 import { StepsSection } from "@/components/sections/steps-section";
 import { FeatureGrid } from "@/components/sections/feature-grid";
 import { CtaBanner } from "@/components/sections/cta-banner";
+import { ServiceJsonLd } from "@/components/seo/structured-data";
 
 export default async function WorkPermitPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -45,6 +46,11 @@ export default async function WorkPermitPage({ params }: { params: Promise<{ loc
 
   return (
     <>
+      <ServiceJsonLd
+        name="Work Permit Canada"
+        description="Apply for a Canadian work permit with certified RCIC guidance. LMIA-based, open work permits, intra-company transfers, and CUSMA pathways covered."
+        url={`https://idlogice.com/${locale}/services/work-permit`}
+      />
       <PageHero
         badge={t("workPermit.hero.badge")}
         title={t("workPermit.hero.title")}
