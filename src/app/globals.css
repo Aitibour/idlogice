@@ -51,6 +51,11 @@
 }
 
 :root {
+  /* Force light mode — prevents browser-level dark-mode injection
+     (e.g. Chrome's "Auto Dark Mode for Web Contents") from inverting
+     our brand colors. */
+  color-scheme: light;
+
   /* Brand palette — Canadian red pulled from the maple leaf in the logo */
   --primary: oklch(0.52 0.22 27);          /* #C22 — deep Canadian red  */
   --primary-foreground: oklch(0.98 0 0);   /* white text on red          */

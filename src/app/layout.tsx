@@ -166,6 +166,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html className={geistSans.variable} suppressHydrationWarning>
       <head>
+        <meta name="color-scheme" content="light" />
         <script type={scriptProps.type} {...{ dangerouslySetInnerHTML: { __html: scriptProps.__html } }} />
       </head>
       {children}
