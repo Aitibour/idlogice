@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { createServiceClient } from "@/lib/supabase/service";
+import { tryCreateServiceClient } from "@/lib/supabase/service";
 import { PostBody } from "@/components/blog/PostBody";
 
 export const revalidate = 3600;
@@ -8,13 +8,9 @@ export const revalidate = 3600;
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
 export async function generateStaticParams() {
-  // Skip static generation if Supabase env vars missing at build time —
-  // pages will be rendered on-demand via ISR.
-  if (!process.env.SUPABASE_SERVICE_ROLE_KEY || !process.env.NEXT_PUBLIC_SUPABASE_URL) {
-    return [];
-  }
+  const db = tryCreateServiceClient();
+  if (!db) return [];
   try {
-    const db = createServiceClient();
     const { data } = await db
       .from("blog_posts")
       .select("slug")
@@ -29,7 +25,8 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props) {
   const { locale, slug } = await params;
-  const db = createServiceClient();
+  const db = tryCreateServiceClient();
+  if (!db) return {};
   const { data } = await db
     .from("blog_posts")
     .select("title, meta_desc, image_url")
@@ -49,7 +46,8 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function BlogPostPage({ params }: Props) {
   const { locale, slug } = await params;
-  const db = createServiceClient();
+  const db = tryCreateServiceClient();
+  if (!db) notFound();
 
   const { data: post } = await db
     .from("blog_posts")

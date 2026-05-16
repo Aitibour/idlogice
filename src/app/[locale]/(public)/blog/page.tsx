@@ -1,4 +1,4 @@
-import { createServiceClient } from "@/lib/supabase/service";
+import { tryCreateServiceClient } from "@/lib/supabase/service";
 import { PostCard } from "@/components/blog/PostCard";
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
@@ -18,14 +18,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogPage({ params }: Props) {
   const { locale } = await params;
-  const db = createServiceClient();
-
-  const { data: posts } = await db
-    .from("blog_posts")
-    .select("slug, title, excerpt, image_url, published_at")
-    .eq("status", "published")
-    .order("published_at", { ascending: false })
-    .limit(18);
+  const db = tryCreateServiceClient();
+  const { data: posts } = db
+    ? await db
+        .from("blog_posts")
+        .select("slug, title, excerpt, image_url, published_at")
+        .eq("status", "published")
+        .order("published_at", { ascending: false })
+        .limit(18)
+    : { data: null };
 
   const t = await getTranslations({ locale, namespace: "Blog" });
 
