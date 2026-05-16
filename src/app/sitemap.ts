@@ -90,7 +90,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   );
 
-  // Programmatic country pages — /from/[country] for 40 source countries × 4 locales
+  // /from index pages — 4 locales
+  const fromIndexEntries: MetadataRoute.Sitemap = LOCALES.map((locale) => ({
+    url: `${BASE}/${locale}/from`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: TOP,
+    alternates: { languages: Object.fromEntries(LOCALES.map((l) => [l, `${BASE}/${l}/from`])) },
+  }));
+
+  // Programmatic country pages — /from/[country] for 39 source countries × 4 locales
   const countryEntries: MetadataRoute.Sitemap = COUNTRIES.flatMap((country) =>
     LOCALES.map((locale) => ({
       url: `${BASE}/${locale}/from/${country.slug}`,
@@ -105,5 +114,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   );
 
-  return [...staticEntries, ...blogEntries, ...countryEntries];
+  return [...staticEntries, ...fromIndexEntries, ...blogEntries, ...countryEntries];
 }
