@@ -25,6 +25,7 @@ const ROUTES: Route[] = [
   { path: "",                             priority: HIGH,     changeFreq: "weekly" },
   { path: "/about",                       priority: STANDARD, changeFreq: "monthly" },
   { path: "/blog",                        priority: STANDARD, changeFreq: "daily" },
+  { path: "/guides/canada-immigration",   priority: TOP,      changeFreq: "weekly" },
   { path: "/contact",                     priority: STANDARD, changeFreq: "monthly" },
   { path: "/book-consultation",           priority: TOP,      changeFreq: "weekly" },
   { path: "/calculator",                  priority: TOOLS,    changeFreq: "weekly" },
@@ -70,14 +71,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const { data: posts } = await db
     .from("blog_posts")
-    .select("slug, published_at, updated_at")
+    .select("slug, published_at")
     .eq("status", "published")
     .order("published_at", { ascending: false });
 
   const blogEntries: MetadataRoute.Sitemap = (posts ?? []).flatMap((post) =>
     LOCALES.map((locale) => ({
       url: `${BASE}/${locale}/blog/${post.slug}`,
-      lastModified: new Date(post.updated_at ?? post.published_at ?? now),
+      lastModified: new Date(post.published_at ?? now),
       changeFrequency: "weekly" as const,
       priority: CONTENT,
       alternates: {

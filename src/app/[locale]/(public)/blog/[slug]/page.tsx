@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!db) return {};
   const { data } = await db
     .from("blog_posts")
-    .select("title, meta_desc, excerpt, image_url, published_at, updated_at")
+    .select("title, meta_desc, excerpt, image_url, published_at")
     .eq("slug", slug)
     .single();
 
@@ -79,7 +79,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: "IDLOGICE",
       locale: locale === "fr" ? "fr_CA" : locale === "es" ? "es_ES" : locale === "ar" ? "ar_AR" : "en_CA",
       publishedTime: data.published_at ?? undefined,
-      modifiedTime: data.updated_at ?? data.published_at ?? undefined,
+      modifiedTime: data.published_at ?? undefined,
       authors: ["IDLOGICE"],
       images: data.image_url ? [{ url: data.image_url, alt: title, width: 1200, height: 630 }] : [],
     },
@@ -109,6 +109,15 @@ export default async function BlogPostPage({ params }: Props) {
   const title = pick(post.title, locale);
   const desc = pick(post.meta_desc, locale) || pick(post.excerpt, locale);
   const content = pick(post.content, locale);
+
+  // FAQ data lives inside the `content` jsonb under faq_en / faq_fr.
+  // When the expand-blog script has run, we render FAQPage JSON-LD +
+  // a visible FAQ section to capture "People Also Ask" rich results.
+  const contentObj = (post.content && typeof post.content === "object" ? post.content : {}) as Record<string, unknown>;
+  const faqKey = locale === "fr" ? "faq_fr" : "faq_en";
+  const faqRaw = contentObj[faqKey];
+  const faq = (Array.isArray(faqRaw) ? faqRaw : []) as Array<{ q: string; a: string }>;
+
   const wordCount = wordsOf(content);
   const readingTime = Math.max(1, Math.round(wordCount / 230));
   const date = new Date(post.published_at).toLocaleDateString(
@@ -148,6 +157,16 @@ export default async function BlogPostPage({ params }: Props) {
     },
   };
 
+  const faqLd = faq.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  } : null;
+
   const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -162,6 +181,7 @@ export default async function BlogPostPage({ params }: Props) {
     <>
       {jsonLd(blogPostingLd)}
       {jsonLd(breadcrumbLd)}
+      {faqLd && jsonLd(faqLd)}
       <article className="container mx-auto px-4 py-16 max-w-3xl">
         <nav aria-label="Breadcrumb" className="mb-6 text-sm text-gray-600">
           <ol className="flex items-center gap-2">
@@ -190,6 +210,32 @@ export default async function BlogPostPage({ params }: Props) {
         </p>
         <h1 className="text-4xl font-bold leading-tight mb-8 text-gray-900">{title}</h1>
         <PostBody content={content} />
+
+        {/* FAQ — rendered for users + powers FAQPage JSON-LD above */}
+        {faq.length > 0 && (
+          <section className="mt-12 border-t pt-10">
+            <h2 className="text-2xl font-bold mb-6 text-gray-900">
+              {locale === "fr"
+                ? "Questions fréquentes"
+                : locale === "es"
+                ? "Preguntas frecuentes"
+                : locale === "ar"
+                ? "الأسئلة الشائعة"
+                : "Frequently asked questions"}
+            </h2>
+            <div className="space-y-5">
+              {faq.map((f, i) => (
+                <details key={i} className="rounded-xl border border-border p-5 group">
+                  <summary className="font-semibold text-gray-900 cursor-pointer list-none flex justify-between items-center">
+                    <span>{f.q}</span>
+                    <span className="text-primary group-open:rotate-45 transition-transform text-xl leading-none">+</span>
+                  </summary>
+                  <p className="mt-3 text-gray-800 leading-relaxed">{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Soft CTA toward the free evaluation funnel */}
         <aside className="mt-14 rounded-2xl border border-primary/30 bg-primary/5 p-6">
