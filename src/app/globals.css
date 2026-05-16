@@ -50,10 +50,19 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* Force light mode at the document level. Pinning both color-scheme
+   and forced-color-adjust prevents Chrome's "Force Dark Mode for Web
+   Contents" experiment, Edge dark mode and Firefox forced colors
+   from inverting our brand. */
+html, body {
+  color-scheme: light !important;
+  forced-color-adjust: none;
+}
+body {
+  background-color: #ffffff !important;
+}
+
 :root {
-  /* Force light mode — prevents browser-level dark-mode injection
-     (e.g. Chrome's "Auto Dark Mode for Web Contents") from inverting
-     our brand colors. */
   color-scheme: light;
 
   /* Brand palette — Canadian red pulled from the maple leaf in the logo */

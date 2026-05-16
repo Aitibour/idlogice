@@ -66,7 +66,10 @@ export default async function LocaleLayout({
         <OrganizationJsonLd />
         <WebsiteJsonLd />
       </head>
-      <body className="min-h-screen flex flex-col bg-background text-foreground">
+      <body
+        className="min-h-screen flex flex-col"
+        style={{ backgroundColor: "#ffffff", color: "#111111" }}
+      >
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main className="flex-1">{children}</main>
