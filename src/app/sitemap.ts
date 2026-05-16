@@ -139,5 +139,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   );
 
-  return [...staticEntries, ...fromIndexEntries, ...blogEntries, ...countryEntries, ...programsIndexEntries, ...programEntries];
+  // /from/[country]/[program] cross-pages — 39 countries × 6 programs × 4 locales = 936 pages
+  const countryProgramEntries: MetadataRoute.Sitemap = COUNTRIES.flatMap((country) =>
+    PROGRAMS.flatMap((program) =>
+      LOCALES.map((locale) => ({
+        url: `${BASE}/${locale}/from/${country.slug}/${program.slug}`,
+        lastModified: now,
+        changeFrequency: "monthly" as const,
+        priority: STANDARD,
+        alternates: {
+          languages: Object.fromEntries(
+            LOCALES.map((l) => [l, `${BASE}/${l}/from/${country.slug}/${program.slug}`]),
+          ),
+        },
+      })),
+    ),
+  );
+
+  return [...staticEntries, ...fromIndexEntries, ...blogEntries, ...countryEntries, ...programsIndexEntries, ...programEntries, ...countryProgramEntries];
 }

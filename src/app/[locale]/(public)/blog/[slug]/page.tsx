@@ -211,6 +211,25 @@ export default async function BlogPostPage({ params }: Props) {
         <h1 className="text-4xl font-bold leading-tight mb-8 text-gray-900">{title}</h1>
         <PostBody content={content} />
 
+        {/* Mid-article internal link CTA — contextual anchor text for SEO */}
+        <div className="my-10 rounded-xl border border-primary/20 bg-primary/5 p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 not-prose">
+          <p className="text-sm font-semibold text-gray-900">
+            {locale === "fr"
+              ? <>Vous demandez si vous êtes admissible ? <Link href={`/${locale}/evaluation`} className="text-primary underline">Évaluez gratuitement votre profil →</Link></>
+              : locale === "es"
+              ? <>¿Califica para inmigrar a Canadá? <Link href={`/${locale}/evaluation`} className="text-primary underline">Evaluación gratuita de perfil →</Link></>
+              : locale === "ar"
+              ? <>هل تتساءل عن أهليتك للهجرة إلى كندا؟ <Link href={`/${locale}/evaluation`} className="text-primary underline">تقييم مجاني ←</Link></>
+              : <>Wondering if you qualify for Canada immigration? <Link href={`/${locale}/evaluation`} className="text-primary underline">Get a free profile evaluation →</Link></>}
+          </p>
+          <Link
+            href={`/${locale}/calculator`}
+            className="shrink-0 rounded-full bg-primary px-4 py-2 text-xs font-bold text-white hover:opacity-90 transition-opacity whitespace-nowrap"
+          >
+            {locale === "fr" ? "Calculateur SCG" : locale === "es" ? "Calculadora CRS" : locale === "ar" ? "حاسبة CRS" : "CRS Calculator"}
+          </Link>
+        </div>
+
         {/* FAQ — rendered for users + powers FAQPage JSON-LD above */}
         {faq.length > 0 && (
           <section className="mt-12 border-t pt-10">
