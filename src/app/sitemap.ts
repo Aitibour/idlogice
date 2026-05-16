@@ -3,6 +3,7 @@
 export const revalidate = 3600;
 import type { MetadataRoute } from "next";
 import { tryCreateServiceClient } from "@/lib/supabase/service";
+import { COUNTRIES } from "@/data/immigration-countries";
 
 const BASE = "https://idlogice.com";
 const LOCALES = ["en", "fr", "es", "ar"] as const;
@@ -89,5 +90,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   );
 
-  return [...staticEntries, ...blogEntries];
+  // Programmatic country pages — /from/[country] for 40 source countries × 4 locales
+  const countryEntries: MetadataRoute.Sitemap = COUNTRIES.flatMap((country) =>
+    LOCALES.map((locale) => ({
+      url: `${BASE}/${locale}/from/${country.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: CONTENT,
+      alternates: {
+        languages: Object.fromEntries(
+          LOCALES.map((l) => [l, `${BASE}/${l}/from/${country.slug}`]),
+        ),
+      },
+    })),
+  );
+
+  return [...staticEntries, ...blogEntries, ...countryEntries];
 }
