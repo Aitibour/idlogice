@@ -2,7 +2,7 @@
   "contact": {
     "hero": {
       "title": "Contact IDLOGICE",
-      "subtitle": "Have a question about your immigration case? Our certified consultants are ready to help. Contact us today for a free initial consultation."
+      "subtitle": "Have a question about your immigration case? Our certified consultants are ready to help. Contact us today for a free profile evaluation."
     },
     "form": {
       "name": "Your Name",
@@ -26,15 +26,15 @@
       "addressLabel": "Office",
       "responseLabel": "Response Time",
       "responseValue": "Within 24 business hours",
-      "bookHeading": "Book a Free Consultation",
+      "bookHeading": "Free Profile Evaluation",
       "bookSubtitle": "Speak directly with a certified immigration consultant. No obligation, no cost.",
-      "bookButton": "Book My Free Consultation",
+      "bookButton": "Get My Free Evaluation",
       "disclaimer": "For official immigration advice, consult a Regulated Canadian Immigration Consultant (RCIC) or a licensed immigration lawyer. IDLOGICE consultants are registered with the College of Immigration and Citizenship Consultants (CICC)."
     },
     "cta": {
       "title": "Not Sure Where to Start?",
-      "subtitle": "Our free consultation helps you understand your options. No commitment required.",
-      "primary": "Book Free Consultation",
+      "subtitle": "Our free profile evaluation helps you understand your options. No commitment required.",
+      "primary": "Free Profile Evaluation",
       "secondary": "Explore Services"
     }
   }

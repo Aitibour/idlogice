@@ -34,7 +34,7 @@ export function ConsultantCta({
           <ScrollReveal>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-sm font-medium mb-6">
               <Calendar className="size-4" />
-              Free Consultation Available
+              Free Profile Evaluation
             </div>
             <h2 className="text-3xl md:text-5xl font-bold mb-4 leading-tight text-white">
               {title}

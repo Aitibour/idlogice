@@ -23,7 +23,7 @@ const OPEN_EN = `
   Thank you for calling I D Logice — your trusted Canadian immigration consultants.
   We are delighted to assist you on your path to Canada.
   All of our services — whether remote or in our office — are conducted by appointment only.
-  To book your consultation and begin your immigration journey, please visit our website at:
+  To free profile evaluation and begin your immigration journey, please visit our website at:
   www dot idlogice dot com. That is: I, D, L, O, G, I, C, E dot com.
   Our certified consultants will review your profile and guide you through every step of the process.
   We look forward to helping you achieve your Canadian dream.
@@ -44,7 +44,7 @@ const WEEKEND_EN = `
   Thank you for calling I D Logice — your trusted Canadian immigration consultants.
   Our office is currently closed for the weekend.
   Our business hours are Monday to Friday, 9 AM to 5 PM Eastern Time.
-  To book a consultation or an appointment to visit us at our office,
+  To free profile evaluation or an appointment to visit us at our office,
   please visit our website at www dot idlogice dot com — I, D, L, O, G, I, C, E dot com —
   where you can schedule your session online at any time.
   We look forward to assisting you and helping you begin your journey to Canada.
@@ -66,7 +66,7 @@ const AFTER_HOURS_EN = `
   Thank you for calling I D Logice — your trusted Canadian immigration consultants.
   You have reached us outside of our business hours.
   Our office is open Monday to Friday, from 9 AM to 5 PM Eastern Time.
-  To book a consultation or schedule an appointment to visit us at our office,
+  To free profile evaluation or schedule an appointment to visit us at our office,
   please visit our website at www dot idlogice dot com — I, D, L, O, G, I, C, E dot com —
   where you can reserve your spot online at any time, 24 hours a day.
   Our certified consultants will be happy to assist you during business hours.

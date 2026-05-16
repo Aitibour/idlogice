@@ -23,7 +23,7 @@
     "contact": "Contacto",
     "bookConsultation": "Evaluación de Perfil Gratuita",
     "jobs": "Empleos",
-    "bookConsultationNav": "Reservar Consulta",
+    "bookConsultationNav": "Evaluación Gratuita",
     "login": "Iniciar Sesión",
     "register": "Registrarse",
     "dashboard": "Panel"
@@ -69,7 +69,7 @@
     "signUp": "Registrarse Gratis",
     "viewResults": "Ver Resultados",
     "bannerTitle": "¿Listo para Iniciar su Viaje Canadiense?",
-    "bannerSubtitle": "Reserve una consulta gratuita con un consultor de inmigración certificado hoy."
+    "bannerSubtitle": "Reserve una evaluación de perfil gratuita con un consultor de inmigración certificado hoy."
   },
   "common": {
     "loading": "Cargando...",

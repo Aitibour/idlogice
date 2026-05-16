@@ -82,7 +82,7 @@ export default function BookConsultationPage() {
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-3 mb-5">
               <span className="h-px w-8 bg-primary" />
-              <span className="text-xs font-semibold uppercase tracking-widest text-primary">Book a Consultation</span>
+              <span className="text-xs font-semibold uppercase tracking-widest text-primary">Free Profile Evaluation</span>
             </div>
             <h1
               className="text-5xl lg:text-7xl font-bold tracking-tight leading-[1.05] mb-5"

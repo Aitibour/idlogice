@@ -14,7 +14,7 @@ export function BookingButton() {
         className="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 active:scale-[0.98] transition-all btn-shimmer shadow-sm shadow-primary/20"
       >
         <CalendarCheck className="size-4" />
-        Book a Consultation
+        Free Profile Evaluation
         <ArrowRight className="size-4" />
       </button>
 
@@ -23,7 +23,7 @@ export function BookingButton() {
           className="fixed inset-0 z-50 flex items-center justify-center p-4"
           role="dialog"
           aria-modal="true"
-          aria-label="Book a consultation"
+          aria-label="Free profile evaluation"
         >
           {/* Backdrop */}
           <div

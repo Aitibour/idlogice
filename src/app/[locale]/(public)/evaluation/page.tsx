@@ -514,7 +514,7 @@ export default function EvaluationPage() {
                 className="btn-shimmer flex items-center gap-2 px-5 py-3 rounded-xl bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-all"
               >
                 <Calendar className="size-4" />
-                Book a Free Consultation
+                Free Profile Evaluation
                 <ArrowRight className="size-4" />
               </Link>
               <Link

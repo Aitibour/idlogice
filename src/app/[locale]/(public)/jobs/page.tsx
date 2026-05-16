@@ -215,7 +215,7 @@ export default function JobsPage() {
             href="/book-consultation"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[oklch(0.52_0.22_27)] hover:bg-[oklch(0.48_0.22_27)] text-white font-semibold text-sm transition-colors"
           >
-            Book Your Free Consultation
+            Free Profile Evaluation
             <ChevronRight className="size-4" />
           </Link>
         </div>

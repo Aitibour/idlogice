@@ -23,7 +23,7 @@
     "contact": "تواصل معنا",
     "bookConsultation": "تقييم الملف المجاني",
     "jobs": "الوظائف",
-    "bookConsultationNav": "احجز استشارة",
+    "bookConsultationNav": "تقييم الملف المجاني",
     "login": "تسجيل الدخول",
     "register": "إنشاء حساب",
     "dashboard": "لوحة التحكم"
@@ -69,7 +69,7 @@
     "signUp": "سجل مجاناً",
     "viewResults": "عرض النتائج",
     "bannerTitle": "هل أنت مستعد لبدء رحلتك الكندية؟",
-    "bannerSubtitle": "احجز استشارة مجانية مع مستشار هجرة معتمد اليوم."
+    "bannerSubtitle": "تقييم الملف المجاني مع مستشار هجرة معتمد اليوم."
   },
   "common": {
     "loading": "جارٍ التحميل...",

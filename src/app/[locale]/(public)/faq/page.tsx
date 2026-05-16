@@ -20,7 +20,7 @@ const FAQS = [
       },
       {
         q: "Can I improve my CRS score?",
-        a: "Yes. Common ways include: retaking IELTS/CELPIP to improve language scores, getting a provincial nomination (+600 points), obtaining a valid job offer, completing additional Canadian education, or transferring education credentials. Book a consultation to get a personalized improvement plan.",
+        a: "Yes. Common ways include: retaking IELTS/CELPIP to improve language scores, getting a provincial nomination (+600 points), obtaining a valid job offer, completing additional Canadian education, or transferring education credentials. Free profile evaluation to get a personalized improvement plan.",
       },
     ],
   },
@@ -138,7 +138,7 @@ export default function FaqPage() {
             <div className="flex flex-wrap gap-3">
               <Link href="/book-consultation"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors shadow-md shadow-primary/20">
-                Book a Consultation
+                Free Profile Evaluation
               </Link>
               <Link href="/evaluation"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border text-sm font-medium hover:border-primary hover:text-primary transition-colors"
@@ -181,7 +181,7 @@ export default function FaqPage() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link href="/book-consultation"
                 className="px-6 py-3 rounded-full bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors shadow-md shadow-primary/20">
-                Book a Consultation
+                Free Profile Evaluation
               </Link>
               <Link href="/contact"
                 className="px-6 py-3 rounded-full border border-border text-sm font-medium hover:border-primary hover:text-primary transition-colors"

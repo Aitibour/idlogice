@@ -67,7 +67,7 @@
       {
         "name": "Fatima Al-Hassan",
         "origin": "Marruecos → Ottawa",
-        "text": "Desde la primera consulta gratuita hasta recibir mi tarjeta de RP, IDLOGICE fue excepcional.",
+        "text": "Desde la primera evaluación de perfil gratuita hasta recibir mi tarjeta de RP, IDLOGICE fue excepcional.",
         "result": "Patrocinio Familiar — RP",
         "rating": 5
       },
@@ -173,10 +173,10 @@
   "consultant": {
     "title": "¿Necesita un Consultor Certificado?",
     "subtitle": "Nuestros RCICs han ayudado a cientos de familias, profesionales y estudiantes a inmigrar exitosamente a Canadá.",
-    "book": "Reservar Consulta Gratuita",
+    "book": "Evaluación de Perfil Gratuita",
     "call": "+1 581-634-0224",
     "benefits": [
-      "Consulta inicial gratuita",
+      "Evaluación de perfil gratuita",
       "RCICs certificados",
       "95% tasa de aprobación",
       "10+ años de experiencia",
@@ -190,7 +190,7 @@
     "steps": [
       {
         "number": 1,
-        "title": "Consulta Gratuita",
+        "title": "Evaluación de Perfil Gratuita",
         "description": "Hable con uno de nuestros consultores certificados. Evaluamos su perfil e identificamos la mejor vía de inmigración."
       },
       {

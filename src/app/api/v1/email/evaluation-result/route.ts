@@ -91,7 +91,7 @@ export async function POST(req: NextRequest) {
                   <p style="font-size:13px;color:#6b7280;margin:0 0 20px;">Speak with a CICC-registered consultant and get a personalised immigration strategy — completely free.</p>
                   <a href="https://idlogice.com/en/book-consultation"
                     style="display:inline-block;background:#c2272d;color:#ffffff;text-decoration:none;font-weight:700;font-size:14px;padding:14px 32px;border-radius:999px;letter-spacing:0.02em;">
-                    Book My Free Consultation →
+                    Get My Free Evaluation →
                   </a>
                 </td>
               </tr>

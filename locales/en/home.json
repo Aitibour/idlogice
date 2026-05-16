@@ -36,11 +36,11 @@
   },
   "consultant": {
     "title": "Need a Certified Consultant? Book One Now.",
-    "subtitle": "Our Regulated Canadian Immigration Consultants (RCICs) have helped hundreds of families, professionals, and students successfully immigrate to Canada. Get personalized guidance — book your free consultation today.",
-    "book": "Book a Free Consultation",
+    "subtitle": "Our Regulated Canadian Immigration Consultants (RCICs) have helped hundreds of families, professionals, and students successfully immigrate to Canada. Get personalized guidance — free profile evaluation today.",
+    "book": "Free Profile Evaluation",
     "call": "+1 581-634-0224",
     "benefits": [
-      "Free initial consultation",
+      "Free profile evaluation",
       "Certified RCICs",
       "95% approval rate",
       "10+ years experience",
@@ -54,7 +54,7 @@
     "steps": [
       {
         "number": 1,
-        "title": "Free Consultation",
+        "title": "Free Profile Evaluation",
         "description": "Speak with one of our certified consultants. We evaluate your profile and identify the best immigration pathway for you — at no cost."
       },
       {
@@ -114,7 +114,7 @@
       {
         "name": "Fatima Al-Hassan",
         "origin": "Morocco → Ottawa",
-        "text": "From the first free consultation to receiving my PR card, IDLOGICE was exceptional. They know exactly what IRCC is looking for and how to present your application for maximum success.",
+        "text": "From the first free profile evaluation to receiving my PR card, IDLOGICE was exceptional. They know exactly what IRCC is looking for and how to present your application for maximum success.",
         "result": "Family Sponsorship — PR",
         "rating": 5
       },

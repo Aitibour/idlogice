@@ -3,7 +3,7 @@
     "hero": {
       "title": "À propos d'IDLOGICE",
       "subtitle": "Consultants experts en immigration canadienne basés à Montréal. Plus de 10 ans d'expérience. Taux de succès de 95 %. Clients de plus de 50 pays.",
-      "cta": "Réserver une consultation gratuite",
+      "cta": "Évaluation de profil gratuite",
       "secondaryCta": "Nos services"
     },
     "mission": {
@@ -29,8 +29,8 @@
     },
     "cta": {
       "title": "Prêt à commencer votre parcours?",
-      "subtitle": "Réservez une consultation gratuite avec un consultant certifié et découvrez vos options.",
-      "primary": "Réserver une consultation gratuite",
+      "subtitle": "Réservez une évaluation de profil gratuite avec un consultant certifié et découvrez vos options.",
+      "primary": "Évaluation de profil gratuite",
       "secondary": "Nos services"
     }
   }

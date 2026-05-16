@@ -26,15 +26,15 @@
       "addressLabel": "Oficina",
       "responseLabel": "Tiempo de Respuesta",
       "responseValue": "Dentro de las 24 horas hábiles",
-      "bookHeading": "Reserve una Consulta Gratuita",
+      "bookHeading": "Reserve una Evaluación de Perfil Gratuita",
       "bookSubtitle": "Hable directamente con un consultor certificado. Sin compromiso y sin costo.",
-      "bookButton": "Reserve Mi Consulta Gratuita",
+      "bookButton": "Reserve Mi Evaluación de Perfil Gratuita",
       "disclaimer": "Para asesoramiento oficial de inmigración, consulte a un Consultor Regulado de Inmigración Canadiense (RCIC) o un abogado de inmigración autorizado. Los consultores de IDLOGICE están registrados en el CICC."
     },
     "cta": {
       "title": "¿No Sabe Por Dónde Empezar?",
-      "subtitle": "Nuestra consulta gratuita le ayuda a entender sus opciones. Sin compromiso.",
-      "primary": "Reservar Consulta Gratuita",
+      "subtitle": "Nuestra evaluación de perfil gratuita le ayuda a entender sus opciones. Sin compromiso.",
+      "primary": "Evaluación de Perfil Gratuita",
       "secondary": "Explorar Servicios"
     }
   }

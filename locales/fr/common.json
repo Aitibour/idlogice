@@ -16,7 +16,7 @@
     "contact": "Contact",
     "bookConsultation": "Évaluation de profil gratuite",
     "jobs": "Emplois",
-    "bookConsultationNav": "Réserver une consultation",
+    "bookConsultationNav": "Évaluation de profil gratuite",
     "login": "Connexion",
     "register": "S'inscrire",
     "dashboard": "Tableau de bord",
@@ -69,7 +69,7 @@
     "signUp": "Inscription gratuite",
     "viewResults": "Voir les résultats",
     "bannerTitle": "Prêt à commencer votre parcours canadien ?",
-    "bannerSubtitle": "Réservez une consultation gratuite avec un consultant en immigration certifié dès aujourd'hui."
+    "bannerSubtitle": "Réservez une évaluation de profil gratuite avec un consultant en immigration certifié dès aujourd'hui."
   },
   "common": {
     "loading": "Chargement...",

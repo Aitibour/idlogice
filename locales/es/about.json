@@ -3,7 +3,7 @@
     "hero": {
       "title": "Sobre Nosotros — Consultores de Inmigración Certificados",
       "subtitle": "Somos un equipo de Consultores Regulados de Inmigración Canadiense (RCICs) con sede en Montreal, con una tasa de éxito del 95% en más de 500 casos de más de 50 países.",
-      "cta": "Reservar Consulta",
+      "cta": "Evaluación Gratuita",
       "secondaryCta": "Ver Servicios"
     },
     "mission": {
@@ -30,7 +30,7 @@
     "cta": {
       "title": "¿Listo para Empezar su Viaje Canadiense?",
       "subtitle": "Reserve una consulta con uno de nuestros RCICs registrados hoy mismo.",
-      "primary": "Reservar Consulta",
+      "primary": "Evaluación Gratuita",
       "secondary": "Ver Servicios"
     }
   }

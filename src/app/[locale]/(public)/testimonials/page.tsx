@@ -157,12 +157,12 @@ export default async function TestimonialsPage({ params }: { params: Promise<{ l
               <p className="text-sm font-bold uppercase tracking-widest text-primary mb-3">Start Your Journey</p>
               <h2 className="text-2xl font-bold mb-3" style={{ color: "#111827" }}>Your story could be next</h2>
               <p className="text-sm mb-6" style={{ color: "#374151" }}>
-                Book a consultation with a CICC-registered consultant and take the first step toward your Canadian dream.
+                Free profile evaluation with a CICC-registered consultant and take the first step toward your Canadian dream.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link href="/book-consultation"
                   className="px-8 py-3 rounded-full bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25">
-                  Book a Consultation
+                  Free Profile Evaluation
                 </Link>
                 <Link href="/evaluation"
                   className="px-8 py-3 rounded-full border border-border text-sm font-medium hover:border-primary hover:text-primary transition-colors"

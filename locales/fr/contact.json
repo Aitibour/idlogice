@@ -26,15 +26,15 @@
       "addressLabel": "Bureau",
       "responseLabel": "Délai de réponse",
       "responseValue": "Dans les 24 heures ouvrables",
-      "bookHeading": "Réserver une consultation gratuite",
+      "bookHeading": "Évaluation de profil gratuite",
       "bookSubtitle": "Parlez directement avec un consultant en immigration certifié. Sans engagement, sans frais.",
-      "bookButton": "Réserver ma consultation gratuite",
+      "bookButton": "Réserver ma évaluation de profil gratuite",
       "disclaimer": "Pour des conseils officiels en immigration, consultez un consultant réglementé en immigration canadienne (CRIC) ou un avocat spécialisé. Les consultants IDLOGICE sont inscrits auprès du Collège des consultants en immigration et en citoyenneté (CCIC)."
     },
     "cta": {
       "title": "Vous ne savez pas par où commencer ?",
-      "subtitle": "Notre consultation gratuite vous aide à comprendre vos options. Sans engagement.",
-      "primary": "Réserver une consultation gratuite",
+      "subtitle": "Notre évaluation de profil gratuite vous aide à comprendre vos options. Sans engagement.",
+      "primary": "Évaluation de profil gratuite",
       "secondary": "Découvrir nos services"
     }
   }

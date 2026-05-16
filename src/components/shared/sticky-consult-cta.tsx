@@ -6,7 +6,7 @@ import { Link } from "@/i18n/navigation";
 import { Calendar, X } from "lucide-react";
 
 /**
- * Sticky "Book free consultation" CTA — slides up from bottom after the user
+ * Sticky "Free profile evaluation" CTA — slides up from bottom after the user
  * scrolls past 600px. Dismissible per session.
  *
  * Hidden on conversion pages (book-consultation, login, register, checkout,

@@ -279,7 +279,7 @@ export default function CalculatorPage() {
               className="flex items-center justify-center gap-2 h-12 rounded-2xl bg-primary text-white text-sm font-bold hover:bg-primary/90 active:scale-[0.98] transition-all shadow-sm shadow-primary/20"
             >
               <CalendarCheck className="size-4" />
-              Book a Consultation
+              Free Profile Evaluation
             </Link>
             <button
               onClick={reset}
@@ -290,7 +290,7 @@ export default function CalculatorPage() {
             </button>
           </div>
           <p className="text-center text-[11px] text-muted-foreground mt-4">
-            This is an estimate only. For an accurate assessment, book a consultation with a certified RCIC.
+            This is an estimate only. For an accurate assessment, free profile evaluation with a certified RCIC.
           </p>
         </div>
       </div>
@@ -545,7 +545,7 @@ export default function CalculatorPage() {
         </div>
 
         <p className="text-center text-[11px] text-muted-foreground mt-4">
-          Based on IRCC&apos;s official CRS formula. Results are estimates — book a consultation for a certified assessment.
+          Based on IRCC&apos;s official CRS formula. Results are estimates — free profile evaluation for a certified assessment.
         </p>
       </div>
     </div>

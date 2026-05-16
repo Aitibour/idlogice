@@ -23,7 +23,7 @@
     "contact": "Contact",
     "bookConsultation": "Free Profile Evaluation",
     "jobs": "Jobs",
-    "bookConsultationNav": "Book Consultation",
+    "bookConsultationNav": "Profile Evaluation",
     "login": "Log In",
     "register": "Sign Up",
     "dashboard": "Dashboard"
@@ -69,7 +69,7 @@
     "signUp": "Sign Up Free",
     "viewResults": "View Results",
     "bannerTitle": "Ready to Start Your Canadian Journey?",
-    "bannerSubtitle": "Book a free consultation with a certified immigration consultant today."
+    "bannerSubtitle": "Free profile evaluation with a certified immigration consultant today."
   },
   "common": {
     "loading": "Loading...",

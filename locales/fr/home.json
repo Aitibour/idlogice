@@ -3,7 +3,7 @@
     "badge": "Consultants Certifiés en Immigration Canadienne",
     "title": "Votre chemin vers le Canada commence ici",
     "subtitle": "Services d'immigration canadienne experts avec un taux de succès de 95 %. Plus de 10 ans d'expérience pour aider les familles, les travailleurs et les étudiants à réaliser leur rêve canadien.",
-    "cta": "Réserver une consultation gratuite",
+    "cta": "Évaluation de profil gratuite",
     "secondaryCta": "Découvrir nos services"
   },
   "features": {
@@ -36,11 +36,11 @@
   },
   "consultant": {
     "title": "Besoin d'un consultant certifié ? Réservez maintenant.",
-    "subtitle": "Nos consultants réglementés en immigration canadienne (CRIC) ont aidé des centaines de familles, de professionnels et d'étudiants à immigrer au Canada avec succès. Obtenez des conseils personnalisés — réservez votre consultation gratuite aujourd'hui.",
-    "book": "Réserver une consultation gratuite",
+    "subtitle": "Nos consultants réglementés en immigration canadienne (CRIC) ont aidé des centaines de familles, de professionnels et d'étudiants à immigrer au Canada avec succès. Obtenez des conseils personnalisés — réservez votre évaluation de profil gratuite aujourd'hui.",
+    "book": "Évaluation de profil gratuite",
     "call": "+1 581-634-0224",
     "benefits": [
-      "Consultation initiale gratuite",
+      "Évaluation de profil gratuite",
       "Consultants CRIC certifiés",
       "Taux d'approbation de 95 %",
       "Plus de 10 ans d'expérience",
@@ -54,7 +54,7 @@
     "steps": [
       {
         "number": 1,
-        "title": "Consultation gratuite",
+        "title": "Évaluation de profil gratuite",
         "description": "Parlez avec l'un de nos consultants certifiés. Nous évaluons votre profil et identifions la meilleure voie d'immigration pour vous — sans frais."
       },
       {
@@ -114,7 +114,7 @@
       {
         "name": "Fatima Al-Hassan",
         "origin": "Maroc → Ottawa",
-        "text": "De la première consultation gratuite à la réception de ma carte de RP, IDLOGICE a été exceptionnel. Ils savent exactement ce qu'IRCC recherche et comment présenter votre demande pour un succès maximal.",
+        "text": "De la première évaluation de profil gratuite à la réception de ma carte de RP, IDLOGICE a été exceptionnel. Ils savent exactement ce qu'IRCC recherche et comment présenter votre demande pour un succès maximal.",
         "result": "Parrainage familial — RP",
         "rating": 5
       },
