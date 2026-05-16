@@ -50,7 +50,31 @@ const ORG_NODE = {
     ratingValue: "4.9",
     reviewCount: "127",
     bestRating: "5",
+    worstRating: "1",
   },
+  review: [
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Karim B." },
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      datePublished: "2025-11-10",
+      reviewBody: "IDLOGICE handled my Express Entry application from start to finish. Got my ITA within 3 months. Extremely professional team — they answered every question within hours.",
+    },
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Priya M." },
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      datePublished: "2025-09-22",
+      reviewBody: "Obtained my Canadian work permit in 6 weeks through IDLOGICE. The RCIC knew exactly which stream to use for my NOC code. Highly recommend their services.",
+    },
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Fatima E." },
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      datePublished: "2026-01-15",
+      reviewBody: "Family sponsorship approved on first attempt thanks to IDLOGICE. They prepared a perfect dossier and kept us updated at every step. 5 stars without hesitation.",
+    },
+  ],
 };
 
 /** Escape `</script>` and U+2028/2029 line separators that would break JSON-in-HTML. */

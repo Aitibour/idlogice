@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!db) return {};
   const { data } = await db
     .from("blog_posts")
-    .select("title, meta_desc, excerpt, image_url, published_at")
+    .select("title, meta_desc, excerpt, image_url, image_alt, published_at")
     .eq("slug", slug)
     .single();
 
@@ -81,7 +81,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: data.published_at ?? undefined,
       modifiedTime: data.published_at ?? undefined,
       authors: ["IDLOGICE"],
-      images: data.image_url ? [{ url: data.image_url, alt: title, width: 1200, height: 630 }] : [],
+      images: data.image_url ? [{ url: data.image_url, alt: `${title} — Canada immigration`, width: 1200, height: 630 }] : [],
     },
     twitter: {
       card: "summary_large_image",
@@ -195,7 +195,7 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="relative aspect-video w-full mb-10 rounded-xl overflow-hidden">
             <Image
               src={post.image_url}
-              alt={post.image_alt ?? title}
+              alt={post.image_alt ?? `${title} — Canada immigration`}
               fill
               className="object-cover"
               priority

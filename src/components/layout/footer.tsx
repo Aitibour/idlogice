@@ -37,6 +37,8 @@ export function Footer() {
                 { href: "/",        label: t("home")        },
                 { href: "/about",   label: t("about")       },
                 { href: "/services",label: t("services")    },
+                { href: "/from",         label: "Immigrate by Country" },
+                { href: "/guides/canada-immigration", label: "Immigration Guide" },
                 { href: "/faq",          label: "FAQ"              },
                 { href: "/testimonials", label: "Success Stories"  },
                 { href: "/contact",      label: t("contact")      },
