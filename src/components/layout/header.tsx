@@ -46,6 +46,7 @@ export function Header() {
     { href: "/about"   as const, label: t("about")   },
     { href: "/contact" as const, label: t("contact") },
     { href: "/jobs"    as const, label: t("jobs")    },
+    { href: "/blog"    as const, label: t("blog")    },
   ];
 
   return (
