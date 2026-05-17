@@ -1,0 +1,54 @@
+{
+  "draws": {
+    "meta": {
+      "title": "Suivi des tirages Entrée express — Seuils CRS | IDLOGICE",
+      "description": "Suivez chaque tirage Entrée express en temps réel. Consultez les derniers seuils CRS, le nombre d'invitations et les tendances historiques mis à jour depuis l'IRCC."
+    },
+    "hero": {
+      "badge": "Données IRCC en direct",
+      "title": "Suivi des tirages Entrée express",
+      "subtitle": "Seuils CRS et nombre d'invitations en temps réel pour chaque tirage Entrée express, directement d'Immigration, Réfugiés et Citoyenneté Canada."
+    },
+    "latestDraw": "Dernier tirage",
+    "drawNumber": "Tirage n°",
+    "crsScore": "Seuil CRS",
+    "invitations": "Invitations émises",
+    "drawDate": "Date du tirage",
+    "program": "Programme",
+    "tieBreaker": "Date de départage",
+    "chart": {
+      "title": "Tendance du score CRS",
+      "subtitle": "20 derniers tirages (hors PNP)"
+    },
+    "table": {
+      "title": "Tirages récents",
+      "draw": "Tirage",
+      "date": "Date",
+      "program": "Programme",
+      "crs": "CRS",
+      "invitations": "ITAs"
+    },
+    "programs": {
+      "CEC": "Catégorie de l'expérience canadienne",
+      "FSW": "Programme des travailleurs qualifiés",
+      "FST": "Programme des travailleurs de métiers",
+      "PNP": "Programme des candidats des provinces",
+      "French": "Maîtrise du français",
+      "General": "Aucun programme désigné",
+      "STEM": "STIM",
+      "Healthcare": "Soins de santé",
+      "Agriculture": "Agriculture et agroalimentaire",
+      "Trade": "Métiers spécialisés",
+      "Transport": "Transport",
+      "Other": "Autre"
+    },
+    "cta": {
+      "title": "Connaissez-vous votre score CRS ?",
+      "subtitle": "Utilisez notre calculateur gratuit pour comparer votre profil aux seuils des tirages récents.",
+      "primary": "Calculer mon score CRS",
+      "secondary": "Réserver une consultation gratuite"
+    },
+    "updatedEvery": "Mis à jour toutes les heures depuis l'IRCC",
+    "source": "Source : Immigration, Réfugiés et Citoyenneté Canada"
+  }
+}

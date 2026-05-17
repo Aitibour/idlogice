@@ -1,10 +1,11 @@
+﻿export const revalidate = 86400;
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us — CICC-Registered Immigration Consultants",
-  description: "Learn about IDLOGICE — a team of CICC-registered Canadian Immigration Consultants (RCICs) based in Montréal with a 95% success rate across 500+ cases from 50+ countries.",
+  title: "About Us â€” CICC-Registered Immigration Consultants",
+  description: "Learn about IDLOGICE â€” a team of CICC-registered Canadian Immigration Consultants (RCICs) based in MontrÃ©al with a 95% success rate across 500+ cases from 50+ countries.",
   alternates: { canonical: "https://idlogice.com/about" },
-  openGraph: { title: "About IDLOGICE — Canadian Immigration Consultants in Montréal", description: "CICC-registered RCICs helping clients from 50+ countries achieve their Canadian dream.", url: "https://idlogice.com/about" },
+  openGraph: { title: "About IDLOGICE â€” Canadian Immigration Consultants in MontrÃ©al", description: "CICC-registered RCICs helping clients from 50+ countries achieve their Canadian dream.", url: "https://idlogice.com/about" },
 };
 
 import { setRequestLocale, getTranslations } from "next-intl/server";
@@ -55,3 +56,4 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
     </>
   );
 }
+

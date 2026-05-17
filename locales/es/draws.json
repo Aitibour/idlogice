@@ -1,0 +1,54 @@
+{
+  "draws": {
+    "meta": {
+      "title": "Seguimiento de Sorteos Express Entry — Puntajes CRS | IDLOGICE",
+      "description": "Rastrea cada sorteo de Express Entry en tiempo real. Consulta los últimos puntajes de corte CRS, el número de invitaciones y las tendencias históricas actualizadas desde IRCC."
+    },
+    "hero": {
+      "badge": "Datos IRCC en vivo",
+      "title": "Seguimiento de Sorteos Express Entry",
+      "subtitle": "Puntajes de corte CRS y número de invitaciones en tiempo real de cada ronda de Express Entry, provenientes directamente de Inmigración, Refugiados y Ciudadanía Canadá."
+    },
+    "latestDraw": "Último sorteo",
+    "drawNumber": "Sorteo n.°",
+    "crsScore": "Corte CRS",
+    "invitations": "Invitaciones emitidas",
+    "drawDate": "Fecha del sorteo",
+    "program": "Programa",
+    "tieBreaker": "Fecha de desempate",
+    "chart": {
+      "title": "Tendencia del puntaje CRS",
+      "subtitle": "Últimos 20 sorteos (sin PNP)"
+    },
+    "table": {
+      "title": "Sorteos recientes",
+      "draw": "Sorteo",
+      "date": "Fecha",
+      "program": "Programa",
+      "crs": "CRS",
+      "invitations": "ITAs"
+    },
+    "programs": {
+      "CEC": "Clase de Experiencia Canadiense",
+      "FSW": "Programa de Trabajadores Calificados",
+      "FST": "Programa de Trabajadores de Oficios",
+      "PNP": "Programa de Nominación Provincial",
+      "French": "Competencia en francés",
+      "General": "Sin programa específico",
+      "STEM": "CTIM",
+      "Healthcare": "Salud",
+      "Agriculture": "Agricultura y agroalimentario",
+      "Trade": "Ocupaciones de oficios",
+      "Transport": "Transporte",
+      "Other": "Otro"
+    },
+    "cta": {
+      "title": "¿Conoce su puntaje CRS?",
+      "subtitle": "Use nuestra calculadora gratuita para comparar su perfil con los puntajes de corte de sorteos recientes.",
+      "primary": "Calcular mi puntaje CRS",
+      "secondary": "Reservar consulta gratuita"
+    },
+    "updatedEvery": "Actualizado cada hora desde IRCC",
+    "source": "Fuente: Inmigración, Refugiados y Ciudadanía Canadá"
+  }
+}

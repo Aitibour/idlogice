@@ -1,7 +1,8 @@
+﻿export const revalidate = 86400;
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Express Entry Canada — Federal Skilled Worker Program",
+  title: "Express Entry Canada â€” Federal Skilled Worker Program",
   description: "Apply to Canada through Express Entry. Our CICC-registered consultants help you optimise your CRS score and submit a winning application for Canadian permanent residence.",
   alternates: { canonical: "https://idlogice.com/services/express-entry" },
   openGraph: { title: "Express Entry Canada | IDLOGICE Immigration", description: "Fastest route to Canadian permanent residence. Expert CRS optimization by certified RCICs.", url: "https://idlogice.com/services/express-entry" },
@@ -96,3 +97,4 @@ export default async function ExpressEntryPage({ params }: { params: Promise<{ l
     </>
   );
 }
+

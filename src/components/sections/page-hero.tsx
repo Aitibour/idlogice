@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
@@ -29,23 +30,32 @@ export function PageHero({
     <section className="relative overflow-hidden bg-white border-b border-border/40">
       {bgImage && (
         <>
-          {/* Image panel on the right (desktop) */}
-          <div
-            aria-hidden="true"
-            className="hidden md:block absolute inset-y-0 right-0 w-1/2 bg-cover bg-center"
-            style={{ backgroundImage: `url(${bgImage})` }}
-          />
-          {/* Soft white-to-transparent veil so right-side image fades into background */}
+          {/* Image panel on the right (desktop) — next/image for optimized LCP */}
+          <div aria-hidden="true" className="hidden md:block absolute inset-y-0 right-0 w-1/2">
+            <Image
+              src={bgImage}
+              alt=""
+              fill
+              className="object-cover object-center"
+              priority
+              sizes="50vw"
+            />
+          </div>
           <div
             aria-hidden="true"
             className="hidden md:block absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/40"
           />
-          {/* Mobile: full-width faded image, light wash on top */}
-          <div
-            aria-hidden="true"
-            className="md:hidden absolute inset-0 bg-cover bg-center opacity-25"
-            style={{ backgroundImage: `url(${bgImage})` }}
-          />
+          {/* Mobile: full-width faded image */}
+          <div aria-hidden="true" className="md:hidden absolute inset-0 opacity-25">
+            <Image
+              src={bgImage}
+              alt=""
+              fill
+              className="object-cover object-center"
+              priority
+              sizes="100vw"
+            />
+          </div>
           <div
             aria-hidden="true"
             className="md:hidden absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/95"

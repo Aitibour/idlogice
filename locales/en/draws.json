@@ -1,0 +1,54 @@
+{
+  "draws": {
+    "meta": {
+      "title": "Express Entry Draw Tracker — Latest CRS Cutoffs | IDLOGICE",
+      "description": "Track every Express Entry draw in real time. See the latest CRS cutoff scores, invitation counts, and historical trends updated directly from IRCC."
+    },
+    "hero": {
+      "badge": "Live IRCC Data",
+      "title": "Express Entry Draw Tracker",
+      "subtitle": "Real-time CRS cutoffs and invitation counts from every Express Entry round, sourced directly from Immigration, Refugees and Citizenship Canada."
+    },
+    "latestDraw": "Latest Draw",
+    "drawNumber": "Draw #",
+    "crsScore": "CRS Cutoff",
+    "invitations": "Invitations Issued",
+    "drawDate": "Draw Date",
+    "program": "Program",
+    "tieBreaker": "Tie-Breaking Date",
+    "chart": {
+      "title": "CRS Score Trend",
+      "subtitle": "Last 20 draws (excluding PNP)"
+    },
+    "table": {
+      "title": "Recent Draws",
+      "draw": "Draw",
+      "date": "Date",
+      "program": "Program",
+      "crs": "CRS",
+      "invitations": "ITAs"
+    },
+    "programs": {
+      "CEC": "Canadian Experience Class",
+      "FSW": "Federal Skilled Worker",
+      "FST": "Federal Skilled Trades",
+      "PNP": "Provincial Nominee Program",
+      "French": "French Proficiency",
+      "General": "No Program Specified",
+      "STEM": "STEM",
+      "Healthcare": "Healthcare",
+      "Agriculture": "Agriculture & Agri-Food",
+      "Trade": "Trade Occupations",
+      "Transport": "Transport Occupations",
+      "Other": "Other"
+    },
+    "cta": {
+      "title": "Know Your CRS Score?",
+      "subtitle": "Use our free calculator to see how your profile compares to recent draw cutoffs.",
+      "primary": "Calculate My CRS Score",
+      "secondary": "Book a Free Consultation"
+    },
+    "updatedEvery": "Updated every hour from IRCC",
+    "source": "Source: Immigration, Refugees and Citizenship Canada"
+  }
+}

@@ -1,7 +1,8 @@
+﻿export const revalidate = 86400;
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Canada Work Permit — LMIA  Open Work Permits",
+  title: "Canada Work Permit â€” LMIA  Open Work Permits",
   description: "Apply for a Canadian work permit with certified RCIC guidance. LMIA-based, open work permits, intra-company transfers, and CUSMA pathways covered.",
   alternates: { canonical: "https://idlogice.com/services/work-permit" },
   openGraph: { title: "Canada Work Permit | IDLOGICE Immigration", description: "Work legally in Canada. Expert RCIC guidance for LMIA, open work permits and employer-specific permits.", url: "https://idlogice.com/services/work-permit" },
@@ -95,3 +96,4 @@ export default async function WorkPermitPage({ params }: { params: Promise<{ loc
     </>
   );
 }
+

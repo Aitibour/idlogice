@@ -1,7 +1,8 @@
+﻿export const revalidate = 86400;
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Canada Study Permit — Student Visa Application",
+  title: "Canada Study Permit â€” Student Visa Application",
   description: "Get your Canadian study permit with expert help from CICC-registered consultants. We guide you through DLI selection, application, and the path to permanent residence via PGWP.",
   alternates: { canonical: "https://idlogice.com/services/study-permit" },
   openGraph: { title: "Canada Study Permit | IDLOGICE Immigration", description: "Study in Canada and build a path to PR. Expert guidance for study permits and Post-Graduate Work Permits.", url: "https://idlogice.com/services/study-permit" },
@@ -95,3 +96,4 @@ export default async function StudyPermitPage({ params }: { params: Promise<{ lo
     </>
   );
 }
+
