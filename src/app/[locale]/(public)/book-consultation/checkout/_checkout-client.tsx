@@ -120,6 +120,7 @@ export function CheckoutClient({ planId }: { planId?: string }) {
   const [paypalOrderId, setPaypalOrderId] = useState("");
   const [paid, setPaid] = useState(false);
   const mainPanelRef = useRef<HTMLDivElement>(null);
+  const paypalRef = useRef<HTMLDivElement>(null);
 
   // Scroll the main panel into view whenever the step changes so PayPal's
   // inline card form is never hidden behind the sticky site header.
@@ -392,7 +393,7 @@ export function CheckoutClient({ planId }: { planId?: string }) {
                       currency: "CAD",
                     }}
                   >
-                    <div className="scroll-mt-24">
+                    <div ref={paypalRef} className="scroll-mt-28">
                     <PayPalButtons
                       style={{ layout: "vertical", color: "gold", shape: "rect", label: "pay", height: 48 }}
                       createOrder={(_data, actions) =>
@@ -412,11 +413,9 @@ export function CheckoutClient({ planId }: { planId?: string }) {
                         setStep("schedule");
                       }}
                       onClick={() => {
-                        // Scroll panel clear of sticky header before PayPal
-                        // expands its inline card form.
-                        if (mainPanelRef.current) {
-                          const HEADER_H = 80;
-                          const top = mainPanelRef.current.getBoundingClientRect().top + window.scrollY - HEADER_H;
+                        if (paypalRef.current) {
+                          const HEADER_H = 100;
+                          const top = paypalRef.current.getBoundingClientRect().top + window.scrollY - HEADER_H;
                           window.scrollTo({ top, behavior: "smooth" });
                         }
                       }}
