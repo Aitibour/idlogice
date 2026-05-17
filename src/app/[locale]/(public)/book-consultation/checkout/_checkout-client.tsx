@@ -122,14 +122,26 @@ export function CheckoutClient({ planId }: { planId?: string }) {
   const mainPanelRef = useRef<HTMLDivElement>(null);
   const paypalRef = useRef<HTMLDivElement>(null);
 
-  // Scroll the main panel into view whenever the step changes so PayPal's
-  // inline card form is never hidden behind the sticky site header.
+  // Scroll main panel into view on step change.
   useEffect(() => {
     if (mainPanelRef.current) {
-      const HEADER_H = 80;
-      const top = mainPanelRef.current.getBoundingClientRect().top + window.scrollY - HEADER_H;
+      const top = mainPanelRef.current.getBoundingClientRect().top + window.scrollY - 90;
       window.scrollTo({ top, behavior: "smooth" });
     }
+  }, [step]);
+
+  // Watch PayPal container size — when the card form expands, scroll it below the header.
+  useEffect(() => {
+    if (!paypalRef.current || step !== "payment") return;
+    const el = paypalRef.current;
+    const ro = new ResizeObserver(() => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < 100) {
+        window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 100, behavior: "smooth" });
+      }
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
   }, [step]);
 
   useEffect(() => {
@@ -411,13 +423,6 @@ export function CheckoutClient({ planId }: { planId?: string }) {
                         await actions.order?.capture();
                         setPaypalOrderId(data.orderID);
                         setStep("schedule");
-                      }}
-                      onClick={() => {
-                        if (paypalRef.current) {
-                          const HEADER_H = 100;
-                          const top = paypalRef.current.getBoundingClientRect().top + window.scrollY - HEADER_H;
-                          window.scrollTo({ top, behavior: "smooth" });
-                        }
                       }}
                     />
                     </div>
