@@ -125,23 +125,26 @@ export function CheckoutClient({ planId }: { planId?: string }) {
   // Scroll main panel into view on step change.
   useEffect(() => {
     if (mainPanelRef.current) {
-      const top = mainPanelRef.current.getBoundingClientRect().top + window.scrollY - 90;
-      window.scrollTo({ top, behavior: "smooth" });
+      mainPanelRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }, [step]);
 
-  // Watch PayPal container size — when the card form expands, scroll it below the header.
+  // Watch for PayPal card-form iframe insertion via MutationObserver.
+  // ResizeObserver misses it because PayPal's card field iframes are absolutely positioned
+  // and don't affect the parent container's layout size.
   useEffect(() => {
     if (!paypalRef.current || step !== "payment") return;
     const el = paypalRef.current;
-    const ro = new ResizeObserver(() => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < 100) {
-        window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 100, behavior: "smooth" });
+
+    const ensureVisible = () => {
+      if (el.getBoundingClientRect().top < 100) {
+        el.scrollIntoView({ behavior: "instant", block: "start" });
       }
-    });
-    ro.observe(el);
-    return () => ro.disconnect();
+    };
+
+    const mo = new MutationObserver(ensureVisible);
+    mo.observe(el, { childList: true, subtree: true, attributes: true });
+    return () => mo.disconnect();
   }, [step]);
 
   useEffect(() => {
