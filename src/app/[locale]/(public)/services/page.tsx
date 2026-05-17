@@ -1,4 +1,5 @@
 ﻿export const revalidate = 86400;
+import Image from "next/image";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { CtaBanner } from "@/components/sections/cta-banner";
@@ -67,10 +68,15 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
   return (
     <>
       {/* â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <section
-        className="relative min-h-[480px] flex items-end pb-28 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/feature-immigration.jpg')" }}
-      >
+      <section className="relative overflow-hidden min-h-[480px] flex items-end pb-28">
+        <Image
+          src="/images/feature-immigration.jpg"
+          alt=""
+          fill
+          className="object-cover object-center"
+          priority
+          sizes="100vw"
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/50 to-black/30" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white to-transparent" />
 
@@ -116,9 +122,12 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                   >
                     {/* Image */}
                     <div className="relative h-44 overflow-hidden">
-                      <div
-                        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                        style={{ backgroundImage: `url('${service.image}')` }}
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
 
