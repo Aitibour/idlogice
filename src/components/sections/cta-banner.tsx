@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
@@ -26,11 +27,9 @@ export function CtaBanner({
     <section className="relative py-20 overflow-hidden bg-white border-y border-border/50">
       {bgImage && (
         <>
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 bg-cover bg-center opacity-15"
-            style={{ backgroundImage: `url(${bgImage})` }}
-          />
+          <div aria-hidden="true" className="absolute inset-0 opacity-15">
+            <Image src={bgImage} alt="" fill className="object-cover object-center" sizes="100vw" />
+          </div>
           <div
             aria-hidden="true"
             className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/90 to-white"
