@@ -140,7 +140,7 @@ export default function FaqPage() {
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors shadow-md shadow-primary/20">
                 Free Profile Evaluation
               </Link>
-              <Link href="/evaluation"
+              <Link href="/book-consultation"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border text-sm font-medium hover:border-primary hover:text-primary transition-colors"
                 style={{ color: "#374151" }}>
                 Free Evaluation

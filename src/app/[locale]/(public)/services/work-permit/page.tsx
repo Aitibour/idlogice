@@ -55,7 +55,7 @@ export default async function WorkPermitPage({ params }: { params: Promise<{ loc
         badge={t("workPermit.hero.badge")}
         title={t("workPermit.hero.title")}
         subtitle={t("workPermit.hero.subtitle")}
-        cta={{ label: t("workPermit.hero.cta"), href: "/evaluation" }}
+        cta={{ label: t("workPermit.hero.cta"), href: "/book-consultation" }}
         secondaryCta={{
           label: t("workPermit.hero.secondaryCta"),
           href: "/calculator",
@@ -85,7 +85,7 @@ export default async function WorkPermitPage({ params }: { params: Promise<{ loc
         subtitle={t("workPermit.cta.subtitle")}
         primaryCta={{
           label: t("workPermit.cta.primary"),
-          href: "/evaluation",
+          href: "/book-consultation",
         }}
         secondaryCta={{
           label: t("workPermit.cta.secondary"),

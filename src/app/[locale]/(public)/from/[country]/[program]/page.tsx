@@ -81,8 +81,8 @@ const ui: Record<LocaleKey, {
     processingTime: "Typical processing", weeks: "weeks",
     requirements: "Eligibility requirements", steps: "How to apply",
     faq: "Frequently asked questions",
-    ctaTitle: "Get a free eligibility assessment",
-    ctaBtn: "Free profile evaluation →",
+    ctaTitle: "Book a free immigration consultation",
+    ctaBtn: "Book a consultation →",
     otherPrograms: "Other programs for",
     countryNote: "Important for",
   },
@@ -91,8 +91,8 @@ const ui: Record<LocaleKey, {
     processingTime: "Délai de traitement typique", weeks: "semaines",
     requirements: "Conditions d'admissibilité", steps: "Comment postuler",
     faq: "Questions fréquentes",
-    ctaTitle: "Obtenez une évaluation gratuite de votre admissibilité",
-    ctaBtn: "Évaluation de profil gratuite →",
+    ctaTitle: "Réservez une consultation d'immigration gratuite",
+    ctaBtn: "Réserver une consultation →",
     otherPrograms: "Autres programmes pour",
     countryNote: "Important pour",
   },
@@ -101,8 +101,8 @@ const ui: Record<LocaleKey, {
     processingTime: "Tramitación típica", weeks: "semanas",
     requirements: "Requisitos de elegibilidad", steps: "Cómo aplicar",
     faq: "Preguntas frecuentes",
-    ctaTitle: "Obtenga una evaluación gratuita de elegibilidad",
-    ctaBtn: "Evaluación de perfil gratuita →",
+    ctaTitle: "Reserve una consulta de inmigración gratuita",
+    ctaBtn: "Reservar una consulta →",
     otherPrograms: "Otros programas para",
     countryNote: "Importante para",
   },
@@ -111,8 +111,8 @@ const ui: Record<LocaleKey, {
     processingTime: "وقت المعالجة المعتاد", weeks: "أسابيع",
     requirements: "متطلبات الأهلية", steps: "كيفية التقديم",
     faq: "الأسئلة الشائعة",
-    ctaTitle: "احصل على تقييم مجاني للأهلية",
-    ctaBtn: "تقييم الملف المجاني →",
+    ctaTitle: "احجز استشارة هجرة مجانية",
+    ctaBtn: "احجز استشارة →",
     otherPrograms: "برامج أخرى لـ",
     countryNote: "مهم لـ",
   },
@@ -245,7 +245,7 @@ export default async function CountryProgramPage({ params }: Props) {
         <aside className="rounded-2xl border border-primary/30 bg-primary/5 p-8 text-center mb-14">
           <p className="text-xl font-bold text-gray-900 mb-5">{t.ctaTitle}</p>
           <Link
-            href={`/${locale}/evaluation`}
+            href={`/${locale}/book-consultation`}
             className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold text-white hover:opacity-90 transition-opacity"
           >
             {t.ctaBtn}

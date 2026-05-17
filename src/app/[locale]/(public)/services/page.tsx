@@ -189,7 +189,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
       <CtaBanner
         title={t("overview.cta.title")}
         subtitle={t("overview.cta.subtitle")}
-        primaryCta={{ label: t("overview.cta.primary"), href: "/evaluation" }}
+        primaryCta={{ label: t("overview.cta.primary"), href: "/book-consultation" }}
         secondaryCta={{ label: t("overview.cta.secondary"), href: "/calculator" }}
         bgImage="/images/cta-bg.jpg"
       />

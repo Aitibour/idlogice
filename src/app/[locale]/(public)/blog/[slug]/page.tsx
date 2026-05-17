@@ -215,12 +215,12 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="my-10 rounded-xl border border-primary/20 bg-primary/5 p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 not-prose">
           <p className="text-sm font-semibold text-gray-900">
             {locale === "fr"
-              ? <>Vous demandez si vous êtes admissible ? <Link href={`/${locale}/evaluation`} className="text-primary underline">Évaluez gratuitement votre profil →</Link></>
+              ? <>Vous demandez si vous êtes admissible ? <Link href={`/${locale}/book-consultation`} className="text-primary underline">Réservez une consultation gratuite →</Link></>
               : locale === "es"
-              ? <>¿Califica para inmigrar a Canadá? <Link href={`/${locale}/evaluation`} className="text-primary underline">Evaluación gratuita de perfil →</Link></>
+              ? <>¿Califica para inmigrar a Canadá? <Link href={`/${locale}/book-consultation`} className="text-primary underline">Reserve una consulta gratuita →</Link></>
               : locale === "ar"
-              ? <>هل تتساءل عن أهليتك للهجرة إلى كندا؟ <Link href={`/${locale}/evaluation`} className="text-primary underline">تقييم مجاني ←</Link></>
-              : <>Wondering if you qualify for Canada immigration? <Link href={`/${locale}/evaluation`} className="text-primary underline">Get a free profile evaluation →</Link></>}
+              ? <>هل تتساءل عن أهليتك للهجرة إلى كندا؟ <Link href={`/${locale}/book-consultation`} className="text-primary underline">احجز استشارة مجانية ←</Link></>
+              : <>Ready to start your Canada immigration journey? <Link href={`/${locale}/book-consultation`} className="text-primary underline">Book a free consultation →</Link></>}
           </p>
           <Link
             href={`/${locale}/calculator`}
@@ -260,12 +260,12 @@ export default async function BlogPostPage({ params }: Props) {
         <aside className="mt-14 rounded-2xl border border-primary/30 bg-primary/5 p-6">
           <p className="text-lg font-bold text-gray-900 mb-1">
             {locale === "fr"
-              ? "Évaluez gratuitement votre profil d'immigration"
+              ? "Réservez votre consultation d'immigration"
               : locale === "es"
-              ? "Evalúe gratis su perfil de inmigración"
+              ? "Reserve su consulta de inmigración"
               : locale === "ar"
-              ? "احصل على تقييم مجاني لملف الهجرة"
-              : "Get a free Canada immigration evaluation"}
+              ? "احجز استشارتك في الهجرة"
+              : "Book your Canada immigration consultation"}
           </p>
           <p className="text-sm text-gray-700 mb-4">
             {locale === "fr"
@@ -277,16 +277,16 @@ export default async function BlogPostPage({ params }: Props) {
               : "Our RCIC consultants assess your eligibility for every Canadian program in under 24 hours."}
           </p>
           <Link
-            href={`/${locale}/evaluation`}
+            href={`/${locale}/book-consultation`}
             className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-white hover:opacity-90 transition-opacity"
           >
             {locale === "fr"
-              ? "Évaluation de profil gratuite →"
+              ? "Réserver une consultation →"
               : locale === "es"
-              ? "Evaluación de perfil gratuita →"
+              ? "Reservar una consulta →"
               : locale === "ar"
-              ? "تقييم الملف المجاني →"
-              : "Free Profile Evaluation →"}
+              ? "احجز استشارة →"
+              : "Book a Consultation →"}
           </Link>
         </aside>
 

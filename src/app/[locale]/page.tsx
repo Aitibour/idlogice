@@ -53,7 +53,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       )}
       <HeroSlider
         slides={heroSlides}
-        cta={{ label: t("hero.cta"), href: "/evaluation" }}
+        cta={{ label: t("hero.cta"), href: "/book-consultation" }}
         secondaryCta={{ label: t("hero.secondaryCta"), href: "/services" }}
       />
       <AboutSection
@@ -85,7 +85,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <CtaBanner
         title={t("cta.bannerTitle")}
         subtitle={t("cta.bannerSubtitle")}
-        primaryCta={{ label: t("cta.freeEvaluation"), href: "/evaluation" }}
+        primaryCta={{ label: t("cta.freeEvaluation"), href: "/book-consultation" }}
         secondaryCta={{ label: t("cta.calculateCrs"), href: "/calculator" }}
         bgImage="/images/cta-bg.jpg"
       />

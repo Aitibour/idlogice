@@ -196,7 +196,7 @@ export default async function FromCountryPage({ params }: Props) {
         <aside className="bg-gradient-to-br from-blue-900 to-blue-700 text-white rounded-2xl p-8 mb-12 text-center">
           <h2 className="text-2xl font-bold mb-3">{tr("ctaH", l) as string}</h2>
           <p className="text-blue-100 mb-6 max-w-lg mx-auto">{tr("ctaTxt", l) as string}</p>
-          <Link href={`/${l}/evaluation`} className="inline-block bg-white text-blue-900 font-semibold px-7 py-3 rounded-full hover:bg-blue-50 transition-colors">
+          <Link href={`/${l}/book-consultation`} className="inline-block bg-white text-blue-900 font-semibold px-7 py-3 rounded-full hover:bg-blue-50 transition-colors">
             {tr("ctaBtn", l) as string}
           </Link>
         </aside>

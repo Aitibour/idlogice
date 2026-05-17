@@ -164,7 +164,7 @@ export default async function TestimonialsPage({ params }: { params: Promise<{ l
                   className="px-8 py-3 rounded-full bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25">
                   Free Profile Evaluation
                 </Link>
-                <Link href="/evaluation"
+                <Link href="/book-consultation"
                   className="px-8 py-3 rounded-full border border-border text-sm font-medium hover:border-primary hover:text-primary transition-colors"
                   style={{ color: "#374151" }}>
                   Free Evaluation

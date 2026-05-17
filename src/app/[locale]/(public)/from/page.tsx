@@ -122,7 +122,7 @@ export default async function FromIndexPage({ params }: Props) {
           {l === "ar" && "غير متأكد من البرنامج المناسب لك؟"}
         </p>
         <Link
-          href={`/${l}/evaluation`}
+          href={`/${l}/book-consultation`}
           className="inline-block bg-white text-blue-900 font-semibold px-7 py-3 rounded-full hover:bg-blue-50 transition-colors"
         >
           {tr("ctaBtn", l) as string}

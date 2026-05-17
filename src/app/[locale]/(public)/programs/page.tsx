@@ -53,7 +53,7 @@ const headings: Record<string, { h1: string; sub: string; cta: string; eval: str
     h1: "Canada Immigration Programs",
     sub: "Find the pathway that matches your profile — from skilled workers to students, families, and visitors.",
     cta: "Not sure which program fits you?",
-    eval: "Get a free evaluation →",
+    eval: "Book a consultation →",
   },
   fr: {
     h1: "Programmes d'immigration au Canada",
@@ -153,7 +153,7 @@ export default async function ProgramsIndexPage({ params }: Props) {
         <aside className="rounded-2xl border border-primary/30 bg-primary/5 p-8 text-center">
           <p className="text-xl font-bold text-gray-900 mb-2">{h.cta}</p>
           <Link
-            href={`/${locale}/evaluation`}
+            href={`/${locale}/book-consultation`}
             className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold text-white hover:opacity-90 transition-opacity mt-4"
           >
             {h.eval}

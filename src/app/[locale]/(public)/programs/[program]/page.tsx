@@ -59,7 +59,7 @@ const uiStrings: Record<string, {
     faq: "Frequently asked questions",
     ctaTitle: "Ready to start your Canadian journey?",
     ctaDesc: "Our RCIC consultants will assess your eligibility and build your strongest application.",
-    ctaBtn: "Get a free evaluation →",
+    ctaBtn: "Book a consultation →",
   },
   fr: {
     home: "Accueil", programs: "Programmes", processingTime: "Délai de traitement", weeks: "semaines",
@@ -67,7 +67,7 @@ const uiStrings: Record<string, {
     faq: "Questions fréquentes",
     ctaTitle: "Prêt à commencer votre parcours canadien ?",
     ctaDesc: "Nos consultants RCIC évalueront votre admissibilité et prépareront votre meilleure demande.",
-    ctaBtn: "Obtenir une évaluation gratuite →",
+    ctaBtn: "Réserver une consultation →",
   },
   es: {
     home: "Inicio", programs: "Programas", processingTime: "Tiempo de tramitación", weeks: "semanas",
@@ -75,7 +75,7 @@ const uiStrings: Record<string, {
     faq: "Preguntas frecuentes",
     ctaTitle: "¿Listo para comenzar su viaje canadiense?",
     ctaDesc: "Nuestros consultores RCIC evaluarán su elegibilidad y construirán su solicitud más sólida.",
-    ctaBtn: "Obtener evaluación gratuita →",
+    ctaBtn: "Reservar una consulta →",
   },
   ar: {
     home: "الرئيسية", programs: "البرامج", processingTime: "وقت المعالجة", weeks: "أسابيع",
@@ -83,7 +83,7 @@ const uiStrings: Record<string, {
     faq: "الأسئلة الشائعة",
     ctaTitle: "هل أنت مستعد لبدء رحلتك الكندية؟",
     ctaDesc: "سيقيّم مستشارونا المعتمدون (RCIC) أهليتك ويبنون لك أقوى طلب.",
-    ctaBtn: "احصل على تقييم مجاني →",
+    ctaBtn: "احجز استشارة →",
   },
 };
 
@@ -200,7 +200,7 @@ export default async function ProgramPage({ params }: Props) {
           <p className="text-xl font-bold text-gray-900 mb-2">{ui.ctaTitle}</p>
           <p className="text-sm text-gray-600 mb-5">{ui.ctaDesc}</p>
           <Link
-            href={`/${locale}/evaluation`}
+            href={`/${locale}/book-consultation`}
             className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold text-white hover:opacity-90 transition-opacity"
           >
             {ui.ctaBtn}

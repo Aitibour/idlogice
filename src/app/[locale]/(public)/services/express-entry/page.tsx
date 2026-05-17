@@ -58,7 +58,7 @@ export default async function ExpressEntryPage({ params }: { params: Promise<{ l
         cta={{ label: t("expressEntry.hero.cta"), href: "/calculator" }}
         secondaryCta={{
           label: t("expressEntry.hero.secondaryCta"),
-          href: "/evaluation",
+          href: "/book-consultation",
         }}
         bgImage="/images/feature-immigration.jpg"
       />
@@ -90,7 +90,7 @@ export default async function ExpressEntryPage({ params }: { params: Promise<{ l
         }}
         secondaryCta={{
           label: t("expressEntry.cta.secondary"),
-          href: "/evaluation",
+          href: "/book-consultation",
         }}
       />
     </>

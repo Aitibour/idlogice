@@ -17,7 +17,7 @@ const HIDDEN_ROUTES = [
   "/login",
   "/register",
   "/checkout",
-  "/evaluation",
+  "/book-consultation",
   "/calculator",
   "/dashboard",
 ];
@@ -91,7 +91,7 @@ export function StickyConsultCta() {
           <p className="text-xs opacity-90 hidden sm:block">Find out if you qualify — no cost, no commitment.</p>
         </div>
         <Link
-          href="/evaluation"
+          href="/book-consultation"
           onClick={() => {
             if (typeof window !== "undefined" && (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag) {
               (window as unknown as { gtag: (...args: unknown[]) => void }).gtag("event", "cta_click", {
