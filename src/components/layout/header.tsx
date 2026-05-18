@@ -37,6 +37,7 @@ export function Header() {
     { href: "/services/work-permit"   as const, label: t("servicesItems.workPermit")   },
     { href: "/services/pnp"           as const, label: t("servicesItems.pnp")           },
     { href: "/services/tourist-visa"  as const, label: t("servicesItems.touristVisa")   },
+    { href: "/services/family-sponsorship" as const, label: t("servicesItems.familySponsorship") },
   ];
 
   const navLinksBefore = [
@@ -249,4 +250,5 @@ export function Header() {
     </header>
   );
 }
+
 
