@@ -6,6 +6,8 @@ import { ServicesAlternating } from "@/components/sections/services-alternating"
 import { TestimonialsMarquee } from "@/components/sections/testimonials-marquee";
 import { ContactInline } from "@/components/sections/contact-inline";
 import { CtaBanner } from "@/components/sections/cta-banner";
+import { Link } from "@/i18n/navigation";
+import { BarChart2, Calculator } from "lucide-react";
 
 const HERO_VIDEO_SOURCES = [
   { videoSrc: "/videos/12731031_3840_2160_24fps.mp4",       poster: "/posters/12731031_3840_2160_24fps.jpg" },
@@ -69,7 +71,37 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         eyebrow={t("servicesSection.eyebrow")}
         title={t("servicesSection.title")}
         services={services}
-      />
+      {/* Tools strip – Draw Tracker + CRS Calculator */}
+      <section className="bg-white border-y border-border/50 py-10">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="grid sm:grid-cols-2 gap-4">
+            <Link
+              href="/draws"
+              className="group flex items-start gap-4 rounded-2xl border border-border p-5 hover:border-primary/40 hover:shadow-md transition-all"
+            >
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <BarChart2 className="size-5 text-primary" />
+              </div>
+              <div>
+                <p className="font-bold text-sm text-gray-900 mb-1 group-hover:text-primary transition-colors">Express Entry Draw Tracker</p>
+                <p className="text-xs text-muted-foreground leading-relaxed">Live CRS cutoffs, draw history and trends — updated automatically from IRCC.</p>
+              </div>
+            </Link>
+            <Link
+              href="/calculator"
+              className="group flex items-start gap-4 rounded-2xl border border-border p-5 hover:border-primary/40 hover:shadow-md transition-all"
+            >
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <Calculator className="size-5 text-primary" />
+              </div>
+              <div>
+                <p className="font-bold text-sm text-gray-900 mb-1 group-hover:text-primary transition-colors">Free CRS Calculator</p>
+                <p className="text-xs text-muted-foreground leading-relaxed">Estimate your Comprehensive Ranking System score in under 2 minutes.</p>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>      />
       <TestimonialsMarquee
         title={t("testimonials.title")}
         subtitle={t("testimonials.subtitle")}
@@ -93,4 +125,5 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     </>
   );
 }
+
 

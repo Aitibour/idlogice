@@ -32,6 +32,7 @@ export function Header() {
   }
 
   const serviceLinks = [
+    { href: "/services"         as const, label: t("services")              },
     { href: "/services/express-entry" as const, label: t("servicesItems.expressEntry") },
     { href: "/services/study-permit"  as const, label: t("servicesItems.studyPermit")  },
     { href: "/services/work-permit"   as const, label: t("servicesItems.workPermit")   },
@@ -230,7 +231,7 @@ export function Header() {
             ))}
 
             <div className="pt-3 mt-1 border-t border-border/40 flex flex-col gap-2">
-              <Link href="/contact"
+              <Link href="/book-consultation"
                 className={cn(buttonVariants(), "w-full justify-center rounded-xl font-semibold")}
                 onClick={closeMobile}>
                 {t("bookConsultation")}
@@ -250,5 +251,6 @@ export function Header() {
     </header>
   );
 }
+
 
 
