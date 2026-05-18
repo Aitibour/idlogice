@@ -54,7 +54,7 @@ export default async function PnpPage({ params }: { params: Promise<{ locale: st
         badge={t("pnp.hero.badge")}
         title={t("pnp.hero.title")}
         subtitle={t("pnp.hero.subtitle")}
-        cta={{ label: t("pnp.hero.cta"), href: "/evaluation" }}
+        cta={{ label: t("pnp.hero.cta"), href: "/calculator" }}
         secondaryCta={{ label: t("pnp.hero.secondaryCta"), href: "/calculator" }}
         bgImage="/images/feature-evaluation.jpg"
       />
@@ -79,7 +79,7 @@ export default async function PnpPage({ params }: { params: Promise<{ locale: st
       <CtaBanner
         title={t("pnp.cta.title")}
         subtitle={t("pnp.cta.subtitle")}
-        primaryCta={{ label: t("pnp.cta.primary"), href: "/evaluation" }}
+        primaryCta={{ label: t("pnp.cta.primary"), href: "/calculator" }}
         secondaryCta={{ label: t("pnp.cta.secondary"), href: "/calculator" }}
       />
     </>

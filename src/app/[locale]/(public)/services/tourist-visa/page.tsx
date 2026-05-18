@@ -54,7 +54,7 @@ export default async function TouristVisaPage({ params }: { params: Promise<{ lo
         badge={t("touristVisa.hero.badge")}
         title={t("touristVisa.hero.title")}
         subtitle={t("touristVisa.hero.subtitle")}
-        cta={{ label: t("touristVisa.hero.cta"), href: "/evaluation" }}
+        cta={{ label: t("touristVisa.hero.cta"), href: "/calculator" }}
         secondaryCta={{ label: t("touristVisa.hero.secondaryCta"), href: "/contact" }}
         bgImage="/images/feature-immigration.jpg"
       />
@@ -79,7 +79,7 @@ export default async function TouristVisaPage({ params }: { params: Promise<{ lo
       <CtaBanner
         title={t("touristVisa.cta.title")}
         subtitle={t("touristVisa.cta.subtitle")}
-        primaryCta={{ label: t("touristVisa.cta.primary"), href: "/evaluation" }}
+        primaryCta={{ label: t("touristVisa.cta.primary"), href: "/calculator" }}
         secondaryCta={{ label: t("touristVisa.cta.secondary"), href: "/contact" }}
       />
     </>

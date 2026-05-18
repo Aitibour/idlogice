@@ -56,7 +56,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       )}
       <HeroSlider
         slides={heroSlides}
-        cta={{ label: t("hero.cta"), href: "/evaluation" }}
+        cta={{ label: t("hero.cta"), href: "/calculator" }}
         secondaryCta={{ label: t("hero.secondaryCta"), href: "/services" }}
       />
       <AboutSection
@@ -71,6 +71,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         eyebrow={t("servicesSection.eyebrow")}
         title={t("servicesSection.title")}
         services={services}
+      />
       {/* Tools strip – Draw Tracker + CRS Calculator */}
       <section className="bg-white border-y border-border/50 py-10">
         <div className="container mx-auto px-4 max-w-4xl">
@@ -101,7 +102,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             </Link>
           </div>
         </div>
-      </section>      />
+      </section>
       <TestimonialsMarquee
         title={t("testimonials.title")}
         subtitle={t("testimonials.subtitle")}
@@ -118,7 +119,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <CtaBanner
         title={t("cta.bannerTitle")}
         subtitle={t("cta.bannerSubtitle")}
-        primaryCta={{ label: t("cta.freeEvaluation"), href: "/evaluation" }}
+        primaryCta={{ label: t("cta.freeEvaluation"), href: "/calculator" }}
         secondaryCta={{ label: t("cta.calculateCrs"), href: "/calculator" }}
         bgImage="/images/cta-bg.jpg"
       />
