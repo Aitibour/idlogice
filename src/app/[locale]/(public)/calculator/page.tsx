@@ -38,10 +38,19 @@ const INIT: FormData = {
 
 // ── Scoring ───────────────────────────────────────────────────────────────────
 function agePoints(age: number, sp: boolean): number {
-  if (age < 18 || age > 44) return 0;
-  const S: Record<number,number> = {18:99,19:105,36:105,37:99,38:94,39:88,40:83,41:77,42:72,43:66,44:61};
-  const M: Record<number,number> = {18:90,19:95,36:95,37:90,38:85,39:80,40:75,41:70,42:65,43:60,44:55};
-  if (age >= 20 && age <= 35) return sp ? 100 : 110;
+  if (age < 18 || age >= 45) return 0;
+  const S: Record<number,number> = {
+    18:99, 19:105,
+    20:110,21:110,22:110,23:110,24:110,25:110,26:110,27:110,28:110,29:110,
+    30:105,31:99,32:94,33:88,34:83,35:77,
+    36:72,37:66,38:61,39:55,40:50,41:45,42:35,43:25,44:15,
+  };
+  const M: Record<number,number> = {
+    18:90, 19:95,
+    20:100,21:100,22:100,23:100,24:100,25:100,26:100,27:100,28:100,29:100,
+    30:95,31:90,32:85,33:80,34:75,35:70,
+    36:65,37:60,38:55,39:50,40:45,41:35,42:25,43:15,44:5,
+  };
   return ((sp ? M : S)[age]) ?? 0;
 }
 function eduPoints(e: string, sp: boolean): number {
@@ -71,7 +80,7 @@ function canWorkPoints(w: string, sp: boolean): number {
   return ((sp ? M : S)[w]) ?? 0;
 }
 function spouseEduPoints(e: string): number {
-  const T: Record<string,number> = {none:0,secondary:2,cert1:7,cert2:8,bachelors:10,two:10,masters:10,phd:10};
+  const T: Record<string,number> = {none:0,secondary:2,cert1:6,cert2:7,bachelors:8,two:9,masters:10,phd:10};
   return T[e] ?? 0;
 }
 function spouseWorkPoints(w: string): number {
@@ -96,7 +105,9 @@ function transferPoints(d: FormData): number {
   }
   // Foreign + CAN work
   if (d.foreignWork!=="none"&&d.canadianWork!=="none") {
-    p += (d.foreignWork==="1"||d.canadianWork==="1") ? 25 : 50;
+    const fLong = d.foreignWork!=="1";
+    const cLong = d.canadianWork!=="1";
+    p += (fLong && cLong) ? 50 : (fLong || cLong) ? 25 : 13;
   }
   return Math.min(100, p);
 }
@@ -139,7 +150,7 @@ function calcCRS(d: FormData): Result {
 const SEL = "w-full rounded-xl border border-gray-200 !bg-white !text-gray-900 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 appearance-none cursor-pointer";
 
 function Label({ children }: { children: React.ReactNode }) {
-  return <p className="text-xs font-semibold text-foreground/80 mb-1.5">{children}</p>;
+  return <p className="text-xs font-semibold mb-1.5" style={{ color: "#374151" }}>{children}</p>;
 }
 
 function Row({ children, cols = 2 }: { children: React.ReactNode; cols?: number }) {
@@ -157,11 +168,12 @@ function Toggle({ checked, onChange, label }: { checked: boolean; onChange: (v: 
       onClick={() => onChange(!checked)}
       className={cn(
         "flex items-center gap-3 w-full p-3 rounded-xl border text-sm font-medium transition-all",
-        checked ? "border-primary bg-primary/5 text-primary" : "border-border bg-secondary/30 text-foreground/70 hover:bg-secondary/60",
+        checked ? "border-primary bg-primary/5 text-primary" : "border-gray-200 bg-gray-50 hover:bg-gray-100",
       )}
+      style={checked ? undefined : { color: "#374151" }}
     >
       <div className={cn("w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all",
-        checked ? "border-primary bg-primary" : "border-border")}>
+        checked ? "border-primary bg-primary" : "border-gray-200")}>
         {checked && <CheckCircle className="size-3 text-white" />}
       </div>
       {label}
@@ -232,7 +244,7 @@ export default function CalculatorPage() {
       <div className="min-h-screen py-12 px-4" style={{ background: "#f9fafb" }}>
         <div className="max-w-2xl mx-auto">
           {/* Score card */}
-          <div className="bg-white rounded-3xl border border-border shadow-lg overflow-hidden mb-5">
+          <div className="bg-white rounded-3xl border border-gray-200 shadow-lg overflow-hidden mb-5">
             <div className="h-1 w-full bg-gradient-to-r from-primary via-primary/70 to-transparent" />
             <div className="p-8 text-center">
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-3">Your Estimated CRS Score</p>
@@ -250,7 +262,7 @@ export default function CalculatorPage() {
           </div>
 
           {/* Breakdown */}
-          <div className="bg-white rounded-3xl border border-border shadow-sm overflow-hidden mb-5">
+          <div className="bg-white rounded-3xl border border-gray-200 shadow-sm overflow-hidden mb-5">
             <div className="p-6">
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] mb-5" style={{ color: "#374151" }}>Score Breakdown</p>
               <div className="space-y-3">
@@ -283,13 +295,13 @@ export default function CalculatorPage() {
             </Link>
             <button
               onClick={reset}
-              className="flex items-center justify-center gap-2 h-12 rounded-2xl border border-border bg-white text-sm font-semibold hover:bg-secondary/40 transition-all"
+              className="flex items-center justify-center gap-2 h-12 rounded-2xl border border-gray-200 bg-white text-sm font-semibold hover:bg-gray-50 transition-all"
             >
               <RotateCcw className="size-4" />
               Recalculate
             </button>
           </div>
-          <p className="text-center text-[11px] text-muted-foreground mt-4">
+          <p className="text-center text-[11px] text-gray-500 mt-4">
             This is an estimate only. For an accurate assessment, free profile evaluation with a certified RCIC.
           </p>
         </div>
@@ -301,14 +313,14 @@ export default function CalculatorPage() {
   return (
     <div className="min-h-screen" style={{ background: "#f9fafb" }}>
       {/* Hero */}
-      <div className="bg-white border-b border-border">
+      <div className="bg-white border-b border-gray-200">
         <div className="container mx-auto px-4 py-10 max-w-2xl text-center">
           <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
             <Calculator className="size-6 text-primary" />
           </div>
           <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-2">Free Tool</p>
           <h1 className="text-3xl font-black mb-2">CRS Score Calculator</h1>
-          <p className="text-sm text-muted-foreground max-w-md mx-auto">
+          <p className="text-sm text-gray-500 max-w-md mx-auto">
             Estimate your Express Entry Comprehensive Ranking System score in under 2 minutes.
           </p>
         </div>
@@ -327,18 +339,18 @@ export default function CalculatorPage() {
                   <div className={cn(
                     "w-8 h-8 rounded-full flex items-center justify-center transition-all",
                     active ? "bg-primary text-white shadow-md shadow-primary/30" :
-                    done   ? "bg-foreground text-white" :
-                             "bg-secondary text-muted-foreground",
+                    done   ? "bg-gray-800 text-white" :
+                             "bg-gray-100 text-gray-400",
                   )}>
                     {done ? <CheckCircle className="size-4" /> : <Icon className="size-3.5" />}
                   </div>
                   <span className={cn("text-[10px] font-semibold mt-1 hidden sm:block",
-                    active ? "text-foreground" : "text-muted-foreground")}>
+                    active ? "" : "text-gray-400")} style={active ? { color: "#111827" } : undefined}>
                     {s.label}
                   </span>
                 </div>
                 {i < STEPS.length - 1 && (
-                  <div className={cn("flex-1 h-px mx-2 mb-4 sm:mb-5 transition-colors", done ? "bg-foreground" : "bg-border")} />
+                  <div className={cn("flex-1 h-px mx-2 mb-4 sm:mb-5 transition-colors", done ? "bg-gray-800" : "bg-gray-200")} />
                 )}
               </div>
             );
@@ -346,7 +358,7 @@ export default function CalculatorPage() {
         </div>
 
         {/* Card */}
-        <div className="bg-white rounded-3xl border border-border shadow-sm overflow-hidden">
+        <div className="bg-white rounded-3xl border border-gray-200 shadow-sm overflow-hidden">
           <div className="h-1 w-full bg-gradient-to-r from-primary via-primary/70 to-transparent" />
           <div className="p-7 lg:p-9 space-y-5">
 
@@ -410,7 +422,7 @@ export default function CalculatorPage() {
                 <div>
                   <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-1">Step 3</p>
                   <h2 className="text-xl font-bold">Language skills</h2>
-                  <p className="text-xs text-muted-foreground mt-1 flex items-start gap-1.5">
+                  <p className="text-xs text-gray-500 mt-1 flex items-start gap-1.5">
                     <Info className="size-3.5 shrink-0 mt-0.5 text-primary" />
                     Use your overall CLB level. IELTS 6.5 ≈ CLB 8 · IELTS 7.0 ≈ CLB 9 · IELTS 8.0 ≈ CLB 10.
                   </p>
@@ -486,7 +498,7 @@ export default function CalculatorPage() {
                 <div>
                   <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-1">Step 5</p>
                   <h2 className="text-xl font-bold">Additional points</h2>
-                  <p className="text-xs text-muted-foreground mt-1">Select all that apply to your situation.</p>
+                  <p className="text-xs text-gray-500 mt-1">Select all that apply to your situation.</p>
                 </div>
                 <div className="space-y-2">
                   <Toggle checked={data.hasPN} onChange={v => set("hasPN", v)} label="I have a Provincial Nomination (+600)" />
@@ -521,7 +533,7 @@ export default function CalculatorPage() {
             {step > 0 && (
               <button
                 onClick={() => setStep(s => s - 1)}
-                className="flex items-center gap-2 h-11 px-5 rounded-xl border border-border text-sm font-semibold hover:bg-secondary/40 transition-all"
+                className="flex items-center gap-2 h-11 px-5 rounded-xl border border-gray-200 text-sm font-semibold hover:bg-gray-50 transition-all"
               >
                 <ArrowLeft className="size-4" /> Back
               </button>
@@ -544,7 +556,7 @@ export default function CalculatorPage() {
           </div>
         </div>
 
-        <p className="text-center text-[11px] text-muted-foreground mt-4">
+        <p className="text-center text-[11px] text-gray-500 mt-4">
           Based on IRCC&apos;s official CRS formula. Results are estimates — free profile evaluation for a certified assessment.
         </p>
       </div>
