@@ -56,7 +56,7 @@ export default async function StudyPermitPage({ params }: { params: Promise<{ lo
         badge={t("studyPermit.hero.badge")}
         title={t("studyPermit.hero.title")}
         subtitle={t("studyPermit.hero.subtitle")}
-        cta={{ label: t("studyPermit.hero.cta"), href: "/book-consultation" }}
+        cta={{ label: t("studyPermit.hero.cta"), href: "/evaluation" }}
         secondaryCta={{
           label: t("studyPermit.hero.secondaryCta"),
           href: "/calculator",
@@ -86,7 +86,7 @@ export default async function StudyPermitPage({ params }: { params: Promise<{ lo
         subtitle={t("studyPermit.cta.subtitle")}
         primaryCta={{
           label: t("studyPermit.cta.primary"),
-          href: "/book-consultation",
+          href: "/evaluation",
         }}
         secondaryCta={{
           label: t("studyPermit.cta.secondary"),
