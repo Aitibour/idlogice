@@ -1,10 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { getUser, AuthUser } from "@/lib/auth";
 import {
   calculateCRS, CRSInput, EDUCATION_LABELS,
   EducationLevel, ForeignWorkYears, CanadianWorkYears,
@@ -16,7 +14,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// ── Wizard state defaults ────────────────────────────────────────────────────
+// â”€â”€ Wizard state defaults â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const DEFAULT: CRSInput = {
   maritalStatus: "single",
   age: 28,
@@ -41,7 +39,7 @@ const STEPS = [
   { id: 5, label: "Extras",     icon: Star },
 ];
 
-// ── Small UI helpers ─────────────────────────────────────────────────────────
+// â”€â”€ Small UI helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex items-center gap-2 mb-5">
@@ -98,7 +96,7 @@ function CLBSelect({ label, value, onChange }: { label: string; value: number; o
   );
 }
 
-// ── Gauge component ──────────────────────────────────────────────────────────
+// â”€â”€ Gauge component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function ScoreGauge({ score, max = 1200 }: { score: number; max?: number }) {
   const pct = Math.min((score / max) * 100, 100);
   const cutoff = 491;
@@ -126,25 +124,15 @@ function ScoreGauge({ score, max = 1200 }: { score: number; max?: number }) {
   );
 }
 
-// ── Main component ───────────────────────────────────────────────────────────
+// â”€â”€ Main component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export default function EvaluationPage() {
-  const router = useRouter();
-  const [user, setUser] = useState<AuthUser | null>(null);
-  const [authChecked, setAuthChecked] = useState(false);
+  const [contact, setContact] = useState({ name: "", email: "", phone: "" });
+  const [contactDone, setContactDone] = useState(false);
+  const [contactErrors, setContactErrors] = useState<Partial<typeof contact>>({});
   const [step, setStep] = useState(1);
   const [data, setData] = useState<CRSInput>(DEFAULT);
   const [result, setResult] = useState<ReturnType<typeof calculateCRS> | null>(null);
 
-  useEffect(() => {
-    getUser().then(u => {
-      if (!u || !u.emailVerified) {
-        router.replace("/login?next=/evaluation");
-      } else {
-        setUser(u);
-        setAuthChecked(true);
-      }
-    });
-  }, [router]);
 
   const set = <K extends keyof CRSInput>(k: K, v: CRSInput[K]) =>
     setData(p => ({ ...p, [k]: v }));
@@ -157,35 +145,23 @@ export default function EvaluationPage() {
     // GA4 conversion event
     import("@/lib/analytics").then(({ ga }) => ga.evaluationComplete(crsResult.total, crsResult.eligible));
 
-    // Fire marketing confirmation email (non-blocking)
-    if (user) {
-      const firstName = user.name.split(/[\s.]+/)[0];
-      fetch("/api/v1/email/evaluation-result", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          firstName,
-          crsScore: crsResult.total,
-          eligible: crsResult.eligible,
-          improvements: crsResult.improvements ?? [],
-        }),
-      }).catch(() => {}); // silent — don't block the UI
-    }
+    // Submit lead data to Netlify form (non-blocking)
+    fetch(“/”, {
+      method: “POST”,
+      headers: { “Content-Type”: “application/x-www-form-urlencoded” },
+      body: new URLSearchParams({
+        “form-name”: “free-evaluation”,
+        name: contact.name,
+        email: contact.email,
+        phone: contact.phone,
+        crsScore: crsResult.total.toString(),
+        eligible: crsResult.eligible ? “yes” : “no”,
+      }).toString(),
+    }).catch(() => {});
   }
 
-  // Show a subtle loading state while checking auth
-  if (!authChecked || !user) {
-    return (
-      <main className="min-h-screen flex items-center justify-center" style={{ background: "#f9fafb" }}>
-        <div className="flex flex-col items-center gap-3">
-          <span className="w-10 h-10 border-3 border-primary/20 border-t-primary rounded-full animate-spin" />
-          <p className="text-sm font-medium" style={{ color: "#374151" }}>Verifying your account…</p>
-        </div>
-      </main>
-    );
-  }
 
-  // ── Step content ─────────────────────────────────────────────────────────
+  // â”€â”€ Step content â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const renderStep = () => {
     switch (step) {
       case 1:
@@ -201,7 +177,7 @@ export default function EvaluationPage() {
                 ))}
               </div>
             </Question>
-            <Question label="How old are you?" sub="Age significantly affects your CRS score — the optimal range is 18–35.">
+            <Question label="How old are you?" sub="Age significantly affects your CRS score â€” the optimal range is 18â€“35.">
               <div className="flex items-center gap-4">
                 <input
                   type="range" min={18} max={60} value={data.age}
@@ -212,7 +188,7 @@ export default function EvaluationPage() {
               </div>
               {data.age > 35 && (
                 <p className="text-xs text-amber-600 bg-amber-50 border border-amber-100 rounded-lg px-3 py-2 mt-2">
-                  Age points decrease after 35 — acting sooner maximises your score.
+                  Age points decrease after 35 â€” acting sooner maximises your score.
                 </p>
               )}
             </Question>
@@ -243,7 +219,7 @@ export default function EvaluationPage() {
                 </div>
                 {!data.hasECA && (
                   <p className="text-xs text-amber-600 bg-amber-50 border border-amber-100 rounded-lg px-3 py-2 mt-2">
-                    Without an ECA, your foreign degree may not be recognised — IDLOGICE can guide you through the process.
+                    Without an ECA, your foreign degree may not be recognised â€” IDLOGICE can guide you through the process.
                   </p>
                 )}
               </Question>
@@ -297,8 +273,8 @@ export default function EvaluationPage() {
               <div className="space-y-2">
                 {([
                   [0, "None"],
-                  [1, "1–2 years"],
-                  [2, "3–4 years"],
+                  [1, "1â€“2 years"],
+                  [2, "3â€“4 years"],
                   [3, "5+ years"],
                 ] as [ForeignWorkYears, string][]).map(([v, label]) => (
                   <OptionCard key={v} selected={data.foreignWorkYears === v} onClick={() => set("foreignWorkYears", v)}>
@@ -309,7 +285,7 @@ export default function EvaluationPage() {
             </Question>
             <Question
               label="How many years of Canadian work experience do you have?"
-              sub="Canadian work experience adds 40–80 points and is a major CRS booster."
+              sub="Canadian work experience adds 40â€“80 points and is a major CRS booster."
             >
               <div className="space-y-2">
                 {([
@@ -333,13 +309,13 @@ export default function EvaluationPage() {
         return (
           <>
             <SectionLabel>Additional Factors</SectionLabel>
-            <Question label="Do you have a valid provincial or territorial nomination (PNP)?" sub="A PNP nomination adds 600 points — virtually guaranteeing an ITA.">
+            <Question label="Do you have a valid provincial or territorial nomination (PNP)?" sub="A PNP nomination adds 600 points â€” virtually guaranteeing an ITA.">
               <div className="grid grid-cols-2 gap-2">
                 <OptionCard selected={data.hasProvincialNomination} onClick={() => set("hasProvincialNomination", true)}>Yes</OptionCard>
                 <OptionCard selected={!data.hasProvincialNomination} onClick={() => set("hasProvincialNomination", false)}>No</OptionCard>
               </div>
             </Question>
-            <Question label="Do you have a valid Canadian job offer?" sub="A valid skilled job offer adds 50–200 bonus points.">
+            <Question label="Do you have a valid Canadian job offer?" sub="A valid skilled job offer adds 50â€“200 bonus points.">
               <div className="grid grid-cols-2 gap-2 mb-3">
                 <OptionCard selected={data.hasJobOffer} onClick={() => set("hasJobOffer", true)}>Yes</OptionCard>
                 <OptionCard selected={!data.hasJobOffer} onClick={() => { set("hasJobOffer", false); set("jobOfferNOC00", false); }}>No</OptionCard>
@@ -347,8 +323,8 @@ export default function EvaluationPage() {
               {data.hasJobOffer && (
                 <Question label="Is the position in NOC TEER 00 (Senior Manager / Director)?" sub="NOC 00 roles receive 200 points; other skilled roles receive 50 points.">
                   <div className="grid grid-cols-2 gap-2">
-                    <OptionCard selected={data.jobOfferNOC00} onClick={() => set("jobOfferNOC00", true)}>Yes — Senior Manager</OptionCard>
-                    <OptionCard selected={!data.jobOfferNOC00} onClick={() => set("jobOfferNOC00", false)}>No — Other skilled role</OptionCard>
+                    <OptionCard selected={data.jobOfferNOC00} onClick={() => set("jobOfferNOC00", true)}>Yes â€” Senior Manager</OptionCard>
+                    <OptionCard selected={!data.jobOfferNOC00} onClick={() => set("jobOfferNOC00", false)}>No â€” Other skilled role</OptionCard>
                   </div>
                 </Question>
               )}
@@ -367,7 +343,7 @@ export default function EvaluationPage() {
     }
   };
 
-  // ── Results view ─────────────────────────────────────────────────────────
+  // â”€â”€ Results view â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   if (step === 6 && result) {
     const { breakdown, total, eligible, missingPoints, currentCutoff, strengths, improvements } = result;
     return (
@@ -377,14 +353,14 @@ export default function EvaluationPage() {
           <Image src="/images/feature-evaluation.jpg" alt="" fill className="object-cover" priority />
           <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(17,24,39,0.85), rgba(194,39,45,0.7))" }} />
           <div className="relative h-full flex items-center justify-center px-4">
-            <p className="text-xs font-bold uppercase tracking-widest text-white">Express Entry — Your CRS Results</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-white">Express Entry â€” Your CRS Results</p>
           </div>
         </div>
 
         <div className="py-12 px-4">
         <div className="max-w-3xl mx-auto">
 
-          {/* Score header — light, encouraging */}
+          {/* Score header â€” light, encouraging */}
           <div className="rounded-3xl bg-white border border-border shadow-sm p-8 mb-6 overflow-hidden relative">
             {/* Top accent strip */}
             <div className={cn(
@@ -405,7 +381,7 @@ export default function EvaluationPage() {
                       : "bg-red-50 border border-red-200 text-red-700"
                 )}>
                   {eligible
-                    ? <><CheckCircle2 className="size-4" /><span>Competitive — above recent cutoff</span></>
+                    ? <><CheckCircle2 className="size-4" /><span>Competitive â€” above recent cutoff</span></>
                     : <><AlertTriangle className="size-4" /><span>{missingPoints} points below cutoff ({currentCutoff})</span></>
                   }
                 </div>
@@ -419,7 +395,7 @@ export default function EvaluationPage() {
             <div className="mt-6">
               <ScoreGauge score={total} />
               <div className="flex justify-between mt-1.5 text-[10px] font-medium" style={{ color: "#9ca3af" }}>
-                <span>0</span><span>300</span><span>↑ {currentCutoff} cutoff</span><span>900</span><span>1200</span>
+                <span>0</span><span>300</span><span>â†‘ {currentCutoff} cutoff</span><span>900</span><span>1200</span>
               </div>
             </div>
           </div>
@@ -497,13 +473,13 @@ export default function EvaluationPage() {
                 <div>
                   <p className="font-bold mb-1">
                     {eligible
-                      ? "You are competitive — but immigration is complex."
-                      : `You need ${missingPoints} more points — IDLOGICE can help.`}
+                      ? "You are competitive â€” but immigration is complex."
+                      : `You need ${missingPoints} more points â€” IDLOGICE can help.`}
                   </p>
                   <p className="text-sm leading-relaxed" style={{ color: "#374151" }}>
                     {eligible
                       ? "Our certified consultants will ensure your application is complete, accurate, and submitted at the right moment to maximise your chances."
-                      : "Our certified consultants specialise in identifying the fastest path to improving your CRS score — whether through language coaching, PNP targeting, or job offer assistance."}
+                      : "Our certified consultants specialise in identifying the fastest path to improving your CRS score â€” whether through language coaching, PNP targeting, or job offer assistance."}
                   </p>
                 </div>
               </div>
@@ -541,7 +517,81 @@ export default function EvaluationPage() {
     );
   }
 
-  // ── Wizard view ──────────────────────────────────────────────────────────
+  // ── Contact form gate ────────────────────────────────────────────────────
+  function validateContact() {
+    const errs: Partial<typeof contact> = {};
+    if (!contact.name.trim()) errs.name = “Name is required”;
+    if (!contact.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact.email)) errs.email = “Valid email required”;
+    setContactErrors(errs);
+    return Object.keys(errs).length === 0;
+  }
+
+  if (!contactDone) {
+    return (
+      <main className=”min-h-screen flex flex-col items-center justify-center px-4 py-16” style={{ background: “#f9fafb” }}>
+        {/* Netlify hidden form */}
+        <form name=”free-evaluation” data-netlify=”true” hidden>
+          <input name=”name” /><input name=”email” /><input name=”phone” />
+          <input name=”crsScore” /><input name=”eligible” />
+        </form>
+
+        <div className=”w-full max-w-md”>
+          <div className=”text-center mb-8”>
+            <div className=”inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-4”>
+              <Star className=”size-3” /> Free CRS Evaluation
+            </div>
+            <h1 className=”text-3xl font-black text-gray-900 mb-2”>Check your eligibility</h1>
+            <p className=”text-gray-500 text-sm leading-relaxed”>Enter your details to get your free Comprehensive Ranking System score in 5 quick steps.</p>
+          </div>
+
+          <div className=”bg-white rounded-2xl border border-border shadow-sm p-6 space-y-4”>
+            <div>
+              <label className=”text-xs font-bold uppercase tracking-wider text-gray-600 block mb-1.5”>Full Name <span className=”text-red-500”>*</span></label>
+              <input
+                type=”text”
+                placeholder=”Your full name”
+                value={contact.name}
+                onChange={e => setContact(p => ({ ...p, name: e.target.value }))}
+                className={cn(“w-full px-4 py-3 rounded-xl border-2 text-sm outline-none transition-colors”, contactErrors.name ? “border-red-400 bg-red-50” : “border-gray-200 focus:border-primary”)}
+              />
+              {contactErrors.name && <p className=”text-xs text-red-500 mt-1”>{contactErrors.name}</p>}
+            </div>
+            <div>
+              <label className=”text-xs font-bold uppercase tracking-wider text-gray-600 block mb-1.5”>Email Address <span className=”text-red-500”>*</span></label>
+              <input
+                type=”email”
+                placeholder=”you@example.com”
+                value={contact.email}
+                onChange={e => setContact(p => ({ ...p, email: e.target.value }))}
+                className={cn(“w-full px-4 py-3 rounded-xl border-2 text-sm outline-none transition-colors”, contactErrors.email ? “border-red-400 bg-red-50” : “border-gray-200 focus:border-primary”)}
+              />
+              {contactErrors.email && <p className=”text-xs text-red-500 mt-1”>{contactErrors.email}</p>}
+            </div>
+            <div>
+              <label className=”text-xs font-bold uppercase tracking-wider text-gray-600 block mb-1.5”>Phone Number <span className=”text-gray-400 font-normal”>(optional)</span></label>
+              <input
+                type=”tel”
+                placeholder=”+1 (555) 000-0000”
+                value={contact.phone}
+                onChange={e => setContact(p => ({ ...p, phone: e.target.value }))}
+                className=”w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary text-sm outline-none transition-colors”
+              />
+            </div>
+            <button
+              type=”button”
+              onClick={() => { if (validateContact()) setContactDone(true); }}
+              className=”w-full py-3.5 rounded-xl bg-primary hover:bg-primary/90 text-white font-bold text-sm transition-colors flex items-center justify-center gap-2”
+            >
+              Start My Evaluation <ChevronRight className=”size-4” />
+            </button>
+            <p className=”text-center text-xs text-gray-400”>No account needed · Results in under 2 minutes</p>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  // ── Wizard view ────────────────────────────────────────────────────────────
   const currentStep = STEPS[step - 1];
   const Icon = currentStep.icon;
 
@@ -550,7 +600,7 @@ export default function EvaluationPage() {
   return (
     <main className="min-h-screen" style={{ background: "#f9fafb" }}>
 
-      {/* ── Modern hero with image + overlay ── */}
+      {/* â”€â”€ Modern hero with image + overlay â”€â”€ */}
       <div className="relative h-64 sm:h-72 overflow-hidden">
         <Image
           src="/images/feature-evaluation.jpg"
@@ -565,10 +615,10 @@ export default function EvaluationPage() {
         }} />
         <div className="relative h-full flex flex-col items-center justify-center px-4 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 text-white text-xs font-bold uppercase tracking-widest mb-4">
-            <Star className="size-3 fill-white" /> Express Entry · Free CRS Evaluation
+            <Star className="size-3 fill-white" /> Express Entry Â· Free CRS Evaluation
           </div>
           <h1 className="text-3xl sm:text-4xl font-black text-white mb-2 tracking-tight">
-            Hello, {user.name.split(/[\s.]+/)[0]} 👋
+            Hello, {contact.name ? contact.name.split(/[\s.]+/)[0] : "there"} 👋
           </h1>
           <p className="text-sm sm:text-base text-white/90 max-w-md">
             5 quick steps to check your eligibility and get your personalised CRS score.
@@ -579,12 +629,12 @@ export default function EvaluationPage() {
       <div className="py-10 px-4 -mt-8 relative z-10">
       <div className="max-w-2xl mx-auto">
 
-        {/* ── Modern progress bar with step indicators ── */}
+        {/* â”€â”€ Modern progress bar with step indicators â”€â”€ */}
         <div className="bg-white rounded-2xl border border-border shadow-sm p-5 mb-6">
           <div className="flex items-center justify-between mb-3">
             <div>
               <p className="text-[10px] font-bold uppercase tracking-widest" style={{ color: "#6b7280" }}>Progress</p>
-              <p className="text-sm font-bold" style={{ color: "#111827" }}>Step {step} of {STEPS.length} · {progressPct}% complete</p>
+              <p className="text-sm font-bold" style={{ color: "#111827" }}>Step {step} of {STEPS.length} Â· {progressPct}% complete</p>
             </div>
             <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "linear-gradient(135deg, #c2272d, #8b1a1f)" }}>
               <span className="text-white font-black text-base">{step}</span>
@@ -630,7 +680,7 @@ export default function EvaluationPage() {
           </div>
         </div>
 
-        {/* ── Step content card ── */}
+        {/* â”€â”€ Step content card â”€â”€ */}
         <div className="bg-white rounded-2xl border border-border shadow-sm overflow-hidden mb-5">
           {/* Card header with gradient accent */}
           <div className="relative p-6 pb-5 border-b" style={{ borderColor: "#f3f4f6", background: "linear-gradient(135deg, #fef2f2 0%, #ffffff 60%)" }}>
@@ -650,7 +700,7 @@ export default function EvaluationPage() {
           </div>
         </div>
 
-        {/* ── Modern navigation ── */}
+        {/* â”€â”€ Modern navigation â”€â”€ */}
         <div className="flex gap-3 items-center">
           {step > 1 && (
             <button
