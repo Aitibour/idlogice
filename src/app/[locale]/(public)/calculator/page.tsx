@@ -136,7 +136,7 @@ function calcCRS(d: FormData): Result {
 }
 
 // ── UI helpers ────────────────────────────────────────────────────────────────
-const SEL = "w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring/30 appearance-none cursor-pointer";
+const SEL = "w-full rounded-xl border border-input bg-white text-gray-900 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring/30 appearance-none cursor-pointer";
 
 function Label({ children }: { children: React.ReactNode }) {
   return <p className="text-xs font-semibold text-foreground/80 mb-1.5">{children}</p>;
