@@ -12,13 +12,13 @@ type Props = { params: Promise<{ locale: string; country: string }> };
 
 const T = {
   title: {
-    en: (c: string) => `Canada Immigration from ${c}: Programs, Requirements & How to Apply`,
-    fr: (c: string) => `Immigration au Canada depuis ${c} : Programmes et démarches`,
-    es: (c: string) => `Inmigración a Canadá desde ${c}: Programas y requisitos`,
-    ar: (c: string) => `الهجرة إلى كندا من ${c}: البرامج والمتطلبات`,
+    en: (c: string) => `Canada Immigration from ${c} | IDLOGICE`,
+    fr: (c: string) => `Immigration Canada depuis ${c} | IDLOGICE`,
+    es: (c: string) => `Inmigración a Canadá desde ${c} | IDLOGICE`,
+    ar: (c: string) => `الهجرة إلى كندا من ${c} | IDLOGICE`,
   },
   desc: {
-    en: (c: string) => `Complete guide to Canadian immigration for ${c} citizens. Compare Express Entry, PNP, work and study permits. Free profile evaluation from a certified RCIC.`,
+    en: (c: string) => `Complete guide to Canada immigration for ${c} nationals. Explore Express Entry, PNP, and work permits. Free profile evaluation.`,
     fr: (c: string) => `Guide complet de l'immigration canadienne pour les ressortissants de ${c}. Évaluation de profil gratuite.`,
     es: (c: string) => `Guía completa de inmigración canadiense para ciudadanos de ${c}. Evaluación de perfil gratuita.`,
     ar: (c: string) => `الدليل الشامل للهجرة إلى كندا لمواطني ${c}. تقييم مجاني للملف الشخصي.`,
@@ -117,7 +117,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description,
     alternates: {
       canonical: `${BASE}/${l}/from/${country}`,
-      languages: Object.fromEntries(LOCALES.map((loc) => [`${loc}-CA`, `${BASE}/${loc}/from/${country}`])),
+      languages: Object.fromEntries(LOCALES.map((loc) => [loc, `${BASE}/${loc}/from/${country}`])),
     },
     openGraph: { title, description, url: `${BASE}/${l}/from/${country}`, type: "article", images: [{ url: `${BASE}/images/og-default.jpg`, width: 1200, height: 630 }] },
     twitter: { card: "summary_large_image", title, description },

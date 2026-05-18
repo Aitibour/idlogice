@@ -37,10 +37,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = `${BASE}/${locale}/from/${countrySlug}/${programSlug}`;
 
   const titles: Record<LocaleKey, string> = {
-    en: `Canada ${programName} from ${countryName} 2025 — How to Apply`,
-    fr: `${programName} Canada depuis ${countryName} 2025 — Comment postuler`,
-    es: `${programName} Canadá desde ${countryName} 2025 — Cómo aplicar`,
-    ar: `${programName} كندا من ${countryName} 2025 — كيفية التقديم`,
+    en: `Canada ${programName} from ${countryName} | IDLOGICE`,
+    fr: `${programName} Canada depuis ${countryName} | IDLOGICE`,
+    es: `${programName} Canadá desde ${countryName} | IDLOGICE`,
+    ar: `${programName} كندا من ${countryName} | IDLOGICE`,
   };
 
   const descs: Record<LocaleKey, string> = {
