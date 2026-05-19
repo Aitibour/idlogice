@@ -71,7 +71,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
       <section className="relative overflow-hidden min-h-[480px] flex items-end pb-28">
         <Image
           src="/images/feature-immigration.jpg"
-          alt=""
+          alt="Canadian immigration services"
           fill
           className="object-cover object-center"
           priority

@@ -41,7 +41,6 @@ const ORG_NODE = {
   ],
   knowsLanguage: ["English", "French", "Spanish", "Arabic"],
   sameAs: [
-    "https://www.facebook.com/idlogice",
     "https://www.linkedin.com/company/idlogice",
     "https://www.instagram.com/idlogice",
   ],

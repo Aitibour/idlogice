@@ -350,7 +350,7 @@ export default function EvaluationPage() {
       <main className="min-h-screen" style={{ background: "#f9fafb" }}>
         {/* Hero banner */}
         <div className="relative h-44 overflow-hidden">
-          <Image src="/images/feature-evaluation.jpg" alt="" fill className="object-cover" priority />
+          <Image src="/images/feature-evaluation.jpg" alt="Canadian immigration CRS evaluation" fill className="object-cover" priority />
           <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(17,24,39,0.85), rgba(194,39,45,0.7))" }} />
           <div className="relative h-full flex items-center justify-center px-4">
             <p className="text-xs font-bold uppercase tracking-widest text-white">Express Entry — Your CRS Results</p>
@@ -604,7 +604,7 @@ export default function EvaluationPage() {
       <div className="relative h-64 sm:h-72 overflow-hidden">
         <Image
           src="/images/feature-evaluation.jpg"
-          alt=""
+          alt="Canadian immigration CRS evaluation"
           fill
           className="object-cover"
           priority

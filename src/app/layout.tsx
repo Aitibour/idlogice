@@ -117,7 +117,6 @@ const jsonLd = JSON.stringify({
         availableLanguage: ["English", "French"],
       },
       sameAs: [
-        "https://www.facebook.com/p/ID-Logice-61558497527528/",
         "https://www.linkedin.com/company/idlogice-immigration-canada",
         "https://www.tiktok.com/@idlogice.canada",
         "https://x.com/idlogicecanada",

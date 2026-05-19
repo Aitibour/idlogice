@@ -28,7 +28,7 @@ export function CtaBanner({
       {bgImage && (
         <>
           <div aria-hidden="true" className="absolute inset-0 opacity-15">
-            <Image src={bgImage} alt="" fill className="object-cover object-center" sizes="100vw" />
+            <Image src={bgImage} alt={title} fill className="object-cover object-center" sizes="100vw" />
           </div>
           <div
             aria-hidden="true"

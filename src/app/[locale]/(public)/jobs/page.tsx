@@ -138,7 +138,7 @@ export default function JobsPage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-gray-200" style={{ minHeight: 340 }}>
-        <Image src="/images/jobs-bg.jpg" alt="" fill className="object-cover object-center" priority sizes="100vw" />
+        <Image src="/images/jobs-bg.jpg" alt="Canadian job opportunities for immigrants" fill className="object-cover object-center" priority sizes="100vw" />
         <div className="absolute inset-0 bg-black/45" />
 
         <div className="container mx-auto px-4 lg:px-6 pt-16 pb-14 relative">

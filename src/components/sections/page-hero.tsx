@@ -34,7 +34,7 @@ export function PageHero({
           <div aria-hidden="true" className="hidden md:block absolute inset-y-0 right-0 w-1/2">
             <Image
               src={bgImage}
-              alt=""
+              alt={title}
               fill
               className="object-cover object-center"
               priority
@@ -49,7 +49,7 @@ export function PageHero({
           <div aria-hidden="true" className="md:hidden absolute inset-0 opacity-25">
             <Image
               src={bgImage}
-              alt=""
+              alt={title}
               fill
               className="object-cover object-center"
               priority
