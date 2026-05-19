@@ -76,7 +76,10 @@ async function fetchDraws(locale: string): Promise<IrccRound[]> {
   const lang = locale === "fr" ? "fr" : "en";
   const url = `https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_${lang}.json`;
   try {
-    const res = await fetch(url, { next: { revalidate: 3600 } });
+    const res = await fetch(url, {
+      next: { revalidate: 3600 },
+      signal: AbortSignal.timeout(10_000),
+    });
     if (!res.ok) throw new Error(`IRCC fetch failed: ${res.status}`);
     const data = await res.json();
     return data.rounds as IrccRound[];
