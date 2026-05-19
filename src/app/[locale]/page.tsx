@@ -44,13 +44,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   return (
     <>
-      {/* Preload first hero poster â€” fixes LCP fetchpriority hint */}
+      {/* Preload first hero poster — fixes LCP fetchpriority hint */}
       {heroSlides[0]?.poster && (
         <link
           rel="preload"
           as="image"
           href={heroSlides[0].poster}
-          // @ts-expect-error â€” fetchpriority is valid but not yet in React types
+          // @ts-expect-error — fetchpriority is valid but not yet in React types
           fetchpriority="high"
         />
       )}
@@ -114,7 +114,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         address="410 Saint-Catherine St, Montreal, Canada"
         phone="+1 581-634-0224"
         email="contact@idlogice.com"
-        hours="Mon â€“ Fri: 9:00 AM â€“ 6:00 PM EST"
+        hours="Mon – Fri: 9:00 AM – 6:00 PM EST"
       />
       <CtaBanner
         title={t("cta.bannerTitle")}

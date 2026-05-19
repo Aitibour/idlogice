@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Canada Tourist Visa (TRV) â€” Visitor Visa Application",
+  title: "Canada Tourist Visa (TRV) — Visitor Visa Application",
   description: "Maximise your Canada tourist visa approval chances. Our CICC-registered consultants prepare a complete Temporary Resident Visa application with a compelling cover letter.",
   alternates: { canonical: "https://idlogice.com/services/tourist-visa" },
   openGraph: { title: "Canada Tourist Visa (TRV) | IDLOGICE Immigration", description: "Visit Canada with confidence. Expert preparation of Temporary Resident Visa applications by certified RCICs.", url: "https://idlogice.com/services/tourist-visa" },

@@ -65,9 +65,9 @@ export function Header() {
           <div className="flex items-center justify-between gap-4 h-8 text-[11px] font-semibold">
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1.5">
-                <span className="text-amber-500">â˜…â˜…â˜…â˜…â˜…</span>
+                <span className="text-amber-500">★★★★★</span>
                 <span style={{ color: "#111827" }}>4.9</span>
-                <span style={{ color: "#6b7280" }} className="hidden lg:inline">on Google Â· 127 reviews</span>
+                <span style={{ color: "#6b7280" }} className="hidden lg:inline">on Google · 127 reviews</span>
               </span>
               <span className="hidden lg:flex items-center gap-1.5" style={{ color: "#6b7280" }}>
                 <span className="w-1 h-1 rounded-full bg-emerald-500" />
@@ -80,10 +80,10 @@ export function Header() {
             </div>
             <div className="flex items-center gap-3">
               <a href="tel:+15816340224" className="flex items-center gap-1 hover:opacity-80 transition-opacity" style={{ color: "#c2272d" }}>
-                ðŸ“ž +1 581-634-0224
+                📞 +1 581-634-0224
               </a>
               <a href="mailto:contact@idlogice.com" className="hidden lg:flex items-center gap-1 hover:opacity-80 transition-opacity" style={{ color: "#6b7280" }}>
-                âœ‰ contact@idlogice.com
+                ✉ contact@idlogice.com
               </a>
             </div>
           </div>

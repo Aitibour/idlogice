@@ -15,7 +15,7 @@ const PLANS: Record<string, { duration: string; price: number; description: stri
     duration: "30 min",
     price: 100,
     tag: null,
-    description: "A focused first assessment â€” ideal if you have a specific question or want to know which pathway fits you best.",
+    description: "A focused first assessment — ideal if you have a specific question or want to know which pathway fits you best.",
   },
   standard: {
     duration: "1 hour",
@@ -182,7 +182,7 @@ export function CheckoutClient({ planId }: { planId?: string }) {
         email: form.email,
         phone: form.phone,
         notes: form.notes,
-        plan: `${plan.duration} â€” $${plan.price} CAD`,
+        plan: `${plan.duration} — $${plan.price} CAD`,
         price: plan.price.toString(),
         calendlyEventUri: calendlyUri,
         paypalOrderId: orderID,
@@ -197,7 +197,7 @@ export function CheckoutClient({ planId }: { planId?: string }) {
   };
   const calendlyBase = CALENDLY_URLS[resolvedId];
 
-  /* â”€â”€ Done screen â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* ── Done screen ─────────────────────────────────────────────────────────── */
   if (paid) {
     return (
       <div className="min-h-[70vh] flex items-center justify-center p-8 bg-gray-50">
@@ -211,7 +211,7 @@ export function CheckoutClient({ planId }: { planId?: string }) {
             Payment received and your {plan.duration} slot is reserved. You&apos;ll receive a calendar invite and confirmation email shortly.
           </p>
           <div className="rounded-2xl bg-secondary/40 p-4 text-sm text-left space-y-2 mb-6">
-            <p><span className="font-semibold">Plan:</span> {plan.duration} â€” ${plan.price} CAD</p>
+            <p><span className="font-semibold">Plan:</span> {plan.duration} — ${plan.price} CAD</p>
             <p><span className="font-semibold">Email:</span> {form.email}</p>
           </div>
           <Link href="/" className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline">
@@ -222,7 +222,7 @@ export function CheckoutClient({ planId }: { planId?: string }) {
     );
   }
 
-  /* â”€â”€ Sidebar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* ── Sidebar ─────────────────────────────────────────────────────────────── */
   const sidebar = (
     <div className="bg-white rounded-3xl border border-border shadow-sm overflow-hidden sticky top-24">
       <div className="h-1 w-full bg-gradient-to-r from-transparent via-primary/40 to-primary" />
@@ -278,7 +278,7 @@ export function CheckoutClient({ planId }: { planId?: string }) {
 
         <div className="mt-4 flex items-center gap-2">
           <Lock className="size-3.5 text-muted-foreground" />
-          <p className="text-[10px] text-muted-foreground">256-bit SSL Â· Powered by PayPal</p>
+          <p className="text-[10px] text-muted-foreground">256-bit SSL · Powered by PayPal</p>
         </div>
       </div>
     </div>
@@ -298,13 +298,13 @@ export function CheckoutClient({ planId }: { planId?: string }) {
 
         <div className="grid lg:grid-cols-[1fr_320px] gap-6 items-start">
 
-          {/* â”€â”€ Main panel â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+          {/* ── Main panel ───────────────────────────────────────────────── */}
           <div ref={mainPanelRef} className="bg-white rounded-3xl border border-border shadow-sm overflow-hidden scroll-mt-24">
             <div className="h-1 w-full bg-gradient-to-r from-primary via-primary/70 to-transparent" />
             <div className="p-7 lg:p-9">
               <StepBar current={step} />
 
-              {/* â”€â”€ STEP 1: Info â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+              {/* ── STEP 1: Info ──────────────────────────────────────────── */}
               {step === "info" && (
                 <>
                   <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-1">Step 1</p>
@@ -348,7 +348,7 @@ export function CheckoutClient({ planId }: { planId?: string }) {
                       <textarea
                         value={form.notes}
                         onChange={(e) => handleChange("notes", e.target.value)}
-                        placeholder="Any context or questions for your consultantâ€¦"
+                        placeholder="Any context or questions for your consultant…"
                         rows={3}
                         className={cn(INPUT, "resize-none")}
                       />
@@ -365,7 +365,7 @@ export function CheckoutClient({ planId }: { planId?: string }) {
                 </>
               )}
 
-              {/* â”€â”€ STEP 2: Payment â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+              {/* ── STEP 2: Payment ───────────────────────────────────────── */}
               {step === "payment" && (
                 <>
                   <div className="flex items-center justify-between mb-1">
@@ -393,13 +393,13 @@ export function CheckoutClient({ planId }: { planId?: string }) {
                     </div>
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Session</span>
-                      <span className="font-medium">{plan.duration} Â· ${plan.price} CAD</span>
+                      <span className="font-medium">{plan.duration} · ${plan.price} CAD</span>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-2 mb-4">
                     <Lock className="size-3.5 text-muted-foreground" />
-                    <p className="text-xs text-muted-foreground">Secure checkout â€” pay by card or PayPal balance</p>
+                    <p className="text-xs text-muted-foreground">Secure checkout — pay by card or PayPal balance</p>
                   </div>
 
                   <PayPalScriptProvider
@@ -433,7 +433,7 @@ export function CheckoutClient({ planId }: { planId?: string }) {
                 </>
               )}
 
-              {/* â”€â”€ STEP 3: Calendly â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+              {/* ── STEP 3: Calendly ──────────────────────────────────────── */}
               {step === "schedule" && (
                 <>
                   <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-1">Step 3</p>
@@ -441,7 +441,7 @@ export function CheckoutClient({ planId }: { planId?: string }) {
                   <div className="flex items-start gap-2 mb-5">
                     <CheckCircle className="size-4 text-green-500 shrink-0 mt-0.5" />
                     <p className="text-sm text-green-700 font-medium">
-                      Payment confirmed â€” choose your appointment date and time below.
+                      Payment confirmed — choose your appointment date and time below.
                     </p>
                   </div>
                   <div className="rounded-2xl overflow-hidden border border-border">
@@ -463,7 +463,7 @@ export function CheckoutClient({ planId }: { planId?: string }) {
             </div>
           </div>
 
-          {/* â”€â”€ Sidebar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+          {/* ── Sidebar ──────────────────────────────────────────────────── */}
           {sidebar}
         </div>
       </div>

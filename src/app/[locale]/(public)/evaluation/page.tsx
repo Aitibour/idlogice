@@ -395,7 +395,7 @@ export default function EvaluationPage() {
             <div className="mt-6">
               <ScoreGauge score={total} />
               <div className="flex justify-between mt-1.5 text-[10px] font-medium" style={{ color: "#9ca3af" }}>
-                <span>0</span><span>300</span><span>â†‘ {currentCutoff} cutoff</span><span>900</span><span>1200</span>
+                <span>0</span><span>300</span><span>↑ {currentCutoff} cutoff</span><span>900</span><span>1200</span>
               </div>
             </div>
           </div>
@@ -615,7 +615,7 @@ export default function EvaluationPage() {
         }} />
         <div className="relative h-full flex flex-col items-center justify-center px-4 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 text-white text-xs font-bold uppercase tracking-widest mb-4">
-            <Star className="size-3 fill-white" /> Express Entry Â· Free CRS Evaluation
+            <Star className="size-3 fill-white" /> Express Entry · Free CRS Evaluation
           </div>
           <h1 className="text-3xl sm:text-4xl font-black text-white mb-2 tracking-tight">
             Hello, {contact.name ? contact.name.split(/[\s.]+/)[0] : "there"} 👋
@@ -634,7 +634,7 @@ export default function EvaluationPage() {
           <div className="flex items-center justify-between mb-3">
             <div>
               <p className="text-[10px] font-bold uppercase tracking-widest" style={{ color: "#6b7280" }}>Progress</p>
-              <p className="text-sm font-bold" style={{ color: "#111827" }}>Step {step} of {STEPS.length} Â· {progressPct}% complete</p>
+              <p className="text-sm font-bold" style={{ color: "#111827" }}>Step {step} of {STEPS.length} · {progressPct}% complete</p>
             </div>
             <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "linear-gradient(135deg, #c2272d, #8b1a1f)" }}>
               <span className="text-white font-black text-base">{step}</span>
