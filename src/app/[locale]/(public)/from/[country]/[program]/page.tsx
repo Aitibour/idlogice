@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { COUNTRIES, COUNTRY_MAP } from "@/data/immigration-countries";
 import { PROGRAMS, PROGRAM_MAP } from "@/data/immigration-programs";
 import { BreadcrumbJsonLd, ServiceJsonLd } from "@/components/seo/structured-data";
+import { InternalLinkGraph } from "@/components/seo/internal-link-graph";
 
 export const revalidate = false;
 
@@ -251,6 +252,8 @@ export default async function CountryProgramPage({ params }: Props) {
             {t.ctaBtn}
           </Link>
         </aside>
+
+        <InternalLinkGraph locale={locale} programSlug={programSlug} countrySlug={countrySlug} />
 
         {/* Other programs */}
         <section className="border-t pt-10">

@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { PROGRAMS, PROGRAM_MAP } from "@/data/immigration-programs";
 import { BreadcrumbJsonLd, FaqJsonLd, ServiceJsonLd } from "@/components/seo/structured-data";
+import { InternalLinkGraph } from "@/components/seo/internal-link-graph";
 
 export const revalidate = false;
 
@@ -207,6 +208,8 @@ export default async function ProgramPage({ params }: Props) {
           </Link>
         </aside>
 
+        <InternalLinkGraph locale={locale} programSlug={slug} />
+
         {/* Other programs */}
         {otherPrograms.length > 0 && (
           <section className="border-t pt-10">
@@ -224,7 +227,7 @@ export default async function ProgramPage({ params }: Props) {
                     {pr.name[locale] ?? pr.name.en}
                   </p>
                   <p className="text-xs text-gray-500 mt-1">
-                    {p.processingWeeks.min}–{p.processingWeeks.max} {ui.weeks}
+                    {pr.processingWeeks.min}–{pr.processingWeeks.max} {ui.weeks}
                   </p>
                 </Link>
               ))}
