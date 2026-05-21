@@ -369,6 +369,15 @@ export const COUNTRIES: CountryData[] = [
     englishRequired: true,
     continent: "Asia",
   },
+  {
+    slug: "united-arab-emirates",
+    name: { en: "United Arab Emirates", fr: "Emirats arabes unis", es: "Emiratos Arabes Unidos", ar: "United Arab Emirates" },
+    primaryLang: "ar",
+    processingWeeks: 10,
+    programs: ["Express Entry", "Canada Tech Immigration", "LMIA Work Permit", "Study Permit", "Work Permit"],
+    englishRequired: true,
+    continent: "Asia",
+  },
 ].filter(
   // Remove any duplicates by slug (safety dedup)
   (c, i, arr) => arr.findIndex((x) => x.slug === c.slug) === i,
