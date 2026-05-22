@@ -10,12 +10,10 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { NewsletterPopup } from "@/components/shared/newsletter-popup";
 import { WhatsAppButton } from "@/components/shared/whatsapp-button";
-import { CookieConsent } from "@/components/shared/cookie-consent";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { OrganizationJsonLd, WebsiteJsonLd } from "@/components/seo/structured-data";
-import { StickyConsultCta } from "@/components/shared/sticky-consult-cta";
+import { LazyEngagementWidgets } from "@/components/shared/lazy-engagement-widgets";
 
 export async function generateMetadata({
   params,
@@ -74,10 +72,8 @@ export default async function LocaleLayout({
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
-          <NewsletterPopup />
           <WhatsAppButton />
-          <StickyConsultCta />
-          <CookieConsent />
+          <LazyEngagementWidgets />
         </NextIntlClientProvider>
       </body>
       <GoogleAnalytics gaId="G-PRM3TSY3FL" />

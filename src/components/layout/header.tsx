@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
@@ -18,13 +18,6 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [desktopServicesOpen, setDesktopServicesOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   function closeMobile() {
     setMobileOpen(false);
@@ -54,10 +47,7 @@ export function Header() {
 
   return (
     <header
-      className={cn(
-        "sticky top-0 z-50 w-full bg-white transition-shadow duration-300",
-        scrolled ? "shadow-md" : "border-b border-border/40",
-      )}
+      className="sticky top-0 z-50 w-full border-b border-border/40 bg-white shadow-sm"
     >
       {/* Trust strip */}
       <div className="hidden md:block border-b" style={{ background: "linear-gradient(90deg, #fef2f2, #ffffff, #fef3c7)", borderColor: "#fde2e2" }}>
