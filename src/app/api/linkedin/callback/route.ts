@@ -32,16 +32,18 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  // Exchange code for access token
+  // Exchange code for access token — use Basic Auth (LinkedIn requirement)
+  const basicAuth = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
   const tokenRes = await fetch("https://www.linkedin.com/oauth/v2/accessToken", {
     method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": `Basic ${basicAuth}`,
+    },
     body: new URLSearchParams({
       grant_type: "authorization_code",
       code,
       redirect_uri: REDIRECT_URI,
-      client_id: clientId,
-      client_secret: clientSecret,
     }),
   });
 
