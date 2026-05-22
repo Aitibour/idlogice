@@ -56,40 +56,31 @@ export async function GET(req: NextRequest) {
   const tokenData = (await tokenRes.json()) as { access_token: string; expires_in: number };
   const accessToken = tokenData.access_token;
 
-  // Fetch person URN via userinfo
-  const infoRes = await fetch("https://api.linkedin.com/v2/userinfo", {
+  // Fetch person ID via /v2/me (works with w_member_social scope)
+  let personUrn = "UNKNOWN";
+  const meRes = await fetch("https://api.linkedin.com/v2/me?projection=(id)", {
     headers: { Authorization: `Bearer ${accessToken}` },
   });
-
-  let personUrn = "UNKNOWN";
-  if (infoRes.ok) {
-    const info = (await infoRes.json()) as { sub?: string; name?: string };
-    if (info.sub) personUrn = `urn:li:person:${info.sub}`;
+  if (meRes.ok) {
+    const me = (await meRes.json()) as { id?: string };
+    if (me.id) personUrn = `urn:li:person:${me.id}`;
   }
 
   const expiresInDays = Math.floor((tokenData.expires_in ?? 0) / 86400);
 
   return new NextResponse(
     html(`
-      <h2 style="color:green">LinkedIn OAuth successful!</h2>
-      <p>Add these two values as Netlify environment variables, then redeploy:</p>
-      <table>
-        <tr>
-          <td><strong>LINKEDIN_ACCESS_TOKEN</strong></td>
-          <td><code style="word-break:break-all">${accessToken}</code></td>
-        </tr>
-        <tr>
-          <td><strong>LINKEDIN_PERSON_URN</strong></td>
-          <td><code>${personUrn}</code></td>
-        </tr>
-      </table>
-      <p style="color:#888;font-size:0.9em">Token expires in ~${expiresInDays} days. Re-run OAuth before it expires.</p>
-      <hr/>
-      <p><strong>Netlify CLI commands:</strong></p>
-      <pre>
-netlify env:set LINKEDIN_ACCESS_TOKEN "${accessToken}"
+      <h2 style="color:green">&#10003; LinkedIn OAuth successful!</h2>
+      <p>Run these two commands in your terminal, then redeploy:</p>
+      <pre>netlify env:set LINKEDIN_ACCESS_TOKEN "${accessToken}"
 netlify env:set LINKEDIN_PERSON_URN "${personUrn}"
 netlify deploy --prod --build</pre>
+      <hr/>
+      <table>
+        <tr><td><strong>LINKEDIN_ACCESS_TOKEN</strong></td><td><code style="word-break:break-all">${accessToken}</code></td></tr>
+        <tr><td><strong>LINKEDIN_PERSON_URN</strong></td><td><code>${personUrn}</code></td></tr>
+        <tr><td><strong>Expires</strong></td><td>${expiresInDays} days</td></tr>
+      </table>
     `),
     { headers: { "content-type": "text/html; charset=utf-8" } }
   );
@@ -102,10 +93,10 @@ function html(body: string): string {
   <meta charset="UTF-8" />
   <title>LinkedIn OAuth - IDLOGICE</title>
   <style>
-    body { font-family: system-ui, sans-serif; max-width: 820px; margin: 60px auto; padding: 0 20px; }
+    body { font-family: system-ui, sans-serif; max-width: 860px; margin: 60px auto; padding: 0 20px; }
     table { border-collapse: collapse; width: 100%; margin: 1em 0; }
     td { border: 1px solid #ddd; padding: 10px 14px; vertical-align: top; }
-    td:first-child { white-space: nowrap; width: 240px; }
+    td:first-child { white-space: nowrap; width: 220px; }
     pre { background: #f5f5f5; padding: 14px; border-radius: 6px; overflow-x: auto; font-size: 0.82em; }
     code { background: #f5f5f5; padding: 2px 5px; border-radius: 4px; font-size: 0.85em; }
   </style>
