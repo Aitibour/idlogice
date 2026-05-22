@@ -1,16 +1,8 @@
 /**
  * LinkedIn auto-publish module
- * Posts a summary of each new blog article as a LinkedIn post with a backlink.
- * Requires LINKEDIN_ACCESS_TOKEN and LINKEDIN_PERSON_URN env vars.
- *
- * To get credentials:
- * 1. Create a LinkedIn app at https://www.linkedin.com/developers/apps
- * 2. Request the r_liteprofile, w_member_social, and r_emailaddress scopes
- * 3. Exchange the OAuth code for an access token
- * 4. Set LINKEDIN_ACCESS_TOKEN and LINKEDIN_PERSON_URN (urn:li:person:XXXXXX) in Netlify env vars
+ * Publishes a text post (no URL in body) then drops the article link
+ * as the first comment — maximising organic reach on LinkedIn.
  */
-
-const LINKEDIN_API = "https://api.linkedin.com/v2";
 
 export interface LinkedInPostPayload {
   title: string;
@@ -19,57 +11,85 @@ export interface LinkedInPostPayload {
   locale?: string;
 }
 
+const BASE_URL = "https://idlogice.com";
+const LI_API = "https://api.linkedin.com/v2";
+
+// ─── Post body copy ───────────────────────────────────────────────────────────
+
 function buildPostText(payload: LinkedInPostPayload): string {
-  const { title, summary, slug, locale = "en" } = payload;
-  const url = `https://idlogice.com/${locale}/blog/${slug}`;
+  const { title, summary, locale = "en" } = payload;
+  const clean = summary.replace(/[-–—]/g, " ").replace(/\s{2,}/g, " ").trim();
 
-  const intros: Record<string, string> = {
-    en: "New immigration insight just published:",
-    fr: "Nouvel article immigration publié :",
-    es: "Nuevo artículo de inmigración publicado:",
-    ar: "مقال هجرة جديد تم نشره:",
-  };
-
-  const hashtags: Record<string, string> = {
-    en: "#CanadaImmigration #ExpressEntry #CanadaPR #RCIC #Immigration",
-    fr: "#ImmigrationCanada #EntréeExpress #CanadaRP #RCIC #Immigration",
-    es: "#InmigraciónCanadá #ExpressEntry #CanadaRP #RCIC #Inmigración",
-    ar: "#هجرة_كندا #Express_Entry #إقامة_دائمة #RCIC #هجرة",
-  };
-
-  const intro = intros[locale] ?? intros.en;
-  const tags = hashtags[locale] ?? hashtags.en;
-
-  return `${intro}\n\n📌 ${title}\n\n${summary}\n\n🔗 Read full guide: ${url}\n\n${tags}`;
-}
-
-export async function publishToLinkedIn(payload: LinkedInPostPayload): Promise<boolean> {
-  const token = process.env.LINKEDIN_ACCESS_TOKEN;
-  const personUrn = process.env.LINKEDIN_PERSON_URN;
-
-  if (!token || !personUrn) {
-    console.log("LinkedIn: missing LINKEDIN_ACCESS_TOKEN or LINKEDIN_PERSON_URN — skipping");
-    return false;
+  if (locale === "fr") {
+    return [
+      `Nouveau sur notre blog ✍️`,
+      ``,
+      `${title}`,
+      ``,
+      `${clean}`,
+      ``,
+      `Si vous réfléchissez à immigrer au Canada, cet article est fait pour vous. Lisez, partagez et posez vos questions en commentaire — notre équipe de consultants RCIC est là pour vous répondre. 👇`,
+      ``,
+      `#ImmigrationCanada #EntréeExpress #VisaCanada #ConsultantImmigration #RCIC`,
+    ].join("\n");
   }
 
-  const text = buildPostText(payload);
-  const url = `https://idlogice.com/${payload.locale ?? "en"}/blog/${payload.slug}`;
+  if (locale === "es") {
+    return [
+      `Nuevo en nuestro blog ✍️`,
+      ``,
+      `${title}`,
+      ``,
+      `${clean}`,
+      ``,
+      `Si estás pensando en emigrar a Canadá, este artículo es para ti. Léelo, compártelo y deja tus preguntas en los comentarios. Nuestro equipo de consultores RCIC responderá. 👇`,
+      ``,
+      `#InmigraciónCanadá #EntradaExprés #VisaCanadá #ConsultorImmigración`,
+    ].join("\n");
+  }
 
+  if (locale === "ar") {
+    return [
+      `جديد على مدونتنا ✍️`,
+      ``,
+      `${title}`,
+      ``,
+      `${clean}`,
+      ``,
+      `إذا كنت تفكر في الهجرة إلى كندا، هذا المقال لك. اقرأه وشاركه واترك أسئلتك في التعليقات وسيجيبك فريقنا من المستشارين المعتمدين. 👇`,
+      ``,
+      `#هجرة_كندا #الدخول_السريع #تأشيرة_كندا #مستشار_هجرة`,
+    ].join("\n");
+  }
+
+  // Default: English
+  return [
+    `Something worth reading if you're on the path to Canadian immigration ✍️`,
+    ``,
+    `${title}`,
+    ``,
+    `${clean}`,
+    ``,
+    `Whether you're just starting out or deep in the process, understanding the details makes all the difference. Drop your questions in the comments and our RCIC consultants will get back to you. 👇`,
+    ``,
+    `#CanadaImmigration #ExpressEntry #CanadaPR #RCIC #ImmigrationTips #MoveToCanada`,
+  ].join("\n");
+}
+
+// ─── Publish post ─────────────────────────────────────────────────────────────
+
+async function createPost(
+  token: string,
+  personUrn: string,
+  text: string
+): Promise<string | null> {
   const body = {
     author: personUrn,
     lifecycleState: "PUBLISHED",
     specificContent: {
       "com.linkedin.ugc.ShareContent": {
         shareCommentary: { text },
-        shareMediaCategory: "ARTICLE",
-        media: [
-          {
-            status: "READY",
-            description: { text: payload.summary.slice(0, 256) },
-            originalUrl: url,
-            title: { text: payload.title },
-          },
-        ],
+        shareMediaCategory: "NONE",
       },
     },
     visibility: {
@@ -77,28 +97,90 @@ export async function publishToLinkedIn(payload: LinkedInPostPayload): Promise<b
     },
   };
 
+  const res = await fetch(`${LI_API}/ugcPosts`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+      "X-Restli-Protocol-Version": "2.0.0",
+    },
+    body: JSON.stringify(body),
+  });
+
+  if (!res.ok) {
+    const err = await res.text();
+    console.error("LinkedIn post failed:", res.status, err);
+    return null;
+  }
+
+  // LinkedIn returns the post URN in the X-RestLi-Id header
+  const postUrn = res.headers.get("x-restli-id") ?? res.headers.get("X-RestLi-Id");
+  if (postUrn) return postUrn;
+
+  // Fallback: parse from response body
   try {
-    const res = await fetch(`${LINKEDIN_API}/ugcPosts`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-        "X-Restli-Protocol-Version": "2.0.0",
-      },
-      body: JSON.stringify(body),
-    });
+    const data = (await res.json()) as { id?: string };
+    return data.id ?? null;
+  } catch {
+    return null;
+  }
+}
 
-    if (!res.ok) {
-      const err = await res.text();
-      console.error("LinkedIn publish failed:", res.status, err);
-      return false;
-    }
+// ─── Post first comment with article URL ─────────────────────────────────────
 
-    const data = await res.json() as { id: string };
-    console.log("LinkedIn post published:", data.id);
-    return true;
-  } catch (err) {
-    console.error("LinkedIn publish error:", err);
+async function postComment(
+  token: string,
+  personUrn: string,
+  postUrn: string,
+  articleUrl: string
+): Promise<void> {
+  const encodedUrn = encodeURIComponent(postUrn);
+  const res = await fetch(`${LI_API}/socialActions/${encodedUrn}/comments`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+      "X-Restli-Protocol-Version": "2.0.0",
+    },
+    body: JSON.stringify({
+      actor: personUrn,
+      message: { text: `Read the full article here 👉 ${articleUrl}` },
+    }),
+  });
+
+  if (!res.ok) {
+    const err = await res.text();
+    console.error("LinkedIn comment failed:", res.status, err);
+  } else {
+    console.log("LinkedIn first comment posted with URL:", articleUrl);
+  }
+}
+
+// ─── Main export ──────────────────────────────────────────────────────────────
+
+export async function publishToLinkedIn(payload: LinkedInPostPayload): Promise<boolean> {
+  const token = process.env.LINKEDIN_ACCESS_TOKEN;
+  const personUrn = process.env.LINKEDIN_PERSON_URN;
+
+  if (!token || !personUrn || personUrn === "UNKNOWN") {
+    console.log("LinkedIn credentials not configured — skipping publish");
     return false;
   }
+
+  const text = buildPostText(payload);
+  const articleUrl = `${BASE_URL}/en/blog/${payload.slug}`;
+
+  console.log("Publishing to LinkedIn:", payload.title);
+
+  const postUrn = await createPost(token, personUrn, text);
+  if (!postUrn) return false;
+
+  console.log("LinkedIn post created:", postUrn);
+
+  // Small delay to ensure the post is indexed before commenting
+  await new Promise((r) => setTimeout(r, 3000));
+
+  await postComment(token, personUrn, postUrn, articleUrl);
+
+  return true;
 }
