@@ -52,7 +52,7 @@ export async function generateCoverImage(
       prompt,
       n: 1,
       size: "1536x1024",
-      quality: "standard",
+      quality: "high",
     }),
   });
 
@@ -95,7 +95,7 @@ async function retryWithKey(apiKey: string, prompt: string): Promise<Buffer | nu
       prompt,
       n: 1,
       size: "1536x1024",
-      quality: "standard",
+      quality: "high",
     }),
   });
 
