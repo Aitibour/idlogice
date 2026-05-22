@@ -56,14 +56,29 @@ export async function GET(req: NextRequest) {
   const tokenData = (await tokenRes.json()) as { access_token: string; expires_in: number };
   const accessToken = tokenData.access_token;
 
-  // Fetch person ID via /v2/me (works with w_member_social scope)
+  // Fetch person URN — try OpenID userinfo first, fallback to /v2/me
   let personUrn = "UNKNOWN";
-  const meRes = await fetch("https://api.linkedin.com/v2/me?projection=(id)", {
+  let urnError = "";
+  const uiRes = await fetch("https://api.linkedin.com/v2/userinfo", {
     headers: { Authorization: `Bearer ${accessToken}` },
   });
-  if (meRes.ok) {
-    const me = (await meRes.json()) as { id?: string };
-    if (me.id) personUrn = `urn:li:person:${me.id}`;
+  if (uiRes.ok) {
+    const ui = (await uiRes.json()) as { sub?: string; name?: string };
+    if (ui.sub) personUrn = `urn:li:person:${ui.sub}`;
+  } else {
+    const uiBody = await uiRes.json().catch(() => ({})) as { message?: string };
+    urnError = `userinfo: ${uiRes.status} ${uiBody.message ?? ""}`;
+    // Fallback: /v2/me
+    const meRes = await fetch("https://api.linkedin.com/v2/me", {
+      headers: { Authorization: `Bearer ${accessToken}`, "LinkedIn-Version": "202401" },
+    });
+    if (meRes.ok) {
+      const me = (await meRes.json()) as { id?: string };
+      if (me.id) personUrn = `urn:li:person:${me.id}`;
+    } else {
+      const meBody = await meRes.json().catch(() => ({})) as { message?: string };
+      urnError += ` | me: ${meRes.status} ${meBody.message ?? ""}`;
+    }
   }
 
   const expiresInDays = Math.floor((tokenData.expires_in ?? 0) / 86400);
@@ -80,6 +95,7 @@ netlify deploy --prod --build</pre>
         <tr><td><strong>LINKEDIN_ACCESS_TOKEN</strong></td><td><code style="word-break:break-all">${accessToken}</code></td></tr>
         <tr><td><strong>LINKEDIN_PERSON_URN</strong></td><td><code>${personUrn}</code></td></tr>
         <tr><td><strong>Expires</strong></td><td>${expiresInDays} days</td></tr>
+        ${urnError ? `<tr><td><strong>URN debug</strong></td><td><code style="color:red">${urnError}</code></td></tr>` : ""}
       </table>
     `),
     { headers: { "content-type": "text/html; charset=utf-8" } }
