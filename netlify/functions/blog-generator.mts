@@ -62,4 +62,4 @@ export default async function handler() {
   }
 }
 
-export const config = { schedule: "0 7 * * *" };
+export const config = { schedule: "0 7,19 * * *" };
