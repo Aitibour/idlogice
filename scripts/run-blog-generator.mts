@@ -1,3 +1,7 @@
+import { config } from "dotenv";
+import { resolve } from "path";
+config({ path: resolve(process.cwd(), ".env.local") });
+
 import handler from "../netlify/functions/blog-generator.mts";
 
 console.log("=== Blog Generator Test Run ===");

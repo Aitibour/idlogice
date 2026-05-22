@@ -247,10 +247,15 @@ async function postComment(
 
 export async function publishToLinkedIn(payload: LinkedInPostPayload): Promise<boolean> {
   const token = process.env.LINKEDIN_ACCESS_TOKEN;
-  const personUrn = process.env.LINKEDIN_PERSON_URN;
+  // Must be the organization URN: urn:li:organization:103105245 (IDLOGICE company page)
+  const personUrn = process.env.LINKEDIN_PERSON_URN ?? process.env.LINKEDIN_ORG_URN;
 
   if (!token || !personUrn || personUrn === "UNKNOWN") {
     console.log("LinkedIn credentials not configured — skipping publish");
+    return false;
+  }
+  if (!personUrn.startsWith("urn:li:organization:")) {
+    console.error("LINKEDIN_PERSON_URN must be an organization URN (urn:li:organization:...) — aborting to prevent personal post");
     return false;
   }
 
