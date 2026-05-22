@@ -48,12 +48,11 @@ export async function generateCoverImage(
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: "dall-e-3",
+      model: "gpt-image-1",
       prompt,
       n: 1,
-      size: "1792x1024",
+      size: "1536x1024",
       quality: "standard",
-
     }),
   });
 
@@ -68,15 +67,20 @@ export async function generateCoverImage(
     return null;
   }
 
-  const data = (await res.json()) as { data: Array<{ url: string }> };
-  const imageUrl = data.data[0]?.url;
-  if (!imageUrl) return null;
+  const data = (await res.json()) as { data: Array<{ url?: string; b64_json?: string }> };
+  const item = data.data[0];
+  if (!item) return null;
 
-  // Download the image as a buffer
-  const imgRes = await fetch(imageUrl);
-  if (!imgRes.ok) return null;
-  const arrayBuffer = await imgRes.arrayBuffer();
-  return Buffer.from(arrayBuffer);
+  // gpt-image-1 returns b64_json; dall-e-3 returns url
+  if (item.b64_json) {
+    return Buffer.from(item.b64_json, "base64");
+  }
+  if (item.url) {
+    const imgRes = await fetch(item.url);
+    if (!imgRes.ok) return null;
+    return Buffer.from(await imgRes.arrayBuffer());
+  }
+  return null;
 }
 
 async function retryWithKey(apiKey: string, prompt: string): Promise<Buffer | null> {
@@ -87,12 +91,11 @@ async function retryWithKey(apiKey: string, prompt: string): Promise<Buffer | nu
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: "dall-e-3",
+      model: "gpt-image-1",
       prompt,
       n: 1,
-      size: "1792x1024",
+      size: "1536x1024",
       quality: "standard",
-
     }),
   });
 
