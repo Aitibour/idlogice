@@ -25,7 +25,6 @@ export function Header() {
   }
 
   const serviceLinks = [
-    { href: "/services"         as const, label: t("services")              },
     { href: "/services/express-entry" as const, label: t("servicesItems.expressEntry") },
     { href: "/services/study-permit"  as const, label: t("servicesItems.studyPermit")  },
     { href: "/services/work-permit"   as const, label: t("servicesItems.workPermit")   },
