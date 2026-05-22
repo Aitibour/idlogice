@@ -19,13 +19,13 @@ const PLANS: Record<string, { duration: string; price: number; description: stri
   },
   standard: {
     duration: "1 hour",
-    price: 160,
+    price: 200,
     tag: "Most Popular",
     description: "Deep-dive into your full profile with a personalised immigration roadmap and written summary sent after.",
   },
   premium: {
     duration: "2 hours",
-    price: 250,
+    price: 280,
     tag: "Best Value",
     description: "Comprehensive strategy session for complex cases, families, or full application preparation.",
   },
