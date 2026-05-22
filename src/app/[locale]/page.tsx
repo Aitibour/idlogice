@@ -103,6 +103,30 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
         </div>
       </section>
+      {/* Explore section — programmatic SEO hub links */}
+      <section className="bg-gray-50 border-y border-border/40 py-12">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-6 text-center">Explore Canadian Immigration</p>
+          <div className="grid sm:grid-cols-3 gap-4">
+            <Link href="/in" className="group rounded-2xl border border-border bg-white p-5 hover:border-primary/50 hover:shadow-sm transition-all">
+              <p className="font-bold text-sm text-gray-900 group-hover:text-primary mb-1">Immigration by City</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">Toronto, Vancouver, Montreal, Calgary and 8 more Canadian cities.</p>
+            </Link>
+            <Link href="/province" className="group rounded-2xl border border-border bg-white p-5 hover:border-primary/50 hover:shadow-sm transition-all">
+              <p className="font-bold text-sm text-gray-900 group-hover:text-primary mb-1">Provincial Programs (PNP)</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">Ontario, BC, Alberta, Quebec and all 10 province nomination programs.</p>
+            </Link>
+            <Link href="/for" className="group rounded-2xl border border-border bg-white p-5 hover:border-primary/50 hover:shadow-sm transition-all">
+              <p className="font-bold text-sm text-gray-900 group-hover:text-primary mb-1">Immigration by Profession</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">Nurses, engineers, truck drivers, doctors and 9 more in-demand occupations.</p>
+            </Link>
+            <Link href="/stats" className="group rounded-2xl border border-border bg-white p-5 hover:border-primary/50 hover:shadow-sm transition-all sm:col-span-3 md:col-span-1">
+              <p className="font-bold text-sm text-gray-900 group-hover:text-primary mb-1">Immigration Statistics 2026</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">500,000 PR target, top source countries, CRS cut-offs and processing times.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
       <TestimonialsMarquee
         title={t("testimonials.title")}
         subtitle={t("testimonials.subtitle")}

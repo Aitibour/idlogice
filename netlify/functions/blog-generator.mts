@@ -2,6 +2,7 @@ import { fetchLatestItems } from "../../src/lib/blog/rss";
 import { generateArticle } from "../../src/lib/blog/generate";
 import { fetchUnsplashPhoto } from "../../src/lib/blog/unsplash";
 import { publishPost } from "../../src/lib/blog/publish";
+import { publishToLinkedIn } from "../../src/lib/blog/linkedin";
 import { createServiceClient } from "../../src/lib/supabase/service";
 
 export default async function handler() {
@@ -40,7 +41,16 @@ export default async function handler() {
   const photo = await fetchUnsplashPhoto(article.unsplash_keyword);
   const result = await publishPost(article, targetItem.link, targetItem.title, photo);
 
-  if (result) console.log("Done. Slug:", result.slug);
+  if (result) {
+    console.log("Done. Slug:", result.slug);
+    // Publish to LinkedIn after successful blog post
+    await publishToLinkedIn({
+      title: article.title_en ?? targetItem.title,
+      summary: article.excerpt_en ?? article.excerpt_fr ?? "",
+      slug: result.slug,
+      locale: "en",
+    });
+  }
 }
 
 export const config = { schedule: "0 7 * * *" };

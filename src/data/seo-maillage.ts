@@ -255,6 +255,269 @@ export function getProgramMaillage(slug: string): ProgramMaillage | undefined {
   return PROGRAM_MAILLAGE[slug];
 }
 
+// ─── City maillage ────────────────────────────────────────────────────────────
+
+export type CityMaillage = {
+  provinceSlug: string;
+  programLinks: MaillageLink[];
+  ctas: MaillageLink[];
+};
+
+export const CITY_MAILLAGE: Record<string, CityMaillage> = {
+  toronto: {
+    provinceSlug: "ontario",
+    programLinks: [
+      { href: "/programs/express-entry", label: "Express Entry Toronto", description: "Federal skilled worker program for Toronto-bound applicants." },
+      { href: "/province/ontario", label: "Ontario PNP (OINP)", description: "Province-backed nomination streams for Ontario settlement." },
+      { href: "/programs/work-permit", label: "Work permit Toronto", description: "Employer-supported and open work permit pathways." },
+      { href: "/for/software-engineer", label: "Tech immigration Toronto", description: "NOC 21231 — software engineers are top-demand in Toronto." },
+    ],
+    ctas: [evaluationLink, consultationLink],
+  },
+  vancouver: {
+    provinceSlug: "british-columbia",
+    programLinks: [
+      { href: "/programs/express-entry", label: "Express Entry Vancouver", description: "Federal pathway for skilled workers targeting BC." },
+      { href: "/province/british-columbia", label: "BC PNP Tech Pilot", description: "BC's fast-track tech and skilled worker streams." },
+      { href: "/for/software-engineer", label: "Tech immigration Vancouver", description: "Vancouver is Canada's second-largest tech hub." },
+      { href: "/for/data-scientist", label: "Data science jobs Vancouver", description: "High-demand data roles in BC tech sector." },
+    ],
+    ctas: [evaluationLink, consultationLink],
+  },
+  montreal: {
+    provinceSlug: "quebec",
+    programLinks: [
+      { href: "/province/quebec", label: "Quebec immigration (QSWP/Arrima)", description: "Quebec selects its own immigrants via the Arrima pool." },
+      { href: "/programs/francophone-mobility", label: "Francophone Mobility Montreal", description: "LMIA-exempt work permit for French-speaking workers." },
+      { href: "/programs/work-permit", label: "Work permit Montreal", description: "Open and employer-specific work permits for Quebec." },
+      { href: "/for/chef", label: "Chef immigration Montreal", description: "Montreal's hospitality sector is a top employer of immigrants." },
+    ],
+    ctas: [evaluationLink, consultationLink],
+  },
+  calgary: {
+    provinceSlug: "alberta",
+    programLinks: [
+      { href: "/province/alberta", label: "Alberta Advantage Immigration Program", description: "AAIP streams for workers targeting Calgary and Edmonton." },
+      { href: "/programs/express-entry", label: "Express Entry Calgary", description: "Federal pathway for skilled workers in Alberta." },
+      { href: "/for/civil-engineer", label: "Civil engineers Calgary", description: "Alberta infrastructure boom drives demand for engineers." },
+      { href: "/for/electrician", label: "Electricians Calgary", description: "Trades are in high demand across Alberta." },
+    ],
+    ctas: [evaluationLink, consultationLink],
+  },
+  ottawa: {
+    provinceSlug: "ontario",
+    programLinks: [
+      { href: "/province/ontario", label: "Ontario PNP Ottawa", description: "OINP tech and human capital streams for Ottawa applicants." },
+      { href: "/programs/express-entry", label: "Express Entry Ottawa", description: "Federal capital region attracts tech and policy professionals." },
+      { href: "/for/software-engineer", label: "Tech jobs Ottawa", description: "Federal government tech roles are concentrated in Ottawa." },
+      { href: "/for/data-scientist", label: "Data science Ottawa", description: "Government analytics and AI teams hiring internationally." },
+    ],
+    ctas: [evaluationLink, consultationLink],
+  },
+  edmonton: {
+    provinceSlug: "alberta",
+    programLinks: [
+      { href: "/province/alberta", label: "AAIP Edmonton streams", description: "Alberta Advantage streams for Edmonton-area workers." },
+      { href: "/for/nurse", label: "Nurses Edmonton", description: "Alberta healthcare system actively recruits internationally." },
+      { href: "/for/truck-driver", label: "Truck drivers Edmonton", description: "Logistics and transport roles are high demand in Alberta." },
+      { href: "/for/welder", label: "Welders Edmonton", description: "Oil and gas sector drives strong demand for tradespeople." },
+    ],
+    ctas: [evaluationLink, consultationLink],
+  },
+  winnipeg: {
+    provinceSlug: "manitoba",
+    programLinks: [
+      { href: "/province/manitoba", label: "Manitoba PNP (MPNP)", description: "Manitoba's skilled worker and business streams." },
+      { href: "/programs/express-entry", label: "Express Entry Winnipeg", description: "Federal pathway enhanced by MPNP nomination." },
+      { href: "/for/caregiver", label: "Caregivers Winnipeg", description: "Manitoba actively recruits home support workers." },
+      { href: "/for/nurse", label: "Nurses Winnipeg", description: "Healthcare is among Winnipeg's top immigration sectors." },
+    ],
+    ctas: [evaluationLink, consultationLink],
+  },
+  halifax: {
+    provinceSlug: "nova-scotia",
+    programLinks: [
+      { href: "/province/nova-scotia", label: "Nova Scotia Nominee Program", description: "NSNP streams for skilled workers choosing Atlantic Canada." },
+      { href: "/programs/express-entry", label: "Express Entry Halifax", description: "Federal pathway combined with Atlantic stream options." },
+      { href: "/for/nurse", label: "Nurses Halifax", description: "Nova Scotia healthcare recruits internationally." },
+      { href: "/for/chef", label: "Chefs Halifax", description: "Atlantic hospitality industry is a key immigration sector." },
+    ],
+    ctas: [evaluationLink, consultationLink],
+  },
+  saskatoon: {
+    provinceSlug: "saskatchewan",
+    programLinks: [
+      { href: "/province/saskatchewan", label: "Saskatchewan Immigrant Nominee Program", description: "SINP streams for skilled and semi-skilled workers." },
+      { href: "/programs/express-entry", label: "Express Entry Saskatoon", description: "Federal pathway with provincial nomination top-up." },
+      { href: "/for/truck-driver", label: "Truck drivers Saskatchewan", description: "Agriculture and logistics drive transport demand." },
+      { href: "/for/welder", label: "Welders Saskatchewan", description: "Resource sector needs skilled trades workers." },
+    ],
+    ctas: [evaluationLink, consultationLink],
+  },
+  "quebec-city": {
+    provinceSlug: "quebec",
+    programLinks: [
+      { href: "/province/quebec", label: "Quebec immigration Arrima", description: "Quebec City applicants go through the provincial Arrima pool." },
+      { href: "/programs/francophone-mobility", label: "Francophone Mobility Quebec City", description: "French-language LMIA-exempt work permits." },
+      { href: "/for/accountant", label: "Accountants Quebec City", description: "Finance professionals are in demand in Quebec's capital." },
+      { href: "/for/teacher", label: "Teachers Quebec City", description: "French-language education sector hiring internationally." },
+    ],
+    ctas: [evaluationLink, consultationLink],
+  },
+  hamilton: {
+    provinceSlug: "ontario",
+    programLinks: [
+      { href: "/province/ontario", label: "Ontario PNP Hamilton", description: "OINP streams apply to Hamilton as part of Greater Ontario." },
+      { href: "/programs/express-entry", label: "Express Entry Hamilton", description: "Federal pathway for skilled workers near Toronto." },
+      { href: "/for/nurse", label: "Nurses Hamilton", description: "Hamilton Health Sciences is a major employer." },
+      { href: "/for/electrician", label: "Electricians Hamilton", description: "Industrial sector drives trades demand in Hamilton." },
+    ],
+    ctas: [evaluationLink, consultationLink],
+  },
+  kitchener: {
+    provinceSlug: "ontario",
+    programLinks: [
+      { href: "/province/ontario", label: "Ontario PNP Kitchener", description: "OINP Human Capital Priorities for Waterloo Region." },
+      { href: "/programs/express-entry", label: "Express Entry Kitchener", description: "Tech-forward Waterloo Region attracts skilled immigrants." },
+      { href: "/for/software-engineer", label: "Tech immigration Waterloo Region", description: "Canada's Silicon Valley North: Shopify, Google, Meta." },
+      { href: "/for/data-scientist", label: "Data science Kitchener", description: "University of Waterloo spin-offs drive data talent demand." },
+    ],
+    ctas: [evaluationLink, consultationLink],
+  },
+};
+
+export function getCityMaillage(slug: string): CityMaillage | undefined {
+  return CITY_MAILLAGE[slug];
+}
+
+// ─── Province maillage ────────────────────────────────────────────────────────
+
+export type ProvinceMaillage = {
+  programLinks: MaillageLink[];
+  cityLinks: MaillageLink[];
+  ctas: MaillageLink[];
+};
+
+export const PROVINCE_MAILLAGE: Record<string, ProvinceMaillage> = {
+  ontario: {
+    programLinks: [
+      { href: "/programs/provincial-nominee-program", label: "Ontario PNP guide", description: "OINP streams for tech, human capital, and skilled trades." },
+      { href: "/programs/express-entry", label: "Express Entry Ontario", description: "Federal pathway enhanced by OINP nomination." },
+      { href: "/for/software-engineer", label: "Tech immigration Ontario", description: "Software engineers top OINP's human capital stream." },
+      { href: "/for/nurse", label: "Nurses immigrating to Ontario", description: "Healthcare is Ontario's largest internationally recruited sector." },
+    ],
+    cityLinks: [
+      { href: "/in/toronto", label: "Immigration consultant Toronto", description: "Canada's largest city and top immigration destination." },
+      { href: "/in/ottawa", label: "Immigration consultant Ottawa", description: "Federal capital with strong tech and government sector." },
+      { href: "/in/hamilton", label: "Immigration consultant Hamilton", description: "Growing industrial city near Toronto." },
+      { href: "/in/kitchener", label: "Immigration consultant Kitchener", description: "Waterloo Region — Canada's Silicon Valley North." },
+    ],
+    ctas: [evaluationLink, consultationLink],
+  },
+  "british-columbia": {
+    programLinks: [
+      { href: "/programs/provincial-nominee-program", label: "BC PNP Tech Pilot", description: "Fast-track nomination for tech workers in BC." },
+      { href: "/programs/express-entry", label: "Express Entry BC", description: "Federal pathway aligned with BC PNP tech streams." },
+      { href: "/for/software-engineer", label: "Software engineers BC", description: "Vancouver is Canada's #2 tech market." },
+      { href: "/for/data-scientist", label: "Data scientists BC", description: "Tech hubs in Vancouver and Victoria drive data demand." },
+    ],
+    cityLinks: [
+      { href: "/in/vancouver", label: "Immigration consultant Vancouver", description: "BC's largest city and major Pacific gateway." },
+    ],
+    ctas: [evaluationLink, consultationLink],
+  },
+  alberta: {
+    programLinks: [
+      { href: "/programs/provincial-nominee-program", label: "Alberta Advantage Immigration Program", description: "AAIP streams for skilled workers in Alberta." },
+      { href: "/programs/work-permit", label: "Work permit Alberta", description: "Employer-driven permits for Alberta's energy and trades sectors." },
+      { href: "/for/electrician", label: "Electricians immigrating to Alberta", description: "Energy sector drives strong trades demand." },
+      { href: "/for/civil-engineer", label: "Civil engineers Alberta", description: "Infrastructure investment creates engineer demand." },
+    ],
+    cityLinks: [
+      { href: "/in/calgary", label: "Immigration consultant Calgary", description: "Alberta's largest city and energy sector hub." },
+      { href: "/in/edmonton", label: "Immigration consultant Edmonton", description: "Provincial capital with strong healthcare and trades sectors." },
+    ],
+    ctas: [evaluationLink, consultationLink],
+  },
+  quebec: {
+    programLinks: [
+      { href: "/programs/francophone-mobility", label: "Francophone Mobility Quebec", description: "LMIA-exempt work permits for French speakers." },
+      { href: "/programs/work-permit", label: "Work permit Quebec", description: "Employer-supported permits for Quebec-bound workers." },
+      { href: "/for/teacher", label: "Teachers immigrating to Quebec", description: "French-language education sector actively recruits." },
+      { href: "/for/chef", label: "Chefs immigrating to Quebec", description: "Montreal hospitality is a top immigration employer." },
+    ],
+    cityLinks: [
+      { href: "/in/montreal", label: "Immigration consultant Montreal", description: "Quebec's largest city and French immigration hub." },
+      { href: "/in/quebec-city", label: "Immigration consultant Quebec City", description: "Provincial capital with strong francophone culture." },
+    ],
+    ctas: [evaluationLink, consultationLink],
+  },
+  manitoba: {
+    programLinks: [
+      { href: "/programs/provincial-nominee-program", label: "Manitoba PNP (MPNP)", description: "Skilled worker and business streams for Manitoba." },
+      { href: "/programs/express-entry", label: "Express Entry Manitoba", description: "Federal pathway boosted by MPNP nomination." },
+      { href: "/for/nurse", label: "Nurses Manitoba", description: "Healthcare sector is Winnipeg's top employer of immigrants." },
+      { href: "/for/caregiver", label: "Caregivers Manitoba", description: "Manitoba actively recruits home support workers." },
+    ],
+    cityLinks: [
+      { href: "/in/winnipeg", label: "Immigration consultant Winnipeg", description: "Manitoba's capital and primary immigration destination." },
+    ],
+    ctas: [evaluationLink, consultationLink],
+  },
+  saskatchewan: {
+    programLinks: [
+      { href: "/programs/provincial-nominee-program", label: "Saskatchewan SINP", description: "Immigrant Nominee Program for skilled and semi-skilled workers." },
+      { href: "/for/truck-driver", label: "Truck drivers Saskatchewan", description: "Agriculture and logistics drive transport demand in SK." },
+      { href: "/for/welder", label: "Welders Saskatchewan", description: "Resource industry needs skilled trades." },
+    ],
+    cityLinks: [
+      { href: "/in/saskatoon", label: "Immigration consultant Saskatoon", description: "Saskatchewan's largest city and agricultural hub." },
+    ],
+    ctas: [evaluationLink, consultationLink],
+  },
+  "nova-scotia": {
+    programLinks: [
+      { href: "/programs/provincial-nominee-program", label: "Nova Scotia Nominee Program", description: "NSNP streams for skilled workers in Atlantic Canada." },
+      { href: "/programs/express-entry", label: "Express Entry Nova Scotia", description: "Federal pathway combined with NSNP streams." },
+      { href: "/for/nurse", label: "Nurses Nova Scotia", description: "Healthcare is Nova Scotia's top immigration sector." },
+    ],
+    cityLinks: [
+      { href: "/in/halifax", label: "Immigration consultant Halifax", description: "Nova Scotia's capital and Atlantic Canada gateway." },
+    ],
+    ctas: [evaluationLink, consultationLink],
+  },
+  "new-brunswick": {
+    programLinks: [
+      { href: "/programs/provincial-nominee-program", label: "New Brunswick PNP", description: "NBPNP streams for skilled workers and entrepreneurs." },
+      { href: "/programs/express-entry", label: "Express Entry New Brunswick", description: "Federal pathway with NBPNP nomination top-up." },
+      { href: "/for/caregiver", label: "Caregivers New Brunswick", description: "Aging population drives caregiver demand in NB." },
+    ],
+    cityLinks: [],
+    ctas: [evaluationLink, consultationLink],
+  },
+  "prince-edward-island": {
+    programLinks: [
+      { href: "/programs/provincial-nominee-program", label: "PEI PNP", description: "Small province with targeted skilled worker and business streams." },
+      { href: "/programs/express-entry", label: "Express Entry PEI", description: "Federal pathway with PEI nomination." },
+    ],
+    cityLinks: [],
+    ctas: [evaluationLink, consultationLink],
+  },
+  newfoundland: {
+    programLinks: [
+      { href: "/programs/provincial-nominee-program", label: "Newfoundland AIPP / NLPNP", description: "Atlantic and provincial streams for skilled workers." },
+      { href: "/programs/express-entry", label: "Express Entry Newfoundland", description: "Federal pathway for applicants targeting NL." },
+      { href: "/for/nurse", label: "Nurses Newfoundland", description: "Healthcare is one of NL's top internationally recruited sectors." },
+    ],
+    cityLinks: [],
+    ctas: [evaluationLink, consultationLink],
+  },
+};
+
+export function getProvinceMaillage(slug: string): ProvinceMaillage | undefined {
+  return PROVINCE_MAILLAGE[slug];
+}
+
 export function localizeHref(locale: string, href: string): string {
   if (href.startsWith("http")) return href;
   return `/${locale}${href.startsWith("/") ? href : `/${href}`}`;
