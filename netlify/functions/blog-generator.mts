@@ -3,6 +3,7 @@ import { generateArticle } from "../../src/lib/blog/generate";
 import { fetchUnsplashPhoto } from "../../src/lib/blog/unsplash";
 import { publishPost } from "../../src/lib/blog/publish";
 import { publishToLinkedIn } from "../../src/lib/blog/linkedin";
+import { publishToTwitter } from "../../src/lib/blog/twitter";
 import { generateCoverImage } from "../../src/lib/blog/openai-image";
 import { createServiceClient } from "../../src/lib/supabase/service";
 
@@ -51,8 +52,17 @@ export default async function handler() {
       article.unsplash_keyword ?? "canada immigration"
     );
 
-    // Publish to LinkedIn with cover image and URL as first comment
+    // Publish to LinkedIn (image card + URL as first comment)
     await publishToLinkedIn({
+      title: article.title_en ?? targetItem.title,
+      summary: article.excerpt_en ?? article.excerpt_fr ?? "",
+      slug: result.slug,
+      locale: "en",
+      coverImage,
+    });
+
+    // Publish to X / Twitter (image + link in tweet body)
+    await publishToTwitter({
       title: article.title_en ?? targetItem.title,
       summary: article.excerpt_en ?? article.excerpt_fr ?? "",
       slug: result.slug,
