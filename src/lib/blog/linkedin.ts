@@ -1,7 +1,8 @@
 /**
  * LinkedIn auto-publish module
- * Publishes a text post (no URL in body) then drops the article link
- * as the first comment — maximising organic reach on LinkedIn.
+ * 1. Uploads DALL-E cover image to LinkedIn media
+ * 2. Creates a humanized post with the image attached (no URL in body)
+ * 3. Posts the article URL as the first comment
  */
 
 export interface LinkedInPostPayload {
@@ -9,12 +10,13 @@ export interface LinkedInPostPayload {
   summary: string;
   slug: string;
   locale?: string;
+  coverImage?: Buffer | null; // PNG/JPEG buffer from DALL-E
 }
 
 const BASE_URL = "https://idlogice.com";
 const LI_API = "https://api.linkedin.com/v2";
 
-// ─── Post body copy ───────────────────────────────────────────────────────────
+// ─── Post copy ────────────────────────────────────────────────────────────────
 
 function buildPostText(payload: LinkedInPostPayload): string {
   const { title, summary, locale = "en" } = payload;
@@ -62,34 +64,120 @@ function buildPostText(payload: LinkedInPostPayload): string {
     ].join("\n");
   }
 
-  // Default: English
   return [
-    `Something worth reading if you're on the path to Canadian immigration ✍️`,
+    `Something worth reading if you are on the path to Canadian immigration ✍️`,
     ``,
     `${title}`,
     ``,
     `${clean}`,
     ``,
-    `Whether you're just starting out or deep in the process, understanding the details makes all the difference. Drop your questions in the comments and our RCIC consultants will get back to you. 👇`,
+    `Whether you are just starting out or deep in the process, understanding the details makes all the difference. Drop your questions in the comments and our RCIC consultants will get back to you. 👇`,
     ``,
     `#CanadaImmigration #ExpressEntry #CanadaPR #RCIC #ImmigrationTips #MoveToCanada`,
   ].join("\n");
 }
 
-// ─── Publish post ─────────────────────────────────────────────────────────────
+// ─── Upload image to LinkedIn ─────────────────────────────────────────────────
+
+async function uploadImageToLinkedIn(
+  token: string,
+  personUrn: string,
+  imageBuffer: Buffer
+): Promise<string | null> {
+  // Step 1: register the upload
+  const registerRes = await fetch(`${LI_API}/assets?action=registerUpload`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+      "X-Restli-Protocol-Version": "2.0.0",
+    },
+    body: JSON.stringify({
+      registerUploadRequest: {
+        recipes: ["urn:li:digitalmediaRecipe:feedshare-image"],
+        owner: personUrn,
+        serviceRelationships: [
+          {
+            relationshipType: "OWNER",
+            identifier: "urn:li:userGeneratedContent",
+          },
+        ],
+      },
+    }),
+  });
+
+  if (!registerRes.ok) {
+    const err = await registerRes.text();
+    console.error("LinkedIn register upload failed:", registerRes.status, err);
+    return null;
+  }
+
+  const registerData = (await registerRes.json()) as {
+    value: {
+      asset: string;
+      uploadMechanism: {
+        "com.linkedin.digitalmedia.uploading.MediaUploadHttpRequest": {
+          uploadUrl: string;
+        };
+      };
+    };
+  };
+
+  const assetUrn = registerData.value.asset;
+  const uploadUrl =
+    registerData.value.uploadMechanism[
+      "com.linkedin.digitalmedia.uploading.MediaUploadHttpRequest"
+    ].uploadUrl;
+
+  // Step 2: upload binary to S3
+  const uploadRes = await fetch(uploadUrl, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "image/png",
+    },
+    body: imageBuffer,
+  });
+
+  if (!uploadRes.ok) {
+    console.error("LinkedIn image upload failed:", uploadRes.status);
+    return null;
+  }
+
+  console.log("LinkedIn image uploaded:", assetUrn);
+  return assetUrn;
+}
+
+// ─── Create post ──────────────────────────────────────────────────────────────
 
 async function createPost(
   token: string,
   personUrn: string,
-  text: string
+  text: string,
+  assetUrn: string | null,
+  title: string
 ): Promise<string | null> {
+  const mediaContent = assetUrn
+    ? {
+        shareMediaCategory: "IMAGE",
+        media: [
+          {
+            status: "READY",
+            description: { text: title },
+            media: assetUrn,
+            title: { text: title },
+          },
+        ],
+      }
+    : { shareMediaCategory: "NONE" };
+
   const body = {
     author: personUrn,
     lifecycleState: "PUBLISHED",
     specificContent: {
       "com.linkedin.ugc.ShareContent": {
         shareCommentary: { text },
-        shareMediaCategory: "NONE",
+        ...mediaContent,
       },
     },
     visibility: {
@@ -113,11 +201,10 @@ async function createPost(
     return null;
   }
 
-  // LinkedIn returns the post URN in the X-RestLi-Id header
-  const postUrn = res.headers.get("x-restli-id") ?? res.headers.get("X-RestLi-Id");
+  const postUrn =
+    res.headers.get("x-restli-id") ?? res.headers.get("X-RestLi-Id");
   if (postUrn) return postUrn;
 
-  // Fallback: parse from response body
   try {
     const data = (await res.json()) as { id?: string };
     return data.id ?? null;
@@ -126,7 +213,7 @@ async function createPost(
   }
 }
 
-// ─── Post first comment with article URL ─────────────────────────────────────
+// ─── First comment with article URL ──────────────────────────────────────────
 
 async function postComment(
   token: string,
@@ -152,7 +239,7 @@ async function postComment(
     const err = await res.text();
     console.error("LinkedIn comment failed:", res.status, err);
   } else {
-    console.log("LinkedIn first comment posted with URL:", articleUrl);
+    console.log("LinkedIn first comment posted:", articleUrl);
   }
 }
 
@@ -172,14 +259,20 @@ export async function publishToLinkedIn(payload: LinkedInPostPayload): Promise<b
 
   console.log("Publishing to LinkedIn:", payload.title);
 
-  const postUrn = await createPost(token, personUrn, text);
+  // Upload cover image if provided
+  let assetUrn: string | null = null;
+  if (payload.coverImage) {
+    assetUrn = await uploadImageToLinkedIn(token, personUrn, payload.coverImage);
+  }
+
+  // Create post (with or without image)
+  const postUrn = await createPost(token, personUrn, text, assetUrn, payload.title);
   if (!postUrn) return false;
 
   console.log("LinkedIn post created:", postUrn);
 
-  // Small delay to ensure the post is indexed before commenting
+  // Wait for post to be indexed, then add URL as first comment
   await new Promise((r) => setTimeout(r, 3000));
-
   await postComment(token, personUrn, postUrn, articleUrl);
 
   return true;
