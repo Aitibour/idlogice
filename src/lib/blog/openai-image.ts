@@ -53,7 +53,7 @@ export async function generateCoverImage(
       n: 1,
       size: "1792x1024",
       quality: "standard",
-      response_format: "url",
+
     }),
   });
 
@@ -92,7 +92,7 @@ async function retryWithKey(apiKey: string, prompt: string): Promise<Buffer | nu
       n: 1,
       size: "1792x1024",
       quality: "standard",
-      response_format: "url",
+
     }),
   });
 
