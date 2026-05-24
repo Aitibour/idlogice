@@ -7,7 +7,7 @@
 const BASE = "https://idlogice.com";
 
 const ORG_NODE = {
-  "@type": "ImmigrationLawFirm",
+  "@type": ["ProfessionalService", "LegalService"],
   "@id": `${BASE}#organization`,
   name: "IDLOGICE Immigration Consulting",
   alternateName: "IDLOGICE",
