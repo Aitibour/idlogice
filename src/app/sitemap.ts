@@ -5,6 +5,9 @@ import type { MetadataRoute } from "next";
 import { tryCreateServiceClient } from "@/lib/supabase/service";
 import { COUNTRIES } from "@/data/immigration-countries";
 import { PROGRAMS } from "@/data/immigration-programs";
+import { PROVINCES } from "@/data/immigration-provinces";
+import { CITIES } from "@/data/immigration-cities";
+import { PROFESSIONS } from "@/data/immigration-professions";
 
 const BASE = "https://idlogice.com";
 const LOCALES = ["en", "fr", "es", "ar"] as const;
@@ -40,9 +43,12 @@ const ROUTES: Route[] = [
   { path: "/services/pnp",                priority: SERVICE,  changeFreq: "monthly" },
   { path: "/services/family-sponsorship", priority: SERVICE,  changeFreq: "monthly" },
   { path: "/services/tourist-visa",       priority: SERVICE,  changeFreq: "monthly" },
+  { path: "/services/pr-pathways",        priority: SERVICE,  changeFreq: "monthly" },
   { path: "/testimonials",                priority: CONTENT,  changeFreq: "weekly" },
   { path: "/faq",                         priority: CONTENT,  changeFreq: "monthly" },
   { path: "/jobs",                        priority: CONTENT,  changeFreq: "weekly" },
+  { path: "/stats",                       priority: CONTENT,  changeFreq: "monthly" },
+  { path: "/team",                        priority: CONTENT,  changeFreq: "monthly" },
   { path: "/privacy",                     priority: LEGAL,    changeFreq: "yearly" },
   { path: "/terms",                       priority: LEGAL,    changeFreq: "yearly" },
   { path: "/cookies",                     priority: LEGAL,    changeFreq: "yearly" },
@@ -157,5 +163,85 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ),
   );
 
-  return [...staticEntries, ...fromIndexEntries, ...blogEntries, ...countryEntries, ...programsIndexEntries, ...programEntries, ...countryProgramEntries];
+  // /province hub + /province/[province] — 11 provinces × 4 locales = 44 pages + 4 hub
+  const provinceIndexEntries: MetadataRoute.Sitemap = LOCALES.map((locale) => ({
+    url: `${BASE}/${locale}/province`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: TOP,
+    alternates: { languages: Object.fromEntries(LOCALES.map((l) => [l, `${BASE}/${l}/province`])) },
+  }));
+  const provinceEntries: MetadataRoute.Sitemap = PROVINCES.flatMap((province) =>
+    LOCALES.map((locale) => ({
+      url: `${BASE}/${locale}/province/${province.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: SERVICE,
+      alternates: {
+        languages: Object.fromEntries(
+          LOCALES.map((l) => [l, `${BASE}/${l}/province/${province.slug}`]),
+        ),
+      },
+    })),
+  );
+
+  // /in hub + /in/[city] — 13 cities × 4 locales = 52 pages + 4 hub
+  const inIndexEntries: MetadataRoute.Sitemap = LOCALES.map((locale) => ({
+    url: `${BASE}/${locale}/in`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: TOP,
+    alternates: { languages: Object.fromEntries(LOCALES.map((l) => [l, `${BASE}/${l}/in`])) },
+  }));
+  const cityEntries: MetadataRoute.Sitemap = CITIES.flatMap((city) =>
+    LOCALES.map((locale) => ({
+      url: `${BASE}/${locale}/in/${city.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: CONTENT,
+      alternates: {
+        languages: Object.fromEntries(
+          LOCALES.map((l) => [l, `${BASE}/${l}/in/${city.slug}`]),
+        ),
+      },
+    })),
+  );
+
+  // /for hub + /for/[profession] — 14 professions × 4 locales = 56 pages + 4 hub
+  const forIndexEntries: MetadataRoute.Sitemap = LOCALES.map((locale) => ({
+    url: `${BASE}/${locale}/for`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: TOP,
+    alternates: { languages: Object.fromEntries(LOCALES.map((l) => [l, `${BASE}/${l}/for`])) },
+  }));
+  const professionEntries: MetadataRoute.Sitemap = PROFESSIONS.flatMap((prof) =>
+    LOCALES.map((locale) => ({
+      url: `${BASE}/${locale}/for/${prof.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: CONTENT,
+      alternates: {
+        languages: Object.fromEntries(
+          LOCALES.map((l) => [l, `${BASE}/${l}/for/${prof.slug}`]),
+        ),
+      },
+    })),
+  );
+
+  return [
+    ...staticEntries,
+    ...fromIndexEntries,
+    ...blogEntries,
+    ...countryEntries,
+    ...programsIndexEntries,
+    ...programEntries,
+    ...countryProgramEntries,
+    ...provinceIndexEntries,
+    ...provinceEntries,
+    ...inIndexEntries,
+    ...cityEntries,
+    ...forIndexEntries,
+    ...professionEntries,
+  ];
 }
