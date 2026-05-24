@@ -39,7 +39,7 @@ const nextConfig: NextConfig = {
     const nonLocaleRedirects = nonLocalePaths.map((p) => ({
       source: `/${p}`,
       destination: `/en/${p}`,
-      permanent: false,
+      permanent: true,
     }));
 
     // Service sub-pages without locale prefix
@@ -54,7 +54,7 @@ const nextConfig: NextConfig = {
     const serviceRedirects = serviceSubPages.map((p) => ({
       source: `/services/${p}`,
       destination: `/en/services/${p}`,
-      permanent: false,
+      permanent: true,
     }));
 
     return [

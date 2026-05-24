@@ -9,10 +9,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(BASE),
   title: {
     default: "IDLOGICE — Canadian Immigration Consultants | Montréal",
-    template: "%s | IDLOGICE Immigration",
+    template: "%s | IDLOGICE",
   },
   description:
-    "CICC-registered Canadian immigration consultants (RCICs) in Montréal. Expert guidance for Express Entry, PNP, study permits, work permits & family sponsorship. 95% success rate across 500+ cases.",
+    "CICC-registered Canadian immigration consultants (RCICs) in Montréal. Expert guidance for Express Entry, PNP, work permits & family sponsorship. 95% success rate.",
   keywords: [
     "Canadian immigration consultant",
     "RCIC Montréal",

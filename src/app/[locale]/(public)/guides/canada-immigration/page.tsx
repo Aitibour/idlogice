@@ -83,7 +83,7 @@ const I18N = {
     ar: "Ù…Ø±ÙƒØ² Ø§Ù„Ù…ÙˆØ§Ø±Ø¯",
   },
   metaTitle: {
-    en: "Canada Immigration Guide â€” Programs, Visas, Work & Free Evaluation",
+    en: “Canada Immigration Guide — Express Entry, PNP & Work Permits”,
     fr: "Guide d'immigration au Canada â€” Programmes, visas, travail",
     es: "GuÃ­a de inmigraciÃ³n a CanadÃ¡ â€” Programas, visas, trabajo",
     ar: "Ø¯Ù„ÙŠÙ„ Ø§Ù„Ù‡Ø¬Ø±Ø© Ø¥Ù„Ù‰ ÙƒÙ†Ø¯Ø§ â€” Ø§Ù„Ø¨Ø±Ø§Ù…Ø¬ ÙˆØ§Ù„ØªØ£Ø´ÙŠØ±Ø§Øª",
