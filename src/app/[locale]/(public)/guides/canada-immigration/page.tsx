@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 import { tryCreateServiceClient } from "@/lib/supabase/service";
+import { cleanImageUrl } from "@/lib/seo/images";
 
 export const revalidate = 3600;
 
@@ -206,7 +207,7 @@ export default async function CanadaImmigrationHub({ params }: Props) {
                     {p.image_url && (
                       <div className="relative aspect-video w-full">
                         <Image
-                          src={p.image_url}
+                          src={cleanImageUrl(p.image_url) ?? p.image_url}
                           alt={pTitle}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform"
