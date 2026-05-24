@@ -1,5 +1,6 @@
 ﻿import Link from "next/link";
 import type { Metadata } from "next";
+import { generatePageAlternates } from "@/lib/seo/alternates";
 import { COUNTRIES } from "@/data/immigration-countries";
 
 export const revalidate = false;
@@ -61,10 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
-    alternates: {
-      canonical: `${BASE}/${l}/from`,
-      languages: Object.fromEntries(LOCALES.map((loc) => [`${loc}-CA`, `${BASE}/${loc}/from`])),
-    },
+    alternates: generatePageAlternates(locale, "/from"),
     openGraph: { title, description, url: `${BASE}/${l}/from`, type: "website" },
   };
 }

@@ -69,10 +69,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
-    alternates: {
-      canonical: `${BASE}/${l}/for`,
-      languages: Object.fromEntries(LOCALES.map((loc) => [loc, `${BASE}/${loc}/for`])),
-    },
+    alternates: generatePageAlternates(locale, "/for"),
     openGraph: { title, description, url: `${BASE}/${l}/for`, type: "website" },
   };
 }

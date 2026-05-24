@@ -1,5 +1,6 @@
 ﻿import Link from "next/link";
 import type { Metadata } from "next";
+import { generatePageAlternates } from "@/lib/seo/alternates";
 import { ServiceJsonLd } from "@/components/seo/structured-data";
 
 export const revalidate = false;
@@ -124,10 +125,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: T.title[l],
     description: T.desc[l],
-    alternates: {
-      canonical: `${BASE}/${l}/services/pr-pathways`,
-      languages: Object.fromEntries(LOCALES.map((loc) => [loc, `${BASE}/${loc}/services/pr-pathways`])),
-    },
+    alternates: generatePageAlternates(locale, "/services/pr-pathways"),
     openGraph: { title: T.title[l], description: T.desc[l], url: `${BASE}/${l}/services/pr-pathways`, type: "website" },
   };
 }

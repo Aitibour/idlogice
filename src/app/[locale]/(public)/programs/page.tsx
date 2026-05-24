@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { generatePageAlternates } from "@/lib/seo/alternates";
 import { PROGRAMS } from "@/data/immigration-programs";
 import { BreadcrumbJsonLd } from "@/components/seo/structured-data";
 
@@ -34,10 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: pageTitle[locale] ?? pageTitle.en,
     description: pageDesc[locale] ?? pageDesc.en,
-    alternates: {
-      canonical: url,
-      languages: Object.fromEntries(LOCALES.map((l) => [l, `${BASE}/${l}/programs`])),
-    },
+    alternates: generatePageAlternates(locale, "/programs"),
     openGraph: {
       type: "website",
       url,
