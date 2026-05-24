@@ -11,6 +11,18 @@ import { PROFESSIONS } from "@/data/immigration-professions";
 
 const BASE = "https://idlogice.com";
 const LOCALES = ["en", "fr", "es", "ar"] as const;
+type Locale = (typeof LOCALES)[number];
+
+/** BCP-47 hreflang values — must match page-level generatePageAlternates */
+const HREFLANG: Record<Locale, string> = { en: "en-CA", fr: "fr-CA", es: "es", ar: "ar" };
+
+/** Build correct hreflang alternates with x-default for a given path per locale */
+function altLangs(pathFn: (l: Locale) => string) {
+  return {
+    ...Object.fromEntries(LOCALES.map((l) => [HREFLANG[l], pathFn(l)])),
+    "x-default": pathFn("en"),
+  };
+}
 
 const HIGH = 1.0;
 const TOP = 0.9;
@@ -40,7 +52,7 @@ const ROUTES: Route[] = [
   { path: "/services/express-entry",      priority: SERVICE,  changeFreq: "monthly" },
   { path: "/services/study-permit",       priority: SERVICE,  changeFreq: "monthly" },
   { path: "/services/work-permit",        priority: SERVICE,  changeFreq: "monthly" },
-  { path: "/services/pnp",                priority: SERVICE,  changeFreq: "monthly" },
+  { path: "/services/pnp",               priority: SERVICE,  changeFreq: "monthly" },
   { path: "/services/family-sponsorship", priority: SERVICE,  changeFreq: "monthly" },
   { path: "/services/tourist-visa",       priority: SERVICE,  changeFreq: "monthly" },
   { path: "/services/pr-pathways",        priority: SERVICE,  changeFreq: "monthly" },
@@ -64,17 +76,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: now,
         changeFrequency: changeFreq,
         priority,
-        alternates: {
-          languages: Object.fromEntries(
-            LOCALES.map((l) => [l, `${BASE}/${l}${path}`]),
-          ),
-        },
+        alternates: { languages: altLangs((l) => `${BASE}/${l}${path}`) },
       })),
   );
 
-  // Pull every published blog post and emit per-locale URLs with hreflang
-  // alternates. Falls back to no blog entries if Supabase is unreachable
-  // (e.g. during a build where the service role key isn't scoped).
+  // Pull every published blog post and emit per-locale URLs with hreflang alternates.
   const db = tryCreateServiceClient();
   if (!db) return staticEntries;
 
@@ -90,35 +96,27 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(post.published_at ?? now),
       changeFrequency: "weekly" as const,
       priority: CONTENT,
-      alternates: {
-        languages: Object.fromEntries(
-          LOCALES.map((l) => [l, `${BASE}/${l}/blog/${post.slug}`]),
-        ),
-      },
+      alternates: { languages: altLangs((l) => `${BASE}/${l}/blog/${post.slug}`) },
     })),
   );
 
-  // /from index pages — 4 locales
+  // /from index — 4 locales
   const fromIndexEntries: MetadataRoute.Sitemap = LOCALES.map((locale) => ({
     url: `${BASE}/${locale}/from`,
     lastModified: now,
     changeFrequency: "monthly" as const,
     priority: TOP,
-    alternates: { languages: Object.fromEntries(LOCALES.map((l) => [l, `${BASE}/${l}/from`])) },
+    alternates: { languages: altLangs((l) => `${BASE}/${l}/from`) },
   }));
 
-  // Programmatic country pages — /from/[country] for 39 source countries × 4 locales
+  // /from/[country] — 39 countries × 4 locales
   const countryEntries: MetadataRoute.Sitemap = COUNTRIES.flatMap((country) =>
     LOCALES.map((locale) => ({
       url: `${BASE}/${locale}/from/${country.slug}`,
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: CONTENT,
-      alternates: {
-        languages: Object.fromEntries(
-          LOCALES.map((l) => [l, `${BASE}/${l}/from/${country.slug}`]),
-        ),
-      },
+      alternates: { languages: altLangs((l) => `${BASE}/${l}/from/${country.slug}`) },
     })),
   );
 
@@ -128,25 +126,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: now,
     changeFrequency: "monthly" as const,
     priority: TOP,
-    alternates: { languages: Object.fromEntries(LOCALES.map((l) => [l, `${BASE}/${l}/programs`])) },
+    alternates: { languages: altLangs((l) => `${BASE}/${l}/programs`) },
   }));
 
-  // /programs/[program] — 6 programs × 4 locales = 24 pages
+  // /programs/[program] — 6 programs × 4 locales
   const programEntries: MetadataRoute.Sitemap = PROGRAMS.flatMap((program) =>
     LOCALES.map((locale) => ({
       url: `${BASE}/${locale}/programs/${program.slug}`,
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: SERVICE,
-      alternates: {
-        languages: Object.fromEntries(
-          LOCALES.map((l) => [l, `${BASE}/${l}/programs/${program.slug}`]),
-        ),
-      },
+      alternates: { languages: altLangs((l) => `${BASE}/${l}/programs/${program.slug}`) },
     })),
   );
 
-  // /from/[country]/[program] cross-pages — 39 countries × 6 programs × 4 locales = 936 pages
+  // /from/[country]/[program] — 39 × 6 × 4 = 936 pages
   const countryProgramEntries: MetadataRoute.Sitemap = COUNTRIES.flatMap((country) =>
     PROGRAMS.flatMap((program) =>
       LOCALES.map((locale) => ({
@@ -154,22 +148,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: now,
         changeFrequency: "monthly" as const,
         priority: STANDARD,
-        alternates: {
-          languages: Object.fromEntries(
-            LOCALES.map((l) => [l, `${BASE}/${l}/from/${country.slug}/${program.slug}`]),
-          ),
-        },
+        alternates: { languages: altLangs((l) => `${BASE}/${l}/from/${country.slug}/${program.slug}`) },
       })),
     ),
   );
 
-  // /province hub + /province/[province] — 11 provinces × 4 locales = 44 pages + 4 hub
+  // /province hub + /province/[province] — 11 × 4 + 4
   const provinceIndexEntries: MetadataRoute.Sitemap = LOCALES.map((locale) => ({
     url: `${BASE}/${locale}/province`,
     lastModified: now,
     changeFrequency: "monthly" as const,
     priority: TOP,
-    alternates: { languages: Object.fromEntries(LOCALES.map((l) => [l, `${BASE}/${l}/province`])) },
+    alternates: { languages: altLangs((l) => `${BASE}/${l}/province`) },
   }));
   const provinceEntries: MetadataRoute.Sitemap = PROVINCES.flatMap((province) =>
     LOCALES.map((locale) => ({
@@ -177,21 +167,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: SERVICE,
-      alternates: {
-        languages: Object.fromEntries(
-          LOCALES.map((l) => [l, `${BASE}/${l}/province/${province.slug}`]),
-        ),
-      },
+      alternates: { languages: altLangs((l) => `${BASE}/${l}/province/${province.slug}`) },
     })),
   );
 
-  // /in hub + /in/[city] — 13 cities × 4 locales = 52 pages + 4 hub
+  // /in hub + /in/[city] — 13 × 4 + 4
   const inIndexEntries: MetadataRoute.Sitemap = LOCALES.map((locale) => ({
     url: `${BASE}/${locale}/in`,
     lastModified: now,
     changeFrequency: "monthly" as const,
     priority: TOP,
-    alternates: { languages: Object.fromEntries(LOCALES.map((l) => [l, `${BASE}/${l}/in`])) },
+    alternates: { languages: altLangs((l) => `${BASE}/${l}/in`) },
   }));
   const cityEntries: MetadataRoute.Sitemap = CITIES.flatMap((city) =>
     LOCALES.map((locale) => ({
@@ -199,21 +185,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: CONTENT,
-      alternates: {
-        languages: Object.fromEntries(
-          LOCALES.map((l) => [l, `${BASE}/${l}/in/${city.slug}`]),
-        ),
-      },
+      alternates: { languages: altLangs((l) => `${BASE}/${l}/in/${city.slug}`) },
     })),
   );
 
-  // /for hub + /for/[profession] — 14 professions × 4 locales = 56 pages + 4 hub
+  // /for hub + /for/[profession] — 14 × 4 + 4
   const forIndexEntries: MetadataRoute.Sitemap = LOCALES.map((locale) => ({
     url: `${BASE}/${locale}/for`,
     lastModified: now,
     changeFrequency: "monthly" as const,
     priority: TOP,
-    alternates: { languages: Object.fromEntries(LOCALES.map((l) => [l, `${BASE}/${l}/for`])) },
+    alternates: { languages: altLangs((l) => `${BASE}/${l}/for`) },
   }));
   const professionEntries: MetadataRoute.Sitemap = PROFESSIONS.flatMap((prof) =>
     LOCALES.map((locale) => ({
@@ -221,11 +203,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: CONTENT,
-      alternates: {
-        languages: Object.fromEntries(
-          LOCALES.map((l) => [l, `${BASE}/${l}/for/${prof.slug}`]),
-        ),
-      },
+      alternates: { languages: altLangs((l) => `${BASE}/${l}/for/${prof.slug}`) },
     })),
   );
 
