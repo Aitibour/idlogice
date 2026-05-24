@@ -1,11 +1,16 @@
 ﻿export const revalidate = 86400;
 import type { Metadata } from "next";
+import { generatePageAlternates } from "@/lib/seo/alternates";
 
-export const metadata: Metadata = {
-  title: "Canada Tourist Visa (TRV) — Visitor Visa Application",
-  description: "Maximise Canada tourist visa approval chances. CICC-registered consultants prepare your complete Temporary Resident Visa application with a cover letter.",
-  openGraph: { title: "Canada Tourist Visa (TRV) | IDLOGICE Immigration", description: "Visit Canada with confidence. Expert preparation of Temporary Resident Visa applications by certified RCICs.", url: "https://idlogice.com/services/tourist-visa" },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return {
+    title: "Canada Tourist Visa (TRV) — Visitor Visa Application",
+    description: "Maximise Canada tourist visa approval chances. CICC-registered consultants prepare your complete Temporary Resident Visa application.",
+    alternates: generatePageAlternates(locale, "/services/tourist-visa"),
+    openGraph: { title: "Canada Tourist Visa (TRV) — Visitor Visa Application", description: "Maximise Canada tourist visa approval chances. CICC-registered consultants prepare your complete Temporary Resident Visa application.", url: `https://idlogice.com/${locale}/services/tourist-visa` },
+  };
+}
 
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { PageHero } from "@/components/sections/page-hero";

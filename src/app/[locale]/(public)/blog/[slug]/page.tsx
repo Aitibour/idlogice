@@ -87,7 +87,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: data.published_at ?? undefined,
       modifiedTime: data.published_at ?? undefined,
       authors: ["IDLOGICE"],
-      images: data.image_url ? [{ url: cleanImageUrl(data.image_url) ?? data.image_url, alt: `${title} â€” Canada immigration`, width: 1200, height: 630 }] : [],
+      images: data.image_url ? [{ url: cleanImageUrl(data.image_url) ?? data.image_url, alt: `${title} — Canada immigration`, width: 1200, height: 630 }] : [],
     },
     twitter: {
       card: "summary_large_image",
@@ -132,7 +132,7 @@ export default async function BlogPostPage({ params }: Props) {
     { year: "numeric", month: "long", day: "numeric" },
   );
 
-  // Related posts â€” pull 3 most-recent other posts for internal linking.
+  // Related posts — pull 3 most-recent other posts for internal linking.
   const { data: related } = await db
     .from("blog_posts")
     .select("slug, title, image_url")
@@ -142,8 +142,8 @@ export default async function BlogPostPage({ params }: Props) {
     .limit(3);
 
   const url = `https://idlogice.com/${locale}/blog/${slug}`;
-  const blogLabel = locale === "ar" ? "Ø§Ù„Ù…Ø¯ÙˆÙ†Ø©" : "Blog";
-  const homeLabel = locale === "fr" ? "Accueil" : locale === "es" ? "Inicio" : locale === "ar" ? "Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©" : "Home";
+  const blogLabel = locale === "ar" ? "المدونة" : "Blog";
+  const homeLabel = locale === "fr" ? "Accueil" : locale === "es" ? "Inicio" : locale === "ar" ? "الرئيسية" : "Home";
 
   const blogPostingLd = {
     "@context": "https://schema.org",
@@ -202,7 +202,7 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="relative aspect-video w-full mb-10 rounded-xl overflow-hidden">
             <Image
               src={cleanImageUrl(post.image_url) ?? post.image_url}
-              alt={post.image_alt ?? `${title} â€” Canada immigration`}
+              alt={post.image_alt ?? `${title} — Canada immigration`}
               fill
               className="object-cover"
               priority
@@ -213,40 +213,40 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
         )}
         <p className="text-sm text-gray-600 mb-3">
-          {date} Â· {readingTime} min read Â· {wordCount} words
+          {date} · {readingTime} min read · {wordCount} words
         </p>
         <h1 className="text-4xl font-bold leading-tight mb-8 text-gray-900">{title}</h1>
         <PostBody content={content} />
 
-        {/* Mid-article internal link CTA â€” contextual anchor text for SEO */}
+        {/* Mid-article internal link CTA — contextual anchor text for SEO */}
         <div className="my-10 rounded-xl border border-primary/20 bg-primary/5 p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 not-prose">
           <p className="text-sm font-semibold text-gray-900">
             {locale === "fr"
-              ? <>Vous demandez si vous Ãªtes admissible ? <Link href={`/${locale}/book-consultation`} className="text-primary underline">RÃ©servez une consultation gratuite â†’</Link></>
+              ? <>Vous demandez si vous êtes admissible ? <Link href={`/${locale}/book-consultation`} className="text-primary underline">Réservez une consultation gratuite →</Link></>
               : locale === "es"
-              ? <>Â¿Califica para inmigrar a CanadÃ¡? <Link href={`/${locale}/book-consultation`} className="text-primary underline">Reserve una consulta gratuita â†’</Link></>
+              ? <>¿Califica para inmigrar a Canadá? <Link href={`/${locale}/book-consultation`} className="text-primary underline">Reserve una consulta gratuita →</Link></>
               : locale === "ar"
-              ? <>Ù‡Ù„ ØªØªØ³Ø§Ø¡Ù„ Ø¹Ù† Ø£Ù‡Ù„ÙŠØªÙƒ Ù„Ù„Ù‡Ø¬Ø±Ø© Ø¥Ù„Ù‰ ÙƒÙ†Ø¯Ø§ØŸ <Link href={`/${locale}/book-consultation`} className="text-primary underline">Ø§Ø­Ø¬Ø² Ø§Ø³ØªØ´Ø§Ø±Ø© Ù…Ø¬Ø§Ù†ÙŠØ© â†</Link></>
-              : <>Ready to start your Canada immigration journey? <Link href={`/${locale}/book-consultation`} className="text-primary underline">Book a free consultation â†’</Link></>}
+              ? <>هل تتساءل عن أهليتك للهجرة إلى كندا؟ <Link href={`/${locale}/book-consultation`} className="text-primary underline">احجز استشارة مجانية ←</Link></>
+              : <>Ready to start your Canada immigration journey? <Link href={`/${locale}/book-consultation`} className="text-primary underline">Book a free consultation →</Link></>}
           </p>
           <Link
             href={`/${locale}/calculator`}
             className="shrink-0 rounded-full bg-primary px-4 py-2 text-xs font-bold text-white hover:opacity-90 transition-opacity whitespace-nowrap"
           >
-            {locale === "fr" ? "Calculateur SCG" : locale === "es" ? "Calculadora CRS" : locale === "ar" ? "Ø­Ø§Ø³Ø¨Ø© CRS" : "CRS Calculator"}
+            {locale === "fr" ? "Calculateur SCG" : locale === "es" ? "Calculadora CRS" : locale === "ar" ? "حاسبة CRS" : "CRS Calculator"}
           </Link>
         </div>
 
-        {/* FAQ â€” rendered for users + powers FAQPage JSON-LD above */}
+        {/* FAQ — rendered for users + powers FAQPage JSON-LD above */}
         {faq.length > 0 && (
           <section className="mt-12 border-t pt-10">
             <h2 className="text-2xl font-bold mb-6 text-gray-900">
               {locale === "fr"
-                ? "Questions frÃ©quentes"
+                ? "Questions fréquentes"
                 : locale === "es"
                 ? "Preguntas frecuentes"
                 : locale === "ar"
-                ? "Ø§Ù„Ø£Ø³Ø¦Ù„Ø© Ø§Ù„Ø´Ø§Ø¦Ø¹Ø©"
+                ? "الأسئلة الشائعة"
                 : "Frequently asked questions"}
             </h2>
             <div className="space-y-5">
@@ -267,20 +267,20 @@ export default async function BlogPostPage({ params }: Props) {
         <aside className="mt-14 rounded-2xl border border-primary/30 bg-primary/5 p-6">
           <p className="text-lg font-bold text-gray-900 mb-1">
             {locale === "fr"
-              ? "RÃ©servez votre consultation d'immigration"
+              ? "Réservez votre consultation d'immigration"
               : locale === "es"
-              ? "Reserve su consulta de inmigraciÃ³n"
+              ? "Reserve su consulta de inmigración"
               : locale === "ar"
-              ? "Ø§Ø­Ø¬Ø² Ø§Ø³ØªØ´Ø§Ø±ØªÙƒ ÙÙŠ Ø§Ù„Ù‡Ø¬Ø±Ø©"
+              ? "احجز استشارتك في الهجرة"
               : "Book your Canada immigration consultation"}
           </p>
           <p className="text-sm text-gray-700 mb-4">
             {locale === "fr"
-              ? "Nos consultants RCIC Ã©valuent votre admissibilitÃ© aux programmes canadiens en moins de 24 heures."
+              ? "Nos consultants RCIC évaluent votre admissibilité aux programmes canadiens en moins de 24 heures."
               : locale === "es"
-              ? "Nuestros consultores RCIC evalÃºan su elegibilidad para los programas canadienses en menos de 24 horas."
+              ? "Nuestros consultores RCIC evalúan su elegibilidad para los programas canadienses en menos de 24 horas."
               : locale === "ar"
-              ? "ÙŠÙ‚ÙˆÙ… Ù…Ø³ØªØ´Ø§Ø±ÙˆÙ†Ø§ Ø§Ù„Ù…Ø¹ØªÙ…Ø¯ÙˆÙ† Ø¨ØªÙ‚ÙŠÙŠÙ… Ø£Ù‡Ù„ÙŠØªÙƒ Ù„Ù„Ø¨Ø±Ø§Ù…Ø¬ Ø§Ù„ÙƒÙ†Ø¯ÙŠØ© ÙÙŠ Ø£Ù‚Ù„ Ù…Ù† 24 Ø³Ø§Ø¹Ø©."
+              ? "يقوم مستشارونا المعتمدون بتقييم أهليتك للبرامج الكندية في أقل من 24 ساعة."
               : "Our RCIC consultants assess your eligibility for every Canadian program in under 24 hours."}
           </p>
           <Link
@@ -288,25 +288,25 @@ export default async function BlogPostPage({ params }: Props) {
             className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-white hover:opacity-90 transition-opacity"
           >
             {locale === "fr"
-              ? "RÃ©server une consultation â†’"
+              ? "Réserver une consultation →"
               : locale === "es"
-              ? "Reservar una consulta â†’"
+              ? "Reservar una consulta →"
               : locale === "ar"
-              ? "Ø§Ø­Ø¬Ø² Ø§Ø³ØªØ´Ø§Ø±Ø© â†’"
-              : "Book a Consultation â†’"}
+              ? "احجز استشارة →"
+              : "Book a Consultation →"}
           </Link>
         </aside>
 
-        {/* Related posts â€” internal linking for SEO authority distribution */}
+        {/* Related posts — internal linking for SEO authority distribution */}
         {related && related.length > 0 && (
           <section className="mt-16 border-t pt-10">
             <h2 className="text-2xl font-bold mb-6 text-gray-900">
               {locale === "fr"
-                ? "Ã€ lire aussi"
+                ? "À lire aussi"
                 : locale === "es"
-                ? "TambiÃ©n te puede interesar"
+                ? "También te puede interesar"
                 : locale === "ar"
-                ? "Ø§Ù‚Ø±Ø£ Ø£ÙŠØ¶Ù‹Ø§"
+                ? "اقرأ أيضًا"
                 : "Read next"}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">

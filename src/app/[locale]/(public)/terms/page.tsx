@@ -1,3 +1,14 @@
+import type { Metadata } from "next";
+import { generatePageAlternates } from "@/lib/seo/alternates";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return {
+    title: "Terms & Conditions — IDLOGICE Immigration",
+    description: "Terms and conditions for using IDLOGICE immigration consulting services. Read our service agreement and user guidelines.",
+    alternates: generatePageAlternates(locale, "/terms"),
+  } satisfies Metadata;
+}
 import { PageHero } from "@/components/sections/page-hero";
 
 export default function TermsPage() {

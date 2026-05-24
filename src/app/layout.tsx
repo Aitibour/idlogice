@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     template: "%s | IDLOGICE",
   },
   description:
-    "CICC-registered Canadian immigration consultants (RCICs) in Montréal. Expert guidance for Express Entry, PNP, work permits & family sponsorship. 95% success rate.",
+    "CICC-registered immigration consultants (RCICs) in Montréal. Expert guidance for Express Entry, PNP, work permits & family sponsorship. 95% success rate.",
   keywords: [
     "Canadian immigration consultant",
     "RCIC Montréal",

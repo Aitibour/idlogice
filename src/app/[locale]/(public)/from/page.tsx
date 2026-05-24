@@ -12,12 +12,12 @@ type Props = { params: Promise<{ locale: string }> };
 const T = {
   title: {
     en: "Canada Immigration by Country: Guides for Every Nationality",
-    fr: "Immigration au Canada par pays : Guides pour toutes les nationalités",
-    es: "Inmigración a Canadá por país: Guías para todas las nacionalidades",
+    fr: "Immigration au Canada par pays : Guide par nationalité",
+    es: "Inmigración a Canadá por país: Guía por nacionalidad",
     ar: "الهجرة إلى كندا حسب البلد: أدلة لجميع الجنسيات",
   },
   desc: {
-    en: "Find your country-specific Canada immigration guide. Programs, processing times, language requirements and step-by-step application instructions for citizens of 39 countries.",
+    en: "Find your country-specific Canada immigration guide. Programs, processing times, and language requirements for 39 nationalities.",
     fr: "Trouvez le guide d'immigration canadienne spécifique à votre pays. Programmes, délais, conditions linguistiques pour les citoyens de 39 pays.",
     es: "Encuentre la guía de inmigración canadiense específica para su país. Programas, tiempos de procesamiento e instrucciones para ciudadanos de 39 países.",
     ar: "ابحث عن دليل الهجرة الكندية الخاص ببلدك. البرامج وأوقات المعالجة والمتطلبات لمواطني 39 دولة.",

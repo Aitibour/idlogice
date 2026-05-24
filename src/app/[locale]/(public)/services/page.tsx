@@ -1,4 +1,15 @@
-﻿export const revalidate = 86400;
+﻿import type { Metadata } from "next";
+import { generatePageAlternates } from "@/lib/seo/alternates";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return {
+    title: "Canadian Immigration Services — Express Entry, PNP & More",
+    description: "Explore IDLOGICE immigration services: Express Entry, PNP, work permits, study permits, family sponsorship, and tourist visa assistance.",
+    alternates: generatePageAlternates(locale, "/services"),
+  } satisfies Metadata;
+}
+export const revalidate = 86400;
 import Image from "next/image";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";

@@ -1,3 +1,15 @@
+import type { Metadata } from "next";
+import { generatePageAlternates } from "@/lib/seo/alternates";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return {
+    title: "Create Account — IDLOGICE Immigration",
+    description: "Create your IDLOGICE account to track your Canadian immigration journey and book consultations.",
+    alternates: generatePageAlternates(locale, "/register"),
+  };
+}
+
 import { redirect } from "next/navigation";
 
 export default async function RegisterRedirectPage({

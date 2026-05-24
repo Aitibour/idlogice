@@ -14,32 +14,32 @@ const T = {
   title: {
     en: "Canada Immigration by Profession",
     fr: "Immigration au Canada par profession",
-    es: "InmigraciÃ³n a CanadÃ¡ por profesiÃ³n",
-    ar: "Ø§Ù„Ù‡Ø¬Ø±Ø© Ø¥Ù„Ù‰ ÙƒÙ†Ø¯Ø§ Ø­Ø³Ø¨ Ø§Ù„Ù…Ù‡Ù†Ø©",
+    es: "Inmigración a Canadá por profesión",
+    ar: "الهجرة إلى كندا حسب المهنة",
   },
   desc: {
     en: "Find your profession-specific Canada immigration guide. NOC codes, Express Entry CRS scores, PNP streams and pathways for 12+ in-demand occupations.",
-    fr: "Trouvez le guide d'immigration canadienne spÃ©cifique Ã  votre profession. Codes CNP, scores CRS, voies PNP pour 12+ professions en demande.",
-    es: "Encuentre la guÃ­a de inmigraciÃ³n canadiense especÃ­fica para su profesiÃ³n. CÃ³digos NOC, puntajes CRS, vÃ­as PNP para 12+ ocupaciones en demanda.",
+    fr: "Trouvez le guide d'immigration canadienne spécifique à votre profession. Codes CNP, scores CRS, voies PNP pour 12+ professions en demande.",
+    es: "Encuentre la guía de inmigración canadiense específica para su profesión. Códigos NOC, puntajes CRS, vías PNP para 12+ ocupaciones en demanda.",
     ar: "ابحث عن دليل الهجرة الكندي لمهنتك. رموز NOC ودرجات CRS ومسارات PNP لأكثر من 12 مهنة مطلوبة.",
   },
   h1: {
     en: "Canada Immigration by Profession",
     fr: "Immigration au Canada par profession",
-    es: "InmigraciÃ³n a CanadÃ¡ por profesiÃ³n",
-    ar: "Ø§Ù„Ù‡Ø¬Ø±Ø© Ø¥Ù„Ù‰ ÙƒÙ†Ø¯Ø§ Ø­Ø³Ø¨ Ø§Ù„Ù…Ù‡Ù†Ø©",
+    es: "Inmigración a Canadá por profesión",
+    ar: "الهجرة إلى كندا حسب المهنة",
   },
   lead: {
     en: "Select your occupation for a tailored guide covering eligible immigration programs, NOC classification, CRS scoring tips, and PNP streams that target your field.",
-    fr: "SÃ©lectionnez votre profession pour un guide personnalisÃ© couvrant les programmes Ã©ligibles, la classification CNP, les conseils CRS et les voies PNP pour votre domaine.",
-    es: "Seleccione su ocupaciÃ³n para una guÃ­a personalizada que cubre programas elegibles, clasificaciÃ³n NOC, consejos de puntuaciÃ³n CRS y vÃ­as PNP para su campo.",
-    ar: "Ø§Ø®ØªØ± Ù…Ù‡Ù†ØªÙƒ Ù„Ù„Ø­ØµÙˆÙ„ Ø¹Ù„Ù‰ Ø¯Ù„ÙŠÙ„ Ù…Ø®ØµØµ ÙŠØºØ·ÙŠ Ø¨Ø±Ø§Ù…Ø¬ Ø§Ù„Ù‡Ø¬Ø±Ø© Ø§Ù„Ù…Ø¤Ù‡Ù„Ø© ÙˆØªØµÙ†ÙŠÙ NOC ÙˆÙ†ØµØ§Ø¦Ø­ Ø¯Ø±Ø¬Ø§Øª CRS ÙˆÙ…Ø³Ø§Ø±Ø§Øª PNP Ù„Ù…Ø¬Ø§Ù„Ùƒ.",
+    fr: "Sélectionnez votre profession pour un guide personnalisé couvrant les programmes éligibles, la classification CNP, les conseils CRS et les voies PNP pour votre domaine.",
+    es: "Seleccione su ocupación para una guía personalizada que cubre programas elegibles, clasificación NOC, consejos de puntuación CRS y vías PNP para su campo.",
+    ar: "اختر مهنتك للحصول على دليل مخصص يغطي برامج الهجرة المؤهلة وتصنيف NOC ونصائح درجات CRS ومسارات PNP لمجالك.",
   },
   inDemand: {
     en: "In Demand",
     fr: "En demande",
     es: "En demanda",
-    ar: "Ù…Ø·Ù„ÙˆØ¨",
+    ar: "مطلوب",
   },
   nocLabel: {
     en: "NOC",
@@ -50,11 +50,11 @@ const T = {
   ctaQ: {
     en: "Not sure which pathway fits you?",
     fr: "Vous ne savez pas quelle voie vous convient ?",
-    es: "Â¿No sabe quÃ© vÃ­a le conviene?",
-    ar: "ØºÙŠØ± Ù…ØªØ£ÙƒØ¯ Ù…Ù† Ø§Ù„Ù…Ø³Ø§Ø± Ø§Ù„Ù…Ù†Ø§Ø³Ø¨ Ù„ÙƒØŸ",
+    es: "¿No sabe qué vía le conviene?",
+    ar: "غير متأكد من المسار المناسب لك؟",
   },
-  ctaBtn: { en: "Free Evaluation", fr: "Ã‰valuation gratuite", es: "EvaluaciÃ³n gratuita", ar: "ØªÙ‚ÙŠÙŠÙ… Ù…Ø¬Ø§Ù†ÙŠ" },
-  breadHome: { en: "Home", fr: "Accueil", es: "Inicio", ar: "Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©" },
+  ctaBtn: { en: "Free Evaluation", fr: "Évaluation gratuite", es: "Evaluación gratuita", ar: "تقييم مجاني" },
+  breadHome: { en: "Home", fr: "Accueil", es: "Inicio", ar: "الرئيسية" },
 } as const;
 
 export function generateStaticParams() {

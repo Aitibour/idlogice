@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
 export function generateStaticParams() {
@@ -17,25 +16,19 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { OrganizationJsonLd, WebsiteJsonLd } from "@/components/seo/structured-data";
 import { LazyEngagementWidgets } from "@/components/shared/lazy-engagement-widgets";
 
+// Layout-level metadata only sets alternates for the HOME page (path = "").
+// Every other page sets its own alternates via generatePageAlternates(locale, "/path")
+// in its own generateMetadata export. This avoids SSG builds producing wrong hreflang
+// (headers() is unavailable at build time, causing all pages to point to the homepage).
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-
-  // Read the actual request pathname forwarded by middleware.
-  // This allows the layout to emit correct per-page hreflang for EVERY route
-  // (about, contact, blog posts…) without each page repeating the logic.
-  const h = await headers();
-  const pathname = h.get("x-pathname") ?? `/${locale}`;
-
-  // Strip the locale prefix to get the locale-agnostic path segment.
-  // e.g. "/en/blog/my-post" → "/blog/my-post", "/fr" → ""
-  const path = pathname.replace(new RegExp(`^/(en|fr|es|ar)`), "") || "";
-
+  // Locale home page — correct to point to /<locale>
   return {
-    alternates: generatePageAlternates(locale, path),
+    alternates: generatePageAlternates(locale, ""),
   };
 }
 

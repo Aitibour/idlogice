@@ -13,8 +13,8 @@ const T = {
   title: {
     en: "Canada Immigration Statistics 2026",
     fr: "Statistiques d'immigration au Canada 2026",
-    es: "EstadÃ­sticas de inmigraciÃ³n a CanadÃ¡ 2026",
-    ar: "Ø¥Ø­ØµØ§Ø¦ÙŠØ§Øª Ø§Ù„Ù‡Ø¬Ø±Ø© Ø¥Ù„Ù‰ ÙƒÙ†Ø¯Ø§ 2026",
+    es: "Estadísticas de inmigración a Canadá 2026",
+    ar: "إحصائيات الهجرة إلى كندا 2026",
   },
   desc: {
     en: "Key Canada immigration statistics for 2026: Express Entry draws, PNP nominations, PR targets, top source countries, CRS cut-offs, and processing times.",
@@ -22,86 +22,86 @@ const T = {
     es: "Estadísticas de inmigración Canadá 2026: sorteos Express Entry, nominaciones PNP, objetivos RP, umbrales CRS y tiempos de procesamiento.",
     ar: "إحصائيات هجرة كندا 2026: سحوبات Express Entry، منح PNP، أهداف الإقامة الدائمة، حدود CRS وأوقات المعالجة.",
   },
-  h1: { en: "Canada Immigration Statistics 2026", fr: "Statistiques d'immigration Canada 2026", es: "EstadÃ­sticas de inmigraciÃ³n CanadÃ¡ 2026", ar: "Ø¥Ø­ØµØ§Ø¦ÙŠØ§Øª Ø§Ù„Ù‡Ø¬Ø±Ø© Ø¥Ù„Ù‰ ÙƒÙ†Ø¯Ø§ 2026" },
+  h1: { en: "Canada Immigration Statistics 2026", fr: "Statistiques d'immigration Canada 2026", es: "Estadísticas de inmigración Canadá 2026", ar: "إحصائيات الهجرة إلى كندا 2026" },
   lead: {
     en: "Canada welcomed 485,000 new permanent residents in 2025 and targets 500,000 in 2026. Here are the key data points every immigration applicant should know.",
-    fr: "Le Canada a accueilli 485 000 nouveaux rÃ©sidents permanents en 2025 et vise 500 000 en 2026. Voici les donnÃ©es clÃ©s que tout demandeur doit connaÃ®tre.",
-    es: "CanadÃ¡ recibiÃ³ 485 000 nuevos residentes permanentes en 2025 y apunta a 500 000 en 2026. AquÃ­ estÃ¡n los datos clave que todo solicitante debe conocer.",
-    ar: "Ø§Ø³ØªÙ‚Ø¨Ù„Øª ÙƒÙ†Ø¯Ø§ 485,000 Ù…Ù‚ÙŠÙ… Ø¯Ø§Ø¦Ù… Ø¬Ø¯ÙŠØ¯ ÙÙŠ 2025 ÙˆØªØ³ØªÙ‡Ø¯Ù 500,000 ÙÙŠ 2026. Ø¥Ù„ÙŠÙƒ Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ© Ø§Ù„ØªÙŠ ÙŠØ¬Ø¨ Ø¹Ù„Ù‰ ÙƒÙ„ Ù…Ù‚Ø¯Ù… Ø·Ù„Ø¨ Ù…Ø¹Ø±ÙØªÙ‡Ø§.",
+    fr: "Le Canada a accueilli 485 000 nouveaux résidents permanents en 2025 et vise 500 000 en 2026. Voici les données clés que tout demandeur doit connaître.",
+    es: "Canadá recibió 485 000 nuevos residentes permanentes en 2025 y apunta a 500 000 en 2026. Aquí están los datos clave que todo solicitante debe conocer.",
+    ar: "استقبلت كندا 485,000 مقيم دائم جديد في 2025 وتستهدف 500,000 في 2026. إليك البيانات الرئيسية التي يجب على كل مقدم طلب معرفتها.",
   },
   sourceNote: {
-    en: "Sources: IRCC, Statistics Canada, Government of Canada Immigration Levels Plan 2024â€“2026",
+    en: "Sources: IRCC, Statistics Canada, Government of Canada Immigration Levels Plan 2024–2026",
     fr: "Sources : IRCC, Statistique Canada, Plan des niveaux d'immigration du Canada 2024-2026",
-    es: "Fuentes: IRCC, Statistics Canada, Plan de Niveles de InmigraciÃ³n de CanadÃ¡ 2024-2026",
-    ar: "Ø§Ù„Ù…ØµØ§Ø¯Ø±: IRCC ÙˆØ¥Ø­ØµØ§Ø¡Ø§Øª ÙƒÙ†Ø¯Ø§ ÙˆØ®Ø·Ø© Ù…Ø³ØªÙˆÙŠØ§Øª Ø§Ù„Ù‡Ø¬Ø±Ø© Ø§Ù„ÙƒÙ†Ø¯ÙŠØ© 2024-2026",
+    es: "Fuentes: IRCC, Statistics Canada, Plan de Niveles de Inmigración de Canadá 2024-2026",
+    ar: "المصادر: IRCC وإحصاءات كندا وخطة مستويات الهجرة الكندية 2024-2026",
   },
-  evalCta: { en: "Check Your Eligibility", fr: "VÃ©rifiez votre Ã©ligibilitÃ©", es: "Verifique su elegibilidad", ar: "ØªØ­Ù‚Ù‚ Ù…Ù† Ø£Ù‡Ù„ÙŠØªÙƒ" },
-  breadHome: { en: "Home", fr: "Accueil", es: "Inicio", ar: "Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©" },
+  evalCta: { en: "Check Your Eligibility", fr: "Vérifiez votre éligibilité", es: "Verifique su elegibilidad", ar: "تحقق من أهليتك" },
+  breadHome: { en: "Home", fr: "Accueil", es: "Inicio", ar: "الرئيسية" },
 } as const;
 
 const HEADLINE_STATS = [
-  { value: "500,000", label: { en: "PR target 2026", fr: "Cible RP 2026", es: "Objetivo RP 2026", ar: "Ù‡Ø¯Ù Ø§Ù„Ø¥Ù‚Ø§Ù…Ø© Ø§Ù„Ø¯Ø§Ø¦Ù…Ø© 2026" } },
-  { value: "485,000", label: { en: "PRs admitted 2025", fr: "RP admis 2025", es: "RP admitidos 2025", ar: "Ù…Ù‚ÙŠÙ… Ø¯Ø§Ø¦Ù… 2025" } },
-  { value: "100+", label: { en: "Immigration pathways", fr: "Voies d'immigration", es: "VÃ­as de inmigraciÃ³n", ar: "Ù…Ø³Ø§Ø± Ù‡Ø¬Ø±Ø©" } },
-  { value: "6 months", label: { en: "Average Express Entry processing", fr: "DÃ©lai moy. EntrÃ©e express", es: "Procesamiento EE promedio", ar: "Ù…ØªÙˆØ³Ø· Ù…Ø¹Ø§Ù„Ø¬Ø© Express Entry" } },
+  { value: "500,000", label: { en: "PR target 2026", fr: "Cible RP 2026", es: "Objetivo RP 2026", ar: "هدف الإقامة الدائمة 2026" } },
+  { value: "485,000", label: { en: "PRs admitted 2025", fr: "RP admis 2025", es: "RP admitidos 2025", ar: "مقيم دائم 2025" } },
+  { value: "100+", label: { en: "Immigration pathways", fr: "Voies d'immigration", es: "Vías de inmigración", ar: "مسار هجرة" } },
+  { value: "6 months", label: { en: "Average Express Entry processing", fr: "Délai moy. Entrée express", es: "Procesamiento EE promedio", ar: "متوسط معالجة Express Entry" } },
 ];
 
 const SECTIONS = [
   {
     id: "ee",
-    heading: { en: "Express Entry", fr: "EntrÃ©e express", es: "Express Entry", ar: "Express Entry" },
+    heading: { en: "Express Entry", fr: "Entrée express", es: "Express Entry", ar: "Express Entry" },
     rows: [
-      { label: { en: "Draws held in 2025", fr: "Tirages en 2025", es: "Sorteos en 2025", ar: "Ø³Ø­ÙˆØ¨Ø§Øª ÙÙŠ 2025" }, value: "26" },
-      { label: { en: "Invitations issued 2025", fr: "Invitations Ã©mises 2025", es: "Invitaciones emitidas 2025", ar: "Ø¯Ø¹ÙˆØ§Øª ØµØ¯Ø±Øª 2025" }, value: "~110,000" },
-      { label: { en: "Lowest CRS score (all-program 2025)", fr: "Score CRS le plus bas (tous prog. 2025)", es: "Puntaje CRS mÃ¡s bajo (todos los prog. 2025)", ar: "Ø£Ø¯Ù†Ù‰ Ø¯Ø±Ø¬Ø© CRS (Ø¬Ù…ÙŠØ¹ Ø§Ù„Ø¨Ø±Ø§Ù…Ø¬ 2025)" }, value: "481" },
-      { label: { en: "Average processing time (EE)", fr: "DÃ©lai de traitement moyen (EE)", es: "Tiempo de procesamiento promedio (EE)", ar: "Ù…ØªÙˆØ³Ø· ÙˆÙ‚Øª Ø§Ù„Ù…Ø¹Ø§Ù„Ø¬Ø© (EE)" }, value: "6 months" },
-      { label: { en: "Category-based draws (STEM, Trade, French)", fr: "Tirages par catÃ©gorie (STIM, MÃ©tiers, FranÃ§ais)", es: "Sorteos por categorÃ­a (STEM, Oficios, FrancÃ©s)", ar: "Ø³Ø­ÙˆØ¨Ø§Øª Ù‚Ø§Ø¦Ù…Ø© Ø¹Ù„Ù‰ Ø§Ù„ÙØ¦Ø© (STEMØŒ Ø§Ù„Ø­Ø±ÙØŒ Ø§Ù„ÙØ±Ù†Ø³ÙŠØ©)" }, value: "Active" },
+      { label: { en: "Draws held in 2025", fr: "Tirages en 2025", es: "Sorteos en 2025", ar: "سحوبات في 2025" }, value: "26" },
+      { label: { en: "Invitations issued 2025", fr: "Invitations émises 2025", es: "Invitaciones emitidas 2025", ar: "دعوات صدرت 2025" }, value: "~110,000" },
+      { label: { en: "Lowest CRS score (all-program 2025)", fr: "Score CRS le plus bas (tous prog. 2025)", es: "Puntaje CRS más bajo (todos los prog. 2025)", ar: "أدنى درجة CRS (جميع البرامج 2025)" }, value: "481" },
+      { label: { en: "Average processing time (EE)", fr: "Délai de traitement moyen (EE)", es: "Tiempo de procesamiento promedio (EE)", ar: "متوسط وقت المعالجة (EE)" }, value: "6 months" },
+      { label: { en: "Category-based draws (STEM, Trade, French)", fr: "Tirages par catégorie (STIM, Métiers, Français)", es: "Sorteos por categoría (STEM, Oficios, Francés)", ar: "سحوبات قائمة على الفئة (STEM، الحرف، الفرنسية)" }, value: "Active" },
     ],
     href: "/programs/express-entry",
   },
   {
     id: "pnp",
-    heading: { en: "Provincial Nominee Programs (PNP)", fr: "Programmes des candidats des provinces (PCP)", es: "Programas de Nominados Provinciales (PNP)", ar: "Ø¨Ø±Ø§Ù…Ø¬ Ø§Ù„Ù…Ø±Ø´Ø­ÙŠÙ† Ø§Ù„Ø¥Ù‚Ù„ÙŠÙ…ÙŠÙŠÙ† (PNP)" },
+    heading: { en: "Provincial Nominee Programs (PNP)", fr: "Programmes des candidats des provinces (PCP)", es: "Programas de Nominados Provinciales (PNP)", ar: "برامج المرشحين الإقليميين (PNP)" },
     rows: [
-      { label: { en: "PNP nominations target 2026", fr: "Cible nominations PNP 2026", es: "Objetivo de nominaciones PNP 2026", ar: "Ù‡Ø¯Ù ØªØ±Ø´ÙŠØ­Ø§Øª PNP 2026" }, value: "110,000" },
-      { label: { en: "Provinces with active PNP", fr: "Provinces avec PNP actif", es: "Provincias con PNP activo", ar: "Ù…Ù‚Ø§Ø·Ø¹Ø§Øª Ø¨Ù€ PNP Ù†Ø´Ø·" }, value: "10" },
-      { label: { en: "Number of PNP streams (approx.)", fr: "Nombre de voies PNP (approx.)", es: "NÃºmero de corrientes PNP (aprox.)", ar: "Ø¹Ø¯Ø¯ Ù…Ø³Ø§Ø±Ø§Øª PNP (ØªÙ‚Ø±ÙŠØ¨Ø§Ù‹)" }, value: "80+" },
-      { label: { en: "CRS bonus for EE-linked PNP", fr: "Bonus CRS pour PNP liÃ© Ã  EE", es: "Bono CRS para PNP vinculado a EE", ar: "Ù…ÙƒØ§ÙØ£Ø© CRS Ù„Ù€ PNP Ø§Ù„Ù…Ø±ØªØ¨Ø· Ø¨Ù€ EE" }, value: "+600 pts" },
+      { label: { en: "PNP nominations target 2026", fr: "Cible nominations PNP 2026", es: "Objetivo de nominaciones PNP 2026", ar: "هدف ترشيحات PNP 2026" }, value: "110,000" },
+      { label: { en: "Provinces with active PNP", fr: "Provinces avec PNP actif", es: "Provincias con PNP activo", ar: "مقاطعات بـ PNP نشط" }, value: "10" },
+      { label: { en: "Number of PNP streams (approx.)", fr: "Nombre de voies PNP (approx.)", es: "Número de corrientes PNP (aprox.)", ar: "عدد مسارات PNP (تقريباً)" }, value: "80+" },
+      { label: { en: "CRS bonus for EE-linked PNP", fr: "Bonus CRS pour PNP lié à EE", es: "Bono CRS para PNP vinculado a EE", ar: "مكافأة CRS لـ PNP المرتبط بـ EE" }, value: "+600 pts" },
     ],
     href: "/programs/provincial-nominee-program",
   },
   {
     id: "sources",
-    heading: { en: "Top Source Countries (2025)", fr: "Principaux pays sources (2025)", es: "Principales paÃ­ses de origen (2025)", ar: "Ø£Ø¨Ø±Ø² Ø¯ÙˆÙ„ Ø§Ù„Ù…ØµØ¯Ø± (2025)" },
+    heading: { en: "Top Source Countries (2025)", fr: "Principaux pays sources (2025)", es: "Principales países de origen (2025)", ar: "أبرز دول المصدر (2025)" },
     rows: [
-      { label: { en: "India", fr: "Inde", es: "India", ar: "Ø§Ù„Ù‡Ù†Ø¯" }, value: "#1 â€” ~100,000" },
-      { label: { en: "Philippines", fr: "Philippines", es: "Filipinas", ar: "Ø§Ù„ÙÙ„Ø¨ÙŠÙ†" }, value: "#2 â€” ~35,000" },
-      { label: { en: "China", fr: "Chine", es: "China", ar: "Ø§Ù„ØµÙŠÙ†" }, value: "#3 â€” ~25,000" },
-      { label: { en: "Nigeria", fr: "Nigeria", es: "Nigeria", ar: "Ù†ÙŠØ¬ÙŠØ±ÙŠØ§" }, value: "#4 â€” ~15,000" },
-      { label: { en: "France", fr: "France", es: "Francia", ar: "ÙØ±Ù†Ø³Ø§" }, value: "#5 â€” ~13,000" },
-      { label: { en: "Morocco", fr: "Maroc", es: "Marruecos", ar: "Ø§Ù„Ù…ØºØ±Ø¨" }, value: "Top 15" },
+      { label: { en: "India", fr: "Inde", es: "India", ar: "الهند" }, value: "#1 — ~100,000" },
+      { label: { en: "Philippines", fr: "Philippines", es: "Filipinas", ar: "الفلبين" }, value: "#2 — ~35,000" },
+      { label: { en: "China", fr: "Chine", es: "China", ar: "الصين" }, value: "#3 — ~25,000" },
+      { label: { en: "Nigeria", fr: "Nigeria", es: "Nigeria", ar: "نيجيريا" }, value: "#4 — ~15,000" },
+      { label: { en: "France", fr: "France", es: "Francia", ar: "فرنسا" }, value: "#5 — ~13,000" },
+      { label: { en: "Morocco", fr: "Maroc", es: "Marruecos", ar: "المغرب" }, value: "Top 15" },
     ],
     href: "/from",
   },
   {
     id: "languages",
-    heading: { en: "Language & Immigration", fr: "Langue et immigration", es: "Idioma e inmigraciÃ³n", ar: "Ø§Ù„Ù„ØºØ© ÙˆØ§Ù„Ù‡Ø¬Ø±Ø©" },
+    heading: { en: "Language & Immigration", fr: "Langue et immigration", es: "Idioma e inmigración", ar: "اللغة والهجرة" },
     rows: [
-      { label: { en: "French-language draws held 2025", fr: "Tirages en franÃ§ais 2025", es: "Sorteos en francÃ©s 2025", ar: "Ø³Ø­ÙˆØ¨Ø§Øª Ø¨Ø§Ù„Ù„ØºØ© Ø§Ù„ÙØ±Ù†Ø³ÙŠØ© 2025" }, value: "8+" },
-      { label: { en: "Francophone PR target 2026 (outside QC)", fr: "Cible RP francophones 2026 (hors QC)", es: "Objetivo RP francÃ³fono 2026 (fuera de QC)", ar: "Ù‡Ø¯Ù Ø§Ù„Ø¥Ù‚Ø§Ù…Ø© Ø§Ù„Ø¯Ø§Ø¦Ù…Ø© Ø§Ù„Ù†Ø§Ø·Ù‚ Ø¨Ø§Ù„ÙØ±Ù†Ø³ÙŠØ© 2026 (Ø®Ø§Ø±Ø¬ QC)" }, value: "6%" },
-      { label: { en: "CRS bonus for CLB 7 French (bilinguals)", fr: "Bonus CRS pour CLB 7 franÃ§ais (bilingues)", es: "Bono CRS por CLB 7 francÃ©s (bilingÃ¼e)", ar: "Ù…ÙƒØ§ÙØ£Ø© CRS Ù„Ù…Ø³ØªÙˆÙ‰ CLB 7 ÙØ±Ù†Ø³ÙŠ (Ø«Ù†Ø§Ø¦ÙŠÙˆ Ø§Ù„Ù„ØºØ©)" }, value: "+50 pts" },
-      { label: { en: "LMIA-exempt Francophone Mobility permits 2025", fr: "Permis MobilitÃ© francophone sans EIMT 2025", es: "Permisos Movilidad FrancÃ³fona sin LMIA 2025", ar: "ØªØµØ§Ø±ÙŠØ­ Ø§Ù„ØªÙ†Ù‚Ù„ Ø§Ù„ÙØ±Ù†ÙƒÙˆÙÙˆÙ†ÙŠ Ø§Ù„Ù…Ø¹ÙØ§Ø© Ù…Ù† LMIA 2025" }, value: "~10,000" },
+      { label: { en: "French-language draws held 2025", fr: "Tirages en français 2025", es: "Sorteos en francés 2025", ar: "سحوبات باللغة الفرنسية 2025" }, value: "8+" },
+      { label: { en: "Francophone PR target 2026 (outside QC)", fr: "Cible RP francophones 2026 (hors QC)", es: "Objetivo RP francófono 2026 (fuera de QC)", ar: "هدف الإقامة الدائمة الناطق بالفرنسية 2026 (خارج QC)" }, value: "6%" },
+      { label: { en: "CRS bonus for CLB 7 French (bilinguals)", fr: "Bonus CRS pour CLB 7 français (bilingues)", es: "Bono CRS por CLB 7 francés (bilingüe)", ar: "مكافأة CRS لمستوى CLB 7 فرنسي (ثنائيو اللغة)" }, value: "+50 pts" },
+      { label: { en: "LMIA-exempt Francophone Mobility permits 2025", fr: "Permis Mobilité francophone sans EIMT 2025", es: "Permisos Movilidad Francófona sin LMIA 2025", ar: "تصاريح التنقل الفرنكوفوني المعفاة من LMIA 2025" }, value: "~10,000" },
     ],
     href: "/programs/francophone-mobility",
   },
   {
     id: "processing",
-    heading: { en: "Processing Times (2025 avg)", fr: "DÃ©lais de traitement (moy. 2025)", es: "Tiempos de procesamiento (prom. 2025)", ar: "Ø£ÙˆÙ‚Ø§Øª Ø§Ù„Ù…Ø¹Ø§Ù„Ø¬Ø© (Ù…ØªÙˆØ³Ø· 2025)" },
+    heading: { en: "Processing Times (2025 avg)", fr: "Délais de traitement (moy. 2025)", es: "Tiempos de procesamiento (prom. 2025)", ar: "أوقات المعالجة (متوسط 2025)" },
     rows: [
-      { label: { en: "Express Entry (ITA to PR)", fr: "EntrÃ©e express (LAI Ã  RP)", es: "Express Entry (ITA a RP)", ar: "Express Entry (Ù…Ù† Ø§Ù„Ø¯Ø¹ÙˆØ© Ø¥Ù„Ù‰ Ø§Ù„Ø¥Ù‚Ø§Ù…Ø© Ø§Ù„Ø¯Ø§Ø¦Ù…Ø©)" }, value: "~6 months" },
-      { label: { en: "Spousal sponsorship (inland)", fr: "Parrainage conjoint (intÃ©rieur)", es: "Patrocinio conyugal (interior)", ar: "Ø§Ù„ØªÙƒÙÙ„ Ø§Ù„Ø²ÙˆØ¬ÙŠ (Ø¯Ø§Ø®Ù„ÙŠ)" }, value: "~12 months" },
-      { label: { en: "Work permit (online application)", fr: "Permis de travail (demande en ligne)", es: "Permiso de trabajo (solicitud en lÃ­nea)", ar: "ØªØµØ±ÙŠØ­ Ø¹Ù…Ù„ (Ø·Ù„Ø¨ Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠ)" }, value: "~8 weeks" },
-      { label: { en: "Study permit (SDS)", fr: "Permis d'Ã©tudes (SPE)", es: "Permiso de estudios (SDS)", ar: "ØªØµØ±ÙŠØ­ Ø§Ù„Ø¯Ø±Ø§Ø³Ø© (SDS)" }, value: "~8 weeks" },
+      { label: { en: "Express Entry (ITA to PR)", fr: "Entrée express (LAI à RP)", es: "Express Entry (ITA a RP)", ar: "Express Entry (من الدعوة إلى الإقامة الدائمة)" }, value: "~6 months" },
+      { label: { en: "Spousal sponsorship (inland)", fr: "Parrainage conjoint (intérieur)", es: "Patrocinio conyugal (interior)", ar: "التكفل الزوجي (داخلي)" }, value: "~12 months" },
+      { label: { en: "Work permit (online application)", fr: "Permis de travail (demande en ligne)", es: "Permiso de trabajo (solicitud en línea)", ar: "تصريح عمل (طلب إلكتروني)" }, value: "~8 weeks" },
+      { label: { en: "Study permit (SDS)", fr: "Permis d'études (SPE)", es: "Permiso de estudios (SDS)", ar: "تصريح الدراسة (SDS)" }, value: "~8 weeks" },
     ],
     href: "/services",
   },
@@ -154,7 +154,7 @@ export default async function StatsPage({ params }: Props) {
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-xl font-bold text-gray-900">{sec.heading[l]}</h2>
               <Link href={`/${l}${sec.href}`} className="text-xs text-primary hover:underline font-medium">
-                {l === "en" ? "Learn more" : l === "fr" ? "En savoir plus" : l === "es" ? "MÃ¡s info" : "Ø§Ø¹Ø±Ù Ø§Ù„Ù…Ø²ÙŠØ¯"} &#8594;
+                {l === "en" ? "Learn more" : l === "fr" ? "En savoir plus" : l === "es" ? "Más info" : "اعرف المزيد"} &#8594;
               </Link>
             </div>
             <div className="border border-gray-200 rounded-xl overflow-hidden">
@@ -174,15 +174,15 @@ export default async function StatsPage({ params }: Props) {
       <div className="bg-gradient-to-br from-blue-900 to-blue-700 text-white rounded-2xl p-8 text-center">
         <h2 className="text-xl font-bold mb-3">
           {l === "en" && "Where do you fit in?"}
-          {l === "fr" && "OÃ¹ vous situez-vous ?"}
-          {l === "es" && "Â¿DÃ³nde encaja usted?"}
-          {l === "ar" && "Ø£ÙŠÙ† ØªÙ‚Ø¹ ÙÙŠ Ù‡Ø°Ù‡ Ø§Ù„Ø¥Ø­ØµØ§Ø¦ÙŠØ§ØªØŸ"}
+          {l === "fr" && "Où vous situez-vous ?"}
+          {l === "es" && "¿Dónde encaja usted?"}
+          {l === "ar" && "أين تقع في هذه الإحصائيات؟"}
         </h2>
         <p className="text-blue-100 mb-5 text-sm max-w-md mx-auto">
           {l === "en" && "Get a free profile assessment from a CICC-registered RCIC to find your best PR pathway."}
-          {l === "fr" && "Obtenez une Ã©valuation gratuite de votre profil par un CRIC inscrit au CICC pour trouver votre meilleure voie vers la RP."}
-          {l === "es" && "Obtenga una evaluaciÃ³n gratuita de su perfil de un RCIC registrado en CICC para encontrar su mejor vÃ­a hacia la RP."}
-          {l === "ar" && "Ø§Ø­ØµÙ„ Ø¹Ù„Ù‰ ØªÙ‚ÙŠÙŠÙ… Ù…Ø¬Ø§Ù†ÙŠ Ù„Ù…Ù„ÙÙƒ Ù…Ù† Ù…Ø³ØªØ´Ø§Ø± RCIC Ù…Ø³Ø¬Ù„ ÙÙŠ CICC Ù„Ù„Ø¹Ø«ÙˆØ± Ø¹Ù„Ù‰ Ø£ÙØ¶Ù„ Ù…Ø³Ø§Ø± Ù„Ù„Ø¥Ù‚Ø§Ù…Ø© Ø§Ù„Ø¯Ø§Ø¦Ù…Ø©."}
+          {l === "fr" && "Obtenez une évaluation gratuite de votre profil par un CRIC inscrit au CICC pour trouver votre meilleure voie vers la RP."}
+          {l === "es" && "Obtenga una evaluación gratuita de su perfil de un RCIC registrado en CICC para encontrar su mejor vía hacia la RP."}
+          {l === "ar" && "احصل على تقييم مجاني لملفك من مستشار RCIC مسجل في CICC للعثور على أفضل مسار للإقامة الدائمة."}
         </p>
         <Link href={`/${l}/evaluation`}
           className="inline-block bg-white text-blue-900 font-semibold px-7 py-3 rounded-full hover:bg-blue-50 transition-colors text-sm">

@@ -39,13 +39,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     en: `${prof.name.en} Immigration ${prov.name.en}`,
     fr: `Immigration ${prof.name.fr} ${prov.name.fr}`,
     es: `Inmigracion de ${prof.name.es} a ${prov.name.es}`,
-    ar: `Ù‡Ø¬Ø±Ø© ${prof.name.ar} Ø¥Ù„Ù‰ ${prov.name.ar}`,
+    ar: `هجرة ${prof.name.ar} إلى ${prov.name.ar}`,
   };
   const descs: Record<Locale, string> = {
     en: `How ${prof.name.en}s can immigrate to ${prov.name.en}, Canada. NOC ${prof.nocCode}, ${prov.pnpName.en} streams, Express Entry pathways. Free profile evaluation.`,
     fr: `Comment les ${prof.name.fr}s peuvent immigrer en ${prov.name.fr}. CNP ${prof.nocCode}, voies ${prov.pnpName.fr}. Evaluation gratuite.`,
     es: `Como los ${prof.name.es}s pueden immigrar a ${prov.name.es}, Canada. NOC ${prof.nocCode}. Evaluacion gratuita.`,
-    ar: `ÙƒÙŠÙ ÙŠÙ…ÙƒÙ† Ù„Ù€${prof.name.ar} Ø§Ù„Ù‡Ø¬Ø±Ø© Ø¥Ù„Ù‰ ${prov.name.ar}ØŒ ÙƒÙ†Ø¯Ø§. NOC ${prof.nocCode}. ØªÙ‚ÙŠÙŠÙ… Ù…Ø¬Ø§Ù†ÙŠ.`,
+    ar: `كيف يمكن لـ${prof.name.ar} الهجرة إلى ${prov.name.ar}، كندا. NOC ${prof.nocCode}. تقييم مجاني.`,
   };
 
   const url = `${BASE}/${l}/for/${profSlug}/${provSlug}`;
@@ -104,9 +104,9 @@ export default async function ProfessionProvincePage({ params }: Props) {
       <article dir={l === "ar" ? "rtl" : "ltr"} className="max-w-4xl mx-auto px-4 py-12 sm:py-16">
 
         <nav aria-label="breadcrumb" className="text-sm text-gray-500 mb-6 flex flex-wrap gap-1">
-          <Link href={`/${l}`} className="hover:text-primary">{l === "en" ? "Home" : l === "fr" ? "Accueil" : l === "es" ? "Inicio" : "Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©"}</Link>
+          <Link href={`/${l}`} className="hover:text-primary">{l === "en" ? "Home" : l === "fr" ? "Accueil" : l === "es" ? "Inicio" : "الرئيسية"}</Link>
           <span aria-hidden>/</span>
-          <Link href={`/${l}/for`} className="hover:text-primary">{l === "en" ? "By Profession" : l === "fr" ? "Par profession" : l === "es" ? "Por profesion" : "Ø­Ø³Ø¨ Ø§Ù„Ù…Ù‡Ù†Ø©"}</Link>
+          <Link href={`/${l}/for`} className="hover:text-primary">{l === "en" ? "By Profession" : l === "fr" ? "Par profession" : l === "es" ? "Por profesion" : "حسب المهنة"}</Link>
           <span aria-hidden>/</span>
           <Link href={`/${l}/for/${profSlug}`} className="hover:text-primary">{profName}</Link>
           <span aria-hidden>/</span>
@@ -117,7 +117,7 @@ export default async function ProfessionProvincePage({ params }: Props) {
           <div className="flex flex-wrap gap-2 mb-3">
             <span className="text-xs font-mono bg-gray-100 text-gray-600 px-2 py-1 rounded">NOC {prof.nocCode} &middot; {prof.nocTeer}</span>
             {prof.inDemand && <span className="text-xs font-semibold bg-green-100 text-green-800 px-2 py-1 rounded-full">
-              {l === "en" ? "In-Demand" : l === "fr" ? "En demande" : l === "es" ? "En demanda" : "Ù…Ø·Ù„ÙˆØ¨"}
+              {l === "en" ? "In-Demand" : l === "fr" ? "En demande" : l === "es" ? "En demanda" : "مطلوب"}
             </span>}
             <span className="text-xs bg-blue-50 text-blue-700 font-medium px-2 py-1 rounded">{prov.code}</span>
           </div>
@@ -125,7 +125,7 @@ export default async function ProfessionProvincePage({ params }: Props) {
             {l === "en" && `${profName} Immigration to ${provName}`}
             {l === "fr" && `Immigration des ${profName}s en ${provName}`}
             {l === "es" && `Inmigracion de ${profName}s a ${provName}`}
-            {l === "ar" && `Ù‡Ø¬Ø±Ø© ${profName} Ø¥Ù„Ù‰ ${provName}`}
+            {l === "ar" && `هجرة ${profName} إلى ${provName}`}
           </h1>
           <p className="text-lg text-gray-600 leading-relaxed">{prof.lead[l]}</p>
         </div>
@@ -135,7 +135,7 @@ export default async function ProfessionProvincePage({ params }: Props) {
             {l === "en" && `${prov.pnpName.en} Streams`}
             {l === "fr" && `Voies ${prov.pnpName.fr}`}
             {l === "es" && `Corrientes ${prov.pnpName.en}`}
-            {l === "ar" && `Ù…Ø³Ø§Ø±Ø§Øª ${prov.pnpName.en}`}
+            {l === "ar" && `مسارات ${prov.pnpName.en}`}
           </h2>
           <ul className="grid sm:grid-cols-2 gap-3">
             {relevantStreams.map((stream) => (
@@ -151,7 +151,7 @@ export default async function ProfessionProvincePage({ params }: Props) {
             {l === "en" && `Top Programs for ${profName}s`}
             {l === "fr" && `Principaux programmes pour les ${profName}s`}
             {l === "es" && `Principales programas para ${profName}s`}
-            {l === "ar" && `Ø£Ù‡Ù… Ø§Ù„Ø¨Ø±Ø§Ù…Ø¬ Ù„Ù€${profName}`}
+            {l === "ar" && `أهم البرامج لـ${profName}`}
           </h2>
           <ul className="grid sm:grid-cols-2 gap-3">
             {prof.topPrograms.map((prog) => (
@@ -167,7 +167,7 @@ export default async function ProfessionProvincePage({ params }: Props) {
             {l === "en" && `Why ${provName}?`}
             {l === "fr" && `Pourquoi la ${provName} ?`}
             {l === "es" && `Por que ${provName}?`}
-            {l === "ar" && `Ù„Ù…Ø§Ø°Ø§ ${provName}ØŸ`}
+            {l === "ar" && `لماذا ${provName}؟`}
           </h2>
           <ul className="space-y-2">
             {prov.keyFacts[l].slice(0, 4).map((fact, i) => (
@@ -183,24 +183,24 @@ export default async function ProfessionProvincePage({ params }: Props) {
             {l === "en" && `Immigrate to ${provName} as a ${profName}`}
             {l === "fr" && `Immigrez en ${provName} en tant que ${profName}`}
             {l === "es" && `Inmigrarse a ${provName} como ${profName}`}
-            {l === "ar" && `Ø§Ù„Ù‡Ø¬Ø±Ø© Ø¥Ù„Ù‰ ${provName} Ø¨ÙˆØµÙÙƒ ${profName}`}
+            {l === "ar" && `الهجرة إلى ${provName} بوصفك ${profName}`}
           </h2>
           <p className="text-blue-100 mb-6 max-w-lg mx-auto text-sm">
             {l === "en" && `Get a free profile assessment from our RCIC consultants specialized in ${provName} pathways for ${profName}s.`}
             {l === "fr" && `Obtenez une evaluation gratuite de nos consultants RCIC specialises dans les voies de la ${provName} pour les ${profName}s.`}
             {l === "es" && `Obtenga una evaluacion gratuita de nuestros consultores RCIC especializados en las vias de ${provName} para ${profName}s.`}
-            {l === "ar" && `Ø§Ø­ØµÙ„ Ø¹Ù„Ù‰ ØªÙ‚ÙŠÙŠÙ… Ù…Ø¬Ø§Ù†ÙŠ Ù…Ù† Ù…Ø³ØªØ´Ø§Ø±ÙŠÙ†Ø§ Ø§Ù„Ù…Ø¹ØªÙ…Ø¯ÙŠÙ† RCIC Ø§Ù„Ù…ØªØ®ØµØµÙŠÙ† ÙÙŠ Ù…Ø³Ø§Ø±Ø§Øª ${provName} Ù„Ù€${profName}.`}
+            {l === "ar" && `احصل على تقييم مجاني من مستشارينا المعتمدين RCIC المتخصصين في مسارات ${provName} لـ${profName}.`}
           </p>
           <Link href={`/${l}/evaluation`}
             className="inline-block bg-white text-blue-900 font-semibold px-7 py-3 rounded-full hover:bg-blue-50 transition-colors">
-            {l === "en" ? "Get Free Evaluation" : l === "fr" ? "Evaluation gratuite" : l === "es" ? "Evaluacion gratuita" : "ØªÙ‚ÙŠÙŠÙ… Ù…Ø¬Ø§Ù†ÙŠ"}
+            {l === "en" ? "Get Free Evaluation" : l === "fr" ? "Evaluation gratuite" : l === "es" ? "Evaluacion gratuita" : "تقييم مجاني"}
           </Link>
         </aside>
 
         <div className="grid sm:grid-cols-2 gap-6 mb-10">
           <div>
             <p className="text-sm font-semibold text-gray-700 mb-3">
-              {l === "en" ? `Other provinces for ${profName}s` : l === "fr" ? `Autres provinces` : l === "es" ? `Otras provincias` : `Ù…Ù‚Ø§Ø·Ø¹Ø§Øª Ø§Ø®Ø±Ù‰`}
+              {l === "en" ? `Other provinces for ${profName}s` : l === "fr" ? `Autres provinces` : l === "es" ? `Otras provincias` : `مقاطعات اخرى`}
             </p>
             <div className="flex flex-col gap-2">
               {relatedProvinces.map((p) => (
@@ -213,7 +213,7 @@ export default async function ProfessionProvincePage({ params }: Props) {
           </div>
           <div>
             <p className="text-sm font-semibold text-gray-700 mb-3">
-              {l === "en" ? `Other professions in ${provName}` : l === "fr" ? `Autres professions` : l === "es" ? `Otras profesiones` : `Ù…Ù‡Ù† Ø§Ø®Ø±Ù‰`}
+              {l === "en" ? `Other professions in ${provName}` : l === "fr" ? `Autres professions` : l === "es" ? `Otras profesiones` : `مهن اخرى`}
             </p>
             <div className="flex flex-col gap-2">
               {relatedProfessions.map((p) => (
@@ -228,13 +228,13 @@ export default async function ProfessionProvincePage({ params }: Props) {
 
         <div className="flex flex-wrap gap-3">
           <Link href={`/${l}/for/${profSlug}`} className="text-sm font-medium text-primary hover:underline border border-primary/30 rounded-full px-4 py-1.5">
-            {l === "en" ? `All ${profName} pathways` : l === "fr" ? `Toutes les voies ${profName}` : l === "es" ? `Todas las vias` : `Ø¬Ù…ÙŠØ¹ Ø§Ù„Ù…Ø³Ø§Ø±Ø§Øª`}
+            {l === "en" ? `All ${profName} pathways` : l === "fr" ? `Toutes les voies ${profName}` : l === "es" ? `Todas las vias` : `جميع المسارات`}
           </Link>
           <Link href={`/${l}/province/${provSlug}`} className="text-sm font-medium text-gray-600 hover:text-primary border border-gray-200 rounded-full px-4 py-1.5">
             {provName}
           </Link>
           <Link href={`/${l}/draws`} className="text-sm font-medium text-gray-600 hover:text-primary border border-gray-200 rounded-full px-4 py-1.5">
-            {l === "en" ? "Latest Draws" : l === "fr" ? "Derniers tirages" : l === "es" ? "Ultimos sorteos" : "Ø§Ù„Ø³Ø­ÙˆØ¨Ø§Øª"}
+            {l === "en" ? "Latest Draws" : l === "fr" ? "Derniers tirages" : l === "es" ? "Ultimos sorteos" : "السحوبات"}
           </Link>
         </div>
       </article>

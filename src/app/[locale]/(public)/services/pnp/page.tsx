@@ -1,11 +1,16 @@
 ﻿export const revalidate = 86400;
 import type { Metadata } from "next";
+import { generatePageAlternates } from "@/lib/seo/alternates";
 
-export const metadata: Metadata = {
-  title: "Provincial Nominee Program (PNP) Canada — 600 CRS Points",
-  description: "Get nominated by a Canadian province and receive 600 additional CRS points. Our RCICs identify the best PNP stream for your profile across all provinces.",
-  openGraph: { title: "Provincial Nominee Program Canada", description: "PNP nomination gives 600 CRS bonus points — near-guaranteed invitation. Find your best provincial stream.", url: "https://idlogice.com/services/pnp" },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return {
+    title: "Provincial Nominee Program (PNP) Canada — 600 CRS Points",
+    description: "Get a provincial nomination and add 600 CRS points. CICC-registered consultants identify your best PNP stream and guide your application.",
+    alternates: generatePageAlternates(locale, "/services/pnp"),
+    openGraph: { title: "Provincial Nominee Program (PNP) Canada — 600 CRS Points", description: "Get a provincial nomination and add 600 CRS points. CICC-registered consultants identify your best PNP stream and guide your application.", url: `https://idlogice.com/${locale}/services/pnp` },
+  };
+}
 
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { PageHero } from "@/components/sections/page-hero";

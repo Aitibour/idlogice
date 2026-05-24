@@ -15,7 +15,7 @@ const ORG_NODE = {
   logo: `${BASE}/logo.png`,
   image: `${BASE}/images/cta-bg.jpg`,
   description:
-    "CICC-registered Canadian immigration consultants (RCICs) in Montréal. Expert guidance for Express Entry, PNP, study permits, work permits and family sponsorship. 95% success rate across 500+ cases.",
+    "CICC-registered immigration consultants (RCICs) in Montréal. Expert guidance for Express Entry, PNP, study permits, work permits and family sponsorship.",
   telephone: "+1-581-634-0224",
   email: "contact@idlogice.com",
   priceRange: "$$",

@@ -129,7 +129,7 @@ export default async function DrawsPage({
         {latest && (
           <section>
             <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-3">
-              {t("latestDraw")} â€” {t("drawNumber")}{latest.drawNumber}
+              {t("latestDraw")} — {t("drawNumber")}{latest.drawNumber}
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {[

@@ -13,75 +13,75 @@ const T = {
   title: {
     en: "Our RCIC Immigration Consultants",
     fr: "Nos consultants en immigration RCIC",
-    es: "Nuestros consultores de inmigraciÃ³n RCIC",
-    ar: "Ù…Ø³ØªØ´Ø§Ø±Ùˆ Ø§Ù„Ù‡Ø¬Ø±Ø© Ø§Ù„Ù…Ø¹ØªÙ…Ø¯ÙˆÙ† RCIC",
+    es: "Nuestros consultores de inmigración RCIC",
+    ar: "مستشارو الهجرة المعتمدون RCIC",
   },
   desc: {
     en: "Meet the CICC-registered immigration consultants (RCICs) at IDLOGICE. Expert guidance for Express Entry, PNP, work permits, and family sponsorship.",
-    fr: "Rencontrez les consultants en immigration inscrits au CICC (RCIC) chez IDLOGICE. Expertise en EntrÃ©e express, PNP, permis de travail et parrainage familial.",
-    es: "Conozca a los consultores de inmigraciÃ³n registrados en CICC (RCIC) de IDLOGICE. Expertos en Express Entry, PNP, permisos de trabajo y patrocinio familiar.",
-    ar: "ØªØ¹Ø±Ù Ø¹Ù„Ù‰ Ù…Ø³ØªØ´Ø§Ø±ÙŠ Ø§Ù„Ù‡Ø¬Ø±Ø© Ø§Ù„Ù…Ø³Ø¬Ù„ÙŠÙ† ÙÙŠ CICC (RCIC) ÙÙŠ IDLOGICE. Ø®Ø¨Ø±Ø§Ø¡ ÙÙŠ Express Entry ÙˆPNP ÙˆØªØµØ§Ø±ÙŠØ­ Ø§Ù„Ø¹Ù…Ù„ ÙˆØ§Ù„ØªÙƒÙÙ„ Ø§Ù„Ø¹Ø§Ø¦Ù„ÙŠ.",
+    fr: "Rencontrez les consultants en immigration inscrits au CICC (RCIC) chez IDLOGICE. Expertise en Entrée express, PNP, permis de travail et parrainage familial.",
+    es: "Conozca a los consultores de inmigración registrados en CICC (RCIC) de IDLOGICE. Expertos en Express Entry, PNP, permisos de trabajo y patrocinio familiar.",
+    ar: "تعرف على مستشاري الهجرة المسجلين في CICC (RCIC) في IDLOGICE. خبراء في Express Entry وPNP وتصاريح العمل والتكفل العائلي.",
   },
   h1: {
     en: "Meet Our Immigration Consultants",
     fr: "Rencontrez nos consultants en immigration",
-    es: "Conozca a nuestros consultores de inmigraciÃ³n",
-    ar: "ØªØ¹Ø±Ù Ø¹Ù„Ù‰ Ù…Ø³ØªØ´Ø§Ø±ÙŠ Ø§Ù„Ù‡Ø¬Ø±Ø© Ù„Ø¯ÙŠÙ†Ø§",
+    es: "Conozca a nuestros consultores de inmigración",
+    ar: "تعرف على مستشاري الهجرة لدينا",
   },
   lead: {
     en: "Every IDLOGICE consultant is a Regulated Canadian Immigration Consultant (RCIC) registered with the College of Immigration and Citizenship Consultants (CICC). We operate under strict professional standards with full accountability to Canada's immigration regulatory body.",
-    fr: "Chaque consultant IDLOGICE est un Consultant rÃ©glementÃ© en immigration canadienne (CRIC) inscrit au CollÃ¨ge des consultants en immigration et en citoyennetÃ© (CICC).",
-    es: "Cada consultor de IDLOGICE es un Consultor Regulado de InmigraciÃ³n Canadiense (RCIC) registrado en el Colegio de Consultores de InmigraciÃ³n y CiudadanÃ­a (CICC).",
-    ar: "ÙƒÙ„ Ù…Ø³ØªØ´Ø§Ø± ÙÙŠ IDLOGICE Ù‡Ùˆ Ù…Ø³ØªØ´Ø§Ø± Ù‡Ø¬Ø±Ø© ÙƒÙ†Ø¯ÙŠ Ù…Ø¹ØªÙ…Ø¯ (RCIC) Ù…Ø³Ø¬Ù„ ÙÙŠ ÙƒÙ„ÙŠØ© Ù…Ø³ØªØ´Ø§Ø±ÙŠ Ø§Ù„Ù‡Ø¬Ø±Ø© ÙˆØ§Ù„Ù…ÙˆØ§Ø·Ù†Ø© (CICC).",
+    fr: "Chaque consultant IDLOGICE est un Consultant réglementé en immigration canadienne (CRIC) inscrit au Collège des consultants en immigration et en citoyenneté (CICC).",
+    es: "Cada consultor de IDLOGICE es un Consultor Regulado de Inmigración Canadiense (RCIC) registrado en el Colegio de Consultores de Inmigración y Ciudadanía (CICC).",
+    ar: "كل مستشار في IDLOGICE هو مستشار هجرة كندي معتمد (RCIC) مسجل في كلية مستشاري الهجرة والمواطنة (CICC).",
   },
-  ciccLabel: { en: "CICC Registration", fr: "Inscription CICC", es: "Registro CICC", ar: "ØªØ³Ø¬ÙŠÙ„ CICC" },
-  specialtiesLabel: { en: "Specialties", fr: "SpÃ©cialitÃ©s", es: "Especialidades", ar: "Ø§Ù„ØªØ®ØµØµØ§Øª" },
-  langLabel: { en: "Languages", fr: "Langues", es: "Idiomas", ar: "Ø§Ù„Ù„ØºØ§Øª" },
-  bookBtn: { en: "Book a Consultation", fr: "Prendre rendez-vous", es: "Reservar consulta", ar: "Ø§Ø­Ø¬Ø² Ø§Ø³ØªØ´Ø§Ø±Ø©" },
-  evalBtn: { en: "Free Evaluation", fr: "Ã‰valuation gratuite", es: "EvaluaciÃ³n gratuita", ar: "ØªÙ‚ÙŠÙŠÙ… Ù…Ø¬Ø§Ù†ÙŠ" },
-  trustH: { en: "Why Work With a Regulated RCIC?", fr: "Pourquoi travailler avec un CRIC rÃ©glementÃ© ?", es: "Â¿Por quÃ© trabajar con un RCIC regulado?", ar: "Ù„Ù…Ø§Ø°Ø§ ØªØ¹Ù…Ù„ Ù…Ø¹ Ù…Ø³ØªØ´Ø§Ø± RCIC Ù…Ø¹ØªÙ…Ø¯ØŸ" },
-  breadHome: { en: "Home", fr: "Accueil", es: "Inicio", ar: "Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©" },
-  breadAbout: { en: "About", fr: "Ã€ propos", es: "Acerca de", ar: "Ø¹Ù† Ø§Ù„Ø´Ø±ÙƒØ©" },
+  ciccLabel: { en: "CICC Registration", fr: "Inscription CICC", es: "Registro CICC", ar: "تسجيل CICC" },
+  specialtiesLabel: { en: "Specialties", fr: "Spécialités", es: "Especialidades", ar: "التخصصات" },
+  langLabel: { en: "Languages", fr: "Langues", es: "Idiomas", ar: "اللغات" },
+  bookBtn: { en: "Book a Consultation", fr: "Prendre rendez-vous", es: "Reservar consulta", ar: "احجز استشارة" },
+  evalBtn: { en: "Free Evaluation", fr: "Évaluation gratuite", es: "Evaluación gratuita", ar: "تقييم مجاني" },
+  trustH: { en: "Why Work With a Regulated RCIC?", fr: "Pourquoi travailler avec un CRIC réglementé ?", es: "¿Por qué trabajar con un RCIC regulado?", ar: "لماذا تعمل مع مستشار RCIC معتمد؟" },
+  breadHome: { en: "Home", fr: "Accueil", es: "Inicio", ar: "الرئيسية" },
+  breadAbout: { en: "About", fr: "À propos", es: "Acerca de", ar: "عن الشركة" },
 } as const;
 
 const CONSULTANTS = [
   {
     name: "Sarah Benali",
-    title: { en: "Senior Immigration Consultant", fr: "Consultante principale en immigration", es: "Consultora principal de inmigraciÃ³n", ar: "Ù…Ø³ØªØ´Ø§Ø±Ø© Ù‡Ø¬Ø±Ø© Ø£ÙˆÙ„Ù‰" },
+    title: { en: "Senior Immigration Consultant", fr: "Consultante principale en immigration", es: "Consultora principal de inmigración", ar: "مستشارة هجرة أولى" },
     rcic: "R123456",
     bio: {
       en: "Sarah has 8+ years of experience guiding clients through Express Entry and PNP programs. Fluent in English, French, and Arabic, she specializes in Francophone immigration and North African applicant profiles.",
-      fr: "Sarah a plus de 8 ans d'expÃ©rience dans l'EntrÃ©e express et les programmes PNP. SpÃ©cialisÃ©e en immigration francophone et profils maghrÃ©bins.",
-      es: "Sarah tiene mÃ¡s de 8 aÃ±os de experiencia guiando clientes a travÃ©s de Express Entry y programas PNP. Especialista en inmigraciÃ³n francÃ³fona.",
-      ar: "ØªØªÙ…ØªØ¹ Ø³Ø§Ø±Ø© Ø¨Ø®Ø¨Ø±Ø© ØªØ²ÙŠØ¯ Ø¹Ù„Ù‰ 8 Ø³Ù†ÙˆØ§Øª ÙÙŠ ØªÙˆØ¬ÙŠÙ‡ Ø§Ù„Ø¹Ù…Ù„Ø§Ø¡ Ø¹Ø¨Ø± Ø¨Ø±Ø§Ù…Ø¬ Express Entry ÙˆPNP. Ù…ØªØ®ØµØµØ© ÙÙŠ Ø§Ù„Ù‡Ø¬Ø±Ø© Ø§Ù„Ù†Ø§Ø·Ù‚Ø© Ø¨Ø§Ù„ÙØ±Ù†Ø³ÙŠØ©.",
+      fr: "Sarah a plus de 8 ans d'expérience dans l'Entrée express et les programmes PNP. Spécialisée en immigration francophone et profils maghrébins.",
+      es: "Sarah tiene más de 8 años de experiencia guiando clientes a través de Express Entry y programas PNP. Especialista en inmigración francófona.",
+      ar: "تتمتع سارة بخبرة تزيد على 8 سنوات في توجيه العملاء عبر برامج Express Entry وPNP. متخصصة في الهجرة الناطقة بالفرنسية.",
     },
     specialties: {
       en: ["Express Entry", "PNP Programs", "Francophone Immigration", "Work Permits"],
-      fr: ["EntrÃ©e express", "Programmes PNP", "Immigration francophone", "Permis de travail"],
-      es: ["Express Entry", "Programas PNP", "InmigraciÃ³n francÃ³fona", "Permisos de trabajo"],
-      ar: ["Express Entry", "Ø¨Ø±Ø§Ù…Ø¬ PNP", "Ø§Ù„Ù‡Ø¬Ø±Ø© Ø§Ù„Ù†Ø§Ø·Ù‚Ø© Ø¨Ø§Ù„ÙØ±Ù†Ø³ÙŠØ©", "ØªØµØ§Ø±ÙŠØ­ Ø§Ù„Ø¹Ù…Ù„"],
+      fr: ["Entrée express", "Programmes PNP", "Immigration francophone", "Permis de travail"],
+      es: ["Express Entry", "Programas PNP", "Inmigración francófona", "Permisos de trabajo"],
+      ar: ["Express Entry", "برامج PNP", "الهجرة الناطقة بالفرنسية", "تصاريح العمل"],
     },
-    languages: { en: ["English", "French", "Arabic"], fr: ["Anglais", "FranÃ§ais", "Arabe"], es: ["InglÃ©s", "FrancÃ©s", "Ãrabe"], ar: ["Ø§Ù„Ø¥Ù†Ø¬Ù„ÙŠØ²ÙŠØ©", "Ø§Ù„ÙØ±Ù†Ø³ÙŠØ©", "Ø§Ù„Ø¹Ø±Ø¨ÙŠØ©"] },
+    languages: { en: ["English", "French", "Arabic"], fr: ["Anglais", "Français", "Arabe"], es: ["Inglés", "Francés", "Árabe"], ar: ["الإنجليزية", "الفرنسية", "العربية"] },
     successRate: "97%",
     casesHandled: "300+",
   },
   {
     name: "Mohamed Ait Ibour",
-    title: { en: "Founder & Lead Immigration Consultant", fr: "Fondateur et consultant principal en immigration", es: "Fundador y consultor principal de inmigraciÃ³n", ar: "Ø§Ù„Ù…Ø¤Ø³Ø³ ÙˆØ§Ù„Ù…Ø³ØªØ´Ø§Ø± Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠ Ù„Ù„Ù‡Ø¬Ø±Ø©" },
+    title: { en: "Founder & Lead Immigration Consultant", fr: "Fondateur et consultant principal en immigration", es: "Fundador y consultor principal de inmigración", ar: "المؤسس والمستشار الرئيسي للهجرة" },
     rcic: "R789012",
     bio: {
       en: "Mohamed founded IDLOGICE to bring transparent, expert immigration consulting to clients from 50+ countries. He specializes in complex cases including inadmissibility, refusals, and skilled trades immigration.",
-      fr: "Mohamed a fondÃ© IDLOGICE pour apporter une consultation en immigration transparente et experte Ã  des clients de 50+ pays. SpÃ©cialisÃ© dans les cas complexes.",
-      es: "Mohamed fundÃ³ IDLOGICE para brindar consultorÃ­a de inmigraciÃ³n transparente a clientes de 50+ paÃ­ses. Especializado en casos complejos.",
-      ar: "Ø£Ø³Ø³ Ù…Ø­Ù…Ø¯ IDLOGICE Ù„ØªÙ‚Ø¯ÙŠÙ… Ø§Ø³ØªØ´Ø§Ø±Ø§Øª Ù‡Ø¬Ø±Ø© Ø´ÙØ§ÙØ© ÙˆÙ…ØªØ®ØµØµØ© Ù„Ø¹Ù…Ù„Ø§Ø¡ Ù…Ù† Ø£ÙƒØ«Ø± Ù…Ù† 50 Ø¯ÙˆÙ„Ø©. Ù…ØªØ®ØµØµ ÙÙŠ Ø§Ù„Ø­Ø§Ù„Ø§Øª Ø§Ù„Ù…Ø¹Ù‚Ø¯Ø©.",
+      fr: "Mohamed a fondé IDLOGICE pour apporter une consultation en immigration transparente et experte à des clients de 50+ pays. Spécialisé dans les cas complexes.",
+      es: "Mohamed fundó IDLOGICE para brindar consultoría de inmigración transparente a clientes de 50+ países. Especializado en casos complejos.",
+      ar: "أسس محمد IDLOGICE لتقديم استشارات هجرة شفافة ومتخصصة لعملاء من أكثر من 50 دولة. متخصص في الحالات المعقدة.",
     },
     specialties: {
       en: ["Skilled Trades Immigration", "Refusal Appeals", "Study Permits", "Family Sponsorship"],
-      fr: ["Immigration des mÃ©tiers", "Appels de refus", "Permis d'Ã©tudes", "Parrainage familial"],
-      es: ["InmigraciÃ³n de oficios", "Apelaciones de rechazo", "Permisos de estudio", "Patrocinio familiar"],
-      ar: ["Ù‡Ø¬Ø±Ø© Ø§Ù„Ù…Ù‡Ù† Ø§Ù„Ø­Ø±ÙÙŠØ©", "Ø§Ø³ØªØ¦Ù†Ø§Ù Ø±ÙØ¶ Ø§Ù„Ø·Ù„Ø¨Ø§Øª", "ØªØµØ§Ø±ÙŠØ­ Ø§Ù„Ø¯Ø±Ø§Ø³Ø©", "Ø§Ù„ØªÙƒÙÙ„ Ø§Ù„Ø¹Ø§Ø¦Ù„ÙŠ"],
+      fr: ["Immigration des métiers", "Appels de refus", "Permis d'études", "Parrainage familial"],
+      es: ["Inmigración de oficios", "Apelaciones de rechazo", "Permisos de estudio", "Patrocinio familiar"],
+      ar: ["هجرة المهن الحرفية", "استئناف رفض الطلبات", "تصاريح الدراسة", "التكفل العائلي"],
     },
-    languages: { en: ["English", "French", "Arabic", "Spanish"], fr: ["Anglais", "FranÃ§ais", "Arabe", "Espagnol"], es: ["InglÃ©s", "FrancÃ©s", "Ãrabe", "EspaÃ±ol"], ar: ["Ø§Ù„Ø¥Ù†Ø¬Ù„ÙŠØ²ÙŠØ©", "Ø§Ù„ÙØ±Ù†Ø³ÙŠØ©", "Ø§Ù„Ø¹Ø±Ø¨ÙŠØ©", "Ø§Ù„Ø¥Ø³Ø¨Ø§Ù†ÙŠØ©"] },
+    languages: { en: ["English", "French", "Arabic", "Spanish"], fr: ["Anglais", "Français", "Arabe", "Espagnol"], es: ["Inglés", "Francés", "Árabe", "Español"], ar: ["الإنجليزية", "الفرنسية", "العربية", "الإسبانية"] },
     successRate: "95%",
     casesHandled: "500+",
   },
@@ -97,28 +97,28 @@ const TRUST_POINTS = {
     "Unauthorized representatives cannot legally charge fees for immigration advice",
   ],
   fr: [
-    "Les CRIC sont lÃ©galement autorisÃ©s Ã  fournir des conseils en immigration canadienne",
-    "RÃ©glementÃ©s par le CollÃ¨ge des consultants en immigration et en citoyennetÃ© (CICC)",
-    "Soumis Ã  un Code de conduite professionnelle strict",
-    "Doivent souscrire une assurance responsabilitÃ© professionnelle",
-    "Doivent maintenir leurs connaissances Ã  jour du droit de l'immigration canadienne",
-    "Les reprÃ©sentants non autorisÃ©s ne peuvent pas lÃ©galement facturer des honoraires",
+    "Les CRIC sont légalement autorisés à fournir des conseils en immigration canadienne",
+    "Réglementés par le Collège des consultants en immigration et en citoyenneté (CICC)",
+    "Soumis à un Code de conduite professionnelle strict",
+    "Doivent souscrire une assurance responsabilité professionnelle",
+    "Doivent maintenir leurs connaissances à jour du droit de l'immigration canadienne",
+    "Les représentants non autorisés ne peuvent pas légalement facturer des honoraires",
   ],
   es: [
-    "Los RCIC estÃ¡n legalmente autorizados para brindar asesoramiento en inmigraciÃ³n canadiense",
-    "Regulados por el Colegio de Consultores de InmigraciÃ³n y CiudadanÃ­a (CICC)",
-    "Sujetos a un CÃ³digo de Conducta Profesional estricto",
+    "Los RCIC están legalmente autorizados para brindar asesoramiento en inmigración canadiense",
+    "Regulados por el Colegio de Consultores de Inmigración y Ciudadanía (CICC)",
+    "Sujetos a un Código de Conducta Profesional estricto",
     "Deben tener seguro de responsabilidad profesional obligatorio",
-    "Deben mantener conocimientos actualizados de la ley de inmigraciÃ³n canadiense",
+    "Deben mantener conocimientos actualizados de la ley de inmigración canadiense",
     "Los representantes no autorizados no pueden cobrar honorarios legalmente",
   ],
   ar: [
-    "Ù…Ø³ØªØ´Ø§Ø±Ùˆ RCIC Ù…Ø®ÙˆÙ„ÙˆÙ† Ù‚Ø§Ù†ÙˆÙ†ÙŠØ§Ù‹ Ø¨ØªÙ‚Ø¯ÙŠÙ… Ø§Ù„Ù…Ø´ÙˆØ±Ø© ÙÙŠ Ù…Ø¬Ø§Ù„ Ø§Ù„Ù‡Ø¬Ø±Ø© Ø§Ù„ÙƒÙ†Ø¯ÙŠØ©",
-    "Ø®Ø§Ø¶Ø¹ÙˆÙ† Ù„ØªÙ†Ø¸ÙŠÙ… ÙƒÙ„ÙŠØ© Ù…Ø³ØªØ´Ø§Ø±ÙŠ Ø§Ù„Ù‡Ø¬Ø±Ø© ÙˆØ§Ù„Ù…ÙˆØ§Ø·Ù†Ø© (CICC)",
-    "Ù…Ù„ØªØ²Ù…ÙˆÙ† Ø¨Ù…Ø¯ÙˆÙ†Ø© Ø³Ù„ÙˆÙƒ Ù…Ù‡Ù†ÙŠØ© ØµØ§Ø±Ù…Ø© Ù…Ø¹ Ù…Ø­Ø§Ø³Ø¨Ø© ÙƒØ§Ù…Ù„Ø©",
-    "ÙŠØ¬Ø¨ Ø£Ù† ÙŠØ­Ù…Ù„ÙˆØ§ ØªØ£Ù…ÙŠÙ† Ø§Ù„Ù…Ø³Ø¤ÙˆÙ„ÙŠØ© Ø§Ù„Ù…Ù‡Ù†ÙŠØ© Ø§Ù„Ø¥Ù„Ø²Ø§Ù…ÙŠ",
-    "Ù…Ø·Ø§Ù„Ø¨ÙˆÙ† Ø¨Ø§Ù„Ø­ÙØ§Ø¸ Ø¹Ù„Ù‰ Ù…Ø¹Ø±ÙØ© Ù…Ø­Ø¯Ø«Ø© Ø¨Ù‚Ø§Ù†ÙˆÙ† Ø§Ù„Ù‡Ø¬Ø±Ø© Ø§Ù„ÙƒÙ†Ø¯ÙŠ",
-    "Ù„Ø§ ÙŠØ­Ù‚ Ù„Ù„Ù…Ù…Ø«Ù„ÙŠÙ† ØºÙŠØ± Ø§Ù„Ù…Ø±Ø®ØµÙŠÙ† Ù‚Ø§Ù†ÙˆÙ†ÙŠØ§Ù‹ ØªØ­ØµÙŠÙ„ Ø±Ø³ÙˆÙ… Ù…Ù‚Ø§Ø¨Ù„ Ø§Ù„Ù…Ø´ÙˆØ±Ø©",
+    "مستشارو RCIC مخولون قانونياً بتقديم المشورة في مجال الهجرة الكندية",
+    "خاضعون لتنظيم كلية مستشاري الهجرة والمواطنة (CICC)",
+    "ملتزمون بمدونة سلوك مهنية صارمة مع محاسبة كاملة",
+    "يجب أن يحملوا تأمين المسؤولية المهنية الإلزامي",
+    "مطالبون بالحفاظ على معرفة محدثة بقانون الهجرة الكندي",
+    "لا يحق للممثلين غير المرخصين قانونياً تحصيل رسوم مقابل المشورة",
   ],
 };
 
@@ -141,7 +141,7 @@ export default async function TeamPage({ params }: Props) {
   const { locale } = await params;
   const l = (LOCALES.includes(locale as Locale) ? locale : "en") as Locale;
 
-  // JSON-LD built from in-code constants only â€” no user input, XSS-safe
+  // JSON-LD built from in-code constants only — no user input, XSS-safe
   const jsonLdStr = JSON.stringify({
     "@context": "https://schema.org",
     "@graph": CONSULTANTS.map((c) => ({
@@ -162,7 +162,7 @@ export default async function TeamPage({ params }: Props) {
 
   return (
     <>
-      {/* JSON-LD from static constants only â€” no user input reaches __html */}
+      {/* JSON-LD from static constants only — no user input reaches __html */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdStr }} />
       <div dir={l === "ar" ? "rtl" : "ltr"} className="max-w-4xl mx-auto px-4 py-12 sm:py-16">
 
@@ -240,9 +240,9 @@ export default async function TeamPage({ params }: Props) {
           </ul>
           <p className="mt-4 text-xs text-gray-500">
             {l === "en" && <>Verify any RCIC registration at <a href="https://college-ic.ca" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">college-ic.ca</a></>}
-            {l === "fr" && <>VÃ©rifiez toute inscription CRIC sur <a href="https://college-ic.ca" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">college-ic.ca</a></>}
+            {l === "fr" && <>Vérifiez toute inscription CRIC sur <a href="https://college-ic.ca" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">college-ic.ca</a></>}
             {l === "es" && <>Verifique cualquier registro RCIC en <a href="https://college-ic.ca" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">college-ic.ca</a></>}
-            {l === "ar" && <>ØªØ­Ù‚Ù‚ Ù…Ù† Ø£ÙŠ ØªØ³Ø¬ÙŠÙ„ RCIC Ø¹Ù„Ù‰ <a href="https://college-ic.ca" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">college-ic.ca</a></>}
+            {l === "ar" && <>تحقق من أي تسجيل RCIC على <a href="https://college-ic.ca" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">college-ic.ca</a></>}
           </p>
         </section>
 

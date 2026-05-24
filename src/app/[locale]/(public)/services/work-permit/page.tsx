@@ -1,11 +1,16 @@
 ﻿export const revalidate = 86400;
 import type { Metadata } from "next";
+import { generatePageAlternates } from "@/lib/seo/alternates";
 
-export const metadata: Metadata = {
-  title: "Canada Work Permit — LMIA  Open Work Permits",
-  description: "Apply for a Canadian work permit with certified RCIC guidance. LMIA-based, open work permits, intra-company transfers, and CUSMA pathways covered.",
-  openGraph: { title: "Canada Work Permit | IDLOGICE Immigration", description: "Work legally in Canada. Expert RCIC guidance for LMIA, open work permits and employer-specific permits.", url: "https://idlogice.com/services/work-permit" },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return {
+    title: "Canada Work Permit — LMIA & Open Work Permits",
+    description: "Get your Canadian work permit with expert RCIC consultants. LMIA applications, open work permits, and employer-specific permit guidance.",
+    alternates: generatePageAlternates(locale, "/services/work-permit"),
+    openGraph: { title: "Canada Work Permit — LMIA & Open Work Permits", description: "Get your Canadian work permit with expert RCIC consultants. LMIA applications, open work permits, and employer-specific permit guidance.", url: `https://idlogice.com/${locale}/services/work-permit` },
+  };
+}
 
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { PageHero } from "@/components/sections/page-hero";

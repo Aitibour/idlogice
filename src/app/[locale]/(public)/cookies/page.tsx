@@ -1,3 +1,14 @@
+import type { Metadata } from "next";
+import { generatePageAlternates } from "@/lib/seo/alternates";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return {
+    title: "Cookie Policy — IDLOGICE Immigration",
+    description: "Cookie policy for IDLOGICE. Learn how we use cookies to improve your experience on our Canadian immigration platform.",
+    alternates: generatePageAlternates(locale, "/cookies"),
+  } satisfies Metadata;
+}
 import { PageHero } from "@/components/sections/page-hero";
 
 export default function CookiesPage() {

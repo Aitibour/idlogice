@@ -14,8 +14,8 @@ const T = {
   title: {
     en: "Immigration Consultant by City in Canada",
     fr: "Consultant en immigration par ville au Canada",
-    es: "Consultor de inmigraciÃ³n por ciudad en CanadÃ¡",
-    ar: "Ù…Ø³ØªØ´Ø§Ø± Ø§Ù„Ù‡Ø¬Ø±Ø© Ø­Ø³Ø¨ Ø§Ù„Ù…Ø¯ÙŠÙ†Ø© ÙÙŠ ÙƒÙ†Ø¯Ø§",
+    es: "Consultor de inmigración por ciudad en Canadá",
+    ar: "مستشار الهجرة حسب المدينة في كندا",
   },
   desc: {
     en: "Find an RCIC-certified immigration consultant for your target Canadian city. Local programs, job market data, and PNP streams for 12 major cities.",
@@ -26,29 +26,29 @@ const T = {
   h1: {
     en: "Immigration Consultant by Canadian City",
     fr: "Consultant en immigration par ville canadienne",
-    es: "Consultor de inmigraciÃ³n por ciudad canadiense",
-    ar: "Ù…Ø³ØªØ´Ø§Ø± Ø§Ù„Ù‡Ø¬Ø±Ø© Ø­Ø³Ø¨ Ø§Ù„Ù…Ø¯ÙŠÙ†Ø© Ø§Ù„ÙƒÙ†Ø¯ÙŠØ©",
+    es: "Consultor de inmigración por ciudad canadiense",
+    ar: "مستشار الهجرة حسب المدينة الكندية",
   },
   lead: {
     en: "Select your destination city to explore local immigration programs, job market conditions, PNP streams, and connect with RCIC-certified consultants who specialize in that region.",
-    fr: "SÃ©lectionnez votre ville de destination pour explorer les programmes d'immigration locaux, les conditions du marchÃ© du travail, les voies PNP et les consultants RCIC spÃ©cialisÃ©s.",
-    es: "Seleccione su ciudad de destino para explorar programas de inmigraciÃ³n locales, condiciones del mercado laboral, vÃ­as PNP y consultores RCIC especializados en esa regiÃ³n.",
-    ar: "Ø§Ø®ØªØ± Ù…Ø¯ÙŠÙ†Ø© ÙˆØ¬Ù‡ØªÙƒ Ù„Ø§Ø³ØªÙƒØ´Ø§Ù Ø¨Ø±Ø§Ù…Ø¬ Ø§Ù„Ù‡Ø¬Ø±Ø© Ø§Ù„Ù…Ø­Ù„ÙŠØ© ÙˆØ¸Ø±ÙˆÙ Ø³ÙˆÙ‚ Ø§Ù„Ø¹Ù…Ù„ ÙˆÙ…Ø³Ø§Ø±Ø§Øª PNP ÙˆØ§Ù„Ù…Ø³ØªØ´Ø§Ø±ÙŠÙ† Ø§Ù„Ù…Ø¹ØªÙ…Ø¯ÙŠÙ† RCIC.",
+    fr: "Sélectionnez votre ville de destination pour explorer les programmes d'immigration locaux, les conditions du marché du travail, les voies PNP et les consultants RCIC spécialisés.",
+    es: "Seleccione su ciudad de destino para explorar programas de inmigración locales, condiciones del mercado laboral, vías PNP y consultores RCIC especializados en esa región.",
+    ar: "اختر مدينة وجهتك لاستكشاف برامج الهجرة المحلية وظروف سوق العمل ومسارات PNP والمستشارين المعتمدين RCIC.",
   },
   provinceLabel: {
     en: "Province",
     fr: "Province",
     es: "Provincia",
-    ar: "Ø§Ù„Ù…Ù‚Ø§Ø·Ø¹Ø©",
+    ar: "المقاطعة",
   },
   ctaQ: {
     en: "Not sure which city suits your profile?",
-    fr: "Vous ne savez pas quelle ville correspond Ã  votre profil ?",
-    es: "Â¿No sabe quÃ© ciudad se adapta a su perfil?",
-    ar: "ØºÙŠØ± Ù…ØªØ£ÙƒØ¯ Ù…Ù† Ø£ÙŠ Ù…Ø¯ÙŠÙ†Ø© ØªÙ†Ø§Ø³Ø¨ Ù…Ù„ÙÙƒØŸ",
+    fr: "Vous ne savez pas quelle ville correspond à votre profil ?",
+    es: "¿No sabe qué ciudad se adapta a su perfil?",
+    ar: "غير متأكد من أي مدينة تناسب ملفك؟",
   },
-  ctaBtn: { en: "Free Evaluation", fr: "Ã‰valuation gratuite", es: "EvaluaciÃ³n gratuita", ar: "ØªÙ‚ÙŠÙŠÙ… Ù…Ø¬Ø§Ù†ÙŠ" },
-  breadHome: { en: "Home", fr: "Accueil", es: "Inicio", ar: "Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©" },
+  ctaBtn: { en: "Free Evaluation", fr: "Évaluation gratuite", es: "Evaluación gratuita", ar: "تقييم مجاني" },
+  breadHome: { en: "Home", fr: "Accueil", es: "Inicio", ar: "الرئيسية" },
 } as const;
 
 export function generateStaticParams() {

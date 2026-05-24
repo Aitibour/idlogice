@@ -2,6 +2,7 @@ import { tryCreateServiceClient } from "@/lib/supabase/service";
 import { PostCard } from "@/components/blog/PostCard";
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
+import { generatePageAlternates } from "@/lib/seo/alternates";
 
 export const revalidate = 3600;
 
@@ -13,6 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: t("meta_title"),
     description: t("meta_desc"),
+      alternates: generatePageAlternates(locale, "/blog"),
   };
 }
 

@@ -1,11 +1,16 @@
 ﻿export const revalidate = 86400;
 import type { Metadata } from "next";
+import { generatePageAlternates } from "@/lib/seo/alternates";
 
-export const metadata: Metadata = {
-  title: "Express Entry Canada — Federal Skilled Worker Program",
-  description: "Apply to Canada through Express Entry. CICC-registered consultants help optimise your CRS score and submit a winning permanent residence application.",
-  openGraph: { title: "Express Entry Canada | IDLOGICE Immigration", description: "Fastest route to Canadian permanent residence. Expert CRS optimization by certified RCICs.", url: "https://idlogice.com/services/express-entry" },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return {
+    title: "Express Entry Canada — Federal Skilled Worker Program",
+    description: "Apply to Canada through Express Entry. CICC-registered consultants help optimise your CRS score and submit a winning permanent residence application.",
+    alternates: generatePageAlternates(locale, "/services/express-entry"),
+    openGraph: { title: "Express Entry Canada — Federal Skilled Worker Program", description: "Apply to Canada through Express Entry. CICC-registered consultants help optimise your CRS score and submit a winning permanent residence application.", url: `https://idlogice.com/${locale}/services/express-entry` },
+  };
+}
 
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { PageHero } from "@/components/sections/page-hero";

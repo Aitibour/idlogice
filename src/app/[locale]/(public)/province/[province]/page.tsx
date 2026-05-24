@@ -80,26 +80,26 @@ const UI = {
     noCRSNote: "Usa su propio sistema de seleccion (no CRS de Express Entry)",
   },
   ar: {
-    breadHome: "Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©",
-    breadProvince: "Ø£Ø¯Ù„Ø© Ø§Ù„Ù…Ù‚Ø§Ø·Ø¹Ø§Øª",
-    capitalLabel: "Ø§Ù„Ø¹Ø§ØµÙ…Ø©",
-    populationLabel: "Ø§Ù„Ø³ÙƒØ§Ù†",
-    codeLabel: "Ø±Ù…Ø² Ø§Ù„Ù…Ù‚Ø§Ø·Ø¹Ø©",
-    pnpH: "Ø¨Ø±Ù†Ø§Ù…Ø¬ Ø§Ù„Ù…Ø±Ø´Ø­ÙŠÙ† Ø§Ù„Ø¥Ù‚Ù„ÙŠÙ…ÙŠÙŠÙ†",
-    streamsH: "Ù…Ø³Ø§Ø±Ø§Øª PNP Ø§Ù„Ù…ØªØ§Ø­Ø©",
-    occupationsH: "Ø§Ù„Ù…Ù‡Ù† Ø§Ù„Ù…Ø·Ù„ÙˆØ¨Ø©",
-    keyFactsH: "Ù„Ù…Ø§Ø°Ø§ ØªÙ‡Ø§Ø¬Ø± Ø¥Ù„Ù‰",
-    requirementsH: "Ø§Ù„Ù…ØªØ·Ù„Ø¨Ø§Øª Ø§Ù„Ø¹Ø§Ù…Ø©",
-    faqH: "Ø§Ù„Ø£Ø³Ø¦Ù„Ø© Ø§Ù„Ø´Ø§Ø¦Ø¹Ø©",
-    ctaH2: "Ø§Ù„Ø¥Ù‚Ù„ÙŠÙ…ÙŠ",
-    ctaTxt: "ÙŠØªØ®ØµØµ Ù…Ø³ØªØ´Ø§Ø±ÙˆÙ†Ø§ Ø§Ù„Ù…Ø¹ØªÙ…Ø¯ÙˆÙ† RCIC ÙÙŠ Ø¨Ø±Ø§Ù…Ø¬ Ø§Ù„Ù‡Ø¬Ø±Ø© Ø§Ù„Ø¥Ù‚Ù„ÙŠÙ…ÙŠØ©. Ù†Ø³Ø§Ø¹Ø¯ Ø§Ù„Ø¹Ù…Ø§Ù„ Ø§Ù„Ù…Ù‡Ø±Ø© Ø¹Ù„Ù‰ Ø§Ù„ØªÙ†Ù‚Ù„ ÙÙŠ Ù…Ø³Ø§Ø±Ø§Øª PNP.",
-    ctaBtn: "Ø§Ø­ØµÙ„ Ø¹Ù„Ù‰ ØªÙ‚ÙŠÙŠÙ… Ù…Ø¬Ø§Ù†ÙŠ",
-    relatedH: "Ù…Ù‚Ø§Ø·Ø¹Ø§Øª ÙƒÙ†Ø¯ÙŠØ© Ø£Ø®Ø±Ù‰",
-    drawsLink: "Ø£Ø­Ø¯Ø« Ø§Ù„Ø³Ø­ÙˆØ¨Ø§Øª",
-    fromLink: "Ø­Ø³Ø¨ Ø§Ù„Ø¨Ù„Ø¯",
-    programsLink: "Ø¬Ù…ÙŠØ¹ Ø§Ù„Ø¨Ø±Ø§Ù…Ø¬",
-    minCRSLabel: "Ø§Ù„Ø­Ø¯ Ø§Ù„Ø£Ø¯Ù†Ù‰ Ø§Ù„Ù†Ù…ÙˆØ°Ø¬ÙŠ Ù„Ù€ CRS",
-    noCRSNote: "ÙŠØ³ØªØ®Ø¯Ù… Ù†Ø¸Ø§Ù… Ø§Ø®ØªÙŠØ§Ø± Ø®Ø§Øµ (Ù„ÙŠØ³ CRS Ø§Ù„Ø®Ø§Øµ Ø¨Ù€ Entree express)",
+    breadHome: "الرئيسية",
+    breadProvince: "أدلة المقاطعات",
+    capitalLabel: "العاصمة",
+    populationLabel: "السكان",
+    codeLabel: "رمز المقاطعة",
+    pnpH: "برنامج المرشحين الإقليميين",
+    streamsH: "مسارات PNP المتاحة",
+    occupationsH: "المهن المطلوبة",
+    keyFactsH: "لماذا تهاجر إلى",
+    requirementsH: "المتطلبات العامة",
+    faqH: "الأسئلة الشائعة",
+    ctaH2: "الإقليمي",
+    ctaTxt: "يتخصص مستشارونا المعتمدون RCIC في برامج الهجرة الإقليمية. نساعد العمال المهرة على التنقل في مسارات PNP.",
+    ctaBtn: "احصل على تقييم مجاني",
+    relatedH: "مقاطعات كندية أخرى",
+    drawsLink: "أحدث السحوبات",
+    fromLink: "حسب البلد",
+    programsLink: "جميع البرامج",
+    minCRSLabel: "الحد الأدنى النموذجي لـ CRS",
+    noCRSNote: "يستخدم نظام اختيار خاص (ليس CRS الخاص بـ Entree express)",
   },
 } as const;
 
@@ -118,10 +118,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const pnpName = l === "fr" ? prov.pnpName.fr : prov.pnpName.en;
 
   const titles: Record<Locale, string> = {
-    en: `${name} Immigration Guide â€” ${pnpName}`,
-    fr: `Guide immigration ${name} â€” ${prov.pnpName.fr}`,
+    en: `${name} Immigration Guide — ${pnpName}`,
+    fr: `Guide immigration ${name} — ${prov.pnpName.fr}`,
     es: `Guia de inmigracion ${name}`,
-    ar: `Ø¯Ù„ÙŠÙ„ Ù‡Ø¬Ø±Ø© ${name}`,
+    ar: `دليل هجرة ${name}`,
   };
   const descs: Record<Locale, string> = {
     en: `Complete guide to immigrating to ${name}, Canada. PNP streams, requirements, in-demand occupations, and free profile evaluation.`,
@@ -156,7 +156,7 @@ export default async function ProvincePage({ params }: Props) {
   const pnpName = l === "fr" ? prov.pnpName.fr : prov.pnpName.en;
   const url = `${BASE}/${l}/province/${slug}`;
 
-  // JSON-LD built from in-code constants only â€” no user input, XSS-safe
+  // JSON-LD built from in-code constants only — no user input, XSS-safe
   const faqItems = prov.faq[l === "fr" ? "fr" : "en"] ?? prov.faq.en;
   const jsonLdStr = JSON.stringify({
     "@context": "https://schema.org",
@@ -196,7 +196,7 @@ export default async function ProvincePage({ params }: Props) {
 
   return (
     <>
-      {/* JSON-LD from static constants only â€” no user input reaches __html */}
+      {/* JSON-LD from static constants only — no user input reaches __html */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdStr }} />
       <article dir={l === "ar" ? "rtl" : "ltr"} className="max-w-4xl mx-auto px-4 py-12 sm:py-16">
 
@@ -211,16 +211,16 @@ export default async function ProvincePage({ params }: Props) {
         <div className="mb-8">
           <div className="flex flex-wrap items-center gap-3 mb-3 text-sm text-gray-500">
             <span>{ui.codeLabel}: <strong className="text-gray-700">{prov.code}</strong></span>
-            <span aria-hidden>Â·</span>
+            <span aria-hidden>·</span>
             <span>{ui.capitalLabel}: <strong className="text-gray-700">{prov.capital}</strong></span>
-            <span aria-hidden>Â·</span>
+            <span aria-hidden>·</span>
             <span>{ui.populationLabel}: <strong className="text-gray-700">{prov.population.toLocaleString()}</strong></span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
             {l === "en" && `${name} Immigration Guide`}
             {l === "fr" && `Guide d'immigration en ${name}`}
             {l === "es" && `Guia de inmigracion a ${name}`}
-            {l === "ar" && `Ø¯Ù„ÙŠÙ„ Ù‡Ø¬Ø±Ø© ${name}`}
+            {l === "ar" && `دليل هجرة ${name}`}
           </h1>
           <p className="text-base text-primary font-semibold mb-4">{pnpName}</p>
           <p className="text-lg text-gray-600 leading-relaxed">{prov.lead[l]}</p>
@@ -291,7 +291,7 @@ export default async function ProvincePage({ params }: Props) {
             {l === "en" && `Apply for ${name} ${ui.ctaH2}`}
             {l === "fr" && `Postuler pour une ${ui.ctaH2} en ${name}`}
             {l === "es" && `Solicitar nominacion ${ui.ctaH2} de ${name}`}
-            {l === "ar" && `Ø§Ù„ØªÙ‚Ø¯Ù… Ù„Ù„ØªØ±Ø´ÙŠØ­ ${ui.ctaH2} ÙÙŠ ${name}`}
+            {l === "ar" && `التقدم للترشيح ${ui.ctaH2} في ${name}`}
           </h2>
           <p className="text-blue-100 mb-6 max-w-lg mx-auto">{ui.ctaTxt}</p>
           <Link
@@ -332,9 +332,9 @@ export default async function ProvincePage({ params }: Props) {
           <section className="mb-10">
             <h2 className="text-xl font-semibold text-gray-800 mb-4">
               {l === "en" && `Immigration Consultants in ${name}`}
-              {l === "fr" && `Consultants en immigration Ã  ${name}`}
-              {l === "es" && `Consultores de inmigraciÃ³n en ${name}`}
-              {l === "ar" && `Ù…Ø³ØªØ´Ø§Ø±Ùˆ Ø§Ù„Ù‡Ø¬Ø±Ø© ÙÙŠ ${name}`}
+              {l === "fr" && `Consultants en immigration à ${name}`}
+              {l === "es" && `Consultores de inmigración en ${name}`}
+              {l === "ar" && `مستشارو الهجرة في ${name}`}
             </h2>
             <div className="grid sm:grid-cols-2 gap-3">
               {maillage.cityLinks.map((link) => (

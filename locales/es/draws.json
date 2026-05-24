@@ -2,7 +2,7 @@
   "draws": {
     "meta": {
       "title": "Seguimiento de Sorteos Express Entry — Puntajes CRS",
-      "description": "Rastrea cada sorteo de Express Entry en tiempo real. Consulta los últimos puntajes de corte CRS, el número de invitaciones y las tendencias históricas actualizadas desde IRCC."
+      "description": "Rastrea cada sorteo de Express Entry en tiempo real. Puntajes de corte CRS, invitaciones y tendencias históricas actualizadas desde IRCC."
     },
     "hero": {
       "badge": "Datos IRCC en vivo",

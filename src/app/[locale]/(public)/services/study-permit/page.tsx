@@ -1,11 +1,16 @@
 ﻿export const revalidate = 86400;
 import type { Metadata } from "next";
+import { generatePageAlternates } from "@/lib/seo/alternates";
 
-export const metadata: Metadata = {
-  title: "Canada Study Permit — Student Visa Application",
-  description: "Get your Canadian study permit with CICC-registered consultants. Guidance through DLI selection, application, and the PR pathway via PGWP.",
-  openGraph: { title: "Canada Study Permit | IDLOGICE Immigration", description: "Study in Canada and build a path to PR. Expert guidance for study permits and Post-Graduate Work Permits.", url: "https://idlogice.com/services/study-permit" },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return {
+    title: "Canada Study Permit — Student Visa Application",
+    description: "Get your Canadian study permit with CICC-registered consultants. Guidance through DLI selection, application, and PR pathway via PGWP.",
+    alternates: generatePageAlternates(locale, "/services/study-permit"),
+    openGraph: { title: "Canada Study Permit — Student Visa Application", description: "Get your Canadian study permit with CICC-registered consultants. Guidance through DLI selection, application, and PR pathway via PGWP.", url: `https://idlogice.com/${locale}/services/study-permit` },
+  };
+}
 
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { PageHero } from "@/components/sections/page-hero";

@@ -1,11 +1,16 @@
 ﻿export const revalidate = 86400;
 import type { Metadata } from "next";
+import { generatePageAlternates } from "@/lib/seo/alternates";
 
-export const metadata: Metadata = {
-  title: "Family Sponsorship Canada — Reunite With Your Family",
-  description: "Sponsor your spouse, children, parents or grandparents for Canadian permanent residence. Certified RCICs handle the complete sponsorship application.",
-  openGraph: { title: "Family Sponsorship Canada | IDLOGICE Immigration", description: "Reunite with loved ones in Canada. Expert guidance for spousal, parental and family sponsorship applications.", url: "https://idlogice.com/services/family-sponsorship" },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return {
+    title: "Family Sponsorship Canada — Reunite With Your Family",
+    description: "Sponsor your family to Canada. Expert RCIC consultants guide you through the sponsorship process step by step.",
+    alternates: generatePageAlternates(locale, "/services/family-sponsorship"),
+    openGraph: { title: "Family Sponsorship Canada — Reunite With Your Family", description: "Sponsor your family to Canada. Expert RCIC consultants guide you through the sponsorship process step by step.", url: `https://idlogice.com/${locale}/services/family-sponsorship` },
+  };
+}
 
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { PageHero } from "@/components/sections/page-hero";

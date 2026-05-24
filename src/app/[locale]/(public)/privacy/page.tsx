@@ -1,3 +1,14 @@
+import type { Metadata } from "next";
+import { generatePageAlternates } from "@/lib/seo/alternates";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return {
+    title: "Privacy Policy — IDLOGICE Immigration",
+    description: "Privacy policy for IDLOGICE. Learn how we collect and protect your personal data on our Canadian immigration consulting platform.",
+    alternates: generatePageAlternates(locale, "/privacy"),
+  } satisfies Metadata;
+}
 import { PageHero } from "@/components/sections/page-hero";
 
 export default function PrivacyPage() {
