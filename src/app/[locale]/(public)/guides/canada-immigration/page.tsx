@@ -1,6 +1,7 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { generatePageAlternates } from "@/lib/seo/alternates";
 import { tryCreateServiceClient } from "@/lib/supabase/service";
 
 export const revalidate = 3600;
@@ -27,32 +28,32 @@ const CLUSTERS: ClusterT[] = [
   {
     id: "immigration",
     slug_includes: ["immigration-guide", "immigration-updates", "immigrate-", "immigration-process", "immigration-programs", "family-sponsorship"],
-    title: { en: "Canada Immigration Programs", fr: "Programmes d'immigration au Canada", es: "Programas de inmigración a Canadá", ar: "برامج الهجرة إلى كندا" },
-    intro: { en: "Permanent residence pathways for skilled workers, families and students — from Express Entry to provincial nomination and family sponsorship.", fr: "Voies de résidence permanente pour travailleurs qualifiés, familles et étudiants — d'Entrée express au PCP et au parrainage familial.", es: "Vías de residencia permanente: Express Entry, PNP y patrocinio familiar.", ar: "مسارات الإقامة الدائمة للعمال المهرة والعائلات والطلاب." },
+    title: { en: "Canada Immigration Programs", fr: "Programmes d'immigration au Canada", es: "Programas de inmigraciÃ³n a CanadÃ¡", ar: "Ø¨Ø±Ø§Ù…Ø¬ Ø§Ù„Ù‡Ø¬Ø±Ø© Ø¥Ù„Ù‰ ÙƒÙ†Ø¯Ø§" },
+    intro: { en: "Permanent residence pathways for skilled workers, families and students â€” from Express Entry to provincial nomination and family sponsorship.", fr: "Voies de rÃ©sidence permanente pour travailleurs qualifiÃ©s, familles et Ã©tudiants â€” d'EntrÃ©e express au PCP et au parrainage familial.", es: "VÃ­as de residencia permanente: Express Entry, PNP y patrocinio familiar.", ar: "Ù…Ø³Ø§Ø±Ø§Øª Ø§Ù„Ø¥Ù‚Ø§Ù…Ø© Ø§Ù„Ø¯Ø§Ø¦Ù…Ø© Ù„Ù„Ø¹Ù…Ø§Ù„ Ø§Ù„Ù…Ù‡Ø±Ø© ÙˆØ§Ù„Ø¹Ø§Ø¦Ù„Ø§Øª ÙˆØ§Ù„Ø·Ù„Ø§Ø¨." },
   },
   {
     id: "work",
     slug_includes: ["work-in-canada"],
-    title: { en: "Work in Canada", fr: "Travailler au Canada", es: "Trabajar en Canadá", ar: "العمل في كندا" },
-    intro: { en: "Open and employer-specific work permits, LMIA-exempt pathways, in-demand occupations, and the best provinces for newcomers.", fr: "Permis de travail ouverts et liés à un employeur, voies sans EIMT, professions en demande.", es: "Permisos de trabajo abiertos y específicos, vías exentas de LMIA, ocupaciones en demanda.", ar: "تصاريح العمل المفتوحة والمحددة، والمسارات المعفاة من LMIA، والمهن المطلوبة." },
+    title: { en: "Work in Canada", fr: "Travailler au Canada", es: "Trabajar en CanadÃ¡", ar: "Ø§Ù„Ø¹Ù…Ù„ ÙÙŠ ÙƒÙ†Ø¯Ø§" },
+    intro: { en: "Open and employer-specific work permits, LMIA-exempt pathways, in-demand occupations, and the best provinces for newcomers.", fr: "Permis de travail ouverts et liÃ©s Ã  un employeur, voies sans EIMT, professions en demande.", es: "Permisos de trabajo abiertos y especÃ­ficos, vÃ­as exentas de LMIA, ocupaciones en demanda.", ar: "ØªØµØ§Ø±ÙŠØ­ Ø§Ù„Ø¹Ù…Ù„ Ø§Ù„Ù…ÙØªÙˆØ­Ø© ÙˆØ§Ù„Ù…Ø­Ø¯Ø¯Ø©ØŒ ÙˆØ§Ù„Ù…Ø³Ø§Ø±Ø§Øª Ø§Ù„Ù…Ø¹ÙØ§Ø© Ù…Ù† LMIAØŒ ÙˆØ§Ù„Ù…Ù‡Ù† Ø§Ù„Ù…Ø·Ù„ÙˆØ¨Ø©." },
   },
   {
     id: "tourist",
     slug_includes: ["tourist-visa", "super-visa"],
-    title: { en: "Canada Tourist Visa & Super Visa", fr: "Visa touriste et Super Visa Canada", es: "Visa de turista y Super Visa", ar: "تأشيرة السائح والتأشيرة الممتازة" },
-    intro: { en: "Step-by-step guides to securing a TRV, reapplying after refusal, and using the Super Visa for parents and grandparents.", fr: "Guides étape par étape pour obtenir un visa de résident temporaire et utiliser le Super Visa.", es: "Guías paso a paso para obtener una visa de residente temporal y utilizar la Super Visa.", ar: "أدلة خطوة بخطوة للحصول على تأشيرة الإقامة المؤقتة." },
+    title: { en: "Canada Tourist Visa & Super Visa", fr: "Visa touriste et Super Visa Canada", es: "Visa de turista y Super Visa", ar: "ØªØ£Ø´ÙŠØ±Ø© Ø§Ù„Ø³Ø§Ø¦Ø­ ÙˆØ§Ù„ØªØ£Ø´ÙŠØ±Ø© Ø§Ù„Ù…Ù…ØªØ§Ø²Ø©" },
+    intro: { en: "Step-by-step guides to securing a TRV, reapplying after refusal, and using the Super Visa for parents and grandparents.", fr: "Guides Ã©tape par Ã©tape pour obtenir un visa de rÃ©sident temporaire et utiliser le Super Visa.", es: "GuÃ­as paso a paso para obtener una visa de residente temporal y utilizar la Super Visa.", ar: "Ø£Ø¯Ù„Ø© Ø®Ø·ÙˆØ© Ø¨Ø®Ø·ÙˆØ© Ù„Ù„Ø­ØµÙˆÙ„ Ø¹Ù„Ù‰ ØªØ£Ø´ÙŠØ±Ø© Ø§Ù„Ø¥Ù‚Ø§Ù…Ø© Ø§Ù„Ù…Ø¤Ù‚ØªØ©." },
   },
   {
     id: "consultation",
     slug_includes: ["consultation", "rcic-vs-lawyer"],
-    title: { en: "Canada Immigration Consultation", fr: "Consultation en immigration", es: "Consulta de inmigración", ar: "استشارة الهجرة الكندية" },
-    intro: { en: "Why a licensed RCIC matters, how a Canadian immigration lawyer differs, and what to expect during your first consultation.", fr: "Pourquoi un RCIC agréé est important et à quoi s'attendre lors de votre première consultation.", es: "Por qué importa un RCIC con licencia y qué esperar en su primera consulta.", ar: "أهمية مستشار RCIC مرخص وما يمكن توقعه في الاستشارة الأولى." },
+    title: { en: "Canada Immigration Consultation", fr: "Consultation en immigration", es: "Consulta de inmigraciÃ³n", ar: "Ø§Ø³ØªØ´Ø§Ø±Ø© Ø§Ù„Ù‡Ø¬Ø±Ø© Ø§Ù„ÙƒÙ†Ø¯ÙŠØ©" },
+    intro: { en: "Why a licensed RCIC matters, how a Canadian immigration lawyer differs, and what to expect during your first consultation.", fr: "Pourquoi un RCIC agrÃ©Ã© est important et Ã  quoi s'attendre lors de votre premiÃ¨re consultation.", es: "Por quÃ© importa un RCIC con licencia y quÃ© esperar en su primera consulta.", ar: "Ø£Ù‡Ù…ÙŠØ© Ù…Ø³ØªØ´Ø§Ø± RCIC Ù…Ø±Ø®Øµ ÙˆÙ…Ø§ ÙŠÙ…ÙƒÙ† ØªÙˆÙ‚Ø¹Ù‡ ÙÙŠ Ø§Ù„Ø§Ø³ØªØ´Ø§Ø±Ø© Ø§Ù„Ø£ÙˆÙ„Ù‰." },
   },
   {
     id: "evaluation",
     slug_includes: ["evaluation", "crs"],
-    title: { en: "Free Canada Immigration Evaluation", fr: "Évaluation gratuite d'immigration", es: "Evaluación gratuita de inmigración", ar: "تقييم مجاني للهجرة" },
-    intro: { en: "Tools to know if you qualify for Express Entry, PNP, or another pathway — including our CRS calculator and profile evaluation.", fr: "Outils gratuits pour savoir si vous êtes admissible à Entrée express, à un PCP ou à une autre voie.", es: "Herramientas gratuitas para saber si calificas para Express Entry, PNP u otra vía.", ar: "أدوات مجانية لمعرفة ما إذا كنت مؤهلاً." },
+    title: { en: "Free Canada Immigration Evaluation", fr: "Ã‰valuation gratuite d'immigration", es: "EvaluaciÃ³n gratuita de inmigraciÃ³n", ar: "ØªÙ‚ÙŠÙŠÙ… Ù…Ø¬Ø§Ù†ÙŠ Ù„Ù„Ù‡Ø¬Ø±Ø©" },
+    intro: { en: "Tools to know if you qualify for Express Entry, PNP, or another pathway â€” including our CRS calculator and profile evaluation.", fr: "Outils gratuits pour savoir si vous Ãªtes admissible Ã  EntrÃ©e express, Ã  un PCP ou Ã  une autre voie.", es: "Herramientas gratuitas para saber si calificas para Express Entry, PNP u otra vÃ­a.", ar: "Ø£Ø¯ÙˆØ§Øª Ù…Ø¬Ø§Ù†ÙŠØ© Ù„Ù…Ø¹Ø±ÙØ© Ù…Ø§ Ø¥Ø°Ø§ ÙƒÙ†Øª Ù…Ø¤Ù‡Ù„Ø§Ù‹." },
   },
 ];
 
@@ -60,38 +61,38 @@ const I18N = {
   heading: {
     en: "Canada Immigration: The Complete 2026 Guide",
     fr: "Immigration au Canada : Le guide complet 2026",
-    es: "Inmigración a Canadá: La guía completa 2026",
-    ar: "الهجرة إلى كندا: الدليل الكامل 2026",
+    es: "InmigraciÃ³n a CanadÃ¡: La guÃ­a completa 2026",
+    ar: "Ø§Ù„Ù‡Ø¬Ø±Ø© Ø¥Ù„Ù‰ ÙƒÙ†Ø¯Ø§: Ø§Ù„Ø¯Ù„ÙŠÙ„ Ø§Ù„ÙƒØ§Ù…Ù„ 2026",
   },
   lead: {
-    en: "Whether you're applying for permanent residence, planning a work or study term, organising a family visit, or simply trying to figure out where to start — this hub gathers every guide we publish on Canadian immigration.",
-    fr: "Que vous demandiez la résidence permanente, planifiiez un séjour de travail ou d'études, ou cherchiez simplement par où commencer — ce centre rassemble tous nos guides.",
-    es: "Ya sea que esté solicitando la residencia permanente o planeando un período de trabajo — este centro reúne todas las guías que publicamos.",
-    ar: "سواء كنت تتقدم بطلب للإقامة الدائمة أو تخطط لفترة عمل أو دراسة — يجمع هذا المركز كل أدلتنا.",
+    en: "Whether you're applying for permanent residence, planning a work or study term, organising a family visit, or simply trying to figure out where to start â€” this hub gathers every guide we publish on Canadian immigration.",
+    fr: "Que vous demandiez la rÃ©sidence permanente, planifiiez un sÃ©jour de travail ou d'Ã©tudes, ou cherchiez simplement par oÃ¹ commencer â€” ce centre rassemble tous nos guides.",
+    es: "Ya sea que estÃ© solicitando la residencia permanente o planeando un perÃ­odo de trabajo â€” este centro reÃºne todas las guÃ­as que publicamos.",
+    ar: "Ø³ÙˆØ§Ø¡ ÙƒÙ†Øª ØªØªÙ‚Ø¯Ù… Ø¨Ø·Ù„Ø¨ Ù„Ù„Ø¥Ù‚Ø§Ù…Ø© Ø§Ù„Ø¯Ø§Ø¦Ù…Ø© Ø£Ùˆ ØªØ®Ø·Ø· Ù„ÙØªØ±Ø© Ø¹Ù…Ù„ Ø£Ùˆ Ø¯Ø±Ø§Ø³Ø© â€” ÙŠØ¬Ù…Ø¹ Ù‡Ø°Ø§ Ø§Ù„Ù…Ø±ÙƒØ² ÙƒÙ„ Ø£Ø¯Ù„ØªÙ†Ø§.",
   },
   evalCta: {
-    en: "Free Profile Evaluation →",
-    fr: "Évaluation de profil gratuite →",
-    es: "Evaluación de perfil gratuita →",
-    ar: "تقييم الملف المجاني →",
+    en: "Free Profile Evaluation â†’",
+    fr: "Ã‰valuation de profil gratuite â†’",
+    es: "EvaluaciÃ³n de perfil gratuita â†’",
+    ar: "ØªÙ‚ÙŠÙŠÙ… Ø§Ù„Ù…Ù„Ù Ø§Ù„Ù…Ø¬Ø§Ù†ÙŠ â†’",
   },
   hubLabel: {
     en: "Resource hub",
     fr: "Centre de ressources",
     es: "Centro de recursos",
-    ar: "مركز الموارد",
+    ar: "Ù…Ø±ÙƒØ² Ø§Ù„Ù…ÙˆØ§Ø±Ø¯",
   },
   metaTitle: {
-    en: "Canada Immigration Guide — Programs, Visas, Work & Free Evaluation",
-    fr: "Guide d'immigration au Canada — Programmes, visas, travail",
-    es: "Guía de inmigración a Canadá — Programas, visas, trabajo",
-    ar: "دليل الهجرة إلى كندا — البرامج والتأشيرات",
+    en: "Canada Immigration Guide â€” Programs, Visas, Work & Free Evaluation",
+    fr: "Guide d'immigration au Canada â€” Programmes, visas, travail",
+    es: "GuÃ­a de inmigraciÃ³n a CanadÃ¡ â€” Programas, visas, trabajo",
+    ar: "Ø¯Ù„ÙŠÙ„ Ø§Ù„Ù‡Ø¬Ø±Ø© Ø¥Ù„Ù‰ ÙƒÙ†Ø¯Ø§ â€” Ø§Ù„Ø¨Ø±Ø§Ù…Ø¬ ÙˆØ§Ù„ØªØ£Ø´ÙŠØ±Ø§Øª",
   },
   metaDesc: {
     en: "The complete guide to Canadian immigration: Express Entry, PNP, work permits, tourist visa, RCIC consultation and free profile evaluation. Updated 2026.",
-    fr: "Le guide complet sur l'immigration au Canada. Express Entry, PCP, permis de travail, visa touristique, RCIC. Mis à jour 2026.",
-    es: "La guía completa sobre la inmigración a Canadá. Express Entry, PNP, permisos de trabajo. Actualizado 2026.",
-    ar: "الدليل الكامل للهجرة إلى كندا. Express Entry وPNP وتصاريح العمل وتأشيرة السائح. تحديث 2026.",
+    fr: "Le guide complet sur l'immigration au Canada. Express Entry, PCP, permis de travail, visa touristique, RCIC. Mis Ã  jour 2026.",
+    es: "La guÃ­a completa sobre la inmigraciÃ³n a CanadÃ¡. Express Entry, PNP, permisos de trabajo. Actualizado 2026.",
+    ar: "Ø§Ù„Ø¯Ù„ÙŠÙ„ Ø§Ù„ÙƒØ§Ù…Ù„ Ù„Ù„Ù‡Ø¬Ø±Ø© Ø¥Ù„Ù‰ ÙƒÙ†Ø¯Ø§. Express Entry ÙˆPNP ÙˆØªØµØ§Ø±ÙŠØ­ Ø§Ù„Ø¹Ù…Ù„ ÙˆØªØ£Ø´ÙŠØ±Ø© Ø§Ù„Ø³Ø§Ø¦Ø­. ØªØ­Ø¯ÙŠØ« 2026.",
   },
 } as const;
 
@@ -108,12 +109,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description: desc,
-    alternates: {
-      canonical: url,
-      languages: Object.fromEntries(
-        LOCALES.map((l) => [l, `${BASE}/${l}/guides/canada-immigration`]),
-      ),
-    },
+    alternates: generatePageAlternates(locale, "/guides/canada-immigration"),
     openGraph: { type: "article", url, title, description: desc, siteName: "IDLOGICE" },
     twitter: { card: "summary_large_image", title, description: desc },
   };
@@ -234,3 +230,4 @@ export default async function CanadaImmigrationHub({ params }: Props) {
     </>
   );
 }
+

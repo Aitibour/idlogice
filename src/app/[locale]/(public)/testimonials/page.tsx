@@ -1,9 +1,8 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Client Success Stories — IDLOGICE Immigration",
+  title: "Client Success Stories â€” IDLOGICE Immigration",
   description: "Real stories from clients who achieved Canadian permanent residency, work permits, and study permits with IDLOGICE's CICC-registered immigration consultants.",
-  alternates: { canonical: "https://idlogice.com/testimonials" },
 };
 
 import { setRequestLocale, getTranslations } from "next-intl/server";
@@ -14,15 +13,15 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal";
 const EXTRA_STORIES = [
   {
     name: "Mei Lin Chen",
-    origin: "China → Montreal",
+    origin: "China â†’ Montreal",
     text: "After three years of trying on my own, I found IDLOGICE. Within six months they had my Express Entry profile optimized, my documents in order, and I received my ITA. The team is incredibly knowledgeable and always available to answer questions.",
-    result: "Express Entry — Permanent Resident",
+    result: "Express Entry â€” Permanent Resident",
     rating: 5,
     category: "Express Entry",
   },
   {
     name: "Ahmed Benali",
-    origin: "Algeria → Quebec City",
+    origin: "Algeria â†’ Quebec City",
     text: "I needed the Quebec Skilled Worker program and IDLOGICE was the only firm that truly understood the Quebec immigration system. They prepared a flawless application and I was approved in record time. Exceptional service.",
     result: "Quebec Skilled Worker Program",
     rating: 5,
@@ -30,7 +29,7 @@ const EXTRA_STORIES = [
   },
   {
     name: "Priya Nair",
-    origin: "India → Ottawa",
+    origin: "India â†’ Ottawa",
     text: "The level of care and attention to detail is outstanding. They caught issues in my previous application that would have caused a refusal, corrected them, and submitted a perfect file. My work permit was approved first try.",
     result: "Employer-Specific Work Permit",
     rating: 5,
@@ -38,25 +37,25 @@ const EXTRA_STORIES = [
   },
   {
     name: "Marcus Okonkwo",
-    origin: "Nigeria → Toronto",
+    origin: "Nigeria â†’ Toronto",
     text: "IDLOGICE helped our whole family. My wife and I both got our PRs through Express Entry, and our two children are now Canadian citizens by birth. The team treated us like family throughout the entire journey.",
-    result: "Family Express Entry — Permanent Residents",
+    result: "Family Express Entry â€” Permanent Residents",
     rating: 5,
     category: "Family",
   },
   {
     name: "Valentina Rossi",
-    origin: "Italy → Vancouver",
+    origin: "Italy â†’ Vancouver",
     text: "I was nervous about the student permit process, but IDLOGICE made it completely stress-free. They prepared every document, wrote a compelling letter of intent, and my permit arrived in just 5 weeks. Now finishing my MBA at UBC!",
-    result: "Study Permit — UBC Graduate Program",
+    result: "Study Permit â€” UBC Graduate Program",
     rating: 5,
     category: "Study Permit",
   },
   {
     name: "Luis Herrera",
-    origin: "Colombia → Calgary",
+    origin: "Colombia â†’ Calgary",
     text: "Complex LMIA case with multiple NOC codes and IDLOGICE handled it brilliantly. They knew exactly which documents IRCC required, negotiated with my employer, and we had the work permit within two months.",
-    result: "LMIA Work Permit — Oil & Gas Sector",
+    result: "LMIA Work Permit â€” Oil & Gas Sector",
     rating: 5,
     category: "Work Permit",
   },
@@ -177,3 +176,4 @@ export default async function TestimonialsPage({ params }: { params: Promise<{ l
     </>
   );
 }
+

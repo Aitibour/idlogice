@@ -2,9 +2,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us — CICC-Registered Immigration Consultants",
-  description: "Learn about IDLOGICE — a team of CICC-registered Canadian Immigration Consultants (RCICs) based in Montréal with a 95% success rate across 500+ cases from 50+ countries.",
-  alternates: { canonical: "https://idlogice.com/about" },
+  title: { absolute: "IDLOGICE | CICC-Registered Immigration Consultants" },
+  description: "IDLOGICE — CICC-registered Canadian Immigration Consultants (RCICs) in Montréal. 95% success rate across 500+ cases from 50+ countries.",
   openGraph: { title: "About IDLOGICE — Canadian Immigration Consultants in Montréal", description: "CICC-registered RCICs helping clients from 50+ countries achieve their Canadian dream.", url: "https://idlogice.com/about" },
 };
 
@@ -56,4 +55,5 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
     </>
   );
 }
+
 

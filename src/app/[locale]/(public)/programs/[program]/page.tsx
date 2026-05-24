@@ -1,6 +1,7 @@
-import { notFound } from "next/navigation";
+﻿import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { generatePageAlternates } from "@/lib/seo/alternates";
 import { PROGRAMS, PROGRAM_MAP } from "@/data/immigration-programs";
 import { BreadcrumbJsonLd, FaqJsonLd, ServiceJsonLd } from "@/components/seo/structured-data";
 import { InternalLinkGraph } from "@/components/seo/internal-link-graph";
@@ -26,19 +27,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = `${BASE}/${locale}/programs/${slug}`;
 
   const titleMap: Record<string, string> = {
-    en: `${name} Canada — How to Apply | IDLOGICE`,
-    fr: `${name} Canada — Comment postuler | IDLOGICE`,
-    es: `${name} Canadá — Cómo aplicar | IDLOGICE`,
-    ar: `${name} كندا — كيفية التقديم | IDLOGICE`,
+    en: `${name} Canada â€” How to Apply`,
+    fr: `${name} Canada â€” Comment postuler`,
+    es: `${name} CanadÃ¡ â€” CÃ³mo aplicar`,
+    ar: `${name} ÙƒÙ†Ø¯Ø§ â€” ÙƒÙŠÙÙŠØ© Ø§Ù„ØªÙ‚Ø¯ÙŠÙ…`,
   };
 
   return {
     title: titleMap[locale] ?? titleMap.en,
     description: desc.slice(0, 160),
-    alternates: {
-      canonical: url,
-      languages: Object.fromEntries(LOCALES.map((l) => [l, `${BASE}/${l}/programs/${slug}`])),
-    },
+    alternates: generatePageAlternates(locale, `/programs/${slug}`),
     openGraph: {
       type: "article",
       url,
@@ -60,31 +58,31 @@ const uiStrings: Record<string, {
     faq: "Frequently asked questions",
     ctaTitle: "Ready to start your Canadian journey?",
     ctaDesc: "Our RCIC consultants will assess your eligibility and build your strongest application.",
-    ctaBtn: "Book a consultation →",
+    ctaBtn: "Book a consultation â†’",
   },
   fr: {
-    home: "Accueil", programs: "Programmes", processingTime: "Délai de traitement", weeks: "semaines",
-    highlights: "Points forts du programme", eligibility: "Conditions d'admissibilité", steps: "Comment postuler",
-    faq: "Questions fréquentes",
-    ctaTitle: "Prêt à commencer votre parcours canadien ?",
-    ctaDesc: "Nos consultants RCIC évalueront votre admissibilité et prépareront votre meilleure demande.",
-    ctaBtn: "Réserver une consultation →",
+    home: "Accueil", programs: "Programmes", processingTime: "DÃ©lai de traitement", weeks: "semaines",
+    highlights: "Points forts du programme", eligibility: "Conditions d'admissibilitÃ©", steps: "Comment postuler",
+    faq: "Questions frÃ©quentes",
+    ctaTitle: "PrÃªt Ã  commencer votre parcours canadien ?",
+    ctaDesc: "Nos consultants RCIC Ã©valueront votre admissibilitÃ© et prÃ©pareront votre meilleure demande.",
+    ctaBtn: "RÃ©server une consultation â†’",
   },
   es: {
-    home: "Inicio", programs: "Programas", processingTime: "Tiempo de tramitación", weeks: "semanas",
-    highlights: "Aspectos destacados del programa", eligibility: "Requisitos de elegibilidad", steps: "Cómo aplicar",
+    home: "Inicio", programs: "Programas", processingTime: "Tiempo de tramitaciÃ³n", weeks: "semanas",
+    highlights: "Aspectos destacados del programa", eligibility: "Requisitos de elegibilidad", steps: "CÃ³mo aplicar",
     faq: "Preguntas frecuentes",
-    ctaTitle: "¿Listo para comenzar su viaje canadiense?",
-    ctaDesc: "Nuestros consultores RCIC evaluarán su elegibilidad y construirán su solicitud más sólida.",
-    ctaBtn: "Reservar una consulta →",
+    ctaTitle: "Â¿Listo para comenzar su viaje canadiense?",
+    ctaDesc: "Nuestros consultores RCIC evaluarÃ¡n su elegibilidad y construirÃ¡n su solicitud mÃ¡s sÃ³lida.",
+    ctaBtn: "Reservar una consulta â†’",
   },
   ar: {
-    home: "الرئيسية", programs: "البرامج", processingTime: "وقت المعالجة", weeks: "أسابيع",
-    highlights: "أبرز مميزات البرنامج", eligibility: "متطلبات الأهلية", steps: "كيفية التقديم",
-    faq: "الأسئلة الشائعة",
-    ctaTitle: "هل أنت مستعد لبدء رحلتك الكندية؟",
-    ctaDesc: "سيقيّم مستشارونا المعتمدون (RCIC) أهليتك ويبنون لك أقوى طلب.",
-    ctaBtn: "احجز استشارة →",
+    home: "Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©", programs: "Ø§Ù„Ø¨Ø±Ø§Ù…Ø¬", processingTime: "ÙˆÙ‚Øª Ø§Ù„Ù…Ø¹Ø§Ù„Ø¬Ø©", weeks: "Ø£Ø³Ø§Ø¨ÙŠØ¹",
+    highlights: "Ø£Ø¨Ø±Ø² Ù…Ù…ÙŠØ²Ø§Øª Ø§Ù„Ø¨Ø±Ù†Ø§Ù…Ø¬", eligibility: "Ù…ØªØ·Ù„Ø¨Ø§Øª Ø§Ù„Ø£Ù‡Ù„ÙŠØ©", steps: "ÙƒÙŠÙÙŠØ© Ø§Ù„ØªÙ‚Ø¯ÙŠÙ…",
+    faq: "Ø§Ù„Ø£Ø³Ø¦Ù„Ø© Ø§Ù„Ø´Ø§Ø¦Ø¹Ø©",
+    ctaTitle: "Ù‡Ù„ Ø£Ù†Øª Ù…Ø³ØªØ¹Ø¯ Ù„Ø¨Ø¯Ø¡ Ø±Ø­Ù„ØªÙƒ Ø§Ù„ÙƒÙ†Ø¯ÙŠØ©ØŸ",
+    ctaDesc: "Ø³ÙŠÙ‚ÙŠÙ‘Ù… Ù…Ø³ØªØ´Ø§Ø±ÙˆÙ†Ø§ Ø§Ù„Ù…Ø¹ØªÙ…Ø¯ÙˆÙ† (RCIC) Ø£Ù‡Ù„ÙŠØªÙƒ ÙˆÙŠØ¨Ù†ÙˆÙ† Ù„Ùƒ Ø£Ù‚ÙˆÙ‰ Ø·Ù„Ø¨.",
+    ctaBtn: "Ø§Ø­Ø¬Ø² Ø§Ø³ØªØ´Ø§Ø±Ø© â†’",
   },
 };
 
@@ -130,9 +128,9 @@ export default async function ProgramPage({ params }: Props) {
         </nav>
 
         <div className="mb-2 text-sm text-primary font-semibold uppercase tracking-wide">
-          {ui.processingTime}: {p.processingWeeks.min}–{p.processingWeeks.max} {ui.weeks}
+          {ui.processingTime}: {p.processingWeeks.min}â€“{p.processingWeeks.max} {ui.weeks}
         </div>
-        <h1 className="text-4xl font-bold text-gray-900 mb-6 leading-tight">{name} — Canada 2025</h1>
+        <h1 className="text-4xl font-bold text-gray-900 mb-6 leading-tight">{name} â€” Canada 2025</h1>
         <p className="text-lg text-gray-600 leading-relaxed mb-12">{desc}</p>
 
         {/* Highlights */}
@@ -214,7 +212,7 @@ export default async function ProgramPage({ params }: Props) {
         {otherPrograms.length > 0 && (
           <section className="border-t pt-10">
             <h2 className="text-xl font-bold text-gray-900 mb-5">
-              {locale === "fr" ? "Autres programmes" : locale === "es" ? "Otros programas" : locale === "ar" ? "برامج أخرى" : "Other programs"}
+              {locale === "fr" ? "Autres programmes" : locale === "es" ? "Otros programas" : locale === "ar" ? "Ø¨Ø±Ø§Ù…Ø¬ Ø£Ø®Ø±Ù‰" : "Other programs"}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {otherPrograms.map((pr) => (
@@ -227,7 +225,7 @@ export default async function ProgramPage({ params }: Props) {
                     {pr.name[locale] ?? pr.name.en}
                   </p>
                   <p className="text-xs text-gray-500 mt-1">
-                    {pr.processingWeeks.min}–{pr.processingWeeks.max} {ui.weeks}
+                    {pr.processingWeeks.min}â€“{pr.processingWeeks.max} {ui.weeks}
                   </p>
                 </Link>
               ))}
@@ -238,3 +236,6 @@ export default async function ProgramPage({ params }: Props) {
     </>
   );
 }
+
+
+

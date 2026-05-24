@@ -1,5 +1,6 @@
 ﻿import Link from "next/link";
 import type { Metadata } from "next";
+import { generatePageAlternates } from "@/lib/seo/alternates";
 import { notFound } from "next/navigation";
 import { COUNTRIES, COUNTRY_MAP } from "@/data/immigration-countries";
 
@@ -12,10 +13,10 @@ type Props = { params: Promise<{ locale: string; country: string }> };
 
 const T = {
   title: {
-    en: (c: string) => `Canada Immigration from ${c} | IDLOGICE`,
-    fr: (c: string) => `Immigration Canada depuis ${c} | IDLOGICE`,
-    es: (c: string) => `Inmigración a Canadá desde ${c} | IDLOGICE`,
-    ar: (c: string) => `الهجرة إلى كندا من ${c} | IDLOGICE`,
+    en: (c: string) => `Canada Immigration from ${c}`,
+    fr: (c: string) => `Immigration Canada depuis ${c}`,
+    es: (c: string) => `Inmigración a Canadá desde ${c}`,
+    ar: (c: string) => `الهجرة إلى كندا من ${c}`,
   },
   desc: {
     en: (c: string) => `Complete guide to Canada immigration for ${c} nationals. Explore Express Entry, PNP, and work permits. Free profile evaluation.`,
@@ -112,13 +113,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const name = c.name[l];
   const title = (tr("title", l) as (c: string) => string)(name);
   const description = (tr("desc", l) as (c: string) => string)(name);
+  // Absolute title bypasses template — keeps under 60 chars for all countries
+  const seoTitles: Record<Locale, string> = {
+    en: `${name}: Canada Immigration | IDLOGICE`,
+    fr: `${name}: Immigration Canada | IDLOGICE`,
+    es: `${name}: Inmigración a Canadá | IDLOGICE`,
+    ar: `${name}: الهجرة إلى كندا | IDLOGICE`,
+  };
+  const seoTitle = seoTitles[l] ?? seoTitles.en;
   return {
-    title,
+    title: { absolute: seoTitle },
     description,
-    alternates: {
-      canonical: `${BASE}/${l}/from/${country}`,
-      languages: Object.fromEntries(LOCALES.map((loc) => [loc, `${BASE}/${loc}/from/${country}`])),
-    },
+    alternates: generatePageAlternates(locale, `/from/${country}`),
     openGraph: { title, description, url: `${BASE}/${l}/from/${country}`, type: "article", images: [{ url: `${BASE}/images/og-default.jpg`, width: 1200, height: 630 }] },
     twitter: { card: "summary_large_image", title, description },
   };
@@ -217,3 +223,5 @@ export default async function FromCountryPage({ params }: Props) {
     </>
   );
 }
+
+

@@ -3,8 +3,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Family Sponsorship Canada — Reunite With Your Family",
-  description: "Sponsor your spouse, children, parents or grandparents for Canadian permanent residence. Our certified RCICs handle the complete sponsorship application process.",
-  alternates: { canonical: "https://idlogice.com/services/family-sponsorship" },
+  description: "Sponsor your spouse, children, parents or grandparents for Canadian permanent residence. Certified RCICs handle the complete sponsorship application.",
   openGraph: { title: "Family Sponsorship Canada | IDLOGICE Immigration", description: "Reunite with loved ones in Canada. Expert guidance for spousal, parental and family sponsorship applications.", url: "https://idlogice.com/services/family-sponsorship" },
 };
 
@@ -96,3 +95,4 @@ export default async function FamilySponsorshipPage({ params }: { params: Promis
     </>
   );
 }
+

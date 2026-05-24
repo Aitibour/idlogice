@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+﻿import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -6,9 +6,13 @@ import { tryCreateServiceClient } from "@/lib/supabase/service";
 import { PostBody } from "@/components/blog/PostBody";
 
 export const revalidate = 3600;
+// Allow on-demand rendering for slugs not returned by generateStaticParams
+export const dynamicParams = true;
+
+import { cleanImageUrl } from "@/lib/seo/images";
+import { generatePageAlternates } from "@/lib/seo/alternates";
 
 const BASE = "https://idlogice.com";
-const LOCALES = ["en", "fr", "es", "ar"] as const;
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -40,7 +44,7 @@ export async function generateStaticParams() {
       .select("slug")
       .eq("status", "published")
       .order("published_at", { ascending: false })
-      .limit(20);
+      .limit(200);
     return (data ?? []).map((p) => ({ slug: p.slug }));
   } catch {
     return [];
@@ -58,19 +62,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     .single();
 
   if (!data) return {};
-  const title = pick(data.title, locale);
-  const desc = pick(data.meta_desc, locale) || pick(data.excerpt, locale);
-  const url = `${BASE}/${locale}/blog/${slug}`;
+  const rawTitle = pick(data.title, locale);
+  const rawDesc = pick(data.meta_desc, locale) || pick(data.excerpt, locale);
+  // Truncate description to 160 chars (Semrush limit)
+  const desc = rawDesc.length > 160 ? `${rawDesc.slice(0, 157)}…` : rawDesc;
+  const url = `https://idlogice.com/${locale}/blog/${slug}`;
+  // Absolute title keeps blog posts under 60 chars — template would add " | IDLOGICE Immigration" (22 chars)
+  const title = rawTitle; // full title for OG/twitter
+  const seoTitle = rawTitle.length > 49
+    ? `${rawTitle.slice(0, 47)}… | IDLOGICE`
+    : `${rawTitle} | IDLOGICE`;
 
   return {
-    title,
+    title: { absolute: seoTitle },
     description: desc,
-    alternates: {
-      canonical: url,
-      languages: Object.fromEntries(
-        LOCALES.map((l) => [l, `${BASE}/${l}/blog/${slug}`]),
-      ),
-    },
+    alternates: generatePageAlternates(locale, `/blog/${slug}`),
     openGraph: {
       type: "article",
       url,
@@ -81,13 +87,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: data.published_at ?? undefined,
       modifiedTime: data.published_at ?? undefined,
       authors: ["IDLOGICE"],
-      images: data.image_url ? [{ url: data.image_url, alt: `${title} — Canada immigration`, width: 1200, height: 630 }] : [],
+      images: data.image_url ? [{ url: cleanImageUrl(data.image_url) ?? data.image_url, alt: `${title} â€” Canada immigration`, width: 1200, height: 630 }] : [],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description: desc,
-      images: data.image_url ? [data.image_url] : [],
+      images: data.image_url ? [cleanImageUrl(data.image_url) ?? data.image_url] : [],
     },
   };
 }
@@ -120,12 +126,13 @@ export default async function BlogPostPage({ params }: Props) {
 
   const wordCount = wordsOf(content);
   const readingTime = Math.max(1, Math.round(wordCount / 230));
-  const date = new Date(post.published_at).toLocaleDateString(
+  const rawDate = post.published_at ? new Date(post.published_at) : new Date();
+  const date = (isNaN(rawDate.getTime()) ? new Date() : rawDate).toLocaleDateString(
     locale === "fr" ? "fr-CA" : "en-CA",
     { year: "numeric", month: "long", day: "numeric" },
   );
 
-  // Related posts — pull 3 most-recent other posts for internal linking.
+  // Related posts â€” pull 3 most-recent other posts for internal linking.
   const { data: related } = await db
     .from("blog_posts")
     .select("slug, title, image_url")
@@ -134,9 +141,9 @@ export default async function BlogPostPage({ params }: Props) {
     .order("published_at", { ascending: false })
     .limit(3);
 
-  const url = `${BASE}/${locale}/blog/${slug}`;
-  const blogLabel = locale === "ar" ? "المدونة" : "Blog";
-  const homeLabel = locale === "fr" ? "Accueil" : locale === "es" ? "Inicio" : locale === "ar" ? "الرئيسية" : "Home";
+  const url = `https://idlogice.com/${locale}/blog/${slug}`;
+  const blogLabel = locale === "ar" ? "Ø§Ù„Ù…Ø¯ÙˆÙ†Ø©" : "Blog";
+  const homeLabel = locale === "fr" ? "Accueil" : locale === "es" ? "Inicio" : locale === "ar" ? "Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©" : "Home";
 
   const blogPostingLd = {
     "@context": "https://schema.org",
@@ -194,8 +201,8 @@ export default async function BlogPostPage({ params }: Props) {
         {post.image_url && (
           <div className="relative aspect-video w-full mb-10 rounded-xl overflow-hidden">
             <Image
-              src={post.image_url}
-              alt={post.image_alt ?? `${title} — Canada immigration`}
+              src={cleanImageUrl(post.image_url) ?? post.image_url}
+              alt={post.image_alt ?? `${title} â€” Canada immigration`}
               fill
               className="object-cover"
               priority
@@ -206,40 +213,40 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
         )}
         <p className="text-sm text-gray-600 mb-3">
-          {date} · {readingTime} min read · {wordCount} words
+          {date} Â· {readingTime} min read Â· {wordCount} words
         </p>
         <h1 className="text-4xl font-bold leading-tight mb-8 text-gray-900">{title}</h1>
         <PostBody content={content} />
 
-        {/* Mid-article internal link CTA — contextual anchor text for SEO */}
+        {/* Mid-article internal link CTA â€” contextual anchor text for SEO */}
         <div className="my-10 rounded-xl border border-primary/20 bg-primary/5 p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 not-prose">
           <p className="text-sm font-semibold text-gray-900">
             {locale === "fr"
-              ? <>Vous demandez si vous êtes admissible ? <Link href={`/${locale}/book-consultation`} className="text-primary underline">Réservez une consultation gratuite →</Link></>
+              ? <>Vous demandez si vous Ãªtes admissible ? <Link href={`/${locale}/book-consultation`} className="text-primary underline">RÃ©servez une consultation gratuite â†’</Link></>
               : locale === "es"
-              ? <>¿Califica para inmigrar a Canadá? <Link href={`/${locale}/book-consultation`} className="text-primary underline">Reserve una consulta gratuita →</Link></>
+              ? <>Â¿Califica para inmigrar a CanadÃ¡? <Link href={`/${locale}/book-consultation`} className="text-primary underline">Reserve una consulta gratuita â†’</Link></>
               : locale === "ar"
-              ? <>هل تتساءل عن أهليتك للهجرة إلى كندا؟ <Link href={`/${locale}/book-consultation`} className="text-primary underline">احجز استشارة مجانية ←</Link></>
-              : <>Ready to start your Canada immigration journey? <Link href={`/${locale}/book-consultation`} className="text-primary underline">Book a free consultation →</Link></>}
+              ? <>Ù‡Ù„ ØªØªØ³Ø§Ø¡Ù„ Ø¹Ù† Ø£Ù‡Ù„ÙŠØªÙƒ Ù„Ù„Ù‡Ø¬Ø±Ø© Ø¥Ù„Ù‰ ÙƒÙ†Ø¯Ø§ØŸ <Link href={`/${locale}/book-consultation`} className="text-primary underline">Ø§Ø­Ø¬Ø² Ø§Ø³ØªØ´Ø§Ø±Ø© Ù…Ø¬Ø§Ù†ÙŠØ© â†</Link></>
+              : <>Ready to start your Canada immigration journey? <Link href={`/${locale}/book-consultation`} className="text-primary underline">Book a free consultation â†’</Link></>}
           </p>
           <Link
             href={`/${locale}/calculator`}
             className="shrink-0 rounded-full bg-primary px-4 py-2 text-xs font-bold text-white hover:opacity-90 transition-opacity whitespace-nowrap"
           >
-            {locale === "fr" ? "Calculateur SCG" : locale === "es" ? "Calculadora CRS" : locale === "ar" ? "حاسبة CRS" : "CRS Calculator"}
+            {locale === "fr" ? "Calculateur SCG" : locale === "es" ? "Calculadora CRS" : locale === "ar" ? "Ø­Ø§Ø³Ø¨Ø© CRS" : "CRS Calculator"}
           </Link>
         </div>
 
-        {/* FAQ — rendered for users + powers FAQPage JSON-LD above */}
+        {/* FAQ â€” rendered for users + powers FAQPage JSON-LD above */}
         {faq.length > 0 && (
           <section className="mt-12 border-t pt-10">
             <h2 className="text-2xl font-bold mb-6 text-gray-900">
               {locale === "fr"
-                ? "Questions fréquentes"
+                ? "Questions frÃ©quentes"
                 : locale === "es"
                 ? "Preguntas frecuentes"
                 : locale === "ar"
-                ? "الأسئلة الشائعة"
+                ? "Ø§Ù„Ø£Ø³Ø¦Ù„Ø© Ø§Ù„Ø´Ø§Ø¦Ø¹Ø©"
                 : "Frequently asked questions"}
             </h2>
             <div className="space-y-5">
@@ -260,20 +267,20 @@ export default async function BlogPostPage({ params }: Props) {
         <aside className="mt-14 rounded-2xl border border-primary/30 bg-primary/5 p-6">
           <p className="text-lg font-bold text-gray-900 mb-1">
             {locale === "fr"
-              ? "Réservez votre consultation d'immigration"
+              ? "RÃ©servez votre consultation d'immigration"
               : locale === "es"
-              ? "Reserve su consulta de inmigración"
+              ? "Reserve su consulta de inmigraciÃ³n"
               : locale === "ar"
-              ? "احجز استشارتك في الهجرة"
+              ? "Ø§Ø­Ø¬Ø² Ø§Ø³ØªØ´Ø§Ø±ØªÙƒ ÙÙŠ Ø§Ù„Ù‡Ø¬Ø±Ø©"
               : "Book your Canada immigration consultation"}
           </p>
           <p className="text-sm text-gray-700 mb-4">
             {locale === "fr"
-              ? "Nos consultants RCIC évaluent votre admissibilité aux programmes canadiens en moins de 24 heures."
+              ? "Nos consultants RCIC Ã©valuent votre admissibilitÃ© aux programmes canadiens en moins de 24 heures."
               : locale === "es"
-              ? "Nuestros consultores RCIC evalúan su elegibilidad para los programas canadienses en menos de 24 horas."
+              ? "Nuestros consultores RCIC evalÃºan su elegibilidad para los programas canadienses en menos de 24 horas."
               : locale === "ar"
-              ? "يقوم مستشارونا المعتمدون بتقييم أهليتك للبرامج الكندية في أقل من 24 ساعة."
+              ? "ÙŠÙ‚ÙˆÙ… Ù…Ø³ØªØ´Ø§Ø±ÙˆÙ†Ø§ Ø§Ù„Ù…Ø¹ØªÙ…Ø¯ÙˆÙ† Ø¨ØªÙ‚ÙŠÙŠÙ… Ø£Ù‡Ù„ÙŠØªÙƒ Ù„Ù„Ø¨Ø±Ø§Ù…Ø¬ Ø§Ù„ÙƒÙ†Ø¯ÙŠØ© ÙÙŠ Ø£Ù‚Ù„ Ù…Ù† 24 Ø³Ø§Ø¹Ø©."
               : "Our RCIC consultants assess your eligibility for every Canadian program in under 24 hours."}
           </p>
           <Link
@@ -281,25 +288,25 @@ export default async function BlogPostPage({ params }: Props) {
             className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-white hover:opacity-90 transition-opacity"
           >
             {locale === "fr"
-              ? "Réserver une consultation →"
+              ? "RÃ©server une consultation â†’"
               : locale === "es"
-              ? "Reservar una consulta →"
+              ? "Reservar una consulta â†’"
               : locale === "ar"
-              ? "احجز استشارة →"
-              : "Book a Consultation →"}
+              ? "Ø§Ø­Ø¬Ø² Ø§Ø³ØªØ´Ø§Ø±Ø© â†’"
+              : "Book a Consultation â†’"}
           </Link>
         </aside>
 
-        {/* Related posts — internal linking for SEO authority distribution */}
+        {/* Related posts â€” internal linking for SEO authority distribution */}
         {related && related.length > 0 && (
           <section className="mt-16 border-t pt-10">
             <h2 className="text-2xl font-bold mb-6 text-gray-900">
               {locale === "fr"
-                ? "À lire aussi"
+                ? "Ã€ lire aussi"
                 : locale === "es"
-                ? "También te puede interesar"
+                ? "TambiÃ©n te puede interesar"
                 : locale === "ar"
-                ? "اقرأ أيضًا"
+                ? "Ø§Ù‚Ø±Ø£ Ø£ÙŠØ¶Ù‹Ø§"
                 : "Read next"}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
@@ -314,7 +321,7 @@ export default async function BlogPostPage({ params }: Props) {
                     {r.image_url && (
                       <div className="relative aspect-video w-full">
                         <Image
-                          src={r.image_url}
+                          src={cleanImageUrl(r.image_url) ?? r.image_url}
                           alt={rTitle}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform"
@@ -335,3 +342,6 @@ export default async function BlogPostPage({ params }: Props) {
     </>
   );
 }
+
+
+

@@ -1,5 +1,6 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import type { Metadata } from "next";
+import { generatePageAlternates } from "@/lib/seo/alternates";
 import { PROVINCES } from "@/data/immigration-provinces";
 
 export const revalidate = false;
@@ -11,28 +12,28 @@ type Props = { params: Promise<{ locale: string }> };
 
 const T = {
   title: {
-    en: "Canada Provincial Immigration Programs (PNP) Guide | IDLOGICE",
-    fr: "Guide des programmes d'immigration provinciaux du Canada (PNP) | IDLOGICE",
-    es: "Guía de programas de inmigración provincial de Canadá (PNP) | IDLOGICE",
-    ar: "دليل برامج الهجرة الإقليمية الكندية (PNP) | IDLOGICE",
+    en: "Canada Provincial Immigration Programs (PNP) Guide",
+    fr: "Guide des programmes d'immigration provinciaux du Canada (PNP)",
+    es: "GuÃ­a de programas de inmigraciÃ³n provincial de CanadÃ¡ (PNP)",
+    ar: "Ø¯Ù„ÙŠÙ„ Ø¨Ø±Ø§Ù…Ø¬ Ø§Ù„Ù‡Ø¬Ø±Ø© Ø§Ù„Ø¥Ù‚Ù„ÙŠÙ…ÙŠØ© Ø§Ù„ÙƒÙ†Ø¯ÙŠØ© (PNP)",
   },
   desc: {
     en: "Explore Provincial Nominee Programs (PNP) for all 10 Canadian provinces. Compare streams, minimum CRS scores, in-demand occupations and eligibility requirements.",
     fr: "Explorez les Programmes des candidats des provinces (PNP) pour les 10 provinces canadiennes. Comparez les voies, scores CRS minimaux et professions en demande.",
-    es: "Explore los Programas de Nominados Provinciales (PNP) para las 10 provincias canadienses. Compare corrientes, puntajes CRS mínimos y ocupaciones en demanda.",
-    ar: "استكشف برامج المرشحين الإقليميين (PNP) للمقاطعات الكندية العشر. قارن المسارات والحد الأدنى لدرجات CRS والمهن المطلوبة.",
+    es: "Explore los Programas de Nominados Provinciales (PNP) para las 10 provincias canadienses. Compare corrientes, puntajes CRS mÃ­nimos y ocupaciones en demanda.",
+    ar: "Ø§Ø³ØªÙƒØ´Ù Ø¨Ø±Ø§Ù…Ø¬ Ø§Ù„Ù…Ø±Ø´Ø­ÙŠÙ† Ø§Ù„Ø¥Ù‚Ù„ÙŠÙ…ÙŠÙŠÙ† (PNP) Ù„Ù„Ù…Ù‚Ø§Ø·Ø¹Ø§Øª Ø§Ù„ÙƒÙ†Ø¯ÙŠØ© Ø§Ù„Ø¹Ø´Ø±. Ù‚Ø§Ø±Ù† Ø§Ù„Ù…Ø³Ø§Ø±Ø§Øª ÙˆØ§Ù„Ø­Ø¯ Ø§Ù„Ø£Ø¯Ù†Ù‰ Ù„Ø¯Ø±Ø¬Ø§Øª CRS ÙˆØ§Ù„Ù…Ù‡Ù† Ø§Ù„Ù…Ø·Ù„ÙˆØ¨Ø©.",
   },
   h1: {
     en: "Canadian Provincial Immigration Programs",
     fr: "Programmes d'immigration provinciaux canadiens",
-    es: "Programas de inmigración provinciales canadienses",
-    ar: "برامج الهجرة الإقليمية الكندية",
+    es: "Programas de inmigraciÃ³n provinciales canadienses",
+    ar: "Ø¨Ø±Ø§Ù…Ø¬ Ø§Ù„Ù‡Ø¬Ø±Ø© Ø§Ù„Ø¥Ù‚Ù„ÙŠÙ…ÙŠØ© Ø§Ù„ÙƒÙ†Ø¯ÙŠØ©",
   },
   lead: {
     en: "Each Canadian province runs its own nomination program with targeted streams for skilled workers, entrepreneurs, and international graduates. Select a province to explore its specific pathways.",
-    fr: "Chaque province canadienne gère son propre programme de nomination avec des voies ciblées pour les travailleurs qualifiés, entrepreneurs et diplômés internationaux.",
-    es: "Cada provincia canadiense gestiona su propio programa de nominación con corrientes dirigidas a trabajadores calificados, empresarios y graduados internacionales.",
-    ar: "تدير كل مقاطعة كندية برنامج ترشيحها الخاص مع مسارات مستهدفة للعمال المهرة ورجال الأعمال والخريجين الدوليين.",
+    fr: "Chaque province canadienne gÃ¨re son propre programme de nomination avec des voies ciblÃ©es pour les travailleurs qualifiÃ©s, entrepreneurs et diplÃ´mÃ©s internationaux.",
+    es: "Cada provincia canadiense gestiona su propio programa de nominaciÃ³n con corrientes dirigidas a trabajadores calificados, empresarios y graduados internacionales.",
+    ar: "ØªØ¯ÙŠØ± ÙƒÙ„ Ù…Ù‚Ø§Ø·Ø¹Ø© ÙƒÙ†Ø¯ÙŠØ© Ø¨Ø±Ù†Ø§Ù…Ø¬ ØªØ±Ø´ÙŠØ­Ù‡Ø§ Ø§Ù„Ø®Ø§Øµ Ù…Ø¹ Ù…Ø³Ø§Ø±Ø§Øª Ù…Ø³ØªÙ‡Ø¯ÙØ© Ù„Ù„Ø¹Ù…Ø§Ù„ Ø§Ù„Ù…Ù‡Ø±Ø© ÙˆØ±Ø¬Ø§Ù„ Ø§Ù„Ø£Ø¹Ù…Ø§Ù„ ÙˆØ§Ù„Ø®Ø±ÙŠØ¬ÙŠÙ† Ø§Ù„Ø¯ÙˆÙ„ÙŠÙŠÙ†.",
   },
   pnpLabel: {
     en: "PNP",
@@ -44,16 +45,16 @@ const T = {
     en: "streams",
     fr: "voies",
     es: "corrientes",
-    ar: "مسارات",
+    ar: "Ù…Ø³Ø§Ø±Ø§Øª",
   },
   ctaQ: {
     en: "Not sure which province matches your profile?",
-    fr: "Vous ne savez pas quelle province correspond à votre profil ?",
-    es: "¿No sabe qué provincia se adapta a su perfil?",
-    ar: "غير متأكد من أي مقاطعة تناسب ملفك؟",
+    fr: "Vous ne savez pas quelle province correspond Ã  votre profil ?",
+    es: "Â¿No sabe quÃ© provincia se adapta a su perfil?",
+    ar: "ØºÙŠØ± Ù…ØªØ£ÙƒØ¯ Ù…Ù† Ø£ÙŠ Ù…Ù‚Ø§Ø·Ø¹Ø© ØªÙ†Ø§Ø³Ø¨ Ù…Ù„ÙÙƒØŸ",
   },
-  ctaBtn: { en: "Free Evaluation", fr: "Évaluation gratuite", es: "Evaluación gratuita", ar: "تقييم مجاني" },
-  breadHome: { en: "Home", fr: "Accueil", es: "Inicio", ar: "الرئيسية" },
+  ctaBtn: { en: "Free Evaluation", fr: "Ã‰valuation gratuite", es: "EvaluaciÃ³n gratuita", ar: "ØªÙ‚ÙŠÙŠÙ… Ù…Ø¬Ø§Ù†ÙŠ" },
+  breadHome: { en: "Home", fr: "Accueil", es: "Inicio", ar: "Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©" },
 } as const;
 
 export function generateStaticParams() {
@@ -123,3 +124,5 @@ export default async function ProvinceIndexPage({ params }: Props) {
     </div>
   );
 }
+
+

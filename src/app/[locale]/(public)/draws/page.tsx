@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
+import { generatePageAlternates } from "@/lib/seo/alternates";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { CrsTrendChart } from "@/components/draws/CrsTrendChart";
@@ -17,16 +18,7 @@ export async function generateMetadata({
   return {
     title: t("meta.title"),
     description: t("meta.description"),
-    alternates: {
-      canonical: `https://idlogice.com/${locale}/draws`,
-      languages: {
-        "en-CA": "/en/draws",
-        "fr-CA": "/fr/draws",
-        es: "/es/draws",
-        ar: "/ar/draws",
-        "x-default": "/en/draws",
-      },
-    },
+    alternates: generatePageAlternates(locale, "/draws"),
   };
 }
 
@@ -137,7 +129,7 @@ export default async function DrawsPage({
         {latest && (
           <section>
             <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-3">
-              {t("latestDraw")} — {t("drawNumber")}{latest.drawNumber}
+              {t("latestDraw")} â€” {t("drawNumber")}{latest.drawNumber}
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {[
@@ -256,3 +248,4 @@ export default async function DrawsPage({
     </>
   );
 }
+

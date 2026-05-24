@@ -1,5 +1,6 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import type { Metadata } from "next";
+import { generatePageAlternates } from "@/lib/seo/alternates";
 import { notFound } from "next/navigation";
 import { PROFESSIONS, PROFESSION_MAP } from "@/data/immigration-professions";
 
@@ -63,21 +64,21 @@ const UI = {
     drawsLink: "Ultimos sorteos",
   },
   ar: {
-    breadHome: "الرئيسية",
-    breadFor: "الهجرة حسب المهنة",
-    nocLabel: "رمز NOC",
-    inDemandBadge: "مهنة مطلوبة",
-    topProgramsH: "أهم برامج الهجرة",
-    requirementsH: "المتطلبات الأساسية",
-    pathwaysH: "مسارات الهجرة",
-    faqH: "الأسئلة الشائعة",
-    ctaH: "ابدأ رحلتك الكندية",
-    ctaTxt: "يتخصص مستشارونا المعتمدون RCIC في مسارات الهجرة القائمة على المهنة. احصل على تقييم مجاني.",
-    ctaBtn: "احصل على تقييم مجاني",
-    relatedH: "مهن أخرى",
-    evalLink: "تقييم مجاني",
-    servicesLink: "خدماتنا",
-    drawsLink: "أحدث السحوبات",
+    breadHome: "Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©",
+    breadFor: "Ø§Ù„Ù‡Ø¬Ø±Ø© Ø­Ø³Ø¨ Ø§Ù„Ù…Ù‡Ù†Ø©",
+    nocLabel: "Ø±Ù…Ø² NOC",
+    inDemandBadge: "Ù…Ù‡Ù†Ø© Ù…Ø·Ù„ÙˆØ¨Ø©",
+    topProgramsH: "Ø£Ù‡Ù… Ø¨Ø±Ø§Ù…Ø¬ Ø§Ù„Ù‡Ø¬Ø±Ø©",
+    requirementsH: "Ø§Ù„Ù…ØªØ·Ù„Ø¨Ø§Øª Ø§Ù„Ø£Ø³Ø§Ø³ÙŠØ©",
+    pathwaysH: "Ù…Ø³Ø§Ø±Ø§Øª Ø§Ù„Ù‡Ø¬Ø±Ø©",
+    faqH: "Ø§Ù„Ø£Ø³Ø¦Ù„Ø© Ø§Ù„Ø´Ø§Ø¦Ø¹Ø©",
+    ctaH: "Ø§Ø¨Ø¯Ø£ Ø±Ø­Ù„ØªÙƒ Ø§Ù„ÙƒÙ†Ø¯ÙŠØ©",
+    ctaTxt: "ÙŠØªØ®ØµØµ Ù…Ø³ØªØ´Ø§Ø±ÙˆÙ†Ø§ Ø§Ù„Ù…Ø¹ØªÙ…Ø¯ÙˆÙ† RCIC ÙÙŠ Ù…Ø³Ø§Ø±Ø§Øª Ø§Ù„Ù‡Ø¬Ø±Ø© Ø§Ù„Ù‚Ø§Ø¦Ù…Ø© Ø¹Ù„Ù‰ Ø§Ù„Ù…Ù‡Ù†Ø©. Ø§Ø­ØµÙ„ Ø¹Ù„Ù‰ ØªÙ‚ÙŠÙŠÙ… Ù…Ø¬Ø§Ù†ÙŠ.",
+    ctaBtn: "Ø§Ø­ØµÙ„ Ø¹Ù„Ù‰ ØªÙ‚ÙŠÙŠÙ… Ù…Ø¬Ø§Ù†ÙŠ",
+    relatedH: "Ù…Ù‡Ù† Ø£Ø®Ø±Ù‰",
+    evalLink: "ØªÙ‚ÙŠÙŠÙ… Ù…Ø¬Ø§Ù†ÙŠ",
+    servicesLink: "Ø®Ø¯Ù…Ø§ØªÙ†Ø§",
+    drawsLink: "Ø£Ø­Ø¯Ø« Ø§Ù„Ø³Ø­ÙˆØ¨Ø§Øª",
   },
 } as const;
 
@@ -95,29 +96,37 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const name = p.name[l];
 
   const titles: Record<Locale, string> = {
-    en: `Canada Immigration for ${name}s | IDLOGICE`,
-    fr: `Immigration Canada pour les ${name}s | IDLOGICE`,
-    es: `Inmigracion a Canada para ${name}s | IDLOGICE`,
-    ar: `الهجرة إلى كندا لـ${name} | IDLOGICE`,
+    en: `Canada Immigration for ${name}s`,
+    fr: `Immigration Canada pour les ${name}s`,
+    es: `Inmigracion a Canada para ${name}s`,
+    ar: `Ø§Ù„Ù‡Ø¬Ø±Ø© Ø¥Ù„Ù‰ ÙƒÙ†Ø¯Ø§ Ù„Ù€${name}`,
   };
   const descs: Record<Locale, string> = {
     en: `Complete guide to Canadian immigration for ${name}s. Explore NOC ${p.nocCode} pathways, Express Entry, PNP streams, and requirements. Free evaluation.`,
     fr: `Guide complet de l'immigration canadienne pour les ${name}s. Explorez les voies CNP ${p.nocCode}. Evaluation gratuite.`,
     es: `Guia completa de inmigracion canadiense para ${name}s. Explore vias NOC ${p.nocCode}. Evaluacion gratuita.`,
-    ar: `الدليل الشامل للهجرة الكندية لـ${name}. استكشف مسارات NOC ${p.nocCode}. تقييم مجاني.`,
+    ar: `Ø§Ù„Ø¯Ù„ÙŠÙ„ Ø§Ù„Ø´Ø§Ù…Ù„ Ù„Ù„Ù‡Ø¬Ø±Ø© Ø§Ù„ÙƒÙ†Ø¯ÙŠØ© Ù„Ù€${name}. Ø§Ø³ØªÙƒØ´Ù Ù…Ø³Ø§Ø±Ø§Øª NOC ${p.nocCode}. ØªÙ‚ÙŠÙŠÙ… Ù…Ø¬Ø§Ù†ÙŠ.`,
   };
 
   const title = titles[l];
-  const description = descs[l];
+  const rawDesc = descs[l];
+  // Truncate description to 160 chars (NOC code + name can push it over)
+  const description = rawDesc.length > 160 ? `${rawDesc.slice(0, 157)}…` : rawDesc;
   const url = `${BASE}/${l}/for/${slug}`;
 
+  // Absolute title bypasses template — keeps under 60 chars for all professions
+  // Worst case: "Data Scientist / AI Engineer: Canada Immigration | IDLOGICE" = 59 chars
+  const seoSuffix: Record<Locale, string> = {
+    en: "Canada Immigration",
+    fr: "Immigration Canada",
+    es: "Inmigracion Canada",
+    ar: "Canada Immigration",
+  };
+  const seoTitle = `${name}: ${seoSuffix[l]} | IDLOGICE`;
   return {
-    title,
+    title: { absolute: seoTitle },
     description,
-    alternates: {
-      canonical: url,
-      languages: Object.fromEntries(LOCALES.map((loc) => [loc, `${BASE}/${loc}/for/${slug}`])),
-    },
+    alternates: generatePageAlternates(locale, `/for/${slug}`),
     openGraph: { title, description, url, type: "article", images: [{ url: `${BASE}/images/og-default.jpg`, width: 1200, height: 630 }] },
     twitter: { card: "summary_large_image", title, description },
   };
@@ -132,7 +141,7 @@ export default async function ForProfessionPage({ params }: Props) {
   const name = p.name[l];
   const url = `${BASE}/${l}/for/${slug}`;
 
-  // JSON-LD built from in-code constants only — no user input, XSS-safe
+  // JSON-LD built from in-code constants only â€” no user input, XSS-safe
   const faqItems = p.faq[l === "fr" ? "fr" : "en"] ?? p.faq.en;
   const jsonLdStr = JSON.stringify({
     "@context": "https://schema.org",
@@ -171,7 +180,7 @@ export default async function ForProfessionPage({ params }: Props) {
 
   return (
     <>
-      {/* JSON-LD from static constants only — no user input reaches __html */}
+      {/* JSON-LD from static constants only â€” no user input reaches __html */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdStr }} />
       <article dir={l === "ar" ? "rtl" : "ltr"} className="max-w-4xl mx-auto px-4 py-12 sm:py-16">
 
@@ -198,7 +207,7 @@ export default async function ForProfessionPage({ params }: Props) {
             {l === "en" && `Canada Immigration for ${name}s`}
             {l === "fr" && `Immigration Canada pour les ${name}s`}
             {l === "es" && `Inmigracion a Canada para ${name}s`}
-            {l === "ar" && `الهجرة إلى كندا لـ${name}`}
+            {l === "ar" && `Ø§Ù„Ù‡Ø¬Ø±Ø© Ø¥Ù„Ù‰ ÙƒÙ†Ø¯Ø§ Ù„Ù€${name}`}
           </h1>
           <p className="text-lg text-gray-600 leading-relaxed">{p.lead[l]}</p>
         </div>
@@ -298,3 +307,6 @@ export default async function ForProfessionPage({ params }: Props) {
     </>
   );
 }
+
+
+

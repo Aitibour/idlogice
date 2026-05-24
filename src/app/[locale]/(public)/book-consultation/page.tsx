@@ -1,10 +1,9 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Book an Immigration Consultation — Montréal",
-  description: "Book a one-on-one consultation with a CICC-registered Canadian immigration consultant. 30-min, 1-hour, and 2-hour sessions available. Expert guidance for Express Entry, PNP, work permits and more.",
-  alternates: { canonical: "https://idlogice.com/book-consultation" },
-  openGraph: { title: "Book Immigration Consultation | IDLOGICE Montréal", description: "One-on-one sessions with certified RCICs. Choose from 30-min, 1-hour, or 2-hour consultation packages.", url: "https://idlogice.com/book-consultation" },
+  title: { absolute: "Book an Immigration Consultation | IDLOGICE" },
+  description: "Book a consultation with a CICC-registered Canadian immigration consultant. Choose 30-min, 1h, or 2h sessions. Expert guidance on Express Entry & PNP.",
+  openGraph: { title: "Book Immigration Consultation | IDLOGICE MontrÃ©al", description: "One-on-one sessions with certified RCICs. Choose from 30-min, 1-hour, or 2-hour consultation packages.", url: "https://idlogice.com/book-consultation" },
 };
 
 import { Link } from "@/i18n/navigation";
@@ -20,11 +19,11 @@ const PLANS = [
     duration: "30 min",
     price: 100,
     tag: null,
-    description: "A focused first assessment — ideal if you have a specific question or want to know which pathway fits you best.",
+    description: "A focused first assessment â€” ideal if you have a specific question or want to know which pathway fits you best.",
     includes: [
       "Initial CRS profile review",
       "Express Entry eligibility check",
-      "Top 2–3 pathway recommendations",
+      "Top 2â€“3 pathway recommendations",
       "Q&A with a certified RCIC",
     ],
   },
@@ -64,7 +63,7 @@ const STEPS = [
   { n: "01", title: "Choose a plan",      body: "Pick the session length that fits your needs below." },
   { n: "02", title: "Send a message",     body: "Contact us and mention your preferred time slot." },
   { n: "03", title: "Get confirmed",      body: "We confirm your appointment within 24 hours by email." },
-  { n: "04", title: "Meet in person",     body: "Attend your RDV at our Montréal office." },
+  { n: "04", title: "Meet in person",     body: "Attend your RDV at our MontrÃ©al office." },
 ];
 
 const TRUST = [
@@ -76,7 +75,7 @@ const TRUST = [
 export default function BookConsultationPage() {
   return (
     <>
-      {/* ── HERO (light theme) ──────────────────────────────────────────── */}
+      {/* â”€â”€ HERO (light theme) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="relative bg-white pt-16 pb-40 overflow-hidden border-b border-border/40">
         <div className="relative z-10 container mx-auto px-4 w-full">
           <div className="max-w-5xl mx-auto">
@@ -114,12 +113,12 @@ export default function BookConsultationPage() {
         </div>
       </section>
 
-      {/* ── MAIN SECTION ─────────────────────────────────────────────────── */}
+      {/* â”€â”€ MAIN SECTION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-white pb-24 -mt-32 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto grid lg:grid-cols-[1fr_340px] gap-5 items-start">
 
-            {/* ── LEFT: Pricing tiers card ──────────────────────────────── */}
+            {/* â”€â”€ LEFT: Pricing tiers card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
             <div className="animate-fade-up bg-white rounded-3xl border border-border shadow-[0_4px_24px_-4px_oklch(0_0_0/0.08)] overflow-hidden">
               <div className="h-1 w-full bg-gradient-to-r from-primary via-primary/70 to-transparent" />
               <div className="p-8 lg:p-10">
@@ -280,7 +279,7 @@ export default function BookConsultationPage() {
               </div>
             </div>
 
-            {/* ── RIGHT column ──────────────────────────────────────────── */}
+            {/* â”€â”€ RIGHT column â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
             <div className="flex flex-col gap-4">
 
               {/* Trust signals */}
@@ -335,7 +334,7 @@ export default function BookConsultationPage() {
                 <div className="divide-y divide-border">
                   {[
                     { icon: MapPin, label: "Office",  value: "410 Saint-Catherine St\nMontreal, QC, Canada" },
-                    { icon: Clock,  label: "Hours",   value: "Mon – Fri\n9:00 AM – 6:00 PM EST" },
+                    { icon: Clock,  label: "Hours",   value: "Mon â€“ Fri\n9:00 AM â€“ 6:00 PM EST" },
                   ].map(({ icon: Icon, label, value }) => (
                     <div key={label} className="flex items-start gap-4 p-5">
                       <div className="w-9 h-9 rounded-xl bg-primary/8 border border-primary/12 flex items-center justify-center shrink-0">
@@ -352,7 +351,7 @@ export default function BookConsultationPage() {
 
               {/* RDV notice */}
               <div className="animate-fade-up delay-400 rounded-2xl border border-amber-200 bg-amber-50 p-4">
-                <p className="text-xs font-bold text-amber-800 mb-1">By Appointment Only — RDV</p>
+                <p className="text-xs font-bold text-amber-800 mb-1">By Appointment Only â€” RDV</p>
                 <p className="text-[11px] text-amber-700 leading-relaxed">
                   All in-person sessions require a confirmed appointment. Walk-ins are not accepted. Book via the contact form or by phone.
                 </p>
@@ -365,3 +364,4 @@ export default function BookConsultationPage() {
     </>
   );
 }
+

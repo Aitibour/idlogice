@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
+import { generatePageAlternates } from "@/lib/seo/alternates";
 
 export function generateStaticParams() {
   return [{ locale: "en" }, { locale: "fr" }, { locale: "es" }, { locale: "ar" }];
@@ -21,17 +23,19 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+
+  // Read the actual request pathname forwarded by middleware.
+  // This allows the layout to emit correct per-page hreflang for EVERY route
+  // (about, contact, blog posts…) without each page repeating the logic.
+  const h = await headers();
+  const pathname = h.get("x-pathname") ?? `/${locale}`;
+
+  // Strip the locale prefix to get the locale-agnostic path segment.
+  // e.g. "/en/blog/my-post" → "/blog/my-post", "/fr" → ""
+  const path = pathname.replace(new RegExp(`^/(en|fr|es|ar)`), "") || "";
+
   return {
-    alternates: {
-      canonical: `/${locale}`,
-      languages: {
-        "en-CA": "/en",
-        "fr-CA": "/fr",
-        "es": "/es",
-        "ar": "/ar",
-        "x-default": "/en",
-      },
-    },
+    alternates: generatePageAlternates(locale, path),
   };
 }
 

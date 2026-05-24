@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import type { Metadata } from "next";
 import { ServiceJsonLd } from "@/components/seo/structured-data";
 
@@ -11,107 +11,107 @@ type Props = { params: Promise<{ locale: string }> };
 
 const T = {
   title: {
-    en: "Canadian Permanent Residency Pathways | IDLOGICE",
-    fr: "Voies vers la résidence permanente au Canada | IDLOGICE",
-    es: "Vías hacia la residencia permanente en Canadá | IDLOGICE",
-    ar: "مسارات الإقامة الدائمة الكندية | IDLOGICE",
+    en: "Canadian Permanent Residency Pathways",
+    fr: "Voies vers la rÃ©sidence permanente au Canada",
+    es: "VÃ­as hacia la residencia permanente en CanadÃ¡",
+    ar: "Ù…Ø³Ø§Ø±Ø§Øª Ø§Ù„Ø¥Ù‚Ø§Ù…Ø© Ø§Ù„Ø¯Ø§Ø¦Ù…Ø© Ø§Ù„ÙƒÙ†Ø¯ÙŠØ©",
   },
   desc: {
     en: "Explore all Canadian permanent residency pathways: Express Entry, PNP, work experience, study, Francophone, and family routes. Free profile evaluation.",
-    fr: "Explorez toutes les voies vers la résidence permanente canadienne : Entrée express, PNP, expérience de travail, études, francophone. Évaluation gratuite.",
-    es: "Explore todas las vías de residencia permanente canadiense: Express Entry, PNP, experiencia laboral, estudios, francofonía. Evaluación gratuita.",
-    ar: "استكشف جميع مسارات الإقامة الدائمة الكندية: Express Entry وPNP والعمل والدراسة. تقييم مجاني.",
+    fr: "Explorez toutes les voies vers la rÃ©sidence permanente canadienne : EntrÃ©e express, PNP, expÃ©rience de travail, Ã©tudes, francophone. Ã‰valuation gratuite.",
+    es: "Explore todas las vÃ­as de residencia permanente canadiense: Express Entry, PNP, experiencia laboral, estudios, francofonÃ­a. EvaluaciÃ³n gratuita.",
+    ar: "Ø§Ø³ØªÙƒØ´Ù Ø¬Ù…ÙŠØ¹ Ù…Ø³Ø§Ø±Ø§Øª Ø§Ù„Ø¥Ù‚Ø§Ù…Ø© Ø§Ù„Ø¯Ø§Ø¦Ù…Ø© Ø§Ù„ÙƒÙ†Ø¯ÙŠØ©: Express Entry ÙˆPNP ÙˆØ§Ù„Ø¹Ù…Ù„ ÙˆØ§Ù„Ø¯Ø±Ø§Ø³Ø©. ØªÙ‚ÙŠÙŠÙ… Ù…Ø¬Ø§Ù†ÙŠ.",
   },
   h1: {
     en: "Canadian PR Pathways",
     fr: "Voies vers la RP canadienne",
-    es: "Vías hacia la RP canadiense",
-    ar: "مسارات الإقامة الدائمة الكندية",
+    es: "VÃ­as hacia la RP canadiense",
+    ar: "Ù…Ø³Ø§Ø±Ø§Øª Ø§Ù„Ø¥Ù‚Ø§Ù…Ø© Ø§Ù„Ø¯Ø§Ø¦Ù…Ø© Ø§Ù„ÙƒÙ†Ø¯ÙŠØ©",
   },
   lead: {
     en: "Canada offers over 100 pathways to permanent residency. Our RCIC-certified consultants help you identify the fastest, most accessible route based on your profile, work experience, and language skills.",
-    fr: "Le Canada offre plus de 100 voies vers la résidence permanente. Nos consultants certifiés RCIC vous aident à identifier le chemin le plus rapide selon votre profil.",
-    es: "Canadá ofrece más de 100 vías hacia la residencia permanente. Nuestros consultores certificados RCIC le ayudan a identificar el camino más rápido según su perfil.",
-    ar: "تقدم كندا أكثر من 100 مسار للإقامة الدائمة. يساعدك مستشارونا المعتمدون RCIC في تحديد المسار الأسرع والأكثر سهولة وفقاً لملفك.",
+    fr: "Le Canada offre plus de 100 voies vers la rÃ©sidence permanente. Nos consultants certifiÃ©s RCIC vous aident Ã  identifier le chemin le plus rapide selon votre profil.",
+    es: "CanadÃ¡ ofrece mÃ¡s de 100 vÃ­as hacia la residencia permanente. Nuestros consultores certificados RCIC le ayudan a identificar el camino mÃ¡s rÃ¡pido segÃºn su perfil.",
+    ar: "ØªÙ‚Ø¯Ù… ÙƒÙ†Ø¯Ø§ Ø£ÙƒØ«Ø± Ù…Ù† 100 Ù…Ø³Ø§Ø± Ù„Ù„Ø¥Ù‚Ø§Ù…Ø© Ø§Ù„Ø¯Ø§Ø¦Ù…Ø©. ÙŠØ³Ø§Ø¹Ø¯Ùƒ Ù…Ø³ØªØ´Ø§Ø±ÙˆÙ†Ø§ Ø§Ù„Ù…Ø¹ØªÙ…Ø¯ÙˆÙ† RCIC ÙÙŠ ØªØ­Ø¯ÙŠØ¯ Ø§Ù„Ù…Ø³Ø§Ø± Ø§Ù„Ø£Ø³Ø±Ø¹ ÙˆØ§Ù„Ø£ÙƒØ«Ø± Ø³Ù‡ÙˆÙ„Ø© ÙˆÙÙ‚Ø§Ù‹ Ù„Ù…Ù„ÙÙƒ.",
   },
   pathwaysH: {
     en: "PR Pathways at a Glance",
-    fr: "Aperçu des voies vers la RP",
-    es: "Vías hacia la RP de un vistazo",
-    ar: "نظرة عامة على مسارات الإقامة الدائمة",
+    fr: "AperÃ§u des voies vers la RP",
+    es: "VÃ­as hacia la RP de un vistazo",
+    ar: "Ù†Ø¸Ø±Ø© Ø¹Ø§Ù…Ø© Ø¹Ù„Ù‰ Ù…Ø³Ø§Ø±Ø§Øª Ø§Ù„Ø¥Ù‚Ø§Ù…Ø© Ø§Ù„Ø¯Ø§Ø¦Ù…Ø©",
   },
   requirementsH: {
     en: "General Eligibility Requirements",
-    fr: "Conditions générales d'admissibilité",
+    fr: "Conditions gÃ©nÃ©rales d'admissibilitÃ©",
     es: "Requisitos generales de elegibilidad",
-    ar: "متطلبات الأهلية العامة",
+    ar: "Ù…ØªØ·Ù„Ø¨Ø§Øª Ø§Ù„Ø£Ù‡Ù„ÙŠØ© Ø§Ù„Ø¹Ø§Ù…Ø©",
   },
   ctaH: {
     en: "Find Your PR Pathway",
     fr: "Trouvez votre voie vers la RP",
-    es: "Encuentre su vía hacia la RP",
-    ar: "ابحث عن مسار الإقامة الدائمة الخاص بك",
+    es: "Encuentre su vÃ­a hacia la RP",
+    ar: "Ø§Ø¨Ø­Ø« Ø¹Ù† Ù…Ø³Ø§Ø± Ø§Ù„Ø¥Ù‚Ø§Ù…Ø© Ø§Ù„Ø¯Ø§Ø¦Ù…Ø© Ø§Ù„Ø®Ø§Øµ Ø¨Ùƒ",
   },
   ctaTxt: {
     en: "Not sure which pathway suits you? Our RCIC consultants assess your profile across all available programs and recommend the fastest route to Canadian permanent residency.",
-    fr: "Vous ne savez pas quelle voie vous convient ? Nos consultants RCIC évaluent votre profil et recommandent le chemin le plus rapide vers la résidence permanente.",
-    es: "¿No sabe qué vía le conviene? Nuestros consultores RCIC evalúan su perfil y recomiendan el camino más rápido hacia la residencia permanente.",
-    ar: "غير متأكد من المسار المناسب لك؟ يقيّم مستشارونا RCIC ملفك عبر جميع البرامج المتاحة ويوصون بأسرع طريق للإقامة الدائمة.",
+    fr: "Vous ne savez pas quelle voie vous convient ? Nos consultants RCIC Ã©valuent votre profil et recommandent le chemin le plus rapide vers la rÃ©sidence permanente.",
+    es: "Â¿No sabe quÃ© vÃ­a le conviene? Nuestros consultores RCIC evalÃºan su perfil y recomiendan el camino mÃ¡s rÃ¡pido hacia la residencia permanente.",
+    ar: "ØºÙŠØ± Ù…ØªØ£ÙƒØ¯ Ù…Ù† Ø§Ù„Ù…Ø³Ø§Ø± Ø§Ù„Ù…Ù†Ø§Ø³Ø¨ Ù„ÙƒØŸ ÙŠÙ‚ÙŠÙ‘Ù… Ù…Ø³ØªØ´Ø§Ø±ÙˆÙ†Ø§ RCIC Ù…Ù„ÙÙƒ Ø¹Ø¨Ø± Ø¬Ù…ÙŠØ¹ Ø§Ù„Ø¨Ø±Ø§Ù…Ø¬ Ø§Ù„Ù…ØªØ§Ø­Ø© ÙˆÙŠÙˆØµÙˆÙ† Ø¨Ø£Ø³Ø±Ø¹ Ø·Ø±ÙŠÙ‚ Ù„Ù„Ø¥Ù‚Ø§Ù…Ø© Ø§Ù„Ø¯Ø§Ø¦Ù…Ø©.",
   },
   ctaBtn: {
     en: "Get Free PR Assessment",
-    fr: "Évaluation RP gratuite",
-    es: "Evaluación de RP gratuita",
-    ar: "تقييم الإقامة الدائمة المجاني",
+    fr: "Ã‰valuation RP gratuite",
+    es: "EvaluaciÃ³n de RP gratuita",
+    ar: "ØªÙ‚ÙŠÙŠÙ… Ø§Ù„Ø¥Ù‚Ø§Ù…Ø© Ø§Ù„Ø¯Ø§Ø¦Ù…Ø© Ø§Ù„Ù…Ø¬Ø§Ù†ÙŠ",
   },
-  breadHome: { en: "Home", fr: "Accueil", es: "Inicio", ar: "الرئيسية" },
-  breadServices: { en: "Services", fr: "Services", es: "Servicios", ar: "الخدمات" },
+  breadHome: { en: "Home", fr: "Accueil", es: "Inicio", ar: "Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©" },
+  breadServices: { en: "Services", fr: "Services", es: "Servicios", ar: "Ø§Ù„Ø®Ø¯Ù…Ø§Øª" },
 } as const;
 
 const PATHWAYS = [
   {
-    title: { en: "Express Entry (Federal)", fr: "Entrée express (fédéral)", es: "Express Entry (federal)", ar: "Express Entry (فيدرالي)" },
-    desc: { en: "The fastest federal pathway for skilled workers. CRS-based ranking with typical processing under 6 months.", fr: "La voie fédérale la plus rapide pour les travailleurs qualifiés. Classement basé sur le CRS.", es: "La vía federal más rápida para trabajadores calificados. Clasificación basada en CRS.", ar: "أسرع مسار فيدرالي للعمال المهرة. تصنيف قائم على CRS مع معالجة تحت 6 أشهر." },
+    title: { en: "Express Entry (Federal)", fr: "EntrÃ©e express (fÃ©dÃ©ral)", es: "Express Entry (federal)", ar: "Express Entry (ÙÙŠØ¯Ø±Ø§Ù„ÙŠ)" },
+    desc: { en: "The fastest federal pathway for skilled workers. CRS-based ranking with typical processing under 6 months.", fr: "La voie fÃ©dÃ©rale la plus rapide pour les travailleurs qualifiÃ©s. Classement basÃ© sur le CRS.", es: "La vÃ­a federal mÃ¡s rÃ¡pida para trabajadores calificados. ClasificaciÃ³n basada en CRS.", ar: "Ø£Ø³Ø±Ø¹ Ù…Ø³Ø§Ø± ÙÙŠØ¯Ø±Ø§Ù„ÙŠ Ù„Ù„Ø¹Ù…Ø§Ù„ Ø§Ù„Ù…Ù‡Ø±Ø©. ØªØµÙ†ÙŠÙ Ù‚Ø§Ø¦Ù… Ø¹Ù„Ù‰ CRS Ù…Ø¹ Ù…Ø¹Ø§Ù„Ø¬Ø© ØªØ­Øª 6 Ø£Ø´Ù‡Ø±." },
     href: "/programs/express-entry",
-    tags: { en: ["6 months avg", "No job offer required", "All provinces"], fr: ["Moy. 6 mois", "Pas d'offre d'emploi requise", "Toutes provinces"], es: ["Promedio 6 meses", "Sin oferta de trabajo", "Todas las provincias"], ar: ["متوسط 6 أشهر", "لا يشترط عرض عمل", "جميع المقاطعات"] },
+    tags: { en: ["6 months avg", "No job offer required", "All provinces"], fr: ["Moy. 6 mois", "Pas d'offre d'emploi requise", "Toutes provinces"], es: ["Promedio 6 meses", "Sin oferta de trabajo", "Todas las provincias"], ar: ["Ù…ØªÙˆØ³Ø· 6 Ø£Ø´Ù‡Ø±", "Ù„Ø§ ÙŠØ´ØªØ±Ø· Ø¹Ø±Ø¶ Ø¹Ù…Ù„", "Ø¬Ù…ÙŠØ¹ Ø§Ù„Ù…Ù‚Ø§Ø·Ø¹Ø§Øª"] },
   },
   {
-    title: { en: "Provincial Nominee Program (PNP)", fr: "Programme des candidats des provinces (PCP)", es: "Programa de Nominados Provinciales (PNP)", ar: "برنامج المرشحين الإقليميين (PNP)" },
-    desc: { en: "Each province nominates workers for their specific labour needs. Adds 600 CRS points when done via Express Entry.", fr: "Chaque province nomme des travailleurs selon ses besoins. Ajoute 600 points CRS via Entrée express.", es: "Cada provincia nomina trabajadores según sus necesidades. Añade 600 puntos CRS vía Express Entry.", ar: "كل مقاطعة ترشح عمالاً لاحتياجاتها. يضيف 600 نقطة CRS عبر Express Entry." },
+    title: { en: "Provincial Nominee Program (PNP)", fr: "Programme des candidats des provinces (PCP)", es: "Programa de Nominados Provinciales (PNP)", ar: "Ø¨Ø±Ù†Ø§Ù…Ø¬ Ø§Ù„Ù…Ø±Ø´Ø­ÙŠÙ† Ø§Ù„Ø¥Ù‚Ù„ÙŠÙ…ÙŠÙŠÙ† (PNP)" },
+    desc: { en: "Each province nominates workers for their specific labour needs. Adds 600 CRS points when done via Express Entry.", fr: "Chaque province nomme des travailleurs selon ses besoins. Ajoute 600 points CRS via EntrÃ©e express.", es: "Cada provincia nomina trabajadores segÃºn sus necesidades. AÃ±ade 600 puntos CRS vÃ­a Express Entry.", ar: "ÙƒÙ„ Ù…Ù‚Ø§Ø·Ø¹Ø© ØªØ±Ø´Ø­ Ø¹Ù…Ø§Ù„Ø§Ù‹ Ù„Ø§Ø­ØªÙŠØ§Ø¬Ø§ØªÙ‡Ø§. ÙŠØ¶ÙŠÙ 600 Ù†Ù‚Ø·Ø© CRS Ø¹Ø¨Ø± Express Entry." },
     href: "/programs/provincial-nominee-program",
-    tags: { en: ["600 CRS bonus", "Province-specific", "50+ streams"], fr: ["Bonus 600 CRS", "Spécifique à la province", "50+ voies"], es: ["Bono 600 CRS", "Específico por provincia", "50+ corrientes"], ar: ["مكافأة 600 CRS", "خاص بالمقاطعة", "50+ مسار"] },
+    tags: { en: ["600 CRS bonus", "Province-specific", "50+ streams"], fr: ["Bonus 600 CRS", "SpÃ©cifique Ã  la province", "50+ voies"], es: ["Bono 600 CRS", "EspecÃ­fico por provincia", "50+ corrientes"], ar: ["Ù…ÙƒØ§ÙØ£Ø© 600 CRS", "Ø®Ø§Øµ Ø¨Ø§Ù„Ù…Ù‚Ø§Ø·Ø¹Ø©", "50+ Ù…Ø³Ø§Ø±"] },
   },
   {
-    title: { en: "PR Through Work Experience", fr: "RP via expérience de travail", es: "RP a través de experiencia laboral", ar: "الإقامة الدائمة عبر الخبرة العملية" },
-    desc: { en: "Canadian Caregiver Program, Home Support Worker, and Aging-in-Place pilots offer PR after 2 years of Canadian work experience.", fr: "Le Programme des aides familiaux et les projets pilotes offrent la RP après 2 ans d'expérience canadienne.", es: "El Programa de Cuidadores y proyectos piloto ofrecen RP tras 2 años de experiencia canadiense.", ar: "برنامج مقدمي الرعاية ومشاريع تجريبية تقدم الإقامة الدائمة بعد سنتين من العمل في كندا." },
+    title: { en: "PR Through Work Experience", fr: "RP via expÃ©rience de travail", es: "RP a travÃ©s de experiencia laboral", ar: "Ø§Ù„Ø¥Ù‚Ø§Ù…Ø© Ø§Ù„Ø¯Ø§Ø¦Ù…Ø© Ø¹Ø¨Ø± Ø§Ù„Ø®Ø¨Ø±Ø© Ø§Ù„Ø¹Ù…Ù„ÙŠØ©" },
+    desc: { en: "Canadian Caregiver Program, Home Support Worker, and Aging-in-Place pilots offer PR after 2 years of Canadian work experience.", fr: "Le Programme des aides familiaux et les projets pilotes offrent la RP aprÃ¨s 2 ans d'expÃ©rience canadienne.", es: "El Programa de Cuidadores y proyectos piloto ofrecen RP tras 2 aÃ±os de experiencia canadiense.", ar: "Ø¨Ø±Ù†Ø§Ù…Ø¬ Ù…Ù‚Ø¯Ù…ÙŠ Ø§Ù„Ø±Ø¹Ø§ÙŠØ© ÙˆÙ…Ø´Ø§Ø±ÙŠØ¹ ØªØ¬Ø±ÙŠØ¨ÙŠØ© ØªÙ‚Ø¯Ù… Ø§Ù„Ø¥Ù‚Ø§Ù…Ø© Ø§Ù„Ø¯Ø§Ø¦Ù…Ø© Ø¨Ø¹Ø¯ Ø³Ù†ØªÙŠÙ† Ù…Ù† Ø§Ù„Ø¹Ù…Ù„ ÙÙŠ ÙƒÙ†Ø¯Ø§." },
     href: "/services/work-permit",
-    tags: { en: ["2 yrs Canadian work exp", "In-demand occupations", "LMIA-exempt paths"], fr: ["2 ans expérience canadienne", "Professions en demande", "Chemins sans EIMT"], es: ["2 años exp. canadiense", "Ocupaciones en demanda", "Vías sin LMIA"], ar: ["سنتان خبرة كندية", "مهن مطلوبة", "مسارات معفاة من LMIA"] },
+    tags: { en: ["2 yrs Canadian work exp", "In-demand occupations", "LMIA-exempt paths"], fr: ["2 ans expÃ©rience canadienne", "Professions en demande", "Chemins sans EIMT"], es: ["2 aÃ±os exp. canadiense", "Ocupaciones en demanda", "VÃ­as sin LMIA"], ar: ["Ø³Ù†ØªØ§Ù† Ø®Ø¨Ø±Ø© ÙƒÙ†Ø¯ÙŠØ©", "Ù…Ù‡Ù† Ù…Ø·Ù„ÙˆØ¨Ø©", "Ù…Ø³Ø§Ø±Ø§Øª Ù…Ø¹ÙØ§Ø© Ù…Ù† LMIA"] },
   },
   {
-    title: { en: "PR Through Study", fr: "RP via études", es: "RP a través de estudios", ar: "الإقامة الدائمة عبر الدراسة" },
-    desc: { en: "International graduates can use PGWP work experience to qualify for Express Entry or PNP streams targeting Canadian graduates.", fr: "Les diplômés internationaux peuvent utiliser le PTPD pour se qualifier à l'Entrée express ou aux voies PNP.", es: "Los graduados internacionales pueden usar la PGWP para calificar a Express Entry o corrientes PNP.", ar: "يمكن للخريجين الدوليين استخدام تصريح العمل بعد التخرج للتأهل لـ Express Entry أو PNP." },
+    title: { en: "PR Through Study", fr: "RP via Ã©tudes", es: "RP a travÃ©s de estudios", ar: "Ø§Ù„Ø¥Ù‚Ø§Ù…Ø© Ø§Ù„Ø¯Ø§Ø¦Ù…Ø© Ø¹Ø¨Ø± Ø§Ù„Ø¯Ø±Ø§Ø³Ø©" },
+    desc: { en: "International graduates can use PGWP work experience to qualify for Express Entry or PNP streams targeting Canadian graduates.", fr: "Les diplÃ´mÃ©s internationaux peuvent utiliser le PTPD pour se qualifier Ã  l'EntrÃ©e express ou aux voies PNP.", es: "Los graduados internacionales pueden usar la PGWP para calificar a Express Entry o corrientes PNP.", ar: "ÙŠÙ…ÙƒÙ† Ù„Ù„Ø®Ø±ÙŠØ¬ÙŠÙ† Ø§Ù„Ø¯ÙˆÙ„ÙŠÙŠÙ† Ø§Ø³ØªØ®Ø¯Ø§Ù… ØªØµØ±ÙŠØ­ Ø§Ù„Ø¹Ù…Ù„ Ø¨Ø¹Ø¯ Ø§Ù„ØªØ®Ø±Ø¬ Ù„Ù„ØªØ£Ù‡Ù„ Ù„Ù€ Express Entry Ø£Ùˆ PNP." },
     href: "/services/study-permit",
-    tags: { en: ["PGWP eligible", "CEC pathway", "Provincial graduate streams"], fr: ["Éligible au PTPD", "Voie ECC", "Voies diplômés provinciaux"], es: ["Elegible PGWP", "Vía CEC", "Corrientes graduados provinciales"], ar: ["مؤهل لـ PGWP", "مسار CEC", "مسارات خريجي المقاطعات"] },
+    tags: { en: ["PGWP eligible", "CEC pathway", "Provincial graduate streams"], fr: ["Ã‰ligible au PTPD", "Voie ECC", "Voies diplÃ´mÃ©s provinciaux"], es: ["Elegible PGWP", "VÃ­a CEC", "Corrientes graduados provinciales"], ar: ["Ù…Ø¤Ù‡Ù„ Ù„Ù€ PGWP", "Ù…Ø³Ø§Ø± CEC", "Ù…Ø³Ø§Ø±Ø§Øª Ø®Ø±ÙŠØ¬ÙŠ Ø§Ù„Ù…Ù‚Ø§Ø·Ø¹Ø§Øª"] },
   },
   {
-    title: { en: "Francophone Immigration", fr: "Immigration francophone", es: "Inmigración francófona", ar: "الهجرة الناطقة بالفرنسية" },
-    desc: { en: "French speakers get CRS bonus points, dedicated draws, and access to LMIA-exempt Mobilité Francophone work permits outside Quebec.", fr: "Les francophones obtiennent des points CRS supplémentaires, des tirages dédiés et le Programme Mobilité francophone.", es: "Los francófonos obtienen puntos CRS adicionales, sorteos dedicados y permisos de trabajo sin LMIA.", ar: "يحصل الناطقون بالفرنسية على نقاط CRS إضافية وسحوبات مخصصة وتصاريح عمل معفاة من LMIA." },
+    title: { en: "Francophone Immigration", fr: "Immigration francophone", es: "InmigraciÃ³n francÃ³fona", ar: "Ø§Ù„Ù‡Ø¬Ø±Ø© Ø§Ù„Ù†Ø§Ø·Ù‚Ø© Ø¨Ø§Ù„ÙØ±Ù†Ø³ÙŠØ©" },
+    desc: { en: "French speakers get CRS bonus points, dedicated draws, and access to LMIA-exempt MobilitÃ© Francophone work permits outside Quebec.", fr: "Les francophones obtiennent des points CRS supplÃ©mentaires, des tirages dÃ©diÃ©s et le Programme MobilitÃ© francophone.", es: "Los francÃ³fonos obtienen puntos CRS adicionales, sorteos dedicados y permisos de trabajo sin LMIA.", ar: "ÙŠØ­ØµÙ„ Ø§Ù„Ù†Ø§Ø·Ù‚ÙˆÙ† Ø¨Ø§Ù„ÙØ±Ù†Ø³ÙŠØ© Ø¹Ù„Ù‰ Ù†Ù‚Ø§Ø· CRS Ø¥Ø¶Ø§ÙÙŠØ© ÙˆØ³Ø­ÙˆØ¨Ø§Øª Ù…Ø®ØµØµØ© ÙˆØªØµØ§Ø±ÙŠØ­ Ø¹Ù…Ù„ Ù…Ø¹ÙØ§Ø© Ù…Ù† LMIA." },
     href: "/programs/francophone-mobility",
-    tags: { en: ["CRS French bonus", "Dedicated draws", "LMIA-exempt work permit"], fr: ["Bonus CRS français", "Tirages dédiés", "Permis sans EIMT"], es: ["Bono CRS francés", "Sorteos dedicados", "Permiso sin LMIA"], ar: ["مكافأة CRS للفرنسية", "سحوبات مخصصة", "تصريح عمل معفى"] },
+    tags: { en: ["CRS French bonus", "Dedicated draws", "LMIA-exempt work permit"], fr: ["Bonus CRS franÃ§ais", "Tirages dÃ©diÃ©s", "Permis sans EIMT"], es: ["Bono CRS francÃ©s", "Sorteos dedicados", "Permiso sin LMIA"], ar: ["Ù…ÙƒØ§ÙØ£Ø© CRS Ù„Ù„ÙØ±Ù†Ø³ÙŠØ©", "Ø³Ø­ÙˆØ¨Ø§Øª Ù…Ø®ØµØµØ©", "ØªØµØ±ÙŠØ­ Ø¹Ù…Ù„ Ù…Ø¹ÙÙ‰"] },
   },
   {
-    title: { en: "Family Sponsorship", fr: "Parrainage familial", es: "Patrocinio familiar", ar: "التكفل العائلي" },
-    desc: { en: "Canadian PRs and citizens can sponsor spouses, parents, and dependent children for permanent residency.", fr: "Les RP et citoyens canadiens peuvent parrainer conjoints, parents et enfants à charge pour la résidence permanente.", es: "Los RP y ciudadanos canadienses pueden patrocinar cónyuges, padres e hijos dependientes.", ar: "يمكن لحاملي الإقامة الدائمة والمواطنين الكنديين كفالة الأزواج والوالدين والأطفال التابعين." },
+    title: { en: "Family Sponsorship", fr: "Parrainage familial", es: "Patrocinio familiar", ar: "Ø§Ù„ØªÙƒÙÙ„ Ø§Ù„Ø¹Ø§Ø¦Ù„ÙŠ" },
+    desc: { en: "Canadian PRs and citizens can sponsor spouses, parents, and dependent children for permanent residency.", fr: "Les RP et citoyens canadiens peuvent parrainer conjoints, parents et enfants Ã  charge pour la rÃ©sidence permanente.", es: "Los RP y ciudadanos canadienses pueden patrocinar cÃ³nyuges, padres e hijos dependientes.", ar: "ÙŠÙ…ÙƒÙ† Ù„Ø­Ø§Ù…Ù„ÙŠ Ø§Ù„Ø¥Ù‚Ø§Ù…Ø© Ø§Ù„Ø¯Ø§Ø¦Ù…Ø© ÙˆØ§Ù„Ù…ÙˆØ§Ø·Ù†ÙŠÙ† Ø§Ù„ÙƒÙ†Ø¯ÙŠÙŠÙ† ÙƒÙØ§Ù„Ø© Ø§Ù„Ø£Ø²ÙˆØ§Ø¬ ÙˆØ§Ù„ÙˆØ§Ù„Ø¯ÙŠÙ† ÙˆØ§Ù„Ø£Ø·ÙØ§Ù„ Ø§Ù„ØªØ§Ø¨Ø¹ÙŠÙ†." },
     href: "/services/family-sponsorship",
-    tags: { en: ["Spouse & common-law", "Parents & grandparents", "Dependent children"], fr: ["Époux et conjoint de fait", "Parents et grands-parents", "Enfants à charge"], es: ["Cónyuge y pareja de hecho", "Padres y abuelos", "Hijos dependientes"], ar: ["الزوج أو الشريك", "الوالدان والأجداد", "الأطفال التابعون"] },
+    tags: { en: ["Spouse & common-law", "Parents & grandparents", "Dependent children"], fr: ["Ã‰poux et conjoint de fait", "Parents et grands-parents", "Enfants Ã  charge"], es: ["CÃ³nyuge y pareja de hecho", "Padres y abuelos", "Hijos dependientes"], ar: ["Ø§Ù„Ø²ÙˆØ¬ Ø£Ùˆ Ø§Ù„Ø´Ø±ÙŠÙƒ", "Ø§Ù„ÙˆØ§Ù„Ø¯Ø§Ù† ÙˆØ§Ù„Ø£Ø¬Ø¯Ø§Ø¯", "Ø§Ù„Ø£Ø·ÙØ§Ù„ Ø§Ù„ØªØ§Ø¨Ø¹ÙˆÙ†"] },
   },
 ];
 
 const REQUIREMENTS = {
   en: ["Valid passport and travel history", "Language test results (IELTS/TEF/CELPIP)", "Educational Credential Assessment (ECA) if applicable", "Proof of work experience (reference letters, pay stubs)", "Police clearance certificates", "Medical examination by IRCC-designated physician"],
-  fr: ["Passeport valide et historique de voyages", "Résultats de test de langue (IELTS/TEF/CELPIP)", "Évaluation des diplômes (EDE) si applicable", "Preuve d'expérience de travail (lettres de référence)", "Certificats de police", "Examen médical par un médecin désigné IRCC"],
-  es: ["Pasaporte válido e historial de viajes", "Resultados de prueba de idioma (IELTS/TEF/CELPIP)", "Evaluación de credenciales educativas (ECA)", "Prueba de experiencia laboral (cartas de referencia)", "Certificados de antecedentes penales", "Examen médico por médico designado IRCC"],
-  ar: ["جواز سفر ساري وتاريخ السفر", "نتائج اختبار اللغة (IELTS/TEF/CELPIP)", "تقييم الشهادات التعليمية (ECA) إن لزم", "إثبات الخبرة العملية (خطابات مرجعية)", "شهادات حسن السيرة والسلوك", "الفحص الطبي من قبل طبيب معين من IRCC"],
+  fr: ["Passeport valide et historique de voyages", "RÃ©sultats de test de langue (IELTS/TEF/CELPIP)", "Ã‰valuation des diplÃ´mes (EDE) si applicable", "Preuve d'expÃ©rience de travail (lettres de rÃ©fÃ©rence)", "Certificats de police", "Examen mÃ©dical par un mÃ©decin dÃ©signÃ© IRCC"],
+  es: ["Pasaporte vÃ¡lido e historial de viajes", "Resultados de prueba de idioma (IELTS/TEF/CELPIP)", "EvaluaciÃ³n de credenciales educativas (ECA)", "Prueba de experiencia laboral (cartas de referencia)", "Certificados de antecedentes penales", "Examen mÃ©dico por mÃ©dico designado IRCC"],
+  ar: ["Ø¬ÙˆØ§Ø² Ø³ÙØ± Ø³Ø§Ø±ÙŠ ÙˆØªØ§Ø±ÙŠØ® Ø§Ù„Ø³ÙØ±", "Ù†ØªØ§Ø¦Ø¬ Ø§Ø®ØªØ¨Ø§Ø± Ø§Ù„Ù„ØºØ© (IELTS/TEF/CELPIP)", "ØªÙ‚ÙŠÙŠÙ… Ø§Ù„Ø´Ù‡Ø§Ø¯Ø§Øª Ø§Ù„ØªØ¹Ù„ÙŠÙ…ÙŠØ© (ECA) Ø¥Ù† Ù„Ø²Ù…", "Ø¥Ø«Ø¨Ø§Øª Ø§Ù„Ø®Ø¨Ø±Ø© Ø§Ù„Ø¹Ù…Ù„ÙŠØ© (Ø®Ø·Ø§Ø¨Ø§Øª Ù…Ø±Ø¬Ø¹ÙŠØ©)", "Ø´Ù‡Ø§Ø¯Ø§Øª Ø­Ø³Ù† Ø§Ù„Ø³ÙŠØ±Ø© ÙˆØ§Ù„Ø³Ù„ÙˆÙƒ", "Ø§Ù„ÙØ­Øµ Ø§Ù„Ø·Ø¨ÙŠ Ù…Ù† Ù‚Ø¨Ù„ Ø·Ø¨ÙŠØ¨ Ù…Ø¹ÙŠÙ† Ù…Ù† IRCC"],
 };
 
 export function generateStaticParams() {
@@ -200,16 +200,17 @@ export default async function PRPathwaysPage({ params }: Props) {
 
         <div className="flex flex-wrap gap-3">
           <Link href={`/${l}/programs`} className="text-sm font-medium text-gray-600 hover:text-primary border border-gray-200 rounded-full px-4 py-1.5">
-            {l === "en" ? "All Programs" : l === "fr" ? "Tous les programmes" : l === "es" ? "Todos los programas" : "جميع البرامج"}
+            {l === "en" ? "All Programs" : l === "fr" ? "Tous les programmes" : l === "es" ? "Todos los programas" : "Ø¬Ù…ÙŠØ¹ Ø§Ù„Ø¨Ø±Ø§Ù…Ø¬"}
           </Link>
           <Link href={`/${l}/calculator`} className="text-sm font-medium text-gray-600 hover:text-primary border border-gray-200 rounded-full px-4 py-1.5">
-            {l === "en" ? "CRS Calculator" : l === "fr" ? "Calculateur CRS" : l === "es" ? "Calculadora CRS" : "حاسبة CRS"}
+            {l === "en" ? "CRS Calculator" : l === "fr" ? "Calculateur CRS" : l === "es" ? "Calculadora CRS" : "Ø­Ø§Ø³Ø¨Ø© CRS"}
           </Link>
           <Link href={`/${l}/draws`} className="text-sm font-medium text-gray-600 hover:text-primary border border-gray-200 rounded-full px-4 py-1.5">
-            {l === "en" ? "Latest Draws" : l === "fr" ? "Derniers tirages" : l === "es" ? "Últimos sorteos" : "أحدث السحوبات"}
+            {l === "en" ? "Latest Draws" : l === "fr" ? "Derniers tirages" : l === "es" ? "Ãšltimos sorteos" : "Ø£Ø­Ø¯Ø« Ø§Ù„Ø³Ø­ÙˆØ¨Ø§Øª"}
           </Link>
         </div>
       </article>
     </>
   );
 }
+

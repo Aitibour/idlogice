@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { cleanImageUrl } from "@/lib/seo/images";
 
 type Props = {
   slug: string;
@@ -15,16 +16,18 @@ export function PostCard({ slug, title, excerpt, imageUrl, publishedAt, locale }
     locale === "fr" ? "fr-CA" : "en-CA",
     { year: "numeric", month: "long", day: "numeric" },
   );
+  // Strip Unsplash query params to prevent double-encoding through /_next/image
+  const cleanSrc = cleanImageUrl(imageUrl);
 
   return (
     <Link
       href={`/${locale}/blog/${slug}`}
       className="group block rounded-xl overflow-hidden border border-border hover:shadow-lg transition-shadow"
     >
-      {imageUrl && (
+      {cleanSrc && (
         <div className="relative aspect-video w-full overflow-hidden">
           <Image
-            src={imageUrl}
+            src={cleanSrc}
             alt={title}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"

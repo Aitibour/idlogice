@@ -1,6 +1,7 @@
-import { notFound } from "next/navigation";
+﻿import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { generatePageAlternates } from "@/lib/seo/alternates";
 import { COUNTRIES, COUNTRY_MAP } from "@/data/immigration-countries";
 import { PROGRAMS, PROGRAM_MAP } from "@/data/immigration-programs";
 import { BreadcrumbJsonLd, ServiceJsonLd } from "@/components/seo/structured-data";
@@ -37,33 +38,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const programName = program.shortName[loc] ?? program.shortName.en;
   const url = `${BASE}/${locale}/from/${countrySlug}/${programSlug}`;
 
+  // Absolute titles bypass template — keeps under 60 chars for all combos
+  // Worst case EN: "Canada Family Sponsorship: United Arab Emirates | IDLOGICE" = 58 chars
   const titles: Record<LocaleKey, string> = {
-    en: `Canada ${programName} from ${countryName} | IDLOGICE`,
-    fr: `${programName} Canada depuis ${countryName} | IDLOGICE`,
-    es: `${programName} Canadá desde ${countryName} | IDLOGICE`,
-    ar: `${programName} كندا من ${countryName} | IDLOGICE`,
+    en: `Canada ${programName}: ${countryName} | IDLOGICE`,
+    fr: `${programName} Canada: ${countryName} | IDLOGICE`,
+    es: `${programName} CanadÃ¡: ${countryName} | IDLOGICE`,
+    ar: `${programName} ÙƒÙ†Ø¯Ø§: ${countryName} | IDLOGICE`,
   };
 
   const descs: Record<LocaleKey, string> = {
     en: `Complete guide to Canada ${programName} for ${countryName} nationals. Eligibility, processing times, steps, and expert RCIC support from IDLOGICE.`,
-    fr: `Guide complet de ${programName} Canada pour les ressortissants de ${countryName}. Admissibilité, délais, étapes et accompagnement RCIC expert par IDLOGICE.`,
-    es: `Guía completa de ${programName} Canadá para ciudadanos de ${countryName}. Elegibilidad, tiempos, pasos y apoyo experto RCIC de IDLOGICE.`,
-    ar: `دليل شامل لـ ${programName} كندا لمواطني ${countryName}. الأهلية والمعالجة والخطوات ودعم RCIC من IDLOGICE.`,
+    fr: `Guide complet de ${programName} Canada pour les ressortissants de ${countryName}. AdmissibilitÃ©, dÃ©lais, Ã©tapes et accompagnement RCIC expert par IDLOGICE.`,
+    es: `GuÃ­a completa de ${programName} CanadÃ¡ para ciudadanos de ${countryName}. Elegibilidad, tiempos, pasos y apoyo experto RCIC de IDLOGICE.`,
+    ar: `Ø¯Ù„ÙŠÙ„ Ø´Ø§Ù…Ù„ Ù„Ù€ ${programName} ÙƒÙ†Ø¯Ø§ Ù„Ù…ÙˆØ§Ø·Ù†ÙŠ ${countryName}. Ø§Ù„Ø£Ù‡Ù„ÙŠØ© ÙˆØ§Ù„Ù…Ø¹Ø§Ù„Ø¬Ø© ÙˆØ§Ù„Ø®Ø·ÙˆØ§Øª ÙˆØ¯Ø¹Ù… RCIC Ù…Ù† IDLOGICE.`,
   };
 
   return {
-    title: titles[loc],
+    title: { absolute: titles[loc] },
     description: descs[loc],
-    alternates: {
-      canonical: url,
-      languages: Object.fromEntries(
-        LOCALES.map((l) => [l, `${BASE}/${l}/from/${countrySlug}/${programSlug}`]),
-      ),
-    },
+    alternates: generatePageAlternates(locale, `/from/${countrySlug}/${programSlug}`),
     openGraph: {
       type: "article",
       url,
-      title: titles[loc],
+      title: { absolute: titles[loc] },
       description: descs[loc],
       siteName: "IDLOGICE",
     },
@@ -83,47 +81,47 @@ const ui: Record<LocaleKey, {
     requirements: "Eligibility requirements", steps: "How to apply",
     faq: "Frequently asked questions",
     ctaTitle: "Book a free immigration consultation",
-    ctaBtn: "Book a consultation →",
+    ctaBtn: "Book a consultation â†’",
     otherPrograms: "Other programs for",
     countryNote: "Important for",
   },
   fr: {
     home: "Accueil", from: "Immigrer par pays", programs: "Programmes",
-    processingTime: "Délai de traitement typique", weeks: "semaines",
-    requirements: "Conditions d'admissibilité", steps: "Comment postuler",
-    faq: "Questions fréquentes",
-    ctaTitle: "Réservez une consultation d'immigration gratuite",
-    ctaBtn: "Réserver une consultation →",
+    processingTime: "DÃ©lai de traitement typique", weeks: "semaines",
+    requirements: "Conditions d'admissibilitÃ©", steps: "Comment postuler",
+    faq: "Questions frÃ©quentes",
+    ctaTitle: "RÃ©servez une consultation d'immigration gratuite",
+    ctaBtn: "RÃ©server une consultation â†’",
     otherPrograms: "Autres programmes pour",
     countryNote: "Important pour",
   },
   es: {
-    home: "Inicio", from: "Inmigrar por país", programs: "Programas",
-    processingTime: "Tramitación típica", weeks: "semanas",
-    requirements: "Requisitos de elegibilidad", steps: "Cómo aplicar",
+    home: "Inicio", from: "Inmigrar por paÃ­s", programs: "Programas",
+    processingTime: "TramitaciÃ³n tÃ­pica", weeks: "semanas",
+    requirements: "Requisitos de elegibilidad", steps: "CÃ³mo aplicar",
     faq: "Preguntas frecuentes",
-    ctaTitle: "Reserve una consulta de inmigración gratuita",
-    ctaBtn: "Reservar una consulta →",
+    ctaTitle: "Reserve una consulta de inmigraciÃ³n gratuita",
+    ctaBtn: "Reservar una consulta â†’",
     otherPrograms: "Otros programas para",
     countryNote: "Importante para",
   },
   ar: {
-    home: "الرئيسية", from: "الهجرة حسب البلد", programs: "البرامج",
-    processingTime: "وقت المعالجة المعتاد", weeks: "أسابيع",
-    requirements: "متطلبات الأهلية", steps: "كيفية التقديم",
-    faq: "الأسئلة الشائعة",
-    ctaTitle: "احجز استشارة هجرة مجانية",
-    ctaBtn: "احجز استشارة →",
-    otherPrograms: "برامج أخرى لـ",
-    countryNote: "مهم لـ",
+    home: "Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©", from: "Ø§Ù„Ù‡Ø¬Ø±Ø© Ø­Ø³Ø¨ Ø§Ù„Ø¨Ù„Ø¯", programs: "Ø§Ù„Ø¨Ø±Ø§Ù…Ø¬",
+    processingTime: "ÙˆÙ‚Øª Ø§Ù„Ù…Ø¹Ø§Ù„Ø¬Ø© Ø§Ù„Ù…Ø¹ØªØ§Ø¯", weeks: "Ø£Ø³Ø§Ø¨ÙŠØ¹",
+    requirements: "Ù…ØªØ·Ù„Ø¨Ø§Øª Ø§Ù„Ø£Ù‡Ù„ÙŠØ©", steps: "ÙƒÙŠÙÙŠØ© Ø§Ù„ØªÙ‚Ø¯ÙŠÙ…",
+    faq: "Ø§Ù„Ø£Ø³Ø¦Ù„Ø© Ø§Ù„Ø´Ø§Ø¦Ø¹Ø©",
+    ctaTitle: "Ø§Ø­Ø¬Ø² Ø§Ø³ØªØ´Ø§Ø±Ø© Ù‡Ø¬Ø±Ø© Ù…Ø¬Ø§Ù†ÙŠØ©",
+    ctaBtn: "Ø§Ø­Ø¬Ø² Ø§Ø³ØªØ´Ø§Ø±Ø© â†’",
+    otherPrograms: "Ø¨Ø±Ø§Ù…Ø¬ Ø£Ø®Ø±Ù‰ Ù„Ù€",
+    countryNote: "Ù…Ù‡Ù… Ù„Ù€",
   },
 };
 
 const englishNoteText: Record<LocaleKey, string> = {
   en: "English or French is required for most Canadian immigration programs. IELTS and CELPIP are accepted for English; TEF Canada and TCF Canada for French.",
-  fr: "L'anglais ou le français est requis pour la plupart des programmes d'immigration canadiens. IELTS et CELPIP sont acceptés pour l'anglais ; TEF Canada et TCF Canada pour le français.",
-  es: "El inglés o francés es requerido para la mayoría de los programas de inmigración canadienses. IELTS y CELPIP se aceptan para inglés; TEF Canada y TCF Canada para francés.",
-  ar: "يُشترط اللغة الإنجليزية أو الفرنسية لمعظم برامج الهجرة الكندية. IELTS وCELPIP مقبولان للإنجليزية؛ TEF Canada وTCF Canada للفرنسية.",
+  fr: "L'anglais ou le franÃ§ais est requis pour la plupart des programmes d'immigration canadiens. IELTS et CELPIP sont acceptÃ©s pour l'anglais ; TEF Canada et TCF Canada pour le franÃ§ais.",
+  es: "El inglÃ©s o francÃ©s es requerido para la mayorÃ­a de los programas de inmigraciÃ³n canadienses. IELTS y CELPIP se aceptan para inglÃ©s; TEF Canada y TCF Canada para francÃ©s.",
+  ar: "ÙŠÙØ´ØªØ±Ø· Ø§Ù„Ù„ØºØ© Ø§Ù„Ø¥Ù†Ø¬Ù„ÙŠØ²ÙŠØ© Ø£Ùˆ Ø§Ù„ÙØ±Ù†Ø³ÙŠØ© Ù„Ù…Ø¹Ø¸Ù… Ø¨Ø±Ø§Ù…Ø¬ Ø§Ù„Ù‡Ø¬Ø±Ø© Ø§Ù„ÙƒÙ†Ø¯ÙŠØ©. IELTS ÙˆCELPIP Ù…Ù‚Ø¨ÙˆÙ„Ø§Ù† Ù„Ù„Ø¥Ù†Ø¬Ù„ÙŠØ²ÙŠØ©Ø› TEF Canada ÙˆTCF Canada Ù„Ù„ÙØ±Ù†Ø³ÙŠØ©.",
 };
 
 export default async function CountryProgramPage({ params }: Props) {
@@ -147,8 +145,8 @@ export default async function CountryProgramPage({ params }: Props) {
 
   const pageTitle =
     locale === "fr" ? `${programShort} Canada depuis ${countryName}` :
-    locale === "es" ? `${programShort} Canadá desde ${countryName}` :
-    locale === "ar" ? `${programShort} كندا من ${countryName}` :
+    locale === "es" ? `${programShort} CanadÃ¡ desde ${countryName}` :
+    locale === "ar" ? `${programShort} ÙƒÙ†Ø¯Ø§ Ù…Ù† ${countryName}` :
     `Canada ${programShort} from ${countryName}`;
 
   const otherPrograms = PROGRAMS.filter((p) => p.slug !== programSlug).slice(0, 3);
@@ -162,7 +160,7 @@ export default async function CountryProgramPage({ params }: Props) {
         { name: programShort, url },
       ]} />
       <ServiceJsonLd
-        name={`${programName} — ${countryName} to Canada`}
+        name={`${programName} â€” ${countryName} to Canada`}
         description={programDesc.slice(0, 160)}
         url={url}
       />
@@ -181,7 +179,7 @@ export default async function CountryProgramPage({ params }: Props) {
         </nav>
 
         <div className="text-sm text-primary font-semibold uppercase tracking-wide mb-2">
-          {t.processingTime}: {program.processingWeeks.min}–{program.processingWeeks.max} {t.weeks}
+          {t.processingTime}: {program.processingWeeks.min}â€“{program.processingWeeks.max} {t.weeks}
         </div>
         <h1 className="text-4xl font-bold text-gray-900 mb-6 leading-tight">{pageTitle} 2025</h1>
         <p className="text-lg text-gray-600 leading-relaxed mb-10">{programDesc}</p>
@@ -271,7 +269,7 @@ export default async function CountryProgramPage({ params }: Props) {
                   {pr.shortName[locale] ?? pr.shortName.en}
                 </p>
                 <p className="text-xs text-gray-500 mt-1">
-                  {pr.processingWeeks.min}–{pr.processingWeeks.max} {t.weeks}
+                  {pr.processingWeeks.min}â€“{pr.processingWeeks.max} {t.weeks}
                 </p>
               </Link>
             ))}
@@ -281,3 +279,6 @@ export default async function CountryProgramPage({ params }: Props) {
     </>
   );
 }
+
+
+
