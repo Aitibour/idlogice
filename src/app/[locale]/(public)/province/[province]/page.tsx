@@ -124,10 +124,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ar: `Ø¯Ù„ÙŠÙ„ Ù‡Ø¬Ø±Ø© ${name}`,
   };
   const descs: Record<Locale, string> = {
-    en: `Complete guide to immigrating to ${name}, Canada. ${pnpName} streams, requirements, in-demand occupations, and free profile evaluation.`,
-    fr: `Guide complet pour immigrer en ${name}, Canada. Volets du ${prov.pnpName.fr}, exigences, professions en demande et evaluation gratuite.`,
-    es: `Guia completa para inmigrar a ${name}, Canada. Streams, requisitos, ocupaciones en demanda y evaluacion gratuita.`,
-    ar: `Ø§Ù„Ø¯Ù„ÙŠÙ„ Ø§Ù„Ø´Ø§Ù…Ù„ Ù„Ù„Ù‡Ø¬Ø±Ø© Ø¥Ù„Ù‰ ${name}ØŒ ÙƒÙ†Ø¯Ø§. Ø§Ù„Ù…Ø³Ø§Ø±Ø§Øª ÙˆØ§Ù„Ù…ØªØ·Ù„Ø¨Ø§Øª ÙˆØ§Ù„Ù…Ù‡Ù† Ø§Ù„Ù…Ø·Ù„ÙˆØ¨Ø© ÙˆØ§Ù„ØªÙ‚ÙŠÙŠÙ… Ø§Ù„Ù…Ø¬Ø§Ù†ÙŠ.`,
+    en: `Complete guide to immigrating to ${name}, Canada. PNP streams, requirements, in-demand occupations, and free profile evaluation.`,
+    fr: `Guide complet pour immigrer en ${name}, Canada. Volets PNP, exigences, professions en demande et évaluation gratuite.`,
+    es: `Guía completa para inmigrar a ${name}, Canadá. Streams PNP, requisitos, ocupaciones en demanda y evaluación gratuita.`,
+    ar: `الدليل الشامل للهجرة إلى ${name}، كندا. مسارات PNP ومتطلبات الأهلية والمهن المطلوبة. تقييم مجاني.`,
   };
 
   const title = titles[l];

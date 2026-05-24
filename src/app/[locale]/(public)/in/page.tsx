@@ -19,9 +19,9 @@ const T = {
   },
   desc: {
     en: "Find an RCIC-certified immigration consultant for your target Canadian city. Local programs, job market data, and PNP streams for 12 major cities.",
-    fr: "Trouvez un consultant en immigration certifiÃ© RCIC pour votre ville canadienne cible. Programmes locaux, donnÃ©es du marchÃ© du travail et voies PNP pour 12 grandes villes.",
-    es: "Encuentre un consultor de inmigraciÃ³n certificado RCIC para su ciudad canadiense objetivo. Programas locales, datos del mercado laboral y vÃ­as PNP para 12 ciudades principales.",
-    ar: "Ø§Ø¨Ø­Ø« Ø¹Ù† Ù…Ø³ØªØ´Ø§Ø± Ù‡Ø¬Ø±Ø© Ù…Ø¹ØªÙ…Ø¯ RCIC Ù„Ù…Ø¯ÙŠÙ†ØªÙƒ Ø§Ù„ÙƒÙ†Ø¯ÙŠØ© Ø§Ù„Ù…Ø³ØªÙ‡Ø¯ÙØ©. Ø¨Ø±Ø§Ù…Ø¬ Ù…Ø­Ù„ÙŠØ© ÙˆØ¨ÙŠØ§Ù†Ø§Øª Ø³ÙˆÙ‚ Ø§Ù„Ø¹Ù…Ù„ ÙˆÙ…Ø³Ø§Ø±Ø§Øª PNP Ù„Ù€ 12 Ù…Ø¯ÙŠÙ†Ø© Ø±Ø¦ÙŠØ³ÙŠØ©.",
+    fr: "Trouvez un consultant RCIC pour votre ville au Canada. Programmes locaux, marché du travail et voies PNP pour 12 grandes villes.",
+    es: "Encuentre un consultor RCIC para su ciudad en Canadá. Programas locales, mercado laboral y vías PNP para 12 ciudades principales.",
+    ar: "ابحث عن مستشار هجرة RCIC لمدينتك في كندا. برامج محلية وبيانات سوق العمل ومسارات PNP لـ 12 مدينة رئيسية.",
   },
   h1: {
     en: "Immigration Consultant by Canadian City",

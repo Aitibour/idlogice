@@ -18,10 +18,10 @@ const T = {
     ar: "Ø§Ù„Ù‡Ø¬Ø±Ø© Ø¥Ù„Ù‰ ÙƒÙ†Ø¯Ø§ Ø­Ø³Ø¨ Ø§Ù„Ù…Ù‡Ù†Ø©",
   },
   desc: {
-    en: "Find your profession-specific Canada immigration guide. NOC codes, Express Entry CRS scores, PNP streams, and step-by-step pathways for 12+ in-demand occupations.",
+    en: "Find your profession-specific Canada immigration guide. NOC codes, Express Entry CRS scores, PNP streams and pathways for 12+ in-demand occupations.",
     fr: "Trouvez le guide d'immigration canadienne spÃ©cifique Ã  votre profession. Codes CNP, scores CRS, voies PNP pour 12+ professions en demande.",
     es: "Encuentre la guÃ­a de inmigraciÃ³n canadiense especÃ­fica para su profesiÃ³n. CÃ³digos NOC, puntajes CRS, vÃ­as PNP para 12+ ocupaciones en demanda.",
-    ar: "Ø§Ø¨Ø­Ø« Ø¹Ù† Ø¯Ù„ÙŠÙ„ Ø§Ù„Ù‡Ø¬Ø±Ø© Ø§Ù„ÙƒÙ†Ø¯ÙŠØ© Ø§Ù„Ø®Ø§Øµ Ø¨Ù…Ù‡Ù†ØªÙƒ. Ø±Ù…ÙˆØ² NOC ÙˆØ¯Ø±Ø¬Ø§Øª CRS ÙˆÙ…Ø³Ø§Ø±Ø§Øª PNP Ù„Ø£ÙƒØ«Ø± Ù…Ù† 12 Ù…Ù‡Ù†Ø© Ù…Ø·Ù„ÙˆØ¨Ø©.",
+    ar: "ابحث عن دليل الهجرة الكندي لمهنتك. رموز NOC ودرجات CRS ومسارات PNP لأكثر من 12 مهنة مطلوبة.",
   },
   h1: {
     en: "Canada Immigration by Profession",

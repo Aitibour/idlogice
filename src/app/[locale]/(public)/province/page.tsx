@@ -18,10 +18,10 @@ const T = {
     ar: "Ø¯Ù„ÙŠÙ„ Ø¨Ø±Ø§Ù…Ø¬ Ø§Ù„Ù‡Ø¬Ø±Ø© Ø§Ù„Ø¥Ù‚Ù„ÙŠÙ…ÙŠØ© Ø§Ù„ÙƒÙ†Ø¯ÙŠØ© (PNP)",
   },
   desc: {
-    en: "Explore Provincial Nominee Programs (PNP) for all 10 Canadian provinces. Compare streams, minimum CRS scores, in-demand occupations and eligibility requirements.",
-    fr: "Explorez les Programmes des candidats des provinces (PNP) pour les 10 provinces canadiennes. Comparez les voies, scores CRS minimaux et professions en demande.",
+    en: "Explore Provincial Nominee Programs (PNP) for all 10 Canadian provinces. Compare streams, CRS scores, in-demand occupations and eligibility requirements.",
+    fr: "Explorez les Programmes des candidats (PNP) pour les 10 provinces canadiennes. Comparez voies, scores CRS minimaux et professions en demande.",
     es: "Explore los Programas de Nominados Provinciales (PNP) para las 10 provincias canadienses. Compare corrientes, puntajes CRS mÃ­nimos y ocupaciones en demanda.",
-    ar: "Ø§Ø³ØªÙƒØ´Ù Ø¨Ø±Ø§Ù…Ø¬ Ø§Ù„Ù…Ø±Ø´Ø­ÙŠÙ† Ø§Ù„Ø¥Ù‚Ù„ÙŠÙ…ÙŠÙŠÙ† (PNP) Ù„Ù„Ù…Ù‚Ø§Ø·Ø¹Ø§Øª Ø§Ù„ÙƒÙ†Ø¯ÙŠØ© Ø§Ù„Ø¹Ø´Ø±. Ù‚Ø§Ø±Ù† Ø§Ù„Ù…Ø³Ø§Ø±Ø§Øª ÙˆØ§Ù„Ø­Ø¯ Ø§Ù„Ø£Ø¯Ù†Ù‰ Ù„Ø¯Ø±Ø¬Ø§Øª CRS ÙˆØ§Ù„Ù…Ù‡Ù† Ø§Ù„Ù…Ø·Ù„ÙˆØ¨Ø©.",
+    ar: "استكشف برامج المرشحين الإقليميين (PNP) للمقاطعات الكندية العشر. قارن المسارات وشروط الأهلية وأبرز المهن المطلوبة.",
   },
   h1: {
     en: "Canadian Provincial Immigration Programs",

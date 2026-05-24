@@ -49,9 +49,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const descs: Record<LocaleKey, string> = {
     en: `Complete guide to Canada ${programName} for ${countryName} nationals. Eligibility, processing times, steps, and expert RCIC support from IDLOGICE.`,
-    fr: `Guide complet de ${programName} Canada pour les ressortissants de ${countryName}. AdmissibilitÃ©, dÃ©lais, Ã©tapes et accompagnement RCIC expert par IDLOGICE.`,
-    es: `GuÃ­a completa de ${programName} CanadÃ¡ para ciudadanos de ${countryName}. Elegibilidad, tiempos, pasos y apoyo experto RCIC de IDLOGICE.`,
-    ar: `Ø¯Ù„ÙŠÙ„ Ø´Ø§Ù…Ù„ Ù„Ù€ ${programName} ÙƒÙ†Ø¯Ø§ Ù„Ù…ÙˆØ§Ø·Ù†ÙŠ ${countryName}. Ø§Ù„Ø£Ù‡Ù„ÙŠØ© ÙˆØ§Ù„Ù…Ø¹Ø§Ù„Ø¬Ø© ÙˆØ§Ù„Ø®Ø·ÙˆØ§Øª ÙˆØ¯Ø¹Ù… RCIC Ù…Ù† IDLOGICE.`,
+    fr: `Guide complet ${programName} Canada pour ressortissants de ${countryName}. Admissibilité, délais, étapes et accompagnement RCIC par IDLOGICE.`,
+    es: `Guía completa de ${programName} Canadá para ciudadanos de ${countryName}. Elegibilidad, tiempos, pasos y apoyo experto RCIC de IDLOGICE.`,
+    ar: `دليل شامل لـ ${programName} كندا لمواطني ${countryName}. الأهلية والمعالجة والخطوات ودعم RCIC من IDLOGICE.`,
   };
 
   return {

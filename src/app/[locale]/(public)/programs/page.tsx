@@ -18,9 +18,9 @@ const pageTitle: Record<string, string> = {
 };
 
 const pageDesc: Record<string, string> = {
-  en: "Explore every Canadian immigration pathway — Express Entry, PNP, work permits, study permits, family sponsorship, and visitor visas. Find the program that matches your profile.",
-  fr: "Explorez toutes les voies d'immigration canadiennes — Entrée express, PCP, permis de travail, permis d'études, parrainage familial et visas de visiteur. Trouvez le programme correspondant à votre profil.",
-  es: "Explore cada vía de inmigración canadiense — Express Entry, PNP, permisos de trabajo, permisos de estudio, patrocinio familiar y visas de visitante. Encuentre el programa que coincide con su perfil.",
+  en: "Explore Canadian immigration pathways: Express Entry, PNP, work permits, study permits, family sponsorship, and visitor visas. Find the right program.",
+  fr: "Explorez les voies d'immigration canadiennes : Entrée express, PCP, permis de travail, parrainage familial et visas de visiteur. Trouvez votre programme.",
+  es: "Explore las vías de inmigración canadiense: Express Entry, PNP, permisos de trabajo, patrocinio familiar y visas de visitante. Encuentre su programa.",
   ar: "استكشف كل مسارات الهجرة الكندية — الدخول السريع وبرامج المقاطعات وتصاريح العمل والدراسة والكفالة الأسرية وتأشيرات الزيارة. اعثر على البرنامج الذي يناسب ملفك.",
 };
 

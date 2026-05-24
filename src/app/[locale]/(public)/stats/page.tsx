@@ -18,9 +18,9 @@ const T = {
   },
   desc: {
     en: "Key Canada immigration statistics for 2026: Express Entry draws, PNP nominations, PR targets, top source countries, CRS cut-offs, and processing times.",
-    fr: "Statistiques clÃ©s de l'immigration canadienne 2026 : tirages EntrÃ©e express, nominations PNP, cibles RP, principaux pays sources, seuils CRS et dÃ©lais de traitement.",
-    es: "EstadÃ­sticas clave de inmigraciÃ³n canadiense 2026: sorteos Express Entry, nominaciones PNP, objetivos RP, principales paÃ­ses de origen, umbrales CRS y tiempos de procesamiento.",
-    ar: "Ø¥Ø­ØµØ§Ø¦ÙŠØ§Øª Ø§Ù„Ù‡Ø¬Ø±Ø© Ø§Ù„ÙƒÙ†Ø¯ÙŠØ© Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ© Ù„Ø¹Ø§Ù… 2026: Ø³Ø­ÙˆØ¨Ø§Øª Express Entry ÙˆÙ…Ù†Ø­ PNP ÙˆØ£Ù‡Ø¯Ø§Ù Ø§Ù„Ø¥Ù‚Ø§Ù…Ø© Ø§Ù„Ø¯Ø§Ø¦Ù…Ø© ÙˆØ£Ø¨Ø±Ø² Ø¯ÙˆÙ„ Ø§Ù„Ù…ØµØ¯Ø± ÙˆØ­Ø¯ÙˆØ¯ CRS ÙˆØ£ÙˆÙ‚Ø§Øª Ø§Ù„Ù…Ø¹Ø§Ù„Ø¬Ø©.",
+    fr: "Statistiques immigration Canada 2026 : tirages Entrée express, nominations PNP, cibles RP, seuils CRS et délais de traitement.",
+    es: "Estadísticas de inmigración Canadá 2026: sorteos Express Entry, nominaciones PNP, objetivos RP, umbrales CRS y tiempos de procesamiento.",
+    ar: "إحصائيات هجرة كندا 2026: سحوبات Express Entry، منح PNP، أهداف الإقامة الدائمة، حدود CRS وأوقات المعالجة.",
   },
   h1: { en: "Canada Immigration Statistics 2026", fr: "Statistiques d'immigration Canada 2026", es: "EstadÃ­sticas de inmigraciÃ³n CanadÃ¡ 2026", ar: "Ø¥Ø­ØµØ§Ø¦ÙŠØ§Øª Ø§Ù„Ù‡Ø¬Ø±Ø© Ø¥Ù„Ù‰ ÙƒÙ†Ø¯Ø§ 2026" },
   lead: {
