@@ -119,7 +119,6 @@ const jsonLd = JSON.stringify({
       sameAs: [
         "https://www.linkedin.com/company/idlogice-immigration-canada",
         "https://www.tiktok.com/@idlogice.canada",
-        "https://x.com/idlogicecanada",
       ],
     },
     {
