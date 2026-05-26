@@ -38,6 +38,7 @@ function getDisplayName(user: AuthUser): string {
 /* ── Login-Required Card (shown before any form) ─────────────────────────── */
 function LoginRequiredCard({ job, isEligibility }: { job: Job; isEligibility: boolean }) {
   const nextUrl = `/jobs`;
+  const encodedNext = encodeURIComponent(nextUrl);
   return (
     <div className="mt-4 border-t border-border pt-6">
       <div className="rounded-2xl bg-gradient-to-br from-primary/5 to-amber-50 border border-primary/15 p-6 text-center">
@@ -55,14 +56,14 @@ function LoginRequiredCard({ job, isEligibility }: { job: Job; isEligibility: bo
         </p>
         <div className="flex flex-col sm:flex-row gap-2.5 justify-center mb-4">
           <Link
-            href={`/register?next=${encodeURIComponent(nextUrl)}`}
+            href={`/register?next=${encodedNext}`}
             className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors shadow-md shadow-primary/25"
           >
             <UserPlus className="size-4" />
             Create Free Account
           </Link>
           <Link
-            href={`/login?next=${encodeURIComponent(nextUrl)}`}
+            href={`/login?mode=signin&next=${encodedNext}`}
             className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white border border-border text-sm font-bold hover:border-primary hover:text-primary transition-colors"
             style={{ color: "#111827" }}
           >
@@ -105,7 +106,7 @@ function ApplyForm({ job, user, onClose }: { job: Job; user: AuthUser; onClose: 
           <CheckCircle className="size-10 text-emerald-500 mx-auto mb-3" />
           <p className="font-bold text-base mb-1" style={{ color: "#065f46" }}>Thank you, {displayName.split(" ")[0]}!</p>
           <p className="text-sm" style={{ color: "#047857" }}>
-            Your application for <strong>{job.title}</strong> has been received. We'll review it and get back to you within 2–3 business days at <strong>{user.email}</strong>.
+            Your application for <strong>{job.title}</strong> has been received. We&apos;ll review it and get back to you within 2–3 business days at <strong>{user.email}</strong>.
           </p>
         </div>
       </div>
@@ -233,7 +234,7 @@ function EligibilityForm({ job, user, onClose }: { job: Job; user: AuthUser; onC
           <CheckCircle className="size-10 text-emerald-500 mx-auto mb-3" />
           <p className="font-bold text-base mb-1" style={{ color: "#065f46" }}>Thank you, {displayName.split(" ")[0]}!</p>
           <p className="text-sm" style={{ color: "#047857" }}>
-            We've received your eligibility request for <strong>{job.title}</strong>. A CICC-registered consultant will review your profile and contact you at <strong>{user.email}</strong> within 2–3 business days.
+            We&apos;ve received your eligibility request for <strong>{job.title}</strong>. A CICC-registered consultant will review your profile and contact you at <strong>{user.email}</strong> within 2–3 business days.
           </p>
         </div>
       </div>

@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
 const REG_META: Record<string, { title: string; description: string }> = {
@@ -30,6 +29,7 @@ export default async function RegisterRedirectPage({
 }) {
   const { locale } = await params;
   const { next } = await searchParams;
-  const nextParam = next ? `?next=${encodeURIComponent(next)}` : "";
-  redirect(`/${locale}/login${nextParam}`);
+  const paramsOut = new URLSearchParams({ mode: "signup" });
+  if (next) paramsOut.set("next", next);
+  redirect(`/${locale}/login?${paramsOut.toString()}`);
 }

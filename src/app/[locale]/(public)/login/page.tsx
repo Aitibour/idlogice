@@ -23,8 +23,9 @@ export default function LoginPage() {
   const params = useSearchParams();
   const next = params.get("next") ?? "/evaluation";
   const authError = params.get("error");
+  const mode = params.get("mode");
 
-  const [tab, setTab] = useState<"signin" | "signup">("signup");
+  const [tab, setTab] = useState<"signin" | "signup">(mode === "signin" ? "signin" : "signup");
   const [form, setForm] = useState({ name: "", email: "", password: "" });
   const [showPw, setShowPw] = useState(false);
   const [error, setError] = useState(authError === "auth_failed" ? "Authentication failed. Please try again." : "");
@@ -116,7 +117,7 @@ export default function LoginPage() {
               onClick={() => { setState("form"); setTab("signin"); }}
               className="w-full flex items-center justify-center gap-2 h-12 rounded-xl bg-primary text-white text-sm font-bold hover:bg-primary/90 shadow-md shadow-primary/25 transition-all"
             >
-              I've verified — Sign In
+              I&apos;ve verified — Sign In
               <ArrowRight className="size-4" />
             </button>
             <button
@@ -128,7 +129,7 @@ export default function LoginPage() {
             </button>
           </div>
           <p className="mt-6 text-xs" style={{ color: "#9ca3af" }}>
-            Didn't get the email? Check your spam folder or{" "}
+            Didn&apos;t get the email? Check your spam folder or{" "}
             <button onClick={() => setState("form")} className="text-primary font-semibold hover:underline">try again</button>.
           </p>
         </div>
@@ -307,7 +308,7 @@ export default function LoginPage() {
 
             {tab === "signup" && (
               <p className="text-xs leading-relaxed px-1" style={{ color: "#6b7280" }}>
-                <strong style={{ color: "#374151" }}>📧 Email verification required.</strong> We'll send you a link to confirm your address before you can access the evaluation.
+                <strong style={{ color: "#374151" }}>📧 Email verification required.</strong> We&apos;ll send you a link to confirm your address before you can access the evaluation.
               </p>
             )}
 
