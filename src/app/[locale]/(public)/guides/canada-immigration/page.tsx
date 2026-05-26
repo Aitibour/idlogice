@@ -3,7 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 import { tryCreateServiceClient } from "@/lib/supabase/service";
-import { cleanImageUrl } from "@/lib/seo/images";
+import { cleanImageUrl, isUnsplashUrl } from "@/lib/seo/images";
 
 export const revalidate = 3600;
 
@@ -131,7 +131,8 @@ export default async function CanadaImmigrationHub({ params }: Props) {
         .select("slug, title, excerpt, image_url, published_at")
         .eq("status", "published")
         .order("published_at", { ascending: false })
-    : { data: [] };
+        .limit(100)
+      : { data: [] };
 
   const allPosts = posts ?? [];
   const grouped = CLUSTERS.map((c) => ({
@@ -210,6 +211,7 @@ export default async function CanadaImmigrationHub({ params }: Props) {
                           src={cleanImageUrl(p.image_url) ?? p.image_url}
                           alt={pTitle}
                           fill
+                          unoptimized={isUnsplashUrl(p.image_url)}
                           className="object-cover group-hover:scale-105 transition-transform"
                           sizes="(max-width:768px) 100vw, 33vw"
                         />

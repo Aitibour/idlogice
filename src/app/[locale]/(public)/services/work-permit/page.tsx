@@ -2,13 +2,21 @@
 import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
+const WP_META: Record<string, { title: string; description: string }> = {
+  en: { title: "Canada Work Permit — LMIA & Open Work Permits", description: "Get your Canadian work permit with expert RCIC consultants. LMIA applications, open work permits, and employer-specific permit guidance." },
+  fr: { title: "Permis de travail Canada — EIMT & permis ouverts", description: "Obtenez votre permis de travail canadien avec des consultants RCIC experts. Demandes EIMT, permis ouverts et guidance spécifique à l'employeur." },
+  es: { title: "Permiso de trabajo Canadá — LMIA y permisos abiertos", description: "Obtenga su permiso de trabajo canadiense con consultores RCIC expertos. Solicitudes LMIA, permisos abiertos y orientación específica por empleador." },
+  ar: { title: "تصريح العمل الكندي — LMIA وتصاريح العمل المفتوحة", description: "احصل على تصريح العمل الكندي مع مستشاري RCIC الخبراء. طلبات LMIA وتصاريح العمل المفتوحة والتوجيه الخاص بصاحب العمل." },
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const m = WP_META[locale] ?? WP_META.en;
   return {
-    title: "Canada Work Permit — LMIA & Open Work Permits",
-    description: "Get your Canadian work permit with expert RCIC consultants. LMIA applications, open work permits, and employer-specific permit guidance.",
+    title: m.title,
+    description: m.description,
     alternates: generatePageAlternates(locale, "/services/work-permit"),
-    openGraph: { title: "Canada Work Permit — LMIA & Open Work Permits", description: "Get your Canadian work permit with expert RCIC consultants. LMIA applications, open work permits, and employer-specific permit guidance.", url: `https://idlogice.com/${locale}/services/work-permit` },
+    openGraph: { title: m.title, description: m.description, url: `https://idlogice.com/${locale}/services/work-permit` },
   };
 }
 

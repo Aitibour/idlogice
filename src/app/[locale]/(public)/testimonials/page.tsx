@@ -1,11 +1,19 @@
 ﻿import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
+const TEST_META: Record<string, { title: string; description: string }> = {
+  en: { title: "Client Success Stories — IDLOGICE Immigration", description: "Real stories from clients who achieved Canadian permanent residency, work permits, and study permits with IDLOGICE's CICC-registered consultants." },
+  fr: { title: "Témoignages de clients — IDLOGICE Immigration", description: "Témoignages réels de clients qui ont obtenu la résidence permanente, des permis de travail et d'études grâce aux consultants CICC d'IDLOGICE." },
+  es: { title: "Historias de éxito — IDLOGICE Inmigración", description: "Historias reales de clientes que lograron residencia permanente, permisos de trabajo y estudio con los consultores CICC de IDLOGICE." },
+  ar: { title: "قصص نجاح العملاء — IDLOGICE", description: "قصص حقيقية من عملاء حققوا الإقامة الدائمة الكندية وتصاريح العمل والدراسة مع مستشاري CICC في IDLOGICE." },
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const m = TEST_META[locale] ?? TEST_META.en;
   return {
-    title: "Client Success Stories — IDLOGICE Immigration",
-    description: "Real stories from clients who achieved Canadian permanent residency, work permits, and study permits with IDLOGICE's CICC-registered immigration consultants.",
+    title: m.title,
+    description: m.description,
     alternates: generatePageAlternates(locale, "/testimonials"),
   };
 }

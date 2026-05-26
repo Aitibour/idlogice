@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { cleanImageUrl } from "@/lib/seo/images";
+import { cleanImageUrl, isUnsplashUrl } from "@/lib/seo/images";
 
 type Props = {
   slug: string;
@@ -30,6 +30,7 @@ export function PostCard({ slug, title, excerpt, imageUrl, publishedAt, locale }
             src={cleanSrc}
             alt={title}
             fill
+            unoptimized={isUnsplashUrl(cleanSrc)}
             className="object-cover group-hover:scale-105 transition-transform duration-300"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />

@@ -27,3 +27,18 @@ export function cleanImageUrl(url: string | null | undefined): string | undefine
     return url;
   }
 }
+
+/**
+ * Returns true for Unsplash image URLs.
+ * Use to pass unoptimized={true} to Next.js <Image> for Unsplash sources —
+ * Unsplash blocks the _next/image proxy (returns 403 Forbidden). Bypassing
+ * the optimizer lets browsers load directly from Unsplash's own CDN.
+ */
+export function isUnsplashUrl(url: string | null | undefined): boolean {
+  if (!url) return false;
+  try {
+    return new URL(url).hostname === "images.unsplash.com";
+  } catch {
+    return false;
+  }
+}

@@ -1,11 +1,19 @@
 ﻿import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
+const SERVICES_META: Record<string, { title: string; description: string }> = {
+  en: { title: "Canadian Immigration Services — Express Entry, PNP & More", description: "Explore IDLOGICE immigration services: Express Entry, PNP, work permits, study permits, family sponsorship, and tourist visa assistance." },
+  fr: { title: "Services d'immigration canadienne — Entrée express, PNP", description: "Découvrez les services d'immigration d'IDLOGICE : Entrée express, PNP, permis de travail, d'études, parrainage familial et visa touristique." },
+  es: { title: "Servicios de inmigración canadiense — Express Entry, PNP", description: "Explore los servicios de inmigración de IDLOGICE: Express Entry, PNP, permisos de trabajo, estudio, patrocinio familiar y visa turista." },
+  ar: { title: "خدمات الهجرة الكندية — Express Entry وPNP والمزيد", description: "استكشف خدمات هجرة IDLOGICE: Express Entry وPNP وتصاريح العمل والدراسة وكفالة الأسرة ومساعدة التأشيرات السياحية." },
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const m = SERVICES_META[locale] ?? SERVICES_META.en;
   return {
-    title: "Canadian Immigration Services — Express Entry, PNP & More",
-    description: "Explore IDLOGICE immigration services: Express Entry, PNP, work permits, study permits, family sponsorship, and tourist visa assistance.",
+    title: m.title,
+    description: m.description,
     alternates: generatePageAlternates(locale, "/services"),
   } satisfies Metadata;
 }

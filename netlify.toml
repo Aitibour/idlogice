@@ -30,6 +30,13 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Cache Next.js image optimisation responses at CDN edge (24h)
+# Prevents SEO crawlers from hammering the serverless image function.
+[[headers]]
+  for = "/_next/image*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
+
 # Cache videos aggressively (they never change)
 [[headers]]
   for = "/videos/*"

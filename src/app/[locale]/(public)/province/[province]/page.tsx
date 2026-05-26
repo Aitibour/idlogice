@@ -134,14 +134,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = descs[l];
   const url = `${BASE}/${l}/province/${slug}`;
 
-  // Absolute title bypasses template — drops long PNP name, keeps under 60 chars
-  // "Newfoundland & Labrador Immigration Guide | IDLOGICE" = 51 chars (worst case EN)
-  const seoTitle = `${name} Immigration Guide | IDLOGICE`;
+  // Locale-specific absolute title — bypasses template, keeps under 60 chars
+  const seoTitles: Record<Locale, string> = {
+    en: `${name} Immigration Guide | IDLOGICE`,
+    fr: `Guide immigration ${name} | IDLOGICE`,
+    es: `Guía de Inmigración ${name} | IDLOGICE`,
+    ar: `دليل هجرة ${name} | IDLOGICE`,
+  };
+  const seoTitle = seoTitles[l] ?? seoTitles.en;
   return {
     title: { absolute: seoTitle },
     description,
     alternates: generatePageAlternates(locale, `/province/${slug}`),
-    openGraph: { title, description, url, type: "article", images: [{ url: `${BASE}/images/og-default.jpg`, width: 1200, height: 630 }] },
+    openGraph: { title, description, url, type: "article", images: [{ url: `${BASE}/images/cta-bg.jpg`, width: 1200, height: 630 }] },
     twitter: { card: "summary_large_image", title, description },
   };
 }

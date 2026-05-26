@@ -2,13 +2,21 @@
 import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
+const PNP_META: Record<string, { title: string; description: string }> = {
+  en: { title: "Provincial Nominee Program (PNP) Canada", description: "Get a provincial nomination and add 600 CRS points. CICC-registered consultants identify your best PNP stream and guide your application." },
+  fr: { title: "Programme des candidats provinciaux (PCP) Canada", description: "Obtenez une nomination provinciale et ajoutez 600 points SCG. Nos consultants CICC identifient votre meilleur volet PCP et guident votre demande." },
+  es: { title: "Programa de Candidatos Provinciales (PNP) Canadá", description: "Obtenga una nominación provincial y sume 600 puntos CRS. Consultores CICC identifican su mejor stream PNP y guían su solicitud." },
+  ar: { title: "برنامج المرشحين الإقليميين (PNP) كندا", description: "احصل على ترشيح إقليمي وأضف 600 نقطة CRS. مستشارو CICC يحددون أفضل مسار PNP ويرشدون طلبك." },
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const m = PNP_META[locale] ?? PNP_META.en;
   return {
-    title: "Provincial Nominee Program (PNP) Canada — 600 CRS Points",
-    description: "Get a provincial nomination and add 600 CRS points. CICC-registered consultants identify your best PNP stream and guide your application.",
+    title: m.title,
+    description: m.description,
     alternates: generatePageAlternates(locale, "/services/pnp"),
-    openGraph: { title: "Provincial Nominee Program (PNP) Canada — 600 CRS Points", description: "Get a provincial nomination and add 600 CRS points. CICC-registered consultants identify your best PNP stream and guide your application.", url: `https://idlogice.com/${locale}/services/pnp` },
+    openGraph: { title: m.title, description: m.description, url: `https://idlogice.com/${locale}/services/pnp` },
   };
 }
 

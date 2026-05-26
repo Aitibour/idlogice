@@ -1,4 +1,45 @@
 ﻿export const revalidate = 3600;
+import type { Metadata } from "next";
+import { generatePageAlternates } from "@/lib/seo/alternates";
+
+const HOME_META: Record<string, { title: string; description: string }> = {
+  en: {
+    title: "IDLOGICE — Canadian Immigration Consultants | Montréal",
+    description: "CICC-registered immigration consultants (RCICs) in Montréal. Expert guidance for Express Entry, PNP, work permits & family sponsorship. 95% success rate.",
+  },
+  fr: {
+    title: "IDLOGICE — Consultants en Immigration Canadienne | Montréal",
+    description: "Consultants en immigration certifiés CICC à Montréal. Expertise en Entrée express, PNP, permis de travail et parrainage familial. Taux de succès 95 %.",
+  },
+  es: {
+    title: "IDLOGICE — Consultores de Inmigración Canadiense | Montréal",
+    description: "Consultores de inmigración certificados CICC en Montreal. Expertos en Express Entry, PNP, permisos de trabajo y patrocinio familiar. Éxito del 95 %.",
+  },
+  ar: {
+    title: "IDLOGICE — مستشارو الهجرة الكندية | مونتريال",
+    description: "مستشارو هجرة كندية معتمدون من CICC في مونتريال. خبرة في Express Entry وBNP وتصاريح العمل والتكفل العائلي. معدل نجاح 95٪.",
+  },
+};
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const m = HOME_META[locale] ?? HOME_META.en;
+  return {
+    title: { absolute: m.title },
+    description: m.description,
+    alternates: generatePageAlternates(locale, ""),
+    openGraph: {
+      title: m.title,
+      description: m.description,
+      url: `https://idlogice.com/${locale}`,
+    },
+  };
+}
+
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { HeroSlider } from "@/components/sections/hero-slider";
 import { AboutSection } from "@/components/sections/about-section";

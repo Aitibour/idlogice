@@ -1,4 +1,4 @@
-export type MaillageLink = {
+﻿export type MaillageLink = {
   href: string;
   label: string;
   description: string;
@@ -45,9 +45,9 @@ export const PROGRAM_MAILLAGE: Record<string, ProgramMaillage> = {
       { href: "/programs/canada-tech-immigration", label: "Canada tech immigration", description: "Express Entry and PNP options for software, data, and STEM workers." },
     ],
     children: [
-      { href: "/blog/crs-score-calculator-2026", label: "CRS score explained", description: "Understand the factors that shape your Express Entry ranking." },
-      { href: "/blog/express-entry-draw-history-2026", label: "Express Entry draw history", description: "Use past cut-offs to plan your invitation strategy." },
-      { href: "/blog/pnp-vs-express-entry", label: "PNP vs Express Entry", description: "Compare direct federal PR with provincial nomination routes." },
+      { href: "/blog/how-to-improve-crs-score", label: "CRS score explained", description: "Understand the factors that shape your Express Entry ranking." },
+      { href: "/blog/express-entry-draw-history-2025-2026", label: "Express Entry draw history", description: "Use past cut-offs to plan your invitation strategy." },
+      { href: "/blog/canada-immigration-programs", label: "PNP vs Express Entry", description: "Compare direct federal PR with provincial nomination routes." },
     ],
     countryTargets: ["morocco", "france", "united-arab-emirates", "india", "nigeria", "algeria"],
     ctas: [evaluationLink, consultationLink],
@@ -70,7 +70,7 @@ export const PROGRAM_MAILLAGE: Record<string, ProgramMaillage> = {
       { href: "/calculator", label: "CRS score calculator", description: "Estimate whether PNP points could change your ranking." },
     ],
     children: [
-      { href: "/blog/pnp-vs-express-entry", label: "PNP vs Express Entry", description: "Compare the two strongest permanent residence pathways." },
+      { href: "/blog/canada-immigration-programs", label: "PNP vs Express Entry", description: "Compare the two strongest permanent residence pathways." },
       { href: "/programs/canada-tech-immigration", label: "Best PNP for IT workers", description: "Explore tech and STEM-oriented provincial pathways." },
       { href: "/programs/express-entry", label: "Low CRS score options", description: "Use provincial nomination when CRS is too low." },
     ],
@@ -95,7 +95,7 @@ export const PROGRAM_MAILLAGE: Record<string, ProgramMaillage> = {
       { href: "/programs/express-entry", label: "Express Entry Canada", description: "Use skilled Canadian work experience for permanent residence." },
     ],
     children: [
-      { href: "/blog/canada-work-permit-guide", label: "Canada work permit guide", description: "Step-by-step overview of Canadian work permit options." },
+      { href: "/blog/work-in-canada-without-lmia", label: "Canada work permit guide", description: "Step-by-step overview of Canadian work permit options." },
       { href: "/programs/lmia-work-permit", label: "Closed work permit and LMIA", description: "Understand employer-specific work permit strategy." },
       { href: "/programs/francophone-mobility", label: "LMIA-exempt work permit", description: "Explore French-language mobility options outside Quebec." },
     ],
@@ -119,7 +119,7 @@ export const PROGRAM_MAILLAGE: Record<string, ProgramMaillage> = {
       { href: "/programs/provincial-nominee-program", label: "PNP for graduates", description: "Use provincial graduate streams after studying in Canada." },
     ],
     children: [
-      { href: "/blog/canada-study-permit-guide", label: "Canada study permit guide", description: "Understand documents, eligibility, and common refusal risks." },
+      { href: "/blog/pgwp-to-permanent-residence-canada", label: "Canada study permit guide", description: "Understand documents, eligibility, and common refusal risks." },
       { href: "/programs/work-permit", label: "PGWP pathway", description: "Plan the transition from studies to Canadian work experience." },
       { href: "/evaluation", label: "PR after studies evaluation", description: "Check long-term PR options before choosing a program." },
     ],

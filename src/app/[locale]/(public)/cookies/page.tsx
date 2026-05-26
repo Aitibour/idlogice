@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
+const COOKIE_META: Record<string, { title: string; description: string }> = {
+  en: { title: "Cookie Policy — IDLOGICE Immigration", description: "Cookie policy for IDLOGICE. Learn how we use cookies to improve your experience on our Canadian immigration platform." },
+  fr: { title: "Politique de cookies — IDLOGICE Immigration", description: "Politique de cookies d'IDLOGICE. Découvrez comment nous utilisons les cookies pour améliorer votre expérience." },
+  es: { title: "Política de cookies — IDLOGICE Inmigración", description: "Política de cookies de IDLOGICE. Conozca cómo usamos las cookies para mejorar su experiencia en nuestra plataforma." },
+  ar: { title: "سياسة ملفات تعريف الارتباط — IDLOGICE", description: "سياسة ملفات تعريف الارتباط لـ IDLOGICE. تعرف على كيفية استخدامنا للكوكيز لتحسين تجربتك." },
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const m = COOKIE_META[locale] ?? COOKIE_META.en;
   return {
-    title: "Cookie Policy — IDLOGICE Immigration",
-    description: "Cookie policy for IDLOGICE. Learn how we use cookies to improve your experience on our Canadian immigration platform.",
+    title: m.title,
+    description: m.description,
     alternates: generatePageAlternates(locale, "/cookies"),
   } satisfies Metadata;
 }

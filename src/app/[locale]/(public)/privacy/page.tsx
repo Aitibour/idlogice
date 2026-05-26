@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
+const PRIVACY_META: Record<string, { title: string; description: string }> = {
+  en: { title: "Privacy Policy — IDLOGICE Immigration", description: "Privacy policy for IDLOGICE. Learn how we collect and protect your personal data on our Canadian immigration consulting platform." },
+  fr: { title: "Politique de confidentialité — IDLOGICE", description: "Politique de confidentialité d'IDLOGICE. Découvrez comment nous collectons et protégeons vos données personnelles." },
+  es: { title: "Política de privacidad — IDLOGICE Inmigración", description: "Política de privacidad de IDLOGICE. Conozca cómo recopilamos y protegemos sus datos personales en nuestra plataforma." },
+  ar: { title: "سياسة الخصوصية — IDLOGICE", description: "سياسة الخصوصية لـ IDLOGICE. تعرف على كيفية جمع وحماية بياناتك الشخصية على منصة استشارات الهجرة الكندية." },
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const m = PRIVACY_META[locale] ?? PRIVACY_META.en;
   return {
-    title: "Privacy Policy — IDLOGICE Immigration",
-    description: "Privacy policy for IDLOGICE. Learn how we collect and protect your personal data on our Canadian immigration consulting platform.",
+    title: m.title,
+    description: m.description,
     alternates: generatePageAlternates(locale, "/privacy"),
   } satisfies Metadata;
 }

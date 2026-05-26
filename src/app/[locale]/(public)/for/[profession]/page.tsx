@@ -120,14 +120,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     en: "Canada Immigration",
     fr: "Immigration Canada",
     es: "Inmigracion Canada",
-    ar: "Canada Immigration",
+    ar: "الهجرة إلى كندا",
   };
   const seoTitle = `${name}: ${seoSuffix[l]} | IDLOGICE`;
   return {
     title: { absolute: seoTitle },
     description,
     alternates: generatePageAlternates(locale, `/for/${slug}`),
-    openGraph: { title, description, url, type: "article", images: [{ url: `${BASE}/images/og-default.jpg`, width: 1200, height: 630 }] },
+    openGraph: { title, description, url, type: "article", images: [{ url: `${BASE}/images/cta-bg.jpg`, width: 1200, height: 630 }] },
     twitter: { card: "summary_large_image", title, description },
   };
 }

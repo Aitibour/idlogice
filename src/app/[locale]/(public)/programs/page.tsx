@@ -12,10 +12,10 @@ const LOCALES = ["en", "fr", "es", "ar"] as const;
 type Props = { params: Promise<{ locale: string }> };
 
 const pageTitle: Record<string, string> = {
-  en: "Canada Immigration Programs 2025 — Complete Guide",
-  fr: "Programmes d'immigration au Canada 2025 — Guide complet",
-  es: "Programas de Inmigración a Canadá 2025 — Guía completa",
-  ar: "برامج الهجرة إلى كندا 2025 — دليل شامل",
+  en: "Canada Immigration Programs 2026 — Complete Guide",
+  fr: "Programmes d'immigration au Canada 2026 — Guide complet",
+  es: "Programas de Inmigración a Canadá 2026 — Guía completa",
+  ar: "برامج الهجرة إلى كندا 2026 — دليل شامل",
 };
 
 const pageDesc: Record<string, string> = {

@@ -2,13 +2,21 @@
 import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
+const FS_META: Record<string, { title: string; description: string }> = {
+  en: { title: "Family Sponsorship Canada — Reunite With Your Family", description: "Sponsor your family to Canada. Expert RCIC consultants guide you through the family sponsorship process step by step." },
+  fr: { title: "Parrainage familial Canada — Retrouvez votre famille", description: "Parrainez votre famille au Canada. Les consultants RCIC vous guident étape par étape dans le processus de parrainage familial." },
+  es: { title: "Patrocinio familiar Canadá — Reúnase con su familia", description: "Patrocine a su familia para Canadá. Consultores RCIC expertos le guían paso a paso en el proceso de patrocinio familiar." },
+  ar: { title: "كفالة الأسرة في كندا — لمّ شمل عائلتك", description: "كفل عائلتك للانضمام إليك في كندا. مستشارو RCIC الخبراء يرشدونك خطوة بخطوة في عملية كفالة الأسرة." },
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const m = FS_META[locale] ?? FS_META.en;
   return {
-    title: "Family Sponsorship Canada — Reunite With Your Family",
-    description: "Sponsor your family to Canada. Expert RCIC consultants guide you through the sponsorship process step by step.",
+    title: m.title,
+    description: m.description,
     alternates: generatePageAlternates(locale, "/services/family-sponsorship"),
-    openGraph: { title: "Family Sponsorship Canada — Reunite With Your Family", description: "Sponsor your family to Canada. Expert RCIC consultants guide you through the sponsorship process step by step.", url: `https://idlogice.com/${locale}/services/family-sponsorship` },
+    openGraph: { title: m.title, description: m.description, url: `https://idlogice.com/${locale}/services/family-sponsorship` },
   };
 }
 

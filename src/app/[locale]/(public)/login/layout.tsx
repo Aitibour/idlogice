@@ -1,15 +1,14 @@
-import type { Metadata } from "next";
-import { generatePageAlternates } from "@/lib/seo/alternates";
+﻿import type { Metadata } from "next";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const { locale } = await params;
+type Props = { params: Promise<{ locale: string }> };
+
+export async function generateMetadata(_props: Props): Promise<Metadata> {
   return {
-    title: "Sign In — IDLOGICE Immigration",
-    description: "Sign in to your IDLOGICE account to manage your Canadian immigration journey.",
-    alternates: generatePageAlternates(locale, "/login"),
+    title: "Sign In",
+    robots: { index: false, follow: false },
   };
 }
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function LoginLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

@@ -2,13 +2,21 @@
 import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
+const ABOUT_META: Record<string, { title: string; description: string }> = {
+  en: { title: "About IDLOGICE — Canadian Immigration Consultants", description: "CICC-registered Canadian Immigration Consultants (RCICs) in Montréal. 95% success rate. Serving clients from 50+ countries." },
+  fr: { title: "À propos d'IDLOGICE — Consultants en immigration", description: "Consultants en immigration canadiens agréés CICC à Montréal. Taux de succès de 95 %. Clients dans plus de 50 pays." },
+  es: { title: "Acerca de IDLOGICE — Consultores de Inmigración", description: "Consultores de inmigración canadienses certificados CICC en Montreal. 95% de tasa de éxito. Clientes de más de 50 países." },
+  ar: { title: "عن IDLOGICE — مستشارو هجرة كنديون معتمدون", description: "مستشارو هجرة كنديون معتمدون من CICC في مونتريال. معدل نجاح 95٪. نخدم عملاء من أكثر من 50 دولة." },
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const m = ABOUT_META[locale] ?? ABOUT_META.en;
   return {
-    title: "About IDLOGICE — Canadian Immigration Consultants",
-    description: "IDLOGICE — CICC-registered Canadian Immigration Consultants (RCICs) in Montréal. 95% success rate. Serving clients from 50+ countries.",
+    title: m.title,
+    description: m.description,
     alternates: generatePageAlternates(locale, "/about"),
-    openGraph: { title: "About IDLOGICE — Canadian Immigration Consultants", description: "CICC-registered RCICs helping clients from 50+ countries achieve their Canadian dream.", url: `https://idlogice.com/${locale}/about` },
+    openGraph: { title: m.title, description: m.description, url: `https://idlogice.com/${locale}/about` },
   };
 }
 

@@ -41,17 +41,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     es: `Inmigracion de ${prof.name.es} a ${prov.name.es}`,
     ar: `هجرة ${prof.name.ar} إلى ${prov.name.ar}`,
   };
-  const descs: Record<Locale, string> = {
-    en: `How ${prof.name.en}s can immigrate to ${prov.name.en}, Canada. NOC ${prof.nocCode}, ${prov.pnpName.en} streams, Express Entry pathways. Free profile evaluation.`,
-    fr: `Comment les ${prof.name.fr}s peuvent immigrer en ${prov.name.fr}. CNP ${prof.nocCode}, voies ${prov.pnpName.fr}. Evaluation gratuite.`,
-    es: `Como los ${prof.name.es}s pueden immigrar a ${prov.name.es}, Canada. NOC ${prof.nocCode}. Evaluacion gratuita.`,
+  const rawDescs: Record<Locale, string> = {
+    en: `How ${prof.name.en}s immigrate to ${prov.name.en}, Canada. NOC ${prof.nocCode}, ${prov.code} PNP & Express Entry pathways. Free evaluation.`,
+    fr: `Comment les ${prof.name.fr}s peuvent immigrer en ${prov.name.fr}. CNP ${prof.nocCode}, PNP ${prov.code}. Évaluation gratuite.`,
+    es: `Como los ${prof.name.es}s pueden immigrar a ${prov.name.es}, Canada. NOC ${prof.nocCode}, PNP ${prov.code}. Evaluacion gratuita.`,
     ar: `كيف يمكن لـ${prof.name.ar} الهجرة إلى ${prov.name.ar}، كندا. NOC ${prof.nocCode}. تقييم مجاني.`,
   };
+  // Safety clamp — keeps all combos under 160 chars
+  const trimDesc = (s: string) => s.length > 160 ? `${s.slice(0, 157)}…` : s;
+  const descs = Object.fromEntries(
+    Object.entries(rawDescs).map(([k, v]) => [k, trimDesc(v)])
+  ) as Record<Locale, string>;
 
   const url = `${BASE}/${l}/for/${profSlug}/${provSlug}`;
-  // Absolute title bypasses template — keeps under 60 chars for all profession+province combos
-  // "Data Scientist / AI Engineer: NL, Canada | IDLOGICE" = 51 chars (worst case EN)
-  const seoTitle = `${prof.name.en}: ${prov.code}, Canada | IDLOGICE`;
+  // Locale-specific absolute title — bypasses template, keeps under 60 chars
+  const seoTitles: Record<Locale, string> = {
+    en: `${prof.name.en}: ${prov.code}, Canada | IDLOGICE`,
+    fr: `${prof.name.fr}: ${prov.code}, Canada | IDLOGICE`,
+    es: `${prof.name.es}: ${prov.code}, Canadá | IDLOGICE`,
+    ar: `${prof.name.ar}: ${prov.code}، كندا | IDLOGICE`,
+  };
+  const seoTitle = seoTitles[l] ?? seoTitles.en;
   return {
     title: { absolute: seoTitle },
     description: descs[l],

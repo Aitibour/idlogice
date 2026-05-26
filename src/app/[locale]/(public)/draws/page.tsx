@@ -6,7 +6,8 @@ import { CrsTrendChart } from "@/components/draws/CrsTrendChart";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { TrendingDown, TrendingUp, Users, Calendar, RefreshCw } from "lucide-react";
 
-export const revalidate = 3600;
+// Always SSR so the latest draw is never stale
+export const revalidate = 0;
 
 export async function generateMetadata({
   params,
@@ -69,13 +70,19 @@ async function fetchDraws(locale: string): Promise<IrccRound[]> {
   const url = `https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_${lang}.json`;
   try {
     const res = await fetch(url, {
-      next: { revalidate: 3600 },
-      signal: AbortSignal.timeout(10_000),
+      next: { revalidate: 300 }, // 5-min data cache — avoids hammering IRCC on every request
+      headers: {
+        "User-Agent": "Mozilla/5.0 (compatible; IDLOGICE-DrawTracker/1.0; +https://idlogice.com)",
+        "Accept": "application/json, */*",
+        "Accept-Language": locale === "fr" ? "fr-CA,fr;q=0.9" : "en-CA,en;q=0.9",
+      },
+      signal: AbortSignal.timeout(15_000),
     });
     if (!res.ok) throw new Error(`IRCC fetch failed: ${res.status}`);
     const data = await res.json();
     return data.rounds as IrccRound[];
-  } catch {
+  } catch (err) {
+    console.error("[draws] IRCC fetch error:", err);
     return [];
   }
 }
@@ -90,7 +97,7 @@ export default async function DrawsPage({
   const t = await getTranslations({ locale, namespace: "draws" });
 
   const rounds = await fetchDraws(locale);
-  const latest = rounds[0];
+  const latest = rounds[0] ?? null;
   const recent = rounds.slice(0, 20);
 
   // Chart: last 20 non-PNP draws for a meaningful CRS trend
@@ -209,6 +216,13 @@ export default async function DrawsPage({
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-border">
+                  {recent.length === 0 && (
+                    <tr>
+                      <td colSpan={5} className="px-4 py-8 text-center text-sm text-muted-foreground">
+                        Loading draw data… <a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-rounds.html" target="_blank" rel="noopener noreferrer" className="underline">View on IRCC ↗</a>
+                      </td>
+                    </tr>
+                  )}
                   {recent.map((r, i) => {
                     const prog = classifyProgram(r.drawName);
                     const colorCls = PROGRAM_COLORS[prog] ?? PROGRAM_COLORS.Other;

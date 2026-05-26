@@ -2,13 +2,21 @@
 import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
+const SP_META: Record<string, { title: string; description: string }> = {
+  en: { title: "Canada Study Permit — Student Visa Application", description: "Get your Canadian study permit with CICC-registered consultants. Guidance through DLI selection, application, and PR pathway via PGWP." },
+  fr: { title: "Permis d'études Canada — Visa étudiant", description: "Obtenez votre permis d'études canadien avec des consultants CICC. Guidage pour le choix DLI, la demande et la voie RP via PGWP." },
+  es: { title: "Permiso de estudio Canadá — Visa de estudiante", description: "Obtenga su permiso de estudio canadiense con consultores CICC. Orientación para DLI, solicitud y vía a la residencia permanente via PGWP." },
+  ar: { title: "تصريح الدراسة الكندي — طلب تأشيرة الطالب", description: "احصل على تصريح دراستك الكندي مع مستشاري CICC. توجيه في اختيار DLI والتقديم ومسار الإقامة الدائمة عبر PGWP." },
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const m = SP_META[locale] ?? SP_META.en;
   return {
-    title: "Canada Study Permit — Student Visa Application",
-    description: "Get your Canadian study permit with CICC-registered consultants. Guidance through DLI selection, application, and PR pathway via PGWP.",
+    title: m.title,
+    description: m.description,
     alternates: generatePageAlternates(locale, "/services/study-permit"),
-    openGraph: { title: "Canada Study Permit — Student Visa Application", description: "Get your Canadian study permit with CICC-registered consultants. Guidance through DLI selection, application, and PR pathway via PGWP.", url: `https://idlogice.com/${locale}/services/study-permit` },
+    openGraph: { title: m.title, description: m.description, url: `https://idlogice.com/${locale}/services/study-permit` },
   };
 }
 

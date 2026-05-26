@@ -44,6 +44,7 @@ Rules:
 - Content must be accurate and helpful for immigrants to Canada
 - Tone: professional, warm, helpful
 - Do NOT mention IDLOGICE in the content
+- Do NOT include any hyperlinks or URLs in the content — no markdown links, no bare URLs, no [text](url) syntax
 `;
 
   const completion = await groq.chat.completions.create({

@@ -23,8 +23,13 @@ export function proxy(request: NextRequest) {
 
   // Preserve any cookies / internal headers that next-intl adds.
   intlResponse.headers.forEach((value, key) => {
+    const lk = key.toLowerCase();
     // Avoid overwriting content-type set by NextResponse.next()
-    if (key.toLowerCase() !== "content-type") {
+    // Skip the `link` header — next-intl emits hreflang="en"/"fr" (bare codes)
+    // which conflicts with the BCP-47 HTML <link> tags (en-CA, fr-CA) we render
+    // in every page's generateMetadata. Having both causes SEO tools to count 7
+    // language versions instead of 5.
+    if (lk !== "content-type" && lk !== "link") {
       nextResponse.headers.set(key, value);
     }
   });

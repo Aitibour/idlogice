@@ -2,13 +2,21 @@
 import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
+const TRV_META: Record<string, { title: string; description: string }> = {
+  en: { title: "Canada Tourist Visa (TRV) — Visitor Visa Application", description: "Maximise Canada tourist visa approval chances. CICC-registered consultants prepare your complete Temporary Resident Visa application." },
+  fr: { title: "Visa touristique Canada (TRV) — Visa visiteur", description: "Maximisez vos chances d'approbation de visa touristique. Nos consultants CICC préparent votre demande de visa de résident temporaire." },
+  es: { title: "Visa turista Canadá (TRV) — Solicitud de visa visitante", description: "Maximice las posibilidades de aprobación de su visa turista canadiense. Consultores CICC preparan su solicitud completa de visa de residente temporal." },
+  ar: { title: "تأشيرة السياحة الكندية (TRV) — طلب تأشيرة زيارة", description: "زيادة فرص الموافقة على تأشيرة السياحة الكندية. مستشارو CICC يعدّون طلب الإقامة المؤقتة الخاص بك بالكامل." },
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const m = TRV_META[locale] ?? TRV_META.en;
   return {
-    title: "Canada Tourist Visa (TRV) — Visitor Visa Application",
-    description: "Maximise Canada tourist visa approval chances. CICC-registered consultants prepare your complete Temporary Resident Visa application.",
+    title: m.title,
+    description: m.description,
     alternates: generatePageAlternates(locale, "/services/tourist-visa"),
-    openGraph: { title: "Canada Tourist Visa (TRV) — Visitor Visa Application", description: "Maximise Canada tourist visa approval chances. CICC-registered consultants prepare your complete Temporary Resident Visa application.", url: `https://idlogice.com/${locale}/services/tourist-visa` },
+    openGraph: { title: m.title, description: m.description, url: `https://idlogice.com/${locale}/services/tourist-visa` },
   };
 }
 

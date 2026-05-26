@@ -1,15 +1,26 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+type Props = { params: Promise<{ locale: string }> };
+
+const META: Record<string, { title: string; description: string }> = {
+  en: { title: "CRS Score Calculator", description: "Calculate your Comprehensive Ranking System (CRS) score for Express Entry Canada. Free tool to estimate your profile points against recent draws." },
+  fr: { title: "Calculateur de score CRS", description: "Calculez votre score du Système de classement global (SCG) pour l'Entrée express Canada. Outil gratuit pour estimer vos points." },
+  es: { title: "Calculadora de puntuación CRS", description: "Calcule su puntaje del Sistema de Clasificación Integral (CRS) para Express Entry Canada. Herramienta gratuita para estimar sus puntos." },
+  ar: { title: "حاسبة درجة CRS", description: "احسب درجة نظام التصنيف الشامل (CRS) الخاصة بك للدخول السريع إلى كندا. أداة مجانية لتقدير نقاط ملفك الشخصي." },
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
+  const m = META[locale] ?? META.en;
   return {
-    title: "Free CRS Score Calculator — Canadian Immigration",
-    description: "Calculate your Comprehensive Ranking System (CRS) score for Express Entry. Free tool by CICC-registered consultants.",
+    title: m.title,
+    description: m.description,
     alternates: generatePageAlternates(locale, "/calculator"),
+    openGraph: { title: m.title, description: m.description, type: "website" },
   };
 }
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function CalculatorLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
+const TERMS_META: Record<string, { title: string; description: string }> = {
+  en: { title: "Terms & Conditions — IDLOGICE Immigration", description: "Terms and conditions for using IDLOGICE immigration consulting services. Read our service agreement and user guidelines." },
+  fr: { title: "Conditions générales — IDLOGICE Immigration", description: "Conditions générales d'utilisation des services de consultation en immigration d'IDLOGICE. Lisez notre accord de service." },
+  es: { title: "Términos y Condiciones — IDLOGICE Inmigración", description: "Términos y condiciones para usar los servicios de consultoría de inmigración de IDLOGICE. Lea nuestro acuerdo de servicio." },
+  ar: { title: "الشروط والأحكام — IDLOGICE", description: "شروط وأحكام استخدام خدمات استشارات الهجرة من IDLOGICE. اقرأ اتفاقية الخدمة وإرشادات المستخدم." },
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const m = TERMS_META[locale] ?? TERMS_META.en;
   return {
-    title: "Terms & Conditions — IDLOGICE Immigration",
-    description: "Terms and conditions for using IDLOGICE immigration consulting services. Read our service agreement and user guidelines.",
+    title: m.title,
+    description: m.description,
     alternates: generatePageAlternates(locale, "/terms"),
   } satisfies Metadata;
 }

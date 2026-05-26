@@ -9,7 +9,7 @@ export const revalidate = 3600;
 // Allow on-demand rendering for slugs not returned by generateStaticParams
 export const dynamicParams = true;
 
-import { cleanImageUrl } from "@/lib/seo/images";
+import { cleanImageUrl, isUnsplashUrl } from "@/lib/seo/images";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
 const BASE = "https://idlogice.com";
@@ -204,6 +204,7 @@ export default async function BlogPostPage({ params }: Props) {
               src={cleanImageUrl(post.image_url) ?? post.image_url}
               alt={post.image_alt ?? `${title} — Canada immigration`}
               fill
+              unoptimized={isUnsplashUrl(post.image_url)}
               className="object-cover"
               priority
             />
@@ -324,6 +325,7 @@ export default async function BlogPostPage({ params }: Props) {
                           src={cleanImageUrl(r.image_url) ?? r.image_url}
                           alt={rTitle}
                           fill
+                          unoptimized={isUnsplashUrl(r.image_url)}
                           className="object-cover group-hover:scale-105 transition-transform"
                           sizes="(max-width:640px) 100vw, 33vw"
                         />

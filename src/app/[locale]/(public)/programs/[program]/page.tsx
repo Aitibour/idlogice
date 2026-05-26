@@ -35,13 +35,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: titleMap[locale] ?? titleMap.en,
-    description: desc.slice(0, 160),
+    description: desc.slice(0, 140),
     alternates: generatePageAlternates(locale, `/programs/${slug}`),
     openGraph: {
       type: "article",
       url,
       title: titleMap[locale] ?? titleMap.en,
-      description: desc.slice(0, 160),
+      description: desc.slice(0, 140),
       siteName: "IDLOGICE",
     },
   };

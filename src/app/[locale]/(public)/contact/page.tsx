@@ -153,7 +153,7 @@ export default function ContactPage() {
                 {/* Map */}
                 <div className="relative h-[220px]">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.508!2d-73.5700!3d45.5088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91a439b07f2a9%3A0x3c23c52f6638bd36!2s410+Rue+Sainte-Catherine+O%2C+Montr%C3%A9al%2C+QC+H3B+1A7!5e0!3m2!1sen!2sca!4v1"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2797.623!2d-73.5903256!3d45.4838264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc911ec410fa401%3A0x87af09bb8fe44996!2sIDLOGICE!5e0!3m2!1sen!2sca!4v1716000000000"
                     width="100%" height="100%"
                     style={{ border: 0, display: "block", filter: "grayscale(0.3) contrast(1.05)" }}
                     allowFullScreen loading="lazy"
@@ -181,7 +181,7 @@ export default function ContactPage() {
                     <span className="text-xs font-medium" style={{ color: "#374151" }}>410 Saint-Catherine St</span>
                   </div>
                   <a
-                    href="https://maps.google.com/?q=410+Saint-Catherine+St+Montreal"
+                    href="https://www.google.com/maps/place/IDLOGICE/@45.48384,-73.6087796,15z/data=!3m1!4b1!4m6!3m5!1s0x4cc911ec410fa401:0x87af09bb8fe44996!8m2!3d45.4838264!4d-73.5903256!16s%2Fg%2F11w4cqxx6y?hl=en-US&entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
                     target="_blank" rel="noopener noreferrer"
                     className="flex items-center gap-1 text-xs font-semibold text-primary hover:underline"
                   >

@@ -1,11 +1,19 @@
 ﻿import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
+const JOBS_META: Record<string, { title: string; description: string }> = {
+  en: { title: "Canadian Immigration Job Opportunities", description: "Browse Canadian job opportunities for immigrants. Chef Cook, Electrician, RN, Software Developer, Truck Driver. Check eligibility with RCIC experts." },
+  fr: { title: "Offres d'emploi pour l'immigration canadienne", description: "Parcourez les offres d'emploi canadiennes pour immigrants. Cuisinier, électricien, infirmier, développeur, chauffeur. Vérifiez votre éligibilité." },
+  es: { title: "Empleos canadienses para inmigrantes", description: "Busque empleos canadienses para inmigrantes. Cocinero, Electricista, Enfermero, Desarrollador, Camionero. Verifique su elegibilidad con RCICs." },
+  ar: { title: "فرص عمل للهجرة إلى كندا", description: "تصفح فرص العمل الكندية للمهاجرين. طاهٍ، كهربائي، ممرض، مطور برمجيات، سائق. تحقق من أهليتك مع مستشاري RCIC." },
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const m = JOBS_META[locale] ?? JOBS_META.en;
   return {
-    title: "Canadian Immigration Job Opportunities",
-    description: "Browse Canadian job opportunities for immigrants — Chef Cook, Electrician, RN, Software Developer, Truck Driver. Check eligibility with CICC-certified RCICs.",
+    title: m.title,
+    description: m.description,
     alternates: generatePageAlternates(locale, "/jobs"),
   };
 }

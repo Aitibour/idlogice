@@ -1,11 +1,19 @@
 ﻿import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
+const BOOK_META: Record<string, { title: string; description: string }> = {
+  en: { title: "Book an Immigration Consultation — RCIC Experts", description: "Book a consultation with a CICC-registered Canadian immigration consultant. Choose 1h or 2h sessions. Expert guidance on Express Entry & PNP." },
+  fr: { title: "Réserver une consultation en immigration — Experts RCIC", description: "Réservez une consultation avec un consultant en immigration agréé CICC. Sessions de 1h ou 2h. Guidance experte sur Entrée express et PNP." },
+  es: { title: "Reservar consulta de inmigración — Expertos RCIC", description: "Reserve una consulta con un consultor de inmigración canadiense certificado CICC. Sesiones de 1h o 2h. Orientación experta en Express Entry y PNP." },
+  ar: { title: "احجز استشارة هجرة — خبراء RCIC", description: "احجز استشارة مع مستشار هجرة كندي معتمد من CICC. جلسات 1 ساعة أو 2 ساعة. توجيه خبير في Express Entry وPNP." },
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const m = BOOK_META[locale] ?? BOOK_META.en;
   return {
-    title: "Book an Immigration Consultation — RCIC Experts",
-    description: "Book a consultation with a CICC-registered Canadian immigration consultant. Choose 30-min, 1h, or 2h sessions. Expert guidance on Express Entry & PNP.",
+    title: m.title,
+    description: m.description,
     alternates: generatePageAlternates(locale, "/book-consultation"),
   };
 }

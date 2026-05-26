@@ -2,13 +2,21 @@
 import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
+const EE_META: Record<string, { title: string; description: string }> = {
+  en: { title: "Express Entry Canada — Federal Skilled Worker", description: "Apply to Canada through Express Entry. CICC-registered consultants help optimise your CRS score and submit a winning permanent residence application." },
+  fr: { title: "Entrée express Canada — Travailleur qualifié fédéral", description: "Immigrez au Canada via Entrée express. Nos consultants CICC optimisent votre score SCG et soumettent une demande de résidence permanente gagnante." },
+  es: { title: "Express Entry Canadá — Trabajador Calificado Federal", description: "Inmigrade a Canadá por Express Entry. Consultores CICC optimizan su puntaje CRS y presentan una solicitud de residencia permanente ganadora." },
+  ar: { title: "Express Entry كندا — برنامج العمال المهرة الفيدرالي", description: "قدّم إلى كندا عبر Express Entry. مستشارو CICC يحسّنون درجة CRS الخاصة بك ويقدمون طلب إقامة دائمة ناجحاً." },
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const m = EE_META[locale] ?? EE_META.en;
   return {
-    title: "Express Entry Canada — Federal Skilled Worker Program",
-    description: "Apply to Canada through Express Entry. CICC-registered consultants help optimise your CRS score and submit a winning permanent residence application.",
+    title: m.title,
+    description: m.description,
     alternates: generatePageAlternates(locale, "/services/express-entry"),
-    openGraph: { title: "Express Entry Canada — Federal Skilled Worker Program", description: "Apply to Canada through Express Entry. CICC-registered consultants help optimise your CRS score and submit a winning permanent residence application.", url: `https://idlogice.com/${locale}/services/express-entry` },
+    openGraph: { title: m.title, description: m.description, url: `https://idlogice.com/${locale}/services/express-entry` },
   };
 }
 
