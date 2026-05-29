@@ -84,7 +84,7 @@ export function Header() {
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
           <Image src="/logo.png" alt="IDLOGICE" width={200} height={60}
-            className="logo h-[58px] w-auto object-contain" priority />
+            className="logo h-[58px] w-auto object-contain" priority unoptimized />
         </Link>
 
         {/* Desktop nav */}

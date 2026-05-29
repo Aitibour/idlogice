@@ -87,6 +87,7 @@ export function IntelixHero({
                   fill
                   className="object-cover"
                   priority
+                  unoptimized
                 />
               </div>
 

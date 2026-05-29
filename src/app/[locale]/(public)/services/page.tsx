@@ -95,6 +95,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
           className="object-cover object-center"
           priority
           sizes="100vw"
+          unoptimized
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/50 to-black/30" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white to-transparent" />
@@ -147,6 +148,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                         fill
                         className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        unoptimized
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
 

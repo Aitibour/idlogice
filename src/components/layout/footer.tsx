@@ -16,7 +16,7 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block mb-5" aria-label="IDLOGICE home">
               <Image src="/logo.png" alt="IDLOGICE" width={200} height={60}
-                className="h-[54px] w-auto object-contain brightness-0 invert" />
+                className="h-[54px] w-auto object-contain brightness-0 invert" unoptimized />
             </Link>
             <p className="text-zinc-400 text-sm leading-relaxed mb-6 max-w-xs">{t("tagline")}</p>
             <div className="flex gap-2 text-base" aria-label="Social media links">

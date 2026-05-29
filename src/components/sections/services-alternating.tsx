@@ -55,6 +55,7 @@ function ServiceCard({
           fill
           className="object-cover"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          unoptimized
           style={{
             transform: hovered ? "scale(1.08)" : "scale(1)",
             transition: "transform 0.6s cubic-bezier(0.22,1,0.36,1)",

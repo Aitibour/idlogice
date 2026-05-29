@@ -39,6 +39,7 @@ export function PageHero({
               className="object-cover object-center"
               priority
               sizes="50vw"
+              unoptimized
             />
           </div>
           <div
@@ -54,6 +55,7 @@ export function PageHero({
               className="object-cover object-center"
               priority
               sizes="100vw"
+              unoptimized
             />
           </div>
           <div
