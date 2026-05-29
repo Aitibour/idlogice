@@ -252,11 +252,11 @@ export default function EvaluationPage() {
               sub="French + English bilingualism adds up to 30 bonus points."
             >
               <div className="grid grid-cols-2 gap-2 mb-3">
-                <OptionCard selected={data.hasSecondLanguage} onClick={() => set("hasSecondLanguage", true)}>Yes</OptionCard>
+                <OptionCard selected={data.hasSecondLanguage} onClick={() => { set("hasSecondLanguage", true); if (data.secondLangCLB === 0) set("secondLangCLB", 5); }}>Yes</OptionCard>
                 <OptionCard selected={!data.hasSecondLanguage} onClick={() => { set("hasSecondLanguage", false); set("secondLangCLB", 0); }}>No</OptionCard>
               </div>
               {data.hasSecondLanguage && (
-                <CLBSelect label="Overall CLB level (second language)" value={data.secondLangCLB || 5} onChange={v => set("secondLangCLB", v)} />
+                <CLBSelect label="Overall CLB level (second language)" value={data.secondLangCLB} onChange={v => set("secondLangCLB", v)} />
               )}
             </Question>
           </>
@@ -592,6 +592,9 @@ export default function EvaluationPage() {
   }
 
   // ── Wizard view ────────────────────────────────────────────────────────────
+  // STEPS has 5 entries (indices 0-4). step=6 is the results view and is
+  // handled above; guard here prevents a crash if result is unexpectedly falsy.
+  if (step > STEPS.length) return null;
   const currentStep = STEPS[step - 1];
   const Icon = currentStep.icon;
 

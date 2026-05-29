@@ -1,26 +1,47 @@
-import { marked } from "marked";
+import { Marked, Renderer } from "marked";
 
 type Props = { content: string };
 
-// Lightweight server-side sanitization. Content comes from our own Groq
-// pipeline stored in our DB so we already trust the source; this strips
-// script/style/iframe/object/embed tags and any "on*" event handlers as
-// defense-in-depth. Avoids isomorphic-dompurify (which requires jsdom and
-// crashed in Netlify's Node serverless runtime, breaking some posts).
-function stripUnsafe(html: string): string {
-  return html
-    .replace(/<\s*(script|style|iframe|object|embed|link|meta)[^>]*>[\s\S]*?<\s*\/\s*\1\s*>/gi, "")
-    .replace(/<\s*(script|style|iframe|object|embed|link|meta)[^>]*\/?>/gi, "")
-    .replace(/\son\w+\s*=\s*"[^"]*"/gi, "")
-    .replace(/\son\w+\s*=\s*'[^']*'/gi, "")
-    .replace(/javascript\s*:/gi, "");
+function escapeHtml(value: string): string {
+  return value.replace(/[&<>"']/g, (char) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    "\"": "&quot;",
+    "'": "&#39;",
+  })[char] ?? char);
 }
 
-marked.setOptions({ breaks: true, gfm: true });
+function isSafeHref(href: string): boolean {
+  if (href.startsWith("/") || href.startsWith("#")) return true;
+  try {
+    const url = new URL(href);
+    return ["https:", "http:", "mailto:"].includes(url.protocol);
+  } catch {
+    return false;
+  }
+}
+
+const renderer = new Renderer();
+
+renderer.html = () => "";
+renderer.link = ({ href, title, tokens }) => {
+  const text = tokens.map((token) => {
+    if ("text" in token && typeof token.text === "string") return escapeHtml(token.text);
+    return escapeHtml(token.raw);
+  }).join("");
+  if (!href || !isSafeHref(href)) return text;
+  const safeHref = escapeHtml(href);
+  const safeTitle = title ? ` title="${escapeHtml(title)}"` : "";
+  const rel = href.startsWith("http") ? ' rel="noopener noreferrer"' : "";
+  const target = href.startsWith("http") ? ' target="_blank"' : "";
+  return `<a href="${safeHref}"${safeTitle}${target}${rel}>${text}</a>`;
+};
+
+const parser = new Marked({ breaks: true, gfm: true, renderer });
 
 export function PostBody({ content }: Props) {
-  const rawHtml = marked.parse(content) as string;
-  const safeHtml = stripUnsafe(rawHtml);
+  const safeHtml = parser.parse(content) as string;
 
   return (
     <div

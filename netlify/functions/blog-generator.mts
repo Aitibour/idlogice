@@ -7,7 +7,32 @@ import { publishToTwitter } from "../../src/lib/blog/twitter";
 import { generateCoverImage } from "../../src/lib/blog/openai-image";
 import { createServiceClient } from "../../src/lib/supabase/service";
 
-export default async function handler() {
+type NetlifyEvent = {
+  headers?: Record<string, string | undefined>;
+};
+
+function headerValue(headers: NetlifyEvent["headers"], name: string): string | undefined {
+  const lower = name.toLowerCase();
+  const entry = Object.entries(headers ?? {}).find(([key]) => key.toLowerCase() === lower);
+  return entry?.[1];
+}
+
+function isAuthorized(event: NetlifyEvent): boolean {
+  // NOTE: x-netlify-event: schedule is NOT a trusted signal — it is a plain HTTP
+  // header and can be spoofed by any external caller reaching the function URL.
+  // Always require the bearer token, even for scheduled invocations.
+  // Netlify's scheduler sets BLOG_GENERATOR_SECRET via env; configure it in
+  // netlify.toml [context.production.environment] or via the Netlify UI.
+  const secret = process.env.BLOG_GENERATOR_SECRET;
+  const auth = headerValue(event.headers, "authorization");
+  return !!secret && auth === `Bearer ${secret}`;
+}
+
+export default async function handler(event: NetlifyEvent = {}) {
+  if (!isAuthorized(event)) {
+    return new Response("Unauthorized", { status: 401 });
+  }
+
   console.log("Blog generator started:", new Date().toISOString());
 
   const items = await fetchLatestItems();
@@ -20,12 +45,16 @@ export default async function handler() {
   let targetItem = null;
 
   for (const item of items) {
-    const { data } = await db
+    const { data, error } = await db
       .from("blog_posts")
       .select("id")
       .eq("source_url", item.link)
       .maybeSingle();
 
+    if (error) {
+      console.error("[blog-generator] Supabase dedup check failed:", error.message);
+      continue; // skip item — do not treat DB error as "not yet published"
+    }
     if (!data) {
       targetItem = item;
       break;

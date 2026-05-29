@@ -1,8 +1,26 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { createClient } from "@/lib/supabase/server";
+import { z } from "zod";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+
+const payloadSchema = z.object({
+  firstName: z.string().trim().min(1).max(80),
+  crsScore: z.coerce.number().int().min(0).max(1200),
+  eligible: z.boolean(),
+  improvements: z.array(z.string().trim().min(1).max(220)).max(5).default([]),
+});
+
+function escapeHtml(value: string): string {
+  return value.replace(/[&<>"']/g, (char) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    "\"": "&quot;",
+    "'": "&#39;",
+  })[char] ?? char);
+}
 
 export async function POST(req: NextRequest) {
   // Verify the user is authenticated
@@ -10,12 +28,19 @@ export async function POST(req: NextRequest) {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const { firstName, crsScore, eligible, improvements } = await req.json();
+  const parsed = payloadSchema.safeParse(await req.json().catch(() => null));
+  if (!parsed.success) {
+    return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+  }
+
+  const { firstName, crsScore, eligible, improvements } = parsed.data;
+  const safeFirstName = escapeHtml(firstName);
+  const subjectFirstName = firstName.replace(/[\r\n]/g, " ");
 
   const scoreColor = crsScore >= 470 ? "#16a34a" : crsScore >= 400 ? "#d97706" : "#dc2626";
   const scoreLabel = crsScore >= 470 ? "Competitive" : crsScore >= 400 ? "Developing" : "Needs Improvement";
 
-  const topImprovements = (improvements as string[]).slice(0, 3);
+  const topImprovements = improvements.slice(0, 3).map(escapeHtml);
 
   const html = `<!DOCTYPE html>
 <html lang="en">
@@ -41,7 +66,7 @@ export async function POST(req: NextRequest) {
         <!-- Greeting -->
         <tr>
           <td style="padding:32px 40px 0;">
-            <p style="font-size:16px;color:#111827;margin:0 0 8px;">Hi <strong>${firstName}</strong> 👋</p>
+            <p style="font-size:16px;color:#111827;margin:0 0 8px;">Hi <strong>${safeFirstName}</strong> 👋</p>
             <p style="font-size:14px;color:#6b7280;margin:0;">
               Here are the results of your free Express Entry CRS evaluation. Our certified consultants have reviewed your profile and prepared personalised next steps for you.
             </p>
@@ -124,7 +149,7 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from: "IDLOGICE <noreply@idlogice.com>",
       to: user.email!,
-      subject: `Your CRS Score: ${crsScore} — ${firstName}, here are your next steps`,
+      subject: `Your CRS Score: ${crsScore} — ${subjectFirstName}, here are your next steps`,
       html,
     });
     return NextResponse.json({ ok: true });

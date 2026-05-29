@@ -28,6 +28,7 @@ export function CtaBanner({
       {bgImage && (
         <>
           <div aria-hidden="true" className="absolute inset-0 opacity-15">
+            {/* unoptimized: bypasses /_next/image for local paths — prevents SEO crawler &amp; 400 errors */}
             <Image src={bgImage} alt={title} fill className="object-cover object-center" sizes="100vw" unoptimized />
           </div>
           <div

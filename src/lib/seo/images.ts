@@ -10,6 +10,9 @@
  * image optimization add its own sizing. For non-Unsplash URLs, pass through.
  */
 
+/** All Unsplash CDN hostnames (standard + premium). */
+const UNSPLASH_HOSTS = new Set(["images.unsplash.com", "plus.unsplash.com"]);
+
 /**
  * Returns a clean image URL safe to pass to Next.js <Image>.
  * Strips Unsplash query params so _next/image doesn't double-encode them.
@@ -19,7 +22,7 @@ export function cleanImageUrl(url: string | null | undefined): string | undefine
   try {
     const parsed = new URL(url);
     // Strip query params from Unsplash URLs only — they add their own sizing
-    if (parsed.hostname === "images.unsplash.com") {
+    if (UNSPLASH_HOSTS.has(parsed.hostname)) {
       return `${parsed.origin}${parsed.pathname}`;
     }
     return url;
@@ -29,7 +32,7 @@ export function cleanImageUrl(url: string | null | undefined): string | undefine
 }
 
 /**
- * Returns true for Unsplash image URLs.
+ * Returns true for Unsplash image URLs (images.unsplash.com and plus.unsplash.com).
  * Use to pass unoptimized={true} to Next.js <Image> for Unsplash sources —
  * Unsplash blocks the _next/image proxy (returns 403 Forbidden). Bypassing
  * the optimizer lets browsers load directly from Unsplash's own CDN.
@@ -37,7 +40,7 @@ export function cleanImageUrl(url: string | null | undefined): string | undefine
 export function isUnsplashUrl(url: string | null | undefined): boolean {
   if (!url) return false;
   try {
-    return new URL(url).hostname === "images.unsplash.com";
+    return UNSPLASH_HOSTS.has(new URL(url).hostname);
   } catch {
     return false;
   }

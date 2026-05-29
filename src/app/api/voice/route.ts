@@ -1,4 +1,36 @@
 import { NextRequest, NextResponse } from "next/server";
+import { createHmac, timingSafeEqual } from "node:crypto";
+
+/**
+ * Verify that an incoming request genuinely comes from Twilio.
+ * https://www.twilio.com/docs/usage/webhooks/webhooks-security
+ *
+ * If TWILIO_AUTH_TOKEN is not set (e.g. during local dev), validation is skipped.
+ */
+function isTwilioRequest(req: NextRequest, body: string): boolean {
+  const authToken = process.env.TWILIO_AUTH_TOKEN;
+  if (!authToken) return true; // dev/test: skip validation when token absent
+
+  const signature = req.headers.get("x-twilio-signature") ?? "";
+  if (!signature) return false;
+
+  // Build the canonical string: URL + sorted POST params concatenated
+  const url = req.url;
+  const params: Record<string, string> = {};
+  new URLSearchParams(body).forEach((v, k) => { params[k] = v; });
+  const sorted = Object.keys(params).sort().map(k => k + params[k]).join("");
+  const canonical = url + sorted;
+
+  const expected = createHmac("sha1", authToken)
+    .update(canonical, "utf8")
+    .digest("base64");
+
+  try {
+    return timingSafeEqual(Buffer.from(signature), Buffer.from(expected));
+  } catch {
+    return false; // length mismatch → invalid
+  }
+}
 
 // Business hours: Mon–Fri 9 AM – 5 PM Eastern Time
 function getCallContext(): "open" | "weekend" | "after-hours" {
@@ -122,6 +154,9 @@ function xmlResponse(twiml: string) {
 
 export async function POST(req: NextRequest) {
   const body = await req.text();
+  if (!isTwilioRequest(req, body)) {
+    return new NextResponse("Forbidden", { status: 403 });
+  }
   const params = new URLSearchParams(body);
   const digits = params.get("Digits");
   const lang: "en" | "fr" = req.nextUrl.searchParams.get("lang") === "fr" ? "fr" : "en";

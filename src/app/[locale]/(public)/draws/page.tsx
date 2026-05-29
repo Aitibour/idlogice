@@ -93,7 +93,7 @@ export default async function DrawsPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  setRequestLocale(locale);
+  await setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "draws" });
 
   const rounds = await fetchDraws(locale);

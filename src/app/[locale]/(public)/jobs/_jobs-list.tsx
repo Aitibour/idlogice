@@ -83,6 +83,7 @@ function LoginRequiredCard({ job, isEligibility }: { job: Job; isEligibility: bo
 function ApplyForm({ job, user, onClose }: { job: Job; user: AuthUser; onClose: () => void }) {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const displayName = getDisplayName(user);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -91,11 +92,15 @@ function ApplyForm({ job, user, onClose }: { job: Job; user: AuthUser; onClose: 
     const form = e.currentTarget;
     const data = new FormData(form);
     try {
-      await fetch("/", { method: "POST", body: data });
+      setSubmitError("");
+      const res = await fetch("/api/v1/jobs/apply", { method: "POST", body: data });
+      if (!res.ok) throw new Error("Application submission failed");
       ga.jobApplication(job.title, job.noc, false);
+      setSubmitted(true);
+    } catch {
+      setSubmitError("We could not submit your application. Please try again.");
     } finally {
       setLoading(false);
-      setSubmitted(true);
     }
   }
 
@@ -131,15 +136,12 @@ function ApplyForm({ job, user, onClose }: { job: Job; user: AuthUser; onClose: 
         onSubmit={handleSubmit}
         name="job-application"
         method="POST"
-        data-netlify="true"
         encType="multipart/form-data"
         className="grid grid-cols-1 sm:grid-cols-2 gap-3"
       >
-        <input type="hidden" name="form-name" value="job-application" />
+        <input type="hidden" name="type" value="application" />
         <input type="hidden" name="job" value={job.title} />
         <input type="hidden" name="noc" value={job.noc} />
-        <input type="hidden" name="user_id" value={user.id} />
-        <input type="hidden" name="email" value={user.email} />
 
         <div>
           <label className="block text-xs font-semibold mb-1" style={{ color: "#111827" }}>Full Name *</label>
@@ -192,6 +194,9 @@ function ApplyForm({ job, user, onClose }: { job: Job; user: AuthUser; onClose: 
             className="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 file:mr-3 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-primary/8 file:text-primary hover:file:bg-primary/15 transition cursor-pointer"
             style={{ color: "#374151" }} />
         </div>
+        {submitError && (
+          <p className="sm:col-span-2 text-xs font-semibold text-red-600">{submitError}</p>
+        )}
         <div className="sm:col-span-2 flex items-center justify-between gap-3 pt-1">
           <button type="button" onClick={onClose} className="flex items-center gap-1.5 text-xs hover:opacity-70 transition-opacity" style={{ color: "#6b7280" }}>
             <X className="size-3.5" /> Cancel
@@ -211,6 +216,7 @@ function ApplyForm({ job, user, onClose }: { job: Job; user: AuthUser; onClose: 
 function EligibilityForm({ job, user, onClose }: { job: Job; user: AuthUser; onClose: () => void }) {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const displayName = getDisplayName(user);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -219,11 +225,15 @@ function EligibilityForm({ job, user, onClose }: { job: Job; user: AuthUser; onC
     const form = e.currentTarget;
     const data = new FormData(form);
     try {
-      await fetch("/", { method: "POST", body: data });
+      setSubmitError("");
+      const res = await fetch("/api/v1/jobs/apply", { method: "POST", body: data });
+      if (!res.ok) throw new Error("Eligibility submission failed");
       ga.jobApplication(job.title, job.noc, true);
+      setSubmitted(true);
+    } catch {
+      setSubmitError("We could not submit your eligibility request. Please try again.");
     } finally {
       setLoading(false);
-      setSubmitted(true);
     }
   }
 
@@ -259,14 +269,11 @@ function EligibilityForm({ job, user, onClose }: { job: Job; user: AuthUser; onC
         onSubmit={handleSubmit}
         name="job-eligibility"
         method="POST"
-        data-netlify="true"
         className="grid grid-cols-1 sm:grid-cols-2 gap-4"
       >
-        <input type="hidden" name="form-name" value="job-eligibility" />
+        <input type="hidden" name="type" value="eligibility" />
         <input type="hidden" name="job" value={job.title} />
         <input type="hidden" name="noc" value={job.noc} />
-        <input type="hidden" name="user_id" value={user.id} />
-        <input type="hidden" name="email" value={user.email} />
 
         <div className="sm:col-span-2">
           <label className="flex items-center gap-1.5 text-xs font-semibold mb-1.5" style={{ color: "#111827" }}>
@@ -313,6 +320,9 @@ function EligibilityForm({ job, user, onClose }: { job: Job; user: AuthUser; onC
           </select>
         </div>
 
+        {submitError && (
+          <p className="sm:col-span-2 text-xs font-semibold text-red-600">{submitError}</p>
+        )}
         <div className="sm:col-span-2 flex items-center justify-between gap-3 pt-1">
           <button type="button" onClick={onClose} className="flex items-center gap-1.5 text-xs hover:opacity-70 transition-opacity" style={{ color: "#6b7280" }}>
             <X className="size-3.5" /> Cancel

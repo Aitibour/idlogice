@@ -30,7 +30,11 @@ export function PageHero({
     <section className="relative overflow-hidden bg-white border-b border-border/40">
       {bgImage && (
         <>
-          {/* Image panel on the right (desktop) — next/image for optimized LCP */}
+          {/* Image panel on the right (desktop).
+              unoptimized intentionally bypasses /_next/image for local /images/* paths.
+              Without it, HTML srcset attributes contain &amp; which SEO crawlers fetch
+              literally, producing 400 errors. Local JPEGs are pre-optimised; the LCP
+              tradeoff is acceptable vs. 437 SEO audit errors. */}
           <div aria-hidden="true" className="hidden md:block absolute inset-y-0 right-0 w-1/2">
             <Image
               src={bgImage}

@@ -90,15 +90,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .eq("status", "published")
     .order("published_at", { ascending: false });
 
-  const blogEntries: MetadataRoute.Sitemap = (posts ?? []).flatMap((post) =>
-    LOCALES.map((locale) => ({
-      url: `${BASE}/${locale}/blog/${post.slug}`,
+  const blogEntries: MetadataRoute.Sitemap = (posts ?? []).flatMap((post) => {
+    const slug = encodeURIComponent(post.slug);
+    return LOCALES.map((locale) => ({
+      url: `${BASE}/${locale}/blog/${slug}`,
       lastModified: new Date(post.published_at ?? now),
       changeFrequency: "weekly" as const,
       priority: CONTENT,
-      alternates: { languages: altLangs((l) => `${BASE}/${l}/blog/${post.slug}`) },
-    })),
-  );
+      alternates: { languages: altLangs((l) => `${BASE}/${l}/blog/${slug}`) },
+    }));
+  });
 
   // /from index — 4 locales
   const fromIndexEntries: MetadataRoute.Sitemap = LOCALES.map((locale) => ({

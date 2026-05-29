@@ -5,20 +5,34 @@ const REDIRECT_URI = "https://idlogice.com/api/linkedin/callback";
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const code = searchParams.get("code");
+  const state = searchParams.get("state");
   const error = searchParams.get("error");
   const errorDesc = searchParams.get("error_description");
+  const expectedState = process.env.LINKEDIN_OAUTH_STATE;
+  const headers = {
+    "content-type": "text/html; charset=utf-8",
+    "cache-control": "no-store",
+    "x-robots-tag": "noindex, nofollow",
+  };
 
   if (error) {
     return new NextResponse(
-      html(`<h2 style="color:red">LinkedIn error: ${error}</h2><p>${errorDesc ?? ""}</p>`),
-      { headers: { "content-type": "text/html; charset=utf-8" } }
+      html(`<h2 style="color:red">LinkedIn error: ${escapeHtml(error)}</h2><p>${escapeHtml(errorDesc ?? "")}</p>`),
+      { headers }
+    );
+  }
+
+  if (!expectedState || state !== expectedState) {
+    return new NextResponse(
+      html("<h2 style=\"color:red\">Invalid OAuth state.</h2><p>Restart the LinkedIn authorization flow with a valid state token.</p>"),
+      { status: 403, headers }
     );
   }
 
   if (!code) {
     return new NextResponse(
       html(`<h2 style="color:red">No authorization code received.</h2><p>Did you complete the LinkedIn authorization?</p>`),
-      { headers: { "content-type": "text/html; charset=utf-8" } }
+      { headers }
     );
   }
 
@@ -28,7 +42,7 @@ export async function GET(req: NextRequest) {
   if (!clientId || !clientSecret) {
     return new NextResponse(
       html(`<h2 style="color:red">Missing LINKEDIN_CLIENT_ID or LINKEDIN_CLIENT_SECRET env vars.</h2>`),
-      { headers: { "content-type": "text/html; charset=utf-8" } }
+      { headers }
     );
   }
 
@@ -48,8 +62,8 @@ export async function GET(req: NextRequest) {
   if (!tokenRes.ok) {
     const txt = await tokenRes.text();
     return new NextResponse(
-      html(`<h2 style="color:red">Token exchange failed (${tokenRes.status})</h2><pre>${txt}</pre>`),
-      { headers: { "content-type": "text/html; charset=utf-8" } }
+      html(`<h2 style="color:red">Token exchange failed (${tokenRes.status})</h2><pre>${escapeHtml(txt)}</pre>`),
+      { headers }
     );
   }
 
@@ -86,20 +100,27 @@ export async function GET(req: NextRequest) {
   return new NextResponse(
     html(`
       <h2 style="color:green">&#10003; LinkedIn OAuth successful!</h2>
-      <p>Run these two commands in your terminal, then redeploy:</p>
-      <pre>netlify env:set LINKEDIN_ACCESS_TOKEN "${accessToken}"
-netlify env:set LINKEDIN_PERSON_URN "${personUrn}"
-netlify deploy --prod --build</pre>
+      <p>The token exchange succeeded. For security, this page does not print bearer tokens.</p>
+      <p>Store the access token directly from a trusted server-side OAuth flow, then redeploy.</p>
       <hr/>
       <table>
-        <tr><td><strong>LINKEDIN_ACCESS_TOKEN</strong></td><td><code style="word-break:break-all">${accessToken}</code></td></tr>
-        <tr><td><strong>LINKEDIN_PERSON_URN</strong></td><td><code>${personUrn}</code></td></tr>
+        <tr><td><strong>LINKEDIN_PERSON_URN</strong></td><td><code>${escapeHtml(personUrn)}</code></td></tr>
         <tr><td><strong>Expires</strong></td><td>${expiresInDays} days</td></tr>
-        ${urnError ? `<tr><td><strong>URN debug</strong></td><td><code style="color:red">${urnError}</code></td></tr>` : ""}
+        ${urnError ? `<tr><td><strong>URN debug</strong></td><td><code style="color:red">${escapeHtml(urnError)}</code></td></tr>` : ""}
       </table>
     `),
-    { headers: { "content-type": "text/html; charset=utf-8" } }
+    { headers }
   );
+}
+
+function escapeHtml(value: string): string {
+  return value.replace(/[&<>"']/g, (char) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    "\"": "&quot;",
+    "'": "&#39;",
+  })[char] ?? char);
 }
 
 function html(body: string): string {
