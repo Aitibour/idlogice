@@ -24,7 +24,7 @@ export default async function BlogPage({ params }: Props) {
   const { data: posts } = db
     ? await db
         .from("blog_posts")
-        .select("slug, title, excerpt, image_url, published_at")
+        .select("slug, title, excerpt, image_url, image_alt, published_at")
         .eq("status", "published")
         .order("published_at", { ascending: false })
         .limit(18)
@@ -48,6 +48,7 @@ export default async function BlogPage({ params }: Props) {
               title={(post.title as Record<string, string>)[locale] ?? (post.title as Record<string, string>).en}
               excerpt={(post.excerpt as Record<string, string>)[locale] ?? (post.excerpt as Record<string, string>).en}
               imageUrl={post.image_url}
+              imageAlt={post.image_alt}
               publishedAt={post.published_at}
               locale={locale}
             />

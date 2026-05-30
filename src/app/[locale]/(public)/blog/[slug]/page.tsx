@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { tryCreateServiceClient } from "@/lib/supabase/service";
 import { PostBody } from "@/components/blog/PostBody";
+import { getRelatedBlogImage } from "@/lib/blog/images";
 
 export const revalidate = 3600;
 // Allow on-demand rendering for slugs not returned by generateStaticParams
@@ -26,6 +27,10 @@ function pick(field: unknown, locale: string): string {
 
 function wordsOf(s: string): number {
   return s.trim().split(/\s+/).filter(Boolean).length;
+}
+
+function absoluteImageUrl(src: string): string {
+  return src.startsWith("/") ? `${BASE}${src}` : src;
 }
 
 // JSON-LD helper. Stringifying server-side data is XSS-safe; the spread
@@ -64,6 +69,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!data) return {};
   const rawTitle = pick(data.title, locale);
   const rawDesc = pick(data.meta_desc, locale) || pick(data.excerpt, locale);
+  const fallbackImage = getRelatedBlogImage(rawTitle, rawDesc, slug);
+  const metadataImage = absoluteImageUrl(cleanImageUrl(data.image_url) ?? fallbackImage.url);
   // Truncate description to 160 chars (Semrush limit)
   const desc = rawDesc.length > 160 ? `${rawDesc.slice(0, 157)}…` : rawDesc;
   const url = `https://idlogice.com/${locale}/blog/${slug}`;
@@ -87,13 +94,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: data.published_at ?? undefined,
       modifiedTime: data.published_at ?? undefined,
       authors: ["IDLOGICE"],
-      images: data.image_url ? [{ url: cleanImageUrl(data.image_url) ?? data.image_url, alt: `${title} — Canada immigration`, width: 1200, height: 630 }] : [],
+      images: [{ url: metadataImage, alt: `${title} — Canada immigration`, width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description: desc,
-      images: data.image_url ? [cleanImageUrl(data.image_url) ?? data.image_url] : [],
+      images: [metadataImage],
     },
   };
 }
@@ -115,6 +122,10 @@ export default async function BlogPostPage({ params }: Props) {
   const title = pick(post.title, locale);
   const desc = pick(post.meta_desc, locale) || pick(post.excerpt, locale);
   const content = pick(post.content, locale);
+  const fallbackImage = getRelatedBlogImage(title, desc, slug);
+  const heroImage = cleanImageUrl(post.image_url) ?? fallbackImage.url;
+  const heroAlt = post.image_alt ?? fallbackImage.alt;
+  const bypassHeroOptimizer = isUnsplashUrl(heroImage) || heroImage.startsWith("/images/");
 
   // FAQ data lives inside the `content` jsonb under faq_en / faq_fr.
   // When the expand-blog script has run, we render FAQPage JSON-LD +
@@ -198,21 +209,19 @@ export default async function BlogPostPage({ params }: Props) {
           </ol>
         </nav>
 
-        {post.image_url && (
-          <div className="relative aspect-video w-full mb-10 rounded-xl overflow-hidden">
-            <Image
-              src={cleanImageUrl(post.image_url) ?? post.image_url}
-              alt={post.image_alt ?? `${title} — Canada immigration`}
-              fill
-              unoptimized={isUnsplashUrl(post.image_url)}
-              className="object-cover"
-              priority
-            />
-            {post.image_credit && (
-              <p className="absolute bottom-2 right-3 text-xs text-white/70">{post.image_credit}</p>
-            )}
-          </div>
-        )}
+        <div className="relative aspect-video w-full mb-10 rounded-xl overflow-hidden bg-gray-100">
+          <Image
+            src={heroImage}
+            alt={heroAlt}
+            fill
+            unoptimized={bypassHeroOptimizer}
+            className="object-cover"
+            priority
+          />
+          {post.image_credit && (
+            <p className="absolute bottom-2 right-3 text-xs text-white/70">{post.image_credit}</p>
+          )}
+        </div>
         <p className="text-sm text-gray-600 mb-3">
           {date} · {readingTime} min read · {wordCount} words
         </p>
@@ -319,18 +328,16 @@ export default async function BlogPostPage({ params }: Props) {
                     href={`/${locale}/blog/${r.slug}`}
                     className="group block rounded-xl overflow-hidden border border-border hover:border-primary/40 transition-colors"
                   >
-                    {r.image_url && (
-                      <div className="relative aspect-video w-full">
-                        <Image
-                          src={cleanImageUrl(r.image_url) ?? r.image_url}
-                          alt={rTitle}
-                          fill
-                          unoptimized={isUnsplashUrl(r.image_url)}
-                          className="object-cover group-hover:scale-105 transition-transform"
-                          sizes="(max-width:640px) 100vw, 33vw"
-                        />
-                      </div>
-                    )}
+                    <div className="relative aspect-video w-full bg-gray-100">
+                      <Image
+                        src={cleanImageUrl(r.image_url) ?? getRelatedBlogImage(rTitle, "", r.slug).url}
+                        alt={rTitle}
+                        fill
+                        unoptimized={isUnsplashUrl(r.image_url) || (cleanImageUrl(r.image_url) ?? getRelatedBlogImage(rTitle, "", r.slug).url).startsWith("/images/")}
+                        className="object-cover group-hover:scale-105 transition-transform"
+                        sizes="(max-width:640px) 100vw, 33vw"
+                      />
+                    </div>
                     <div className="p-4">
                       <p className="text-sm font-bold text-gray-900 leading-snug line-clamp-3">{rTitle}</p>
                     </div>
