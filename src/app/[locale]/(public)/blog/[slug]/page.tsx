@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { tryCreateServiceClient } from "@/lib/supabase/service";
 import { PostBody } from "@/components/blog/PostBody";
 import { BlogConversionCta } from "@/components/blog/BlogConversionCta";
+import { getTopicFaqs } from "@/lib/blog/faqs";
 import { getRelatedBlogImage } from "@/lib/blog/images";
 import { getBlogTopic } from "@/lib/blog/topics";
 
@@ -137,6 +138,7 @@ export default async function BlogPostPage({ params }: Props) {
   const faqKey = locale === "fr" ? "faq_fr" : "faq_en";
   const faqRaw = contentObj[faqKey];
   const faq = (Array.isArray(faqRaw) ? faqRaw : []) as Array<{ q: string; a: string }>;
+  const displayFaq = faq.length > 0 ? faq : getTopicFaqs(topic.id, locale);
 
   const wordCount = wordsOf(content);
   const readingTime = Math.max(1, Math.round(wordCount / 230));
@@ -178,10 +180,10 @@ export default async function BlogPostPage({ params }: Props) {
     },
   };
 
-  const faqLd = faq.length > 0 ? {
+  const faqLd = displayFaq.length > 0 ? {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faq.map((f) => ({
+    mainEntity: displayFaq.map((f) => ({
       "@type": "Question",
       name: f.q,
       acceptedAnswer: { "@type": "Answer", text: f.a },
@@ -261,7 +263,7 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
 
         {/* FAQ — rendered for users + powers FAQPage JSON-LD above */}
-        {faq.length > 0 && (
+        {displayFaq.length > 0 && (
           <section className="mt-12 border-t pt-10">
             <h2 className="text-2xl font-bold mb-6 text-gray-900">
               {locale === "fr"
@@ -273,7 +275,7 @@ export default async function BlogPostPage({ params }: Props) {
                 : "Frequently asked questions"}
             </h2>
             <div className="space-y-5">
-              {faq.map((f, i) => (
+              {displayFaq.map((f, i) => (
                 <details key={i} className="rounded-xl border border-border p-5 group">
                   <summary className="font-semibold text-gray-900 cursor-pointer list-none flex justify-between items-center">
                     <span>{f.q}</span>
