@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { tryCreateServiceClient } from "@/lib/supabase/service";
 import { PostBody } from "@/components/blog/PostBody";
 import { getRelatedBlogImage } from "@/lib/blog/images";
+import { getBlogTopic } from "@/lib/blog/topics";
 
 export const revalidate = 3600;
 // Allow on-demand rendering for slugs not returned by generateStaticParams
@@ -126,6 +127,7 @@ export default async function BlogPostPage({ params }: Props) {
   const heroImage = cleanImageUrl(post.image_url) ?? fallbackImage.url;
   const heroAlt = post.image_alt ?? fallbackImage.alt;
   const bypassHeroOptimizer = isUnsplashUrl(heroImage) || heroImage.startsWith("/images/");
+  const topic = getBlogTopic(title, desc, slug);
 
   // FAQ data lives inside the `content` jsonb under faq_en / faq_fr.
   // When the expand-blog script has run, we render FAQPage JSON-LD +
@@ -227,6 +229,16 @@ export default async function BlogPostPage({ params }: Props) {
         </p>
         <h1 className="text-4xl font-bold leading-tight mb-8 text-gray-900">{title}</h1>
         <PostBody content={content} />
+
+        <aside className="my-10 rounded-xl border border-primary/20 bg-primary/5 p-5 not-prose">
+          <p className="text-sm font-bold text-gray-900 mb-2">{topic.label}</p>
+          <p className="text-sm text-gray-700 mb-3">
+            Continue through the main authority guide for this topic and compare the related Canada immigration pathway.
+          </p>
+          <Link href={`/${locale}${topic.href}`} className="text-sm font-bold text-primary underline underline-offset-4">
+            {topic.anchor}
+          </Link>
+        </aside>
 
         {/* Mid-article internal link CTA — contextual anchor text for SEO */}
         <div className="my-10 rounded-xl border border-primary/20 bg-primary/5 p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 not-prose">
