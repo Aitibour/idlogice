@@ -26,6 +26,7 @@ const nextConfig: NextConfig = {
       "in",
       "province",
       "draws",
+      "news",
       "jobs",
       "calculator",
       "evaluation",

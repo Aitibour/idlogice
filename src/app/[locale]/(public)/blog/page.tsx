@@ -57,6 +57,16 @@ export default async function BlogPage({ params, searchParams }: Props) {
       <h1 className="text-4xl font-bold mb-4">{t("title")}</h1>
       <p className="text-muted-foreground mb-8">{t("subtitle")}</p>
 
+      <div className="mb-6 rounded-xl border border-primary/20 bg-primary/5 p-5">
+        <p className="text-sm font-bold text-gray-950">Need the newest IRCC and draw updates?</p>
+        <p className="mt-1 text-sm text-gray-700">
+          Visit the Canada Immigration News hub for fresh Express Entry, PNP, work permit, and study permit updates.
+        </p>
+        <Link href={`/${locale}/news`} className="mt-3 inline-flex text-sm font-bold text-primary underline-offset-4 hover:underline">
+          Canada Immigration News
+        </Link>
+      </div>
+
       <nav aria-label="Blog topics" className="mb-10 flex flex-wrap gap-2">
         {BLOG_TOPICS.map((topic) => {
           const active = selectedTopic === topic.id;
