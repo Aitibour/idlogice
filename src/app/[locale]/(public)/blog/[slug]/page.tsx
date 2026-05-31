@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { tryCreateServiceClient } from "@/lib/supabase/service";
 import { PostBody } from "@/components/blog/PostBody";
+import { BlogConversionCta } from "@/components/blog/BlogConversionCta";
 import { getRelatedBlogImage } from "@/lib/blog/images";
 import { getBlogTopic } from "@/lib/blog/topics";
 
@@ -285,39 +286,9 @@ export default async function BlogPostPage({ params }: Props) {
           </section>
         )}
 
-        {/* Soft CTA toward the free evaluation funnel */}
-        <aside className="mt-14 rounded-2xl border border-primary/30 bg-primary/5 p-6">
-          <p className="text-lg font-bold text-gray-900 mb-1">
-            {locale === "fr"
-              ? "Réservez votre consultation d'immigration"
-              : locale === "es"
-              ? "Reserve su consulta de inmigración"
-              : locale === "ar"
-              ? "احجز استشارتك في الهجرة"
-              : "Book your Canada immigration consultation"}
-          </p>
-          <p className="text-sm text-gray-700 mb-4">
-            {locale === "fr"
-              ? "Nos consultants RCIC évaluent votre admissibilité aux programmes canadiens en moins de 24 heures."
-              : locale === "es"
-              ? "Nuestros consultores RCIC evalúan su elegibilidad para los programas canadienses en menos de 24 horas."
-              : locale === "ar"
-              ? "يقوم مستشارونا المعتمدون بتقييم أهليتك للبرامج الكندية في أقل من 24 ساعة."
-              : "Our RCIC consultants assess your eligibility for every Canadian program in under 24 hours."}
-          </p>
-          <Link
-            href={`/${locale}/book-consultation`}
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-white hover:opacity-90 transition-opacity"
-          >
-            {locale === "fr"
-              ? "Réserver une consultation →"
-              : locale === "es"
-              ? "Reservar una consulta →"
-              : locale === "ar"
-              ? "احجز استشارة →"
-              : "Book a Consultation →"}
-          </Link>
-        </aside>
+        <div className="mt-14">
+          <BlogConversionCta locale={locale} topicLabel={topic.label} />
+        </div>
 
         {/* Related posts — internal linking for SEO authority distribution */}
         {related && related.length > 0 && (

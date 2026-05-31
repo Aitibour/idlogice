@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Newspaper, RefreshCw, TrendingUp } from "lucide-react";
+import { BlogConversionCta } from "@/components/blog/BlogConversionCta";
 import { PostCard } from "@/components/blog/PostCard";
 import { tryCreateServiceClient } from "@/lib/supabase/service";
 import { BLOG_TOPICS, getBlogTopic } from "@/lib/blog/topics";
@@ -98,6 +99,10 @@ export default async function NewsPage({ params }: Props) {
       </section>
 
       <section className="container mx-auto px-4 py-10">
+        <div className="mb-10">
+          <BlogConversionCta locale={locale} topicLabel="Canada immigration news" compact />
+        </div>
+
         <div className="mb-8 grid gap-3 md:grid-cols-5">
           {newsTopics.map((topic) => (
             <Link
