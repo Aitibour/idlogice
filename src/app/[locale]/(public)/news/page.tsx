@@ -13,6 +13,11 @@ type Props = { params: Promise<{ locale: string }> };
 
 const BASE = "https://idlogice.com";
 
+function jsonLd(data: object) {
+  const props = { dangerouslySetInnerHTML: { __html: JSON.stringify(data) } };
+  return <script type="application/ld+json" {...props} />;
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const title = "Canada Immigration News | IRCC, Express Entry, PNP Updates";
@@ -55,6 +60,35 @@ export default async function NewsPage({ params }: Props) {
   });
 
   const newsTopics = BLOG_TOPICS.filter((topic) => topic.id !== "all").slice(0, 5);
+  const inLanguage = locale === "fr" ? "fr-CA" : locale === "es" ? "es" : locale === "ar" ? "ar" : "en-CA";
+  const organizationLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "IDLOGICE",
+    url: BASE,
+    logo: `${BASE}/logo.png`,
+    sameAs: [
+      "https://www.linkedin.com/company/idlogice",
+      "https://www.tiktok.com/@idlogice",
+    ],
+  };
+  const collectionLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Canada Immigration News",
+    description: "Latest IRCC updates, Express Entry draws, PNP invitations, work permit changes, and study permit news from IDLOGICE.",
+    url: `${BASE}/${locale}/news`,
+    inLanguage,
+    publisher: { "@type": "Organization", name: "IDLOGICE", url: BASE },
+    about: [
+      "IRCC updates",
+      "Express Entry draws",
+      "Provincial Nominee Programs",
+      "Canada work permits",
+      "Study permits Canada",
+      "Canada immigration policy",
+    ],
+  };
   const itemListLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -69,7 +103,9 @@ export default async function NewsPage({ params }: Props) {
 
   return (
     <main className="bg-white">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
+      {jsonLd(organizationLd)}
+      {jsonLd(collectionLd)}
+      {jsonLd(itemListLd)}
 
       <section className="border-b border-border bg-gray-50">
         <div className="container mx-auto px-4 py-14">
