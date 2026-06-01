@@ -53,6 +53,7 @@ export function Footer() {
                 { href: "/contact",      label: t("contact")      },
                 { href: "/privacy", label: t("privacy")     },
                 { href: "/terms",   label: t("terms")       },
+                { href: "/immigration-disclaimer", label: "Immigration Disclaimer" },
               ].map((l) => (
                 <li key={l.href}>
                   <Link href={l.href}
