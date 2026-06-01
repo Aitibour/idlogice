@@ -27,6 +27,7 @@
   ],
   "instructions_source": "docs/custom-gpt/idlogice-immigration-intelligence.md",
   "instructions_section": "## Instructions",
+  "all_in_one_build_file": "docs/custom-gpt/all-in-one-build.md",
   "launch_checklist": "docs/custom-gpt/launch-checklist.md",
   "qa_test_prompts": "docs/custom-gpt/qa-test-prompts.md",
   "store_listing_copy": "docs/custom-gpt/store-listing-copy.md",

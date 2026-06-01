@@ -1,6 +1,6 @@
 # IDLOGICE Custom GPT Quickstart
 
-Use this file when you are ready to create the GPT in the ChatGPT builder.
+Use this file when you are ready to create the GPT in the ChatGPT builder. For a single control sheet, use `all-in-one-build.md`.
 
 ## Fast Setup
 
@@ -14,6 +14,10 @@ Use this file when you are ready to create the GPT in the ChatGPT builder.
 8. Use `store-listing-copy.md` for the public listing.
 9. Start with link-only visibility before making it public.
 10. Use `launch-announcements.md` when promoting the GPT.
+
+## One-File Builder Sheet
+
+Use `all-in-one-build.md` when you want every builder step in one place.
 
 ## Copy These Profile Fields
 

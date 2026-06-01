@@ -18,6 +18,7 @@ Use these after copying the GPT builder fields and instructions:
 
 * `quickstart.md`
 * `builder-manifest.json`
+* `all-in-one-build.md`
 * `launch-checklist.md`
 * `qa-test-prompts.md`
 * `store-listing-copy.md`
