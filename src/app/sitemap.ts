@@ -64,6 +64,7 @@ const ROUTES: Route[] = [
   { path: "/stats",                       priority: CONTENT,  changeFreq: "monthly" },
   { path: "/team",                        priority: CONTENT,  changeFreq: "monthly" },
   { path: "/editorial-standards",         priority: CONTENT,  changeFreq: "monthly" },
+  { path: "/corrections-policy",          priority: CONTENT,  changeFreq: "monthly" },
   { path: "/privacy",                     priority: LEGAL,    changeFreq: "yearly" },
   { path: "/terms",                       priority: LEGAL,    changeFreq: "yearly" },
   { path: "/cookies",                     priority: LEGAL,    changeFreq: "yearly" },

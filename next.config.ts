@@ -41,6 +41,7 @@ const nextConfig: NextConfig = {
       "stats",
       "team",
       "editorial-standards",
+      "corrections-policy",
       "author",
     ];
     const nonLocaleRedirects = nonLocalePaths.map((p) => ({
