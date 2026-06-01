@@ -23,3 +23,8 @@ After uploading, test the GPT with:
 * "Create a LinkedIn post about Mobilite Francophone."
 * "What documents do I need for a study permit?"
 * "Analyze this IRCC update and explain who is affected."
+
+For the full launch workflow, use:
+
+* `../launch-checklist.md`
+* `../qa-test-prompts.md`

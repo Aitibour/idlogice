@@ -12,6 +12,13 @@ Custom GPT setup for IDLOGICE.com, modeled after the Hospitality121 Intelligence
 
 **Public Discovery Description:** IDLOGICE IMMIGRATION INTELLIGENCE(TM) helps individuals, families, students, workers, employers, and newcomers understand Canadian immigration pathways, eligibility factors, documents, risks, timelines, and practical next steps. It explains Express Entry, PNPs, work permits, study permits, PGWP, family sponsorship, citizenship, permanent residence, LMIA, Mobilite Francophone, and Canadian immigration news in plain language.
 
+## Launch Files
+
+Use these after copying the GPT builder fields and instructions:
+
+* `launch-checklist.md`
+* `qa-test-prompts.md`
+
 ## Instructions
 
 Paste this directly into the **Instructions** section of the Custom GPT builder.
