@@ -5,6 +5,8 @@ import type { Metadata } from "next";
 import { tryCreateServiceClient } from "@/lib/supabase/service";
 import { PostBody } from "@/components/blog/PostBody";
 import { BlogConversionCta } from "@/components/blog/BlogConversionCta";
+import { BlogExpertBox } from "@/components/blog/BlogExpertBox";
+import { getBlogExpert } from "@/lib/blog/experts";
 import { getTopicFaqs } from "@/lib/blog/faqs";
 import { getRelatedBlogImage } from "@/lib/blog/images";
 import { getBlogTopic } from "@/lib/blog/topics";
@@ -130,6 +132,7 @@ export default async function BlogPostPage({ params }: Props) {
   const heroAlt = post.image_alt ?? fallbackImage.alt;
   const bypassHeroOptimizer = isUnsplashUrl(heroImage) || heroImage.startsWith("/images/");
   const topic = getBlogTopic(title, desc, slug);
+  const expert = getBlogExpert(topic.id);
 
   // FAQ data lives inside the `content` jsonb under faq_en / faq_fr.
   // When the expand-blog script has run, we render FAQPage JSON-LD +
@@ -160,6 +163,25 @@ export default async function BlogPostPage({ params }: Props) {
   const url = `https://idlogice.com/${locale}/blog/${slug}`;
   const blogLabel = locale === "ar" ? "المدونة" : "Blog";
   const homeLabel = locale === "fr" ? "Accueil" : locale === "es" ? "Inicio" : locale === "ar" ? "الرئيسية" : "Home";
+  const expertLd = {
+    "@type": "Person",
+    name: expert.name,
+    jobTitle: expert.title,
+    url: `${BASE}/${locale}/team`,
+    worksFor: { "@type": "Organization", name: "IDLOGICE", url: BASE },
+    knowsAbout: expert.knowsAbout,
+    hasCredential: {
+      "@type": "EducationalOccupationalCredential",
+      name: expert.credential,
+      credentialCategory: "Professional License",
+      recognizedBy: {
+        "@type": "Organization",
+        name: "College of Immigration and Citizenship Consultants",
+        url: "https://college-ic.ca/",
+      },
+      identifier: expert.rcic,
+    },
+  };
 
   const blogPostingLd = {
     "@context": "https://schema.org",
@@ -172,7 +194,9 @@ export default async function BlogPostPage({ params }: Props) {
     dateModified: post.updated_at ?? post.published_at,
     wordCount,
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
-    author: { "@type": "Organization", name: "IDLOGICE", url: BASE },
+    author: expertLd,
+    reviewedBy: expertLd,
+    about: topic.anchor,
     publisher: {
       "@type": "Organization",
       name: "IDLOGICE",
@@ -231,6 +255,7 @@ export default async function BlogPostPage({ params }: Props) {
           {date} · {readingTime} min read · {wordCount} words
         </p>
         <h1 className="text-4xl font-bold leading-tight mb-8 text-gray-900">{title}</h1>
+        <BlogExpertBox locale={locale} expert={expert} topicLabel={topic.label} />
         <PostBody content={content} />
 
         <aside className="my-10 rounded-xl border border-primary/20 bg-primary/5 p-5 not-prose">
