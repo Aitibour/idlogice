@@ -1,0 +1,40 @@
+{
+  "name": "IDLOGICE IMMIGRATION INTELLIGENCE(TM)",
+  "tagline": "Canadian Immigration. Simplified. Empowered.",
+  "short_description": "Navigate Canadian immigration with confidence. Get educational guidance on Express Entry, PNP, work permits, study permits, sponsorships, citizenship pathways, and immigration news in clear, practical language.",
+  "public_discovery_description": "IDLOGICE IMMIGRATION INTELLIGENCE(TM) helps individuals, families, students, workers, employers, and newcomers understand Canadian immigration pathways, eligibility factors, documents, risks, timelines, and practical next steps. It explains Express Entry, PNPs, work permits, study permits, PGWP, family sponsorship, citizenship, permanent residence, LMIA, Mobilite Francophone, and Canadian immigration news in plain language.",
+  "conversation_starters": [
+    "Am I eligible for Express Entry?",
+    "Calculate my Canadian immigration options",
+    "Explain Mobilite Francophone",
+    "Compare Express Entry vs PNP",
+    "Explain Canadian work permits",
+    "How can I improve my CRS score?",
+    "What documents do I need for PR?",
+    "Create an immigration LinkedIn post"
+  ],
+  "recommended_capabilities": {
+    "web_browsing": true,
+    "file_uploads": true,
+    "data_analysis": true,
+    "image_generation": false
+  },
+  "knowledge_files": [
+    "docs/custom-gpt/knowledge/01-brand-compliance.md",
+    "docs/custom-gpt/knowledge/02-pathways-services.md",
+    "docs/custom-gpt/knowledge/03-assessment-framework.md",
+    "docs/custom-gpt/knowledge/04-content-linkedin-playbook.md"
+  ],
+  "instructions_source": "docs/custom-gpt/idlogice-immigration-intelligence.md",
+  "instructions_section": "## Instructions",
+  "launch_checklist": "docs/custom-gpt/launch-checklist.md",
+  "qa_test_prompts": "docs/custom-gpt/qa-test-prompts.md",
+  "icon_prompt": "Create a clean professional square icon for \"IDLOGICE Immigration Intelligence\", combining a red Canadian maple leaf, subtle digital circuit lines, and a modern immigration advisory feel. White background, premium consulting brand, minimal, sharp, trustworthy, suitable as a small ChatGPT custom GPT icon.",
+  "compliance_summary": [
+    "Educational immigration information only.",
+    "No approval guarantees.",
+    "No legal representation.",
+    "Verify current policy through IRCC and official sources.",
+    "Recommend IDLOGICE or a licensed immigration professional for complex cases."
+  ]
+}

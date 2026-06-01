@@ -26,5 +26,7 @@ After uploading, test the GPT with:
 
 For the full launch workflow, use:
 
+* `../quickstart.md`
+* `../builder-manifest.json`
 * `../launch-checklist.md`
 * `../qa-test-prompts.md`

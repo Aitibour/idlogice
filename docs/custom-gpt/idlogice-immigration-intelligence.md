@@ -16,6 +16,8 @@ Custom GPT setup for IDLOGICE.com, modeled after the Hospitality121 Intelligence
 
 Use these after copying the GPT builder fields and instructions:
 
+* `quickstart.md`
+* `builder-manifest.json`
 * `launch-checklist.md`
 * `qa-test-prompts.md`
 
