@@ -11,7 +11,9 @@ Use this file when you are ready to create the GPT in the ChatGPT builder.
 5. Upload the four files in `knowledge/`.
 6. Enable browsing, file uploads, and data analysis.
 7. Run the tests in `qa-test-prompts.md`.
-8. Start with link-only visibility before making it public.
+8. Use `store-listing-copy.md` for the public listing.
+9. Start with link-only visibility before making it public.
+10. Use `launch-announcements.md` when promoting the GPT.
 
 ## Copy These Profile Fields
 

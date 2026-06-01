@@ -29,6 +29,8 @@
   "instructions_section": "## Instructions",
   "launch_checklist": "docs/custom-gpt/launch-checklist.md",
   "qa_test_prompts": "docs/custom-gpt/qa-test-prompts.md",
+  "store_listing_copy": "docs/custom-gpt/store-listing-copy.md",
+  "launch_announcements": "docs/custom-gpt/launch-announcements.md",
   "icon_prompt": "Create a clean professional square icon for \"IDLOGICE Immigration Intelligence\", combining a red Canadian maple leaf, subtle digital circuit lines, and a modern immigration advisory feel. White background, premium consulting brand, minimal, sharp, trustworthy, suitable as a small ChatGPT custom GPT icon.",
   "compliance_summary": [
     "Educational immigration information only.",

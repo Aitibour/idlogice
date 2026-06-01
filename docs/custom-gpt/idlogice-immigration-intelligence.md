@@ -20,6 +20,8 @@ Use these after copying the GPT builder fields and instructions:
 * `builder-manifest.json`
 * `launch-checklist.md`
 * `qa-test-prompts.md`
+* `store-listing-copy.md`
+* `launch-announcements.md`
 
 ## Instructions
 
