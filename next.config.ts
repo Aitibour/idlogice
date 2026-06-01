@@ -36,6 +36,7 @@ const nextConfig: NextConfig = {
       "programs",
       "services",
       "faq",
+      "glossary",
       "testimonials",
       "guides",
       "stats",

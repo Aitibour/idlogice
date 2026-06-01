@@ -60,6 +60,7 @@ const ROUTES: Route[] = [
   { path: "/services/pr-pathways",        priority: SERVICE,  changeFreq: "monthly" },
   { path: "/testimonials",                priority: CONTENT,  changeFreq: "weekly" },
   { path: "/faq",                         priority: CONTENT,  changeFreq: "monthly" },
+  { path: "/glossary",                    priority: CONTENT,  changeFreq: "monthly" },
   { path: "/jobs",                        priority: CONTENT,  changeFreq: "weekly" },
   { path: "/stats",                       priority: CONTENT,  changeFreq: "monthly" },
   { path: "/team",                        priority: CONTENT,  changeFreq: "monthly" },
