@@ -48,6 +48,7 @@ export function Footer() {
                 { href: "/blog",         label: "Blog"             },
                 { href: "/stats",        label: "Immigration Statistics" },
                 { href: "/team",         label: "Our Consultants"  },
+                { href: "/editorial-standards", label: "Editorial Standards" },
                 { href: "/contact",      label: t("contact")      },
                 { href: "/privacy", label: t("privacy")     },
                 { href: "/terms",   label: t("terms")       },
