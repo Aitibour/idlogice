@@ -167,7 +167,7 @@ export default async function BlogPostPage({ params }: Props) {
     "@type": "Person",
     name: expert.name,
     jobTitle: expert.title,
-    url: `${BASE}/${locale}/team`,
+    url: `${BASE}/${locale}/author/${expert.id}`,
     worksFor: { "@type": "Organization", name: "IDLOGICE", url: BASE },
     knowsAbout: expert.knowsAbout,
     hasCredential: {

@@ -40,6 +40,7 @@ const nextConfig: NextConfig = {
       "guides",
       "stats",
       "team",
+      "author",
     ];
     const nonLocaleRedirects = nonLocalePaths.map((p) => ({
       source: `/${p}`,
@@ -89,6 +90,7 @@ const nextConfig: NextConfig = {
       { source: "/in/:path*", destination: "/en/in/:path*", permanent: true },
       { source: "/province/:path*", destination: "/en/province/:path*", permanent: true },
       { source: "/programs/:path*", destination: "/en/programs/:path*", permanent: true },
+      { source: "/author/:path*", destination: "/en/author/:path*", permanent: true },
       // Non-locale path redirects
       ...nonLocaleRedirects,
       ...serviceRedirects,

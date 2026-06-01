@@ -27,7 +27,7 @@ export function BlogExpertBox({ locale, expert, topicLabel }: Props) {
         </div>
         <div className="flex shrink-0 gap-2">
           <Link
-            href={`/${locale}/team`}
+            href={`/${locale}/author/${expert.id}`}
             className="rounded-full border border-gray-300 px-4 py-2 text-xs font-bold text-gray-800 transition-colors hover:border-primary hover:text-primary"
           >
             {labels.profile}

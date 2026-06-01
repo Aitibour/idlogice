@@ -8,6 +8,7 @@ import { PROGRAMS } from "@/data/immigration-programs";
 import { PROVINCES } from "@/data/immigration-provinces";
 import { CITIES } from "@/data/immigration-cities";
 import { PROFESSIONS } from "@/data/immigration-professions";
+import { BLOG_EXPERTS } from "@/lib/blog/experts";
 
 const BASE = "https://idlogice.com";
 const LOCALES = ["en", "fr", "es", "ar"] as const;
@@ -209,8 +210,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   );
 
+  const authorEntries: MetadataRoute.Sitemap = BLOG_EXPERTS.flatMap((expert) =>
+    LOCALES.map((locale) => ({
+      url: `${BASE}/${locale}/author/${expert.id}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: CONTENT,
+      alternates: { languages: altLangs((l) => `${BASE}/${l}/author/${expert.id}`) },
+    })),
+  );
+
   return [
     ...staticEntries,
+    ...authorEntries,
     ...fromIndexEntries,
     ...blogEntries,
     ...countryEntries,
