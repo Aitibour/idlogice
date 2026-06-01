@@ -43,6 +43,7 @@ export function Footer() {
                 { href: "/for",          label: "Immigration by Profession" },
                 { href: "/programs",     label: "Immigration Programs" },
                 { href: "/guides/canada-immigration", label: "Immigration Guide" },
+                { href: "/tools",        label: "Immigration Tools" },
                 { href: "/faq",          label: "FAQ"              },
                 { href: "/glossary",     label: "Immigration Glossary" },
                 { href: "/testimonials", label: "Success Stories"  },

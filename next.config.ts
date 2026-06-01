@@ -29,6 +29,7 @@ const nextConfig: NextConfig = {
       "news",
       "jobs",
       "calculator",
+      "tools",
       "evaluation",
       "about",
       "contact",
