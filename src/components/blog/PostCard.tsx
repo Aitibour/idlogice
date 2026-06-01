@@ -41,7 +41,7 @@ export function PostCard({ slug, title, excerpt, imageUrl, imageAlt, publishedAt
       <div className="p-5">
         <div className="mb-2 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
           <span>{date}</span>
-          <span aria-hidden="true">·</span>
+          <span aria-hidden="true">&middot;</span>
           <span className="font-semibold text-primary">{topic.label}</span>
         </div>
         <h2 className="font-semibold text-lg leading-snug mb-2 group-hover:text-primary transition-colors">

@@ -1,5 +1,6 @@
 import { tryCreateServiceClient } from "@/lib/supabase/service";
 import { PostCard } from "@/components/blog/PostCard";
+import { BlogAuthorityHub } from "@/components/blog/BlogAuthorityHub";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
@@ -51,6 +52,10 @@ export default async function BlogPage({ params, searchParams }: Props) {
   const visiblePosts = selectedTopic === "all"
     ? localizedPosts
     : localizedPosts.filter((post) => post.topic.id === selectedTopic);
+  const topicCounts = localizedPosts.reduce<Partial<Record<(typeof BLOG_TOPICS)[number]["id"], number>>>((acc, post) => {
+    acc[post.topic.id] = (acc[post.topic.id] ?? 0) + 1;
+    return acc;
+  }, {});
 
   return (
     <main className="container mx-auto px-4 py-16">
@@ -86,6 +91,8 @@ export default async function BlogPage({ params, searchParams }: Props) {
           );
         })}
       </nav>
+
+      <BlogAuthorityHub locale={locale} counts={topicCounts} />
 
       {!visiblePosts.length ? (
         <p className="text-muted-foreground">{t("no_posts")}</p>
