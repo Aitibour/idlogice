@@ -247,15 +247,12 @@ Keep disabled unless needed:
 
 Recommended files for the Custom GPT knowledge base:
 
-* IDLOGICE service descriptions
-* Express Entry guide
-* PNP guide
-* Work permit guide
-* Study permit guide
-* Family sponsorship guide
-* Consultation process and disclaimers
-* Brand voice guide
-* FAQ library
+* `knowledge/01-brand-compliance.md`
+* `knowledge/02-pathways-services.md`
+* `knowledge/03-assessment-framework.md`
+* `knowledge/04-content-linkedin-playbook.md`
+
+These files are intentionally short and focused so the Custom GPT can retrieve the right context quickly.
 
 ## GPT Logo/Icon Prompt
 
