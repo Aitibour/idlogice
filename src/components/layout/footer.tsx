@@ -50,6 +50,7 @@ export function Footer() {
                 { href: "/team",         label: "Our Consultants"  },
                 { href: "/editorial-standards", label: "Editorial Standards" },
                 { href: "/corrections-policy", label: "Corrections Policy" },
+                { href: "/official-resources", label: "Official Resources" },
                 { href: "/contact",      label: t("contact")      },
                 { href: "/privacy", label: t("privacy")     },
                 { href: "/terms",   label: t("terms")       },

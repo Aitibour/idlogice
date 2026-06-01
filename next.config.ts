@@ -42,6 +42,7 @@ const nextConfig: NextConfig = {
       "team",
       "editorial-standards",
       "corrections-policy",
+      "official-resources",
       "immigration-disclaimer",
       "author",
     ];
