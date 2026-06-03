@@ -1,8 +1,6 @@
 ﻿import type { Metadata } from "next";
 
-type Props = { params: Promise<{ locale: string }> };
-
-export async function generateMetadata(_props: Props): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Sign In",
     robots: { index: false, follow: false },

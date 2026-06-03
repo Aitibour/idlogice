@@ -1,4 +1,3 @@
-﻿import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
 const TEST_META: Record<string, { title: string; description: string }> = {
@@ -80,8 +79,6 @@ const STATS = [
   { value: "50+", label: "Countries represented" },
   { value: "12+", label: "Years of experience" },
 ];
-
-const CATEGORIES = ["All", "Express Entry", "Work Permit", "Study Permit", "Provincial Nominee", "Family"];
 
 export default async function TestimonialsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

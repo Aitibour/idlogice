@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Link } from "@/i18n/navigation";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
 const PRIVACY_META: Record<string, { title: string; description: string }> = {
@@ -119,7 +120,7 @@ export default function PrivacyPage() {
         <section className="space-y-3">
           <h2 className="text-lg font-semibold text-foreground">9. Cookies</h2>
           <p>
-            We use cookies and similar technologies to operate our website and improve your experience. For details on the types of cookies we use and how to manage your preferences, please read our <a href="/en/cookies" className="text-primary underline">Cookie Policy</a>.
+            We use cookies and similar technologies to operate our website and improve your experience. For details on the types of cookies we use and how to manage your preferences, please read our <Link href="/cookies" className="text-primary underline">Cookie Policy</Link>.
           </p>
         </section>
 

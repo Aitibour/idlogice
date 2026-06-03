@@ -147,17 +147,6 @@ export function CheckoutClient({ planId }: { planId?: string }) {
     return () => mo.disconnect();
   }, [step]);
 
-  useEffect(() => {
-    function onMessage(e: MessageEvent) {
-      if (e.data?.event === "calendly.event_scheduled") {
-        const calendlyUri = e.data.payload?.event?.uri ?? "scheduled";
-        submitToNetlify(paypalOrderId, calendlyUri).then(() => setPaid(true));
-      }
-    }
-    window.addEventListener("message", onMessage);
-    return () => window.removeEventListener("message", onMessage);
-  }, [paypalOrderId]); // eslint-disable-line react-hooks/exhaustive-deps
-
   function handleChange(field: keyof FormData, value: string) {
     setForm((f) => ({ ...f, [field]: value }));
     if (errors[field]) setErrors((e) => ({ ...e, [field]: undefined }));
@@ -189,6 +178,17 @@ export function CheckoutClient({ planId }: { planId?: string }) {
       }).toString(),
     });
   }
+
+  useEffect(() => {
+    function onMessage(e: MessageEvent) {
+      if (e.data?.event === "calendly.event_scheduled") {
+        const calendlyUri = e.data.payload?.event?.uri ?? "scheduled";
+        submitToNetlify(paypalOrderId, calendlyUri).then(() => setPaid(true));
+      }
+    }
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, [paypalOrderId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const CALENDLY_URLS: Record<string, string> = {
     starter:  "https://calendly.com/meeting-idlogice/30min",

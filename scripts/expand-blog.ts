@@ -11,9 +11,7 @@
 import Groq from "groq-sdk";
 import { createClient } from "@supabase/supabase-js";
 
-const GROQ_KEY =
-  process.env.GROQ_API_KEY ||
-  "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";
+const GROQ_KEY = process.env.GROQ_API_KEY;
 
 // qwen3-32b and llama-4-scout share the same org TPD pool as llama-3.3-70b.
 // Only llama-3.3-70b produces 1800+ word quality content.
@@ -22,8 +20,6 @@ const GROQ_KEY =
 const MODELS = [
   { id: "llama-3.3-70b-versatile", maxTokens: 6000 },
 ];
-
-let modelIdx = 0;
 
 /** Parse "Please try again in 12m43.776s" → seconds */
 function parseWaitSeconds(msg: string): number {
@@ -70,6 +66,10 @@ type ExpandedPost = {
 };
 
 async function callGroq(prompt: string): Promise<string> {
+  if (!GROQ_KEY) {
+    throw new Error("Missing GROQ_API_KEY environment variable.");
+  }
+
   const { id, maxTokens } = MODELS[0];
   // Retry indefinitely: wait the exact time Groq prescribes, then retry same model.
   // One post per ~7 min on the rolling 24h window — slow but produces 1800+ word content.

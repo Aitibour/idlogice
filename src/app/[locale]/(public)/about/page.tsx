@@ -1,5 +1,4 @@
 ﻿export const revalidate = 86400;
-import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
 const ABOUT_META: Record<string, { title: string; description: string }> = {

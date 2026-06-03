@@ -46,7 +46,6 @@ export function ContactInline({
     "w-full rounded-lg border border-border bg-white px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition";
   const inputStyle = { color: "#111827" } as const;
   const labelStyle = { color: "#1f2937" } as const;
-  const headingStyle = { color: "#111827" } as const;
   const subTextStyle = { color: "#374151" } as const;
 
   return (

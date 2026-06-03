@@ -23,7 +23,7 @@ export function LifeInCanada({ sources, title, subtitle }: LifeInCanadaProps) {
     el.src = sources[activeIdx];
     el.load();
     if (playing) el.play().catch(() => {});
-  }, [activeIdx, sources]);
+  }, [activeIdx, playing, sources]);
 
   useEffect(() => {
     const el = mainRef.current;

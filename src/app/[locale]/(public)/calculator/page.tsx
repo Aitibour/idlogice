@@ -5,7 +5,7 @@ import { Link } from "@/i18n/navigation";
 import {
   ArrowRight, ArrowLeft, Calculator, User, GraduationCap,
   Languages, Briefcase, Star, CheckCircle, TrendingUp,
-  Phone, CalendarCheck, RotateCcw, Info,
+  CalendarCheck, RotateCcw, Info,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

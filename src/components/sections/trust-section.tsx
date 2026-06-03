@@ -28,7 +28,6 @@ export function TrustSection({ title, items }: TrustSectionProps) {
     "from-emerald-500/20 to-emerald-600/5",
   ];
   const borders = ["hover:border-rose-500/30", "hover:border-blue-500/30", "hover:border-emerald-500/30"];
-  const glows = ["group-hover:text-rose-500", "group-hover:text-blue-500", "group-hover:text-emerald-500"];
   const statColors = ["text-rose-500", "text-blue-500", "text-emerald-500"];
 
   return (

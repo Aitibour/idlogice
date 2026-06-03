@@ -8,8 +8,6 @@ import { cleanImageUrl, isUnsplashUrl } from "@/lib/seo/images";
 export const revalidate = 3600;
 
 const BASE = "https://idlogice.com";
-const LOCALES = ["en", "fr", "es", "ar"] as const;
-
 type Props = { params: Promise<{ locale: string }> };
 
 function pick<T = string>(field: unknown, locale: string, fallback?: T): T {

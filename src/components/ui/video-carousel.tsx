@@ -23,8 +23,10 @@ export function VideoCarousel({
   const [transitioning, setTransitioning] = useState(false);
   const refs = useRef<(HTMLVideoElement | null)[]>([]);
 
-  // Keep refs array sized to sources
-  refs.current = refs.current.slice(0, sources.length);
+  // Keep refs array sized to sources.
+  useEffect(() => {
+    refs.current = refs.current.slice(0, sources.length);
+  }, [sources.length]);
 
   // Play the current video when index changes
   useEffect(() => {

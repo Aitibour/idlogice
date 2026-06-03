@@ -1,4 +1,3 @@
-﻿import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
 const JOBS_META: Record<string, { title: string; description: string }> = {

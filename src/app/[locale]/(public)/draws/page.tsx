@@ -1,7 +1,6 @@
 ﻿import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 import { setRequestLocale, getTranslations } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
 import { CrsTrendChart } from "@/components/draws/CrsTrendChart";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { TrendingDown, TrendingUp, Users, Calendar, RefreshCw } from "lucide-react";

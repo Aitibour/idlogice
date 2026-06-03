@@ -25,7 +25,13 @@ const HIDDEN_ROUTES = [
 export function StickyConsultCta() {
   const pathname = usePathname() || "";
   const [show, setShow] = useState(false);
-  const [dismissed, setDismissed] = useState(false);
+  const [dismissed, setDismissed] = useState(() => {
+    try {
+      return sessionStorage.getItem("idlogice_sticky_cta_dismissed") === "1";
+    } catch {
+      return false;
+    }
+  });
   const [newsletterCleared, setNewsletterCleared] = useState(false);
 
   // Strip locale segment for matching
@@ -59,21 +65,19 @@ export function StickyConsultCta() {
   }, [hidden]);
 
   useEffect(() => {
-    if (hidden || !newsletterCleared) return;
-    if (sessionStorage.getItem("idlogice_sticky_cta_dismissed") === "1") {
-      setDismissed(true);
-      return;
-    }
+    if (hidden || dismissed || !newsletterCleared) return;
     function onScroll() {
       setShow(window.scrollY > 600);
     }
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
-  }, [hidden, newsletterCleared]);
+  }, [dismissed, hidden, newsletterCleared]);
 
   function dismiss() {
-    sessionStorage.setItem("idlogice_sticky_cta_dismissed", "1");
+    try {
+      sessionStorage.setItem("idlogice_sticky_cta_dismissed", "1");
+    } catch {}
     setDismissed(true);
   }
 

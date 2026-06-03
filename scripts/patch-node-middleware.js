@@ -30,12 +30,6 @@ if (rt.endsWith(";")) rt = rt.slice(0, -1); // strip trailing semicolon
 // We need to escape the runtime content the same way
 const rtEscaped = rt.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
 
-// The embedded middleware has: require(\"./webpack-runtime.js\")
-// We replace it with the inlined runtime wrapped in a module IIFE
-const OLD = 'require(\\"./webpack-runtime.js\\")';
-// Check both quote styles (old build had \" form, newer might differ)
-const OLD2 = "require(\\\"./webpack-runtime.js\\\")";
-
 const NEW = `(function(){var module={exports:{}};(${rtEscaped});return module.exports;})()`;
 
 let patched = nm;

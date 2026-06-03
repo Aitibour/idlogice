@@ -1,20 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { X, Cookie } from "lucide-react";
 
 export function CookieConsent() {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
+  const [visible, setVisible] = useState(() => {
     try {
-      const consent = localStorage.getItem("idlogice_cookie_consent");
-      if (!consent) setVisible(true);
+      return !localStorage.getItem("idlogice_cookie_consent");
     } catch {
-      // localStorage unavailable (SSR/private mode) — don't show
+      return false;
     }
-  }, []);
+  });
 
   function accept() {
     try { localStorage.setItem("idlogice_cookie_consent", "accepted"); } catch {}
