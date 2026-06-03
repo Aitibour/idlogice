@@ -37,6 +37,13 @@ renderer.link = ({ href, title, tokens }) => {
   const target = href.startsWith("http") ? ' target="_blank"' : "";
   return `<a href="${safeHref}"${safeTitle}${target}${rel}>${text}</a>`;
 };
+renderer.image = ({ href, title, text }) => {
+  if (!href || !isSafeHref(href)) return "";
+  const safeHref = escapeHtml(href);
+  const safeAlt = escapeHtml(text ?? "");
+  const safeTitle = title ? ` title="${escapeHtml(title)}"` : "";
+  return `<img src="${safeHref}" alt="${safeAlt}"${safeTitle} loading="lazy" decoding="async" />`;
+};
 
 const parser = new Marked({ breaks: true, gfm: true, renderer });
 
