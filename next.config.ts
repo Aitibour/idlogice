@@ -34,6 +34,7 @@ const nextConfig: NextConfig = {
       "about",
       "contact",
       "blog",
+      "compare-pathways",
       "programs",
       "services",
       "faq",

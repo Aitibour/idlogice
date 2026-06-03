@@ -45,6 +45,7 @@ const ROUTES: Route[] = [
   { path: "/blog",                        priority: STANDARD, changeFreq: "daily" },
   { path: "/news",                        priority: TOP,      changeFreq: "daily" },
   { path: "/guides/canada-immigration",   priority: TOP,      changeFreq: "weekly" },
+  { path: "/compare-pathways",            priority: TOP,      changeFreq: "monthly" },
   { path: "/contact",                     priority: STANDARD, changeFreq: "monthly" },
   { path: "/book-consultation",           priority: TOP,      changeFreq: "weekly" },
   { path: "/draws",                       priority: TOOLS,    changeFreq: "daily" },

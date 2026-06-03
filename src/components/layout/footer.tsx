@@ -42,6 +42,7 @@ export function Footer() {
                 { href: "/province",     label: "Province Programs (PNP)" },
                 { href: "/for",          label: "Immigration by Profession" },
                 { href: "/programs",     label: "Immigration Programs" },
+                { href: "/compare-pathways", label: "Compare Pathways" },
                 { href: "/guides/canada-immigration", label: "Immigration Guide" },
                 { href: "/tools",        label: "Immigration Tools" },
                 { href: "/faq",          label: "FAQ"              },
