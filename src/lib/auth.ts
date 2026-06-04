@@ -5,6 +5,7 @@
 ───────────────────────────────────────────────────────────────────────── */
 
 import { createClient } from "@/lib/supabase/client";
+import { safeAuthNext } from "@/lib/auth-redirect";
 
 export interface AuthUser {
   id: string;
@@ -54,12 +55,13 @@ export async function isLoggedIn(): Promise<boolean> {
 /** Sign up with email + password. Supabase will send a verification email. */
 export async function signUp(name: string, email: string, password: string, next = "/evaluation") {
   const supabase = createClient();
+  const safeNext = safeAuthNext(next);
   const { error } = await supabase.auth.signUp({
     email,
     password,
     options: {
       data: { full_name: name },
-      emailRedirectTo: `${location.origin}/auth/callback?next=${encodeURIComponent(next)}`,
+      emailRedirectTo: `${location.origin}/auth/callback?next=${encodeURIComponent(safeNext)}`,
     },
   });
   if (error) throw error;
@@ -75,10 +77,11 @@ export async function signIn(email: string, password: string) {
 /** Sign in with Google OAuth (redirects to Google). */
 export async function signInWithGoogle(next = "/evaluation") {
   const supabase = createClient();
+  const safeNext = safeAuthNext(next);
   const { error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: `${location.origin}/auth/callback?next=${encodeURIComponent(next)}`,
+      redirectTo: `${location.origin}/auth/callback?next=${encodeURIComponent(safeNext)}`,
     },
   });
   if (error) throw error;

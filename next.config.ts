@@ -84,6 +84,7 @@ const nextConfig: NextConfig = {
       "work-permit",
       "pnp",
       "tourist-visa",
+      "pr-pathways",
     ];
     const serviceRedirects = serviceSubPages.map((p) => ({
       source: `/services/${p}`,

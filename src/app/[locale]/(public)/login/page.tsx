@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import { signIn, signUp, signInWithGoogle, getUser } from "@/lib/auth";
+import { safeAuthNext } from "@/lib/auth-redirect";
 import { ga } from "@/lib/analytics";
 import { Eye, EyeOff, User, Mail, Lock, ArrowRight, CheckCircle, MailCheck, AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -21,7 +22,7 @@ const GoogleIcon = () => (
 export default function LoginPage() {
   const router = useRouter();
   const params = useSearchParams();
-  const next = params.get("next") ?? "/evaluation";
+  const next = safeAuthNext(params.get("next"));
   const authError = params.get("error");
   const mode = params.get("mode");
 

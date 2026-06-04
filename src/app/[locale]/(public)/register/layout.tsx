@@ -13,6 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: m.title,
     description: m.description,
+    alternates: { canonical: `https://idlogice.com/${locale}/register` },
     robots: { index: false, follow: false },
   };
 }

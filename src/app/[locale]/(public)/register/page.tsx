@@ -19,6 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 import { redirect } from "next/navigation";
+import { safeAuthNext } from "@/lib/auth-redirect";
 
 export default async function RegisterRedirectPage({
   params,
@@ -30,6 +31,6 @@ export default async function RegisterRedirectPage({
   const { locale } = await params;
   const { next } = await searchParams;
   const paramsOut = new URLSearchParams({ mode: "signup" });
-  if (next) paramsOut.set("next", next);
+  if (next) paramsOut.set("next", safeAuthNext(next));
   redirect(`/${locale}/login?${paramsOut.toString()}`);
 }
