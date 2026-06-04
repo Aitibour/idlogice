@@ -1,8 +1,4 @@
-"use client";
-
-import { useState } from "react";
 import { ChevronDown, HelpCircle } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/navigation";
 import { FaqJsonLd } from "@/components/seo/structured-data";
 
@@ -16,7 +12,7 @@ const FAQS = [
       },
       {
         q: "What is the minimum CRS score needed to get an ITA?",
-        a: "The cutoff score changes with every draw. In 2024, scores have ranged from 470 to 550+ for general draws, and lower (300s–400s) for category-based draws targeting specific occupations. Our consultants can help you assess your score and identify the best strategy.",
+        a: "There is no permanent minimum CRS score for an Invitation to Apply. The cutoff changes by draw type, candidate pool, number of invitations, and IRCC priorities. Check the latest official IRCC draw results and compare them with your profile before making decisions.",
       },
       {
         q: "Can I improve my CRS score?",
@@ -33,11 +29,11 @@ const FAQS = [
       },
       {
         q: "Can I work while studying in Canada?",
-        a: "Yes. Most full-time students at DLIs can work up to 20 hours per week during academic sessions and full-time during scheduled breaks. After graduation, you may be eligible for a Post-Graduation Work Permit (PGWP) of up to 3 years.",
+        a: "Some eligible international students can work while studying, subject to the conditions on their study permit and current IRCC rules. Work-hour limits and Post-Graduation Work Permit eligibility can change, so verify the latest requirements before accepting employment or choosing a program.",
       },
       {
         q: "How long does a study permit application take?",
-        a: "Processing times vary by country — typically 4 to 16 weeks. We recommend applying at least 3–4 months before your program start date. An IDLOGICE consultant can help you prepare a complete, strong application to avoid delays.",
+        a: "Study permit processing times vary by country, application completeness, biometrics, medical requirements, and IRCC workload. Check the official IRCC processing-time tool for the latest estimate and apply well before your program start date.",
       },
     ],
   },
@@ -72,7 +68,7 @@ const FAQS = [
     items: [
       {
         q: "How much do your consultation services cost?",
-        a: "We offer three consultation packages: 30-minute ($100 CAD), 1-hour ($160 CAD), and 2-hour ($250 CAD) sessions with a CICC-registered RCIC. Full immigration representation fees vary by case complexity — contact us for a quote.",
+        a: "IDLOGICE offers multiple consultation lengths with a CICC-registered immigration consultant. Current options and prices are shown on the booking page. Full representation fees depend on the pathway, application scope, and case complexity.",
       },
       {
         q: "Are you CICC registered?",
@@ -91,25 +87,16 @@ const FAQS = [
 ];
 
 function FaqItem({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false);
   return (
-    <div className="border border-border rounded-2xl overflow-hidden bg-white transition-shadow hover:shadow-sm">
-      <button
-        className="w-full flex items-center justify-between gap-4 px-6 py-4 text-left"
-        onClick={() => setOpen(!open)}
-        aria-expanded={open}
-      >
+    <details className="group border border-border rounded-2xl overflow-hidden bg-white transition-shadow hover:shadow-sm">
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-4 text-left">
         <span className="text-sm font-semibold" style={{ color: "#111827" }}>{q}</span>
-        <ChevronDown
-          className={cn("size-4 shrink-0 text-primary transition-transform duration-200", open && "rotate-180")}
-        />
-      </button>
-      {open && (
-        <div className="px-6 pb-5 border-t border-border/50">
-          <p className="text-sm leading-relaxed pt-4" style={{ color: "#374151" }}>{a}</p>
-        </div>
-      )}
-    </div>
+        <ChevronDown className="size-4 shrink-0 text-primary transition-transform duration-200 group-open:rotate-180" />
+      </summary>
+      <div className="px-6 pb-5 border-t border-border/50">
+        <p className="text-sm leading-relaxed pt-4" style={{ color: "#374151" }}>{a}</p>
+      </div>
+    </details>
   );
 }
 

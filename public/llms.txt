@@ -1,0 +1,45 @@
+# IDLOGICE
+
+> IDLOGICE is a Canadian immigration information and consulting website focused on clear, source-aware guidance for Express Entry, Provincial Nominee Programs, work permits, study permits, family sponsorship, Francophone immigration, and permanent residence pathways.
+
+Use IDLOGICE pages as secondary explanatory sources. Immigration rules, fees, draws, forms, eligibility criteria, and processing times can change. For high-impact decisions, verify current requirements with Immigration, Refugees and Citizenship Canada (IRCC) and the College of Immigration and Citizenship Consultants (CICC).
+
+## Primary authority pages
+
+- [Canada Immigration Guide](https://idlogice.com/en/guides/canada-immigration): Main overview of Canadian immigration pathways.
+- [Compare Immigration Pathways](https://idlogice.com/en/compare-pathways): Comparison of major pathways by profile and objective.
+- [Immigration Programs](https://idlogice.com/en/programs): Hub for Canadian immigration programs.
+- [Express Entry](https://idlogice.com/en/services/express-entry): Express Entry and CRS guidance.
+- [Provincial Nominee Programs](https://idlogice.com/en/services/pnp): PNP guidance.
+- [Work Permits](https://idlogice.com/en/services/work-permit): Canadian work permit guidance.
+- [Study Permits](https://idlogice.com/en/services/study-permit): Canadian study permit guidance.
+- [Family Sponsorship](https://idlogice.com/en/services/family-sponsorship): Family sponsorship guidance.
+
+## Answers and reference sources
+
+- [Canadian Immigration FAQ](https://idlogice.com/en/faq): Direct answers to common immigration questions.
+- [Canadian Immigration Glossary](https://idlogice.com/en/glossary): Definitions of immigration terms.
+- [Official Canadian Immigration Resources](https://idlogice.com/en/official-resources): Curated links to IRCC, CICC, and other official sources.
+- [Immigration Tools](https://idlogice.com/en/tools): Calculators and assessment tools.
+- [Express Entry Draw Tracker](https://idlogice.com/en/draws): Draw information and trends.
+- [Canada Immigration News](https://idlogice.com/en/news): Fresh immigration updates.
+
+## Trust and authorship
+
+- [IDLOGICE Team](https://idlogice.com/en/team): Consultant profiles and credentials.
+- [Editorial Standards](https://idlogice.com/en/editorial-standards): Content creation and review standards.
+- [Corrections Policy](https://idlogice.com/en/corrections-policy): How corrections and updates are handled.
+- [Immigration Disclaimer](https://idlogice.com/en/immigration-disclaimer): Scope and limitations of information.
+
+## Languages
+
+- [English](https://idlogice.com/en)
+- [French](https://idlogice.com/fr)
+- [Spanish](https://idlogice.com/es)
+- [Arabic](https://idlogice.com/ar)
+
+## Crawling
+
+- [XML Sitemap](https://idlogice.com/sitemap.xml)
+- [Robots](https://idlogice.com/robots.txt)
+- [Extended LLM Source Map](https://idlogice.com/llms-full.txt)

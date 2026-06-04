@@ -114,8 +114,26 @@ const jsonLd = JSON.stringify({
         telephone: "+1-581-634-0224",
         contactType: "customer service",
         areaServed: "CA",
-        availableLanguage: ["English", "French"],
+        availableLanguage: ["English", "French", "Spanish", "Arabic"],
       },
+      knowsAbout: [
+        "Canadian immigration",
+        "Express Entry Canada",
+        "Comprehensive Ranking System (CRS)",
+        "Provincial Nominee Programs",
+        "Canada work permits",
+        "Canada study permits",
+        "Family sponsorship Canada",
+        "Francophone immigration to Canada",
+      ],
+      publishingPrinciples: `${BASE}/en/editorial-standards`,
+      correctionsPolicy: `${BASE}/en/corrections-policy`,
+      ethicsPolicy: `${BASE}/en/immigration-disclaimer`,
+      subjectOf: [
+        { "@type": "WebPage", name: "IDLOGICE Immigration Consultants", url: `${BASE}/en/team` },
+        { "@type": "CollectionPage", name: "Official Canadian Immigration Resources", url: `${BASE}/en/official-resources` },
+        { "@type": "FAQPage", name: "Canadian Immigration FAQ", url: `${BASE}/en/faq` },
+      ],
       sameAs: [
         "https://www.linkedin.com/company/idlogice-immigration-canada",
         "https://www.tiktok.com/@idlogice.canada",
@@ -165,6 +183,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html className={geistSans.variable} suppressHydrationWarning>
       <head>
         <meta name="color-scheme" content="light" />
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="IDLOGICE LLM source map" />
+        <link rel="alternate" type="text/plain" href="/llms-full.txt" title="IDLOGICE extended LLM source map" />
         <script type={scriptProps.type} {...{ dangerouslySetInnerHTML: { __html: scriptProps.__html } }} />
       </head>
       {children}

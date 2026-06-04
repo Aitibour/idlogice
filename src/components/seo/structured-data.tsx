@@ -20,6 +20,25 @@ const ORG_NODE = {
   email: "contact@idlogice.com",
   priceRange: "$$",
   foundingDate: "2014",
+  knowsAbout: [
+    "Canadian immigration",
+    "Express Entry Canada",
+    "Comprehensive Ranking System (CRS)",
+    "Provincial Nominee Programs",
+    "Canada work permits",
+    "Canada study permits",
+    "Family sponsorship Canada",
+    "Francophone immigration to Canada",
+  ],
+  publishingPrinciples: `${BASE}/en/editorial-standards`,
+  correctionsPolicy: `${BASE}/en/corrections-policy`,
+  ethicsPolicy: `${BASE}/en/immigration-disclaimer`,
+  subjectOf: [
+    { "@type": "WebPage", name: "IDLOGICE Immigration Consultants", url: `${BASE}/en/team` },
+    { "@type": "CollectionPage", name: "Official Canadian Immigration Resources", url: `${BASE}/en/official-resources` },
+    { "@type": "FAQPage", name: "Canadian Immigration FAQ", url: `${BASE}/en/faq` },
+    { "@type": "DefinedTermSet", name: "Canadian Immigration Glossary", url: `${BASE}/en/glossary` },
+  ],
   address: {
     "@type": "PostalAddress",
     streetAddress: "410 Saint-Catherine St",
@@ -41,8 +60,8 @@ const ORG_NODE = {
   ],
   knowsLanguage: ["English", "French", "Spanish", "Arabic"],
   sameAs: [
-    "https://www.linkedin.com/company/idlogice",
-    "https://www.instagram.com/idlogice",
+    "https://www.linkedin.com/company/idlogice-immigration-canada",
+    "https://www.tiktok.com/@idlogice.canada",
   ],
   aggregateRating: {
     "@type": "AggregateRating",
