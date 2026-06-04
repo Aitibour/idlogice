@@ -348,7 +348,7 @@
           },
           {
             "label": "Puntos CRS (vinculados)",
-            "value": "+600 puntos garantizados"
+            "value": "+600 puntos CRS por nominación"
           },
           {
             "label": "Procesamiento típico",
@@ -371,7 +371,7 @@
           {
             "number": 2,
             "title": "Solicitud Provincial",
-            "description": "Preparamos y presentamos su solicitud ante el programa provincial seleccionado, garantizando que cumpla todos los requisitos específicos."
+            "description": "Preparamos y presentamos su solicitud ante el programa provincial seleccionado y revisamos cuidadosamente los requisitos específicos."
           },
           {
             "number": 3,
@@ -422,7 +422,7 @@
       "hero": {
         "badge": "Visa de Turista",
         "title": "Visa de Turista (TRV) para Canadá",
-        "subtitle": "¿Planea visitar Canadá? Preparamos una solicitud de Visa de Residente Temporal (TRV) completa y convincente para maximizar sus posibilidades de aprobación.",
+        "subtitle": "¿Planea visitar Canadá? Preparamos y revisamos cuidadosamente su solicitud completa de Visa de Residente Temporal (TRV).",
         "cta": "Evaluación Gratuita",
         "secondaryCta": "Ver Servicios"
       },
@@ -506,7 +506,7 @@
       },
       "cta": {
         "title": "¿Listo para Visitar Canadá?",
-        "subtitle": "Nuestros consultores certificados prepararán una solicitud sólida para maximizar sus posibilidades de aprobación.",
+        "subtitle": "Nuestros consultores certificados prepararán y revisarán cuidadosamente su solicitud.",
         "primary": "Evaluación Gratuita",
         "secondary": "Contáctenos"
       }

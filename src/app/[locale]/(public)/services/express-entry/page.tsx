@@ -60,7 +60,7 @@ export default async function ExpressEntryPage({ params }: { params: Promise<{ l
     <>
       <ServiceJsonLd
         name="Express Entry Canada"
-        description="Apply to Canada through Express Entry. Our CICC-registered consultants help you optimise your CRS score and submit a winning application for Canadian permanent residence."
+        description="Apply to Canada through Express Entry. Get help understanding your CRS score, documents, and permanent residence application requirements."
         url={`https://idlogice.com/${locale}/services/express-entry`}
       />
       <PageHero

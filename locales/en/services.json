@@ -10,7 +10,7 @@
         "items": [
           {
             "title": "Express Entry",
-            "description": "The federal system for skilled workers. The fastest path to permanent residence for most applicants."
+            "description": "The federal system for skilled workers and a widely used pathway to permanent residence."
           },
           {
             "title": "Study Permit",
@@ -22,7 +22,7 @@
           },
           {
             "title": "Provincial Nominee Program",
-            "description": "Get nominated by a Canadian province and receive 600 additional CRS points — a near-guaranteed invitation to apply."
+            "description": "Get nominated by a Canadian province and receive 600 additional CRS points, significantly strengthening your Express Entry profile."
           },
           {
             "title": "Family Sponsorship",
@@ -30,7 +30,7 @@
           },
           {
             "title": "Tourist Visa (TRV)",
-            "description": "Visit Canada for tourism, family visits, or business meetings. We prepare a complete application to maximise your approval chances."
+            "description": "Visit Canada for tourism, family visits, or business meetings. We prepare and carefully review your complete application."
           }
         ]
       },
@@ -412,7 +412,7 @@
       "hero": {
         "badge": "Provincial Nominee Program",
         "title": "Provincial Nominee Program (PNP)",
-        "subtitle": "A provincial nomination adds 600 points to your CRS score — virtually guaranteeing an Invitation to Apply at the next Express Entry draw.",
+        "subtitle": "A provincial nomination adds 600 points to your CRS score and can significantly improve your chance of receiving an Invitation to Apply in a future Express Entry draw.",
         "cta": "Check Your Eligibility",
         "secondaryCta": "Calculate CRS Score"
       },
@@ -469,7 +469,7 @@
           {
             "number": 4,
             "title": "Apply for Permanent Residence",
-            "description": "With 600 extra CRS points you are virtually guaranteed an ITA at the next draw. Submit your PR application within 60 days."
+            "description": "With 600 extra CRS points, your chance of receiving an ITA in a future draw improves significantly. If invited, submit your PR application within the required deadline."
           }
         ]
       },
@@ -501,7 +501,7 @@
       "hero": {
         "badge": "Temporary Resident Visa",
         "title": "Tourist Visa (TRV) for Canada",
-        "subtitle": "Planning to visit Canada? Our certified consultants prepare a complete, compelling application to give you the best chance of approval.",
+        "subtitle": "Planning to visit Canada? Our certified consultants prepare and carefully review your complete application.",
         "cta": "Free Profile Evaluation",
         "secondaryCta": "Contact Us"
       },
@@ -568,7 +568,7 @@
         "items": [
           {
             "title": "Tailored Cover Letter",
-            "description": "A professional cover letter addressing your specific situation, ties to home, and purpose of visit significantly increases approval rates."
+            "description": "A professional cover letter clearly explains your specific situation, ties to your home country, and purpose of visit."
           },
           {
             "title": "Document Review",
@@ -582,7 +582,7 @@
       },
       "cta": {
         "title": "Ready to Plan Your Trip to Canada?",
-        "subtitle": "Free profile evaluation with a certified RCIC to maximise your tourist visa approval chances.",
+        "subtitle": "Free profile evaluation with a certified RCIC to review your tourist visa options and application requirements.",
         "primary": "Free Profile Evaluation",
         "secondary": "Contact Us"
       }

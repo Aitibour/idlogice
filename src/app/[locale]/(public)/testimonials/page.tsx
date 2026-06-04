@@ -74,8 +74,8 @@ const EXTRA_STORIES = [
 ];
 
 const STATS = [
-  { value: "95%", label: "Success rate" },
-  { value: "500+", label: "Cases handled" },
+  { value: "4", label: "Service languages" },
+  { value: "50+", label: "Countries served" },
   { value: "50+", label: "Countries represented" },
   { value: "12+", label: "Years of experience" },
 ];

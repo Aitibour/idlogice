@@ -2,8 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <html lang="en">
-      <body className="min-h-screen flex items-center justify-center bg-white">
+    <div lang="en" className="min-h-screen flex items-center justify-center bg-white">
         <div className="text-center px-4">
           <p className="text-8xl font-black" style={{ color: "oklch(0.52 0.22 27)" }}>404</p>
           <h2 className="text-2xl font-bold mt-2 mb-3" style={{ color: "#111827" }}>
@@ -29,7 +28,6 @@ export default function NotFound() {
             </Link>
           </div>
         </div>
-      </body>
-    </html>
+    </div>
   );
 }

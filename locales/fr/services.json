@@ -10,7 +10,7 @@
         "items": [
           {
             "title": "Entrée express",
-            "description": "Le système fédéral pour les travailleurs qualifiés. La voie la plus rapide vers la résidence permanente pour la plupart des candidats."
+            "description": "Le système fédéral pour les travailleurs qualifiés et une voie courante vers la résidence permanente."
           },
           {
             "title": "Permis d'études",
@@ -22,7 +22,7 @@
           },
           {
             "title": "Programme des candidats des provinces",
-            "description": "Obtenez une nomination provinciale et recevez 600 points CRS supplémentaires — une invitation à présenter une demande pratiquement garantie."
+            "description": "Obtenez une nomination provinciale et recevez 600 points CRS supplémentaires, ce qui renforce considérablement votre profil Entrée express."
           },
           {
             "title": "Parrainage familial",
@@ -30,7 +30,7 @@
           },
           {
             "title": "Visa de touriste (VRT)",
-            "description": "Visitez le Canada pour le tourisme, les visites familiales ou les voyages d'affaires. Nous préparons un dossier complet pour maximiser vos chances d'approbation."
+            "description": "Visitez le Canada pour le tourisme, les visites familiales ou les voyages d'affaires. Nous préparons et révisons soigneusement votre dossier complet."
           }
         ]
       },
@@ -412,7 +412,7 @@
       "hero": {
         "badge": "Programme des candidats des provinces",
         "title": "Programme des candidats des provinces (PCP)",
-        "subtitle": "Une nomination provinciale ajoute 600 points à votre score CRS — ce qui garantit pratiquement une invitation à présenter une demande.",
+        "subtitle": "Une nomination provinciale ajoute 600 points à votre score CRS et peut améliorer considérablement vos chances de recevoir une invitation lors d’un futur tirage.",
         "cta": "Vérifiez votre admissibilité",
         "secondaryCta": "Calculer le score CRS"
       },
@@ -501,7 +501,7 @@
       "hero": {
         "badge": "Visa de résident temporaire",
         "title": "Visa de touriste pour le Canada",
-        "subtitle": "Vous planifiez visiter le Canada? Nos consultants certifiés préparent un dossier complet et convaincant pour maximiser vos chances d'approbation.",
+        "subtitle": "Vous planifiez visiter le Canada? Nos consultants certifiés préparent et révisent soigneusement votre dossier complet.",
         "cta": "Évaluation de profil gratuite",
         "secondaryCta": "Nous contacter"
       },
@@ -568,7 +568,7 @@
         "items": [
           {
             "title": "Lettre de motivation personnalisée",
-            "description": "Une lettre professionnelle abordant votre situation spécifique, vos liens avec votre pays d'origine et votre objectif de visite augmente considérablement les taux d'approbation."
+            "description": "Une lettre professionnelle explique clairement votre situation, vos liens avec votre pays d'origine et le but de votre visite."
           },
           {
             "title": "Révision des documents",
@@ -582,7 +582,7 @@
       },
       "cta": {
         "title": "Prêt à planifier votre voyage au Canada?",
-        "subtitle": "Réservez une consultation avec un RCIC certifié pour maximiser vos chances d'approbation du visa de touriste.",
+        "subtitle": "Réservez une consultation avec un CRIC certifié pour examiner vos options et les exigences de votre demande.",
         "primary": "Évaluation de profil gratuite",
         "secondary": "Nous contacter"
       }

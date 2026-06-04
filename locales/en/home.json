@@ -2,7 +2,7 @@
   "hero": {
     "badge": "Certified Canadian Immigration Consultants",
     "title": "Your Path to Canada Starts Here",
-    "subtitle": "Expert Canadian immigration services with a 95% success rate. Over 10 years helping families, workers, and students achieve their Canadian dream.",
+    "subtitle": "Clear, personalized Canadian immigration guidance for families, workers, students, and employers.",
     "cta": "Free Profile Evaluation",
     "secondaryCta": "Explore Our Services"
   },
@@ -26,9 +26,18 @@
     }
   },
   "stats": {
-    "successRate": { "value": "95%", "label": "Success Rate" },
-    "experience": { "value": "10+", "label": "Years of Experience" },
-    "countries": { "value": "50+", "label": "Countries Served" }
+    "successRate": {
+      "value": "4",
+      "label": "Service Languages"
+    },
+    "experience": {
+      "value": "10+",
+      "label": "Years of Experience"
+    },
+    "countries": {
+      "value": "50+",
+      "label": "Countries Served"
+    }
   },
   "showcase": {
     "title": "Life in Canada",
@@ -36,13 +45,13 @@
   },
   "consultant": {
     "title": "Need a Certified Consultant? Book One Now.",
-    "subtitle": "Our Regulated Canadian Immigration Consultants (RCICs) have helped hundreds of families, professionals, and students successfully immigrate to Canada. Get personalized guidance — free profile evaluation today.",
+    "subtitle": "Our Regulated Canadian Immigration Consultants (RCICs) provide personalized guidance for families, professionals, students, and employers.",
     "book": "Free Profile Evaluation",
     "call": "+1 581-634-0224",
     "benefits": [
       "Free profile evaluation",
       "Certified RCICs",
-      "95% approval rate",
+      "Multilingual service",
       "10+ years experience",
       "All visa categories",
       "French & English service"
@@ -65,7 +74,7 @@
       {
         "number": 3,
         "title": "Application & Approval",
-        "description": "We submit your application and track it every step of the way. Our 95% success rate speaks for itself."
+        "description": "We submit your application and track it at every step, keeping you informed throughout the process."
       }
     ]
   },
@@ -77,8 +86,8 @@
         "description": "All our consultants are Regulated Canadian Immigration Consultants (RCICs), registered with the College of Immigration and Citizenship Consultants."
       },
       {
-        "title": "95% Success Rate",
-        "description": "With over 10 years of experience, we have built an exceptional track record helping clients across all visa categories and immigration streams."
+        "title": "Transparent Guidance",
+        "description": "We explain requirements, options, timelines, and risks clearly so you can make informed decisions."
       },
       {
         "title": "Full-Service Support",
@@ -163,13 +172,25 @@
     "eyebrow": "Welcome to IDLOGICE",
     "title": "About IDLOGICE",
     "para1": "IDLOGICE is a fully regulated Canadian immigration consulting firm led by Regulated Canadian Immigration Consultants (RCICs) registered with the College of Immigration and Citizenship Consultants (CICC). We provide personalised immigration services to clients globally who are motivated to make their Canadian immigration dreams a reality.",
-    "para2": "Our priority is understanding the client's needs and mapping the best option to their profile through transparent communication and expert guidance. With a 95% success rate and experience spanning over 50 countries, IDLOGICE is your trusted partner on the path to Canada.",
+    "para2": "Our priority is understanding each client's needs and identifying suitable options through transparent communication and expert guidance. With service in four languages and experience supporting clients across more than 50 countries, IDLOGICE is your partner on the path to Canada.",
     "ctaLabel": "Learn More About Us",
     "stats": [
-      { "value": "95%", "label": "Success Rate" },
-      { "value": "10+", "label": "Years Experience" },
-      { "value": "50+", "label": "Countries Served" },
-      { "value": "500+", "label": "Cases Handled" }
+      {
+        "value": "4",
+        "label": "Service Languages"
+      },
+      {
+        "value": "10+",
+        "label": "Years Experience"
+      },
+      {
+        "value": "50+",
+        "label": "Countries Served"
+      },
+      {
+        "value": "6",
+        "label": "Core Services"
+      }
     ]
   },
   "servicesSection": {
@@ -179,7 +200,7 @@
     "items": [
       {
         "title": "Express Entry",
-        "description": "The fastest route to Canadian permanent residence. We assess your profile, optimize your Comprehensive Ranking System (CRS) score, and guide you through every stage of your Express Entry application.",
+        "description": "A widely used pathway to Canadian permanent residence. We assess your profile, help improve your Comprehensive Ranking System (CRS) score, and guide you through every stage of your Express Entry application.",
         "href": "/services/express-entry"
       },
       {
@@ -204,7 +225,7 @@
       },
       {
         "title": "Tourist Visa (TRV)",
-        "description": "Planning to visit Canada? We prepare a complete, compelling Temporary Resident Visa application — cover letter, document checklist, and refusal strategy — to maximise your approval chances.",
+        "description": "Planning to visit Canada? We prepare and carefully review your Temporary Resident Visa application, cover letter, and document checklist.",
         "href": "/services/tourist-visa"
       }
     ]

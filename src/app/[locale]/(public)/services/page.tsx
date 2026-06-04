@@ -198,10 +198,10 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
             {/* Trust bar */}
             <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
-                { value: "95%",  label: "Success Rate" },
+                { value: "4", label: "Service Languages" },
                 { value: "10+",  label: "Years Experience" },
                 { value: "50+",  label: "Countries Served" },
-                { value: "500+", label: "Cases Handled" },
+                { value: "50+", label: "Countries Served" },
               ].map(({ value, label }) => (
                 <div key={label} className="flex flex-col items-center p-5 rounded-2xl bg-secondary/40 border border-border/50">
                   <div className="flex items-center gap-1 mb-1">

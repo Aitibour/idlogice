@@ -218,7 +218,7 @@ export function calculateCRS(input: CRSInput): CRSResult {
     improvements.push("A valid Canadian job offer in a skilled occupation adds 50–200 points");
 
   if (!input.hasProvincialNomination)
-    improvements.push("A provincial nomination (PNP) adds 600 points — virtually guaranteeing an ITA");
+    improvements.push("A provincial nomination (PNP) adds 600 points and can substantially improve your invitation prospects");
 
   if (input.education === "secondary" || input.education === "none")
     improvements.push("Higher education (bachelor's or master's) significantly increases your score");

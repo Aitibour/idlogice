@@ -30,10 +30,10 @@ const T = {
     ar: "مسارات الإقامة الدائمة الكندية",
   },
   lead: {
-    en: "Canada offers over 100 pathways to permanent residency. Our RCIC-certified consultants help you identify the fastest, most accessible route based on your profile, work experience, and language skills.",
-    fr: "Le Canada offre plus de 100 voies vers la résidence permanente. Nos consultants certifiés RCIC vous aident à identifier le chemin le plus rapide selon votre profil.",
+    en: "Canada offers over 100 pathways to permanent residency. Our RCIC-certified consultants help you identify suitable, accessible routes based on your profile, work experience, and language skills.",
+    fr: "Le Canada offre plus de 100 voies vers la résidence permanente. Nos consultants certifiés RCIC vous aident à identifier les voies adaptées à votre profil.",
     es: "Canadá ofrece más de 100 vías hacia la residencia permanente. Nuestros consultores certificados RCIC le ayudan a identificar el camino más rápido según su perfil.",
-    ar: "تقدم كندا أكثر من 100 مسار للإقامة الدائمة. يساعدك مستشارونا المعتمدون RCIC في تحديد المسار الأسرع والأكثر سهولة وفقاً لملفك.",
+    ar: "تقدم كندا أكثر من 100 مسار للإقامة الدائمة. يساعدك مستشارونا المعتمدون RCIC في تحديد المسارات المناسبة والأكثر سهولة وفقاً لملفك.",
   },
   pathwaysH: {
     en: "PR Pathways at a Glance",
@@ -54,10 +54,10 @@ const T = {
     ar: "ابحث عن مسار الإقامة الدائمة الخاص بك",
   },
   ctaTxt: {
-    en: "Not sure which pathway suits you? Our RCIC consultants assess your profile across all available programs and recommend the fastest route to Canadian permanent residency.",
-    fr: "Vous ne savez pas quelle voie vous convient ? Nos consultants RCIC évaluent votre profil et recommandent le chemin le plus rapide vers la résidence permanente.",
+    en: "Not sure which pathway suits you? Compare available programs and identify options that align with your profile and Canadian permanent residence goals.",
+    fr: "Vous ne savez pas quelle voie vous convient ? Nos consultants RCIC évaluent votre profil et recommandent des options adaptées vers la résidence permanente.",
     es: "¿No sabe qué vía le conviene? Nuestros consultores RCIC evalúan su perfil y recomiendan el camino más rápido hacia la residencia permanente.",
-    ar: "غير متأكد من المسار المناسب لك؟ يقيّم مستشارونا RCIC ملفك عبر جميع البرامج المتاحة ويوصون بأسرع طريق للإقامة الدائمة.",
+    ar: "غير متأكد من المسار المناسب لك؟ يقيّم مستشارونا RCIC ملفك عبر البرامج المتاحة ويوصون بالخيارات المناسبة للإقامة الدائمة.",
   },
   ctaBtn: {
     en: "Get Free PR Assessment",
@@ -72,7 +72,7 @@ const T = {
 const PATHWAYS = [
   {
     title: { en: "Express Entry (Federal)", fr: "Entrée express (fédéral)", es: "Express Entry (federal)", ar: "Express Entry (فيدرالي)" },
-    desc: { en: "The fastest federal pathway for skilled workers. CRS-based ranking with typical processing under 6 months.", fr: "La voie fédérale la plus rapide pour les travailleurs qualifiés. Classement basé sur le CRS.", es: "La vía federal más rápida para trabajadores calificados. Clasificación basada en CRS.", ar: "أسرع مسار فيدرالي للعمال المهرة. تصنيف قائم على CRS مع معالجة تحت 6 أشهر." },
+    desc: { en: "A federal pathway for skilled workers using CRS-based ranking and IRCC processing timelines.", fr: "Une voie fédérale pour les travailleurs qualifiés, avec un classement basé sur le CRS.", es: "Una vía federal para trabajadores calificados con clasificación basada en CRS.", ar: "مسار فيدرالي للعمال المهرة قائم على تصنيف CRS وجداول معالجة IRCC." },
     href: "/programs/express-entry",
     tags: { en: ["6 months avg", "No job offer required", "All provinces"], fr: ["Moy. 6 mois", "Pas d'offre d'emploi requise", "Toutes provinces"], es: ["Promedio 6 meses", "Sin oferta de trabajo", "Todas las provincias"], ar: ["متوسط 6 أشهر", "لا يشترط عرض عمل", "جميع المقاطعات"] },
   },

@@ -53,28 +53,28 @@ export const PROVINCES: ProvinceData[] = [
       en: [
         "Canada's most populous province with 38% of the national population",
         "Home to Toronto, Canada's financial and tech capital",
-        "OINP nominations add 600 CRS points — near-guaranteed PR",
+        "OINP nominations add 600 CRS points and strengthen an Express Entry profile",
         "French-speaking stream available for bilingual candidates",
         "International graduates from Ontario universities have dedicated streams",
       ],
       fr: [
         "Province la plus peuplée du Canada avec 38 % de la population nationale",
         "Toronto, capitale financière et tech du Canada, s'y trouve",
-        "Les nominations PCO ajoutent 600 points SCG — RP quasi garantie",
+        "Les nominations PCO ajoutent 600 points SCG et renforcent un profil Entrée express",
         "Volet francophone disponible pour les candidats bilingues",
         "Les diplômés étrangers des universités ontariennes ont des volets dédiés",
       ],
       es: [
         "Provincia más poblada de Canadá con el 38% de la población nacional",
         "Hogar de Toronto, capital financiera y tech de Canadá",
-        "Las nominaciones OINP añaden 600 puntos CRS — RP casi garantizada",
+        "Las nominaciones OINP añaden 600 puntos CRS y fortalecen un perfil de Express Entry",
         "Stream francófono disponible para candidatos bilingües",
         "Los graduados internacionales de universidades de Ontario tienen streams dedicados",
       ],
       ar: [
         "أكثر المقاطعات اكتظاظًا بالسكان في كندا بنسبة 38% من السكان الوطنيين",
         "تحتضن تورونتو، العاصمة المالية والتقنية الكندية",
-        "ترشيحات OINP تضيف 600 نقطة CRS — إقامة دائمة شبه مضمونة",
+        "ترشيحات OINP تضيف 600 نقطة CRS وتعزز ملف Express Entry",
         "مسار فرانكوفوني متاح للمرشحين ثنائيي اللغة",
         "الخريجون الدوليون من جامعات أونتاريو لديهم مسارات مخصصة",
       ],
@@ -111,11 +111,11 @@ export const PROVINCES: ProvinceData[] = [
     },
     faq: {
       en: [
-        { q: "How does OINP work with Express Entry?", a: "The OINP's Human Capital Priorities Stream pulls candidates directly from the Express Entry pool. If selected, you receive a Notification of Interest (NOI) from Ontario and can then apply for a provincial nomination. Upon receiving the nomination, your CRS score increases by 600 points, virtually guaranteeing an ITA in the next draw." },
+        { q: "How does OINP work with Express Entry?", a: "The OINP's Human Capital Priorities Stream selects candidates from the Express Entry pool. If selected, you receive a Notification of Interest (NOI) from Ontario and can then apply for a provincial nomination. An accepted nomination adds 600 CRS points, which can significantly improve your chance of receiving an invitation in a future draw." },
         { q: "What is the minimum CRS score for OINP?", a: "The minimum CRS for OINP's Human Capital Priorities stream typically ranges from 400–470 depending on the draw. However, targeted draws for specific occupations (tech, healthcare) sometimes accept lower scores. Ontario also runs dedicated draws for NOC codes that may not require a high Express Entry CRS." },
       ],
       fr: [
-        { q: "Comment le PCO fonctionne-t-il avec Entrée express ?", a: "Le volet Priorités capital humain du PCO sélectionne des candidats directement dans le bassin Entrée express. Si sélectionné, vous recevez un avis d'intérêt et pouvez postuler pour une nomination provinciale. La nomination ajoute 600 points SCG, garantissant pratiquement une invitation à présenter une demande." },
+        { q: "Comment le PCO fonctionne-t-il avec Entrée express ?", a: "Le volet Priorités capital humain du PCO sélectionne des candidats directement dans le bassin Entrée express. Si sélectionné, vous recevez un avis d'intérêt et pouvez postuler pour une nomination provinciale. Une nomination acceptée ajoute 600 points SCG et améliore considérablement vos chances de recevoir une invitation lors d’un futur tirage." },
         { q: "Quel est le score SCG minimum pour le PCO ?", a: "Le SCG minimum pour le volet Priorités capital humain varie généralement de 400 à 470 selon le tirage. Les tirages ciblés pour des professions spécifiques (tech, santé) acceptent parfois des scores plus bas." },
       ],
     },
@@ -340,14 +340,14 @@ export const PROVINCES: ProvinceData[] = [
       en: [
         "Separate immigration system from federal Express Entry — must apply through Quebec first",
         "French language proficiency greatly increases selection score (up to 22 points)",
-        "PEQ: fastest pathway for temporary workers and graduates already in Quebec",
+        "PEQ: a pathway for eligible temporary workers and graduates already in Quebec",
         "Montreal is Canada's AI capital with MILA and hundreds of AI companies",
         "Lower cost of living than Toronto or Vancouver; subsidized daycare (CAD $10/day)",
       ],
       fr: [
         "Système d'immigration distinct d'Entrée express — doit d'abord postuler au Québec",
         "La maîtrise du français augmente considérablement le score de sélection (jusqu'à 22 points)",
-        "PEQ : voie la plus rapide pour les travailleurs temporaires et diplômés déjà au Québec",
+        "PEQ : une voie destinée aux travailleurs temporaires et diplômés admissibles déjà au Québec",
         "Montréal est la capitale canadienne de l'IA avec MILA et des centaines d'entreprises IA",
         "Coût de la vie inférieur à Toronto ou Vancouver ; garderie subventionnée (10 CAD/jour)",
       ],
@@ -361,7 +361,7 @@ export const PROVINCES: ProvinceData[] = [
       ar: [
         "نظام هجرة مستقل عن Entrée express الفيدرالي — يجب التقدم أولًا عبر كيبيك",
         "الكفاءة في الفرنسية ترفع نقاط الاختيار بشكل كبير (حتى 22 نقطة)",
-        "PEQ: أسرع مسار للعمال المؤقتين والخريجين المقيمين بالفعل في كيبيك",
+        "PEQ: مسار للعمال المؤقتين والخريجين المؤهلين المقيمين بالفعل في كيبيك",
         "مونتريال عاصمة الذكاء الاصطناعي الكندية مع MILA ومئات شركات الذكاء الاصطناعي",
         "تكلفة معيشة أقل من تورونتو أو فانكوفر؛ رعاية نهارية مدعومة (10 دولار كندي / يوم)",
       ],

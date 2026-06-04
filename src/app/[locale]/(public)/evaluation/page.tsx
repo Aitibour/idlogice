@@ -309,7 +309,7 @@ export default function EvaluationPage() {
         return (
           <>
             <SectionLabel>Additional Factors</SectionLabel>
-            <Question label="Do you have a valid provincial or territorial nomination (PNP)?" sub="A PNP nomination adds 600 points — virtually guaranteeing an ITA.">
+            <Question label="Do you have a valid provincial or territorial nomination (PNP)?" sub="A PNP nomination adds 600 points and can substantially improve invitation prospects.">
               <div className="grid grid-cols-2 gap-2">
                 <OptionCard selected={data.hasProvincialNomination} onClick={() => set("hasProvincialNomination", true)}>Yes</OptionCard>
                 <OptionCard selected={!data.hasProvincialNomination} onClick={() => set("hasProvincialNomination", false)}>No</OptionCard>
@@ -479,7 +479,7 @@ export default function EvaluationPage() {
                   <p className="text-sm leading-relaxed" style={{ color: "#374151" }}>
                     {eligible
                       ? "Our certified consultants will ensure your application is complete, accurate, and submitted at the right moment to maximise your chances."
-                      : "Our certified consultants specialise in identifying the fastest path to improving your CRS score — whether through language coaching, PNP targeting, or job offer assistance."}
+                      : "Our certified consultants identify practical options to improve your CRS score, including language coaching, PNP targeting, and eligible job-offer pathways."}
                   </p>
                 </div>
               </div>

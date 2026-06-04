@@ -2,10 +2,10 @@ export const revalidate = 86400;
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
 const TRV_META: Record<string, { title: string; description: string }> = {
-  en: { title: "Canada Tourist Visa (TRV) — Visitor Visa Application", description: "Maximise Canada tourist visa approval chances. CICC-registered consultants prepare your complete Temporary Resident Visa application." },
-  fr: { title: "Visa touristique Canada (TRV) — Visa visiteur", description: "Maximisez vos chances d'approbation de visa touristique. Nos consultants CICC préparent votre demande de visa de résident temporaire." },
-  es: { title: "Visa turista Canadá (TRV) — Solicitud de visa visitante", description: "Maximice las posibilidades de aprobación de su visa turista canadiense. Consultores CICC preparan su solicitud completa de visa de residente temporal." },
-  ar: { title: "تأشيرة السياحة الكندية (TRV) — طلب تأشيرة زيارة", description: "زيادة فرص الموافقة على تأشيرة السياحة الكندية. مستشارو CICC يعدّون طلب الإقامة المؤقتة الخاص بك بالكامل." },
+  en: { title: "Canada Tourist Visa (TRV) — Visitor Visa Application", description: "Prepare a complete Canada tourist visa application with guidance from CICC-registered consultants." },
+  fr: { title: "Visa touristique Canada (TRV) — Visa visiteur", description: "Préparez une demande complète de visa touristique canadien avec les conseils de consultants inscrits au CICC." },
+  es: { title: "Visa turista Canadá (TRV) — Solicitud de visa visitante", description: "Prepare una solicitud completa de visa turística canadiense con orientación de consultores registrados en CICC." },
+  ar: { title: "تأشيرة السياحة الكندية (TRV) — طلب تأشيرة زيارة", description: "أعد طلبًا كاملًا لتأشيرة السياحة الكندية بإرشاد من مستشارين مسجلين لدى CICC." },
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -58,7 +58,7 @@ export default async function TouristVisaPage({ params }: { params: Promise<{ lo
     <>
       <ServiceJsonLd
         name="Canada Tourist Visa (TRV)"
-        description="Maximise your Canada tourist visa approval chances. Our CICC-registered consultants prepare a complete Temporary Resident Visa application with a compelling cover letter."
+        description="Prepare a complete Canada tourist visa application with guidance from CICC-registered consultants, including a tailored cover letter and document review."
         url={`https://idlogice.com/${locale}/services/tourist-visa`}
       />
       <PageHero

@@ -79,7 +79,7 @@ const STEPS = [
 
 const TRUST = [
   { icon: Shield,       value: "CICC Registered",  sub: "Regulated Canadian Immigration Consultants" },
-  { icon: Star,         value: "95% Success Rate",  sub: "Across 500+ cases since 2014" },
+  { icon: Star,         value: "Multilingual Support", sub: "English, French, Spanish, and Arabic" },
   { icon: Users,        value: "50+ Countries",     sub: "Clients from around the world" },
 ];
 

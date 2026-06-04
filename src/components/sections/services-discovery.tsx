@@ -14,7 +14,7 @@ export interface DiscoveryService {
 const DEFAULT_SERVICES: DiscoveryService[] = [
   {
     title: "Express Entry",
-    description: "The fastest route to Canadian permanent residence. Optimize your CRS score and get an Invitation to Apply.",
+    description: "A competitive pathway to Canadian permanent residence. Understand your CRS score and invitation options.",
     href: "/services/express-entry",
     icon: TrendingUp,
   },

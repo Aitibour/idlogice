@@ -60,7 +60,7 @@ export function Header() {
               </span>
               <span className="hidden lg:flex items-center gap-1.5" style={{ color: "#6b7280" }}>
                 <span className="w-1 h-1 rounded-full bg-emerald-500" />
-                <span><strong style={{ color: "#111827" }}>500+</strong> approved applications</span>
+                <span><strong style={{ color: "#111827" }}>4</strong> service languages</span>
               </span>
               <span className="hidden lg:flex items-center gap-1.5" style={{ color: "#6b7280" }}>
                 <span className="w-1 h-1 rounded-full bg-emerald-500" />

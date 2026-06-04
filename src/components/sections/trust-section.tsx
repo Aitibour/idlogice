@@ -20,8 +20,8 @@ export function TrustSection({ title, items }: TrustSectionProps) {
   const [hovered, setHovered] = useState<number | null>(null);
 
   // Pre-defined stats for the 3 trust cards
-  const stats = ["95%", "10+", "500+"];
-  const statLabels = ["Success Rate", "Years Experience", "Families Helped"];
+  const stats = ["4", "10+", "50+"];
+  const statLabels = ["Service Languages", "Years Experience", "Countries Served"];
   const accents = [
     "from-rose-500/20 to-rose-600/5",
     "from-blue-500/20 to-blue-600/5",

@@ -5,19 +5,19 @@ import { generatePageAlternates } from "@/lib/seo/alternates";
 const HOME_META: Record<string, { title: string; description: string }> = {
   en: {
     title: "IDLOGICE — Canadian Immigration Consultants | Montréal",
-    description: "CICC-registered immigration consultants (RCICs) in Montréal. Expert guidance for Express Entry, PNP, work permits & family sponsorship. 95% success rate.",
+    description: "Canadian immigration guidance for Express Entry, PNP, work permits, study permits, and family sponsorship, with multilingual support from Montreal.",
   },
   fr: {
     title: "IDLOGICE — Consultants en Immigration Canadienne | Montréal",
-    description: "Consultants en immigration certifiés CICC à Montréal. Expertise en Entrée express, PNP, permis de travail et parrainage familial. Taux de succès 95 %.",
+    description: "Accompagnement en immigration canadienne pour Entrée express, PNP, permis de travail, permis d'études et parrainage familial.",
   },
   es: {
     title: "IDLOGICE — Consultores de Inmigración Canadiense | Montréal",
-    description: "Consultores de inmigración certificados CICC en Montreal. Expertos en Express Entry, PNP, permisos de trabajo y patrocinio familiar. Éxito del 95 %.",
+    description: "Orientación sobre inmigración canadiense para Express Entry, PNP, permisos de trabajo, estudios y patrocinio familiar.",
   },
   ar: {
     title: "IDLOGICE — مستشارو الهجرة الكندية | مونتريال",
-    description: "مستشارو هجرة كندية معتمدون من CICC في مونتريال. خبرة في Express Entry وBNP وتصاريح العمل والتكفل العائلي. معدل نجاح 95٪.",
+    description: "إرشادات حول الهجرة الكندية وبرامج Express Entry وPNP وتصاريح العمل والدراسة والتكفل العائلي.",
   },
 };
 

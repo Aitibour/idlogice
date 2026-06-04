@@ -2,7 +2,7 @@
   "hero": {
     "badge": "Consultants Certifiés en Immigration Canadienne",
     "title": "Votre chemin vers le Canada commence ici",
-    "subtitle": "Services d'immigration canadienne experts avec un taux de succès de 95 %. Plus de 10 ans d'expérience pour aider les familles, les travailleurs et les étudiants à réaliser leur rêve canadien.",
+    "subtitle": "Des conseils clairs et personnalisés en immigration canadienne pour les familles, les travailleurs, les étudiants et les employeurs.",
     "cta": "Évaluation de profil gratuite",
     "secondaryCta": "Découvrir nos services"
   },
@@ -26,9 +26,18 @@
     }
   },
   "stats": {
-    "successRate": { "value": "95 %", "label": "Taux de succès" },
-    "experience": { "value": "10+", "label": "Années d'expérience" },
-    "countries": { "value": "50+", "label": "Pays desservis" }
+    "successRate": {
+      "value": "4",
+      "label": "Langues de service"
+    },
+    "experience": {
+      "value": "10+",
+      "label": "Années d'expérience"
+    },
+    "countries": {
+      "value": "50+",
+      "label": "Pays desservis"
+    }
   },
   "showcase": {
     "title": "La vie au Canada",
@@ -36,13 +45,13 @@
   },
   "consultant": {
     "title": "Besoin d'un consultant certifié ? Réservez maintenant.",
-    "subtitle": "Nos consultants réglementés en immigration canadienne (CRIC) ont aidé des centaines de familles, de professionnels et d'étudiants à immigrer au Canada avec succès. Obtenez des conseils personnalisés — réservez votre évaluation de profil gratuite aujourd'hui.",
+    "subtitle": "Nos consultants réglementés en immigration canadienne (CRIC) offrent des conseils personnalisés aux familles, aux professionnels, aux étudiants et aux employeurs.",
     "book": "Évaluation de profil gratuite",
     "call": "+1 581-634-0224",
     "benefits": [
       "Évaluation de profil gratuite",
       "Consultants CRIC certifiés",
-      "Taux d'approbation de 95 %",
+      "Service multilingue",
       "Plus de 10 ans d'expérience",
       "Toutes catégories de visa",
       "Service en français et en anglais"
@@ -65,7 +74,7 @@
       {
         "number": 3,
         "title": "Demande et approbation",
-        "description": "Nous soumettons votre demande et la suivons à chaque étape. Notre taux de succès de 95 % parle de lui-même."
+        "description": "Nous soumettons votre demande et la suivons à chaque étape, en vous tenant informé tout au long du processus."
       }
     ]
   },
@@ -77,8 +86,8 @@
         "description": "Tous nos consultants sont des Consultants réglementés en immigration canadienne (CRIC), inscrits auprès du Collège des consultants en immigration et en citoyenneté."
       },
       {
-        "title": "Taux de succès de 95 %",
-        "description": "Avec plus de 10 ans d'expérience, nous avons bâti un palmarès exceptionnel en aidant des clients dans toutes les catégories de visa et tous les programmes d'immigration."
+        "title": "Conseils transparents",
+        "description": "Nous expliquons clairement les exigences, les options, les délais et les risques afin que vous puissiez prendre des décisions éclairées."
       },
       {
         "title": "Soutien complet",
@@ -156,13 +165,25 @@
     "eyebrow": "Bienvenue chez IDLOGICE",
     "title": "À propos d'IDLOGICE",
     "para1": "IDLOGICE est une entreprise de conseil en immigration canadienne entièrement réglementée, dirigée par des Consultants réglementés en immigration canadienne (CRIC) inscrits auprès du Collège des consultants en immigration et en citoyenneté (CICC). Nous offrons des services d'immigration personnalisés à des clients du monde entier désireux de concrétiser leur rêve d'immigrer au Canada.",
-    "para2": "Notre priorité est de comprendre les besoins du client et d'identifier la meilleure option pour son profil grâce à une communication transparente et des conseils d'experts. Avec un taux de succès de 95 % et une expérience couvrant plus de 50 pays, IDLOGICE est votre partenaire de confiance sur la voie du Canada.",
+    "para2": "Notre priorité est de comprendre les besoins de chaque client et d'identifier les options adaptées grâce à une communication transparente et des conseils d'experts. Avec un service en quatre langues et une expérience auprès de clients de plus de 50 pays, IDLOGICE vous accompagne sur la voie du Canada.",
     "ctaLabel": "En savoir plus sur nous",
     "stats": [
-      { "value": "95 %", "label": "Taux de succès" },
-      { "value": "10+", "label": "Années d'expérience" },
-      { "value": "50+", "label": "Pays desservis" },
-      { "value": "500+", "label": "Dossiers traités" }
+      {
+        "value": "4",
+        "label": "Langues de service"
+      },
+      {
+        "value": "10+",
+        "label": "Années d'expérience"
+      },
+      {
+        "value": "50+",
+        "label": "Pays desservis"
+      },
+      {
+        "value": "6",
+        "label": "Services principaux"
+      }
     ]
   },
   "servicesSection": {
@@ -172,7 +193,7 @@
     "items": [
       {
         "title": "Entrée express",
-        "description": "La voie la plus rapide vers la résidence permanente au Canada. Nous évaluons votre profil, optimisons votre score du Système de classement global (SCG) et vous guidons à chaque étape de votre demande d'Entrée express.",
+        "description": "Une voie reconnue vers la résidence permanente au Canada. Nous évaluons votre profil, vous aidons à améliorer votre score du Système de classement global (SCG) et vous guidons à chaque étape de votre demande d'Entrée express.",
         "href": "/services/express-entry"
       },
       {
@@ -197,7 +218,7 @@
       },
       {
         "title": "Visa de touriste (AVE/RTR)",
-        "description": "Vous planifiez une visite au Canada ? Nous préparons une demande de résidence temporaire complète et convaincante — lettre de motivation, liste de documents et stratégie de refus — pour maximiser vos chances d'approbation.",
+        "description": "Vous planifiez une visite au Canada ? Nous préparons et révisons soigneusement votre demande de résidence temporaire, votre lettre de motivation et votre liste de documents.",
         "href": "/services/tourist-visa"
       }
     ]

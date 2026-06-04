@@ -64,14 +64,14 @@ export const PROFESSIONS: ProfessionData[] = [
     },
     pathways: {
       en: [
-        "Express Entry – Federal Skilled Worker: fastest route, typically 6 months",
+        "Express Entry – Federal Skilled Worker: a common permanent residence pathway, with timelines set by IRCC",
         "BC PNP Tech Pilot: fast-tracked within 2–3 months via provincial nomination",
         "Ontario Employer Job Offer Stream: requires LMIA-exempt job offer",
         "Alberta AAIP Tech Occupation Stream: for offers in Alberta tech companies",
         "Canada Experience Class: if you already have 1+ year of Canadian work experience",
       ],
       fr: [
-        "Entrée express – Travailleurs qualifiés fédéraux : voie la plus rapide, généralement 6 mois",
+        "Entrée express – Travailleurs qualifiés fédéraux : une voie courante vers la résidence permanente, selon les délais d'IRCC",
         "Volet technologique PNP-CB : traitement accéléré en 2 à 3 mois par nomination provinciale",
         "Volet offre d'emploi d'un employeur ontarien : nécessite une offre exemptée d'EIMT",
         "Volet Occupation Tech AAIP Alberta : pour les offres dans des entreprises tech en Alberta",
@@ -85,7 +85,7 @@ export const PROFESSIONS: ProfessionData[] = [
         "Canada Experience Class: si ya tiene 1+ año de experiencia laboral canadiense",
       ],
       ar: [
-        "الدخول السريع – العمال المهرة الفيدراليون: أسرع مسار، عادةً 6 أشهر",
+        "الدخول السريع – العمال المهرة الفيدراليون: مسار قائم على CRS وفق جداول IRCC",
         "مشروع تكنولوجيا PNP-BC: معالجة سريعة خلال 2-3 أشهر عبر الترشيح الإقليمي",
         "مسار عرض العمل لصاحب العمل في أونتاريو: يتطلب عرض عمل معفى من LMIA",
         "مسار المهن التقنية AAIP ألبرتا: لعروض العمل في شركات التكنولوجيا بألبرتا",
@@ -601,7 +601,7 @@ export const PROFESSIONS: ProfessionData[] = [
     faq: {
       en: [
         { q: "Does my electrician license transfer to Canada?", a: "Foreign electrician licenses generally do not automatically transfer. You will need to have your credentials assessed by the provincial electrical authority (e.g., ECAA in Alberta, TSSA in Ontario) and may need to pass a technical exam. Many provinces offer bridging programs for internationally trained electricians." },
-        { q: "What is the Federal Skilled Trades pathway for electricians?", a: "Electricians can apply under NOC 72200 through the Federal Skilled Trades (FST) category within Express Entry. You need a valid job offer OR a certificate of qualification, plus CLB 5 in reading/writing and CLB 4 in listening/speaking. No minimum CRS score is required — just meeting FST criteria guarantees an ITA within 60 days." },
+        { q: "What is the Federal Skilled Trades pathway for electricians?", a: "Electricians can apply under NOC 72200 through the Federal Skilled Trades (FST) category within Express Entry. You need a valid job offer OR a certificate of qualification, plus CLB 5 in reading/writing and CLB 4 in listening/speaking. Meeting the minimum criteria allows you to enter the pool, but it does not guarantee an invitation." },
       ],
       fr: [
         { q: "Mon permis d'électricien est-il transférable au Canada ?", a: "Les permis d'électricien étrangers ne se transfèrent généralement pas automatiquement. Vous devrez faire évaluer vos titres par l'autorité électrique provinciale et passer un examen technique. De nombreuses provinces offrent des programmes de transition pour les électriciens formés à l'étranger." },
@@ -990,14 +990,14 @@ export const PROFESSIONS: ProfessionData[] = [
     },
     pathways: {
       en: [
-        "Express Entry – Federal Skilled Worker: highest CRS scores, fastest path without employer support",
+        "Express Entry – Federal Skilled Worker: CRS-ranked pathway without required employer support",
         "BC PNP Tech Pilot: targeted stream for data/AI roles, ~2–3 month processing",
         "Ontario Tech Draws: targeted draws specifically for NOC 21211 and related codes",
         "Alberta AAIP Tech Occupation: for AI/data roles with Alberta job offers",
         "Canada Start-Up Visa: if founding an AI company with venture backing",
       ],
       fr: [
-        "Entrée express – Travailleurs qualifiés fédéraux : scores SCG les plus élevés, voie la plus rapide",
+        "Entrée express – Travailleurs qualifiés fédéraux : scores SCG élevés et voie courante vers la résidence permanente",
         "Volet tech PNP-CB : volet ciblé pour les rôles données/IA, traitement ~2–3 mois",
         "Tirages tech Ontario : tirages ciblés pour CNP 21211 et codes connexes",
         "AAIP Alberta Tech Occupation : pour les rôles IA/données avec offres d'emploi en Alberta",
@@ -1011,7 +1011,7 @@ export const PROFESSIONS: ProfessionData[] = [
         "Canada Start-Up Visa: si está fundando una empresa de IA con respaldo de capital de riesgo",
       ],
       ar: [
-        "الدخول السريع – العمال المهرة الفيدراليون: أعلى درجات CRS، أسرع مسار بدون دعم صاحب العمل",
+        "الدخول السريع – العمال المهرة الفيدراليون: مسار قائم على CRS دون اشتراط دعم صاحب العمل",
         "مسار تكنولوجيا PNP-BC: مسار مستهدف لأدوار البيانات/الذكاء الاصطناعي، معالجة ~2-3 أشهر",
         "السحوبات التقنية في أونتاريو: سحوبات مستهدفة خاصة لـ NOC 21211 والأكواد ذات الصلة",
         "AAIP التقني في ألبرتا: لأدوار الذكاء الاصطناعي/البيانات مع عروض عمل في ألبرتا",

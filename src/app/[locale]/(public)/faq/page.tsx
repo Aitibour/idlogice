@@ -55,7 +55,7 @@ const FAQS = [
     items: [
       {
         q: "How does a provincial nomination help my Express Entry?",
-        a: "A valid provincial nomination under an Enhanced PNP stream adds 600 points to your CRS score — essentially guaranteeing an ITA at the next draw. This is the single most effective way to boost your chances if your base score is below the cutoff.",
+        a: "A valid provincial nomination under an Enhanced PNP stream adds 600 points to your CRS score and can substantially improve your invitation prospects. You must still remain eligible and meet the requirements in effect when IRCC issues invitations.",
       },
       {
         q: "Which province is best for my profile?",

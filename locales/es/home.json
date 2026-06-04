@@ -2,7 +2,7 @@
   "hero": {
     "badge": "Consultores Certificados de Inmigración Canadiense",
     "title": "Tu Camino a Canadá Comienza Aquí",
-    "subtitle": "Servicios expertos de inmigración canadiense con una tasa de éxito del 95%. Más de 10 años ayudando a familias, trabajadores y estudiantes a alcanzar su sueño canadiense.",
+    "subtitle": "Orientación clara y personalizada sobre inmigración canadiense para familias, trabajadores, estudiantes y empleadores.",
     "cta": "Evaluación de Perfil Gratuita",
     "secondaryCta": "Explorar Nuestros Servicios"
   },
@@ -27,8 +27,8 @@
   },
   "stats": {
     "successRate": {
-      "value": "95%",
-      "label": "Tasa de Éxito"
+      "value": "4",
+      "label": "Idiomas de servicio"
     },
     "experience": {
       "value": "10+",
@@ -109,13 +109,25 @@
     "eyebrow": "Bienvenido a IDLOGICE",
     "title": "Sobre IDLOGICE",
     "para1": "IDLOGICE es una firma de consultoría de inmigración canadiense completamente regulada, dirigida por Consultores Regulados de Inmigración Canadiense (RCICs) registrados en el Colegio de Consultores de Inmigración y Ciudadanía (CICC). Brindamos servicios de inmigración personalizados a clientes en todo el mundo.",
-    "para2": "Nuestra prioridad es entender las necesidades del cliente y trazar la mejor opción para su perfil a través de una comunicación transparente y orientación experta. Con una tasa de éxito del 95% y experiencia en más de 50 países, IDLOGICE es su socio de confianza en el camino hacia Canadá.",
+    "para2": "Nuestra prioridad es comprender las necesidades de cada cliente e identificar opciones adecuadas mediante una comunicación transparente y orientación experta. Con servicio en cuatro idiomas y experiencia apoyando a clientes de más de 50 países, IDLOGICE le acompaña en su camino hacia Canadá.",
     "ctaLabel": "Conozca Más Sobre Nosotros",
     "stats": [
-      { "value": "95%", "label": "Tasa de Éxito" },
-      { "value": "10+", "label": "Años de Experiencia" },
-      { "value": "50+", "label": "Países Atendidos" },
-      { "value": "500+", "label": "Casos Gestionados" }
+      {
+        "value": "4",
+        "label": "Idiomas de servicio"
+      },
+      {
+        "value": "10+",
+        "label": "Años de Experiencia"
+      },
+      {
+        "value": "50+",
+        "label": "Países Atendidos"
+      },
+      {
+        "value": "6",
+        "label": "Servicios principales"
+      }
     ]
   },
   "servicesSection": {
@@ -125,7 +137,7 @@
     "items": [
       {
         "title": "Express Entry",
-        "description": "La vía más rápida hacia la residencia permanente canadiense. Evaluamos su perfil, optimizamos su puntaje CRS y le guiamos en cada etapa.",
+        "description": "Una vía reconocida hacia la residencia permanente canadiense. Evaluamos su perfil, le ayudamos a mejorar su puntuación del Sistema de Clasificación Integral (CRS) y le guiamos en cada etapa de su solicitud de Express Entry.",
         "href": "/services/express-entry"
       },
       {
@@ -172,13 +184,13 @@
   },
   "consultant": {
     "title": "¿Necesita un Consultor Certificado?",
-    "subtitle": "Nuestros RCICs han ayudado a cientos de familias, profesionales y estudiantes a inmigrar exitosamente a Canadá.",
+    "subtitle": "Nuestros Consultores Regulados de Inmigración Canadiense (RCICs) ofrecen orientación personalizada a familias, profesionales, estudiantes y empleadores.",
     "book": "Evaluación de Perfil Gratuita",
     "call": "+1 581-634-0224",
     "benefits": [
       "Evaluación de perfil gratuita",
       "RCICs certificados",
-      "95% tasa de aprobación",
+      "Servicio multilingüe",
       "10+ años de experiencia",
       "Todas las categorías de visa",
       "Servicio en francés e inglés"
@@ -201,7 +213,7 @@
       {
         "number": 3,
         "title": "Solicitud y Aprobación",
-        "description": "Presentamos su solicitud y la seguimos en cada paso. Nuestra tasa de éxito del 95% habla por sí misma."
+        "description": "Presentamos su solicitud y la seguimos en cada etapa, manteniéndole informado durante todo el proceso."
       }
     ]
   },
@@ -213,8 +225,8 @@
         "description": "Todos nuestros consultores son RCICs registrados con el Colegio de Consultores de Inmigración y Ciudadanía."
       },
       {
-        "title": "95% Tasa de Éxito",
-        "description": "Con más de 10 años de experiencia, hemos construido un historial excepcional en todas las categorías de visa."
+        "title": "Orientación transparente",
+        "description": "Explicamos claramente los requisitos, las opciones, los plazos y los riesgos para que pueda tomar decisiones informadas."
       },
       {
         "title": "Apoyo Completo",

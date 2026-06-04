@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     template: "%s | IDLOGICE",
   },
   description:
-    "CICC-registered immigration consultants (RCICs) in Montréal. Expert guidance for Express Entry, PNP, work permits & family sponsorship. 95% success rate.",
+    "Canadian immigration guidance for Express Entry, PNP, work permits, study permits, and family sponsorship, with multilingual support from Montreal.",
   keywords: [
     "Canadian immigration consultant",
     "RCIC Montréal",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     siteName: "IDLOGICE",
     title: "IDLOGICE — Canadian Immigration Consultants | Montréal",
     description:
-      "CICC-registered RCICs in Montréal. Expert guidance for Express Entry, PNP, work permits, study permits & family sponsorship. 95% success rate.",
+      "Canadian immigration guidance for Express Entry, PNP, work permits, study permits, and family sponsorship, with multilingual support from Montreal.",
     images: [
       {
         url: `${BASE}/images/cta-bg.jpg`,
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     creator: "@idlogicecanada",
     title: "IDLOGICE — Canadian Immigration Consultants | Montréal",
     description:
-      "CICC-registered immigration consultants in Montréal. 95% success rate. Free profile evaluation.",
+      "Canadian immigration guidance for Express Entry, PNP, work permits, study permits, and family sponsorship.",
     images: [`${BASE}/images/cta-bg.jpg`],
   },
   robots: {
@@ -174,15 +174,17 @@ const jsonLd = JSON.stringify({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const scriptProps = { type: "application/ld+json", __html: jsonLd };
   return (
-    <html className={geistSans.variable} suppressHydrationWarning>
+    <html lang="en" className={geistSans.variable} suppressHydrationWarning>
       <head>
         <meta name="color-scheme" content="light" />
         <link rel="alternate" type="text/plain" href="/llms.txt" title="IDLOGICE LLM source map" />
         <link rel="alternate" type="text/plain" href="/llms-full.txt" title="IDLOGICE extended LLM source map" />
         <script type={scriptProps.type} {...{ dangerouslySetInnerHTML: { __html: scriptProps.__html } }} />
       </head>
-      {children}
-      <Analytics />
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

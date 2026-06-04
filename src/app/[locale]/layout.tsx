@@ -4,7 +4,6 @@ import { generatePageAlternates } from "@/lib/seo/alternates";
 export function generateStaticParams() {
   return [{ locale: "en" }, { locale: "fr" }, { locale: "es" }, { locale: "ar" }];
 }
-import { geistSans } from "@/lib/fonts";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -13,7 +12,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { WhatsAppButton } from "@/components/shared/whatsapp-button";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { OrganizationJsonLd, WebsiteJsonLd } from "@/components/seo/structured-data";
+import { WebsiteJsonLd } from "@/components/seo/structured-data";
 import { LazyEngagementWidgets } from "@/components/shared/lazy-engagement-widgets";
 
 // Layout-level metadata only sets alternates for the HOME page (path = "").
@@ -50,21 +49,14 @@ export default async function LocaleLayout({
   const dir = ["ar", "fa", "he"].includes(locale) ? "rtl" : "ltr";
 
   return (
-    <html
+    <div
       lang={locale}
       dir={dir}
-      className={`${geistSans.variable} h-full antialiased`}
+      className="min-h-screen flex flex-col antialiased"
       style={{ colorScheme: "light" }}
     >
-      <head>
-        <meta name="color-scheme" content="light" />
-        <OrganizationJsonLd />
-        <WebsiteJsonLd />
-      </head>
-      <body
-        className="min-h-screen flex flex-col"
-        style={{ backgroundColor: "#ffffff", color: "#111111" }}
-      >
+      <WebsiteJsonLd />
+      <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#ffffff", color: "#111111" }}>
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main className="flex-1">{children}</main>
@@ -72,8 +64,8 @@ export default async function LocaleLayout({
           <WhatsAppButton />
           <LazyEngagementWidgets />
         </NextIntlClientProvider>
-      </body>
+      </div>
       <GoogleAnalytics gaId="G-PRM3TSY3FL" />
-    </html>
+    </div>
   );
 }
