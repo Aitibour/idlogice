@@ -64,7 +64,6 @@ export default async function AuthorPage({ params }: Props) {
         name: "College of Immigration and Citizenship Consultants",
         url: "https://college-ic.ca/",
       },
-      identifier: expert.rcic,
     },
   };
 
@@ -86,7 +85,7 @@ export default async function AuthorPage({ params }: Props) {
             <p className="text-sm font-bold uppercase tracking-wide text-primary">{labels.reviewed}</p>
             <h1 className="mt-3 text-4xl font-bold tracking-tight text-gray-950 md:text-5xl">{expert.name}</h1>
             <p className="mt-4 text-xl font-semibold text-gray-800">{expert.title}</p>
-            <p className="mt-2 text-sm font-bold text-gray-700">{expert.credential} · RCIC {expert.rcic}</p>
+            <p className="mt-2 text-sm font-bold text-gray-700">{expert.credential}</p>
             <p className="mt-6 max-w-3xl text-lg leading-relaxed text-gray-700">{expert.bio}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href={`/${locale}/book-consultation`} className="rounded-full bg-primary px-5 py-3 text-sm font-bold text-white transition-opacity hover:opacity-90">

@@ -68,8 +68,8 @@ export default async function NewsPage({ params }: Props) {
     url: BASE,
     logo: `${BASE}/logo.png`,
     sameAs: [
-      "https://www.linkedin.com/company/idlogice",
-      "https://www.tiktok.com/@idlogice",
+      "https://www.linkedin.com/company/idlogice-immigration-canada",
+      "https://www.tiktok.com/@idlogice.canada",
     ],
   };
   const collectionLd = {

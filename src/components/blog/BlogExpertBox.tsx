@@ -41,7 +41,7 @@ export function BlogExpertBox({ locale, expert, topicLabel }: Props) {
         </div>
       </div>
       <div className="mt-4 grid gap-3 border-t border-gray-100 pt-4 text-sm text-gray-700 sm:grid-cols-2">
-        <p><span className="font-bold text-gray-900">{topicLabel}</span> · RCIC {expert.rcic}</p>
+        <p><span className="font-bold text-gray-900">{topicLabel}</span> · {expert.credential}</p>
         <p><span className="font-bold text-gray-900">{labels.languages}:</span> {expert.languages.join(", ")}</p>
         <p className="sm:col-span-2">
           <span className="font-bold text-gray-900">{labels.expertise}:</span> {expert.specialties.join(", ")}

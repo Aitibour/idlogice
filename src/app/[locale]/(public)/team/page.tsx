@@ -48,7 +48,6 @@ const CONSULTANTS = [
   {
     name: "Sarah Benali",
     title: { en: "Senior Immigration Consultant", fr: "Consultante principale en immigration", es: "Consultora principal de inmigración", ar: "مستشارة هجرة أولى" },
-    rcic: "R123456",
     bio: {
       en: "Sarah has 8+ years of experience guiding clients through Express Entry and PNP programs. Fluent in English, French, and Arabic, she specializes in Francophone immigration and North African applicant profiles.",
       fr: "Sarah a plus de 8 ans d'expérience dans l'Entrée express et les programmes PNP. Spécialisée en immigration francophone et profils maghrébins.",
@@ -62,13 +61,10 @@ const CONSULTANTS = [
       ar: ["Express Entry", "برامج PNP", "الهجرة الناطقة بالفرنسية", "تصاريح العمل"],
     },
     languages: { en: ["English", "French", "Arabic"], fr: ["Anglais", "Français", "Arabe"], es: ["Inglés", "Francés", "Árabe"], ar: ["الإنجليزية", "الفرنسية", "العربية"] },
-    successRate: "97%",
-    casesHandled: "300+",
   },
   {
     name: "Mohamed Ait Ibour",
     title: { en: "Founder & Lead Immigration Consultant", fr: "Fondateur et consultant principal en immigration", es: "Fundador y consultor principal de inmigración", ar: "المؤسس والمستشار الرئيسي للهجرة" },
-    rcic: "R789012",
     bio: {
       en: "Mohamed founded IDLOGICE to bring transparent, expert immigration consulting to clients from 50+ countries. He specializes in complex cases including inadmissibility, refusals, and skilled trades immigration.",
       fr: "Mohamed a fondé IDLOGICE pour apporter une consultation en immigration transparente et experte à des clients de 50+ pays. Spécialisé dans les cas complexes.",
@@ -82,8 +78,6 @@ const CONSULTANTS = [
       ar: ["هجرة المهن الحرفية", "استئناف رفض الطلبات", "تصاريح الدراسة", "التكفل العائلي"],
     },
     languages: { en: ["English", "French", "Arabic", "Spanish"], fr: ["Anglais", "Français", "Arabe", "Espagnol"], es: ["Inglés", "Francés", "Árabe", "Español"], ar: ["الإنجليزية", "الفرنسية", "العربية", "الإسبانية"] },
-    successRate: "95%",
-    casesHandled: "500+",
   },
 ];
 
@@ -154,7 +148,6 @@ export default async function TeamPage({ params }: Props) {
         name: "Regulated Canadian Immigration Consultant (RCIC)",
         credentialCategory: "Professional License",
         recognizedBy: { "@type": "Organization", name: "College of Immigration and Citizenship Consultants (CICC)" },
-        identifier: c.rcic,
       },
       knowsLanguage: c.languages.en,
     })),
@@ -179,7 +172,7 @@ export default async function TeamPage({ params }: Props) {
 
         <div className="space-y-8 mb-16">
           {CONSULTANTS.map((c) => (
-            <div key={c.rcic} className="border border-gray-200 rounded-2xl p-6 sm:p-8">
+            <div key={c.name} className="border border-gray-200 rounded-2xl p-6 sm:p-8">
               <div className="flex flex-col sm:flex-row gap-6 mb-5">
                 <div className="shrink-0">
                   <div className="w-20 h-20 rounded-full bg-blue-100 border-2 border-primary/20 flex items-center justify-center">
@@ -192,9 +185,7 @@ export default async function TeamPage({ params }: Props) {
                   <h2 className="text-xl font-bold text-gray-900">{c.name}</h2>
                   <p className="text-primary font-medium text-sm mb-2">{c.title[l]}</p>
                   <div className="flex flex-wrap gap-2 text-xs text-gray-500">
-                    <span className="bg-gray-100 px-2 py-0.5 rounded font-mono">{T.ciccLabel[l]}: {c.rcic}</span>
-                    <span className="bg-green-100 text-green-800 font-semibold px-2 py-0.5 rounded">{c.successRate} success rate</span>
-                    <span className="bg-blue-50 text-blue-700 px-2 py-0.5 rounded">{c.casesHandled} cases</span>
+                    <span className="bg-gray-100 px-2 py-0.5 rounded">{T.ciccLabel[l]}: verify on the CICC public register</span>
                   </div>
                 </div>
               </div>

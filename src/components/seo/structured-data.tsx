@@ -63,13 +63,6 @@ const ORG_NODE = {
     "https://www.linkedin.com/company/idlogice-immigration-canada",
     "https://www.tiktok.com/@idlogice.canada",
   ],
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "127",
-    bestRating: "5",
-    worstRating: "1",
-  },
 };
 
 /** Escape `</script>` and U+2028/2029 line separators that would break JSON-in-HTML. */

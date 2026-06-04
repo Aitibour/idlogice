@@ -103,11 +103,11 @@ const jsonLd = JSON.stringify({
   "@graph": [
     {
       "@type": "Organization",
-      "@id": `${BASE}/#organization`,
+      "@id": `${BASE}#organization`,
       name: "IDLOGICE",
       url: BASE,
       logo: { "@type": "ImageObject", url: `${BASE}/logo.png`, width: 200, height: 60 },
-      email: "info@idlogice.com",
+      email: "contact@idlogice.com",
       telephone: "+1-581-634-0224",
       contactPoint: {
         "@type": "ContactPoint",
@@ -141,12 +141,12 @@ const jsonLd = JSON.stringify({
     },
     {
       "@type": "LocalBusiness",
-      "@id": `${BASE}/#localbusiness`,
+      "@id": `${BASE}#organization`,
       name: "IDLOGICE — Canadian Immigration Consultants",
       image: `${BASE}/images/feature-consulting.jpg`,
       url: BASE,
       telephone: "+1-581-634-0224",
-      email: "info@idlogice.com",
+      email: "contact@idlogice.com",
       address: {
         "@type": "PostalAddress",
         streetAddress: "410 Saint-Catherine St",
@@ -167,12 +167,6 @@ const jsonLd = JSON.stringify({
       priceRange: "$$",
       description:
         "CICC-registered Canadian immigration consultants (RCICs) in Montréal. Expert guidance for Express Entry, PNP, study permits, work permits & family sponsorship.",
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        reviewCount: "120",
-        bestRating: "5",
-      },
     },
   ],
 });

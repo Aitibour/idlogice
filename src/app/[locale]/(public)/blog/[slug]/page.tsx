@@ -179,7 +179,6 @@ export default async function BlogPostPage({ params }: Props) {
         name: "College of Immigration and Citizenship Consultants",
         url: "https://college-ic.ca/",
       },
-      identifier: expert.rcic,
     },
   };
 
