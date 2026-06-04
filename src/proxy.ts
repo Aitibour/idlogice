@@ -4,7 +4,45 @@ import { routing } from "./i18n/routing";
 
 const intlMiddleware = createMiddleware(routing);
 
+const PERMANENT_EN_PREFIXES = new Set([
+  "about",
+  "author",
+  "blog",
+  "book-consultation",
+  "calculator",
+  "compare-pathways",
+  "contact",
+  "corrections-policy",
+  "draws",
+  "editorial-standards",
+  "evaluation",
+  "faq",
+  "for",
+  "from",
+  "glossary",
+  "guides",
+  "immigration-disclaimer",
+  "in",
+  "jobs",
+  "news",
+  "official-resources",
+  "programs",
+  "province",
+  "services",
+  "stats",
+  "team",
+  "testimonials",
+  "tools",
+]);
+
 export function proxy(request: NextRequest) {
+  const firstSegment = request.nextUrl.pathname.split("/")[1];
+  if (PERMANENT_EN_PREFIXES.has(firstSegment)) {
+    const destination = request.nextUrl.clone();
+    destination.pathname = `/en${request.nextUrl.pathname}`;
+    return NextResponse.redirect(destination, 308);
+  }
+
   const intlResponse = intlMiddleware(request) as NextResponse;
 
   // For redirects (e.g. locale-less paths → /en/*), let them through unchanged.
