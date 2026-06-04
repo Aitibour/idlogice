@@ -95,7 +95,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const { data: posts } = await db
     .from("blog_posts")
-    .select("slug, published_at")
+    .select("slug, published_at, updated_at")
     .eq("status", "published")
     .order("published_at", { ascending: false });
 
@@ -103,7 +103,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const slug = encodeURIComponent(post.slug);
     return LOCALES.map((locale) => ({
       url: `${BASE}/${locale}/blog/${slug}`,
-      lastModified: new Date(post.published_at ?? now),
+      lastModified: new Date(post.updated_at ?? post.published_at ?? now),
       changeFrequency: "weekly" as const,
       priority: CONTENT,
       alternates: { languages: altLangs((l) => `${BASE}/${l}/blog/${slug}`) },
@@ -216,6 +216,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       alternates: { languages: altLangs((l) => `${BASE}/${l}/for/${prof.slug}`) },
     })),
   );
+  const professionProvinceEntries: MetadataRoute.Sitemap = PROFESSIONS.flatMap((prof) =>
+    PROVINCES.flatMap((province) =>
+      LOCALES.map((locale) => ({
+        url: `${BASE}/${locale}/for/${prof.slug}/${province.slug}`,
+        lastModified: now,
+        changeFrequency: "monthly" as const,
+        priority: STANDARD,
+        alternates: {
+          languages: altLangs((l) => `${BASE}/${l}/for/${prof.slug}/${province.slug}`),
+        },
+      })),
+    ),
+  );
 
   const authorEntries: MetadataRoute.Sitemap = BLOG_EXPERTS.flatMap((expert) =>
     LOCALES.map((locale) => ({
@@ -242,5 +255,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...cityEntries,
     ...forIndexEntries,
     ...professionEntries,
+    ...professionProvinceEntries,
   ];
 }
