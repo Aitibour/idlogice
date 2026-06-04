@@ -22,7 +22,12 @@ const ALLOWED_NEXT_PATHS = [
  */
 function safeNext(next: string | null, origin: string): string {
   if (!next) return `${origin}/evaluation`;
-  const decoded = decodeURIComponent(next);
+  let decoded: string;
+  try {
+    decoded = decodeURIComponent(next);
+  } catch {
+    return `${origin}/evaluation`;
+  }
   // Must start with a single / followed by a non-slash, non-backslash char
   if (!/^\/[^/\\]/.test(decoded)) return `${origin}/evaluation`;
   if (!ALLOWED_NEXT_PATHS.some((p) => decoded === p || decoded.startsWith(p + "/"))) {

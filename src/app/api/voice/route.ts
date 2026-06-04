@@ -5,11 +5,11 @@ import { createHmac, timingSafeEqual } from "node:crypto";
  * Verify that an incoming request genuinely comes from Twilio.
  * https://www.twilio.com/docs/usage/webhooks/webhooks-security
  *
- * If TWILIO_AUTH_TOKEN is not set (e.g. during local dev), validation is skipped.
+ * Validation is skipped only outside production when TWILIO_AUTH_TOKEN is absent.
  */
 function isTwilioRequest(req: NextRequest, body: string): boolean {
   const authToken = process.env.TWILIO_AUTH_TOKEN;
-  if (!authToken) return true; // dev/test: skip validation when token absent
+  if (!authToken) return process.env.NODE_ENV !== "production";
 
   const signature = req.headers.get("x-twilio-signature") ?? "";
   if (!signature) return false;
@@ -47,6 +47,11 @@ function getCallContext(): "open" | "weekend" | "after-hours" {
   if (day === 0 || day === 6) return "weekend";
   if (timeAsMinutes < open || timeAsMinutes >= close) return "after-hours";
   return "open";
+}
+
+function parseCallContext(value: string | null): "open" | "weekend" | "after-hours" {
+  if (value === "open" || value === "weekend" || value === "after-hours") return value;
+  return getCallContext();
 }
 
 // ── Greetings ──────────────────────────────────────────────────────────────
@@ -160,8 +165,7 @@ export async function POST(req: NextRequest) {
   const params = new URLSearchParams(body);
   const digits = params.get("Digits");
   const lang: "en" | "fr" = req.nextUrl.searchParams.get("lang") === "fr" ? "fr" : "en";
-  const context = (req.nextUrl.searchParams.get("ctx") ?? getCallContext()) as
-    "open" | "weekend" | "after-hours";
+  const context = parseCallContext(req.nextUrl.searchParams.get("ctx"));
 
   if (digits === "1") {
     return xmlResponse(buildTwiML(lang, context));

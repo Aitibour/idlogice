@@ -1,8 +1,13 @@
 export const dynamic = "force-static";
 import { NextRequest, NextResponse } from "next/server";
+import { verifyTwilioRequest } from "@/lib/twilio/verify-request";
 
 export async function POST(req: NextRequest) {
   const body = await req.text();
+  if (!verifyTwilioRequest(req, body)) {
+    return new NextResponse("Forbidden", { status: 403 });
+  }
+
   const params = new URLSearchParams(body);
   const digits = params.get("Digits");
   const lang = req.nextUrl.searchParams.get("lang") === "fr" ? "fr" : "en";

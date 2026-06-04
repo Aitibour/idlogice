@@ -26,7 +26,9 @@ export async function POST(req: NextRequest) {
   // Verify the user is authenticated
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
-  if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!user?.email || !user.email_confirmed_at) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
 
   const parsed = payloadSchema.safeParse(await req.json().catch(() => null));
   if (!parsed.success) {
@@ -148,7 +150,7 @@ export async function POST(req: NextRequest) {
   try {
     await resend.emails.send({
       from: "IDLOGICE <noreply@idlogice.com>",
-      to: user.email!,
+      to: user.email,
       subject: `Your CRS Score: ${crsScore} — ${subjectFirstName}, here are your next steps`,
       html,
     });
