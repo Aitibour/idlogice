@@ -406,6 +406,8 @@ export function CheckoutClient({ planId }: { planId?: string }) {
                     options={{
                       clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID ?? "sb",
                       currency: "CAD",
+                      locale: "en_CA",
+                      "buyer-country": "CA",
                     }}
                   >
                     <div ref={paypalRef} className="scroll-mt-28">
