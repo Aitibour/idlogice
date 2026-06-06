@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { PayPalScriptProvider, PayPalButtons, FUNDING } from "@paypal/react-paypal-js";
 import { InlineWidget } from "react-calendly";
 import {
   ArrowLeft, ArrowRight, Check, CheckCircle, Clock3,
@@ -412,6 +412,7 @@ export function CheckoutClient({ planId }: { planId?: string }) {
                   >
                     <div ref={paypalRef} className="scroll-mt-28">
                     <PayPalButtons
+                      fundingSource={FUNDING.PAYPAL}
                       style={{ layout: "vertical", color: "gold", shape: "rect", label: "pay", height: 48 }}
                       createOrder={(_data, actions) =>
                         actions.order.create({
@@ -422,6 +423,32 @@ export function CheckoutClient({ planId }: { planId?: string }) {
                               description: `IDLOGICE ${plan.duration} Immigration Consultation`,
                             },
                           ],
+                          application_context: {
+                            shipping_preference: "NO_SHIPPING",
+                          },
+                        })
+                      }
+                      onApprove={async (data, actions) => {
+                        await actions.order?.capture();
+                        setPaypalOrderId(data.orderID);
+                        setStep("schedule");
+                      }}
+                    />
+                    <PayPalButtons
+                      fundingSource={FUNDING.CARD}
+                      style={{ layout: "vertical", shape: "rect", height: 48 }}
+                      createOrder={(_data, actions) =>
+                        actions.order.create({
+                          intent: "CAPTURE",
+                          purchase_units: [
+                            {
+                              amount: { currency_code: "CAD", value: plan.price.toFixed(2) },
+                              description: `IDLOGICE ${plan.duration} Immigration Consultation`,
+                            },
+                          ],
+                          application_context: {
+                            shipping_preference: "NO_SHIPPING",
+                          },
                         })
                       }
                       onApprove={async (data, actions) => {
