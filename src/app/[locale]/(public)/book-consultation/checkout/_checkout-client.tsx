@@ -410,7 +410,7 @@ export function CheckoutClient({ planId }: { planId?: string }) {
                       "buyer-country": "CA",
                     }}
                   >
-                    <div ref={paypalRef} className="scroll-mt-28">
+                    <div ref={paypalRef} className="scroll-mt-28" style={{ isolation: "isolate" }}>
                     <PayPalButtons
                       fundingSource={FUNDING.PAYPAL}
                       style={{ layout: "vertical", color: "gold", shape: "rect", label: "pay", height: 48 }}
