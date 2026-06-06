@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>USA News Hub — Breaking American News</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span class="topbar-date" id="topbar-date"></span>
+      <div class="topbar-links">
+        <a href="#">Subscribe</a>
+        <a href="#">Newsletter</a>
+        <a href="#">Podcasts</a>
+        <a href="#">Video</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-logo">
+        <span class="logo-flag">🇺🇸</span>
+        <div>
+          <div class="logo-text">USA News Hub</div>
+          <div class="logo-tagline">Truth. Speed. America.</div>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <a href="#" class="nav-link active">Home</a>
+        <a href="#" class="nav-link">Politics</a>
+        <a href="#" class="nav-link">Economy</a>
+        <a href="#" class="nav-link">Defense</a>
+        <a href="#" class="nav-link">Tech</a>
+        <a href="#" class="nav-link">World</a>
+        <a href="#" class="nav-link">Sports</a>
+      </nav>
+      <button class="search-btn" aria-label="Search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- BREAKING NEWS TICKER -->
+  <div class="ticker-wrap">
+    <div class="container ticker-inner">
+      <span class="ticker-label">BREAKING</span>
+      <div class="ticker-track">
+        <div class="ticker-content">
+          Senate passes sweeping infrastructure bill in bipartisan vote &nbsp;•&nbsp;
+          Fed signals potential rate cut amid cooling inflation data &nbsp;•&nbsp;
+          Supreme Court to hear landmark tech privacy case this fall &nbsp;•&nbsp;
+          Pentagon announces new AI-driven defense initiative &nbsp;•&nbsp;
+          US trade talks with EU resume following months of stalemate &nbsp;•&nbsp;
+          NASA confirms Artemis lunar mission on track for 2026 &nbsp;•&nbsp;
+          Record 4.2M Americans file for new jobs last quarter &nbsp;•&nbsp;
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <!-- Main Story -->
+      <article class="hero-main">
+        <div class="hero-img-wrap">
+          <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=900&q=80" alt="Capitol Building" class="hero-img" />
+          <span class="story-badge badge-politics">Politics</span>
+        </div>
+        <div class="hero-content">
+          <h1 class="hero-title">Senate Passes Historic Infrastructure Package in Rare Bipartisan Agreement</h1>
+          <p class="hero-excerpt">In a landmark vote that crossed party lines, the Senate approved a $1.2 trillion infrastructure overhaul covering roads, bridges, broadband expansion, and clean energy grid upgrades across all 50 states.</p>
+          <div class="story-meta">
+            <img src="https://i.pravatar.cc/32?img=12" class="author-avatar" alt="Author" />
+            <span class="author-name">Margaret Hayes</span>
+            <span class="meta-dot">·</span>
+            <span class="story-time">2 hours ago</span>
+            <span class="meta-dot">·</span>
+            <span class="read-time">5 min read</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Side Stories -->
+      <aside class="hero-side">
+        <article class="side-story">
+          <div class="side-story-img-wrap">
+            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&q=80" alt="Economy" class="side-story-img" />
+          </div>
+          <div class="side-story-content">
+            <span class="story-badge badge-economy">Economy</span>
+            <h3 class="side-story-title">Fed Signals Rate Cuts Could Come Sooner Than Expected as Inflation Cools</h3>
+            <div class="story-meta">
+              <span class="story-time">4 hours ago</span>
+              <span class="meta-dot">·</span>
+              <span class="read-time">3 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="side-story">
+          <div class="side-story-img-wrap">
+            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&q=80" alt="Tech" class="side-story-img" />
+          </div>
+          <div class="side-story-content">
+            <span class="story-badge badge-tech">Tech</span>
+            <h3 class="side-story-title">Pentagon's New AI Program Could Reshape Modern Battlefield Strategy</h3>
+            <div class="story-meta">
+              <span class="story-time">6 hours ago</span>
+              <span class="meta-dot">·</span>
+              <span class="read-time">4 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="side-story">
+          <div class="side-story-img-wrap">
+            <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=400&q=80" alt="Space" class="side-story-img" />
+          </div>
+          <div class="side-story-content">
+            <span class="story-badge badge-science">Science</span>
+            <h3 class="side-story-title">NASA's Artemis Program Back on Track After Engine Test Success</h3>
+            <div class="story-meta">
+              <span class="story-time">8 hours ago</span>
+              <span class="meta-dot">·</span>
+              <span class="read-time">3 min read</span>
+            </div>
+          </div>
+        </article>
+      </aside>
+    </div>
+  </section>
+
+  <!-- CATEGORY TABS -->
+  <section class="category-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Top Stories</h2>
+        <div class="category-tabs">
+          <button class="tab active" data-tab="all">All</button>
+          <button class="tab" data-tab="politics">Politics</button>
+          <button class="tab" data-tab="economy">Economy</button>
+          <button class="tab" data-tab="tech">Tech</button>
+          <button class="tab" data-tab="world">World</button>
+        </div>
+      </div>
+
+      <div class="content-layout">
+        <!-- News Grid -->
+        <div class="news-grid">
+
+          <article class="news-card featured-card">
+            <div class="card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=700&q=80" alt="Trade" class="card-img" />
+              <span class="story-badge badge-economy">Economy</span>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">US-EU Trade Talks Restart After Six-Month Freeze Over Tariff Disputes</h3>
+              <p class="card-excerpt">Negotiators from both sides resume discussions in Brussels, with agricultural subsidies and digital taxes topping the agenda.</p>
+              <div class="story-meta">
+                <img src="https://i.pravatar.cc/32?img=5" class="author-avatar" alt="Author" />
+                <span class="author-name">David Reyes</span>
+                <span class="meta-dot">·</span>
+                <span class="story-time">1 hour ago</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <div class="card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1555680202-c86f0e12f086?w=400&q=80" alt="Privacy" class="card-img" />
+              <span class="story-badge badge-politics">Politics</span>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Supreme Court to Hear Landmark Digital Privacy Case This Fall</h3>
+              <div class="story-meta">
+                <span class="story-time">3 hours ago</span>
+                <span class="meta-dot">·</span>
+                <span class="read-time">4 min</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <div class="card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=80" alt="Border" class="card-img" />
+              <span class="story-badge badge-politics">Politics</span>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Border Security Bill Advances with Sweeping Asylum Reform Provisions</h3>
+              <div class="story-meta">
+                <span class="story-time">5 hours ago</span>
+                <span class="meta-dot">·</span>
+                <span class="read-time">6 min</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <div class="card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1607703703674-df96af81dffa?w=400&q=80" alt="EV" class="card-img" />
+              <span class="story-badge badge-tech">Tech</span>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">EV Adoption Surges 38% Nationwide as Charging Network Expands</h3>
+              <div class="story-meta">
+                <span class="story-time">7 hours ago</span>
+                <span class="meta-dot">·</span>
+                <span class="read-time">3 min</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <div class="card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=400&q=80" alt="Housing" class="card-img" />
+              <span class="story-badge badge-economy">Economy</span>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Housing Market Shows First Signs of Cooling After Three-Year Surge</h3>
+              <div class="story-meta">
+                <span class="story-time">9 hours ago</span>
+                <span class="meta-dot">·</span>
+                <span class="read-time">5 min</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <div class="card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&q=80" alt="Cybersecurity" class="card-img" />
+              <span class="story-badge badge-tech">Tech</span>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">New Federal Cybersecurity Mandate Targets Critical Infrastructure Gaps</h3>
+              <div class="story-meta">
+                <span class="story-time">11 hours ago</span>
+                <span class="meta-dot">·</span>
+                <span class="read-time">4 min</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+          <!-- Newsletter CTA -->
+          <div class="sidebar-widget newsletter-widget">
+            <div class="newsletter-icon">📬</div>
+            <h4 class="widget-title">Daily Briefing</h4>
+            <p class="widget-desc">Get the top US stories delivered to your inbox every morning.</p>
+            <form class="newsletter-form" onsubmit="return false;">
+              <input type="email" placeholder="Your email address" class="newsletter-input" />
+              <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+          </div>
+
+          <!-- Trending -->
+          <div class="sidebar-widget">
+            <h4 class="widget-title widget-title-bar">Trending Now</h4>
+            <ol class="trending-list">
+              <li class="trending-item">
+                <span class="trending-num">01</span>
+                <a href="#" class="trending-link">Congress Votes on Debt Ceiling Extension Through 2027</a>
+              </li>
+              <li class="trending-item">
+                <span class="trending-num">02</span>
+                <a href="#" class="trending-link">Record Jobs Report Defies Economic Slowdown Predictions</a>
+              </li>
+              <li class="trending-item">
+                <span class="trending-num">03</span>
+                <a href="#" class="trending-link">US Military Conducts Joint Exercises with Pacific Allies</a>
+              </li>
+              <li class="trending-item">
+                <span class="trending-num">04</span>
+                <a href="#" class="trending-link">California Wildfire Season Begins Amid Record Heat Wave</a>
+              </li>
+              <li class="trending-item">
+                <span class="trending-num">05</span>
+                <a href="#" class="trending-link">NYC Mayor Unveils $18B Urban Renewal Master Plan</a>
+              </li>
+            </ol>
+          </div>
+
+          <!-- Opinion -->
+          <div class="sidebar-widget">
+            <h4 class="widget-title widget-title-bar">Opinion</h4>
+            <div class="opinion-list">
+              <article class="opinion-item">
+                <img src="https://i.pravatar.cc/48?img=33" class="opinion-avatar" alt="Columnist" />
+                <div>
+                  <div class="opinion-author">James Caldwell</div>
+                  <a href="#" class="opinion-title">Why Bipartisanship Still Has a Future in Washington</a>
+                </div>
+              </article>
+              <article class="opinion-item">
+                <img src="https://i.pravatar.cc/48?img=47" class="opinion-avatar" alt="Columnist" />
+                <div>
+                  <div class="opinion-author">Sarah Kim</div>
+                  <a href="#" class="opinion-title">The Real Cost of America's Aging Infrastructure</a>
+                </div>
+              </article>
+              <article class="opinion-item">
+                <img src="https://i.pravatar.cc/48?img=60" class="opinion-avatar" alt="Columnist" />
+                <div>
+                  <div class="opinion-author">Robert Tanner</div>
+                  <a href="#" class="opinion-title">Silicon Valley's Reckoning with Government Oversight</a>
+                </div>
+              </article>
+            </div>
+          </div>
+
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- FULL-WIDTH FEATURE BAND -->
+  <section class="feature-band">
+    <div class="container feature-band-inner">
+      <div class="feature-band-text">
+        <span class="feature-band-label">In Depth</span>
+        <h2 class="feature-band-title">The American Energy Transformation</h2>
+        <p class="feature-band-desc">A special investigative series on how the US energy grid is being rebuilt from the ground up — and who stands to benefit.</p>
+        <a href="#" class="btn btn-white">Read the Series →</a>
+      </div>
+      <div class="feature-band-img-wrap">
+        <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=700&q=80" alt="Energy" class="feature-band-img" />
+      </div>
+    </div>
+  </section>
+
+  <!-- WORLD & SPORTS ROW -->
+  <section class="two-col-section">
+    <div class="container two-col-inner">
+
+      <div class="two-col-block">
+        <div class="section-header">
+          <h2 class="section-title">World</h2>
+          <a href="#" class="see-all">See all →</a>
+        </div>
+        <div class="list-stories">
+          <article class="list-story">
+            <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=120&q=80" alt="World" class="list-story-img" />
+            <div>
+              <span class="story-badge badge-world">World</span>
+              <h4 class="list-story-title">G7 Leaders Agree on New AI Governance Framework</h4>
+              <span class="story-time">2 hours ago</span>
+            </div>
+          </article>
+          <article class="list-story">
+            <img src="https://images.unsplash.com/photo-1471897488648-5eae4ac6686b?w=120&q=80" alt="World" class="list-story-img" />
+            <div>
+              <h4 class="list-story-title">US Envoy Heads to Middle East for Peace Talks Mediation</h4>
+              <span class="story-time">5 hours ago</span>
+            </div>
+          </article>
+          <article class="list-story">
+            <img src="https://images.unsplash.com/photo-1496568816309-51d7c20e3b21?w=120&q=80" alt="World" class="list-story-img" />
+            <div>
+              <h4 class="list-story-title">American Expats in Europe Weigh In on Transatlantic Relations</h4>
+              <span class="story-time">8 hours ago</span>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="two-col-block">
+        <div class="section-header">
+          <h2 class="section-title">Sports</h2>
+          <a href="#" class="see-all">See all →</a>
+        </div>
+        <div class="list-stories">
+          <article class="list-story">
+            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=120&q=80" alt="Sports" class="list-story-img" />
+            <div>
+              <span class="story-badge badge-sports">Sports</span>
+              <h4 class="list-story-title">Eagles Rally in Fourth Quarter to Claim NFC Championship</h4>
+              <span class="story-time">1 hour ago</span>
+            </div>
+          </article>
+          <article class="list-story">
+            <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=120&q=80" alt="Sports" class="list-story-img" />
+            <div>
+              <h4 class="list-story-title">NBA Season Opens with Blockbuster Trades Reshaping Western Conference</h4>
+              <span class="story-time">3 hours ago</span>
+            </div>
+          </article>
+          <article class="list-story">
+            <img src="https://images.unsplash.com/photo-1540747913346-19212a4d98a7?w=120&q=80" alt="Sports" class="list-story-img" />
+            <div>
+              <h4 class="list-story-title">US Olympic Committee Announces Record Funding for 2028 LA Games</h4>
+              <span class="story-time">6 hours ago</span>
+            </div>
+          </article>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">🇺🇸 USA News Hub</div>
+        <p class="footer-tagline">Trusted American journalism since 2024.</p>
+        <div class="footer-social">
+          <a href="#" class="social-link" aria-label="Twitter/X">𝕏</a>
+          <a href="#" class="social-link" aria-label="Facebook">f</a>
+          <a href="#" class="social-link" aria-label="Instagram">IG</a>
+          <a href="#" class="social-link" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5 class="footer-col-title">Sections</h5>
+          <a href="#">Politics</a>
+          <a href="#">Economy</a>
+          <a href="#">Defense</a>
+          <a href="#">Technology</a>
+          <a href="#">Health</a>
+          <a href="#">Science</a>
+        </div>
+        <div class="footer-col">
+          <h5 class="footer-col-title">Company</h5>
+          <a href="#">About Us</a>
+          <a href="#">Careers</a>
+          <a href="#">Advertise</a>
+          <a href="#">Press</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h5 class="footer-col-title">Legal</h5>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Cookie Policy</a>
+          <a href="#">Accessibility</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© 2026 USA News Hub. All rights reserved.</span>
+        <span>Powered by independent journalism.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
