@@ -35,6 +35,5 @@ if (process.argv.includes("--credentials")) {
   if (local.LINKEDIN_CLIENT_ID !== "784lavctz4gscn" || !local.LINKEDIN_CLIENT_SECRET?.trim()) throw new Error("Fill in the new app secret in .env.linkedin.local first");
   await save("LINKEDIN_CLIENT_ID", local.LINKEDIN_CLIENT_ID);
   await save("LINKEDIN_CLIENT_SECRET", local.LINKEDIN_CLIENT_SECRET.trim());
-  if (local.OPENAI_API_KEY?.trim()) await save("OPENAI_API_KEY", local.OPENAI_API_KEY.trim());
 }
 console.log("Configuration saved. Redeploy to apply function environment changes.");

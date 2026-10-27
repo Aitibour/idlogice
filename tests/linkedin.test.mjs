@@ -1,8 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { dueSlots, localClock, completePost, CONTACT_CTA, COMPANY_URN, canClaimPost, isPublishedProduction } from "../src/lib/social/calendar.ts";
-import { createContent, visualDirection } from "../src/lib/social/content.ts";
-import { generateSocialImage } from "../src/lib/social/image.ts";
+import { createContent } from "../src/lib/social/content.ts";
+import { generateSocialImage, socialGraphicSvg } from "../src/lib/social/image.ts";
 import { publishSocialPost, uploadSocialImage, toLinkedInText } from "../src/lib/social/linkedin.ts";
 
 test("daily, two-day and three-day cadence survives month and DST changes", () => {
@@ -32,27 +32,36 @@ test("job spotlights use website wages and retain the listing age and availabili
   assert.doesNotMatch(job.text, /8 slots|8 positions/);
 });
 
-test("audience questions rotate and image direction changes across editions", async () => {
+test("audience questions rotate and their actual question appears in the graphic", async () => {
   const a = await createContent("question", "2026-10-28", 0);
   const b = await createContent("question", "2026-10-31", 1);
   assert.notEqual(a.text, b.text);
-  assert.notEqual(visualDirection("job", "2026-10-28", "Chef", 0), visualDirection("job", "2026-10-30", "Chef", 1));
+  assert.notEqual(a.graphicHeadline, b.graphicHeadline);
+  assert.match(a.graphicHeadline, /biggest question/);
   assert.ok(a.text.includes(CONTACT_CTA));
 });
 
-test("image failure holds the post; fallback keys accept base64 PNG responses", async () => {
+test("real PNG graphics need no network or API credentials and vary across editions", async () => {
   const original = globalThis.fetch;
-  const old = [process.env.OPENAI_API_KEY, process.env.OPENAI_API_KEY_1, process.env.OPENAI_API_KEY_2];
-  delete process.env.OPENAI_API_KEY; process.env.OPENAI_API_KEY_1 = "test-one"; process.env.OPENAI_API_KEY_2 = "test-two";
-  let calls = 0;
-  const png = Buffer.concat([Buffer.from("89504e470d0a1a0a", "hex"), Buffer.alloc(1200)]);
   try {
-    globalThis.fetch = async()=> ++calls === 1 ? new Response("rate limited", {status:429}) : Response.json({data:[{b64_json:png.toString("base64")}]});
-    assert.equal((await generateSocialImage("Unique concept")).bytes.length, png.length);
-    assert.equal(calls, 2);
-    globalThis.fetch = async()=>new Response("failed",{status:500});
-    await assert.rejects(generateSocialImage("Unique concept"), /generation failed/);
-  } finally { globalThis.fetch = original; ["OPENAI_API_KEY","OPENAI_API_KEY_1","OPENAI_API_KEY_2"].forEach((key,i)=>old[i]===undefined ? delete process.env[key] : process.env[key]=old[i]); }
+    globalThis.fetch = async()=>{throw new Error("Graphics must never request a paid API");};
+    const hashes = new Set();
+    for (let ordinal=0; ordinal<6; ordinal++) {
+      const result = await generateSocialImage({title:"Preparing your Canadian journey",kind:"informative",date:`2026-11-0${ordinal+1}`,ordinal});
+      assert.equal(result.bytes.subarray(0,8).toString("hex"),"89504e470d0a1a0a");
+      assert.equal(result.bytes.readUInt32BE(16),1080);
+      assert.equal(result.bytes.readUInt32BE(20),1080);
+      hashes.add(result.hash);
+    }
+    assert.equal(hashes.size,6);
+    await assert.rejects(generateSocialImage({title:"",kind:"job",date:"2026-11-01",ordinal:0}), /headline/);
+  } finally { globalThis.fetch = original; }
+});
+
+test("graphic text is escaped and all contact actions remain on each image", () => {
+  const svg = socialGraphicSvg({title:'A&B <test> "example"',kind:"job",date:"2026-11-01",ordinal:0});
+  assert.match(svg,/A&amp;B/); assert.match(svg,/&lt;test&gt;/); assert.doesNotMatch(svg,/<test>/);
+  for(const value of ["Book your consultation","idlogice.com/en/book-consultation","contact@idlogice.com","+1 581-634-0224"]) assert.ok(svg.includes(value));
 });
 
 test("publishing uses only the IDLOGICE company author, a ready image and full CTA", async () => {

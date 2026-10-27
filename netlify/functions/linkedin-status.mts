@@ -17,7 +17,7 @@ export default async function linkedinStatus(request: Request, context: DeployCo
   const encrypted = await store.get("credentials/linkedin", { type: "text" });
   const tokens = encrypted ? decrypt<Tokens>(encrypted) : null;
   return Response.json({ company: COMPANY_URN, timezone: TIME_ZONE, enabled: process.env.LINKEDIN_AUTOMATION_ENABLED === "true",
-    deployment: { context: context.deploy.context, published: context.deploy.published, id: context.deploy.id }, imageGatewayConfigured: !!process.env.OPENAI_BASE_URL,
+    deployment: { context: context.deploy.context, published: context.deploy.published, id: context.deploy.id }, imageMode: "local-branded-graphics",
     connected: !!tokens, tokenExpiresAt: tokens ? new Date(tokens.expires_at).toISOString() : null,
     due: dueSlots(new Date(), process.env.LINKEDIN_START_DATE ?? "2026-10-28"), health: await store.get("health", { type: "json" }) },
     { headers: { "Cache-Control": "no-store" } });

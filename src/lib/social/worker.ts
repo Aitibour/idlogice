@@ -29,15 +29,15 @@ export async function runSlot(key: string, draft = false) {
     return;
   }
   if (!canClaimPost(previous?.data)) return;
-  let record: PostRecord = { ...previous?.data, status: "generating", updatedAt: new Date().toISOString(), attempts: (previous?.data.attempts ?? 0) + 1 };
+  let record: PostRecord = { ...previous?.data, error: undefined, status: "generating", updatedAt: new Date().toISOString(), attempts: (previous?.data.attempts ?? 0) + 1 };
   const lock = await store.setJSON(recordKey, record, previous ? { onlyIfMatch: previous.etag } : { onlyIfNew: true });
   if (!lock.modified) return;
   try {
-    // Check authorization BEFORE spending money on an image. Draft mode never publishes.
+    // Check authorization before preparing assets. Draft mode never publishes.
     const token = draft ? "" : await accessToken();
     record.content ??= await createContent(kind, date, slot?.ordinal ?? 0);
     if (!record.imageKey) {
-      const image = await generateSocialImage(record.content.imagePrompt);
+      const image = await generateSocialImage({ title: record.content.title, headline: record.content.graphicHeadline, kind, date, ordinal: slot?.ordinal ?? 0 });
       const reservation = await store.setJSON(`image-hashes/${image.hash}`, { slot: recordKey }, { onlyIfNew: true });
       if (!reservation.modified) throw new Error("Duplicate image detected; refusing to reuse it");
       record.imageHash = image.hash;

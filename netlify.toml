@@ -15,6 +15,10 @@
 [functions."blog-generator"]
   node_bundler = "esbuild"
 
+[functions."linkedin-worker-background"]
+  external_node_modules = ["@resvg/resvg-js"]
+  included_files = ["assets/social/**"]
+
 # Security headers
 [[headers]]
   for = "/*"

@@ -34,31 +34,10 @@ const QUESTIONS = [
   "How do you check whether the immigration information you see online is reliable?",
 ];
 
-export type SocialContent = { title: string; text: string; sourceUrl?: string; sourceHash?: string; checkedAt: string; imagePrompt: string };
-
-export function visualDirection(kind: PostKind, date: string, title: string, ordinal: number) {
-  const styles = [
-    "Warm editorial photograph, candid human interaction, natural window light, asymmetric composition",
-    "Premium layered paper-cut illustration, sculptural depth, cream background and red accents",
-    "Modern editorial 3D illustration, tactile materials, soft studio lighting, strong central focal point",
-    "Bold magazine-style graphic illustration, large negative space, refined navy and maple-red palette",
-    "Cinematic documentary photograph, authentic professional setting, dramatic side lighting",
-    "Elegant isometric illustration, thoughtful small details, white background and restrained red highlights",
-  ];
-  return [
-    `Create a distinct, engaging LinkedIn company-page image for IDLOGICE. Topic: ${title}.`,
-    `Post category: ${kind}. Creative edition: ${date}-${kind}. ${styles[(ordinal + (kind === "job" ? 2 : kind === "question" ? 4 : 0)) % styles.length]}.`,
-    kind === "job" ? "Show an authentic professional scene relevant to this occupation; never imply that a pictured person is the employer or an actual applicant." :
-      kind === "question" ? "Use a striking visual metaphor for conversation, choice, and planning a future in Canada." :
-        "Illustrate the specific topic with a clear visual metaphor or people preparing for life in Canada; avoid repeating a generic skyline.",
-    "Square composition, polished brand design, accessible contrast. Keep visual subjects and layout different from previous editions.",
-    `Text, exactly: "IDLOGICE"; headline: "${title.slice(0, 75)}"; footer: "Book a consultation • idlogice.com".`,
-    "No invented statistics, job salaries, vacancy counts, testimonials, government seals, IRCC logos, or promises of visas or jobs. No watermark.",
-  ].join(" ");
-}
+export type SocialContent = { title: string; text: string; sourceUrl?: string; sourceHash?: string; checkedAt: string; graphicHeadline?: string };
 
 export async function createContent(kind: PostKind, date: string, ordinal: number): Promise<SocialContent> {
-  let title: string, body: string, sourceUrl: string | undefined, sourceHash: string | undefined;
+  let title: string, body: string, sourceUrl: string | undefined, sourceHash: string | undefined, graphicHeadline: string | undefined;
   if (kind === "job") {
     const job = JOBS[ordinal % JOBS.length];
     title = `${job.title} in ${job.city}`;
@@ -74,6 +53,7 @@ export async function createContent(kind: PostKind, date: string, ordinal: numbe
     ].join("\n\n");
   } else if (kind === "question") {
     title = "Your Canadian journey: let's talk";
+    graphicHeadline = QUESTIONS[ordinal % QUESTIONS.length];
     body = ["Your perspective matters. 🇨🇦", QUESTIONS[ordinal % QUESTIONS.length],
       "Tell us in the comments. Share general questions only; keep application numbers and personal documents private.",
       "For advice about your own circumstances, speak with our team.", "#CanadaCommunity"].join("\n\n");
@@ -111,5 +91,5 @@ export async function createContent(kind: PostKind, date: string, ordinal: numbe
     if (JSON.parse(review.choices[0]?.message.content ?? "{}").approved !== true) throw new Error("Source review held this informative post; no unverified caption published");
     body = `${parsed.body}\n\nGeneral information; requirements depend on your situation and can change.`;
   }
-  return { title, text: completePost(body, sourceUrl), sourceUrl, sourceHash, checkedAt: new Date().toISOString(), imagePrompt: visualDirection(kind, date, title, ordinal) };
+  return { title, text: completePost(body, sourceUrl), sourceUrl, sourceHash, checkedAt: new Date().toISOString(), graphicHeadline };
 }
