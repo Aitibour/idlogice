@@ -1,0 +1,51 @@
+# IDLOGICE LinkedIn posting
+
+Company page: https://www.linkedin.com/company/idlogice-immigration-canada/
+Organization author is fixed to `urn:li:organization:103105245`.
+
+English calendar, starting October 28, 2026, in `America/Toronto` (Montreal):
+
+| Content | Frequency | Time |
+| --- | --- | --- |
+| Informative Canadian immigration post | Daily | 09:00 |
+| Website job spotlight | Every 2 calendar days | 12:30 |
+| Audience question | Every 3 calendar days | 16:00 |
+
+Job and question posts are additional to the daily informative post. The hourly dispatcher runs at :00 and :30 UTC and calculates Montreal local time, including DST. A date-based index preserves the cadence across month boundaries. It catches up only today's due slots, never an old backlog.
+
+Every caption includes https://idlogice.com/en/book-consultation, contact@idlogice.com, and +1 581-634-0224. Every published post requires a newly generated PNG and an image that LinkedIn reports as AVAILABLE. Images rotate visual styles, subject matter, composition and edition prompts. SHA-256 reservations reject duplicate images. No text-only fallback.
+
+Informative captions are generated from an official Canada.ca page fetched at execution time. Source URLs, verification timestamps and source hashes are retained with the post. If source retrieval or content validation fails, publishing is held. These posts provide general information rather than unverified breaking news. Job spotlights import the same data as the website. They include the original posting date and ask readers to confirm availability and pay; they omit stale vacancy counts and immigration guarantees. Questions rotate and invite general discussion without soliciting application identifiers.
+
+## Connect the correct app
+
+The former deployment used client ID `789r90vu68fphl`. The app supplied by the owner is `784lavctz4gscn`. Do not mix secrets or tokens between apps.
+
+1. In LinkedIn Developers, Auth, register `https://idlogice.com/api/linkedin/callback` as an authorized redirect URL.
+2. Save the matching client secret in ignored `.env.linkedin.local` and run `node scripts/linkedin-setup.mjs --credentials`. Secrets are sent directly to the authenticated Netlify environment API and are never printed.
+3. Deploy. Visit `/api/linkedin/connect?key=SOCIAL_AUTOMATION_SECRET_VALUE` privately, replacing the placeholder with the deployment's secret. The connection URL grants administrative setup access; do not share it publicly.
+4. Authorize with a LinkedIn account that administers this exact company page. Requested permissions: `w_organization_social` and `rw_organization_admin`.
+5. Callback verifies a short-lived, single-use state plus an HttpOnly browser cookie and checks the organization ACL before saving tokens. Tokens are encrypted with AES-256-GCM in a private Netlify Blobs store. No bearer tokens appear in HTML or logs.
+
+LinkedIn access is subject to the app's granted API tier. Development access has call limits; LinkedIn describes Standard tier as intended for live production. Apply for the appropriate tier in LinkedIn Developers when required. Access/refresh tokens can expire or be revoked; an administrator must reconnect when programmatic refresh is unavailable or no longer valid.
+
+## Runtime and operations
+
+Native Netlify functions:
+
+- `linkedin-scheduler`: schedule only, never trusts a client-supplied scheduling header.
+- `linkedin-worker-background`: authenticated 15-minute worker for source checks, image generation/upload and publishing.
+- `linkedin-status`: bearer-protected status and individual record/image retrieval.
+- `linkedin-connect`, `linkedin-callback`: native OAuth endpoints under `/api/linkedin/`.
+
+The scheduler does nothing on previews or without a completed OAuth connection. `LINKEDIN_AUTOMATION_ENABLED=false` pauses publishing (redeploy after changing runtime env). Separate server-side secrets protect dispatch, status, OAuth setup and token encryption. Never rotate the encryption key without migrating stored credentials.
+
+Store: `idlogice-linkedin`. Records: `posts/YYYY-MM-DD/KIND`; drafts use `drafts/`. Atomic conditional writes claim slots and prevent simultaneous workers. Up to three attempts are allowed for definite pre-publication/rejection failures. A timeout, ambiguous LinkedIn response, or interrupted publishing checkpoint requires manual review; the worker never blindly retries a possible successful post. Published records include the LinkedIn post URN.
+
+Bearer-protected status: `/.netlify/functions/linkedin-status`. Append `?key=posts/2026-10-28/informative` to inspect one record. Use the image key from a record to retrieve its PNG. Never put the bearer secret in a public link.
+
+For an unpublished preview, invoke the worker with JSON `{"key":"2026-10-28/job","draft":true}` and the authorization header. Drafts use isolated records and never publish. Image generation uses GPT Image 2 through the configured OpenAI API account and incurs its normal API charges. Groq generates informative text. Required env: `GROQ_API_KEY`, an existing `OPENAI_API_KEY_1`/`OPENAI_API_KEY_2` or `OPENAI_API_KEY`, `LINKEDIN_CLIENT_ID`, `LINKEDIN_CLIENT_SECRET`, `SOCIAL_AUTOMATION_SECRET`, `SOCIAL_TOKEN_ENCRYPTION_KEY`, and the calendar settings.
+
+The blog generator no longer cross-posts to LinkedIn, avoiding additional posts outside this calendar. Its website and Twitter behavior is preserved.
+
+Validation: `node --experimental-strip-types --test tests/linkedin.test.mjs`, TypeScript, targeted ESLint and production build. Tests mock external publishing APIs and never create a real post.
