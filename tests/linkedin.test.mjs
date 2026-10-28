@@ -1,7 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { dueSlots, localClock, completePost, CONTACT_CTA, COMPANY_URN, canClaimPost, isPublishedProduction, executionSlot } from "../src/lib/social/calendar.ts";
-import { createContent } from "../src/lib/social/content.ts";
+import { dueSlots, localClock, completePost, CONTACT_CTA, COMPANY_URN, canClaimPost, isPublishedProduction, executionSlot, postHashtags } from "../src/lib/social/calendar.ts";
+import { parseNotices, parseArticleCards, officialUrl, isRecent, chooseEditorialSource } from "../src/lib/social/news.ts";
+import { createContent, validateInformativeCaption, editorialCaption } from "../src/lib/social/content.ts";
 import { generateSocialImage, socialGraphicSvg } from "../src/lib/social/image.ts";
 import { publishSocialPost, uploadSocialImage, toLinkedInText } from "../src/lib/social/linkedin.ts";
 
@@ -20,6 +21,20 @@ test("daily, two-day and three-day cadence survives month and DST changes", () =
 test("every caption includes all three contact actions and stays within LinkedIn limits", () => {
   assert.ok(completePost("Helpful post").includes(CONTACT_CTA));
   assert.throws(()=>completePost("x".repeat(3000)), /3,000/);
+});
+
+test("every caption has exactly ten unique topical hashtags and the correct IDLOGICE CTA", () => {
+  for (const [kind, title] of [["job","Chef"],["question","Your next step"],["informative","Express Entry"],["informative","Study permits"],["informative","Family sponsorship"]]) {
+    const text = completePost("Helpful guidance #UnexpectedTag",{kind,title});
+    const tags = text.match(/#[A-Za-z][A-Za-z0-9_]*/g);
+    assert.equal(tags.length,10); assert.equal(new Set(tags).size,10); assert.ok(text.includes(CONTACT_CTA));
+  }
+  assert.match(postHashtags("informative","Express Entry"),/#ExpressEntry/);
+  const article = completePost("Read our guidance",{purpose:"article",articleUrl:"https://idlogice.com/en/blog/express-entry-guide"});
+  assert.match(article,/Read the full IDLOGICE article: https:\/\/idlogice.com\/en\/blog\/express-entry-guide/);
+  assert.doesNotMatch(article,/book-consultation/);
+  assert.throws(()=>completePost("Example",{purpose:"article",articleUrl:"https://other.example/article"}),/IDLOGICE article/);
+  assert.throws(()=>completePost("Visit https://other.example/article"),/stay on idlogice/);
 });
 
 test("job spotlights use website wages and retain the listing age and availability qualification", async () => {
@@ -62,6 +77,9 @@ test("graphic text is escaped and all contact actions remain on each image", () 
   const svg = socialGraphicSvg({title:'A&B <test> "example"',kind:"job",date:"2026-11-01",ordinal:0});
   assert.match(svg,/A&amp;B/); assert.match(svg,/&lt;test&gt;/); assert.doesNotMatch(svg,/<test>/);
   for(const value of ["Book your consultation","idlogice.com/en/book-consultation","contact@idlogice.com","+1 581-634-0224"]) assert.ok(svg.includes(value));
+  assert.match(svg,/href="data:image\/png;base64,/);
+  const article = socialGraphicSvg({title:"Our latest article",kind:"informative",date:"2026-11-01",ordinal:0,purpose:"article"});
+  assert.match(article,/Read the full article/); assert.doesNotMatch(article,/Book your consultation/);
 });
 
 test("publishing uses only the IDLOGICE company author, a ready image and full CTA", async () => {
@@ -114,4 +132,49 @@ test("explicit immediate publication is limited to today's ledger and never mixe
   assert.throws(()=>executionSlot("2026-10-27/informative",start,{draft:true,publishNow:true},now), /cannot be combined/);
   assert.throws(()=>executionSlot("other",start,{publishNow:true},now), /Invalid slot/);
   assert.equal(executionSlot("2026-11-01/job",start,{draft:true},now).ordinal,2);
+});
+
+test("informative captions hold document-upload timing claims and unsourced document details", () => {
+  const intro = "Prepare thoughtfully for your Canadian immigration journey. Compare the official program guidance and check your own circumstances. ";
+  assert.throws(()=>validateInformativeCaption(intro+"Have documents ready to upload when creating your profile.","Create an Express Entry profile."), /upload/);
+  assert.throws(()=>validateInformativeCaption(intro+"Gather reference letters and contracts.","Check your work experience."), /not supported/);
+  assert.doesNotThrow(()=>validateInformativeCaption(intro+"Use the official eligibility questionnaire.","Check your eligibility using our questionnaire."));
+});
+
+test("news advisory copy never invents policy-specific fees, durations or eligibility", () => {
+  const caption=editorialCaption("Canada updates temporary measures for people affected by crises in Haiti and Sudan",false);
+  assert.match(caption,/IRCC update: Canada updates temporary measures/);
+  assert.match(caption,/Book a consultation/);
+  assert.doesNotMatch(caption,/processing fees|extend your permit|next year|all extensions/i);
+  assert.match(editorialCaption("Our topic",true),/Read our IDLOGICE article/);
+});
+
+test("news freshness excludes old or future announcements and article discovery requires a real slug", () => {
+  const now = new Date("2026-10-28T12:00:00Z");
+  const notices = '<li><a href="/en/immigration-refugees-citizenship/news/notices/update.html">Notice – New measures</a><span>October 27, 2026</span></li><li><a href="https://other.example/fake">Fake update</a>October 27, 2026</li><li><a href="/en/immigration-refugees-citizenship/news/notices/old.html">Old measures</a>May 1, 2026</li>';
+  assert.equal(parseNotices(notices,now).length,1);
+  assert.equal(parseNotices(notices,now)[0].publishedAt,"2026-10-27");
+  assert.equal(isRecent("2026-10-29",now),false);
+  assert.equal(officialUrl("https://other.example/source"),undefined);
+  const cards = '<article><a href="/en/blog/real-article"><span>October 27, 2026</span><h2>Real article</h2></a></article><article><a href="/en/blog?topic=express-entry">Latest news</a></article>';
+  assert.deepEqual(parseArticleCards(cards,now),["https://idlogice.com/en/blog/real-article"]);
+});
+
+test("recent IRCC news uses a matching live IDLOGICE article and skips already-used sources", async () => {
+  const original=globalThis.fetch;
+  const official="https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/update.html";
+  try {
+    globalThis.fetch=async(url)=>{
+      let body;
+      if(String(url).includes("api.io.canada.ca")) body='<?xml version="1.0"?><feed xmlns="http://www.w3.org/2005/Atom"><title>IRCC</title><updated>2026-10-27T12:00:00Z</updated></feed>';
+      else if(String(url).endsWith("notices.html")) body=`<li><a href="${official}">Notice – Updated measures</a>October 27, 2026</li>`;
+      else if(String(url).endsWith("/en/blog")) body='<article><a href="/en/blog/real-article"><span>October 27, 2026</span><h2>Our explanation</h2></a></article>';
+      else body=`<script type="application/ld+json">{"@type":"BlogPosting","headline":"Our explanation","datePublished":"2026-10-27T12:00:00Z"}</script><a href="${official}">IRCC source</a>`;
+      const response=new Response(body);Object.defineProperty(response,"url",{value:String(url)});return response;
+    };
+    const chosen=await chooseEditorialSource(async()=>false,new Date("2026-10-28T12:00:00Z"));
+    assert.equal(chosen.sourceUrl,official); assert.equal(chosen.articleUrl,"https://idlogice.com/en/blog/real-article");
+    assert.equal(chosen.sourceType,"news");
+    assert.equal(await chooseEditorialSource(async()=>true,new Date("2026-10-28T12:00:00Z")),undefined);
+  } finally {globalThis.fetch=original;}
 });

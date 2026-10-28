@@ -32,9 +32,9 @@ export async function runSlot(key: string, draft = false, publishNow = false) {
   try {
     // Check authorization before preparing assets. Draft mode never publishes.
     const token = draft ? "" : await accessToken();
-    record.content ??= await createContent(kind, date, ordinal);
+    record.content ??= await createContent(kind, date, ordinal, { isSourceUsed: async (url) => !!(await store.get(`used-news/${createHash("sha256").update(url).digest("hex")}`, { type: "json" })) });
     if (!record.imageKey) {
-      const image = await generateSocialImage({ title: record.content.title, headline: record.content.graphicHeadline, kind, date, ordinal });
+      const image = await generateSocialImage({ title: record.content.title, headline: record.content.graphicHeadline, kind, date, ordinal, purpose: record.content.purpose, news: record.content.sourceType === "news" });
       const reservation = await store.setJSON(`image-hashes/${image.hash}`, { slot: recordKey }, { onlyIfNew: true });
       if (!reservation.modified) throw new Error("Duplicate image detected; refusing to reuse it");
       record.imageHash = image.hash;
@@ -54,6 +54,10 @@ export async function runSlot(key: string, draft = false, publishNow = false) {
     const postUrn = await publishSocialPost(token, content.text, imageUrn, content.title);
     record = { ...record, postUrn, status: "published", updatedAt: new Date().toISOString() };
     await store.setJSON(recordKey, record);
+    if (content.sourceUrl && content.sourceType && content.sourceType !== "evergreen") {
+      try { await store.setJSON(`used-news/${createHash("sha256").update(content.sourceUrl).digest("hex")}`, { postUrn, sourceUrl: content.sourceUrl, publishedAt: record.updatedAt }); }
+      catch { console.warn("Published post history saved, but editorial source marker could not be updated", key); }
+    }
     console.log("LinkedIn post published", key, postUrn);
   } catch (error) {
     // A failed checkpoint AFTER a successful POST must never lead to duplicate posts.

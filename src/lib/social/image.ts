@@ -1,10 +1,15 @@
 import { createHash } from "node:crypto";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { Resvg } from "@resvg/resvg-js";
-import type { PostKind } from "./calendar.ts";
+import type { PostKind, PostPurpose } from "./calendar.ts";
 
-export type GraphicInput = { title: string; headline?: string; kind: PostKind; date: string; ordinal: number };
+export type GraphicInput = { title: string; headline?: string; kind: PostKind; date: string; ordinal: number; purpose?: PostPurpose; news?: boolean };
+let logoData: string | undefined;
+function officialLogo() {
+  logoData ??= readFileSync(join(process.cwd(), "public/logo.png")).toString("base64");
+  return `<rect x="64" y="28" width="226" height="140" rx="15" fill="#ffffff"/><image x="80" y="40" width="194" height="116" href="data:image/png;base64,${logoData}"/>`;
+}
 const escapeXml = (text: string) => text.replace(/[<>&"']/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", '"': "&quot;", "'": "&apos;" })[c]!);
 const palettes = [
   { bg: "#f8f3eb", ink: "#132f3c", accent: "#bf283b", soft: "#ead9c8" },
@@ -54,7 +59,7 @@ export function socialGraphicSvg(input: GraphicInput) {
   const seed = createHash("sha256").update(`${input.date}/${input.kind}/${input.title}`).digest();
   const layout = (input.ordinal + (input.kind === "job" ? 2 : input.kind === "question" ? 4 : 0)) % 6;
   const p = palettes[seed[0] % palettes.length];
-  const label = input.kind === "job" ? "WEBSITE JOB SPOTLIGHT" : input.kind === "question" ? "LET'S TALK CANADA" : "YOUR CANADA GUIDE";
+  const label = input.kind === "job" ? "WEBSITE JOB SPOTLIGHT" : input.kind === "question" ? "LET'S TALK CANADA" : input.news ? "CANADA IMMIGRATION UPDATE" : "YOUR CANADA GUIDE";
   const note = input.kind === "job" ? "Explore the listing. Confirm availability." : input.kind === "question" ? "Your experience could help someone else." : "Understand your options. Plan your next step.";
   const width = layout === 1 || layout === 3 ? 660 : 880;
   let size = input.kind === "question" ? 61 : 76;
@@ -77,8 +82,7 @@ export function socialGraphicSvg(input: GraphicInput) {
     <rect width="1080" height="1080" fill="${p.bg}"/>
     <g font-family="Lato" fill="${p.ink}">
       ${decorations[layout]}
-      <rect x="80" y="72" width="12" height="42" rx="6" fill="${p.accent}"/>
-      <text x="112" y="108" font-size="43" font-weight="700" letter-spacing="3">IDLOGICE</text>
+      ${officialLogo()}
       <text x="1000" y="103" font-size="22" text-anchor="end">IMMIGRATION CANADA</text>
       <text x="80" y="195" fill="${p.accent}" font-size="23" font-weight="700" letter-spacing="2">${label}</text>
       ${text}
@@ -87,9 +91,9 @@ export function socialGraphicSvg(input: GraphicInput) {
     </g>
     <rect y="864" width="1080" height="216" fill="#102b38"/>
     <g font-family="Lato" fill="#ffffff">
-      <text x="80" y="925" font-size="37" font-weight="700">Book your consultation</text>
+      <text x="80" y="925" font-size="37" font-weight="700">${input.purpose === "article" ? "Read the full article" : "Book your consultation"}</text>
       <path d="M932 911h56m-16-16 16 16-16 16" fill="none" stroke="#ffb29f" stroke-width="5"/>
-      <text x="80" y="971" font-size="27" fill="#f6c6b7">idlogice.com/en/book-consultation</text>
+      <text x="80" y="971" font-size="27" fill="#f6c6b7">${input.purpose === "article" ? "idlogice.com · Article link in the caption" : "idlogice.com/en/book-consultation"}</text>
       <text x="80" y="1032" font-size="29">contact@idlogice.com</text>
       <text x="1000" y="1032" font-size="29" text-anchor="end">+1 581-634-0224</text>
     </g>

@@ -34,9 +34,26 @@ export function dueSlots(now: Date, start: string) {
     .map((s) => ({ key: `${date}/${s.kind}`, date, kind: s.kind, ordinal: day / s.every }));
 }
 
-export function completePost(body: string, sourceUrl?: string) {
-  const text = [body.trim(), sourceUrl ? `Source: ${sourceUrl}` : "", CONTACT_CTA,
-    "#IDLOGICE #CanadaImmigration #MoveToCanada"].filter(Boolean).join("\n\n");
+export type PostPurpose = "article" | "marketing";
+export function postHashtags(kind: PostKind = "informative", topic = "") {
+  const common = ["IDLOGICE", "CanadaImmigration", "CanadianImmigration", "ImmigrationCanada", "MoveToCanada"];
+  const extra = kind === "job" ? ["JobsInCanada", "WorkInCanada", "CanadianWorkPermit", "SkilledWorkers", "ImmigrationConsultant"]
+    : kind === "question" ? ["CanadaPR", "ImmigrationConsultant", "CanadianImmigrationAdvice", "IRCC", "NewcomersToCanada"]
+    : /express entry|crs/i.test(topic) ? ["ExpressEntry", "CanadaPR", "PermanentResidence", "SkilledWorkers", "IRCC"]
+    : /study|student|education|language/i.test(topic) ? ["StudyInCanada", "CanadaStudyPermit", "InternationalStudentsCanada", "CanadaPR", "IRCC"]
+    : /work|worker|employment/i.test(topic) ? ["WorkInCanada", "CanadianWorkPermit", "SkilledWorkers", "CanadaPR", "IRCC"]
+    : /provincial|nominee|pnp/i.test(topic) ? ["CanadaPNP", "ProvincialNomineeProgram", "CanadaPR", "PermanentResidence", "IRCC"]
+    : /family|sponsor/i.test(topic) ? ["FamilySponsorshipCanada", "SpousalSponsorship", "FamilyReunification", "CanadaPR", "IRCC"]
+    : ["IRCC", "CanadaVisa", "ImmigrationUpdates", "NewcomersToCanada", "ImmigrationConsultant"];
+  return [...common, ...extra].map((tag) => `#${tag}`).join(" ");
+}
+
+export function completePost(body: string, options: { purpose?: PostPurpose; articleUrl?: string; kind?: PostKind; title?: string } = {}) {
+  const article = options.purpose === "article";
+  if (article && !/^https:\/\/idlogice\.com\/en\/blog\/[a-z0-9-]+$/.test(options.articleUrl ?? "")) throw new Error("Article CTA must link to a published IDLOGICE article");
+  const cta = article ? `Read the full IDLOGICE article: ${options.articleUrl}\nEmail: contact@idlogice.com\nCall: +1 581-634-0224` : CONTACT_CTA;
+  const text = [body.replace(/#[A-Za-z][A-Za-z0-9_]*/g, "").trim(), cta, postHashtags(options.kind, options.title)].join("\n\n");
+  for (const link of text.match(/https?:\/\/[^\s]+/g) ?? []) if (new URL(link).hostname !== "idlogice.com") throw new Error("Public post links must stay on idlogice.com");
   if (text.length > 3000) throw new Error("LinkedIn post exceeds 3,000 characters");
   return text;
 }
