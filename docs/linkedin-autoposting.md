@@ -48,4 +48,6 @@ For an unpublished preview, invoke the worker with JSON `{"key":"2026-10-28/job"
 
 The blog generator no longer cross-posts to LinkedIn, avoiding additional posts outside this calendar. Its website and Twitter behavior is preserved.
 
+For an expressly requested immediate publication, the same bearer-protected worker accepts `{"key":"TODAYS_MONTREAL_DATE/informative","publishNow":true}`. This runs the full source-check, graphic-rendering, image-upload and publication workflow on the server. It uses the same `posts/` record as the schedule, so repeated requests cannot duplicate a completed post. It accepts only the current Montreal calendar date, requires the published production deployment with automation enabled, and cannot be combined with draft mode. Ordinary scheduled dispatches do not set this option. Browser sign-in, manual image uploads and personal-profile posting are not part of the server automation.
+
 Validation: `node --experimental-strip-types --test tests/linkedin.test.mjs`, TypeScript, targeted ESLint and production build. Tests mock external publishing APIs and never create a real post.

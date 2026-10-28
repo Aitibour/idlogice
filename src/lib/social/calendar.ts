@@ -41,6 +41,19 @@ export function completePost(body: string, sourceUrl?: string) {
   return text;
 }
 
+// Immediate publishing is an explicit authenticated admin action. It cannot replay
+// old dates or pre-publish future calendar slots, and shares the normal post ledger.
+export function executionSlot(key: string, start: string, options: { draft?: boolean; publishNow?: boolean } = {}, now = new Date()) {
+  const match = /^(\d{4}-\d{2}-\d{2})\/(informative|job|question)$/.exec(key);
+  if (!match) throw new Error("Invalid slot key");
+  if (options.draft && options.publishNow) throw new Error("Draft and immediate publication cannot be combined");
+  const date = match[1], kind = match[2] as PostKind;
+  const due = dueSlots(now, start).find((slot) => slot.key === key);
+  if (!due && !options.draft && !(options.publishNow && date === localClock(now).date)) throw new Error("Slot is not due today");
+  const every = kind === "job" ? 2 : kind === "question" ? 3 : 1;
+  return { key, date, kind, ordinal: due?.ordinal ?? Math.max(0, Math.floor(dayNumber(date, start) / every)) };
+}
+
 export function canClaimPost(record: { status: string; updatedAt: string; attempts: number } | null | undefined, now = Date.now()) {
   if (!record) return true;
   if (["published", "publishing", "needs_review"].includes(record.status) || record.attempts >= 3) return false;

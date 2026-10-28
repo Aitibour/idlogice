@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { canClaimPost, dueSlots, type PostKind } from "./calendar";
+import { canClaimPost, executionSlot } from "./calendar";
 import { createContent, type SocialContent } from "./content";
 import { generateSocialImage } from "./image";
 import { publishSocialPost, PublishError, uploadSocialImage } from "./linkedin";
@@ -11,12 +11,9 @@ export type PostRecord = {
   imageHash?: string; imageUrn?: string; postUrn?: string; error?: string;
 };
 
-export async function runSlot(key: string, draft = false) {
-  const slot = dueSlots(new Date(), process.env.LINKEDIN_START_DATE ?? "2026-10-28").find((s) => s.key === key);
-  if (!slot && !draft) throw new Error("Slot is not due today");
-  const match = /^(\d{4}-\d{2}-\d{2})\/(informative|job|question)$/.exec(key);
-  if (!match) throw new Error("Invalid slot key");
-  const [date, kind] = [match[1], match[2] as PostKind];
+export async function runSlot(key: string, draft = false, publishNow = false) {
+  const slot = executionSlot(key, process.env.LINKEDIN_START_DATE ?? "2026-10-28", { draft, publishNow });
+  const { date, kind, ordinal } = slot;
   const store = socialStore();
   const recordKey = `${draft ? "drafts" : "posts"}/${key}`;
   const previous = await store.getWithMetadata(recordKey, { type: "json" }) as { data: PostRecord; etag: string } | null;
@@ -35,9 +32,9 @@ export async function runSlot(key: string, draft = false) {
   try {
     // Check authorization before preparing assets. Draft mode never publishes.
     const token = draft ? "" : await accessToken();
-    record.content ??= await createContent(kind, date, slot?.ordinal ?? 0);
+    record.content ??= await createContent(kind, date, ordinal);
     if (!record.imageKey) {
-      const image = await generateSocialImage({ title: record.content.title, headline: record.content.graphicHeadline, kind, date, ordinal: slot?.ordinal ?? 0 });
+      const image = await generateSocialImage({ title: record.content.title, headline: record.content.graphicHeadline, kind, date, ordinal });
       const reservation = await store.setJSON(`image-hashes/${image.hash}`, { slot: recordKey }, { onlyIfNew: true });
       if (!reservation.modified) throw new Error("Duplicate image detected; refusing to reuse it");
       record.imageHash = image.hash;

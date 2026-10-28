@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { dueSlots, localClock, completePost, CONTACT_CTA, COMPANY_URN, canClaimPost, isPublishedProduction } from "../src/lib/social/calendar.ts";
+import { dueSlots, localClock, completePost, CONTACT_CTA, COMPANY_URN, canClaimPost, isPublishedProduction, executionSlot } from "../src/lib/social/calendar.ts";
 import { createContent } from "../src/lib/social/content.ts";
 import { generateSocialImage, socialGraphicSvg } from "../src/lib/social/image.ts";
 import { publishSocialPost, uploadSocialImage, toLinkedInText } from "../src/lib/social/linkedin.ts";
@@ -103,4 +103,15 @@ test("only the currently published production deployment can automatically post"
   assert.equal(isPublishedProduction({deploy:{context:"production",published:true}}),true);
   assert.equal(isPublishedProduction({deploy:{context:"production",published:false}}),false);
   assert.equal(isPublishedProduction({deploy:{context:"deploy-preview",published:false}}),false);
+});
+
+test("explicit immediate publication is limited to today's ledger and never mixed with drafts", () => {
+  const now = new Date("2026-10-28T00:10:00Z"), start = "2026-10-28";
+  assert.throws(()=>executionSlot("2026-10-27/informative",start,{},now), /not due/);
+  assert.equal(executionSlot("2026-10-27/informative",start,{publishNow:true},now).ordinal,0);
+  assert.throws(()=>executionSlot("2026-10-28/informative",start,{publishNow:true},now), /not due/);
+  assert.throws(()=>executionSlot("2026-10-26/informative",start,{publishNow:true},now), /not due/);
+  assert.throws(()=>executionSlot("2026-10-27/informative",start,{draft:true,publishNow:true},now), /cannot be combined/);
+  assert.throws(()=>executionSlot("other",start,{publishNow:true},now), /Invalid slot/);
+  assert.equal(executionSlot("2026-11-01/job",start,{draft:true},now).ordinal,2);
 });
