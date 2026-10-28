@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { canClaimPost, executionSlot } from "./calendar";
 import { createContent, type SocialContent } from "./content";
 import { generateSocialImage } from "./image";
+import { reserveImage } from "./image-reservations";
 import { publishSocialPost, PublishError, uploadSocialImage } from "./linkedin";
 import { accessToken, socialStore } from "./store";
 
@@ -35,11 +36,11 @@ export async function runSlot(key: string, draft = false, publishNow = false) {
     record.content ??= await createContent(kind, date, ordinal, { isSourceUsed: async (url) => !!(await store.get(`used-news/${createHash("sha256").update(url).digest("hex")}`, { type: "json" })) });
     if (!record.imageKey) {
       const image = await generateSocialImage({ title: record.content.title, headline: record.content.graphicHeadline, kind, date, ordinal, purpose: record.content.purpose, news: record.content.sourceType === "news" });
-      const reservation = await store.setJSON(`image-hashes/${image.hash}`, { slot: recordKey }, { onlyIfNew: true });
-      if (!reservation.modified) throw new Error("Duplicate image detected; refusing to reuse it");
+      await reserveImage(store, image.hash, recordKey, draft);
+      const imageKey = `${draft ? "draft-images" : "images"}/${key}.png`;
+      await store.set(imageKey, new Uint8Array(image.bytes).buffer);
       record.imageHash = image.hash;
-      record.imageKey = `${draft ? "draft-images" : "images"}/${key}.png`;
-      await store.set(record.imageKey, new Uint8Array(image.bytes).buffer);
+      record.imageKey = imageKey;
     }
     record.status = "prepared";
     await store.setJSON(recordKey, { ...record, updatedAt: new Date().toISOString() });

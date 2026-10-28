@@ -4,6 +4,7 @@ import { dueSlots, localClock, completePost, CONTACT_CTA, COMPANY_URN, canClaimP
 import { parseNotices, parseArticleCards, officialUrl, isRecent, chooseEditorialSource } from "../src/lib/social/news.ts";
 import { createContent, validateInformativeCaption, editorialCaption } from "../src/lib/social/content.ts";
 import { generateSocialImage, socialGraphicSvg } from "../src/lib/social/image.ts";
+import { reserveImage } from "../src/lib/social/image-reservations.ts";
 import { publishSocialPost, uploadSocialImage, toLinkedInText } from "../src/lib/social/linkedin.ts";
 
 test("daily, two-day and three-day cadence survives month and DST changes", () => {
@@ -177,4 +178,22 @@ test("recent IRCC news uses a matching live IDLOGICE article and skips already-u
     assert.equal(chosen.sourceType,"news");
     assert.equal(await chooseEditorialSource(async()=>true,new Date("2026-10-28T12:00:00Z")),undefined);
   } finally {globalThis.fetch=original;}
+});
+
+test("preview images cannot block publication; old preview claims promote without allowing duplicate posts", async () => {
+  const records=new Map();let version=0;
+  const store={
+    async setJSON(key,data,options){const previous=records.get(key);if(options.onlyIfNew&&previous||options.onlyIfMatch&&previous?.etag!==options.onlyIfMatch)return {modified:false};records.set(key,{data,etag:String(++version)});return {modified:true};},
+    async getWithMetadata(key){return records.get(key)??null;},
+  };
+  await reserveImage(store,"hash-a","drafts/2026-10-30/job",true);
+  await reserveImage(store,"hash-a","posts/2026-10-30/job",false);
+  await reserveImage(store,"hash-a","posts/2026-10-30/job",false);
+  await assert.rejects(reserveImage(store,"hash-a","posts/2026-11-01/job",false),/Duplicate image/);
+  records.set("image-hashes/old-preview",{data:{slot:"drafts/2026-10-30/job"},etag:String(++version)});
+  const results=await Promise.allSettled([
+    reserveImage(store,"old-preview","posts/2026-10-30/job",false),
+    reserveImage(store,"old-preview","posts/2026-11-01/job",false),
+  ]);
+  assert.equal(results.filter(result=>result.status==="fulfilled").length,1);
 });

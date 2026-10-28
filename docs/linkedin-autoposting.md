@@ -50,6 +50,8 @@ The blog generator no longer cross-posts to LinkedIn, avoiding additional posts 
 
 News and article teasers use verified official headlines with approved advisory copy and a dated attribution, rather than model-generated policy interpretations. This avoids silently extending a fee, eligibility rule or temporary measure to groups the source does not cover. Evergreen captions continue to use source-grounded generation and a second review.
 
+Preview and published image hashes use separate namespaces so previewing a deterministic graphic cannot block its scheduled edition. Legacy preview reservations can be promoted atomically to a publication; hashes already owned by another real post remain blocked. Retrying an interrupted image-cache write for the same post retains its reservation.
+
 For an expressly requested immediate publication, the same bearer-protected worker accepts `{"key":"TODAYS_MONTREAL_DATE/informative","publishNow":true}`. This runs the full source-check, graphic-rendering, image-upload and publication workflow on the server. It uses the same `posts/` record as the schedule, so repeated requests cannot duplicate a completed post. It accepts only the current Montreal calendar date, requires the published production deployment with automation enabled, and cannot be combined with draft mode. Ordinary scheduled dispatches do not set this option. Browser sign-in, manual image uploads and personal-profile posting are not part of the server automation.
 
 Validation: `node --experimental-strip-types --test tests/linkedin.test.mjs`, TypeScript, targeted ESLint and production build. Tests mock external publishing APIs and never create a real post.
