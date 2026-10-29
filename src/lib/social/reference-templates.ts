@@ -16,7 +16,7 @@ export {
   templateLogoVariant,
   type SocialTemplate,
 } from "./template-catalog.ts";
-export const GRAPHIC_VERSION = "topic-templates-30-v3";
+export const GRAPHIC_VERSION = "topic-templates-30-news-stock-v4";
 export type GraphicInput = {
   title: string;
   headline?: string;

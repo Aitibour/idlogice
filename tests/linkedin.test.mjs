@@ -5,6 +5,7 @@ import { parseNotices, parseArticleCards, officialUrl, isRecent, chooseEditorial
 import { createContent, validateInformativeCaption, editorialCaption } from "../src/lib/social/content.ts";
 import { generateSocialImage, socialGraphicSvg, SOCIAL_TEMPLATES, templateLogoVariant, graphicTopic, chooseTemplate, TEMPLATE_CATALOG } from "../src/lib/social/image.ts";
 import { reserveTemplate } from "../src/lib/social/template-rotation.ts";
+import { stockPhotoFor } from "../src/lib/social/stock-photos.ts";
 import { reserveImage } from "../src/lib/social/image-reservations.ts";
 import { publishSocialPost, uploadSocialImage, toLinkedInText } from "../src/lib/social/linkedin.ts";
 
@@ -89,6 +90,19 @@ test("reference templates always include the website and choose transparent logo
     assert.match(svg,/contact@idlogice\.com/);
     assert.match(svg,/\+1 581-634-0224/);
   }
+});
+
+test("news uses a relevant stock photograph without branding, headline or CTA overlays", async () => {
+  const input={title:"Updated temporary immigration measures",kind:"informative",date:"2026-10-29",ordinal:0,news:true};
+  const svg=socialGraphicSvg(input);
+  assert.match(svg,/data-stock-photo="parliament"/);
+  assert.doesNotMatch(svg,/<text|logo|idlogice|Book your consultation/);
+  const result=await generateSocialImage(input);
+  assert.equal(result.bytes.readUInt32BE(16),1080);
+  assert.equal(result.stockPhoto.id,"parliament");
+  assert.equal(stockPhotoFor({...input,title:"Study permit guidance"}).id,"library");
+  assert.equal(stockPhotoFor({...input,title:"Spousal sponsorship guidance"}).id,"family");
+  assert.notEqual(stockPhotoFor({...input,title:"Chef employment news"}).id,"work");
 });
 
 test("graphic text is escaped and all contact actions remain on each image", () => {
