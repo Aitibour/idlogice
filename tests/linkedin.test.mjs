@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { dueSlots, localClock, completePost, CONTACT_CTA, COMPANY_URN, canClaimPost, isPublishedProduction, executionSlot, postHashtags } from "../src/lib/social/calendar.ts";
 import { parseNotices, parseArticleCards, officialUrl, isRecent, chooseEditorialSource } from "../src/lib/social/news.ts";
 import { createContent, validateInformativeCaption, editorialCaption } from "../src/lib/social/content.ts";
-import { generateSocialImage, socialGraphicSvg } from "../src/lib/social/image.ts";
+import { generateSocialImage, socialGraphicSvg, SOCIAL_TEMPLATES } from "../src/lib/social/image.ts";
 import { reserveImage } from "../src/lib/social/image-reservations.ts";
 import { publishSocialPost, uploadSocialImage, toLinkedInText } from "../src/lib/social/linkedin.ts";
 
@@ -66,12 +66,27 @@ test("real PNG graphics need no network or API credentials and vary across editi
       const result = await generateSocialImage({title:"Preparing your Canadian journey",kind:"informative",date:`2026-11-0${ordinal+1}`,ordinal});
       assert.equal(result.bytes.subarray(0,8).toString("hex"),"89504e470d0a1a0a");
       assert.equal(result.bytes.readUInt32BE(16),1080);
-      assert.equal(result.bytes.readUInt32BE(20),1080);
+      assert.equal(result.bytes.readUInt32BE(20),1350);
+      // A missing/unsupported photographic background can otherwise render a
+      // valid PNG containing only text. Real background editions are substantial.
+      if (ordinal > 0) assert.ok(result.bytes.length > 150000, "Bundled background must actually be rasterized");
       hashes.add(result.hash);
     }
     assert.equal(hashes.size,6);
     await assert.rejects(generateSocialImage({title:"",kind:"job",date:"2026-11-01",ordinal:0}), /headline/);
   } finally { globalThis.fetch = original; }
+});
+
+test("reference templates always include the website and choose transparent logo lettering for their background", () => {
+  for (const template of SOCIAL_TEMPLATES) {
+    const svg = socialGraphicSvg({title:"Your next step in Canada",kind:"informative",date:"2026-11-01",ordinal:0,template});
+    assert.match(svg,/idlogice\.com<\/text>/);
+    const light = template.startsWith("photo") || template.startsWith("flag");
+    assert.ok(svg.includes(`data-logo-variant="${light ? "light" : "dark"}"`));
+    assert.doesNotMatch(svg,/rx="15" fill="#ffffff"/);
+    assert.match(svg,/contact@idlogice\.com/);
+    assert.match(svg,/\+1 581-634-0224/);
+  }
 });
 
 test("graphic text is escaped and all contact actions remain on each image", () => {

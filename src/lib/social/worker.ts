@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { canClaimPost, executionSlot } from "./calendar";
 import { createContent, type SocialContent } from "./content";
-import { generateSocialImage } from "./image";
+import { generateSocialImage, GRAPHIC_VERSION } from "./image";
 import { reserveImage } from "./image-reservations";
 import { publishSocialPost, PublishError, uploadSocialImage } from "./linkedin";
 import { accessToken, socialStore } from "./store";
@@ -9,7 +9,7 @@ import { accessToken, socialStore } from "./store";
 export type PostRecord = {
   status: "generating" | "prepared" | "publishing" | "published" | "failed" | "needs_review";
   updatedAt: string; attempts: number; content?: SocialContent; imageKey?: string;
-  imageHash?: string; imageUrn?: string; postUrn?: string; error?: string;
+  imageHash?: string; imageUrn?: string; imageVersion?: string; postUrn?: string; error?: string;
 };
 
 export async function runSlot(key: string, draft = false, publishNow = false) {
@@ -34,13 +34,15 @@ export async function runSlot(key: string, draft = false, publishNow = false) {
     // Check authorization before preparing assets. Draft mode never publishes.
     const token = draft ? "" : await accessToken();
     record.content ??= await createContent(kind, date, ordinal, { isSourceUsed: async (url) => !!(await store.get(`used-news/${createHash("sha256").update(url).digest("hex")}`, { type: "json" })) });
-    if (!record.imageKey) {
+    if (!record.imageKey || record.imageVersion !== GRAPHIC_VERSION) {
       const image = await generateSocialImage({ title: record.content.title, headline: record.content.graphicHeadline, kind, date, ordinal, purpose: record.content.purpose, news: record.content.sourceType === "news" });
       await reserveImage(store, image.hash, recordKey, draft);
       const imageKey = `${draft ? "draft-images" : "images"}/${key}.png`;
       await store.set(imageKey, new Uint8Array(image.bytes).buffer);
       record.imageHash = image.hash;
       record.imageKey = imageKey;
+      record.imageVersion = GRAPHIC_VERSION;
+      record.imageUrn = undefined;
     }
     record.status = "prepared";
     await store.setJSON(recordKey, { ...record, updatedAt: new Date().toISOString() });
