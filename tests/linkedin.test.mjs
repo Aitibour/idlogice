@@ -1,9 +1,10 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { dueSlots, localClock, completePost, CONTACT_CTA, COMPANY_URN, canClaimPost, isPublishedProduction, executionSlot, postHashtags } from "../src/lib/social/calendar.ts";
-import { parseNotices, parseArticleCards, officialUrl, isRecent, chooseEditorialSource } from "../src/lib/social/news.ts";
+import { parseNotices, parseArticleCards, officialUrl, isRecent, chooseEditorialSource, parseMinisterialRounds, recentNews } from "../src/lib/social/news.ts";
 import { createContent, validateInformativeCaption, editorialCaption } from "../src/lib/social/content.ts";
-import { generateSocialImage, socialGraphicSvg, SOCIAL_TEMPLATES } from "../src/lib/social/image.ts";
+import { generateSocialImage, socialGraphicSvg, SOCIAL_TEMPLATES, templateLogoVariant, graphicTopic, chooseTemplate, TEMPLATE_CATALOG } from "../src/lib/social/image.ts";
+import { reserveTemplate } from "../src/lib/social/template-rotation.ts";
 import { reserveImage } from "../src/lib/social/image-reservations.ts";
 import { publishSocialPost, uploadSocialImage, toLinkedInText } from "../src/lib/social/linkedin.ts";
 
@@ -62,17 +63,18 @@ test("real PNG graphics need no network or API credentials and vary across editi
   try {
     globalThis.fetch = async()=>{throw new Error("Graphics must never request a paid API");};
     const hashes = new Set();
-    for (let ordinal=0; ordinal<6; ordinal++) {
-      const result = await generateSocialImage({title:"Preparing your Canadian journey",kind:"informative",date:`2026-11-0${ordinal+1}`,ordinal});
+    assert.equal(SOCIAL_TEMPLATES.length,30);
+    for (const [ordinal,template] of SOCIAL_TEMPLATES.entries()) {
+      const result = await generateSocialImage({title:"Preparing your Canadian journey",kind:"informative",date:"2026-11-01",ordinal,template});
       assert.equal(result.bytes.subarray(0,8).toString("hex"),"89504e470d0a1a0a");
       assert.equal(result.bytes.readUInt32BE(16),1080);
       assert.equal(result.bytes.readUInt32BE(20),1350);
       // A missing/unsupported photographic background can otherwise render a
       // valid PNG containing only text. Real background editions are substantial.
-      if (ordinal > 0) assert.ok(result.bytes.length > 150000, "Bundled background must actually be rasterized");
+      if (/^(photo|phone|skyline|flag)/.test(template)) assert.ok(result.bytes.length > 150000, "Bundled background must actually be rasterized");
       hashes.add(result.hash);
     }
-    assert.equal(hashes.size,6);
+    assert.equal(hashes.size,30);
     await assert.rejects(generateSocialImage({title:"",kind:"job",date:"2026-11-01",ordinal:0}), /headline/);
   } finally { globalThis.fetch = original; }
 });
@@ -81,7 +83,7 @@ test("reference templates always include the website and choose transparent logo
   for (const template of SOCIAL_TEMPLATES) {
     const svg = socialGraphicSvg({title:"Your next step in Canada",kind:"informative",date:"2026-11-01",ordinal:0,template});
     assert.match(svg,/idlogice\.com<\/text>/);
-    const light = template.startsWith("photo") || template.startsWith("flag");
+    const light = templateLogoVariant(template) === "light";
     assert.ok(svg.includes(`data-logo-variant="${light ? "light" : "dark"}"`));
     assert.doesNotMatch(svg,/rx="15" fill="#ffffff"/);
     assert.match(svg,/contact@idlogice\.com/);
@@ -211,4 +213,35 @@ test("preview images cannot block publication; old preview claims promote withou
     reserveImage(store,"old-preview","posts/2026-11-01/job",false),
   ]);
   assert.equal(results.filter(result=>result.status==="fulfilled").length,1);
+});
+
+test("topic selection and durable rotation use all 30 layouts before repeating; drafts and retries are isolated", async () => {
+  const records=new Map(); let version=0;
+  const store={
+    async setJSON(key,data,options){const previous=records.get(key);if(options.onlyIfNew&&previous||options.onlyIfMatch&&previous?.etag!==options.onlyIfMatch)return {modified:false};records.set(key,{data,etag:String(++version)});return {modified:true};},
+    async getWithMetadata(key){return records.get(key)??null;},
+  };
+  const input={title:"Study permit planning",kind:"informative",date:"2026-11-01",ordinal:0};
+  assert.equal(graphicTopic(input),"study");
+  assert.ok(TEMPLATE_CATALOG.find(t=>t.id===chooseTemplate(input)).topics.includes("study"));
+  const history=[];
+  for(let i=0;i<60;i++){
+    const template=await reserveTemplate(store,{...input,ordinal:i},`posts/${i}`,false);
+    assert.ok(!history.slice(-29).includes(template));history.push(template);
+    assert.equal(await reserveTemplate(store,input,`posts/${i}`,false),template);
+  }
+  assert.equal(new Set(history.slice(0,30)).size,30);
+  assert.equal(await reserveTemplate(store,input,"drafts/one",true),history[0]);
+  const concurrent=await Promise.all([reserveTemplate(store,input,"posts/a",false),reserveTemplate(store,input,"posts/b",false)]);
+  assert.notEqual(...concurrent);
+  for(const template of SOCIAL_TEMPLATES) assert.doesNotThrow(()=>socialGraphicSvg({...input,template,headline:"Which part of your immigration plan would you like us to explain next: Express Entry, study permits, work permits, or family sponsorship?"}));
+});
+
+test("ministerial instructions preserve dates and official URLs; total source outages hold publication", async () => {
+  const now=new Date("2026-10-29T12:00:00Z");
+  const rounds=parseMinisterialRounds({rounds:[{drawDate:"2026-10-28",mitext:"<a href='/content/canadasite/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-rounds/invitations.html?q=453'>Invitations under Express Entry #453</a>"},{drawDate:"2026-01-01",mitext:"<a href='https://other.example/'>Unverified</a>"}]},now);
+  assert.equal(rounds.length,1);assert.equal(rounds[0].sourceKind,"ministerial");assert.match(rounds[0].sourceUrl,/canada.ca\/en\//);
+  assert.match(editorialCaption(rounds[0].title,false,true),/^IRCC ministerial instructions:/);
+  const original=globalThis.fetch;
+  try {globalThis.fetch=async()=>{throw new Error("offline")};await assert.rejects(recentNews(now),/held for retry/);} finally {globalThis.fetch=original;}
 });

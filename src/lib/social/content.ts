@@ -2,7 +2,7 @@ import Groq from "groq-sdk";
 import { createHash } from "node:crypto";
 import { JOBS } from "../../data/jobs.ts";
 import { completePost, type PostKind, type PostPurpose } from "./calendar.ts";
-import { chooseEditorialSource } from "./news.ts";
+import { chooseEditorialSource, type EditorialSource } from "./news.ts";
 
 // Informative posts are grounded in a freshly fetched official page, not old blog copy.
 export const TOPICS = [
@@ -35,7 +35,7 @@ const QUESTIONS = [
   "How do you check whether the immigration information you see online is reliable?",
 ];
 
-export type SocialContent = { title: string; text: string; sourceUrl?: string; sourceHash?: string; checkedAt: string; graphicHeadline?: string; purpose?: PostPurpose; articleUrl?: string; sourcePublishedAt?: string; sourceType?: "news" | "article" | "evergreen" };
+export type SocialContent = { title: string; text: string; sourceUrl?: string; sourceHash?: string; checkedAt: string; graphicHeadline?: string; purpose?: PostPurpose; articleUrl?: string; sourcePublishedAt?: string; sourceType?: "news" | "article" | "evergreen"; sourceKind?: EditorialSource["sourceKind"] };
 
 export function validateInformativeCaption(body: unknown, source: string): asserts body is string {
   if (typeof body !== "string" || body.length < 100 || body.length > 1500 || /https?:\/\/|\d/i.test(body)) throw new Error("Generated post did not pass content validation");
@@ -47,9 +47,9 @@ export function validateInformativeCaption(body: unknown, source: string): asser
   }
 }
 
-export function editorialCaption(title: string, article: boolean) {
+export function editorialCaption(title: string, article: boolean, ministerial = false) {
   return [
-    `${article ? "IDLOGICE reading" : "IRCC update"}: ${title}`,
+    `${article ? "IDLOGICE reading" : ministerial ? "IRCC ministerial instructions" : "IRCC update"}: ${title}`,
     "What could this mean for your plans for Canada? Start by checking how the announcement or guidance relates to your own circumstances.",
     "Before taking action:\n• Confirm which groups and situations the official guidance covers.\n• Review the conditions and any applicable deadlines carefully.\n• Get clarity on your next steps before making an immigration decision.",
     article ? "Read our IDLOGICE article for more context and points to consider for your planning."
@@ -60,6 +60,7 @@ export function editorialCaption(title: string, article: boolean) {
 export async function createContent(kind: PostKind, date: string, ordinal: number, options: { isSourceUsed?: (url: string) => Promise<boolean> } = {}): Promise<SocialContent> {
   let title: string, body: string, sourceUrl: string | undefined, sourceHash: string | undefined, graphicHeadline: string | undefined;
   let purpose: PostPurpose = "marketing", articleUrl: string | undefined, sourcePublishedAt: string | undefined, sourceType: SocialContent["sourceType"];
+  let sourceKind: SocialContent["sourceKind"];
   if (kind === "job") {
     const job = JOBS[ordinal % JOBS.length];
     title = `${job.title} in ${job.city}`;
@@ -84,6 +85,7 @@ export async function createContent(kind: PostKind, date: string, ordinal: numbe
     title = editorial?.title ?? topic[0]; sourceUrl = editorial?.sourceUrl ?? topic[1];
     articleUrl = editorial?.articleUrl; purpose = articleUrl ? "article" : "marketing";
     sourcePublishedAt = editorial?.publishedAt; sourceType = editorial?.sourceType ?? "evergreen";
+    sourceKind = editorial?.sourceKind;
     const response = await fetch(sourceUrl, { signal: AbortSignal.timeout(20000), headers: { "User-Agent": "IDLOGICE-Editorial/1.0" } });
     if (!response.ok || !response.url.startsWith("https://www.canada.ca/")) throw new Error(`Official source unavailable (${response.status}); skipping unverified post`);
     const html = await response.text();
@@ -101,7 +103,7 @@ export async function createContent(kind: PostKind, date: string, ordinal: numbe
     if (editorial) {
       // News uses the verified headline plus approved advisory copy. No model
       // paraphrase can silently broaden a temporary policy's fees or eligibility.
-      body = editorialCaption(title, !!articleUrl);
+      body = editorialCaption(title, !!articleUrl, sourceKind === "ministerial");
     } else {
     const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
     const result = await groq.chat.completions.create({
@@ -127,8 +129,8 @@ export async function createContent(kind: PostKind, date: string, ordinal: numbe
     if (JSON.parse(review.choices[0]?.message.content ?? "{}").approved !== true) throw new Error("Source review held this informative post; no unverified caption published");
     body = parsed.body;
     }
-    const attribution = sourcePublishedAt ? `${sourceType === "news" ? "IRCC announcement" : "IDLOGICE article"} published ${new Intl.DateTimeFormat("en-CA", { month: "long", day: "numeric", year: "numeric", timeZone: /^\d{4}-\d{2}-\d{2}$/.test(sourcePublishedAt) ? "UTC" : "America/Toronto" }).format(new Date(sourcePublishedAt))}.` : "";
+    const attribution = sourcePublishedAt ? `${sourceKind === "ministerial" ? "Ministerial instructions dated" : sourceType === "news" ? "IRCC announcement published" : "IDLOGICE article published"} ${new Intl.DateTimeFormat("en-CA", { month: "long", day: "numeric", year: "numeric", timeZone: /^\d{4}-\d{2}-\d{2}$/.test(sourcePublishedAt) ? "UTC" : "America/Toronto" }).format(new Date(sourcePublishedAt))}.` : "";
     body = [body, attribution, "General information; requirements depend on your situation and can change."].filter(Boolean).join("\n\n");
   }
-  return { title, text: completePost(body, { purpose, articleUrl, kind, title }), sourceUrl, sourceHash, checkedAt: new Date().toISOString(), graphicHeadline, purpose, articleUrl, sourcePublishedAt, sourceType };
+  return { title, text: completePost(body, { purpose, articleUrl, kind, title }), sourceUrl, sourceHash, checkedAt: new Date().toISOString(), graphicHeadline, purpose, articleUrl, sourcePublishedAt, sourceType, sourceKind };
 }

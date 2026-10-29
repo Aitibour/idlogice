@@ -4,7 +4,7 @@ import { join } from "node:path";
 import { Resvg } from "@resvg/resvg-js";
 import { referenceGraphicSvg, type GraphicInput } from "./reference-templates.ts";
 
-export { GRAPHIC_VERSION, SOCIAL_TEMPLATES, type GraphicInput, type SocialTemplate } from "./reference-templates.ts";
+export { GRAPHIC_VERSION, SOCIAL_TEMPLATES, TEMPLATE_CATALOG, chooseTemplate, graphicTopic, templateLogoVariant, type GraphicInput, type SocialTemplate } from "./reference-templates.ts";
 export const socialGraphicSvg = referenceGraphicSvg;
 
 // Bundled original background artwork; no per-post image API request or fee.
