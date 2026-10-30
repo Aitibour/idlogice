@@ -2,8 +2,6 @@ import { fetchLatestItems } from "../../src/lib/blog/rss";
 import { generateArticle } from "../../src/lib/blog/generate";
 import { fetchUnsplashPhoto } from "../../src/lib/blog/unsplash";
 import { publishPost } from "../../src/lib/blog/publish";
-import { publishToTwitter } from "../../src/lib/blog/twitter";
-import { generateCoverImage } from "../../src/lib/blog/openai-image";
 import { createServiceClient } from "../../src/lib/supabase/service";
 
 type NetlifyEvent = {
@@ -74,22 +72,8 @@ export default async function handler(event: NetlifyEvent = {}) {
   if (result) {
     console.log("Done. Slug:", result.slug);
 
-    // Generate DALL-E cover image for LinkedIn (rotates between 2 API keys)
-    const coverImage = await generateCoverImage(
-      article.title_en ?? targetItem.title,
-      article.unsplash_keyword ?? "canada immigration"
-    );
-
-    // LinkedIn has its own calendar, image requirement and durable posting history.
-
-    // Publish to X / Twitter (image + link in tweet body)
-    await publishToTwitter({
-      title: article.title_en ?? targetItem.title,
-      summary: article.excerpt_en ?? article.excerpt_fr ?? "",
-      slug: result.slug,
-      locale: "en",
-      coverImage,
-    });
+    // LinkedIn and X each have a calendar, image requirement and durable ledger.
+    // The blog generator does not create additional social posts outside them.
   }
 }
 

@@ -46,7 +46,7 @@ Bearer-protected status: `/.netlify/functions/linkedin-status`. Append `?key=pos
 
 For an unpublished preview, invoke the worker with JSON `{"key":"2026-10-28/job","draft":true}` and the authorization header. Drafts use isolated records and never publish. Graphics render locally with resvg and bundled OFL-licensed Lato fonts, with no image-generation API requests, key requirement or per-image provider charge. The worker bundle explicitly includes the fonts and native renderer. Groq still generates and checks informative text under that account's limits; hosting/storage and LinkedIn limits also apply. Required env: `GROQ_API_KEY`, `LINKEDIN_CLIENT_ID`, `LINKEDIN_CLIENT_SECRET`, `SOCIAL_AUTOMATION_SECRET`, `SOCIAL_TOKEN_ENCRYPTION_KEY`, and the calendar settings. OpenAI keys are unused by this LinkedIn workflow.
 
-The blog generator no longer cross-posts to LinkedIn, avoiding additional posts outside this calendar. Its website and Twitter behavior is preserved.
+The blog generator does not cross-post to LinkedIn or X, avoiding additional posts outside their separate calendars. Its website publishing behavior is preserved. X connection and activation are documented in `x-autoposting.md`.
 
 News and article teasers use verified official headlines with approved advisory copy and a dated attribution, rather than model-generated policy interpretations. This avoids silently extending a fee, eligibility rule or temporary measure to groups the source does not cover. Evergreen captions continue to use source-grounded generation and a second review.
 

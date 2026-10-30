@@ -19,6 +19,10 @@
   external_node_modules = ["@resvg/resvg-js"]
   included_files = ["assets/social/**", "public/logo.png"]
 
+[functions."x-worker-background"]
+  external_node_modules = ["@resvg/resvg-js"]
+  included_files = ["assets/social/**", "public/logo.png"]
+
 # Security headers
 [[headers]]
   for = "/*"
