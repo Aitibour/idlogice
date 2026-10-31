@@ -6,6 +6,11 @@ import { reserveTemplate } from "./template-rotation.ts";
 import { socialStore } from "./store.ts";
 import { xClient, xThread, publishXPart, XPublishError } from "./x.ts";
 import { xStore } from "./x-store.ts";
+import {
+  verifyBufferChannel,
+  createBufferPost,
+  getBufferPost,
+} from "./buffer.ts";
 
 type Record = {
   status: string;
@@ -20,6 +25,10 @@ type Record = {
   templateId?: string;
   stockPhoto?: { id: string; page: string; photographer: string };
   error?: string;
+  bufferPostId?: string;
+  bufferStatus?: string;
+  externalLink?: string | null;
+  provider?: string;
 };
 
 export async function runXSlot(key: string, draft = false) {
@@ -33,6 +42,31 @@ export async function runXSlot(key: string, draft = false) {
   const previous = (await store.getWithMetadata(recordKey, {
     type: "json",
   })) as { data: Record; etag: string } | null;
+  if (previous?.data.bufferPostId) {
+    if (
+      previous.data.status === "published" ||
+      previous.data.status === "needs_review"
+    )
+      return;
+    const post = await getBufferPost(previous.data.bufferPostId);
+    await store.setJSON(
+      recordKey,
+      {
+        ...previous.data,
+        status:
+          post.status === "sent"
+            ? "published"
+            : post.status === "error"
+              ? "needs_review"
+              : "submitted",
+        bufferStatus: post.status,
+        externalLink: post.externalLink,
+        updatedAt: new Date().toISOString(),
+      },
+      { onlyIfMatch: previous.etag },
+    );
+    return;
+  }
   if (previous?.data.status === "publishing") {
     if (Date.now() - Date.parse(previous.data.updatedAt) > 20 * 60000)
       await store.setJSON(
@@ -66,15 +100,19 @@ export async function runXSlot(key: string, draft = false) {
     return;
   try {
     let client: ReturnType<typeof xClient> | undefined;
+    const useBuffer = process.env.X_PUBLISH_PROVIDER === "buffer";
     if (!draft) {
       if (!process.env.X_ACCOUNT_ID)
         throw new Error(
           "X account must be verified and pinned before enabling publication",
         );
-      client = xClient();
-      const account = await client.v2.me();
-      if (account.data.id !== process.env.X_ACCOUNT_ID)
-        throw new Error("X credentials belong to a different account");
+      if (useBuffer) await verifyBufferChannel();
+      else {
+        client = xClient();
+        const account = await client.v2.me();
+        if (account.data.id !== process.env.X_ACCOUNT_ID)
+          throw new Error("X credentials belong to a different account");
+      }
     }
     if (!record.content) {
       const linked = (await socialStore().get(`posts/${key}`, {
@@ -136,6 +174,40 @@ export async function runXSlot(key: string, draft = false) {
     )
       throw new Error("Stored X image is missing or corrupted");
     record.postIds ??= [];
+    if (useBuffer) {
+      if (record.postIds.length)
+        throw new Error(
+          "A partially published direct X thread cannot switch providers",
+        );
+      await store.set(`public-media/${record.imageHash}.png`, bytes);
+      const imageUrl = `https://idlogice.com/.netlify/functions/buffer-media?id=${record.imageHash}`;
+      record = {
+        ...record,
+        status: "publishing",
+        provider: "buffer",
+        updatedAt: new Date().toISOString(),
+      };
+      await store.setJSON(recordKey, record);
+      const post = await createBufferPost(record.parts!, imageUrl);
+      record = {
+        ...record,
+        bufferPostId: post.id,
+        bufferStatus: post.status,
+        externalLink: post.externalLink,
+        status: post.status === "sent" ? "published" : "submitted",
+        updatedAt: new Date().toISOString(),
+      };
+      await store.setJSON(recordKey, record);
+      if (
+        record.content?.sourceUrl &&
+        record.content.sourceType !== "evergreen"
+      )
+        await store.setJSON(
+          `used-news/${createHash("sha256").update(record.content.sourceUrl).digest("hex")}`,
+          { bufferPostId: post.id, submittedAt: record.updatedAt },
+        );
+      return;
+    }
     const mediaId = record.postIds.length
       ? undefined
       : await client!.v2.uploadMedia(Buffer.from(bytes), {

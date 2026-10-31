@@ -31,6 +31,8 @@ export default async function xStatus(
   return Response.json(
     {
       enabled: process.env.X_AUTOMATION_ENABLED === "true",
+      provider: process.env.X_PUBLISH_PROVIDER ?? "direct",
+      bufferChannelId: process.env.BUFFER_X_CHANNEL_ID ?? null,
       accountId: process.env.X_ACCOUNT_ID ?? null,
       timezone: TIME_ZONE,
       deployment: context.deploy,

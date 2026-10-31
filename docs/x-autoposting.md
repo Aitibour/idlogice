@@ -1,5 +1,15 @@
 # IDLOGICE X posting
 
+## Active provider: Buffer
+
+From October 31, 2026, `X_PUBLISH_PROVIDER=buffer` routes publishing through Buffer instead of the paid direct X API. The workspace owner is a.aitibour@gmail.com; the verified twitter channel is `66f10f77ca3dab3e0a5f444d`, service ID `1829195467151822848`, username idlogicecanada. The LinkedIn channel in Buffer is not used. Run `node scripts/buffer-setup.mjs` to verify the channel and save the ignored `.env.buffer.local` API key into deployment settings, then redeploy.
+
+Buffer accepts complete threads via `metadata.twitter.thread`, with all parts included and the image attached to the first part. The worker publishes only due slots using `shareNow`, so it does not fill the ten-post free-plan queue with a month of drafts. Free-plan thread and API limits still apply; explicit limit errors hold the slot rather than upgrade or pay. An unpublished six-part image draft was accepted during integration testing.
+
+Only the intended PNG is exported to `public-media/SHA256.png` in the X blob store. The public `buffer-media` function accepts exactly a 64-character hex digest and serves PNG bytes only; protected captions, credentials and arbitrary storage paths are inaccessible. Buffer fetches this public image URL. Saved Buffer post IDs are polled to distinguish submission from actual delivery. `sent` marks published, `error` requires review, and an ambiguous create response is never blindly resubmitted. No direct X reads, media uploads or posting calls occur in Buffer mode.
+
+The direct-API setup below is retained as historical/fallback documentation, not the active publishing route.
+
 The X calendar uses the same English schedule and Toronto timezone as LinkedIn: informative at 09:00 daily, website jobs at 12:30 every two days, questions at 16:00 every three days. The original October 28, 2026 anchor preserves matching dates. The scheduled dispatcher runs every half hour, catches up only today's slots and operates only on the published production deployment when `X_AUTOMATION_ENABLED=true`.
 
 News uses relevant free stock photos with no text or branding. Other content uses the 30 branded layouts. Existing LinkedIn edition content is reused when available; otherwise X invokes the same official-source discovery and validation. The complete approved caption, website booking/article CTA, email, phone and ten hashtags are preserved in numbered reply threads, using official twitter-text weighted counting and 280-character limits. A photo attaches to the first part. No separate Premium subscription or long-post capability is assumed. The former blog-generator X cross-post has been removed to prevent additional unscheduled posts.
