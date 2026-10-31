@@ -2,6 +2,8 @@
 
 ## Active provider: Buffer
 
+X editions reuse the corresponding LinkedIn post's verified topic and source, and copy its exact image bytes when available and checksum-valid. X captions are independently composed for the platform: a shorter hook, dated official headline for news, essential listing facts for jobs, and a direct reply invitation for questions. They retain the proper website article/booking CTA, email, phone and ten topical hashtags. No new policy interpretations are invented during adaptation. Records retain `captionVersion=x-distinct-v1`; already submitted or published posts are not rewritten or duplicated.
+
 From October 31, 2026, `X_PUBLISH_PROVIDER=buffer` routes publishing through Buffer instead of the paid direct X API. The workspace owner is a.aitibour@gmail.com; the verified twitter channel is `66f10f77ca3dab3e0a5f444d`, service ID `1829195467151822848`, username idlogicecanada. The LinkedIn channel in Buffer is not used. Run `node scripts/buffer-setup.mjs` to verify the channel and save the ignored `.env.buffer.local` API key into deployment settings, then redeploy.
 
 Buffer accepts complete threads via `metadata.twitter.thread`, with all parts included and the image attached to the first part. The worker publishes only due slots using `shareNow`, so it does not fill the ten-post free-plan queue with a month of drafts. Free-plan thread and API limits still apply; explicit limit errors hold the slot rather than upgrade or pay. An unpublished six-part image draft was accepted during integration testing.

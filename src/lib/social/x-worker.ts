@@ -6,6 +6,7 @@ import { reserveTemplate } from "./template-rotation.ts";
 import { socialStore } from "./store.ts";
 import { xClient, xThread, publishXPart, XPublishError } from "./x.ts";
 import { xStore } from "./x-store.ts";
+import { xCaption } from "./x-content.ts";
 import {
   verifyBufferChannel,
   createBufferPost,
@@ -29,6 +30,7 @@ type Record = {
   bufferStatus?: string;
   externalLink?: string | null;
   provider?: string;
+  captionVersion?: string;
 };
 
 export async function runXSlot(key: string, draft = false) {
@@ -128,36 +130,69 @@ export async function runXSlot(key: string, draft = false) {
             )),
         }));
     }
-    record.parts ??= xThread(record.content.text);
+    if (!record.postIds?.length && record.captionVersion !== "x-distinct-v1") {
+      record.parts = xThread(xCaption(record.content, kind));
+      record.captionVersion = "x-distinct-v1";
+    }
+    record.parts ??= xThread(xCaption(record.content, kind));
     if (!record.imageKey || record.imageVersion !== GRAPHIC_VERSION) {
-      const input = {
-        title: record.content.title,
-        headline: record.content.graphicHeadline,
-        kind,
-        date,
-        ordinal,
-        purpose: record.content.purpose,
-        news: record.content.sourceType === "news",
-        policy: record.content.sourceKind === "ministerial",
-      };
-      const template = input.news
-        ? undefined
-        : await reserveTemplate(store, input, recordKey, draft);
-      const image = await generateSocialImage({ ...input, template });
-      record.imageKey = `${draft ? "draft-images" : "images"}/${key}.png`;
-      await store.set(record.imageKey, new Uint8Array(image.bytes).buffer);
-      record.imageHash = image.hash;
-      record.imageVersion = GRAPHIC_VERSION;
-      record.templateId = image.stockPhoto
-        ? `stock:${image.stockPhoto.id}`
-        : template;
-      record.stockPhoto = image.stockPhoto
-        ? {
-            id: image.stockPhoto.id,
-            page: image.stockPhoto.page,
-            photographer: image.stockPhoto.photographer,
-          }
-        : undefined;
+      const linkedImage = (await socialStore().get(`posts/${key}`, {
+        type: "json",
+      })) as {
+        imageKey?: string;
+        imageHash?: string;
+        imageVersion?: string;
+        templateId?: string;
+        content?: SocialContent;
+      } | null;
+      const sharedBytes =
+        linkedImage?.imageKey &&
+        linkedImage.imageVersion === GRAPHIC_VERSION &&
+        linkedImage.content?.title === record.content.title
+          ? await socialStore().get(linkedImage.imageKey, {
+              type: "arrayBuffer",
+            })
+          : null;
+      if (
+        sharedBytes &&
+        createHash("sha256").update(Buffer.from(sharedBytes)).digest("hex") ===
+          linkedImage?.imageHash
+      ) {
+        record.imageKey = `${draft ? "draft-images" : "images"}/${key}.png`;
+        await store.set(record.imageKey, sharedBytes);
+        record.imageHash = linkedImage.imageHash;
+        record.imageVersion = GRAPHIC_VERSION;
+        record.templateId = linkedImage.templateId;
+      } else {
+        const input = {
+          title: record.content.title,
+          headline: record.content.graphicHeadline,
+          kind,
+          date,
+          ordinal,
+          purpose: record.content.purpose,
+          news: record.content.sourceType === "news",
+          policy: record.content.sourceKind === "ministerial",
+        };
+        const template = input.news
+          ? undefined
+          : await reserveTemplate(store, input, recordKey, draft);
+        const image = await generateSocialImage({ ...input, template });
+        record.imageKey = `${draft ? "draft-images" : "images"}/${key}.png`;
+        await store.set(record.imageKey, new Uint8Array(image.bytes).buffer);
+        record.imageHash = image.hash;
+        record.imageVersion = GRAPHIC_VERSION;
+        record.templateId = image.stockPhoto
+          ? `stock:${image.stockPhoto.id}`
+          : template;
+        record.stockPhoto = image.stockPhoto
+          ? {
+              id: image.stockPhoto.id,
+              page: image.stockPhoto.page,
+              photographer: image.stockPhoto.photographer,
+            }
+          : undefined;
+      }
     }
     record = {
       ...record,

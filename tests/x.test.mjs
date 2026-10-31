@@ -4,6 +4,46 @@ import twitterText from "twitter-text";
 import { xThread, publishXPart } from "../src/lib/social/x.ts";
 import { completePost, CONTACT_CTA } from "../src/lib/social/calendar.ts";
 import { createContent, editorialCaption } from "../src/lib/social/content.ts";
+import { xCaption } from "../src/lib/social/x-content.ts";
+
+test("X captions differ from LinkedIn while retaining the verified topic, listing facts and contact actions", async () => {
+  for (const kind of ["job", "question"]) {
+    const content = await createContent(kind, "2026-10-31", 0);
+    const text = xCaption(content, kind);
+    assert.notEqual(text, content.text);
+    assert.equal((text.match(/#[A-Za-z][A-Za-z0-9_]*/g) || []).length, 10);
+    assert.ok(text.includes(CONTACT_CTA));
+    if (kind === "job") {
+      assert.match(text, /Listed pay:/);
+      assert.match(text, /originally posted/);
+      assert.match(text, /does not guarantee/);
+    } else assert.ok(text.includes(content.graphicHeadline));
+  }
+  const content = {
+    title:
+      "Canada updates temporary measures for people affected by crises in Haiti and Sudan",
+    text: "Original caption",
+    sourceType: "news",
+    sourcePublishedAt: "2026-10-27",
+    purpose: "marketing",
+    checkedAt: new Date().toISOString(),
+  };
+  const text = xCaption(content, "informative");
+  assert.ok(text.includes(content.title));
+  assert.match(text, /2026-10-27/);
+  assert.match(text, /scope, conditions and dates/);
+  assert.doesNotMatch(text, /fee exemptions|automatic extension/);
+  const article = xCaption(
+    {
+      ...content,
+      purpose: "article",
+      articleUrl: "https://idlogice.com/en/blog/real-article",
+    },
+    "informative",
+  );
+  assert.match(article, /https:\/\/idlogice.com\/en\/blog\/real-article/);
+  assert.doesNotMatch(article, /book-consultation/);
+});
 
 test("X threads preserve the entire caption, CTA, phone, email, ten hashtags and policy qualifiers", async () => {
   const news = completePost(
