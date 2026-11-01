@@ -50,6 +50,7 @@ export function facebookPostInput(
     );
   return {
     channelId: process.env.BUFFER_FACEBOOK_CHANNEL_ID,
+    metadata: { facebook: { type: "post" } },
     text,
     assets: [{ image: { url: imageUrl } }],
     schedulingType: "automatic",

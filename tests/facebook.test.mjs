@@ -59,7 +59,7 @@ test("Facebook input keeps the full caption and image, without X thread metadata
   assert.equal(input.channelId, "fb-channel");
   assert.equal(input.mode, "shareNow");
   assert.equal(input.saveToDraft, false);
-  assert.equal(input.metadata, undefined);
+  assert.deepEqual(input.metadata, { facebook: { type: "post" } });
   assert.equal(facebookPostInput("caption", imageUrl, true).saveToDraft, true);
   for (const url of [
     "https://other.example/image.png",
