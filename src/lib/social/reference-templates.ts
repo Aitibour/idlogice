@@ -16,10 +16,13 @@ export {
   templateLogoVariant,
   type SocialTemplate,
 } from "./template-catalog.ts";
-export const GRAPHIC_VERSION = "topic-templates-30-news-stock-v4";
+export const GRAPHIC_VERSION = "agency-text-rotation-v5";
 export type GraphicInput = {
   title: string;
   headline?: string;
+  caption?: string;
+  articleUrl?: string;
+  sourcePublishedAt?: string;
   kind: PostKind;
   date: string;
   ordinal: number;

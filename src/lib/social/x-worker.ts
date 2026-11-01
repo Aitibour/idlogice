@@ -6,6 +6,7 @@ import { reserveTemplate } from "./template-rotation.ts";
 import { socialStore } from "./store.ts";
 import { xClient, xThread, publishXPart, XPublishError } from "./x.ts";
 import { xStore } from "./x-store.ts";
+import { usesAgencyText } from "./agency-text.ts";
 import { xCaption } from "./x-content.ts";
 import {
   verifyBufferChannel,
@@ -166,6 +167,9 @@ export async function runXSlot(key: string, draft = false) {
       } else {
         const input = {
           title: record.content.title,
+          caption: record.content.text,
+          articleUrl: record.content.articleUrl,
+          sourcePublishedAt: record.content.sourcePublishedAt,
           headline: record.content.graphicHeadline,
           kind,
           date,
@@ -174,17 +178,21 @@ export async function runXSlot(key: string, draft = false) {
           news: record.content.sourceType === "news",
           policy: record.content.sourceKind === "ministerial",
         };
-        const template = input.news
-          ? undefined
-          : await reserveTemplate(store, input, recordKey, draft);
+        const template =
+          input.news || usesAgencyText(input)
+            ? undefined
+            : await reserveTemplate(store, input, recordKey, draft);
         const image = await generateSocialImage({ ...input, template });
         record.imageKey = `${draft ? "draft-images" : "images"}/${key}.png`;
         await store.set(record.imageKey, new Uint8Array(image.bytes).buffer);
         record.imageHash = image.hash;
         record.imageVersion = GRAPHIC_VERSION;
-        record.templateId = image.stockPhoto
-          ? `stock:${image.stockPhoto.id}`
-          : template;
+        record.templateId =
+          image.style === "agency-text"
+            ? "agency-text"
+            : image.stockPhoto
+              ? `stock:${image.stockPhoto.id}`
+              : template;
         record.stockPhoto = image.stockPhoto
           ? {
               id: image.stockPhoto.id,

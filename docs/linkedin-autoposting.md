@@ -65,3 +65,10 @@ Daily source discovery checks IRCC notices, news releases, backgrounders and the
 Every image explicitly displays `idlogice.com`, the booking or article CTA, email and phone. `assets/social/logo-dark.png` and `logo-light.png` preserve the official logo's original alpha and red leaf while changing neutral lettering to dark or white to match the known background at the logo position. There is no white plaque. These PNG variants derive from `public/logo.png`; no model-generated logo is used in final automated images. `GRAPHIC_VERSION` invalidates old prepared graphics on safe pre-publication retries; published and uncertain records are never replayed.
 
 Validation: `node --experimental-strip-types --test tests/linkedin.test.mjs`, TypeScript, targeted ESLint and production build. Tests mock external publishing APIs and never create a real post.
+
+
+## Agency text editions — November 1, 2026
+
+Every other edition of each content kind (even calendar ordinal) now converts the approved caption into a private IDLOGICE agency-style text image. It uses the official logo, red/white/navy colours, a dated headline, complete body paragraphs, contacts and an article or consultation CTA. Dedicated contact/hashtag lines move to the footer or remain in the caption. Policy restrictions, dates and qualifications are never summarized away. Text is escaped, wrapped and fitted at a minimum 24px; unfit text holds the slot instead of being truncated. Images are 1080 x 1620 PNGs rendered locally with bundled Lato fonts and no image API cost.
+
+This adds a new alternating style, including for news; other editions retain the existing stock/branded image rules. The newer style request supersedes the stock-only news exception for these selected editions. LinkedIn generates the image; Facebook reuses its checksum-verified bytes, and X reuses them when the matching edition is ready (or renders using the same inputs). Already published records are never replayed. The image version change affects only safe, unpublished preparations.

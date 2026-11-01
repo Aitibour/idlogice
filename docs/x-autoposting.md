@@ -32,3 +32,10 @@ The previously saved deployment credentials returned HTTP 401 on October 30, 202
 X's current official pricing lists $0.200 per post containing a URL and $0.015 per other created post. Thread replies are separate created posts, so preserving full captions costs more than a single post. Authentication reads, media operations and other endpoint charges may also apply. Current account rates and credits must be checked in the X Developer Console. Source: https://docs.x.com/x-api/getting-started/pricing (checked October 30, 2026).
 
 Verification: TypeScript, targeted ESLint, `node --experimental-strip-types --test tests/x.test.mjs`, and a production server draft with all parts within X's weighted limit. Publishing tests use mocked clients and never create real posts.
+
+
+## Agency text editions — November 1, 2026
+
+Every other edition of each content kind (even calendar ordinal) now converts the approved caption into a private IDLOGICE agency-style text image. It uses the official logo, red/white/navy colours, a dated headline, complete body paragraphs, contacts and an article or consultation CTA. Dedicated contact/hashtag lines move to the footer or remain in the caption. Policy restrictions, dates and qualifications are never summarized away. Text is escaped, wrapped and fitted at a minimum 24px; unfit text holds the slot instead of being truncated. Images are 1080 x 1620 PNGs rendered locally with bundled Lato fonts and no image API cost.
+
+This adds a new alternating style, including for news; other editions retain the existing stock/branded image rules. The newer style request supersedes the stock-only news exception for these selected editions. LinkedIn generates the image; Facebook reuses its checksum-verified bytes, and X reuses them when the matching edition is ready (or renders using the same inputs). Already published records are never replayed. The image version change affects only safe, unpublished preparations.

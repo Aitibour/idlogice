@@ -6,6 +6,7 @@ import {
   referenceGraphicSvg,
   type GraphicInput,
 } from "./reference-templates.ts";
+import { agencyTextSvg, usesAgencyText } from "./agency-text.ts";
 import { stockPhotoFor } from "./stock-photos.ts";
 
 export {
@@ -19,6 +20,7 @@ export {
   type SocialTemplate,
 } from "./reference-templates.ts";
 export function socialGraphicSvg(input: GraphicInput) {
+  if (usesAgencyText(input)) return agencyTextSvg(input);
   if (!input.news) return referenceGraphicSvg(input);
   const photo = stockPhotoFor(input);
   const bytes = readFileSync(
@@ -46,6 +48,12 @@ export async function generateSocialImage(input: GraphicInput) {
   return {
     bytes,
     hash: createHash("sha256").update(bytes).digest("hex"),
-    stockPhoto: input.news ? stockPhotoFor(input) : undefined,
+    style: usesAgencyText(input)
+      ? "agency-text"
+      : input.news
+        ? "stock"
+        : "reference",
+    stockPhoto:
+      input.news && !usesAgencyText(input) ? stockPhotoFor(input) : undefined,
   };
 }
