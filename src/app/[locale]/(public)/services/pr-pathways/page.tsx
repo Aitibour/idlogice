@@ -1,4 +1,5 @@
-﻿import Link from "next/link";
+import { SITE_SOCIAL_IMAGE } from "@/lib/seo/social-image";
+import Link from "next/link";
 import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 import { ServiceJsonLd } from "@/components/seo/structured-data";
@@ -126,7 +127,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: T.title[l],
     description: T.desc[l],
     alternates: generatePageAlternates(locale, "/services/pr-pathways"),
-    openGraph: { title: T.title[l], description: T.desc[l], url: `${BASE}/${l}/services/pr-pathways`, type: "website" },
+    openGraph: { images: [SITE_SOCIAL_IMAGE], title: T.title[l], description: T.desc[l], url: `${BASE}/${l}/services/pr-pathways`, type: "website" },
   };
 }
 

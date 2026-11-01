@@ -1,4 +1,5 @@
-﻿export const revalidate = 3600;
+import { SITE_SOCIAL_IMAGE } from "@/lib/seo/social-image";
+export const revalidate = 3600;
 import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
@@ -33,6 +34,7 @@ export async function generateMetadata({
     description: m.description,
     alternates: generatePageAlternates(locale, ""),
     openGraph: {
+      images: [SITE_SOCIAL_IMAGE],
       title: m.title,
       description: m.description,
       url: `https://idlogice.com/${locale}`,

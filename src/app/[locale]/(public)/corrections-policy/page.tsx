@@ -1,3 +1,4 @@
+import { SITE_SOCIAL_IMAGE } from "@/lib/seo/social-image";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { generatePageAlternates } from "@/lib/seo/alternates";
@@ -41,6 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description,
     alternates: generatePageAlternates(locale, "/corrections-policy"),
     openGraph: {
+      images: [SITE_SOCIAL_IMAGE],
       type: "website",
       url: `${BASE}/${locale}/corrections-policy`,
       title,

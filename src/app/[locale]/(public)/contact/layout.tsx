@@ -1,4 +1,5 @@
-﻿import type { Metadata } from "next";
+import { SITE_SOCIAL_IMAGE } from "@/lib/seo/social-image";
+import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -17,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: m.title,
     description: m.description,
     alternates: generatePageAlternates(locale, "/contact"),
-    openGraph: { title: m.title, description: m.description, type: "website" },
+    openGraph: { images: [SITE_SOCIAL_IMAGE], title: m.title, description: m.description, type: "website" },
   };
 }
 

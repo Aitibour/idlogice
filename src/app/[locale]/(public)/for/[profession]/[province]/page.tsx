@@ -1,4 +1,5 @@
-﻿import Link from "next/link";
+import { SITE_SOCIAL_IMAGE } from "@/lib/seo/social-image";
+import Link from "next/link";
 import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 import { notFound } from "next/navigation";
@@ -66,7 +67,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: { absolute: seoTitle },
     description: descs[l],
     alternates: generatePageAlternates(locale, `/for/${profSlug}/${provSlug}`),
-    openGraph: { title: titles[l], description: descs[l], url, type: "article" },
+    openGraph: { images: [SITE_SOCIAL_IMAGE], title: titles[l], description: descs[l], url, type: "article" },
   };
 }
 

@@ -1,3 +1,4 @@
+import { SITE_SOCIAL_IMAGE } from "@/lib/seo/social-image";
 export const revalidate = 86400;
 import { generatePageAlternates } from "@/lib/seo/alternates";
 
@@ -15,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: m.title,
     description: m.description,
     alternates: generatePageAlternates(locale, "/services/work-permit"),
-    openGraph: { title: m.title, description: m.description, url: `https://idlogice.com/${locale}/services/work-permit` },
+    openGraph: { images: [SITE_SOCIAL_IMAGE], title: m.title, description: m.description, url: `https://idlogice.com/${locale}/services/work-permit` },
   };
 }
 

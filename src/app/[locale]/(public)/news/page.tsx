@@ -1,3 +1,4 @@
+import { SITE_SOCIAL_IMAGE } from "@/lib/seo/social-image";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Newspaper, RefreshCw, TrendingUp } from "lucide-react";
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       url: `${BASE}/${locale}/news`,
       type: "website",
-      images: [{ url: `${BASE}/images/cta-bg.jpg`, width: 1200, height: 630, alt: "Canada immigration news and policy updates" }],
+      images: [SITE_SOCIAL_IMAGE],
     },
   };
 }

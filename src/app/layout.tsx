@@ -1,3 +1,4 @@
+import { SITE_SOCIAL_IMAGE } from "@/lib/seo/social-image";
 import type { Metadata } from "next";
 import { geistSans } from "@/lib/fonts";
 import { Analytics } from "@vercel/analytics/next";
@@ -46,14 +47,7 @@ export const metadata: Metadata = {
     title: "IDLOGICE — Canadian Immigration Consultants | Montréal",
     description:
       "Canadian immigration guidance for Express Entry, PNP, work permits, study permits, and family sponsorship, with multilingual support from Montreal.",
-    images: [
-      {
-        url: `${BASE}/images/cta-bg.jpg`,
-        width: 1200,
-        height: 630,
-        alt: "IDLOGICE — Canadian Immigration Consultants Montréal",
-      },
-    ],
+    images: [SITE_SOCIAL_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
@@ -62,7 +56,7 @@ export const metadata: Metadata = {
     title: "IDLOGICE — Canadian Immigration Consultants | Montréal",
     description:
       "Canadian immigration guidance for Express Entry, PNP, work permits, study permits, and family sponsorship.",
-    images: [`${BASE}/images/cta-bg.jpg`],
+    images: [SITE_SOCIAL_IMAGE.url],
   },
   robots: {
     index: true,

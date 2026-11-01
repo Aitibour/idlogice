@@ -1,4 +1,5 @@
-﻿import Link from "next/link";
+import { SITE_SOCIAL_IMAGE } from "@/lib/seo/social-image";
+import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
@@ -109,8 +110,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description: desc,
     alternates: generatePageAlternates(locale, "/guides/canada-immigration"),
-    openGraph: { type: "article", url, title, description: desc, siteName: "IDLOGICE" },
-    twitter: { card: "summary_large_image", title, description: desc },
+    openGraph: { images: [SITE_SOCIAL_IMAGE], type: "article", url, title, description: desc, siteName: "IDLOGICE" },
+    twitter: { images: [SITE_SOCIAL_IMAGE.url], card: "summary_large_image", title, description: desc },
   };
 }
 

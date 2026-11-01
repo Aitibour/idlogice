@@ -1,4 +1,5 @@
-﻿import { notFound } from "next/navigation";
+import { SITE_SOCIAL_IMAGE } from "@/lib/seo/social-image";
+import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
@@ -59,6 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: descs[loc],
     alternates: generatePageAlternates(locale, `/from/${countrySlug}/${programSlug}`),
     openGraph: {
+      images: [SITE_SOCIAL_IMAGE],
       type: "article",
       url,
       title: { absolute: titles[loc] },

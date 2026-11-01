@@ -1,4 +1,5 @@
-﻿import Link from "next/link";
+import { SITE_SOCIAL_IMAGE } from "@/lib/seo/social-image";
+import Link from "next/link";
 import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
 import { PROVINCES } from "@/data/immigration-provinces";
@@ -70,7 +71,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     alternates: generatePageAlternates(locale, "/province"),
-    openGraph: { title, description, url: `${BASE}/${l}/province`, type: "website" },
+    openGraph: { images: [SITE_SOCIAL_IMAGE], title, description, url: `${BASE}/${l}/province`, type: "website" },
   };
 }
 
