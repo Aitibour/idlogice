@@ -99,10 +99,10 @@ export function Footer() {
             <p className="text-white font-semibold text-sm mb-5 uppercase tracking-wider">{t("contactUs")}</p>
             <ul className="space-y-3 mb-8">
               <li>
-                <a href="tel:+15816340224"
+                <a href="tel:+12899175372"
                   className="flex items-start gap-2.5 text-sm text-zinc-400 hover:text-white transition-colors">
                   <Phone className="size-4 mt-0.5 shrink-0 text-primary" aria-hidden="true" />
-                  +1 581-634-0224
+                  +1 2899175372
                 </a>
               </li>
               <li>

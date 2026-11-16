@@ -190,7 +190,7 @@ function footer(input: GraphicInput, fill: string, ink: string) {
       400,
     ) +
     text("contact@idlogice.com", 56, 1320, 28, ink, "start", 400) +
-    text("+1 581-634-0224", 1024, 1320, 28, ink, "end", 400)
+    text("+1 2899175372", 1024, 1320, 28, ink, "end", 400)
   );
 }
 function checkCards(labels: readonly string[], y = 920) {

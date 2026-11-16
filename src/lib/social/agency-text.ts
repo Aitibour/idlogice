@@ -186,7 +186,7 @@ export function agencyTextSvg(input: GraphicInput) {
     ${text(article ? "READ THE FULL IDLOGICE ARTICLE" : "PLAN YOUR NEXT STEP WITH IDLOGICE", 76, 1396, 28, "#ffffff", true)}
     <rect x="76" y="1420" width="928" height="52" rx="8" fill="#cf142b"/>
     ${text(article ? "Read the article • Link in caption" : "Book your immigration consultation", 100, 1455, 27, "#ffffff", true)}
-    ${text("contact@idlogice.com  |  +1 581-634-0224", 76, 1520, 29, "#ffffff", true)}
+    ${text("contact@idlogice.com  |  +1 2899175372", 76, 1520, 29, "#ffffff", true)}
     ${text(article ? "idlogice.com • Verified article link in caption" : "idlogice.com/en/book-consultation", 76, 1566, 26, "#d4dce5")}
     </svg>`;
 }

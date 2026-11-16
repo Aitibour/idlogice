@@ -88,7 +88,7 @@ test("reference templates always include the website and choose transparent logo
     assert.ok(svg.includes(`data-logo-variant="${light ? "light" : "dark"}"`));
     assert.doesNotMatch(svg,/rx="15" fill="#ffffff"/);
     assert.match(svg,/contact@idlogice\.com/);
-    assert.match(svg,/\+1 581-634-0224/);
+    assert.match(svg,/\+1 2899175372/);
   }
 });
 
@@ -108,7 +108,7 @@ test("news uses a relevant stock photograph without branding, headline or CTA ov
 test("graphic text is escaped and all contact actions remain on each image", () => {
   const svg = socialGraphicSvg({title:'A&B <test> "example"',kind:"job",date:"2026-11-01",ordinal:0});
   assert.match(svg,/A&amp;B/); assert.match(svg,/&lt;test&gt;/); assert.doesNotMatch(svg,/<test>/);
-  for(const value of ["Book your consultation","idlogice.com/en/book-consultation","contact@idlogice.com","+1 581-634-0224"]) assert.ok(svg.includes(value));
+  for(const value of ["Book your consultation","idlogice.com/en/book-consultation","contact@idlogice.com","+1 2899175372"]) assert.ok(svg.includes(value));
   assert.match(svg,/href="data:image\/png;base64,/);
   const article = socialGraphicSvg({title:"Our latest article",kind:"informative",date:"2026-11-01",ordinal:0,purpose:"article"});
   assert.match(article,/Read the full article/); assert.doesNotMatch(article,/Book your consultation/);

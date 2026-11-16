@@ -106,7 +106,7 @@ export default function BookConsultationPage() {
             </p>
             <div className="flex flex-wrap items-center gap-5 mt-8">
               {[
-                { icon: Phone, label: "+1 581-634-0224",      href: "tel:+15816340224" },
+                { icon: Phone, label: "+1 2899175372",      href: "tel:+12899175372" },
                 { icon: Mail,  label: "contact@idlogice.com", href: "mailto:contact@idlogice.com" },
               ].map(({ icon: Icon, label, href }) => (
                 <a key={href} href={href}
@@ -260,11 +260,11 @@ export default function BookConsultationPage() {
                 <div className="mt-8 pt-6 border-t border-border flex items-center gap-3">
                   <span className="text-xs text-muted-foreground">Prefer to call?</span>
                   <a
-                    href="tel:+15816340224"
+                    href="tel:+12899175372"
                     className="flex items-center gap-2 h-9 px-4 rounded-xl border border-border bg-secondary/40 hover:bg-secondary text-sm font-semibold transition-colors"
                   >
                     <Phone className="size-3.5" />
-                    +1 581-634-0224
+                    +1 2899175372
                   </a>
                 </div>
 
@@ -320,7 +320,7 @@ export default function BookConsultationPage() {
                   <p className="text-[10px] font-bold uppercase tracking-[0.2em] mb-4" style={{ color: "#9ca3af" }}>Reach us directly</p>
                   <div className="grid grid-cols-2 gap-3">
                     {[
-                      { icon: Phone, label: "Call",  sub: "+1 581-634-0224",      href: "tel:+15816340224" },
+                      { icon: Phone, label: "Call",  sub: "+1 2899175372",      href: "tel:+12899175372" },
                       { icon: Mail,  label: "Email", sub: "contact@idlogice.com", href: "mailto:contact@idlogice.com" },
                     ].map(({ icon: Icon, label, sub, href }) => (
                       <a key={href} href={href}

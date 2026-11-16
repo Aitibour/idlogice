@@ -8,7 +8,7 @@ type Props = {
 };
 
 const WHATSAPP_URL =
-  "https://wa.me/15816340224?text=Hello%20IDLOGICE%2C%20I%20would%20like%20help%20with%20my%20Canada%20immigration%20options.";
+  "https://wa.me/12899175372?text=Hello%20IDLOGICE%2C%20I%20would%20like%20help%20with%20my%20Canada%20immigration%20options.";
 
 export function BlogConversionCta({ locale, topicLabel = "Canada immigration", compact = false }: Props) {
   return (
@@ -51,7 +51,7 @@ export function BlogConversionCta({ locale, topicLabel = "Canada immigration", c
             WhatsApp
           </a>
           <a
-            href="tel:+15816340224"
+            href="tel:+12899175372"
             className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-white px-5 py-3 text-sm font-bold text-gray-900 hover:border-primary hover:text-primary"
           >
             <Phone className="size-4" />

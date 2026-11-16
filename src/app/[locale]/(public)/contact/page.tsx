@@ -34,7 +34,7 @@ export default function ContactPage() {
             <p className="text-lg max-w-xl leading-relaxed" style={{ color: "#374151" }}>{t("hero.subtitle")}</p>
             <div className="flex flex-wrap items-center gap-5 mt-8">
               {[
-                { icon: Phone, label: "+1 581-634-0224",      href: "tel:+15816340224" },
+                { icon: Phone, label: "+1 2899175372",      href: "tel:+12899175372" },
                 { icon: Mail,  label: "contact@idlogice.com", href: "mailto:contact@idlogice.com" },
               ].map(({ icon: Icon, label, href }) => (
                 <a key={href} href={href}
@@ -107,7 +107,7 @@ export default function ContactPage() {
                   </p>
                   <div className="grid grid-cols-2 gap-3">
                     {[
-                      { icon: Phone, label: "Call",  sub: "+1 581-634-0224",      href: "tel:+15816340224" },
+                      { icon: Phone, label: "Call",  sub: "+1 2899175372",      href: "tel:+12899175372" },
                       { icon: Mail,  label: "Email", sub: "contact@idlogice.com", href: "mailto:contact@idlogice.com" },
                     ].map(({ icon: Icon, label, sub, href }) => (
                       <a

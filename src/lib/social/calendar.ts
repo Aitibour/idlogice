@@ -4,7 +4,7 @@ export const COMPANY_URN = "urn:li:organization:103105245";
 export const CONTACT_CTA = [
   "Book your immigration consultation: https://idlogice.com/en/book-consultation",
   "Email: contact@idlogice.com",
-  "Call: +1 581-634-0224",
+  "Call: +1 2899175372",
 ].join("\n");
 
 export function localClock(now = new Date()) {
@@ -51,7 +51,7 @@ export function postHashtags(kind: PostKind = "informative", topic = "") {
 export function completePost(body: string, options: { purpose?: PostPurpose; articleUrl?: string; kind?: PostKind; title?: string } = {}) {
   const article = options.purpose === "article";
   if (article && !/^https:\/\/idlogice\.com\/en\/blog\/[a-z0-9-]+$/.test(options.articleUrl ?? "")) throw new Error("Article CTA must link to a published IDLOGICE article");
-  const cta = article ? `Read the full IDLOGICE article: ${options.articleUrl}\nEmail: contact@idlogice.com\nCall: +1 581-634-0224` : CONTACT_CTA;
+  const cta = article ? `Read the full IDLOGICE article: ${options.articleUrl}\nEmail: contact@idlogice.com\nCall: +1 2899175372` : CONTACT_CTA;
   const text = [body.replace(/#[A-Za-z][A-Za-z0-9_]*/g, "").trim(), cta, postHashtags(options.kind, options.title)].join("\n\n");
   for (const link of text.match(/https?:\/\/[^\s]+/g) ?? []) if (new URL(link).hostname !== "idlogice.com") throw new Error("Public post links must stay on idlogice.com");
   if (text.length > 3000) throw new Error("LinkedIn post exceeds 3,000 characters");

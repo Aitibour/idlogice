@@ -26,7 +26,7 @@ test("text editions preserve every approved paragraph, date and qualifier; conta
   const svg = agencyTextSvg(input);
   for (const phrase of [
     "contact@idlogice.com",
-    "+1 581-634-0224",
+    "+1 2899175372",
     "idlogice.com/en/book-consultation",
     "Book your immigration consultation",
   ])

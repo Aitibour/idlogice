@@ -1,5 +1,5 @@
 export function WhatsAppButton() {
-  const phone = "15816340224";
+  const phone = "12899175372";
   const message = encodeURIComponent(
     "Hello IDLOGICE! I'm interested in Canadian immigration services. Could you help me?"
   );

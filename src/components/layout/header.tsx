@@ -68,8 +68,8 @@ export function Header() {
               </span>
             </div>
             <div className="flex items-center gap-3">
-              <a href="tel:+15816340224" className="flex items-center gap-1 hover:opacity-80 transition-opacity" style={{ color: "#c2272d" }}>
-                📞 +1 581-634-0224
+              <a href="tel:+12899175372" className="flex items-center gap-1 hover:opacity-80 transition-opacity" style={{ color: "#c2272d" }}>
+                📞 +1 2899175372
               </a>
               <a href="mailto:contact@idlogice.com" className="hidden lg:flex items-center gap-1 hover:opacity-80 transition-opacity" style={{ color: "#6b7280" }}>
                 ✉ contact@idlogice.com
@@ -225,10 +225,10 @@ export function Header() {
                 onClick={closeMobile}>
                 {t("bookConsultation")}
               </Link>
-              <a href="tel:+15816340224"
+              <a href="tel:+12899175372"
                 className="flex items-center justify-center gap-2 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
                 <Phone className="size-4" aria-hidden="true" />
-                +1 581-634-0224
+                +1 2899175372
               </a>
               <div className="flex justify-center">
                 <LanguageSwitcher />

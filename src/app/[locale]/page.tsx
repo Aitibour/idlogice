@@ -179,7 +179,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         eyebrow={t("contactSection.eyebrow")}
         title={t("contactSection.title")}
         address="410 Saint-Catherine St, Montreal, Canada"
-        phone="+1 581-634-0224"
+        phone="+1 2899175372"
         email="contact@idlogice.com"
         hours="Mon – Fri: 9:00 AM – 6:00 PM EST"
       />

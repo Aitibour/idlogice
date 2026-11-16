@@ -157,7 +157,7 @@ export default async function InCityPage({ params }: Props) {
         "@id": `${BASE}#organization`,
         name: "IDLOGICE Immigration Consulting",
         url: BASE,
-        telephone: "+1-581-634-0224",
+        telephone: "+12899175372",
         email: "contact@idlogice.com",
         address: {
           "@type": "PostalAddress",

@@ -102,10 +102,10 @@ const jsonLd = JSON.stringify({
       url: BASE,
       logo: { "@type": "ImageObject", url: `${BASE}/logo.png`, width: 200, height: 60 },
       email: "contact@idlogice.com",
-      telephone: "+1-581-634-0224",
+      telephone: "+12899175372",
       contactPoint: {
         "@type": "ContactPoint",
-        telephone: "+1-581-634-0224",
+        telephone: "+12899175372",
         contactType: "customer service",
         areaServed: "CA",
         availableLanguage: ["English", "French", "Spanish", "Arabic"],
@@ -139,7 +139,7 @@ const jsonLd = JSON.stringify({
       name: "IDLOGICE — Canadian Immigration Consultants",
       image: `${BASE}/images/feature-consulting.jpg`,
       url: BASE,
-      telephone: "+1-581-634-0224",
+      telephone: "+12899175372",
       email: "contact@idlogice.com",
       address: {
         "@type": "PostalAddress",

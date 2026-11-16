@@ -16,7 +16,7 @@ const ORG_NODE = {
   image: `${BASE}/images/cta-bg.jpg`,
   description:
     "CICC-registered immigration consultants (RCICs) in Montréal. Expert guidance for Express Entry, PNP, study permits, work permits and family sponsorship.",
-  telephone: "+1-581-634-0224",
+  telephone: "+12899175372",
   email: "contact@idlogice.com",
   priceRange: "$$",
   foundingDate: "2014",

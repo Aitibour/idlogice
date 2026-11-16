@@ -140,7 +140,7 @@ export default function PrivacyPage() {
             <p><strong className="text-foreground">IDLOGICE Inc. — Privacy Officer</strong></p>
             <p>410 Saint-Catherine Street, Montréal, Québec, Canada</p>
             <p>Email: <a href="mailto:support@idlogice.com" className="text-primary underline">support@idlogice.com</a></p>
-            <p>Phone: <a href="tel:+15816340224" className="text-primary underline">+1 581-634-0224</a></p>
+            <p>Phone: <a href="tel:+12899175372" className="text-primary underline">+1 2899175372</a></p>
           </address>
         </section>
       </article>
