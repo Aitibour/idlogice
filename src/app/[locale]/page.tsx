@@ -53,10 +53,10 @@ import { Link } from "@/i18n/navigation";
 import { BarChart2, Calculator } from "lucide-react";
 
 const HERO_VIDEO_SOURCES = [
-  { videoSrc: "/videos/12731031_3840_2160_24fps.mp4",       poster: "/posters/12731031_3840_2160_24fps.jpg" },
-  { videoSrc: "/videos/17765268-uhd_3840_2160_30fps.mp4",   poster: "/posters/17765268-uhd_3840_2160_30fps.jpg" },
-  { videoSrc: "/videos/5135877-uhd_3840_2160_25fps.mp4",    poster: "/posters/5135877-uhd_3840_2160_25fps.jpg" },
-  { videoSrc: "/videos/7009788-uhd_3840_2160_25fps.mp4",    poster: "/posters/7009788-uhd_3840_2160_25fps.jpg" },
+  { videoSrc: "/videos/home-hero-1-720p.mp4", poster: "/posters/home-hero-1.webp" },
+  { videoSrc: "/videos/home-hero-2-720p.mp4", poster: "/posters/home-hero-2.webp" },
+  { videoSrc: "/videos/home-hero-3-720p.mp4", poster: "/posters/home-hero-3.webp" },
+  { videoSrc: "/videos/home-hero-4-720p.mp4", poster: "/posters/home-hero-4.webp" },
 ];
 
 const SERVICE_IMAGES = [
@@ -87,16 +87,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   return (
     <>
-      {/* Preload first hero poster — fixes LCP fetchpriority hint */}
-      {heroSlides[0]?.poster && (
-        <link
-          rel="preload"
-          as="image"
-          href={heroSlides[0].poster}
-          // @ts-expect-error — fetchpriority is valid but not yet in React types
-          fetchpriority="high"
-        />
-      )}
       <HeroSlider
         slides={heroSlides}
         cta={{ label: t("hero.cta"), href: "/calculator" }}

@@ -19,6 +19,7 @@
 
 # production
 /build
+/public/videos/home-hero-*-720p.mp4
 
 # misc
 .DS_Store

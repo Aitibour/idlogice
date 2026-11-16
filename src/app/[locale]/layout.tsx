@@ -45,7 +45,7 @@ export default async function LocaleLayout({
   }
 
   setRequestLocale(locale);
-  const messages = await getMessages();
+  const { nav, slider, contactForm, contact } = await getMessages();
   const dir = ["ar", "fa", "he"].includes(locale) ? "rtl" : "ltr";
 
   return (
@@ -57,7 +57,7 @@ export default async function LocaleLayout({
     >
       <WebsiteJsonLd />
       <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#ffffff", color: "#111111" }}>
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider messages={{ nav, slider, contactForm, contact }}>
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />

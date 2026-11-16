@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import { generatePageAlternates } from "@/lib/seo/alternates";
+import { Suspense } from "react";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { CrsTrendChart } from "@/components/draws/CrsTrendChart";
 import { CtaBanner } from "@/components/sections/cta-banner";
@@ -93,9 +94,38 @@ export default async function DrawsPage({
 }) {
   const { locale } = await params;
   await setRequestLocale(locale);
+  const roundsPromise = fetchDraws(locale);
   const t = await getTranslations({ locale, namespace: "draws" });
 
-  const rounds = await fetchDraws(locale);
+  return (
+    <>
+      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-primary/80 text-white py-16 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-primary-foreground/70 bg-white/10 px-3 py-1 rounded-full mb-4">
+            <RefreshCw className="size-3" />
+            {t("hero.badge")}
+          </span>
+          <h1 className="text-3xl sm:text-4xl font-black mb-3">{t("hero.title")}</h1>
+          <p className="text-sm sm:text-base text-white/70 max-w-2xl">{t("hero.subtitle")}</p>
+        </div>
+      </section>
+      <Suspense fallback={
+        <div aria-busy="true" className="mx-auto my-10 h-48 w-[calc(100%-2rem)] max-w-4xl rounded-2xl bg-muted motion-safe:animate-pulse" />
+      }>
+        <DrawResults locale={locale} roundsPromise={roundsPromise} />
+      </Suspense>
+    </>
+  );
+}
+
+async function DrawResults({ locale, roundsPromise }: {
+  locale: string;
+  roundsPromise: Promise<IrccRound[]>;
+}) {
+  const [t, rounds] = await Promise.all([
+    getTranslations({ locale, namespace: "draws" }),
+    roundsPromise,
+  ]);
   const latest = rounds[0] ?? null;
   const recent = rounds.slice(0, 20);
 
@@ -117,19 +147,6 @@ export default async function DrawsPage({
       : 0;
 
   return (
-    <>
-      {/* Hero */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-primary/80 text-white py-16 px-4">
-        <div className="container mx-auto max-w-4xl">
-          <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-primary-foreground/70 bg-white/10 px-3 py-1 rounded-full mb-4">
-            <RefreshCw className="size-3" />
-            {t("hero.badge")}
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-black mb-3">{t("hero.title")}</h1>
-          <p className="text-sm sm:text-base text-white/70 max-w-2xl">{t("hero.subtitle")}</p>
-        </div>
-      </section>
-
       <div className="container mx-auto max-w-4xl px-4 py-10 space-y-10">
         {/* Latest draw stats */}
         {latest && (
@@ -258,7 +275,6 @@ export default async function DrawsPage({
           secondaryCta={{ label: t("cta.secondary"), href: "/book-consultation" }}
         />
       </div>
-    </>
   );
 }
 
