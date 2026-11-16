@@ -3,7 +3,6 @@ import { Resend } from "resend";
 import { createClient } from "@/lib/supabase/server";
 import { z } from "zod";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 const payloadSchema = z.object({
   firstName: z.string().trim().min(1).max(80),
@@ -146,6 +145,13 @@ export async function POST(req: NextRequest) {
   </table>
 </body>
 </html>`;
+
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.error("RESEND_API_KEY is not configured");
+    return NextResponse.json({ error: "Email service is not configured" }, { status: 503 });
+  }
+  const resend = new Resend(apiKey);
 
   try {
     await resend.emails.send({
