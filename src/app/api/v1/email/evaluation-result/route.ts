@@ -3,8 +3,6 @@ import { Resend } from "resend";
 import { createClient } from "@/lib/supabase/server";
 import { z } from "zod";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const payloadSchema = z.object({
   firstName: z.string().trim().min(1).max(80),
   crsScore: z.coerce.number().int().min(0).max(1200),
@@ -148,6 +146,7 @@ export async function POST(req: NextRequest) {
 </html>`;
 
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
       from: "IDLOGICE <noreply@idlogice.com>",
       to: user.email,

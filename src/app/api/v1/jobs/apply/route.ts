@@ -3,7 +3,6 @@ import { Resend } from "resend";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const MAX_CV_BYTES = 5 * 1024 * 1024;
 
 const applicationSchema = z.object({
@@ -115,6 +114,7 @@ export async function POST(req: NextRequest) {
 </body></html>`;
 
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
       from: "IDLOGICE <noreply@idlogice.com>",
       to: "contact@idlogice.com",
