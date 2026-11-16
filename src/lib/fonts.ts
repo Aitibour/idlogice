@@ -1,7 +1,8 @@
-import { Geist } from "next/font/google";
+import localFont from "next/font/local";
 
-export const geistSans = Geist({
+export const geistSans = localFont({
+  src: "./fonts/geist-latin.woff2",
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  weight: "100 900",
   display: "swap",
 });
