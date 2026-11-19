@@ -8,7 +8,7 @@ import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
 import { LanguageSwitcher } from "@/components/shared/language-switcher";
 import { SOCIAL_LINKS } from "@/components/shared/social-links";
-import { Menu, X, ChevronDown, Phone } from "lucide-react";
+import { Menu, X, ChevronDown, Phone, Mail } from "lucide-react";
 
 const NAV_TEXT_STYLE = { color: "#111827" } as const;        // gray-900, immune to CSS cascade
 const NAV_SUB_TEXT_STYLE = { color: "#1f2937" } as const;    // gray-800
@@ -48,11 +48,11 @@ export function Header() {
     <header
       className="sticky top-0 z-50 w-full border-b border-border/40 bg-white shadow-sm"
     >
-      {/* Trust strip */}
-      <div className="hidden md:block border-b" style={{ background: "linear-gradient(90deg, #fef2f2, #ffffff, #fef3c7)", borderColor: "#fde2e2" }}>
+      {/* Contact details remain visible at every screen size. */}
+      <div className="border-b border-red-100 bg-red-50/70">
         <div className="container mx-auto px-4 lg:px-6">
-          <div className="flex items-center justify-between gap-4 h-8 text-[11px] font-semibold">
-            <div className="flex items-center gap-4">
+          <div className="flex min-h-14 flex-wrap items-center justify-center gap-x-4 gap-y-2 py-2 xl:justify-between">
+            <div className="hidden xl:flex items-center gap-4 text-xs font-semibold">
               <span className="flex items-center gap-1.5">
                 <span className="text-amber-500">★★★★★</span>
                 <span style={{ color: "#111827" }}>4.9</span>
@@ -67,12 +67,14 @@ export function Header() {
                 <span><strong style={{ color: "#111827" }}>CICC</strong>-registered RCIC</span>
               </span>
             </div>
-            <div className="flex items-center gap-3">
-              <a href="tel:+12899175372" className="flex items-center gap-1 hover:opacity-80 transition-opacity" style={{ color: "#c2272d" }}>
-                📞 +1 2899175372
+            <div className="flex w-full flex-col items-stretch gap-2 min-[400px]:flex-row min-[400px]:justify-center sm:w-auto sm:gap-3">
+              <a href="tel:+12899175372" className="flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-primary px-3 py-2 text-sm font-bold text-white shadow-sm transition-colors hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:px-4 sm:text-base">
+                <Phone className="size-4 shrink-0" aria-hidden="true" />
+                <span dir="ltr">+1 289-917-5372</span>
               </a>
-              <a href="mailto:contact@idlogice.com" className="hidden lg:flex items-center gap-1 hover:opacity-80 transition-opacity" style={{ color: "#6b7280" }}>
-                ✉ contact@idlogice.com
+              <a href="mailto:contact@idlogice.com" className="flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-red-200 bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm transition-colors hover:border-primary hover:bg-red-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:px-4 sm:text-base">
+                <Mail className="size-4 shrink-0 text-primary" aria-hidden="true" />
+                <span dir="ltr">contact@idlogice.com</span>
               </a>
             </div>
           </div>
