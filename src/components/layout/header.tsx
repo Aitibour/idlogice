@@ -51,22 +51,7 @@ export function Header() {
       {/* Contact details remain visible at every screen size. */}
       <div className="border-b border-red-100 bg-red-50/70">
         <div className="container mx-auto px-4 lg:px-6">
-          <div className="flex min-h-14 flex-wrap items-center justify-center gap-x-4 gap-y-2 py-2 xl:justify-between">
-            <div className="hidden xl:flex items-center gap-4 text-xs font-semibold">
-              <span className="flex items-center gap-1.5">
-                <span className="text-amber-500">★★★★★</span>
-                <span style={{ color: "#111827" }}>4.9</span>
-                <span style={{ color: "#6b7280" }} className="hidden lg:inline">on Google · 127 reviews</span>
-              </span>
-              <span className="hidden lg:flex items-center gap-1.5" style={{ color: "#6b7280" }}>
-                <span className="w-1 h-1 rounded-full bg-emerald-500" />
-                <span><strong style={{ color: "#111827" }}>4</strong> service languages</span>
-              </span>
-              <span className="hidden lg:flex items-center gap-1.5" style={{ color: "#6b7280" }}>
-                <span className="w-1 h-1 rounded-full bg-emerald-500" />
-                <span><strong style={{ color: "#111827" }}>CICC</strong>-registered RCIC</span>
-              </span>
-            </div>
+          <div className="flex min-h-14 flex-wrap items-center justify-start gap-x-4 gap-y-2 py-2">
             <div className="flex w-full flex-col items-stretch gap-2 min-[400px]:flex-row min-[400px]:justify-center sm:w-auto sm:gap-3">
               <a href="tel:+12899175372" className="flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-primary px-3 py-2 text-sm font-bold text-white shadow-sm transition-colors hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:px-4 sm:text-base">
                 <Phone className="size-4 shrink-0" aria-hidden="true" />
