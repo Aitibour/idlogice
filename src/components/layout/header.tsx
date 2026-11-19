@@ -48,7 +48,7 @@ export function Header() {
     <header
       className="sticky top-0 z-50 w-full border-b border-border/40 bg-white shadow-sm"
     >
-      <div className="container mx-auto flex min-h-[70px] flex-wrap items-center justify-between px-4 lg:px-6 gap-x-4 gap-y-2 py-2">
+      <div className="container mx-auto flex min-h-[70px] flex-wrap items-center justify-between px-4 lg:px-6 gap-x-4 gap-y-2 py-2 min-[1800px]:max-w-none">
 
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
@@ -57,7 +57,7 @@ export function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="order-last hidden w-full lg:flex items-center justify-center gap-0 2xl:order-none 2xl:w-auto" aria-label="Main navigation">
+        <nav className="order-last hidden w-full lg:flex items-center justify-center gap-0 min-[1800px]:order-none min-[1800px]:w-auto" aria-label="Main navigation">
           {navLinksBefore.map((link) => (
             <Link key={link.href} href={link.href}
               className="px-3 py-2 text-sm font-medium transition-colors hover:opacity-80"
@@ -111,20 +111,20 @@ export function Header() {
 
         {/* Contact details beside the consultation action. */}
         <div className="hidden lg:flex items-center gap-3">
-          <div className="flex flex-col gap-1 text-sm font-semibold">
-            <a href="tel:+12899175372" className="flex items-center gap-2 rounded px-2 py-1 text-primary hover:bg-red-50 focus-visible:outline-2 focus-visible:outline-primary">
-              <Phone className="size-4 shrink-0" aria-hidden="true" />
+          <div className="flex shrink-0 items-center rounded-full border border-gray-200 bg-gray-50/80 p-1 text-sm font-semibold shadow-sm">
+            <a href="tel:+12899175372" className="flex min-h-10 items-center gap-2 whitespace-nowrap rounded-full px-3 text-gray-900 transition-colors hover:bg-white hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+              <Phone className="size-4 shrink-0 text-primary" aria-hidden="true" />
               <span dir="ltr">+1 289-917-5372</span>
             </a>
-            <a href="mailto:contact@idlogice.com" className="flex items-center gap-2 rounded px-2 py-1 text-gray-900 hover:bg-red-50 focus-visible:outline-2 focus-visible:outline-primary">
+            <span className="mx-1 h-5 w-px bg-gray-200" aria-hidden="true" />
+            <a href="mailto:contact@idlogice.com" className="flex min-h-10 items-center gap-2 whitespace-nowrap rounded-full px-3 text-gray-900 transition-colors hover:bg-white hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
               <Mail className="size-4 shrink-0 text-primary" aria-hidden="true" />
               <span dir="ltr">contact@idlogice.com</span>
             </a>
           </div>
           <Link href="/book-consultation"
-            className="relative px-5 py-2.5 text-sm font-bold rounded-full bg-primary text-white hover:bg-primary/90 transition-all whitespace-nowrap shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-105 active:scale-95 overflow-hidden btn-shimmer">
-            <span className="absolute inset-0 rounded-full animate-ping bg-primary/40 pointer-events-none" style={{ animationDuration: "2s" }} />
-            <span className="relative z-10">{t("bookConsultationNav")}</span>
+            className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-full bg-primary px-5 text-sm font-bold whitespace-nowrap text-white shadow-sm transition-colors hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+            {t("bookConsultationNav")}
           </Link>
           <div className="w-px h-5 bg-border" aria-hidden="true" />
           <div className="flex items-center gap-1 text-base" aria-label="Social media links">
