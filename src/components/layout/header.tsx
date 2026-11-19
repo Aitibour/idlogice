@@ -48,25 +48,7 @@ export function Header() {
     <header
       className="sticky top-0 z-50 w-full border-b border-border/40 bg-white shadow-sm"
     >
-      {/* Contact details remain visible at every screen size. */}
-      <div className="border-b border-red-100 bg-red-50/70">
-        <div className="container mx-auto px-4 lg:px-6">
-          <div className="flex min-h-14 flex-wrap items-center justify-start gap-x-4 gap-y-2 py-2">
-            <div className="flex w-full flex-col items-stretch gap-2 min-[400px]:flex-row min-[400px]:justify-center sm:w-auto sm:gap-3">
-              <a href="tel:+12899175372" className="flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-primary px-3 py-2 text-sm font-bold text-white shadow-sm transition-colors hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:px-4 sm:text-base">
-                <Phone className="size-4 shrink-0" aria-hidden="true" />
-                <span dir="ltr">+1 289-917-5372</span>
-              </a>
-              <a href="mailto:contact@idlogice.com" className="flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-red-200 bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm transition-colors hover:border-primary hover:bg-red-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:px-4 sm:text-base">
-                <Mail className="size-4 shrink-0 text-primary" aria-hidden="true" />
-                <span dir="ltr">contact@idlogice.com</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="container mx-auto flex h-[70px] items-center justify-between px-4 lg:px-6 gap-4">
+      <div className="container mx-auto flex min-h-[70px] flex-wrap items-center justify-between px-4 lg:px-6 gap-x-4 gap-y-2 py-2">
 
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
@@ -75,7 +57,7 @@ export function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-0" aria-label="Main navigation">
+        <nav className="order-last hidden w-full lg:flex items-center justify-center gap-0 2xl:order-none 2xl:w-auto" aria-label="Main navigation">
           {navLinksBefore.map((link) => (
             <Link key={link.href} href={link.href}
               className="px-3 py-2 text-sm font-medium transition-colors hover:opacity-80"
@@ -127,8 +109,18 @@ export function Header() {
 
         </nav>
 
-        {/* Right: book consultation + divider + social + lang */}
+        {/* Contact details beside the consultation action. */}
         <div className="hidden lg:flex items-center gap-3">
+          <div className="flex flex-col gap-1 text-sm font-semibold">
+            <a href="tel:+12899175372" className="flex items-center gap-2 rounded px-2 py-1 text-primary hover:bg-red-50 focus-visible:outline-2 focus-visible:outline-primary">
+              <Phone className="size-4 shrink-0" aria-hidden="true" />
+              <span dir="ltr">+1 289-917-5372</span>
+            </a>
+            <a href="mailto:contact@idlogice.com" className="flex items-center gap-2 rounded px-2 py-1 text-gray-900 hover:bg-red-50 focus-visible:outline-2 focus-visible:outline-primary">
+              <Mail className="size-4 shrink-0 text-primary" aria-hidden="true" />
+              <span dir="ltr">contact@idlogice.com</span>
+            </a>
+          </div>
           <Link href="/book-consultation"
             className="relative px-5 py-2.5 text-sm font-bold rounded-full bg-primary text-white hover:bg-primary/90 transition-all whitespace-nowrap shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-105 active:scale-95 overflow-hidden btn-shimmer">
             <span className="absolute inset-0 rounded-full animate-ping bg-primary/40 pointer-events-none" style={{ animationDuration: "2s" }} />
@@ -216,6 +208,11 @@ export function Header() {
                 className="flex items-center justify-center gap-2 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
                 <Phone className="size-4" aria-hidden="true" />
                 +1 2899175372
+              </a>
+              <a href="mailto:contact@idlogice.com"
+                className="flex items-center justify-center gap-2 py-2 text-sm font-semibold text-gray-900 hover:text-primary">
+                <Mail className="size-4" aria-hidden="true" />
+                <span dir="ltr">contact@idlogice.com</span>
               </a>
               <div className="flex justify-center">
                 <LanguageSwitcher />
