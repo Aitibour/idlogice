@@ -22,4 +22,4 @@ export default async function linkedinScheduler(_request: Request, context: Depl
   await store.setJSON("health", { status: "scheduled", checkedAt: new Date().toISOString(), tokenExpiresAt: new Date(tokens.expires_at).toISOString() });
 }
 
-export const config = { schedule: "0,30 * * * *" };
+// Retired: scheduled publishing now runs in Aitibour/idlogice-linkedin-automation.
